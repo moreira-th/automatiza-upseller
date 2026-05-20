@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { --primary: #0056ff; --primary-hover: #0041c2; --bg: #f5f7fa; --text: #333; --border: #ddd; --danger: #dc3545; --success: #28a745; }
+    body { width: 340px; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    .header { background: var(--primary); color: white; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; }
+    .header span { font-weight: bold; font-size: 13px; }
+    .close-x { cursor: pointer; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid white; display: flex; align-items: center; justify-content: center; font-size: 10px; transition: 0.2s; }
+    .close-x:hover { background: white; color: var(--primary); }
+    .tabs { display: flex; background: #eee; border-bottom: 1px solid var(--border); }
+    .tab-btn { flex: 1; padding: 8px 4px; border: none; cursor: pointer; font-size: 10px; font-weight: bold; color: #666; transition: 0.2s; text-align: center; }
+    .tab-btn.active { background: white; color: var(--primary); border-bottom: 2px solid var(--primary); }
+    .tab-content { display: none; padding: 10px; }
+    .tab-content.active { display: block; }
+    .card { background: white; border-radius: 6px; padding: 8px; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    .table-container { max-height: 180px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    th { position: sticky; top: 0; background: #f1f1f1; padding: 6px; z-index: 1; border-bottom: 1px solid var(--border); }
+    td { padding: 3px; border-bottom: 1px solid #f9f9f9; text-align: center; }
+    input[type="text"], textarea { width: 100%; padding: 4px; border: 1px solid var(--border); border-radius: 3px; font-size: 11px; box-sizing: border-box; }
+    .btn { width: 100%; padding: 8px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 11px; transition: 0.2s; margin-top: 5px; }
+    .btn-execute { background: var(--success); color: white; font-size: 12px; padding: 10px; }
+    .btn-save { background: var(--primary); color: white; }
+    .btn-delete { background: var(--danger); color: white; font-size: 10px; padding: 5px; }
+    .btn-primary { background: #4078f2; color: #fff; }
+    .btn-primary:hover { background: #3068e0; }
+    .btn-secondary { background: #e8ecf1; color: #333; }
+    .btn-secondary:hover { background: #d5dbe3; }
+    .btn:disabled { background: #b0b8c5; cursor: not-allowed; }
+    .btn.running { background: #f39c12; }
+    .footer-btns { display: flex; justify-content: space-between; gap: 5px; margin-top: 8px; }
+    .btn-outline { background: white; border: 1px solid var(--border); color: #666; font-size: 10px; flex: 1; }
+    select { width: 100%; padding: 6px; border-radius: 4px; border: 1px solid var(--border); background: white; font-size: 11px; }
+    .status-box { background: #fff; border-radius: 8px; padding: 12px; margin-bottom: 12px; min-height: 48px; border: 1px solid #e0e0e0; }
+    .step-info { font-size: 13px; color: #333; }
+    .step-count { font-size: 11px; color: #999; margin-top: 4px; }
+    .error { color: #e74c3c; font-weight: 600; }
+    .success { color: #27ae60; font-weight: 600; }
+    .progress-bar { height: 4px; background: #e0e0e0; border-radius: 2px; margin-top: 8px; overflow: hidden; }
+    .progress-bar .fill { height: 100%; background: #4078f2; border-radius: 2px; transition: width 0.3s; width: 0%; }
+    .footer-note { font-size: 10px; color: #aaa; text-align: center; margin-top: 8px; }
+    .subtitle { font-size: 11px; color: #666; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <span>⚡ UpSeller Moreira</span>
+  <div id="btnClose" class="close-x">X</div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="tab-remap">REMAPEAMENTO</button>
+  <button class="tab-btn" data-tab="tab-biblioteca">BIBLIOTECA</button>
+  <button class="tab-btn" data-tab="tab-medidas">MEDIDAS</button>
+  <button class="tab-btn" data-tab="tab-precos">PREÇOS</button>
+</div>
+
+<!-- Aba Remapeamento -->
+<div id="tab-remap" class="tab-content active">
+  <div class="subtitle">Automatiza remapeamento de variantes Shein (Cor + Tamanho)</div>
+  <div class="status-box" id="remapStatus">
+    <div class="step-info" id="remapStepInfo">Pronto</div>
+    <div class="step-count" id="remapStepCount"></div>
+    <div class="progress-bar"><div class="fill" id="remapProgressFill"></div></div>
+  </div>
+  <button class="btn btn-primary" id="remapBtnSingle">Processar Aba Atual</button>
+  <button class="btn btn-secondary" id="remapBtnMulti">Processar Todas as Abas</button>
+  <div class="footer-note">A extensão abre o diálogo automaticamente</div>
+</div>
+
+<!-- Aba Biblioteca -->
+<div id="tab-biblioteca" class="tab-content">
+  <div class="card">
+    <select id="selectTabelas"><option value="">Carregar salva...</option></select>
+    <button id="btnExcluir" class="btn btn-delete">EXCLUIR SELECIONADA</button>
+  </div>
+  <button id="btnPreencher" class="btn btn-execute">EXECUTAR (ALT+Z)</button>
+  <div class="footer-btns">
+    <button id="btnExportar" class="btn btn-outline">EXPORTAR DADOS</button>
+    <button id="btnImportar" class="btn btn-outline">IMPORTAR DADOS</button>
+  </div>
+</div>
+
+<!-- Aba Medidas -->
+<div id="tab-medidas" class="tab-content">
+  <div class="card">
+    <div class="table-container">
+      <table>
+        <thead><tr><th>Tam</th><th>Busto</th><th>Comp.</th></tr></thead>
+        <tbody id="gridMedidas"></tbody>
+      </table>
+    </div>
+    <input type="text" id="nomeTabela" placeholder="Nome da Tabela" style="margin-top:8px;">
+    <textarea id="descTabela" placeholder="Descrição do produto (opcional)..." style="margin-top:5px; height: 60px; resize: vertical;"></textarea>
+    <button id="btnSalvar" class="btn btn-save">SALVAR TABELA</button>
+  </div>
+</div>
+
+<!-- Aba Preços -->
+<div id="tab-precos" class="tab-content">
+  <div class="card">
+    <label style="font-size:11px;font-weight:bold;">Carregar Preço Salvo</label>
+    <select id="precoSelectPreset"><option value="">Selecionar...</option></select>
+  </div>
+  <div class="card">
+    <label style="font-size:11px;font-weight:bold;">Preço em Massa (R$)</label>
+    <input type="text" id="precoBulk" placeholder="Ex: 59,90" style="margin-top:4px;">
+  </div>
+  <div class="card">
+    <label style="font-size:11px;font-weight:bold;">Sobrescrever por Tamanho</label>
+    <div style="display:flex;gap:4px;margin-top:4px;">
+      <select id="precoTamSelect" style="flex:1;padding:4px;border:1px solid var(--border);border-radius:3px;font-size:11px;">
+        <option value="">Tam...</option>
+      </select>
+      <input type="text" id="precoTamValor" placeholder="R$" style="width:70px;">
+      <button id="btnAddOverride" class="btn btn-primary" style="width:auto;padding:4px 10px;margin:0;">+</button>
+    </div>
+    <div id="overrideList" style="margin-top:6px;font-size:11px;"></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;gap:4px;">
+      <input type="text" id="precoSaveName" placeholder="Nome para salvar..." style="flex:1;">
+      <button id="btnPrecoSave" class="btn btn-primary" style="width:auto;padding:4px 10px;margin:0;font-size:10px;">Salvar</button>
+      <button id="btnPrecoDelete" class="btn btn-delete" style="width:auto;padding:4px 10px;margin:0;">×</button>
+    </div>
+  </div>
+  <button id="btnAplicarTudo" class="btn btn-execute">APLICAR TUDO</button>
+  <div class="footer-note">Salve configurações por categoria ou avulso</div>
+</div>
+
+<input type="file" id="fileInput" style="display:none" accept=".json">
+
+<script src="popup.js"></script>
+</body>
+</html>
