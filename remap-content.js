@@ -3310,8 +3310,9 @@ ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1
 </div>`;
     document.body.appendChild(overlay);
     document.getElementById('ups-dialog-ok').onclick = () => {
+      const val = opts.input ? document.getElementById('ups-dialog-input').value : true;
       overlay.remove();
-      res(opts.input ? document.getElementById('ups-dialog-input').value : true);
+      res(val);
     };
     const cancelBtn = document.getElementById('ups-dialog-cancel');
     if (cancelBtn) cancelBtn.onclick = () => { overlay.remove(); res(null); };

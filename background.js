@@ -352,13 +352,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     chrome.scripting.executeScript({
       target: { tabId: tabId },
       world: 'MAIN',
-      func: (dataUrl, fileName) => {
+        func: (dataUrl, fileName) => {
         function upsShowDialog(msg) {
           var d = document.createElement('div');
-          d.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;">' +
-            '<div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">' +
+          d.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;';
+          d.innerHTML = '<div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">' +
             '<div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">' + msg + '</div>' +
-            '<button onclick="this.closest(\'[style*=\\"position:fixed\\"]\').remove()" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div></div>';
+            '<button id="ups-ok-btn" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div>';
+          d.querySelector('#ups-ok-btn').onclick = function() { d.remove(); };
           document.body.appendChild(d);
         }
         async function doUpload() {
