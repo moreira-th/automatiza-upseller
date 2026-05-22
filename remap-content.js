@@ -2175,6 +2175,19 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
 
     abrirAc(document.getElementById('ups-ab-1'));
     restaurarEstadoMedidas(res.ultimoEstadoMedidas);
+    const savedMacros = res.ultimosMacros;
+    if (savedMacros) {
+      if (savedMacros.sub) document.getElementById('ups-ma-sub').value = savedMacros.sub;
+      if (savedMacros.emMassa) {
+        document.getElementById('ups-ma-eq').value = savedMacros.emMassa.quantidade || '';
+        document.getElementById('ups-ma-ep').value = savedMacros.emMassa.preco || '';
+        document.getElementById('ups-ma-ew').value = savedMacros.emMassa.peso || '';
+        document.getElementById('ups-ma-epkg').value = savedMacros.emMassa.pacote || '';
+      }
+      document.getElementById('ups-ma-sku').checked = !!savedMacros.sku;
+      document.getElementById('ups-ma-crop').checked = !!savedMacros.crop;
+      document.getElementById('ups-ma-ativar').checked = savedMacros.ativar !== false;
+    }
 
     // ===== Macro presets =====
     function preencherSelectMacrosMedidas(forceSelect) {
@@ -2239,6 +2252,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           pacote: document.getElementById('ups-ma-epkg').value.trim()
         },
         sku: document.getElementById('ups-ma-sku').checked,
+        crop: document.getElementById('ups-ma-crop').checked,
         ativar: document.getElementById('ups-ma-ativar').checked
       };
       chrome.storage.local.get(["biblioteca", "bibliotecaMacros"], (res) => {
