@@ -3320,7 +3320,7 @@ ${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;paddi
 ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:#fff;color:#555;">Cancelar</button>' : ''}
 <button id="ups-dialog-ok" style="padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">${opts.okText || 'OK'}</button>
 </div>
-${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;"><div style="font-size:11px;color:#999;margin-bottom:6px;">Links recentes</div><div id="ups-dialog-recents" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">' + opts.recentLinks.map((item, i) => '<img src="' + item.url.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;') + '" data-index="' + i + '" style="width:54px;height:72px;object-fit:cover;border-radius:4px;border:2px solid transparent;cursor:pointer;" onerror="this.style.display=\'none\'">').join('') + '</div></div>' : ''}
+${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;"><div style="font-size:11px;color:#999;margin-bottom:6px;">Últimos adicionados</div><div id="ups-dialog-recents" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">' + opts.recentLinks.map((item, i) => '<div style="position:relative;width:54px;height:72px;"><img src="' + item.url.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;') + '" data-index="' + i + '" style="width:54px;height:72px;object-fit:cover;border-radius:4px;border:2px solid transparent;cursor:pointer;display:block;" onerror="this.parentElement.style.display=\'none\'"><button data-index="' + i + '" style="position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;border:none;background:#e74c3c;color:#fff;font-size:11px;line-height:18px;text-align:center;cursor:pointer;padding:0;">×</button></div>').join('') + '</div></div>' : ''}
 </div>
 </div>`;
     document.body.appendChild(overlay);
@@ -3336,6 +3336,17 @@ ${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;pad
       img.onclick = () => {
         const input = document.getElementById('ups-dialog-input');
         if (input) input.value = opts.recentLinks[parseInt(img.dataset.index)].url;
+      };
+    });
+    document.getElementById('ups-dialog-recents')?.querySelectorAll('button').forEach((btn) => {
+      btn.onclick = () => {
+        const idx = parseInt(btn.dataset.index);
+        chrome.storage.local.get(['ultimosLinks'], (v) => {
+          let links = v.ultimosLinks || [];
+          links.splice(idx, 1);
+          chrome.storage.local.set({ ultimosLinks: links });
+        });
+        btn.parentElement.remove();
       };
     });
   });
@@ -3495,9 +3506,9 @@ function salvarLinkRecente(url) {
   chrome.storage.local.get(['ultimosLinks'], (v) => {
     let links = v.ultimosLinks || [];
     links = links.map(item => typeof item === 'string' ? { type: 'url', url: item } : item).filter(item => item && item.url);
-    links = links.filter(item => item.url !== url);
+    if (links.some(item => item.url === url)) return;
     links.push({ type: 'url', url });
-    links = links.slice(-5);
+    if (links.length > 5) links.splice(0, links.length - 5);
     chrome.storage.local.set({ ultimosLinks: links });
   });
 }
