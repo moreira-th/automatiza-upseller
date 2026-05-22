@@ -3464,7 +3464,9 @@ function injetarBotaoImagemMassa() {
   // We'll do everything from the content script directly
 
   async function perguntarLinkTabela() {
-    const links = await new Promise(r => chrome.storage.local.get(['ultimosLinks'], (v) => r(v.ultimosLinks || [])));
+    let links = [];
+    try { links = await new Promise(r => chrome.storage.local.get(['ultimosLinks'], (v) => r(v.ultimosLinks || []))); } catch(e) {}
+    links = links.map(item => typeof item === 'string' ? { type: 'url', url: item } : item).filter(item => item && item.url);
     const url = await upsDialog({ title: '🔗 Link da Tabela', message: 'Cole o link da imagem:', input: true, placeholder: 'https://...', okText: 'Enviar', cancel: true, recentLinks: links });
     if (!url || !url.trim()) return;
     try {
@@ -3492,6 +3494,7 @@ function salvarLinkRecente(url) {
   if (!url) return;
   chrome.storage.local.get(['ultimosLinks'], (v) => {
     let links = v.ultimosLinks || [];
+    links = links.map(item => typeof item === 'string' ? { type: 'url', url: item } : item).filter(item => item && item.url);
     links.push({ type: 'url', url });
     links = links.slice(-4);
     chrome.storage.local.set({ ultimosLinks: links });
