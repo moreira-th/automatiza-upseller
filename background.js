@@ -343,7 +343,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       chrome.scripting.executeScript({
         target: { tabId: tabId },
         world: 'MAIN',
-        func: () => { alert('Erro: arquivo muito grande. Máximo 5MB.'); }
+        func: () => { var d = document.createElement('div'); d.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;"><div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;"><div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">Arquivo muito grande. Máximo 5MB.</div><button onclick="this.closest(\'[style*=\\"position:fixed\\"]\').remove()" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div></div>'; document.body.appendChild(d); }
       });
       sendResponse({ error: 'message too large' });
       return true;
@@ -353,6 +353,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       target: { tabId: tabId },
       world: 'MAIN',
       func: (dataUrl, fileName) => {
+        function upsShowDialog(msg) {
+          var d = document.createElement('div');
+          d.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;">' +
+            '<div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">' +
+            '<div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">' + msg + '</div>' +
+            '<button onclick="this.closest(\'[style*=\\"position:fixed\\"]\').remove()" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div></div>';
+          document.body.appendChild(d);
+        }
         async function doUpload() {
           const ext = (fileName || 'imagem.png').split('.').pop().replace(/[^a-z0-9]/gi, '') || 'png';
           var file;
@@ -362,7 +370,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             var blob = await resp.blob();
             file = new File([blob], fileName, { type: blob.type || 'image/png' });
           } catch(e) {
-            alert('Erro ao processar imagem: ' + e.message);
+            upsShowDialog('Erro ao processar imagem: ' + e.message);
             return;
           }
           try {
@@ -396,7 +404,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             for (var i = 0; i < tables.length; i++) {
               if (tables[i].querySelector('.anticon-plus')) { mediaTable = tables[i]; break; }
             }
-            if (!mediaTable) { alert('Tabela de mídia não encontrada'); return; }
+            if (!mediaTable) { upsShowDialog('Tabela de mídia não encontrada'); return; }
             
             var el = mediaTable;
             var vxeVm = null;
@@ -404,7 +412,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               if (el.__vue__ && el.__vue__.tableData) { vxeVm = el.__vue__; break; }
               el = el.parentElement;
             }
-            if (!vxeVm) { alert('Dados da tabela não encontrados'); return; }
+            if (!vxeVm) { upsShowDialog('Dados da tabela não encontrados'); return; }
             
             var tableData = vxeVm.tableData;
             var concluidas = 0;
@@ -424,9 +432,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               });
               concluidas++;
             }
-            alert('Imagem adicionada a ' + concluidas + ' de ' + tableData.length + ' cores');
+            upsShowDialog('Imagem adicionada a ' + concluidas + ' de ' + tableData.length + ' cores');
           } catch(e) {
-            alert('Upload falhou: ' + e.message);
+            upsShowDialog('Upload falhou: ' + e.message);
           }
         }
         doUpload();
@@ -437,7 +445,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       chrome.scripting.executeScript({
         target: { tabId: tabId },
         world: 'MAIN',
-        func: (errMsg) => { alert('Erro na injeção: ' + errMsg); },
+        func: (errMsg) => { var d = document.createElement('div'); d.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;"><div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;"><div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">' + errMsg + '</div><button onclick="this.closest(\'[style*=\\"position:fixed\\"]\').remove()" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div></div>'; document.body.appendChild(d); },
         args: [err.message]
       });
     });

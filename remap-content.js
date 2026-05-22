@@ -861,11 +861,11 @@ function abrirDialogPrecos() {
     });
   }
 
-  function salvarEstadoAtualComoPreset() {
-    const nome = prompt('Nome para salvar preset de preço:');
+  async function salvarEstadoAtualComoPreset() {
+    const nome = await upsDialog({ title: 'Salvar Preço', message: 'Nome para salvar preset de preço:', input: true, placeholder: 'Nome do preset', okText: 'Salvar', cancel: true });
     if (!nome) return;
     const bulkPrice = document.getElementById('ups-pb').value.trim();
-    if (!bulkPrice) { alert('Informe o preço em massa primeiro'); return; }
+    if (!bulkPrice) { upsDialog({ title: 'Aviso', message: 'Informe o preço em massa primeiro' }); return; }
     const dados = { bulkPrice, overrides: { ...overrides } };
     chrome.storage.local.get(["biblioteca", "bibliotecaPrecos"], (res) => {
       const bib = res.biblioteca || {};
@@ -874,21 +874,21 @@ function abrirDialogPrecos() {
         bib[nome].precos = dados;
         chrome.storage.local.set({ biblioteca: bib }, () => {
           preencherSelectSalvos();
-          alert('Preço salvo em "' + nome + '" (vinculado à tabela)');
+          upsDialog({ title: 'Pronto', message: 'Preço salvo em "' + nome + '" (vinculado à tabela)' });
         });
       } else {
         bibPrecos[nome] = dados;
         chrome.storage.local.set({ bibliotecaPrecos: bibPrecos }, () => {
           preencherSelectSalvos();
-          alert('Preço salvo como "' + nome + '" (avulso)');
+          upsDialog({ title: 'Pronto', message: 'Preço salvo como "' + nome + '" (avulso)' });
         });
       }
     });
   }
 
-  function salvarMacroAtual() {
-    const nome = prompt('Nome para salvar este macro:');
-    if (!nome) return;
+  async function salvarMacroAtual() {
+    const nome = await upsDialog({ title: 'Salvar Macro', message: 'Nome para salvar este macro:', input: true, placeholder: 'Nome do macro', okText: 'Salvar', cancel: true });
+    if (!nome || !nome.trim()) return;
     const dados = {
       sub: document.getElementById('ups-ps-sub').value.trim(),
       emMassa: {
@@ -907,25 +907,26 @@ function abrirDialogPrecos() {
         bib[nome].macros = dados;
         chrome.storage.local.set({ biblioteca: bib }, () => {
           preencherSelectMacros();
-          alert('Macro salvo em "' + nome + '" (vinculado à tabela)');
+          upsDialog({ title: 'Pronto', message: 'Macro salvo em "' + nome + '" (vinculado à tabela)' });
         });
       } else {
         bibMacros[nome] = dados;
         chrome.storage.local.set({ bibliotecaMacros: bibMacros }, () => {
           preencherSelectMacros();
-          alert('Macro salvo como "' + nome + '" (avulso)');
+          upsDialog({ title: 'Pronto', message: 'Macro salvo como "' + nome + '" (avulso)' });
         });
       }
     });
   }
 
-  function deletarPresetDialog() {
+  async function deletarPresetDialog() {
     const select = document.getElementById('ups-ps');
     const val = select.value;
     if (!val) return;
     const [tipo, ...nomeParts] = val.split(':');
     const nome = nomeParts.join(':');
-    if (!confirm('Excluir preset de preço "' + nome + '"?')) return;
+    const conf = await upsDialog({ title: 'Confirmar', message: 'Excluir preset de preço "' + nome + '"?', okText: 'Excluir', cancel: true });
+    if (!conf) return;
     chrome.storage.local.get(["biblioteca", "bibliotecaPrecos"], (res) => {
       if (tipo === 'bib') {
         const bib = res.biblioteca || {};
@@ -939,13 +940,14 @@ function abrirDialogPrecos() {
     });
   }
 
-  function deletarMacroDialog() {
+  async function deletarMacroDialog() {
     const select = document.getElementById('ups-ms');
     const val = select.value;
     if (!val) return;
     const [tipo, ...nomeParts] = val.split(':');
     const nome = nomeParts.join(':');
-    if (!confirm('Excluir macro "' + nome + '"?')) return;
+    const conf = await upsDialog({ title: 'Confirmar', message: 'Excluir macro "' + nome + '"?', okText: 'Excluir', cancel: true });
+    if (!conf) return;
     chrome.storage.local.get(["biblioteca", "bibliotecaMacros"], (res) => {
       if (tipo === 'bib') {
         const bib = res.biblioteca || {};
@@ -3288,6 +3290,36 @@ async function recortarImagemQuadradaEmMassa() {
   throw new Error('Timeout aguardando processamento');
 }
 
+function upsDialog(opts) {
+  const existing = document.getElementById('ups-dialog-overlay');
+  if (existing) existing.remove();
+  const resolve = new Promise((res) => {
+    const overlay = document.createElement('div');
+    overlay.id = 'ups-dialog-overlay';
+    overlay.innerHTML = `
+<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;">
+<div style="background:#fff;border-radius:10px;padding:24px;width:400px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">
+<div style="font-size:16px;font-weight:600;color:#333;margin-bottom:12px;">${opts.title || ''}</div>
+<div style="font-size:14px;color:#555;margin-bottom:16px;line-height:1.5;">${opts.message}</div>
+${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;font-size:14px;box-sizing:border-box;margin-bottom:12px;" placeholder="' + (opts.placeholder || '') + '">' : ''}
+<div style="display:flex;gap:8px;justify-content:center;">
+${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:#fff;color:#555;">Cancelar</button>' : ''}
+<button id="ups-dialog-ok" style="padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">${opts.okText || 'OK'}</button>
+</div>
+</div>
+</div>`;
+    document.body.appendChild(overlay);
+    document.getElementById('ups-dialog-ok').onclick = () => {
+      overlay.remove();
+      res(opts.input ? document.getElementById('ups-dialog-input').value : true);
+    };
+    const cancelBtn = document.getElementById('ups-dialog-cancel');
+    if (cancelBtn) cancelBtn.onclick = () => { overlay.remove(); res(null); };
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.remove(); res(null); } });
+  });
+  return resolve;
+}
+
 function capitalizarTitulo() {
   const btn = document.querySelector('.icon_capital');
   if (btn) btn.click();
@@ -3410,7 +3442,7 @@ function injetarBotaoImagemMassa() {
   // We'll do everything from the content script directly
 
   async function perguntarLinkTabela() {
-    const url = prompt('Cole o link da imagem:');
+    const url = await upsDialog({ title: '🔗 Link da Tabela', message: 'Cole o link da imagem:', input: true, placeholder: 'https://...', okText: 'Enviar', cancel: true });
     if (!url || !url.trim()) return;
     try {
       mostrarFeedback('Baixando imagem do link...', '#2980b9');
