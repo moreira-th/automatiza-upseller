@@ -3453,7 +3453,7 @@ function injetarBotaoImagemMassa() {
           mostrarFeedback('Imagem muito grande para enviar. Tente uma menor.', '#c0392b');
           return;
         }
-        uploadImagemViaBackground(dataUrl, file.name);
+        uploadImagemViaBackground(dataUrl, file.name, 'file');
       };
       reader.readAsDataURL(file);
     } catch (e) {
@@ -3479,7 +3479,7 @@ function injetarBotaoImagemMassa() {
       
       const reader = new FileReader();
       reader.onload = function(e) {
-        uploadImagemViaBackground(e.target.result, file.name);
+        uploadImagemViaBackground(e.target.result, file.name, 'link');
       };
       reader.readAsDataURL(file);
 
@@ -3503,14 +3503,16 @@ function salvarLinkRecente(url) {
 }
 
 document.body.addEventListener('ups-upload-done', (e) => {
+  if (e.detail.source === 'link') return;
   salvarLinkRecente(e.detail.url);
 });
 
-function uploadImagemViaBackground(dataUrl, fileName) {
+function uploadImagemViaBackground(dataUrl, fileName, source) {
   chrome.runtime.sendMessage({
     action: 'ups-mass-upload',
     dataUrl: dataUrl,
-    fileName: fileName
+    fileName: fileName,
+    source: source || 'file'
   });
 }
 

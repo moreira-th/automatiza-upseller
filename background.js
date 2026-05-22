@@ -352,7 +352,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     chrome.scripting.executeScript({
       target: { tabId: tabId },
       world: 'MAIN',
-        func: (dataUrl, fileName) => {
+        func: (dataUrl, fileName, source) => {
         function upsShowDialog(msg) {
           var d = document.createElement('div');
           d.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;';
@@ -434,14 +434,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               concluidas++;
             }
             upsShowDialog('Imagem adicionada em ' + tableData.length + ' cores');
-            document.body.dispatchEvent(new CustomEvent('ups-upload-done', { detail: { url: cdnUrl } }));
+            document.body.dispatchEvent(new CustomEvent('ups-upload-done', { detail: { url: cdnUrl, source: source } }));
           } catch(e) {
             upsShowDialog('Upload falhou: ' + e.message);
           }
         }
         doUpload();
       },
-      args: [msg.dataUrl, msg.fileName]
+      args: [msg.dataUrl, msg.fileName, msg.source || 'file']
     }).catch(err => {
       console.error('ups-mass-upload injection error:', err);
       chrome.scripting.executeScript({
