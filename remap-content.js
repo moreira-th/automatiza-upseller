@@ -401,7 +401,7 @@ async function setPrecosCompletos(bulkPrice, overrides) {
   const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
   const scrollStep = bodyWrapper ? Math.max(bodyWrapper.clientHeight - 40, 80) : 80;
 
-  const listaTamanhos = ["PP","P","M","G","GG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+  const listaTamanhos = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
 
   function setRows() {
     const rows = table.querySelectorAll('.vxe-body--row');
@@ -649,7 +649,7 @@ function abrirDialogPrecos() {
   const existing = document.getElementById('upseller-precos-overlay');
   if (existing) existing.remove();
 
-  const tamanhos = ["PP","P","M","G","GG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+  const tamanhos = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
   const overrides = {};
 
   const overlay = document.createElement('div');
@@ -1196,7 +1196,7 @@ function abrirDialogPrecos() {
         const estado = res.ultimoEstadoMedidas || {};
         const nomeTabela = estado.selectedTable || '';
         const dados = nomeTabela ? bib[nomeTabela] : null;
-        if (dados && Object.keys(dados).some(k => ["PP","P","M","G","GG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"].includes(k))) {
+        if (dados && Object.keys(dados).some(k => ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"].includes(k))) {
           stepIdx++;
           criarOverlayProgresso();
           atualizarOverlayProgresso({ message: 'Preenchendo guia de tamanhos...', step: stepIdx, total: stepIdx });
@@ -1254,7 +1254,7 @@ function detectarTamanhosFaltantes(selectedTable, dados) {
     if (txt === 'tamanho' || (txt.includes('tamanho') && !txt.includes('pacote')) || ['variação', 'grade'].some(k => txt.includes(k))) tamCol = cls;
   });
 
-  const listaTamanhos = ["PP","P","M","G","GG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+  const listaTamanhos = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
   const rows = table.querySelectorAll('.vxe-body--row');
   const encontrados = new Set();
 
@@ -1810,7 +1810,7 @@ function abrirDialogMedidas() {
   let selectedTable = '';
   let precoTabela = null;
   let precoUltimo = null;
-  const listaTam = ["PP","P","M","G","GG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+  const listaTam = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
 
   // --- Novo preço: overrides locais ---
   window.__upsNovoPrecoOverrides = {};
@@ -2752,7 +2752,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
                 if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
                 if (!panelRes || !panelRes.saved) {
                   // user skipped — remove missing from dados so guia doesn't re-detect
-                  const listaTamanhos = ["PP","P","M","G","GG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+                  const listaTamanhos = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
                   preMissing.forEach(t => { if (dados[t] && !dados[t].b && !dados[t].c) delete dados[t]; });
                 }
               }
