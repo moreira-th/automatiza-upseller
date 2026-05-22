@@ -433,7 +433,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               });
               concluidas++;
             }
-            upsShowDialog('Imagem adicionada a ' + concluidas + ' de ' + tableData.length + ' cores');
+            upsShowDialog('Imagem adicionada em ' + tableData.length + ' cores');
           } catch(e) {
             upsShowDialog('Upload falhou: ' + e.message);
           }
