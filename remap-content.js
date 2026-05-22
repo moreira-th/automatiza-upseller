@@ -3495,8 +3495,9 @@ function salvarLinkRecente(url) {
   chrome.storage.local.get(['ultimosLinks'], (v) => {
     let links = v.ultimosLinks || [];
     links = links.map(item => typeof item === 'string' ? { type: 'url', url: item } : item).filter(item => item && item.url);
+    links = links.filter(item => item.url !== url);
     links.push({ type: 'url', url });
-    links = links.slice(-4);
+    links = links.slice(-5);
     chrome.storage.local.set({ ultimosLinks: links });
   });
 }
