@@ -36,6 +36,7 @@ function atualizarSelect(restaurarUltima = false) {
     const biblioteca = res.biblioteca || {};
     select.innerHTML = '<option value="">Carregar salva...</option>';
     for (let nome in biblioteca) {
+      if (!Object.keys(biblioteca[nome]).some(k => listaTamanhos.includes(k))) continue;
       let opt = document.createElement('option');
       opt.value = nome;
       opt.innerText = nome;
@@ -129,7 +130,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.getElementById('btnExportar').onclick = () => {
-  chrome.storage.local.get(["biblioteca", "bibliotecaPrecos"], (res) => {
+  chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "ultimosPrecos", "ultimosMacros", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
     let nomeBase = document.getElementById('nomeTabela').value.trim();
     if (!nomeBase) nomeBase = "SHEIN_MEDIDAS";
     const hoje = new Date();
@@ -137,10 +138,21 @@ document.getElementById('btnExportar').onclick = () => {
     const mes = String(hoje.getMonth() + 1).padStart(2, '0');
     const ano = hoje.getFullYear();
     const nomeArquivo = `${nomeBase}_${dia}-${mes}-${ano}.json`;
-    const exportData = { biblioteca: res.biblioteca || {}, bibliotecaPrecos: res.bibliotecaPrecos || {} };
+    const exportData = {
+      biblioteca: res.biblioteca || {},
+      bibliotecaAtributos: res.bibliotecaAtributos || {},
+      bibliotecaPrecos: res.bibliotecaPrecos || {},
+      bibliotecaMacros: res.bibliotecaMacros || {},
+      ultimosPrecos: res.ultimosPrecos || {},
+      ultimosMacros: res.ultimosMacros || {},
+      ultimaSelecionada: res.ultimaSelecionada || "",
+      ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
+      multiMedidasConfig: res.multiMedidasConfig || {}
+    };
     const jsonString = JSON.stringify(exportData, null, 2);
-    const dataUrl = "data:application/json;charset=utf-8," + encodeURIComponent(jsonString);
-    chrome.downloads.download({ url: dataUrl, filename: nomeArquivo, saveAs: true });
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    chrome.downloads.download({ url, filename: nomeArquivo, saveAs: true });
   });
 };
 
@@ -154,11 +166,35 @@ document.getElementById('fileInput').onchange = (e) => {
       const dadosRecuperados = JSON.parse(ev.target.result);
       const bib = dadosRecuperados.biblioteca || dadosRecuperados;
       const bibPrecos = dadosRecuperados.bibliotecaPrecos || {};
-      chrome.storage.local.set({ biblioteca: bib, bibliotecaPrecos: bibPrecos }, () => {
+      const bibMacros = dadosRecuperados.bibliotecaMacros || {};
+      const bibAtr = dadosRecuperados.bibliotecaAtributos || {};
+      const ultimosPrecos = dadosRecuperados.ultimosPrecos || {};
+      const ultimosMacros = dadosRecuperados.ultimosMacros || {};
+      const ultimaSelecionada = dadosRecuperados.ultimaSelecionada || "";
+      const ultimoEstadoMedidas = dadosRecuperados.ultimoEstadoMedidas || {};
+      const multiMedidasConfig = dadosRecuperados.multiMedidasConfig || {};
+      // Migrate old biblioteca[nome].atributos → bibliotecaAtributos
+      Object.keys(bib).forEach(nome => {
+        if (bib[nome].atributos && Object.keys(bib[nome].atributos).length) {
+          if (!bibAtr[nome]) bibAtr[nome] = bib[nome].atributos;
+          delete bib[nome].atributos;
+        }
+      });
+      chrome.storage.local.set({
+        biblioteca: bib,
+        bibliotecaAtributos: bibAtr,
+        bibliotecaPrecos: bibPrecos,
+        bibliotecaMacros: bibMacros,
+        ultimosPrecos,
+        ultimosMacros,
+        ultimaSelecionada,
+        ultimoEstadoMedidas,
+        multiMedidasConfig
+      }, () => {
         e.target.value = "";
         atualizarSelect();
         preencherSelectPresets();
-        setTimeout(() => { alert("Backup restaurado!"); }, 100);
+        setTimeout(() => { alert("Backup completo restaurado!"); }, 100);
       });
     } catch (err) {
       console.error("Erro na importação:", err);
@@ -360,6 +396,13 @@ function salvarPreset() {
   chrome.storage.local.get(["biblioteca", "bibliotecaPrecos"], (res) => {
     const bib = res.biblioteca || {};
     const bibPrecos = res.bibliotecaPrecos || {};
+    const alvo = bib[nome] ? bib[nome] : null;
+    const existing = alvo ? alvo.precos : bibPrecos[nome];
+    if (existing) {
+      dados.emMassa = existing.emMassa;
+      dados.subespecificacao = existing.subespecificacao;
+      dados.gerarSku = existing.gerarSku;
+    }
     if (bib[nome]) {
       bib[nome].precos = dados;
       chrome.storage.local.set({ biblioteca: bib }, () => {

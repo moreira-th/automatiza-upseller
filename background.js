@@ -316,6 +316,136 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     processNextTab();
   }
 
+  if (msg.action === 'cancel-multi') {
+    processingTabs = false;
+    stopKeepAlive();
+    limparEstadoMulti();
+    // Abort current tab execution
+    if (tabQueue && tabQueue.length > 0 && currentTabIndex < tabQueue.length) {
+      chrome.tabs.sendMessage(tabQueue[currentTabIndex], { action: 'abort-macro' }).catch(() => {});
+    }
+    tabQueue.forEach(tid => {
+      chrome.tabs.sendMessage(tid, { action: 'multi-cancelled' }).catch(() => {});
+    });
+    tabQueue = [];
+    chrome.runtime.sendMessage({ action: 'multi-cancelled', total: currentTabIndex });
+    sendResponse({ status: 'cancelled' });
+    return true;
+  }
+
+  if (msg.action === 'ups-mass-upload') {
+    // Inject upload code into page's MAIN world (bypass CSP & isolated world)
+    const tabId = sender.tab ? sender.tab.id : null;
+    if (!tabId) { sendResponse({ error: 'no tab' }); return true; }
+    
+    // Validate message size
+    if (msg.dataUrl && msg.dataUrl.length > 900000) {
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        world: 'MAIN',
+        func: () => { alert('Erro: arquivo muito grande. Máximo 5MB.'); }
+      });
+      sendResponse({ error: 'message too large' });
+      return true;
+    }
+    
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      world: 'MAIN',
+      func: (dataUrl, fileName) => {
+        async function doUpload() {
+          const ext = (fileName || 'imagem.png').split('.').pop().replace(/[^a-z0-9]/gi, '') || 'png';
+          var file;
+          try {
+            var resp = await fetch(dataUrl);
+            if (!resp.ok) throw new Error('Falha ao processar arquivo: HTTP ' + resp.status);
+            var blob = await resp.blob();
+            file = new File([blob], fileName, { type: blob.type || 'image/png' });
+          } catch(e) {
+            alert('Erro ao processar imagem: ' + e.message);
+            return;
+          }
+          try {
+            var signResp = await fetch('https://app.upseller.com/api/media/file/upload/generate-sign', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ module: 'product', spaceCode: 'ListingImage', fileName: fileName, suffix: '.' + ext })
+            });
+            var signData = await signResp.json();
+            if (signData.code !== 0) throw new Error(signData.msg || 'generate-sign error');
+            var cdnUrl = signData.data.url;
+            
+            var uploadResp = await fetch(signData.data.sign, {
+              method: 'PUT',
+              headers: { 'Content-Type': file.type || 'image/png' },
+              body: file
+            });
+            if (!uploadResp.ok) throw new Error('upload CDN: HTTP ' + uploadResp.status);
+            
+            var cbResp = await fetch('https://app.upseller.com/api/media/file/upload/callback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ fileKey: signData.data.fileKey, size: file.size, suffix: '.' + ext })
+            });
+            var cbData = await cbResp.json();
+            if (cbData.code !== 0) throw new Error(cbData.msg || 'callback error');
+            
+            // Find vxe-table and push
+            var tables = document.querySelectorAll('table.vxe-table--body');
+            var mediaTable = null;
+            for (var i = 0; i < tables.length; i++) {
+              if (tables[i].querySelector('.anticon-plus')) { mediaTable = tables[i]; break; }
+            }
+            if (!mediaTable) { alert('Tabela de mídia não encontrada'); return; }
+            
+            var el = mediaTable;
+            var vxeVm = null;
+            while (el) {
+              if (el.__vue__ && el.__vue__.tableData) { vxeVm = el.__vue__; break; }
+              el = el.parentElement;
+            }
+            if (!vxeVm) { alert('Dados da tabela não encontrados'); return; }
+            
+            var tableData = vxeVm.tableData;
+            var concluidas = 0;
+            for (var j = 0; j < tableData.length; j++) {
+              var row = tableData[j];
+              if (!row.detailsImgs || !Array.isArray(row.detailsImgs)) continue;
+              var maxSort = 0;
+              for (var s = 0; s < row.detailsImgs.length; s++) {
+                if (row.detailsImgs[s].sort > maxSort) maxSort = row.detailsImgs[s].sort;
+              }
+              row.detailsImgs.splice(row.detailsImgs.length, 0, {
+                imageItemId: null, groupCode: null,
+                imageUrl: cdnUrl, imageMediumUrl: cdnUrl, imageSmallUrl: cdnUrl,
+                sort: maxSort + 1,
+                imageType: 'DETAIL', url: cdnUrl,
+                imgInfo: { width: 800, height: 800 }
+              });
+              concluidas++;
+            }
+            alert('Imagem adicionada a ' + concluidas + ' de ' + tableData.length + ' cores');
+          } catch(e) {
+            alert('Upload falhou: ' + e.message);
+          }
+        }
+        doUpload();
+      },
+      args: [msg.dataUrl, msg.fileName]
+    }).catch(err => {
+      console.error('ups-mass-upload injection error:', err);
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        world: 'MAIN',
+        func: (errMsg) => { alert('Erro na injeção: ' + errMsg); },
+        args: [err.message]
+      });
+    });
+    
+    sendResponse({ status: 'injected' });
+    return true;
+  }
+
   if (msg.action === 'progress' && processingTabs && tabQueue.length > 0) {
     tabQueue.forEach(tid => {
       chrome.tabs.sendMessage(tid, {
