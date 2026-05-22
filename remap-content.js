@@ -3320,11 +3320,7 @@ ${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;paddi
 ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:#fff;color:#555;">Cancelar</button>' : ''}
 <button id="ups-dialog-ok" style="padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">${opts.okText || 'OK'}</button>
 </div>
-${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;"><div style="font-size:11px;color:#999;margin-bottom:6px;">Links recentes</div><div id="ups-dialog-recents" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">' + opts.recentLinks.map((item, i) => {
-  const src = item.type === 'url' ? item.url.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;') : item.thumbnail;
-  const cls = item.type === 'url' ? ' up-di-clickable' : '';
-  return '<img src="' + src + '" data-index="' + i + '" data-type="' + item.type + '" style="width:54px;height:72px;object-fit:cover;border-radius:4px;border:2px solid transparent;cursor:' + (item.type === 'url' ? 'pointer' : 'default') + ';opacity:' + (item.type === 'url' ? '1' : '0.85') + ';" onerror="this.style.display=\'none\'">';
-}).join('') + '</div></div>' : ''}
+${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;"><div style="font-size:11px;color:#999;margin-bottom:6px;">Links recentes</div><div id="ups-dialog-recents" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">' + opts.recentLinks.map((item, i) => '<img src="' + item.url.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;') + '" data-index="' + i + '" style="width:54px;height:72px;object-fit:cover;border-radius:4px;border:2px solid transparent;cursor:pointer;" onerror="this.style.display=\'none\'">').join('') + '</div></div>' : ''}
 </div>
 </div>`;
     document.body.appendChild(overlay);
@@ -3338,7 +3334,6 @@ ${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;pad
     overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.remove(); res(null); } });
     document.getElementById('ups-dialog-recents')?.querySelectorAll('img').forEach((img) => {
       img.onclick = () => {
-        if (img.dataset.type !== 'url') return;
         const input = document.getElementById('ups-dialog-input');
         if (input) input.value = opts.recentLinks[parseInt(img.dataset.index)].url;
       };
@@ -3459,7 +3454,6 @@ function injetarBotaoImagemMassa() {
           return;
         }
         uploadImagemViaBackground(dataUrl, file.name);
-        salvarLinkRecente(null, dataUrl);
       };
       reader.readAsDataURL(file);
     } catch (e) {
@@ -3487,45 +3481,26 @@ function injetarBotaoImagemMassa() {
       };
       reader.readAsDataURL(file);
 
-      salvarLinkRecente(url, null);
+      salvarLinkRecente(url);
     } catch (e) {
       mostrarFeedback('Erro ao baixar imagem: ' + e.message, '#c0392b');
     }
   }
 }
 
-function gerarThumbnail(dataUrl, size) {
-  return new Promise((r) => {
-    const img = new Image();
-    img.onload = () => {
-      const c = document.createElement('canvas');
-      c.width = size;
-      c.height = Math.round(size * 4 / 3);
-      const ctx = c.getContext('2d');
-      const s = Math.min(img.width / c.width, img.height / c.height);
-      const dx = (img.width - c.width * s) / 2;
-      const dy = (img.height - c.height * s) / 2;
-      ctx.drawImage(img, dx, dy, c.width * s, c.height * s, 0, 0, c.width, c.height);
-      r(c.toDataURL('image/jpeg', 0.6));
-    };
-    img.onerror = () => r(null);
-    img.src = dataUrl;
-  });
-}
-
-function salvarLinkRecente(url, dataUrl) {
-  chrome.storage.local.get(['ultimosLinks'], async (v) => {
+function salvarLinkRecente(url) {
+  if (!url) return;
+  chrome.storage.local.get(['ultimosLinks'], (v) => {
     let links = v.ultimosLinks || [];
-    if (url) {
-      links.push({ type: 'url', url });
-    } else if (dataUrl) {
-      const thumb = await gerarThumbnail(dataUrl, 54);
-      if (thumb) links.push({ type: 'file', thumbnail: thumb });
-    }
+    links.push({ type: 'url', url });
     links = links.slice(-4);
     chrome.storage.local.set({ ultimosLinks: links });
   });
 }
+
+document.body.addEventListener('ups-upload-done', (e) => {
+  salvarLinkRecente(e.detail.url);
+});
 
 function uploadImagemViaBackground(dataUrl, fileName) {
   chrome.runtime.sendMessage({

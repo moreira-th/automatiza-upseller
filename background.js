@@ -434,6 +434,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               concluidas++;
             }
             upsShowDialog('Imagem adicionada em ' + tableData.length + ' cores');
+            document.body.dispatchEvent(new CustomEvent('ups-upload-done', { detail: { url: cdnUrl } }));
           } catch(e) {
             upsShowDialog('Upload falhou: ' + e.message);
           }
