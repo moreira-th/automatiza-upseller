@@ -3320,6 +3320,7 @@ ${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;paddi
 ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:#fff;color:#555;">Cancelar</button>' : ''}
 <button id="ups-dialog-ok" style="padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">${opts.okText || 'OK'}</button>
 </div>
+${opts.recentLinks && opts.recentLinks.length ? '<div style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;"><div style="font-size:11px;color:#999;margin-bottom:6px;">Links recentes</div><div id="ups-dialog-recents" style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;">' + opts.recentLinks.map((url, i) => '<img src="' + url.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;') + '" data-index="' + i + '" style="width:54px;height:72px;object-fit:cover;border-radius:4px;border:2px solid transparent;cursor:pointer;" onerror="this.style.display=\'none\'">').join('') + '</div></div>' : ''}
 </div>
 </div>`;
     document.body.appendChild(overlay);
@@ -3331,6 +3332,12 @@ ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1
     const cancelBtn = document.getElementById('ups-dialog-cancel');
     if (cancelBtn) cancelBtn.onclick = () => { overlay.remove(); res(null); };
     overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.remove(); res(null); } });
+    document.getElementById('ups-dialog-recents')?.querySelectorAll('img').forEach((img) => {
+      img.onclick = () => {
+        const input = document.getElementById('ups-dialog-input');
+        if (input) input.value = opts.recentLinks[parseInt(img.dataset.index)];
+      };
+    });
   });
   return resolve;
 }
@@ -3457,7 +3464,8 @@ function injetarBotaoImagemMassa() {
   // We'll do everything from the content script directly
 
   async function perguntarLinkTabela() {
-    const url = await upsDialog({ title: '🔗 Link da Tabela', message: 'Cole o link da imagem:', input: true, placeholder: 'https://...', okText: 'Enviar', cancel: true });
+    const links = await new Promise(r => chrome.storage.local.get(['ultimosLinks'], (v) => r(v.ultimosLinks || [])));
+    const url = await upsDialog({ title: '🔗 Link da Tabela', message: 'Cole o link da imagem:', input: true, placeholder: 'https://...', okText: 'Enviar', cancel: true, recentLinks: links.slice(-4) });
     if (!url || !url.trim()) return;
     try {
       mostrarFeedback('Baixando imagem do link...', '#2980b9');
@@ -3472,6 +3480,10 @@ function injetarBotaoImagemMassa() {
         uploadImagemViaBackground(e.target.result, file.name);
       };
       reader.readAsDataURL(file);
+
+      // Save to recent links
+      const updated = [...links, url].slice(-4);
+      chrome.storage.local.set({ ultimosLinks: updated });
     } catch (e) {
       mostrarFeedback('Erro ao baixar imagem: ' + e.message, '#c0392b');
     }
