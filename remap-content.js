@@ -2785,22 +2785,20 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           }
 
           // Save ultimosMacros
-          if (macroAtivo && (temSub || temEmMassa || temSku || temCrop)) {
-            chrome.storage.local.set({
-              ultimosMacros: {
-                sub: document.getElementById('ups-ma-sub').value.trim(),
-                emMassa: {
-                  quantidade: document.getElementById('ups-ma-eq').value.trim(),
-                  preco: document.getElementById('ups-ma-ep').value.trim(),
-                  peso: document.getElementById('ups-ma-ew').value.trim(),
-                  pacote: document.getElementById('ups-ma-epkg').value.trim()
-                },
-                sku: temSku,
-                crop: temCrop,
-                ativar: macroAtivo
-              }
-            });
-          }
+          chrome.storage.local.set({
+            ultimosMacros: {
+              sub: document.getElementById('ups-ma-sub').value.trim(),
+              emMassa: {
+                quantidade: document.getElementById('ups-ma-eq').value.trim(),
+                preco: document.getElementById('ups-ma-ep').value.trim(),
+                peso: document.getElementById('ups-ma-ew').value.trim(),
+                pacote: document.getElementById('ups-ma-epkg').value.trim()
+              },
+              sku: temSku,
+              crop: temCrop,
+              ativar: macroAtivo
+            }
+          });
 
           atualizarOverlayProgresso({ message: '✓ Macro concluída!', step: stepCounter, total: totalSteps });
           setTimeout(() => removerOverlayProgresso(), 1500);
