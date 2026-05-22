@@ -1,4 +1,4 @@
-const listaTamanhos = ["PP", "P", "M", "G", "GG", "G1", "G2", "G3", "G4", "G5", "2", "4", "6", "8", "10", "12", "14", "16"];
+const listaTamanhos = ["PP", "P", "M", "G", "GG", "EGG", "G1", "G2", "G3", "G4", "G5", "2", "4", "6", "8", "10", "12", "14", "16"];
 
 // --- ABAS ---
 function configurarAbas() {
