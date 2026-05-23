@@ -1768,9 +1768,16 @@ function abrirDialogMedidas() {
 </div>
 </div>
 
-<div style="display:flex;gap:8px;justify-content:flex-end;border-top:1px solid #eee;padding-top:10px;margin-top:8px;">
+<div style="display:flex;gap:8px;align-items:center;border-top:1px solid #eee;padding-top:10px;margin-top:8px;">
+<div style="flex:1;display:flex;gap:4px;align-items:center;">
+<input id="ups-op-nome" list="ups-op-list" placeholder="Nome do preset..." style="flex:1;padding:4px 6px;border:1px solid #ccc;border-radius:4px;font-size:11px;min-width:0;">
+<datalist id="ups-op-list"></datalist>
+<button id="ups-op-salvar" style="padding:4px 8px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;line-height:1;" title="Salvar">💾</button>
+<button id="ups-op-renomear" style="padding:4px 8px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:12px;line-height:1;" title="Renomear">✏️</button>
+<button id="ups-op-excluir" style="padding:4px 8px;background:#fff;color:#dc3545;border:1px solid #dc3545;border-radius:4px;cursor:pointer;font-size:12px;line-height:1;" title="Excluir">🗑️</button>
+</div>
 <button id="ups-mc" style="padding:7px 16px;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:13px;background:white;">Cancelar</button>
-  <button id="ups-mk" style="padding:7px 16px;background:#28a745;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:13px;">EXECUTAR</button>
+<button id="ups-mk" style="padding:7px 16px;background:#28a745;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:13px;">EXECUTAR</button>
 </div>
 </div>`;
   document.body.appendChild(overlay);
@@ -2189,6 +2196,90 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       document.getElementById('ups-ma-ativar').checked = savedMacros.ativar !== false;
     }
 
+    function preencherListaPresets() {
+      chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
+        const presets = v.bibliotecaPresetsOverlay || {};
+        const list = document.getElementById('ups-op-list');
+        list.innerHTML = Object.keys(presets).map(n => `<option value="${n}">`).join('');
+      });
+    }
+
+    function lerEstadoOverlay() {
+      return {
+        selectedTable: selectedTable,
+        bulkPrice: document.getElementById('ups-mp-nb').value.trim(),
+        overrides: JSON.parse(JSON.stringify(window.__upsNovoPrecoOverrides || {})),
+        ativarPreco: document.getElementById('ups-ac-t-mp').checked,
+        medidasAtivo: document.getElementById('ups-ac-t-mt').checked,
+        sub: document.getElementById('ups-ma-sub').value.trim(),
+        emMassa: {
+          quantidade: document.getElementById('ups-ma-eq').value.trim(),
+          preco: document.getElementById('ups-ma-ep').value.trim(),
+          peso: document.getElementById('ups-ma-ew').value.trim(),
+          pacote: document.getElementById('ups-ma-epkg').value.trim()
+        },
+        sku: document.getElementById('ups-ma-sku').checked,
+        crop: document.getElementById('ups-ma-crop').checked,
+        ativar: document.getElementById('ups-ma-ativar').checked,
+        atrPreset: document.getElementById('ups-atr-carregar').value,
+        atributosAtivo: document.getElementById('ups-ac-t-atr').checked
+      };
+    }
+
+    function aplicarPresetOverlay(dados) {
+      if (!dados) return;
+      if (dados.selectedTable) {
+        const sel = document.getElementById('ups-mt');
+        if (sel && [...sel.options].some(o => o.value === dados.selectedTable)) {
+          sel.value = dados.selectedTable;
+          selectedTable = dados.selectedTable;
+          atualizarDesc(dados.selectedTable);
+        }
+      }
+      document.getElementById('ups-mp-nb').value = dados.bulkPrice || '';
+      if (dados.overrides) {
+        window.__upsNovoPrecoOverrides = JSON.parse(JSON.stringify(dados.overrides));
+        renderOverridesNovo(window.__upsNovoPrecoOverrides);
+      }
+      document.getElementById('ups-ac-t-mp').checked = dados.ativarPreco !== false;
+      document.getElementById('ups-ac-t-mt').checked = dados.medidasAtivo !== false;
+      document.getElementById('ups-ma-sub').value = dados.sub || '';
+      atualizarTagsSub();
+      if (dados.emMassa) {
+        document.getElementById('ups-ma-eq').value = dados.emMassa.quantidade || '';
+        document.getElementById('ups-ma-ep').value = dados.emMassa.preco || '';
+        document.getElementById('ups-ma-ew').value = dados.emMassa.peso || '';
+        document.getElementById('ups-ma-epkg').value = dados.emMassa.pacote || '';
+      }
+      document.getElementById('ups-ma-sku').checked = !!dados.sku;
+      document.getElementById('ups-ma-crop').checked = !!dados.crop;
+      document.getElementById('ups-ma-ativar').checked = dados.ativar !== false;
+      if (dados.atrPreset) {
+        const sel = document.getElementById('ups-atr-carregar');
+        if (sel && [...sel.options].some(o => o.value === dados.atrPreset)) {
+          sel.value = dados.atrPreset;
+          const parts = dados.atrPreset.split(':');
+          if (parts.length >= 2) carregarPresetAtributos(parts[0], parts.slice(1).join(':'));
+        }
+      }
+      document.getElementById('ups-ac-t-atr').checked = dados.atributosAtivo !== false;
+    }
+
+    function salvarPresetOverlay(nome) {
+      if (!nome) return;
+      chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
+        const presets = v.bibliotecaPresetsOverlay || {};
+        presets[nome] = lerEstadoOverlay();
+        chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
+          preencherListaPresets();
+          document.getElementById('ups-op-nome').value = nome;
+          mostrarFeedback('Preset "' + nome + '" salvo!');
+        });
+      });
+    }
+
+    preencherListaPresets();
+
     // ===== Macro presets =====
     function preencherSelectMacrosMedidas(forceSelect) {
       const s = document.getElementById('ups-ma-select');
@@ -2529,6 +2620,61 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
   document.getElementById('ups-mc').onclick = () => {
     salvarEstadoMedidas();
     overlay.remove();
+  };
+
+  document.getElementById('ups-op-nome').addEventListener('change', function() {
+    const nome = this.value.trim();
+    if (!nome) return;
+    chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
+      const dados = (v.bibliotecaPresetsOverlay || {})[nome];
+      if (dados) aplicarPresetOverlay(dados);
+    });
+  });
+
+  document.getElementById('ups-op-salvar').onclick = () => {
+    const nome = document.getElementById('ups-op-nome').value.trim();
+    if (!nome) { mostrarFeedback('Digite um nome para o preset'); return; }
+    salvarPresetOverlay(nome);
+  };
+
+  document.getElementById('ups-op-renomear').onclick = async () => {
+    const atual = document.getElementById('ups-op-nome').value.trim();
+    if (!atual) { mostrarFeedback('Selecione ou digite um preset para renomear'); return; }
+    const novo = await upsDialog({ title: 'Renomear', message: 'Novo nome:', input: true, placeholder: atual, okText: 'Renomear', cancel: true });
+    if (!novo || novo === atual) return;
+    chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
+      const presets = v.bibliotecaPresetsOverlay || {};
+      if (presets[novo]) { mostrarFeedback('Já existe um preset com esse nome'); return; }
+      if (presets[atual]) {
+        presets[novo] = presets[atual];
+        delete presets[atual];
+        chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
+          preencherListaPresets();
+          document.getElementById('ups-op-nome').value = novo;
+          mostrarFeedback('Renomeado para "' + novo + '"');
+        });
+      } else {
+        mostrarFeedback('Preset "' + atual + '" não encontrado');
+      }
+    });
+  };
+
+  document.getElementById('ups-op-excluir').onclick = async () => {
+    const nome = document.getElementById('ups-op-nome').value.trim();
+    if (!nome) { mostrarFeedback('Selecione um preset para excluir'); return; }
+    const ok = await upsDialog({ title: 'Excluir', message: 'Excluir preset "' + nome + '"?', okText: 'Excluir', cancel: true });
+    if (!ok) return;
+    chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
+      const presets = v.bibliotecaPresetsOverlay || {};
+      if (presets[nome]) {
+        delete presets[nome];
+        chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
+          preencherListaPresets();
+          document.getElementById('ups-op-nome').value = '';
+          mostrarFeedback('Preset "' + nome + '" excluído');
+        });
+      }
+    });
   };
 
   document.getElementById('ups-ac-t-multi').addEventListener('change', function() {
