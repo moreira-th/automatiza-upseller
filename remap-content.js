@@ -1,15 +1,5 @@
 function sleep(ms) {
-  if (ms < 300 || !document.hidden) return new Promise(r => setTimeout(r, ms));
-  return new Promise(resolve => {
-    try {
-      chrome.runtime.sendMessage({ action: 'sleep', ms }, () => {
-        if (chrome.runtime.lastError) setTimeout(resolve, ms);
-        else resolve();
-      });
-    } catch (e) {
-      setTimeout(resolve, ms);
-    }
-  });
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function nativeClick(el) {

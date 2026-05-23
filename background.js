@@ -251,10 +251,6 @@ function limparEstadoMulti() {
 }
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.action === 'sleep') {
-    setTimeout(() => sendResponse({}), msg.ms);
-    return true;
-  }
   if (msg.action === 'start-multi') {
     chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/shein/edit/*' }, (tabs) => {
       tabQueue = tabs.map(t => t.id);
