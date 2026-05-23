@@ -1599,6 +1599,21 @@ function abrirDialogMedidas() {
 <div style="background:white;border-radius:8px;padding:20px;width:90vw;min-width:540px;max-width:680px;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;max-height:85vh;overflow-y:auto;">
 <div style="font-size:18px;font-weight:bold;margin-bottom:10px;text-align:center;">Automatiza Shein - UpSeller</div>
 
+<div class="ups-ac" data-ups-open="0">
+<div class="ups-ac-h" data-ups-body="ups-ab-presets">
+<span>📋 Presets</span>
+<span class="ups-ac-ar">▶</span>
+</div>
+<div class="ups-ac-body" id="ups-ab-presets">
+<div class="ups-ac-body-inner">
+<div style="display:flex;gap:4px;">
+<select id="ups-op-select" style="flex:1;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;"><option value="">Carregar Novo...</option></select>
+<button id="ups-op-salvar" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;" title="Salvar/Renomear">💾</button>
+</div>
+</div>
+</div>
+</div>
+
 <style>
 .ups-ac { margin-bottom:8px;border-radius:8px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.08);overflow:hidden; }
 .ups-ac-h { display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;user-select:none;font-size:14px;font-weight:600;background:linear-gradient(135deg,#f8f9fa,#e9ecef);transition:background .2s; }
@@ -1768,16 +1783,9 @@ function abrirDialogMedidas() {
 </div>
 </div>
 
-<div style="display:flex;gap:8px;align-items:center;border-top:1px solid #eee;padding-top:10px;margin-top:8px;">
-<div style="flex:1;display:flex;gap:4px;align-items:center;">
-<input id="ups-op-nome" list="ups-op-list" placeholder="Nome do preset..." style="flex:1;padding:4px 6px;border:1px solid #ccc;border-radius:4px;font-size:11px;min-width:0;">
-<datalist id="ups-op-list"></datalist>
-<button id="ups-op-salvar" style="padding:4px 8px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;line-height:1;" title="Salvar">💾</button>
-<button id="ups-op-renomear" style="padding:4px 8px;background:#f0f0f0;color:#333;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:12px;line-height:1;" title="Renomear">✏️</button>
-<button id="ups-op-excluir" style="padding:4px 8px;background:#fff;color:#dc3545;border:1px solid #dc3545;border-radius:4px;cursor:pointer;font-size:12px;line-height:1;" title="Excluir">🗑️</button>
-</div>
+<div style="display:flex;gap:8px;justify-content:flex-end;border-top:1px solid #eee;padding-top:10px;margin-top:8px;">
 <button id="ups-mc" style="padding:7px 16px;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:13px;background:white;">Cancelar</button>
-<button id="ups-mk" style="padding:7px 16px;background:#28a745;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:13px;">EXECUTAR</button>
+  <button id="ups-mk" style="padding:7px 16px;background:#28a745;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:13px;">EXECUTAR</button>
 </div>
 </div>`;
   document.body.appendChild(overlay);
@@ -2199,8 +2207,9 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     function preencherListaPresets() {
       chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
         const presets = v.bibliotecaPresetsOverlay || {};
-        const list = document.getElementById('ups-op-list');
-        list.innerHTML = Object.keys(presets).map(n => `<option value="${n}">`).join('');
+        const sel = document.getElementById('ups-op-select');
+        const atual = sel.value;
+        sel.innerHTML = '<option value="">Carregar Novo...</option>' + Object.keys(presets).map(n => `<option value="${n}"${n === atual ? ' selected' : ''}>${n}</option>`).join('');
       });
     }
 
@@ -2272,8 +2281,8 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         presets[nome] = lerEstadoOverlay();
         chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
           preencherListaPresets();
-          document.getElementById('ups-op-nome').value = nome;
-          mostrarFeedback('Preset "' + nome + '" salvo!');
+          document.getElementById('ups-op-select').value = nome;
+          upsDialog({ title: '✅ Salvo', message: 'Preset "' + nome + '" salvo com sucesso!' });
         });
       });
     }
@@ -2622,8 +2631,8 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     overlay.remove();
   };
 
-  document.getElementById('ups-op-nome').addEventListener('change', function() {
-    const nome = this.value.trim();
+  document.getElementById('ups-op-select').addEventListener('change', function() {
+    const nome = this.value;
     if (!nome) return;
     chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
       const dados = (v.bibliotecaPresetsOverlay || {})[nome];
@@ -2631,50 +2640,12 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     });
   });
 
-  document.getElementById('ups-op-salvar').onclick = () => {
-    const nome = document.getElementById('ups-op-nome').value.trim();
-    if (!nome) { mostrarFeedback('Digite um nome para o preset'); return; }
-    salvarPresetOverlay(nome);
-  };
-
-  document.getElementById('ups-op-renomear').onclick = async () => {
-    const atual = document.getElementById('ups-op-nome').value.trim();
-    if (!atual) { mostrarFeedback('Selecione ou digite um preset para renomear'); return; }
-    const novo = await upsDialog({ title: 'Renomear', message: 'Novo nome:', input: true, placeholder: atual, okText: 'Renomear', cancel: true });
-    if (!novo || novo === atual) return;
-    chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
-      const presets = v.bibliotecaPresetsOverlay || {};
-      if (presets[novo]) { mostrarFeedback('Já existe um preset com esse nome'); return; }
-      if (presets[atual]) {
-        presets[novo] = presets[atual];
-        delete presets[atual];
-        chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
-          preencherListaPresets();
-          document.getElementById('ups-op-nome').value = novo;
-          mostrarFeedback('Renomeado para "' + novo + '"');
-        });
-      } else {
-        mostrarFeedback('Preset "' + atual + '" não encontrado');
-      }
-    });
-  };
-
-  document.getElementById('ups-op-excluir').onclick = async () => {
-    const nome = document.getElementById('ups-op-nome').value.trim();
-    if (!nome) { mostrarFeedback('Selecione um preset para excluir'); return; }
-    const ok = await upsDialog({ title: 'Excluir', message: 'Excluir preset "' + nome + '"?', okText: 'Excluir', cancel: true });
-    if (!ok) return;
-    chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
-      const presets = v.bibliotecaPresetsOverlay || {};
-      if (presets[nome]) {
-        delete presets[nome];
-        chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
-          preencherListaPresets();
-          document.getElementById('ups-op-nome').value = '';
-          mostrarFeedback('Preset "' + nome + '" excluído');
-        });
-      }
-    });
+  document.getElementById('ups-op-salvar').onclick = async () => {
+    const sel = document.getElementById('ups-op-select');
+    const atual = sel.value;
+    const nome = await upsDialog({ title: '💾 Salvar Preset', message: 'Nome do preset:', input: true, placeholder: atual !== '' ? atual : 'Meu preset...', okText: 'Salvar', cancel: true });
+    if (!nome || !nome.trim()) return;
+    salvarPresetOverlay(nome.trim());
   };
 
   document.getElementById('ups-ac-t-multi').addEventListener('change', function() {
