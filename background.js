@@ -103,7 +103,7 @@ function atualizarMenus() {
   });
 }
 
-chrome.runtime.onInstalled.addListener(atualizarMenus);
+try { chrome.runtime.onInstalled.addListener(atualizarMenus); } catch (e) {}
 chrome.storage.onChanged.addListener((changes) => {
   if (changes.biblioteca || changes.bibliotecaPrecos || changes.ultimaSelecionada || changes.ultimosPrecos) {
     atualizarMenus();
