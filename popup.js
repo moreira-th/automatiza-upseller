@@ -214,11 +214,9 @@ const btnSingle = document.getElementById('remapBtnSingle');
 const btnMulti = document.getElementById('remapBtnMulti');
 
 let running = false;
-let multiMode = false;
 
 function setRunning(r, isMulti) {
   running = r;
-  multiMode = isMulti;
   btnSingle.disabled = r;
   btnMulti.disabled = r;
   btnSingle.textContent = r && !isMulti ? 'Executando...' : 'Processar Aba Atual';

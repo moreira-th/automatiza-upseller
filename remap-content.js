@@ -684,7 +684,6 @@ function abrirDialogPrecos() {
 .ups-ac-body { max-height:0;overflow:hidden;transition:max-height .35s ease; }
 .ups-ac-body-inner { padding:12px 14px;border-top:1px solid #e9ecef; }
 .ups-ac-ar { font-size:10px;color:#888;transition:transform .2s;margin-right:6px; }
-.ups-ac[data-ups-open="1"] .ups-ac-ar { transform:rotate(0deg); }
 #ups-ac-s-mt,#ups-ac-s-mp,#ups-ac-s-multi { background:#ccc; }
 #ups-ac-t-mt:checked + #ups-ac-s-mt,
 #ups-ac-t-mp:checked + #ups-ac-s-mp,
@@ -1605,6 +1604,7 @@ async function aplicarAtributo(label, value) {
 
 // ========== DIÁLOGO DE MEDIDAS (in-page) ==========
 function abrirDialogMedidas() {
+  var preencherListaPresets, lerEstadoOverlay, aplicarPresetOverlay, salvarPresetOverlay;
   const existing = document.getElementById('upseller-medidas-overlay');
   if (existing) existing.remove();
 
@@ -1635,7 +1635,6 @@ function abrirDialogMedidas() {
 .ups-ac-body { max-height:0;overflow:hidden;transition:max-height .35s ease; }
 .ups-ac-body-inner { padding:12px 14px;border-top:1px solid #e9ecef; }
 .ups-ac-ar { font-size:10px;color:#888;transition:transform .2s;margin-right:6px; }
-.ups-ac[data-ups-open="1"] .ups-ac-ar { transform:rotate(0deg); }
 #ups-ac-s-mt,#ups-ac-s-mp,#ups-ac-s-multi,#ups-ac-s-atr { background:#ccc; }
 #ups-ac-t-mt:checked + #ups-ac-s-mt,
 #ups-ac-t-mp:checked + #ups-ac-s-mp,
@@ -1888,7 +1887,7 @@ function abrirDialogMedidas() {
   };
 
   // --- Feedback toast ---
-  function mostrarFeedback(msg) {
+  function mostrarToastFeedback(msg) {
     const existing = document.getElementById('ups-ma-feedback');
     if (existing) existing.remove();
     const div = document.createElement('div');
@@ -1943,16 +1942,16 @@ function abrirDialogMedidas() {
       renderOverridesNovo(overrides);
       document.getElementById('ups-mp-nome-salvar').value = nome;
       document.getElementById('ups-mp-excluir').style.display = 'block';
-      mostrarFeedback('Preço "' + nome + '" carregado!');
+      mostrarToastFeedback('Preço "' + nome + '" carregado!');
       // Carregar Em Massa vinculado (se existir)
       if (tipo === 'bib') {
         const macros = (res.biblioteca || {})[nome]?.macros;
         if (macros && macros.emMassa) {
           const em = macros.emMassa;
-          if (em.quantidade) document.getElementById('ups-eq').value = em.quantidade;
-          if (em.preco) document.getElementById('ups-ep').value = em.preco;
-          if (em.peso) document.getElementById('ups-ew').value = em.peso;
-          if (em.pacote) document.getElementById('ups-epkg').value = em.pacote;
+          if (em.quantidade) document.getElementById('ups-ma-eq').value = em.quantidade;
+          if (em.preco) document.getElementById('ups-ma-ep').value = em.preco;
+          if (em.peso) document.getElementById('ups-ma-ew').value = em.peso;
+          if (em.pacote) document.getElementById('ups-ma-epkg').value = em.pacote;
         }
       }
       if (cb) cb();
@@ -1977,7 +1976,7 @@ function abrirDialogMedidas() {
           }, 500);
           document.getElementById('ups-mp-excluir').style.display = 'block';
           document.getElementById('ups-mp-nome-salvar').value = '';
-          mostrarFeedback('Preço "' + nome + '" vinculado à tabela!');
+          mostrarToastFeedback('Preço "' + nome + '" vinculado à tabela!');
         });
       } else if (bibPrecos[nome]) {
         bibPrecos[nome] = dados;
@@ -1988,7 +1987,7 @@ function abrirDialogMedidas() {
           }, 500);
           document.getElementById('ups-mp-excluir').style.display = 'block';
           document.getElementById('ups-mp-nome-salvar').value = '';
-          mostrarFeedback('Preço "' + nome + '" atualizado!');
+          mostrarToastFeedback('Preço "' + nome + '" atualizado!');
         });
       } else {
         bibPrecos[nome] = dados;
@@ -1999,7 +1998,7 @@ function abrirDialogMedidas() {
           }, 500);
           document.getElementById('ups-mp-excluir').style.display = 'block';
           document.getElementById('ups-mp-nome-salvar').value = '';
-          mostrarFeedback('Preço "' + nome + '" salvo!');
+          mostrarToastFeedback('Preço "' + nome + '" salvo!');
         });
       }
     });
@@ -2034,7 +2033,7 @@ function abrirDialogMedidas() {
             preencherSelectSalvosMedidas();
             document.getElementById('ups-mp-excluir').style.display = 'none';
             document.getElementById('ups-mp-nome-salvar').value = '';
-            mostrarFeedback('Preço "' + nome + '" excluído!');
+            mostrarToastFeedback('Preço "' + nome + '" excluído!');
           });
         } else {
           const bibPrecos = res.bibliotecaPrecos || {};
@@ -2043,7 +2042,7 @@ function abrirDialogMedidas() {
             preencherSelectSalvosMedidas();
             document.getElementById('ups-mp-excluir').style.display = 'none';
             document.getElementById('ups-mp-nome-salvar').value = '';
-            mostrarFeedback('Preço "' + nome + '" excluído!');
+            mostrarToastFeedback('Preço "' + nome + '" excluído!');
           });
         }
       });
@@ -2153,7 +2152,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         document.getElementById('ups-ma-ativar').checked = dados.macros.ativar !== false;
         document.getElementById('ups-ma-nome-salvar').value = nome;
         document.getElementById('ups-ma-excluir').style.display = 'block';
-        mostrarFeedback('Macro "' + nome + '" carregada!');
+        mostrarToastFeedback('Macro "' + nome + '" carregada!');
       } else {
         document.getElementById('ups-ma-sub').value = '';
         atualizarTagsSub();
@@ -2387,7 +2386,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         document.getElementById('ups-ma-sku').checked = !!dados.sku;
         document.getElementById('ups-ma-crop').checked = !!dados.crop;
         document.getElementById('ups-ma-ativar').checked = dados.ativar !== false;
-        mostrarFeedback('Macro "' + nome + '" carregada!');
+        mostrarToastFeedback('Macro "' + nome + '" carregada!');
       });
     }
 
@@ -2418,7 +2417,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
             }, 500);
             document.getElementById('ups-ma-excluir').style.display = 'block';
             document.getElementById('ups-ma-nome-salvar').value = '';
-            mostrarFeedback('Macro "' + nome + '" vinculada à tabela!');
+            mostrarToastFeedback('Macro "' + nome + '" vinculada à tabela!');
           });
         } else if (bibMacros[nome]) {
           bibMacros[nome] = dados;
@@ -2429,7 +2428,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
             }, 500);
             document.getElementById('ups-ma-excluir').style.display = 'block';
             document.getElementById('ups-ma-nome-salvar').value = '';
-            mostrarFeedback('Macro "' + nome + '" atualizada!');
+            mostrarToastFeedback('Macro "' + nome + '" atualizada!');
           });
         } else {
           bibMacros[nome] = dados;
@@ -2440,7 +2439,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
             }, 500);
             document.getElementById('ups-ma-excluir').style.display = 'block';
             document.getElementById('ups-ma-nome-salvar').value = '';
-            mostrarFeedback('Macro "' + nome + '" salva!');
+            mostrarToastFeedback('Macro "' + nome + '" salva!');
           });
         }
       });
@@ -2595,10 +2594,10 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
             preencherSelectSalvosMedidas();
             preencherSelectMacrosMedidas();
             preencherSelectAtributos();
-            mostrarFeedback('Backup restaurado com sucesso!');
+            mostrarToastFeedback('Backup restaurado com sucesso!');
           });
         } catch (err) {
-          mostrarFeedback('Erro ao importar: ' + err.message);
+          mostrarToastFeedback('Erro ao importar: ' + err.message);
         }
       };
       reader.readAsText(arquivo);
@@ -2641,16 +2640,16 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         if (!dados) return;
         document.getElementById('ups-atr-nome').value = nome;
         document.getElementById('ups-atr-excluir').style.display = 'block';
-        mostrarFeedback('Preset "' + nome + '" selecionado (' + Object.keys(dados).length + ' attr)');
+        mostrarToastFeedback('Preset "' + nome + '" selecionado (' + Object.keys(dados).length + ' attr)');
       });
     }
 
     function salvarPresetAtributos() {
       const nome = document.getElementById('ups-atr-nome').value.trim();
-      if (!nome) { mostrarFeedback('Digite um nome para o preset'); return; }
+      if (!nome) { mostrarToastFeedback('Digite um nome para o preset'); return; }
       const attrs = lerAtributos();
       const count = Object.keys(attrs).length;
-      if (!count) { mostrarFeedback('Nenhum atributo configurado'); return; }
+      if (!count) { mostrarToastFeedback('Nenhum atributo configurado'); return; }
       chrome.storage.local.get(["bibliotecaAtributos"], (res) => {
         const bibAtr = res.bibliotecaAtributos || {};
         bibAtr[nome] = attrs;
@@ -2661,7 +2660,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
             carregarPresetAtributos('bib', nome);
           }, 100);
           document.getElementById('ups-atr-nome').value = '';
-          mostrarFeedback('Atributos salvos como "' + nome + '" (' + count + ' attr)');
+          mostrarToastFeedback('Atributos salvos como "' + nome + '" (' + count + ' attr)');
         });
       });
     }
@@ -2676,7 +2675,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           document.getElementById('ups-atr-nome').value = '';
           document.getElementById('ups-atr-excluir').style.display = 'none';
           preencherSelectAtributos();
-          mostrarFeedback('Atributos excluídos');
+          mostrarToastFeedback('Atributos excluídos');
         });
       });
   }
@@ -3355,10 +3354,8 @@ function removerOverlayProgresso() {
 }
 
 // ========== OVERLAY MULTI-ABA (na página) ==========
-var multiTabInfo = { tab: 0, total: 0 };
 
 function criarOverlayMulti(tab, total) {
-  multiTabInfo = { tab, total };
   const existing = document.getElementById('upseller-multi-overlay');
   if (existing) existing.remove();
 
@@ -3649,92 +3646,6 @@ function mostrarFeedback(msg, cor) {
   el.textContent = msg;
   document.body.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 300); }, 3000);
-}
-
-async function uploadImagemParaTodasCores(file) {
-  const ext = (file.name || 'imagem.png').split('.').pop().replace(/[^a-z0-9]/gi, '') || 'png';
-  const fileName = file.name || ('imagem.' + ext);
-
-  mostrarFeedback('Enviando imagem...', '#2980b9');
-
-  let cdnUrl;
-  try {
-    const signResp = await fetch('https://app.upseller.com/api/media/file/upload/generate-sign', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ module: 'product', spaceCode: 'ListingImage', fileName: fileName, suffix: '.' + ext })
-    });
-    const signData = await signResp.json();
-    if (signData.code !== 0) throw new Error('generate-sign: ' + (signData.msg || 'erro'));
-    const { fileKey, sign: uploadUrl, url } = signData.data;
-    cdnUrl = url;
-
-    const uploadResp = await fetch(uploadUrl, {
-      method: 'PUT',
-      headers: { 'Content-Type': file.type || 'image/png' },
-      body: file
-    });
-    if (!uploadResp.ok) throw new Error('upload CDN: HTTP ' + uploadResp.status);
-
-    const cbResp = await fetch('https://app.upseller.com/api/media/file/upload/callback', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fileKey: fileKey, size: file.size, suffix: '.' + ext })
-    });
-    const cbData = await cbResp.json();
-    if (cbData.code !== 0) throw new Error('callback: ' + (cbData.msg || 'erro'));
-  } catch (e) {
-    mostrarFeedback('Upload falhou: ' + e.message, '#c0392b');
-    return;
-  }
-
-  // Find the vxe-table with media images
-  const tables = document.querySelectorAll('table.vxe-table--body');
-  let mediaTable = null;
-  for (const table of tables) {
-    if (table.querySelector('.anticon-plus')) {
-      mediaTable = table;
-      break;
-    }
-  }
-  if (!mediaTable) { mostrarFeedback('Tabela de mídia não encontrada', '#c0392b'); return; }
-
-  // Find the Vue component that holds tableData
-  let el = mediaTable;
-  let vxeVm = null;
-  while (el) {
-    if (el.__vue__ && el.__vue__.tableData) {
-      vxeVm = el.__vue__;
-      break;
-    }
-    el = el.parentElement;
-  }
-  if (!vxeVm) { mostrarFeedback('Dados da tabela não encontrados', '#c0392b'); return; }
-
-  const tableData = vxeVm.tableData;
-  let concluidas = 0;
-
-  for (let i = 0; i < tableData.length; i++) {
-    const row = tableData[i];
-    if (!row.detailsImgs || !Array.isArray(row.detailsImgs)) continue;
-
-    const newImg = {
-      imageItemId: null,
-      groupCode: null,
-      imageUrl: cdnUrl,
-      imageMediumUrl: cdnUrl,
-      imageSmallUrl: cdnUrl,
-      sort: row.detailsImgs.length + 1,
-      imageType: 'DETAIL',
-      url: cdnUrl,
-      imgInfo: { width: 800, height: 800 }
-    };
-
-    row.detailsImgs.push(newImg);
-    concluidas++;
-  }
-
-  mostrarFeedback('Imagem adicionada a ' + concluidas + ' de ' + tableData.length + ' cores', '#27ae60');
 }
 
 async function recortarImagemQuadradaEmMassa() {

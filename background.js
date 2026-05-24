@@ -302,7 +302,6 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       chrome.storage.session.get(SESSION_KEY, (res) => {
         const saved = res[SESSION_KEY];
         if (saved && saved.processingTabs) {
-          Object.assign({}, saved); // restore state
           processingTabs = saved.processingTabs;
           tabQueue = saved.tabQueue;
           currentTabIndex = saved.currentTabIndex;
