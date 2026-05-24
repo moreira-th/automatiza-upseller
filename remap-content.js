@@ -782,6 +782,12 @@ function abrirDialogPrecos() {
 </div>`;
   document.body.appendChild(overlay);
 
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay.firstElementChild) {
+      overlay.remove();
+    }
+  });
+
   function renderOverridesLocal() {
     const c = document.getElementById('ups-po');
     const keys = Object.keys(overrides);
@@ -1434,13 +1440,13 @@ async function limparAtributosCustomizados() {
         const wrapper = checkbox.closest('.ant-checkbox-wrapper') || checkbox.closest('label') || checkbox.parentElement;
         if (wrapper) {
           wrapper.click();
-          await sleep(150);
+          await sleep(100);
         }
       } else if (select) {
         const removes = select.querySelectorAll('.ant-select-selection__choice__remove');
         for (const removeBtn of removes) {
           removeBtn.click();
-          await sleep(150);
+          await sleep(100);
         }
       } else if (input && input.value.trim()) {
         input.focus();
@@ -1448,12 +1454,33 @@ async function limparAtributosCustomizados() {
         input.dispatchEvent(new Event('input', { bubbles: true }));
         input.dispatchEvent(new Event('change', { bubbles: true }));
         input.blur();
-        await sleep(150);
+        await sleep(100);
       }
     } catch (e) {
       // Silenciosamente ignorar erros durante limpeza
     }
   }
+}
+
+async function abrirDropdownSelect(select) {
+  const openDropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+  if (openDropdown) {
+    const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true });
+    document.dispatchEvent(esc);
+    await sleep(150);
+  }
+  select.click();
+  await sleep(300);
+  const comboBox = select.querySelector('[role="combobox"]');
+  const ariaId = comboBox ? comboBox.getAttribute('aria-controls') : null;
+  let dropdown = null;
+  if (ariaId) {
+    dropdown = document.querySelector('#' + CSS.escape(ariaId) + ':not(.ant-select-dropdown-hidden)');
+  }
+  if (!dropdown) {
+    dropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+  }
+  return dropdown;
 }
 
 async function aplicarAtributo(label, value) {
@@ -1536,43 +1563,32 @@ async function aplicarAtributo(label, value) {
       return true;
     }
     if (select) {
-      // Fechar qualquer dropdown aberto antes de abrir um novo
-      const openDropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
-      if (openDropdown) {
-        const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true });
-        document.dispatchEvent(esc);
-        await sleep(300);
-      }
       const isMultiple = !!select.querySelector('.ant-select-selection--multiple');
-      // Clear existing choices in multi-select
       if (isMultiple) {
+        // Multi-select: value is "opt1, opt2, opt3"
+        const values = targetValue.split(', ');
         const removes = select.querySelectorAll('.ant-select-selection__choice__remove');
         removes.forEach(el => el.click());
-        await sleep(300);
-      }
-      select.click();
-      await sleep(500);
-      // Vincular dropdown pelo aria-controls
-      const comboBox = select.querySelector('[role="combobox"]');
-      const ariaId = comboBox ? comboBox.getAttribute('aria-controls') : null;
-      let dropdown = null;
-      if (ariaId) {
-        dropdown = document.querySelector('#' + CSS.escape(ariaId) + ':not(.ant-select-dropdown-hidden)');
-      }
-      if (!dropdown) {
-        dropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
-      }
-      if (!dropdown) return false;
-      const option = Array.from(dropdown.querySelectorAll('li')).find(li => normal(li.textContent) === targetValue);
-      if (!option) return false;
-      option.click();
-      await sleep(300);
-      // Close dropdown for multi-select
-      if (isMultiple) {
-        const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true });
-        select.dispatchEvent(esc);
         await sleep(200);
+        for (const val of values) {
+          if (!val) continue;
+          const dd = await abrirDropdownSelect(select);
+          if (!dd) continue;
+          const opt = Array.from(dd.querySelectorAll('li')).find(li => normal(li.textContent) === val);
+          if (opt) { opt.click(); await sleep(200); }
+          const esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true });
+          document.dispatchEvent(esc);
+          await sleep(150);
+        }
+        return true;
       }
+      // Single-select
+      const dd = await abrirDropdownSelect(select);
+      if (!dd) return false;
+      const opt = Array.from(dd.querySelectorAll('li')).find(li => normal(li.textContent) === targetValue);
+      if (!opt) return false;
+      opt.click();
+      await sleep(200);
       return true;
     }
     if (input) {
@@ -1599,19 +1615,17 @@ function abrirDialogMedidas() {
 <div style="background:white;border-radius:8px;padding:20px;width:90vw;min-width:540px;max-width:680px;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;max-height:85vh;overflow-y:auto;">
 <div style="font-size:18px;font-weight:bold;margin-bottom:10px;text-align:center;">Automatiza Shein - UpSeller</div>
 
-<div class="ups-ac" data-ups-open="0">
-<div class="ups-ac-h" data-ups-body="ups-ab-presets">
-<span>📋 Presets</span>
-<span class="ups-ac-ar">▶</span>
-</div>
-<div class="ups-ac-body" id="ups-ab-presets">
-<div class="ups-ac-body-inner">
-<div style="display:flex;gap:4px;">
-<select id="ups-op-select" style="flex:1;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;"><option value="">Carregar Novo...</option></select>
+<div style="display:flex;gap:4px;margin-bottom:10px;">
+<select id="ups-op-select" style="flex:1;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;"><option value="">📋 Carregar Nova Configuração...</option></select>
 <button id="ups-op-salvar" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;" title="Salvar/Renomear">💾</button>
+<button id="ups-op-excluir" style="padding:4px 10px;border:1px solid #dc3545;border-radius:4px;cursor:pointer;font-size:12px;background:white;color:#dc3545;white-space:nowrap;line-height:1;display:flex;align-items:center;justify-content:center;" title="Excluir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+<span style="position:relative;display:flex;align-items:stretch;">
+<button id="ups-op-dados" style="padding:4px 10px;border:1px solid #4078f2;border-radius:4px;cursor:pointer;font-size:14px;background:white;color:#4078f2;line-height:1;display:flex;align-items:center;justify-content:center;" title="Exportar/Importar dados"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4078f2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></button>
+<div id="ups-op-dados-menu" style="display:none;position:absolute;top:100%;right:0;margin-top:4px;background:white;border:1px solid #ddd;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.12);z-index:100;min-width:150px;overflow:hidden;">
+<div style="padding:8px 14px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:8px;transition:background .15s;" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''" id="ups-op-export-action"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4078f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Exportar Dados</div>
+<div style="padding:8px 14px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:8px;border-top:1px solid #eee;transition:background .15s;" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''" id="ups-op-import-action"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4078f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> Importar Dados</div>
 </div>
-</div>
-</div>
+</span>
 </div>
 
 <style>
@@ -1677,14 +1691,14 @@ function abrirDialogMedidas() {
 <select id="ups-mp-carregar" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:4px;"><option value="">Carregar Salvo...</option></select>
 <div style="display:flex;gap:3px;margin-bottom:4px;">
 <input id="ups-mp-nome-salvar" type="text" placeholder="Nome" style="flex:1;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
-<button id="ups-mp-salvar" style="padding:3px 8px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;">💾</button>
+<button id="ups-mp-salvar" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;">💾</button>
 </div>
 <button id="ups-mp-excluir" style="display:none;width:100%;margin-bottom:4px;padding:3px;border:1px solid #dc3545;color:#dc3545;border-radius:4px;cursor:pointer;font-size:11px;background:white;">× Excluir</button>
 <input id="ups-mp-nb" type="text" placeholder="Preço massa R$" style="width:100%;padding:5px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;margin-bottom:4px;">
 <div style="display:flex;gap:3px;margin-bottom:4px;">
 <select id="ups-mp-nt" style="flex:1;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;"><option value="">Tam</option></select>
-<input id="ups-mp-nv" type="text" placeholder="R$" style="width:50px;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
-<button id="ups-mp-na" style="padding:3px 8px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;">+</button>
+<input id="ups-mp-nv" type="text" placeholder="R$" style="width:90px;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
+<button id="ups-mp-na" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;">+</button>
 </div>
 <div id="ups-mp-no" style="font-size:11px;min-height:14px;color:#666;"></div>
 </div>
@@ -1706,7 +1720,7 @@ function abrirDialogMedidas() {
 <select id="ups-ma-select" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;"><option value="">Carregar Salvo...</option></select>
 <div style="display:flex;gap:3px;margin-top:4px;">
 <input id="ups-ma-nome-salvar" type="text" placeholder="Nome do macro" style="flex:1;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
-<button id="ups-ma-salvar" style="padding:3px 8px;background:#28a745;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;">💾</button>
+<button id="ups-ma-salvar" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;">💾</button>
 </div>
 <button id="ups-ma-excluir" style="display:none;width:100%;margin-top:4px;padding:3px;border:1px solid #dc3545;color:#dc3545;border-radius:4px;cursor:pointer;font-size:11px;background:white;">× Excluir</button>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
@@ -1727,17 +1741,20 @@ function abrirDialogMedidas() {
 <input id="ups-ma-epkg" type="text" placeholder="21x12x21" style="width:100%;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:13px;box-sizing:border-box;">
 </div>
 </div>
-    <div style="display:flex;gap:6px;align-items:flex-start;margin-bottom:6px;">
-    <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px;padding:5px 6px;border:1px solid #ccc;border-radius:4px;min-height:32px;align-items:center;cursor:text;" id="ups-ma-sub-wrapper" onclick="document.getElementById('ups-ma-sub-input').focus()">
+    <div style="display:flex;flex-wrap:wrap;gap:4px;padding:5px 6px;border:1px solid #ccc;border-radius:4px;min-height:32px;align-items:center;cursor:text;" id="ups-ma-sub-wrapper" onclick="document.getElementById('ups-ma-sub-input').focus()">
     <input type="hidden" id="ups-ma-sub" value="">
     <div id="ups-ma-sub-tags" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;"></div>
     <input id="ups-ma-sub-input" type="text" placeholder="Tamanhos (vírgula ou Enter)" style="border:none;outline:none;flex:1;min-width:80px;padding:0;font-size:13px;background:transparent;">
     </div>
-    <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;padding-top:4px;">
+    <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px;">
+    <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
     <input type="checkbox" id="ups-ma-sku" style="margin:0;"> Gerar SKU
     </label>
-    <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;padding-top:4px;">
+    <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
     <input type="checkbox" id="ups-ma-crop" style="margin:0;"> Recortar Img Quadrada
+    </label>
+    <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+    <input type="checkbox" id="ups-ma-confirmar-cores" style="margin:0;"> Confirmar cores?
     </label>
     </div>
     </div>
@@ -1759,7 +1776,7 @@ function abrirDialogMedidas() {
 <select id="ups-atr-carregar" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;"><option value="">Carregar Salvo...</option></select>
 <div style="display:flex;gap:3px;margin-top:4px;">
 <input id="ups-atr-nome" type="text" placeholder="Nome do preset" style="flex:1;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
-<button id="ups-atr-salvar" style="padding:3px 8px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:12px;">💾</button>
+<button id="ups-atr-salvar" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;">💾</button>
 </div>
 <button id="ups-atr-excluir" style="display:none;width:100%;margin-top:4px;padding:3px;border:1px solid #dc3545;color:#dc3545;border-radius:4px;cursor:pointer;font-size:11px;background:white;">× Excluir</button>
 <div style="font-size:11px;color:#666;margin-top:4px;">Salva os atributos manualmente configurados para aplicar em anúncios futuros da mesma categoria.</div>
@@ -1789,6 +1806,13 @@ function abrirDialogMedidas() {
 </div>
 </div>`;
   document.body.appendChild(overlay);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay.firstElementChild) {
+      salvarEstadoMedidas();
+      overlay.remove();
+    }
+  });
 
   // Accordion: click header to toggle body (smooth slide), close others
   function abrirAc(bodyEl) {
@@ -2204,16 +2228,15 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       document.getElementById('ups-ma-ativar').checked = savedMacros.ativar !== false;
     }
 
-    function preencherListaPresets() {
+    preencherListaPresets = function() {
       chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
         const presets = v.bibliotecaPresetsOverlay || {};
         const sel = document.getElementById('ups-op-select');
         const atual = sel.value;
-        sel.innerHTML = '<option value="">Carregar Novo...</option>' + Object.keys(presets).map(n => `<option value="${n}"${n === atual ? ' selected' : ''}>${n}</option>`).join('');
+        sel.innerHTML = '<option value="">Carregar Nova Configuração...</option>' + Object.keys(presets).map(n => `<option value="${n}"${n === atual ? ' selected' : ''}>${n}</option>`).join('');
       });
     }
-
-    function lerEstadoOverlay() {
+    lerEstadoOverlay = function() {
       return {
         selectedTable: selectedTable,
         bulkPrice: document.getElementById('ups-mp-nb').value.trim(),
@@ -2231,11 +2254,15 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         crop: document.getElementById('ups-ma-crop').checked,
         ativar: document.getElementById('ups-ma-ativar').checked,
         atrPreset: document.getElementById('ups-atr-carregar').value,
-        atributosAtivo: document.getElementById('ups-ac-t-atr').checked
+        atributosAtivo: document.getElementById('ups-ac-t-atr').checked,
+        mpCarregar: document.getElementById('ups-mp-carregar').value,
+        mpNomeSalvar: document.getElementById('ups-mp-nome-salvar').value,
+        maSelect: document.getElementById('ups-ma-select').value,
+        maNomeSalvar: document.getElementById('ups-ma-nome-salvar').value,
+        confirmarCores: document.getElementById('ups-ma-confirmar-cores').checked
       };
     }
-
-    function aplicarPresetOverlay(dados) {
+    aplicarPresetOverlay = function(dados) {
       if (!dados) return;
       if (dados.selectedTable) {
         const sel = document.getElementById('ups-mt');
@@ -2245,6 +2272,17 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           atualizarDesc(dados.selectedTable);
         }
       }
+      // Restore price preset select
+      if (dados.mpCarregar) {
+        const sel = document.getElementById('ups-mp-carregar');
+        if (sel && [...sel.options].some(o => o.value === dados.mpCarregar)) {
+          sel.value = dados.mpCarregar;
+        }
+      } else {
+        document.getElementById('ups-mp-carregar').value = '';
+      }
+      document.getElementById('ups-mp-nome-salvar').value = dados.mpNomeSalvar || '';
+      document.getElementById('ups-mp-excluir').style.display = dados.mpNomeSalvar ? 'block' : 'none';
       document.getElementById('ups-mp-nb').value = dados.bulkPrice || '';
       if (dados.overrides) {
         window.__upsNovoPrecoOverrides = JSON.parse(JSON.stringify(dados.overrides));
@@ -2263,6 +2301,17 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       document.getElementById('ups-ma-sku').checked = !!dados.sku;
       document.getElementById('ups-ma-crop').checked = !!dados.crop;
       document.getElementById('ups-ma-ativar').checked = dados.ativar !== false;
+      // Restore macro select
+      if (dados.maSelect) {
+        const sel = document.getElementById('ups-ma-select');
+        if (sel && [...sel.options].some(o => o.value === dados.maSelect)) {
+          sel.value = dados.maSelect;
+        }
+      } else {
+        document.getElementById('ups-ma-select').value = '';
+      }
+      document.getElementById('ups-ma-nome-salvar').value = dados.maNomeSalvar || '';
+      document.getElementById('ups-ma-excluir').style.display = dados.maNomeSalvar ? 'block' : 'none';
       if (dados.atrPreset) {
         const sel = document.getElementById('ups-atr-carregar');
         if (sel && [...sel.options].some(o => o.value === dados.atrPreset)) {
@@ -2272,17 +2321,19 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         }
       }
       document.getElementById('ups-ac-t-atr').checked = dados.atributosAtivo !== false;
+      if (dados.confirmarCores !== undefined) document.getElementById('ups-ma-confirmar-cores').checked = !!dados.confirmarCores;
     }
 
-    function salvarPresetOverlay(nome) {
+    salvarPresetOverlay = function(nome) {
       if (!nome) return;
       chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
         const presets = v.bibliotecaPresetsOverlay || {};
+        const isUpdate = !!presets[nome];
         presets[nome] = lerEstadoOverlay();
         chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
           preencherListaPresets();
           document.getElementById('ups-op-select').value = nome;
-          upsDialog({ title: '✅ Salvo', message: 'Preset "' + nome + '" salvo com sucesso!' });
+          upsDialog({ title: isUpdate ? '✅ Atualizado' : '✅ Salvo', message: 'Preset "' + nome + '" ' + (isUpdate ? 'atualizado' : 'salvo') + ' com sucesso!' });
         });
       });
     }
@@ -2466,6 +2517,92 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     document.getElementById('ups-atr-salvar').onclick = salvarPresetAtributos;
     document.getElementById('ups-atr-excluir').onclick = deletarPresetAtributos;
     preencherSelectAtributos();
+
+    document.getElementById('ups-op-dados').onclick = (e) => {
+      e.stopPropagation();
+      const menu = document.getElementById('ups-op-dados-menu');
+      if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    };
+    const fecharMenu = (e) => {
+      const menu = document.getElementById('ups-op-dados-menu');
+      if (menu) menu.style.display = 'none';
+    };
+    document.removeEventListener('click', fecharMenu);
+    document.addEventListener('click', fecharMenu);
+
+    document.getElementById('ups-op-export-action').onclick = () => {
+      chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "bibliotecaPresetsOverlay", "ultimosPrecos", "ultimosMacros", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
+        const hoje = new Date();
+        const dia = String(hoje.getDate()).padStart(2, '0');
+        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+        const ano = hoje.getFullYear();
+        const exportData = {
+          biblioteca: res.biblioteca || {},
+          bibliotecaAtributos: res.bibliotecaAtributos || {},
+          bibliotecaPrecos: res.bibliotecaPrecos || {},
+          bibliotecaMacros: res.bibliotecaMacros || {},
+          bibliotecaPresetsOverlay: res.bibliotecaPresetsOverlay || {},
+          ultimosPrecos: res.ultimosPrecos || {},
+          ultimosMacros: res.ultimosMacros || {},
+          ultimaSelecionada: res.ultimaSelecionada || "",
+          ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
+          multiMedidasConfig: res.multiMedidasConfig || {}
+        };
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        chrome.downloads.download({ url, filename: `upseller-backup_${dia}-${mes}-${ano}.json`, saveAs: true });
+      });
+    };
+
+    const importInput = document.createElement('input');
+    importInput.type = 'file';
+    importInput.accept = '.json';
+    importInput.style.display = 'none';
+    document.body.appendChild(importInput);
+    document.getElementById('ups-op-import-action').onclick = () => importInput.click();
+    importInput.onchange = (e) => {
+      const arquivo = e.target.files[0];
+      if (!arquivo) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const dados = JSON.parse(ev.target.result);
+          const bib = dados.biblioteca || {};
+          const bibAtr = dados.bibliotecaAtributos || {};
+          const bibPrecos = dados.bibliotecaPrecos || {};
+          const bibMacros = dados.bibliotecaMacros || {};
+          const bibOverlay = dados.bibliotecaPresetsOverlay || {};
+          Object.keys(bib).forEach(nome => {
+            if (bib[nome].atributos && Object.keys(bib[nome].atributos).length) {
+              if (!bibAtr[nome]) bibAtr[nome] = bib[nome].atributos;
+              delete bib[nome].atributos;
+            }
+          });
+          chrome.storage.local.set({
+            biblioteca: bib,
+            bibliotecaAtributos: bibAtr,
+            bibliotecaPrecos: bibPrecos,
+            bibliotecaMacros: bibMacros,
+            bibliotecaPresetsOverlay: bibOverlay,
+            ultimosPrecos: dados.ultimosPrecos || {},
+            ultimosMacros: dados.ultimosMacros || {},
+            ultimaSelecionada: dados.ultimaSelecionada || "",
+            ultimoEstadoMedidas: dados.ultimoEstadoMedidas || {},
+            multiMedidasConfig: dados.multiMedidasConfig || {}
+          }, () => {
+            e.target.value = "";
+            preencherListaPresets();
+            preencherSelectSalvosMedidas();
+            preencherSelectMacrosMedidas();
+            preencherSelectAtributos();
+            mostrarFeedback('Backup restaurado com sucesso!');
+          });
+        } catch (err) {
+          mostrarFeedback('Erro ao importar: ' + err.message);
+        }
+      };
+      reader.readAsText(arquivo);
+    };
   });
 
     function preencherSelectAtributos() {
@@ -2563,7 +2700,8 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         macroPreco: document.getElementById('ups-ma-ep').value.trim(),
         macroPeso: document.getElementById('ups-ma-ew').value.trim(),
         macroPacote: document.getElementById('ups-ma-epkg').value.trim(),
-        macroSku: document.getElementById('ups-ma-sku').checked
+        macroSku: document.getElementById('ups-ma-sku').checked,
+        macroConfirmarCores: document.getElementById('ups-ma-confirmar-cores').checked
       }
     });
   }
@@ -2623,7 +2761,191 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     if (estado.macroPeso !== undefined) document.getElementById('ups-ma-ew').value = estado.macroPeso || '';
     if (estado.macroPacote !== undefined) document.getElementById('ups-ma-epkg').value = estado.macroPacote || '';
     if (estado.macroSku !== undefined) document.getElementById('ups-ma-sku').checked = !!estado.macroSku;
+    if (estado.macroConfirmarCores !== undefined) document.getElementById('ups-ma-confirmar-cores').checked = !!estado.macroConfirmarCores;
     atualizarMultiHabilitado();
+  }
+
+  function normalizarCor(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+  }
+
+  function lerCoresEspecificacaoPrincipal() {
+    const forms = document.querySelectorAll('.ant-form-item');
+    for (const section of forms) {
+      const label = section.querySelector('.ant-form-item-label');
+      if (!label || !label.textContent.trim().includes('Especificação Principal')) continue;
+      const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
+      return Array.from(wrappers).map(w => {
+        const cb = w.querySelector('.ant-checkbox-input');
+        const nome = (cb && cb.value) || w.textContent.trim();
+        return { nome: nome.trim(), wrapper: w, checkbox: cb, checked: cb ? cb.checked : false };
+      });
+    }
+    return [];
+  }
+
+  function mostrarDialogoConfirmarCores(coresAtuais) {
+    return new Promise((resolve) => {
+      const existing = document.getElementById('ups-cor-dialog');
+      if (existing) existing.remove();
+      const div = document.createElement('div');
+      div.id = 'ups-cor-dialog';
+      div.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999999;display:flex;align-items:center;justify-content:center;';
+      div.innerHTML = `
+<div style="background:white;border-radius:12px;padding:24px;width:640px;max-width:95vw;box-shadow:0 8px 32px rgba(0,0,0,0.3);font-family:sans-serif;">
+  <div style="font-size:16px;font-weight:600;margin-bottom:4px;">🎨 Confirmar Cores</div>
+  <div style="font-size:13px;color:#555;margin-bottom:12px;">Selecione as cores que deseja manter marcadas na Especificação Principal:</div>
+  <div id="ups-cor-lista" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:260px;overflow-y:auto;margin-bottom:12px;padding:4px 0;">
+    ${coresAtuais.map((c, i) => `
+      <label style="display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:${c.checked ? '#e8f5e9' : '#fafafa'};" data-idx="${i}">
+        <input type="checkbox" class="ups-cor-chk" ${c.checked ? 'checked' : ''} style="margin:0;" data-idx="${i}">
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${c.nome}</span>
+      </label>
+    `).join('')}
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:12px;">
+    <input id="ups-cor-input" type="text" placeholder="Adicionar cor..." style="flex:1;padding:7px;border:1px solid #ccc;border-radius:4px;font-size:13px;">
+    <button id="ups-cor-add" style="padding:7px 14px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600;">+</button>
+  </div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;">
+    <button id="ups-cor-pular" style="padding:7px 16px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:white;">Pular Etapa</button>
+    <button id="ups-cor-confirmar" style="padding:7px 20px;background:#28a745;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px;">Confirmar</button>
+  </div>
+</div>`;
+      document.body.appendChild(div);
+
+      function mostrarToast(msg) {
+        const t = document.createElement('div');
+        t.textContent = msg;
+        t.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;padding:8px 20px;border-radius:6px;font-size:14px;z-index:10000000;opacity:0;transition:opacity .3s;pointer-events:none;';
+        document.body.appendChild(t);
+        requestAnimationFrame(() => { t.style.opacity = '1'; });
+        setTimeout(() => {
+          t.style.opacity = '0';
+          setTimeout(() => t.remove(), 300);
+        }, 2000);
+      }
+
+      // Atualizar visual ao clicar num checkbox
+      div.querySelectorAll('.ups-cor-chk').forEach(chk => {
+        chk.addEventListener('change', () => {
+          const label = chk.closest('label');
+          if (label) label.style.background = chk.checked ? '#e8f5e9' : '#fafafa';
+        });
+      });
+
+      function coletarCores() {
+        const labels = div.querySelectorAll('#ups-cor-lista > label');
+        return Array.from(labels).map(label => {
+          const chk = label.querySelector('.ups-cor-chk');
+          const text = label.querySelector('span').textContent.trim();
+          return { nome: text, checked: chk.checked };
+        });
+      }
+
+      document.getElementById('ups-cor-add').onclick = () => {
+        const input = document.getElementById('ups-cor-input');
+        const nomeRaw = input.value.trim();
+        if (!nomeRaw) return;
+        const norm = normalizarCor(nomeRaw);
+        const lista = document.getElementById('ups-cor-lista');
+        // Verificar se ja existe (normalizado)
+        const existente = Array.from(lista.querySelectorAll('label')).some(label => {
+          const text = label.querySelector('span').textContent.trim();
+          return normalizarCor(text) === norm;
+        });
+        if (!existente) {
+          const label = document.createElement('label');
+          label.style.cssText = 'display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:#e8f5e9;';
+          label.innerHTML = `<input type="checkbox" class="ups-cor-chk" checked style="margin:0;"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${nomeRaw}</span>`;
+          label.querySelector('.ups-cor-chk').addEventListener('change', function() {
+            label.style.background = this.checked ? '#e8f5e9' : '#fafafa';
+          });
+          lista.appendChild(label);
+          mostrarToast(`${nomeRaw} adicionada`);
+        } else {
+          // Marcar o checkbox existente
+          const target = Array.from(lista.querySelectorAll('label')).find(label => {
+            const text = label.querySelector('span').textContent.trim();
+            return normalizarCor(text) === norm;
+          });
+          if (target) {
+            const chk = target.querySelector('.ups-cor-chk');
+            if (chk && !chk.checked) {
+              chk.checked = true;
+              target.style.background = '#e8f5e9';
+              mostrarToast(`${nomeRaw} marcada`);
+            }
+          }
+        }
+        input.value = '';
+      };
+      document.getElementById('ups-cor-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); document.getElementById('ups-cor-add').click(); }
+      });
+
+      document.getElementById('ups-cor-confirmar').onclick = () => {
+        div.remove();
+        resolve({ confirmou: true, cores: coletarCores() });
+      };
+      document.getElementById('ups-cor-pular').onclick = () => {
+        div.remove();
+        resolve({ confirmou: false, cores: [] });
+      };
+    });
+  }
+
+  async function aplicarCoresNaPagina(cores) {
+    const forms = document.querySelectorAll('.ant-form-item');
+    let section = null;
+    for (const s of forms) {
+      const lbl = s.querySelector('.ant-form-item-label');
+      if (lbl && lbl.textContent.trim().includes('Especificação Principal')) { section = s; break; }
+    }
+    if (!section) return;
+
+    for (const cor of cores) {
+      if (!cor.nome) continue;
+      const norm = normalizarCor(cor.nome);
+      // Procurar checkbox existente na pagina
+      let found = null;
+      const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
+      for (const w of wrappers) {
+        const cb = w.querySelector('.ant-checkbox-input');
+        const nomePagina = (cb && cb.value) || w.textContent.trim();
+        if (normalizarCor(nomePagina) === norm) { found = w; break; }
+      }
+      if (found) {
+        const cb = found.querySelector('.ant-checkbox-input');
+        if (cb && cb.checked !== cor.checked) {
+          found.click();
+          await sleep(100);
+        }
+      } else if (cor.checked) {
+        // Cor nao existe na pagina — clicar em "Adicionar Opções"
+        const addBtn = Array.from(document.querySelectorAll('button')).find(b =>
+          b.textContent.trim() === 'Adicionar Opções'
+        );
+        if (!addBtn) continue;
+        addBtn.click();
+        await sleep(1000);
+        // Input dentro do popover
+        const input = document.querySelector('.ant-popover-inner-content input.ant-input');
+        if (input) {
+          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          input.focus();
+          nativeSetter.call(input, cor.nome);
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+          await sleep(300);
+          const salvarBtn = document.querySelector('.ant-popover-inner-content button.my_ant_btn_primary');
+          if (salvarBtn) {
+            salvarBtn.click();
+            await sleep(1000);
+          }
+        }
+      }
+    }
   }
 
   document.getElementById('ups-mc').onclick = () => {
@@ -2643,9 +2965,25 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
   document.getElementById('ups-op-salvar').onclick = async () => {
     const sel = document.getElementById('ups-op-select');
     const atual = sel.value;
-    const nome = await upsDialog({ title: '💾 Salvar Preset', message: 'Nome do preset:', input: true, placeholder: atual !== '' ? atual : 'Meu preset...', okText: 'Salvar', cancel: true });
+    const nome = await upsDialog({ title: '💾 Salvar Preset', message: 'Nome do preset:', input: true, placeholder: 'Meu preset...', value: atual, okText: 'Salvar', cancel: true });
     if (!nome || !nome.trim()) return;
     salvarPresetOverlay(nome.trim());
+  };
+
+  document.getElementById('ups-op-excluir').onclick = async () => {
+    const sel = document.getElementById('ups-op-select');
+    const nome = sel.value;
+    if (!nome) return;
+    const conf = await upsDialog({ title: 'Confirmar', message: 'Excluir preset "' + nome + '"?', okText: 'Excluir', cancel: true });
+    if (!conf) return;
+    chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
+      const presets = v.bibliotecaPresetsOverlay || {};
+      delete presets[nome];
+      chrome.storage.local.set({ bibliotecaPresetsOverlay: presets }, () => {
+        preencherListaPresets();
+        document.getElementById('ups-op-select').value = '';
+      });
+    });
   };
 
   document.getElementById('ups-ac-t-multi').addEventListener('change', function() {
@@ -2697,6 +3035,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     // Read price config
     const bulkPrice = document.getElementById('ups-mp-nb').value.trim();
     const overrides = window.__upsNovoPrecoOverrides || {};
+    const confirmarCoresAtivo = document.getElementById('ups-ma-confirmar-cores').checked;
 
     // Se multi-aba ativo, envia para background
     if (multiAtivo) {
@@ -2710,6 +3049,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           overrides,
           atributosAtivo,
           atrPreset,
+          confirmarCores: confirmarCoresAtivo,
           macro: temMacro ? {
             sub: document.getElementById('ups-ma-sub').value.trim(),
             emMassa: {
@@ -2734,6 +3074,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     let totalSteps = 0;
     if (needsRemap) totalSteps++;
     if (temSub && macroAtivo) totalSteps++;
+    if (confirmarCoresAtivo && lerCoresEspecificacaoPrincipal().length > 0) totalSteps++;
     if (temEmMassa && macroAtivo) totalSteps++;
     if (aplicarPreco) totalSteps++;
     if (medidasAtivo) totalSteps++; // desc
@@ -2764,6 +3105,20 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
 
       chrome.storage.local.get(["biblioteca", "bibliotecaAtributos"], async (res) => {
         try {
+          // 1.5 — Confirmar Cores (antes da Subespecificação)
+          if (confirmarCoresAtivo) {
+            const coresPagina = lerCoresEspecificacaoPrincipal();
+            if (coresPagina.length > 0) {
+              nextStep('Aguardando confirmação de cores...');
+              const result = await mostrarDialogoConfirmarCores(coresPagina);
+              if (result.confirmou) {
+                await aplicarCoresNaPagina(result.cores);
+                await sleep(500);
+              }
+              if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
+            }
+          }
+
           // 2 — Subespecificação
           if (temSub && macroAtivo) {
             nextStep('Aplicando Subespecificação...');
@@ -2824,8 +3179,9 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
 
           // 6 — Atributos
           if (atributosAtivo) {
+            nextStep('Aplicando atributos...');
             expandirAtributos();
-            await sleep(1200);
+            await sleep(800);
             const atrSelect = document.getElementById('ups-atr-carregar');
             const atrVal = atrSelect ? atrSelect.value : '';
             if (atrVal) {
@@ -2837,10 +3193,10 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
                 dados = bibAtr[nome];
               }
               if (dados && typeof dados === 'object') {
-                nextStep('Limpando atributos antigos...');
+                atualizarOverlayProgresso({ message: 'Limpando atributos antigos...' });
                 await limparAtributosCustomizados();
-                await sleep(500);
-                nextStep('Aplicando atributos...');
+                await sleep(300);
+                atualizarOverlayProgresso({ message: 'Aplicando atributos...' });
                 for (const key of Object.keys(dados)) {
                   await aplicarAtributo(key, dados[key]);
                   if (window.__upsCancelMacro) break;
@@ -2859,12 +3215,13 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
 
           // 7 — Guia de Tamanhos (last — may prompt for missing sizes)
           if (medidasAtivo) {
+            nextStep('Preenchendo guia de tamanhos...');
             const dados = res.biblioteca && res.biblioteca[selectedTable];
             if (dados) {
               // Pre-check: detect sizes in variant table without saved measurements
               let preMissing = detectarTamanhosFaltantes(selectedTable, dados);
               if (preMissing.length > 0) {
-                nextStep('Medidas faltantes detectadas...');
+                atualizarOverlayProgresso({ message: 'Medidas faltantes detectadas...' });
                 const panelRes = await mostrarPainelMedidasFaltantes(preMissing, selectedTable, dados);
                 if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
                 if (!panelRes || !panelRes.saved) {
@@ -2874,13 +3231,13 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
                 }
               }
 
-              nextStep('Preenchendo guia de tamanhos...');
+              atualizarOverlayProgresso({ message: 'Preenchendo guia de tamanhos...' });
               const guiaRes = await preencherGuiaTamanhos(dados);
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
               if (guiaRes && guiaRes.missing && guiaRes.missing.length > 0) {
                 const panelRes = await mostrarPainelMedidasFaltantes(guiaRes.missing, selectedTable, dados);
                 if (panelRes && panelRes.saved) {
-                  nextStep('Reaplicando guia de tamanhos...');
+                  atualizarOverlayProgresso({ message: 'Reaplicando guia de tamanhos...' });
                   await preencherGuiaTamanhos(dados);
                   if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
                 }
@@ -3130,6 +3487,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           if (macro.sub) totalSteps++;
           if (macro.emMassa && (macro.emMassa.quantidade || macro.emMassa.preco || macro.emMassa.peso || macro.emMassa.pacote)) totalSteps++;
         }
+        if (config.confirmarCores && lerCoresEspecificacaoPrincipal().length > 0) totalSteps++;
         if (config.bulkPrice) totalSteps++;
         totalSteps++; // desc
         totalSteps++; // capitalizar titulo
@@ -3151,6 +3509,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             });
           } catch (e) { /* silent */ }
         }
+        // Confirmar Cores (antes da Subespecificação)
+        if (config.confirmarCores) {
+          const coresPagina = lerCoresEspecificacaoPrincipal();
+          if (coresPagina.length > 0) {
+            stepDone('Aguardando confirmação de cores...');
+            const result = await mostrarDialogoConfirmarCores(coresPagina);
+            if (result.confirmou) {
+              await aplicarCoresNaPagina(result.cores);
+              await sleep(500);
+            }
+          }
+        }
+
         // Macros (ordem: sub → emMassa)
         if (hasMacro) {
           if (macro.sub) {
@@ -3430,7 +3801,7 @@ function upsDialog(opts) {
 <div style="background:#fff;border-radius:10px;padding:24px;width:400px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">
 <div style="font-size:16px;font-weight:600;color:#333;margin-bottom:12px;">${opts.title || ''}</div>
 <div style="font-size:14px;color:#555;margin-bottom:16px;line-height:1.5;">${opts.message}</div>
-${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;font-size:14px;box-sizing:border-box;margin-bottom:12px;" placeholder="' + (opts.placeholder || '') + '" data-bwignore="" data-1p-ignore="" autocomplete="off">' : ''}
+${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;font-size:14px;box-sizing:border-box;margin-bottom:12px;" placeholder="' + (opts.placeholder || '') + '" value="' + (opts.value || '') + '" data-bwignore="" data-1p-ignore="" autocomplete="off">' : ''}
 <div style="display:flex;gap:8px;justify-content:center;">
 ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:#fff;color:#555;">Cancelar</button>' : ''}
 <button id="ups-dialog-ok" style="padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">${opts.okText || 'OK'}</button>
@@ -3642,13 +4013,84 @@ function uploadImagemViaBackground(dataUrl, fileName, source) {
   });
 }
 
-// Inject button on page load
-setTimeout(injetarBotaoImagemMassa, 3000);
+function injetarBotaoSkuNoAnuncio() {
+  if (document.getElementById('ups-gerar-sku-btn')) return;
+  const inp = Array.from(document.querySelectorAll('input.ant-input')).find(i => {
+    const formItem = i.closest('.ant-form-item');
+    return formItem && formItem.textContent.includes('Anúncio');
+  });
+  if (!inp) { setTimeout(injetarBotaoSkuNoAnuncio, 2000); return; }
+  const container = inp.parentElement;
+  if (container.style.position !== 'relative') container.style.position = 'relative';
+  inp.style.paddingLeft = '36px';
+  const btn = document.createElement('span');
+  btn.id = 'ups-gerar-sku-btn';
+  btn.textContent = '⚡';
+  btn.title = 'Gerar SKU';
+  btn.style.cssText = 'cursor:pointer;font-size:14px;position:absolute;left:6px;top:50%;transform:translateY(-50%);user-select:none;line-height:1;z-index:1;border:1px solid #bbb;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;';
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    gerarSkuEmMassa();
+  });
+  inp.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      gerarSkuEmMassa();
+    }
+  });
+  container.appendChild(btn);
+}
+
+function injetarBotaoOverlay() {
+  if (document.getElementById('ups-floating-btn')) return;
+  const cardHead = document.querySelector('#basic .ant-card-head');
+  if (!cardHead) return;
+  const btn = document.createElement('div');
+  btn.id = 'ups-floating-btn';
+  btn.style.cssText = 'position:fixed;z-index:999999999;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#4078f2;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);';
+  btn.innerHTML = `<div style="width:100%;height:100%;border-radius:50%;background:url('https://img.magnific.com/vetores-premium/robo-bonito-dos-desenhos-animados-vector-icon-ilustracao-conceito-superior-do-icone-do-robo-de-techology-isolado-vetor-superior-estilo-cartoon-plana_138676-1474.jpg?w=1060') center center/cover no-repeat;"></div>`;
+  btn.title = 'Automatiza Shein - UpSeller';
+  btn.addEventListener('click', abrirDialogMedidas);
+  function posicionarTop() {
+    const r = cardHead.getBoundingClientRect();
+    btn.style.top = (r.top + 208) + 'px';
+  }
+  function posicionarRight() {
+    const ref = document.querySelector('.edit_back_top_inner');
+    if (ref) {
+      const cssRight = parseFloat(window.getComputedStyle(ref).right);
+      btn.style.right = (cssRight - 4) + 'px';
+    } else {
+      btn.style.right = '124px';
+    }
+  }
+  function posicionarCompleto() { posicionarTop(); posicionarRight(); }
+  posicionarCompleto();
+  window.addEventListener('resize', posicionarRight);
+  let ultimaDPR = window.devicePixelRatio;
+  setInterval(() => {
+    if (window.devicePixelRatio !== ultimaDPR) {
+      ultimaDPR = window.devicePixelRatio;
+      posicionarCompleto();
+    }
+  }, 1000);
+  document.body.appendChild(btn);
+}
+
+// Inject buttons on page load
+setTimeout(() => { injetarBotaoImagemMassa(); injetarBotaoOverlay(); injetarBotaoSkuNoAnuncio(); }, 3000);
 
 // Watch for dynamic tab navigation (Mídia section loaded later)
 const observer = new MutationObserver(() => {
   if (!document.getElementById('ups-img-massa-btn')) {
     setTimeout(injetarBotaoImagemMassa, 500);
+  }
+  if (!document.getElementById('ups-floating-btn')) {
+    setTimeout(injetarBotaoOverlay, 500);
+  }
+  if (!document.getElementById('ups-gerar-sku-btn')) {
+    setTimeout(injetarBotaoSkuNoAnuncio, 500);
   }
 });
 observer.observe(document.body, { childList: true, subtree: true });

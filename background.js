@@ -104,13 +104,13 @@ function atualizarMenus() {
 }
 
 try { chrome.runtime.onInstalled.addListener(atualizarMenus); } catch (e) {}
-chrome.storage.onChanged.addListener((changes) => {
+try { chrome.storage.onChanged.addListener((changes) => {
   if (changes.biblioteca || changes.bibliotecaPrecos || changes.ultimaSelecionada || changes.ultimosPrecos) {
     atualizarMenus();
   }
-});
+}); } catch (e) {}
 
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+try { chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "executarMacroDireito") {
     chrome.tabs.sendMessage(tab.id, { action: 'open-medidas-dialog' }, () => {
       if (chrome.runtime.lastError) {
@@ -192,10 +192,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       });
     });
   }
-});
+}); } catch (e) {}
 
 // ===== ATALHOS GLOBAIS (chrome://extensions/shortcuts) =====
-chrome.commands.onCommand.addListener((command) => {
+try { chrome.commands.onCommand.addListener((command) => {
   if (command === "executar-macro") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs[0]) return;
@@ -222,7 +222,7 @@ chrome.commands.onCommand.addListener((command) => {
       });
     });
   }
-});
+}); } catch (e) {}
 
 // ===== REMAPEAMENTO / MEDIDAS MULTI-ABA =====
 let processingTabs = false;
@@ -250,7 +250,7 @@ function limparEstadoMulti() {
   chrome.storage.session.remove(SESSION_KEY).catch(() => {});
 }
 
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === 'start-multi') {
     chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/shein/edit/*' }, (tabs) => {
       tabQueue = tabs.map(t => t.id);
@@ -466,7 +466,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       });
     });
   }
-});
+}); } catch (e) {}
 
 function startKeepAlive() {
   if (keepAliveInterval) clearInterval(keepAliveInterval);
