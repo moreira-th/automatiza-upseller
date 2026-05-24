@@ -1,0 +1,79 @@
+{
+  "titulo": "Migração da aba Medidas (popup) para o diálogo overlay",
+  "objetivo": "Permitir criar/editar/excluir tabelas de medidas e descrição diretamente no diálogo in-page, sem precisar abrir o popup da extensão.",
+  "nao_incluir": [
+    "Botão 'Preencher Guia' — a macro já chama preencherGuiaTamanhos() na linha 3376"
+  ],
+  "arquivo_alvo": "remap-content.js",
+  "mudancas": [
+    {
+      "id": 1,
+      "descricao": "Substituir placeholder 'sem tabelas' por formulário de criação",
+      "local": "linha 2085-2088",
+      "atual": "Exibe 'Nenhuma tabela salva. Crie uma na aba Medidas primeiro.' e oculta botão EXECUTAR",
+      "novo": "Mostrar inputs vazios (nome, desc, grid) + botão Salvar para criar a primeira tabela direto da overlay"
+    },
+    {
+      "id": 2,
+      "descricao": "HTML do corpo do accordion Medidas",
+      "local": "linha 2093-2099",
+      "atual": "<select id='ups-mt'> + <div id='ups-md'> (desc read-only)",
+      "novo": "select + input nome + textarea desc + grid de tamanhos + botões Salvar/Excluir"
+    },
+    {
+      "id": 3,
+      "descricao": "Criar função gerarGridMedidas()",
+      "local": "novo bloco ~linha 2168",
+      "origem": "popup.js gerarGrid() (linha 20)",
+      "descricao": "Gera tabela HTML com cabeçalho Tamanho | Busto | Cintura, linhas PP–16 com inputs {tam}_b e {tam}_c"
+    },
+    {
+      "id": 4,
+      "descricao": "Criar função carregarGrid(nome)",
+      "local": "novo bloco ~linha 2168",
+      "origem": "popup.js carregarDados() (linha 52)",
+      "descricao": "Preenche inputs do grid + textarea desc + input nome a partir de biblioteca[nome]"
+    },
+    {
+      "id": 5,
+      "descricao": "Criar função salvarTabelaMedidas()",
+      "local": "novo bloco ~linha 2168",
+      "origem": "popup.js btnSalvar (linha 63)",
+      "descricao": "Lê nome, desc, grid inputs → chrome.storage.local.set({ biblioteca, ultimaSelecionada }) → atualiza select ups-mt → mostrarFeedback"
+    },
+    {
+      "id": 6,
+      "descricao": "Criar função deletarTabelaMedidas()",
+      "local": "novo bloco ~linha 2168",
+      "origem": "popup.js btnExcluir (linha 93)",
+      "descricao": "Modal de confirmação (mesmo estilo de ups-preco-confirm-rm) → delete biblioteca[nome] → storage.set → recarrega select"
+    },
+    {
+      "id": 7,
+      "descricao": "Estender atualizarDesc()",
+      "local": "linha 2130-2166",
+      "mudanca": "Além de desc e precos, agora preenche ups-mt-nome.value, ups-md.value (textarea), e carregarGrid(nome)"
+    },
+    {
+      "id": 8,
+      "descricao": "Sincronia select + input nome",
+      "local": "evento ups-mt.onchange",
+      "descricao": "Mudar select → carrega nome+desc+grid. Editar nome → atualizar referência para salvar no nome correto."
+    },
+    {
+      "id": 9,
+      "descricao": "Export/Import",
+      "mudanca": "Nada a mudar — já exporta biblioteca completa"
+    }
+  ],
+  "arquivos_envolvidos": {
+    "remap-content.js": "diálogo overlay (~3843 linhas)",
+    "popup.js": "código fonte da aba Medidas (~501 linhas) — não será alterado"
+  },
+  "observacoes": [
+    "Os dados compartilham a mesma chave chrome.storage.local: 'biblioteca'",
+    "Formato dos dados: biblioteca[nome].descricao + biblioteca[nome][tamanho].b / .c",
+    "preencherGuiaTamanhos() na linha 307 já consome esse formato",
+    "A macro execution (linha 3376) chama preencherGuiaTamanhos(dados) automaticamente"
+  ]
+}

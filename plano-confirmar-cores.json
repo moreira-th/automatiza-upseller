@@ -1,0 +1,61 @@
+﻿{
+  "titulo": "Função 'Confirmar Cores?' — checkboxes de cor na Especificação Principal",
+  "objetivo": "Durante a execução da macro, antes da etapa Editar em Massa, abrir um diálogo que mostra as cores atualmente marcadas na seção Especificação Principal (Cor) da página, permitindo desmarcar ou adicionar novas cores antes de prosseguir.",
+  "trigger": "Checkbox 'Confirmar cores?' na overlay, próximo a 'Gerar SKU' e 'Recortar Img Quadrada'",
+  "arquivo_alvo": "remap-content.js",
+  "mudancas": [
+    {
+      "id": 1,
+      "descricao": "Adicionar checkbox 'Confirmar cores?' no HTML da overlay (Editar em Massa)",
+      "local": "linha ~1754 (após ups-ma-crop)",
+      "codigo_atual": "<label><input type=\"checkbox\" id=\"ups-ma-crop\"> Recortar Img Quadrada</label>",
+      "codigo_novo": "<label><input type=\"checkbox\" id=\"ups-ma-crop\"> Recortar Img Quadrada</label>\n<label><input type=\"checkbox\" id=\"ups-ma-confirmar-cores\"> Confirmar cores?</label>"
+    },
+    {
+      "id": 2,
+      "descricao": "Salvar/restaurar estado do novo checkbox em salvarEstadoMedidas() e restaurarEstadoMedidas()",
+      "local": "linhas ~2698 e ~2757",
+      "campos": "macroConfirmarCores"
+    },
+    {
+      "id": 3,
+      "descricao": "Incluir no lerEstadoOverlay() e aplicarPresetOverlay()",
+      "local": "linhas ~2236 e ~2261",
+      "campos": "confirmarCores"
+    },
+    {
+      "id": 4,
+      "descricao": "Criar funcoes: lerCoresEspecificacaoPrincipal(), aplicarCoresNaPagina(), mostrarDialogoConfirmarCores()",
+      "local": "novo bloco ~linha 2759"
+    },
+    {
+      "id": 5,
+      "descricao": "Hook no fluxo single-aba: antes da etapa Editar em Massa (step 3)",
+      "local": "~linha 2923"
+    },
+    {
+      "id": 6,
+      "descricao": "Hook no handler executar-macro-full (usado pelo popup/background)",
+      "local": "~linha 3307"
+    },
+    {
+      "id": 7,
+      "descricao": "Incluir confirmarCores no config enviado para background (multi-aba)",
+      "local": "~linha 2853-2873"
+    },
+    {
+      "id": 8,
+      "descricao": "Calcular passo extra no totalSteps quando confirmarCores ativo",
+      "local": "~linha 2880-2892 e ~linha 3277-3289"
+    }
+  ],
+  "resumo_fluxo": {
+    "1": "Usuario marca 'Confirmar cores?' na overlay",
+    "2": "Clica EXECUTAR",
+    "3": "Macro executa steps normalmente ate Subespecificacao",
+    "4": "Antes de Editar em Massa -> abre dialogo listando cores atuais da Especificacao Principal",
+    "5": "Usuario desmarca cores indesejadas, adiciona novas cores (+), ou clica Pular Etapa",
+    "6": "Confirmar -> aplica alteracoes nos checkboxes da pagina, macro continua",
+    "7": "Pular -> macro continua sem alterar cores"
+  }
+}

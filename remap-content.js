@@ -162,7 +162,7 @@ async function stepMapearVariantes() {
             const items = visibleDropdown.querySelectorAll('li');
             let found = false;
 
-            // Try to find matching value in dropdown
+            // Try to find matching value in dropdown (exact match: case, accent, space)
             for (const item of items) {
               if (item.textContent.trim() === name) {
                 nativeClick(item);
@@ -1266,13 +1266,17 @@ function abrirDialogPrecos() {
         stepIdx++;
         criarOverlayProgresso();
         atualizarOverlayProgresso({ message: 'Recortando imagem quadrada...', step: stepIdx, total: steps.length });
+        const overlayEl = document.getElementById('upseller-progress-overlay');
+        if (overlayEl) overlayEl.style.display = 'none';
         try {
           await recortarImagemQuadradaEmMassa();
         } catch (e) {
+          if (overlayEl) overlayEl.style.display = '';
           mostrarErroOverlayProgresso('Erro no recorte: ' + e.message);
           setTimeout(() => removerOverlayProgresso(), 3000);
           return;
         }
+        if (overlayEl) overlayEl.style.display = '';
       }
 
       atualizarOverlayProgresso({ message: 'Concluído em ' + ((Date.now() - startTime) / 1000).toFixed(1) + 's', step: Math.max(stepIdx, 1), total: Math.max(stepIdx, 1) });
@@ -1663,7 +1667,7 @@ async function aplicarAtributo(label, value) {
 
 // ========== DIÁLOGO DE MEDIDAS (in-page) ==========
 function abrirDialogMedidas() {
-  var preencherListaPresets, lerEstadoOverlay, aplicarPresetOverlay, salvarPresetOverlay;
+  var preencherListaPresets, lerEstadoOverlay, aplicarPresetOverlay, salvarPresetOverlay, salvarEstadoMedidas;
   const existing = document.getElementById('upseller-medidas-overlay');
   if (existing) existing.remove();
 
@@ -1676,7 +1680,7 @@ function abrirDialogMedidas() {
 
 <div style="display:flex;gap:4px;margin-bottom:10px;">
 <select id="ups-op-select" style="flex:1;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;"><option value="">📋 Carregar Nova Configuração...</option></select>
-<button id="ups-op-salvar" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;" title="Salvar/Renomear">💾</button>
+<button id="ups-op-salvar" style="width:36px;height:36px;padding:0;background:white;color:#4078f2;border:1px solid #4078f2;border-radius:4px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;" title="Salvar/Renomear">💾</button>
 <button id="ups-op-excluir" style="padding:4px 10px;border:1px solid #dc3545;border-radius:4px;cursor:pointer;font-size:12px;background:white;color:#dc3545;white-space:nowrap;line-height:1;display:flex;align-items:center;justify-content:center;" title="Excluir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
 <span style="position:relative;display:flex;align-items:stretch;">
 <button id="ups-op-dados" style="padding:4px 10px;border:1px solid #4078f2;border-radius:4px;cursor:pointer;font-size:14px;background:white;color:#4078f2;line-height:1;display:flex;align-items:center;justify-content:center;" title="Exportar/Importar dados"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4078f2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></button>
@@ -1719,10 +1723,10 @@ function abrirDialogMedidas() {
 .ups-tag-rm:hover { color:#dc3545; }
 </style>
 
-<div class="ups-ac" data-ups-open="1">
+<div class="ups-ac" data-ups-open="0">
 <div class="ups-ac-h" data-ups-body="ups-ab-1">
 <span>📏 Medidas</span>
-<span class="ups-ac-ar" style="transition:transform .2s;">▼</span>
+<span class="ups-ac-ar" style="transition:transform .2s;">▶</span>
 <label style="position:relative;display:inline-block;width:36px;height:20px;margin-left:auto;cursor:pointer;" onclick="event.stopPropagation()">
 <input type="checkbox" id="ups-ac-t-mt" checked style="opacity:0;width:0;height:0;margin:0;">
 <span id="ups-ac-s-mt" style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;border-radius:20px;transition:.3s;"></span>
@@ -2143,92 +2147,237 @@ function abrirDialogMedidas() {
     const ativa = res.ultimaSelecionada || '';
     const ultimos = res.ultimosPrecos;
 
-    if (nomes.length === 0) {
-      body.innerHTML = '<div style="color:#999;padding:16px;text-align:center;">Nenhuma tabela salva. Crie uma na aba Medidas primeiro.</div>';
-      document.getElementById('ups-mk').style.display = 'none';
-    }
-
-    if (nomes.length > 0) {
-
-    selectedTable = ativa && bib[ativa] ? ativa : nomes[0];
+    selectedTable = (ativa && bib[ativa]) ? ativa : (nomes.length > 0 ? nomes[0] : '');
+    const chavesFixas = new Set(['descricao','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote']);
 
     body.innerHTML = `
-<label style="font-size:13px;font-weight:600;display:block;margin-bottom:4px;">Tabela de Medidas</label>
-<select id="ups-mt" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;box-sizing:border-box;margin-bottom:12px;">
-${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>${n}</option>`).join('')}
+<label style="font-size:13px;font-weight:600;display:block;margin-bottom:8px;">Tabela de Medidas</label>
+<div style="display:flex;gap:4px;margin-bottom:12px;align-items:center;">
+<select id="ups-mt" style="flex:1;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;box-sizing:border-box;">
+${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>${n}</option>`).join('') : '<option value="">Nenhuma tabela salva</option>'}
 </select>
-<label style="font-size:13px;font-weight:600;display:block;margin-bottom:4px;">Descrição</label>
-<div id="ups-md" style="padding:8px;background:#f5f5f5;border-radius:4px;font-size:13px;color:#666;margin-bottom:4px;min-height:20px;"></div>`;
+<button id="ups-mt-editar" style="padding:4px 10px;border:1px solid #4078f2;border-radius:4px;cursor:pointer;font-size:12px;background:white;color:#4078f2;white-space:nowrap;line-height:1;display:flex;align-items:center;justify-content:center;" title="Editar tabela">✏️</button>
+<button id="ups-mt-novo" style="padding:4px 10px;border:1px solid #28a745;border-radius:4px;cursor:pointer;font-size:12px;background:white;color:#28a745;white-space:nowrap;line-height:1;display:flex;align-items:center;justify-content:center;" title="Criar tabela">➕</button>
+<button id="ups-mt-rm" style="padding:4px 10px;border:1px solid #dc3545;border-radius:4px;cursor:pointer;font-size:12px;background:white;color:#dc3545;white-space:nowrap;line-height:1;display:flex;align-items:center;justify-content:center;${!selectedTable || !bib[selectedTable] ? 'display:none;' : ''}" title="Deletar tabela"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc3545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
+</div>
+<div id="ups-mt-display" style="padding:10px;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:4px;font-size:12px;color:#666;"></div>`;
+
+    if (nomes.length === 0) {
+      document.getElementById('ups-mk').style.display = 'none';
+    }
 
     preencherSelectTamNovo();
     preencherSelectSalvosMedidas();
 
     function atualizarPrecos(nome) {
-      const dados = bib[nome];
-      precoTabela = (dados && dados.precos) || null;
-      precoUltimo = (ultimos && ultimos.bulkPrice) ? ultimos : null;
-      const src = precoTabela || precoUltimo;
-      if (src) {
-        document.getElementById('ups-mp-nb').value = src.bulkPrice || '';
-        const overrides = {};
-        if (src.overrides) Object.keys(src.overrides).forEach(k => { overrides[k] = src.overrides[k]; });
-        window.__upsNovoPrecoOverrides = overrides;
-        renderOverridesNovo(overrides);
-        document.getElementById('ups-ac-t-mp').checked = true;
-        document.getElementById('ups-mp-nome-salvar').value = nome;
-        document.getElementById('ups-mp-excluir').style.display = precoTabela ? 'block' : 'none';
-      } else {
-        document.getElementById('ups-mp-nb').value = '';
-        window.__upsNovoPrecoOverrides = {};
-        renderOverridesNovo({});
-        document.getElementById('ups-mp-nome-salvar').value = '';
-        document.getElementById('ups-mp-excluir').style.display = 'none';
+      if (window.__upsLoadingPreset) return;
+      chrome.storage.local.get(["biblioteca"], (res) => {
+        const bibAtualizada = res.biblioteca || {};
+        const dados = bibAtualizada[nome];
+        precoTabela = (dados && dados.precos) || null;
+        precoUltimo = (ultimos && ultimos.bulkPrice) ? ultimos : null;
+        const src = precoTabela || precoUltimo;
+        if (src) {
+          document.getElementById('ups-mp-nb').value = src.bulkPrice || '';
+          const overrides = {};
+          if (src.overrides) Object.keys(src.overrides).forEach(k => { overrides[k] = src.overrides[k]; });
+          window.__upsNovoPrecoOverrides = overrides;
+          renderOverridesNovo(overrides);
+          document.getElementById('ups-ac-t-mp').checked = true;
+          document.getElementById('ups-mp-nome-salvar').value = nome;
+          document.getElementById('ups-mp-excluir').style.display = precoTabela ? 'block' : 'none';
+        } else {
+          document.getElementById('ups-mp-nb').value = '';
+          window.__upsNovoPrecoOverrides = {};
+          renderOverridesNovo({});
+          document.getElementById('ups-mp-nome-salvar').value = '';
+          document.getElementById('ups-mp-excluir').style.display = 'none';
+        }
+      });
+    }
+
+    function renderDisplayMedidas(nome) {
+      const display = document.getElementById('ups-mt-display');
+      if (!nome) {
+        display.innerHTML = '<span style="color:#999;">(nenhuma tabela selecionada)</span>';
+        return;
       }
+
+      chrome.storage.local.get(["biblioteca"], (res) => {
+        const bibAtualizada = res.biblioteca || {};
+        const dados = bibAtualizada[nome];
+
+        if (!dados) {
+          display.innerHTML = '<span style="color:#999;">(nenhuma tabela selecionada)</span>';
+          return;
+        }
+
+        let tamanhos = Object.keys(dados).filter(k => !chavesFixas.has(k) && dados[k] && typeof dados[k] === 'object' && (dados[k].b || dados[k].c));
+        if (tamanhos.length === 0) {
+          display.innerHTML = '<span style="color:#999;">(sem tamanhos)</span>';
+          return;
+        }
+
+        const ordemLetras = ['PP','P','M','G','GG','EGG','G1','G2','G3','G4','G5'];
+        const ordemIndex = {};
+        ordemLetras.forEach((s, i) => { ordemIndex[s.toUpperCase()] = i; });
+
+        tamanhos.sort((a, b) => {
+          const aNum = /^\d+$/.test(a);
+          const bNum = /^\d+$/.test(b);
+          if (aNum && bNum) return parseInt(a, 10) - parseInt(b, 10);
+          if (aNum) return -1;
+          if (bNum) return 1;
+          const ai = ordemIndex[a.toUpperCase()];
+          const bi = ordemIndex[b.toUpperCase()];
+          if (ai !== undefined && bi !== undefined) return ai - bi;
+          if (ai !== undefined) return -1;
+          if (bi !== undefined) return 1;
+          return a.localeCompare(b);
+        });
+
+        const desc = dados.descricao ? `<div style="margin-bottom:8px;font-style:italic;color:#999;font-size:12px;">${dados.descricao}</div>` : '';
+        const thead = `<thead><tr style="background:#eee;"><th style="padding:4px 8px;border:1px solid #ccc;font-size:12px;text-align:left;">Tamanho</th><th style="padding:4px 8px;border:1px solid #ccc;font-size:12px;text-align:left;">Largura</th><th style="padding:4px 8px;border:1px solid #ccc;font-size:12px;text-align:left;">Altura</th></tr></thead>`;
+        const tbody = tamanhos.map(t => {
+          const larg = dados[t].b || '—';
+          const alt = dados[t].c || '—';
+          return `<tr><td style="padding:4px 8px;border:1px solid #ccc;font-size:12px;font-weight:bold;text-transform:uppercase;">${t}</td><td style="padding:4px 8px;border:1px solid #ccc;font-size:12px;">${larg}</td><td style="padding:4px 8px;border:1px solid #ccc;font-size:12px;">${alt}</td></tr>`;
+        }).join('');
+        display.innerHTML = desc + `<table style="width:100%;border-collapse:collapse;font-family:sans-serif;">${thead}<tbody>${tbody}</tbody></table>`;
+      });
     }
 
     const select = document.getElementById('ups-mt');
-    const descDiv = document.getElementById('ups-md');
 
-    function atualizarDesc() {
-      const nome = select.value;
-      selectedTable = nome;
-      const desc = (bib[nome] && bib[nome].descricao) || '';
-      descDiv.textContent = desc || '(sem descrição)';
-      atualizarPrecos(nome);
-
-      // Auto-load linked macros
-      const dados = bib[nome];
-      if (dados && dados.macros) {
-        if (dados.macros.sub) document.getElementById('ups-ma-sub').value = dados.macros.sub;
-        atualizarTagsSub();
-        if (dados.macros.emMassa) {
-          document.getElementById('ups-ma-eq').value = dados.macros.emMassa.quantidade || '';
-          document.getElementById('ups-ma-ep').value = dados.macros.emMassa.preco || '';
-          document.getElementById('ups-ma-ew').value = dados.macros.emMassa.peso || '';
-          document.getElementById('ups-ma-epkg').value = dados.macros.emMassa.pacote || '';
-        }
-        document.getElementById('ups-ma-sku').checked = !!dados.macros.sku;
-        document.getElementById('ups-ma-crop').checked = !!dados.macros.crop;
-        document.getElementById('ups-ma-ativar').checked = dados.macros.ativar !== false;
-        document.getElementById('ups-ma-nome-salvar').value = nome;
-        document.getElementById('ups-ma-excluir').style.display = 'block';
-        mostrarToastFeedback('Macro "' + nome + '" carregada!');
-      } else {
-        document.getElementById('ups-ma-sub').value = '';
-        atualizarTagsSub();
-        document.getElementById('ups-ma-eq').value = '';
-        document.getElementById('ups-ma-ep').value = '';
-        document.getElementById('ups-ma-ew').value = '';
-        document.getElementById('ups-ma-epkg').value = '';
-        document.getElementById('ups-ma-sku').checked = false;
-        document.getElementById('ups-ma-crop').checked = false;
-        document.getElementById('ups-ma-nome-salvar').value = '';
-        document.getElementById('ups-ma-excluir').style.display = 'none';
+    function atualizarDesc(nome) {
+      if (!nome || typeof nome === 'object') nome = select.value;
+      if (window.__upsLoadingPreset) return;
+      
+      if (!nome) {
+        document.getElementById('ups-mt-rm').style.display = 'none';
+        document.getElementById('ups-mt-editar').disabled = true;
+        renderDisplayMedidas(null);
+        return;
       }
+      
+      // Buscar dados diretamente do storage
+      chrome.storage.local.get(["biblioteca"], (res) => {
+        if (window.__upsLoadingPreset) return;
+        const bibAtualizada = res.biblioteca || {};
+        const dados = bibAtualizada[nome];
+        
+        if (!dados) {
+          document.getElementById('ups-mt-rm').style.display = 'none';
+          document.getElementById('ups-mt-editar').disabled = true;
+          renderDisplayMedidas(null);
+          return;
+        }
+        
+        selectedTable = nome;
+        document.getElementById('ups-mt-rm').style.display = '';
+        document.getElementById('ups-mt-editar').disabled = false;
+        renderDisplayMedidas(nome);
+        atualizarPrecos(nome);
+
+        if (dados && dados.macros) {
+          if (dados.macros.sub) document.getElementById('ups-ma-sub').value = dados.macros.sub;
+          atualizarTagsSub();
+          if (dados.macros.emMassa) {
+            document.getElementById('ups-ma-eq').value = dados.macros.emMassa.quantidade || '';
+            document.getElementById('ups-ma-ep').value = dados.macros.emMassa.preco || '';
+            document.getElementById('ups-ma-ew').value = dados.macros.emMassa.peso || '';
+            document.getElementById('ups-ma-epkg').value = dados.macros.emMassa.pacote || '';
+          }
+          document.getElementById('ups-ma-sku').checked = !!dados.macros.sku;
+          document.getElementById('ups-ma-crop').checked = !!dados.macros.crop;
+          document.getElementById('ups-ma-ativar').checked = dados.macros.ativar !== false;
+          document.getElementById('ups-ma-nome-salvar').value = nome;
+          document.getElementById('ups-ma-excluir').style.display = 'block';
+        } else {
+          document.getElementById('ups-ma-sub').value = '';
+          atualizarTagsSub();
+          document.getElementById('ups-ma-eq').value = '';
+          document.getElementById('ups-ma-ep').value = '';
+          document.getElementById('ups-ma-ew').value = '';
+          document.getElementById('ups-ma-epkg').value = '';
+          document.getElementById('ups-ma-sku').checked = false;
+          document.getElementById('ups-ma-crop').checked = false;
+          document.getElementById('ups-ma-nome-salvar').value = '';
+          document.getElementById('ups-ma-excluir').style.display = 'none';
+        }
+      });
     }
-    select.onchange = atualizarDesc;
-    atualizarDesc();
+
+    window.__temEstadoSalvo = res.ultimoEstadoMedidas && Object.keys(res.ultimoEstadoMedidas).length > 0;
+    if (nomes.length > 0) {
+      select.addEventListener('change', atualizarDesc);
+      if (!window.__temEstadoSalvo) atualizarDesc(selectedTable);
     }
+
+    function atualizarSelectMedidas(selecionar) {
+      const sel = document.getElementById('ups-mt');
+      if (!sel) return;
+      
+      chrome.storage.local.get(["biblioteca"], (res) => {
+        const bibAtualizada = res.biblioteca || {};
+        const atual = sel.value;
+        const todos = Object.keys(bibAtualizada).filter(n => {
+          const e = bibAtualizada[n];
+          return Object.keys(e).some(k => !chavesFixas.has(k) && e[k] && typeof e[k] === 'object' && (e[k].b || e[k].c));
+        });
+        sel.innerHTML = todos.map(n => `<option value="${n}"${n === (selecionar || atual) ? ' selected' : ''}>${n}</option>`).join('');
+        if (todos.length === 0) {
+          sel.innerHTML = '<option value="">Nenhuma tabela salva</option>';
+          document.getElementById('ups-mk').style.display = 'none';
+        } else {
+          document.getElementById('ups-mk').style.display = '';
+        }
+        // Atualizar `bib` em memória também
+        Object.assign(bib, bibAtualizada);
+      });
+    }
+
+    document.getElementById('ups-mt-editar').onclick = function() {
+      const nome = select.value;
+      if (!nome) return;
+      abrirPopupEditarMedidas(nome, bib, chavesFixas, atualizarSelectMedidas, atualizarDesc);
+    };
+
+    document.getElementById('ups-mt-novo').onclick = function() {
+      abrirPopupEditarMedidas(null, bib, chavesFixas, atualizarSelectMedidas, atualizarDesc);
+    };
+
+    document.getElementById('ups-mt-rm').onclick = function() {
+      const nome = select.value;
+      if (!nome || !bib[nome]) return;
+      const div = document.createElement('div');
+      div.id = 'ups-mt-confirm-rm';
+      div.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:9999999;display:flex;align-items:center;justify-content:center;';
+      div.innerHTML = '<div style="background:white;border-radius:12px;padding:24px;width:300px;box-shadow:0 8px 32px rgba(0,0,0,0.25);text-align:center;font-family:sans-serif;">' +
+        '<div style="font-size:15px;font-weight:bold;margin-bottom:12px;">Excluir "' + nome + '"?</div>' +
+        '<div style="display:flex;gap:8px;justify-content:center;">' +
+        '<button id="ups-mt-rm-cancel" style="padding:7px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:white;">Cancelar</button>' +
+        '<button id="ups-mt-rm-confirm" style="padding:7px 20px;background:#dc3545;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px;">Excluir</button>' +
+        '</div></div>';
+      document.body.appendChild(div);
+      document.getElementById('ups-mt-rm-cancel').onclick = () => div.remove();
+      document.getElementById('ups-mt-rm-confirm').onclick = () => {
+        div.remove();
+        chrome.storage.local.get(["biblioteca"], (r) => {
+          const b = r.biblioteca || {};
+          if (b[nome]) {
+            delete b[nome];
+            chrome.storage.local.set({ biblioteca: b }, () => {
+              if (bib[nome]) delete bib[nome];
+              select.value = '';
+              atualizarSelectMedidas('');
+              atualizarDesc('');
+              mostrarFeedback('Tabela "' + nome + '" excluída!', '#28a745');
+            });
+          }
+        });
+      };
+    };
 
     const tagInput = document.getElementById('ups-ma-sub-input');
     if (tagInput) {
@@ -2272,30 +2421,47 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       });
     }
 
-    abrirAc(document.getElementById('ups-ab-1'));
-    restaurarEstadoMedidas(res.ultimoEstadoMedidas);
-    const savedMacros = res.ultimosMacros;
-    if (savedMacros) {
-      if (savedMacros.sub) document.getElementById('ups-ma-sub').value = savedMacros.sub;
-      if (savedMacros.emMassa) {
-        document.getElementById('ups-ma-eq').value = savedMacros.emMassa.quantidade || '';
-        document.getElementById('ups-ma-ep').value = savedMacros.emMassa.preco || '';
-        document.getElementById('ups-ma-ew').value = savedMacros.emMassa.peso || '';
-        document.getElementById('ups-ma-epkg').value = savedMacros.emMassa.pacote || '';
+
+    if (window.__temEstadoSalvo) window.__upsLoadingPreset = true;
+    try { restaurarEstadoMedidas(res.ultimoEstadoMedidas); } catch(e) {}
+    // Render the table display for saved state (renderDisplayMedidas not accessible inside restaurarEstadoMedidas)
+    if (res.ultimoEstadoMedidas && res.ultimoEstadoMedidas.selectedTable) {
+      const sel = document.getElementById('ups-mt');
+      if (sel) {
+        sel.value = res.ultimoEstadoMedidas.selectedTable;
+        selectedTable = res.ultimoEstadoMedidas.selectedTable;
+        renderDisplayMedidas(selectedTable);
       }
-      document.getElementById('ups-ma-sku').checked = !!savedMacros.sku;
-      document.getElementById('ups-ma-crop').checked = !!savedMacros.crop;
-      document.getElementById('ups-ma-ativar').checked = savedMacros.ativar !== false;
+    }
+    if (!window.__temEstadoSalvo) {
+      const savedMacros = res.ultimosMacros;
+      if (savedMacros) {
+        if (savedMacros.sub) document.getElementById('ups-ma-sub').value = savedMacros.sub;
+        if (savedMacros.emMassa) {
+          document.getElementById('ups-ma-eq').value = savedMacros.emMassa.quantidade || '';
+          document.getElementById('ups-ma-ep').value = savedMacros.emMassa.preco || '';
+          document.getElementById('ups-ma-ew').value = savedMacros.emMassa.peso || '';
+          document.getElementById('ups-ma-epkg').value = savedMacros.emMassa.pacote || '';
+        }
+        document.getElementById('ups-ma-sku').checked = !!savedMacros.sku;
+        document.getElementById('ups-ma-crop').checked = !!savedMacros.crop;
+        document.getElementById('ups-ma-ativar').checked = savedMacros.ativar !== false;
+      }
     }
 
     preencherListaPresets = function() {
       chrome.storage.local.get(['bibliotecaPresetsOverlay'], (v) => {
         const presets = v.bibliotecaPresetsOverlay || {};
         const sel = document.getElementById('ups-op-select');
-        const atual = sel.value;
+        const atual = window.__upsRestorePresetSelect || sel.value;
+        window.__upsRestorePresetSelect = null;
         sel.innerHTML = '<option value="">Carregar Nova Configuração...</option>' + Object.keys(presets).map(n => `<option value="${n}"${n === atual ? ' selected' : ''}>${n}</option>`).join('');
+        if (atual && [...sel.options].some(o => o.value === atual)) {
+          sel.value = atual;
+        }
       });
     }
+    preencherListaPresets();
     lerEstadoOverlay = function() {
       return {
         selectedTable: selectedTable,
@@ -2324,6 +2490,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     }
     aplicarPresetOverlay = function(dados) {
       if (!dados) return;
+      window.__upsLoadingPreset = true;
       if (dados.selectedTable) {
         const sel = document.getElementById('ups-mt');
         if (sel && [...sel.options].some(o => o.value === dados.selectedTable)) {
@@ -2348,10 +2515,6 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         window.__upsNovoPrecoOverrides = JSON.parse(JSON.stringify(dados.overrides));
         renderOverridesNovo(window.__upsNovoPrecoOverrides);
       }
-      document.getElementById('ups-ac-t-mp').checked = dados.ativarPreco !== false;
-      document.getElementById('ups-ac-t-mt').checked = dados.medidasAtivo !== false;
-      document.getElementById('ups-ma-sub').value = dados.sub || '';
-      atualizarTagsSub();
       if (dados.emMassa) {
         document.getElementById('ups-ma-eq').value = dados.emMassa.quantidade || '';
         document.getElementById('ups-ma-ep').value = dados.emMassa.preco || '';
@@ -2360,28 +2523,14 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       }
       document.getElementById('ups-ma-sku').checked = !!dados.sku;
       document.getElementById('ups-ma-crop').checked = !!dados.crop;
+      document.getElementById('ups-ac-t-mp').checked = dados.ativarPreco !== false;
+      document.getElementById('ups-ac-t-mt').checked = dados.medidasAtivo !== false;
+      document.getElementById('ups-ma-sub').value = dados.sub || '';
+      atualizarTagsSub();
       document.getElementById('ups-ma-ativar').checked = dados.ativar !== false;
-      // Restore macro select
-      if (dados.maSelect) {
-        const sel = document.getElementById('ups-ma-select');
-        if (sel && [...sel.options].some(o => o.value === dados.maSelect)) {
-          sel.value = dados.maSelect;
-        }
-      } else {
-        document.getElementById('ups-ma-select').value = '';
-      }
-      document.getElementById('ups-ma-nome-salvar').value = dados.maNomeSalvar || '';
-      document.getElementById('ups-ma-excluir').style.display = dados.maNomeSalvar ? 'block' : 'none';
-      if (dados.atrPreset) {
-        const sel = document.getElementById('ups-atr-carregar');
-        if (sel && [...sel.options].some(o => o.value === dados.atrPreset)) {
-          sel.value = dados.atrPreset;
-          const parts = dados.atrPreset.split(':');
-          if (parts.length >= 2) carregarPresetAtributos(parts[0], parts.slice(1).join(':'));
-        }
-      }
       document.getElementById('ups-ac-t-atr').checked = dados.atributosAtivo !== false;
       if (dados.confirmarCores !== undefined) document.getElementById('ups-ma-confirmar-cores').checked = !!dados.confirmarCores;
+      setTimeout(() => { window.__upsLoadingPreset = false; }, 100);
     }
 
     salvarPresetOverlay = function(nome) {
@@ -2434,6 +2583,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         if (tipo === 'bib') dados = (res.biblioteca || {})[nome]?.macros;
         else dados = (res.bibliotecaMacros || {})[nome];
         if (!dados) return;
+        if (window.__upsLoadingPreset) return;
         document.getElementById('ups-ma-excluir').style.display = 'block';
         document.getElementById('ups-ma-nome-salvar').value = nome;
         if (dados.sub) document.getElementById('ups-ma-sub').value = dados.sub;
@@ -2684,12 +2834,12 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         window.__upsAtrPresetRestore = null;
         if (select.value) {
           const [restoreTipo, ...restoreNomeParts] = select.value.split(':');
-          carregarPresetAtributos(restoreTipo, restoreNomeParts.join(':'));
+          carregarPresetAtributos(restoreTipo, restoreNomeParts.join(':'), true);
         }
       });
     }
 
-    async function carregarPresetAtributos(tipo, nome) {
+    async function carregarPresetAtributos(tipo, nome, silent) {
       if (!tipo || !nome) return;
       chrome.storage.local.get(["bibliotecaAtributos"], (res) => {
         const bibAtr = res.bibliotecaAtributos || {};
@@ -2699,7 +2849,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         if (!dados) return;
         document.getElementById('ups-atr-nome').value = nome;
         document.getElementById('ups-atr-excluir').style.display = 'block';
-        mostrarToastFeedback('Preset "' + nome + '" selecionado (' + Object.keys(dados).length + ' attr)');
+        if (!silent) mostrarToastFeedback('Preset "' + nome + '" selecionado (' + Object.keys(dados).length + ' attr)');
       });
     }
 
@@ -2739,7 +2889,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       });
   }
 
-  function salvarEstadoMedidas() {
+  salvarEstadoMedidas = function() {
     chrome.storage.local.set({
       ultimoEstadoMedidas: {
         selectedTable,
@@ -2759,7 +2909,9 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
         macroPeso: document.getElementById('ups-ma-ew').value.trim(),
         macroPacote: document.getElementById('ups-ma-epkg').value.trim(),
         macroSku: document.getElementById('ups-ma-sku').checked,
-        macroConfirmarCores: document.getElementById('ups-ma-confirmar-cores').checked
+        macroCrop: document.getElementById('ups-ma-crop').checked,
+        macroConfirmarCores: document.getElementById('ups-ma-confirmar-cores').checked,
+        presetSelect: document.getElementById('ups-op-select').value
       }
     });
   }
@@ -2796,15 +2948,8 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       const sel = document.getElementById('ups-mt');
       if (sel && [...sel.options].some(o => o.value === estado.selectedTable)) {
         sel.value = estado.selectedTable;
-        sel.onchange();
+        selectedTable = estado.selectedTable;
       }
-    }
-    if (estado.toggles) {
-      document.getElementById('ups-ac-t-mt').checked = estado.toggles.mt !== false;
-      document.getElementById('ups-ac-t-mp').checked = estado.toggles.mp !== false;
-      document.getElementById('ups-ac-t-multi').checked = false;
-      document.getElementById('ups-ma-ativar').checked = estado.toggles.ativar !== false;
-      document.getElementById('ups-ac-t-atr').checked = estado.toggles.atr === true;
     }
     if (estado.atrPreset) {
       window.__upsAtrPresetRestore = estado.atrPreset;
@@ -2819,192 +2964,24 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     if (estado.macroPeso !== undefined) document.getElementById('ups-ma-ew').value = estado.macroPeso || '';
     if (estado.macroPacote !== undefined) document.getElementById('ups-ma-epkg').value = estado.macroPacote || '';
     if (estado.macroSku !== undefined) document.getElementById('ups-ma-sku').checked = !!estado.macroSku;
+    if (estado.macroCrop !== undefined) document.getElementById('ups-ma-crop').checked = !!estado.macroCrop;
     if (estado.macroConfirmarCores !== undefined) document.getElementById('ups-ma-confirmar-cores').checked = !!estado.macroConfirmarCores;
+    if (estado.presetSelect) {
+      window.__upsRestorePresetSelect = estado.presetSelect;
+    }
+    if (estado.toggles) {
+      setTimeout(() => {
+        document.getElementById('ups-ac-t-mt').checked = estado.toggles.mt !== false;
+        document.getElementById('ups-ac-t-mp').checked = estado.toggles.mp !== false;
+        document.getElementById('ups-ac-t-multi').checked = false;
+        document.getElementById('ups-ma-ativar').checked = estado.toggles.ativar !== false;
+        document.getElementById('ups-ac-t-atr').checked = estado.toggles.atr === true;
+      }, 50);
+    }
     atualizarMultiHabilitado();
   }
 
-  function normalizarCor(s) {
-    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
-  }
 
-  function lerCoresEspecificacaoPrincipal() {
-    const forms = document.querySelectorAll('.ant-form-item');
-    for (const section of forms) {
-      const label = section.querySelector('.ant-form-item-label');
-      if (!label || !label.textContent.trim().includes('Especificação Principal')) continue;
-      const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
-      return Array.from(wrappers).map(w => {
-        const cb = w.querySelector('.ant-checkbox-input');
-        const nome = (cb && cb.value) || w.textContent.trim();
-        return { nome: nome.trim(), wrapper: w, checkbox: cb, checked: cb ? cb.checked : false };
-      });
-    }
-    return [];
-  }
-
-  function mostrarDialogoConfirmarCores(coresAtuais) {
-    return new Promise((resolve) => {
-      const existing = document.getElementById('ups-cor-dialog');
-      if (existing) existing.remove();
-      const div = document.createElement('div');
-      div.id = 'ups-cor-dialog';
-      div.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999999;display:flex;align-items:center;justify-content:center;';
-      div.innerHTML = `
-<div style="background:white;border-radius:12px;padding:24px;width:640px;max-width:95vw;box-shadow:0 8px 32px rgba(0,0,0,0.3);font-family:sans-serif;">
-  <div style="font-size:16px;font-weight:600;margin-bottom:4px;">🎨 Confirmar Cores</div>
-  <div style="font-size:13px;color:#555;margin-bottom:12px;">Selecione as cores que deseja manter marcadas na Especificação Principal:</div>
-  <div id="ups-cor-lista" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:260px;overflow-y:auto;margin-bottom:12px;padding:4px 0;">
-    ${coresAtuais.map((c, i) => `
-      <label style="display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:${c.checked ? '#e8f5e9' : '#fafafa'};" data-idx="${i}">
-        <input type="checkbox" class="ups-cor-chk" ${c.checked ? 'checked' : ''} style="margin:0;" data-idx="${i}">
-        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${c.nome}</span>
-      </label>
-    `).join('')}
-  </div>
-  <div style="display:flex;gap:6px;margin-bottom:12px;">
-    <input id="ups-cor-input" type="text" placeholder="Adicionar cor..." style="flex:1;padding:7px;border:1px solid #ccc;border-radius:4px;font-size:13px;">
-    <button id="ups-cor-add" style="padding:7px 14px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600;">+</button>
-  </div>
-  <div style="display:flex;gap:8px;justify-content:flex-end;">
-    <button id="ups-cor-pular" style="padding:7px 16px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:white;">Pular Etapa</button>
-    <button id="ups-cor-confirmar" style="padding:7px 20px;background:#28a745;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px;">Confirmar</button>
-  </div>
-</div>`;
-      document.body.appendChild(div);
-
-      function mostrarToast(msg) {
-        const t = document.createElement('div');
-        t.textContent = msg;
-        t.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;padding:8px 20px;border-radius:6px;font-size:14px;z-index:10000000;opacity:0;transition:opacity .3s;pointer-events:none;';
-        document.body.appendChild(t);
-        requestAnimationFrame(() => { t.style.opacity = '1'; });
-        setTimeout(() => {
-          t.style.opacity = '0';
-          setTimeout(() => t.remove(), 300);
-        }, 2000);
-      }
-
-      // Atualizar visual ao clicar num checkbox
-      div.querySelectorAll('.ups-cor-chk').forEach(chk => {
-        chk.addEventListener('change', () => {
-          const label = chk.closest('label');
-          if (label) label.style.background = chk.checked ? '#e8f5e9' : '#fafafa';
-        });
-      });
-
-      function coletarCores() {
-        const labels = div.querySelectorAll('#ups-cor-lista > label');
-        return Array.from(labels).map(label => {
-          const chk = label.querySelector('.ups-cor-chk');
-          const text = label.querySelector('span').textContent.trim();
-          return { nome: text, checked: chk.checked };
-        });
-      }
-
-      document.getElementById('ups-cor-add').onclick = () => {
-        const input = document.getElementById('ups-cor-input');
-        const nomeRaw = input.value.trim();
-        if (!nomeRaw) return;
-        const norm = normalizarCor(nomeRaw);
-        const lista = document.getElementById('ups-cor-lista');
-        // Verificar se ja existe (normalizado)
-        const existente = Array.from(lista.querySelectorAll('label')).some(label => {
-          const text = label.querySelector('span').textContent.trim();
-          return normalizarCor(text) === norm;
-        });
-        if (!existente) {
-          const label = document.createElement('label');
-          label.style.cssText = 'display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:#e8f5e9;';
-          label.innerHTML = `<input type="checkbox" class="ups-cor-chk" checked style="margin:0;"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${nomeRaw}</span>`;
-          label.querySelector('.ups-cor-chk').addEventListener('change', function() {
-            label.style.background = this.checked ? '#e8f5e9' : '#fafafa';
-          });
-          lista.appendChild(label);
-          mostrarToast(`${nomeRaw} adicionada`);
-        } else {
-          // Marcar o checkbox existente
-          const target = Array.from(lista.querySelectorAll('label')).find(label => {
-            const text = label.querySelector('span').textContent.trim();
-            return normalizarCor(text) === norm;
-          });
-          if (target) {
-            const chk = target.querySelector('.ups-cor-chk');
-            if (chk && !chk.checked) {
-              chk.checked = true;
-              target.style.background = '#e8f5e9';
-              mostrarToast(`${nomeRaw} marcada`);
-            }
-          }
-        }
-        input.value = '';
-      };
-      document.getElementById('ups-cor-input').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') { e.preventDefault(); document.getElementById('ups-cor-add').click(); }
-      });
-
-      document.getElementById('ups-cor-confirmar').onclick = () => {
-        div.remove();
-        resolve({ confirmou: true, cores: coletarCores() });
-      };
-      document.getElementById('ups-cor-pular').onclick = () => {
-        div.remove();
-        resolve({ confirmou: false, cores: [] });
-      };
-    });
-  }
-
-  async function aplicarCoresNaPagina(cores) {
-    const forms = document.querySelectorAll('.ant-form-item');
-    let section = null;
-    for (const s of forms) {
-      const lbl = s.querySelector('.ant-form-item-label');
-      if (lbl && lbl.textContent.trim().includes('Especificação Principal')) { section = s; break; }
-    }
-    if (!section) return;
-
-    for (const cor of cores) {
-      if (!cor.nome) continue;
-      const norm = normalizarCor(cor.nome);
-      // Procurar checkbox existente na pagina
-      let found = null;
-      const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
-      for (const w of wrappers) {
-        const cb = w.querySelector('.ant-checkbox-input');
-        const nomePagina = (cb && cb.value) || w.textContent.trim();
-        if (normalizarCor(nomePagina) === norm) { found = w; break; }
-      }
-      if (found) {
-        const cb = found.querySelector('.ant-checkbox-input');
-        if (cb && cb.checked !== cor.checked) {
-          found.click();
-          await sleep(100);
-        }
-      } else if (cor.checked) {
-        // Cor nao existe na pagina — clicar em "Adicionar Opções"
-        const addBtn = Array.from(document.querySelectorAll('button')).find(b =>
-          b.textContent.trim() === 'Adicionar Opções'
-        );
-        if (!addBtn) continue;
-        addBtn.click();
-        await sleep(1000);
-        // Input dentro do popover
-        const input = document.querySelector('.ant-popover-inner-content input.ant-input');
-        if (input) {
-          const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-          input.focus();
-          nativeSetter.call(input, cor.nome);
-          input.dispatchEvent(new Event('input', { bubbles: true }));
-          input.dispatchEvent(new Event('change', { bubbles: true }));
-          await sleep(300);
-          const salvarBtn = document.querySelector('.ant-popover-inner-content button.my_ant_btn_primary');
-          if (salvarBtn) {
-            salvarBtn.click();
-            await sleep(1000);
-          }
-        }
-      }
-    }
-  }
 
   document.getElementById('ups-mc').onclick = () => {
     salvarEstadoMedidas();
@@ -3306,13 +3283,17 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           // 9 — Recortar Imagem Quadrada (must be last — triggers dialog)
           if (temCrop && macroAtivo) {
             nextStep('Recortando imagem quadrada...');
+            const overlayEl = document.getElementById('upseller-progress-overlay');
+            if (overlayEl) overlayEl.style.display = 'none';
             try {
               await recortarImagemQuadradaEmMassa();
             } catch (e) {
+              if (overlayEl) overlayEl.style.display = '';
               mostrarErroOverlayProgresso('Erro no recorte: ' + e.message);
               setTimeout(() => removerOverlayProgresso(), 3000);
               return;
             }
+            if (overlayEl) overlayEl.style.display = '';
             if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
           }
 
@@ -3350,6 +3331,197 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     mostrarErroOverlayProgresso('⏸ Macro cancelada');
     setTimeout(() => removerOverlayProgresso(), 2000);
   }
+}
+
+function normalizarCor(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+}
+
+function lerCoresEspecificacaoPrincipal() {
+  const forms = document.querySelectorAll('.ant-form-item');
+  for (const section of forms) {
+    const label = section.querySelector('.ant-form-item-label');
+    if (!label || !label.textContent.trim().includes('Especificação Principal')) continue;
+    const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
+    return Array.from(wrappers).map(w => {
+      const cb = w.querySelector('.ant-checkbox-input');
+      const nome = (cb && cb.value) || w.textContent.trim();
+      return { nome: nome.trim(), wrapper: w, checkbox: cb, checked: cb ? cb.checked : false };
+    });
+  }
+  return [];
+}
+
+function mostrarDialogoConfirmarCores(coresAtuais) {
+  return new Promise((resolve) => {
+    const existing = document.getElementById('ups-cor-dialog');
+    if (existing) existing.remove();
+    const div = document.createElement('div');
+    div.id = 'ups-cor-dialog';
+    div.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999999;display:flex;align-items:center;justify-content:center;';
+    div.innerHTML = `
+<div style="background:white;border-radius:12px;padding:24px;width:640px;max-width:95vw;box-shadow:0 8px 32px rgba(0,0,0,0.3);font-family:sans-serif;">
+  <div style="font-size:16px;font-weight:600;margin-bottom:4px;">🎨 Confirmar Cores</div>
+  <div style="font-size:13px;color:#555;margin-bottom:12px;">Selecione as cores que deseja manter marcadas na Especificação Principal:</div>
+  <div id="ups-cor-lista" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:260px;overflow-y:auto;margin-bottom:12px;padding:4px 0;">
+    ${coresAtuais.map((c, i) => `
+      <label style="display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:${c.checked ? '#e8f5e9' : '#fafafa'};" data-idx="${i}">
+        <input type="checkbox" class="ups-cor-chk" ${c.checked ? 'checked' : ''} style="margin:0;" data-idx="${i}">
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${c.nome}</span>
+      </label>
+    `).join('')}
+  </div>
+  <div style="display:flex;gap:6px;margin-bottom:12px;">
+    <input id="ups-cor-input" type="text" placeholder="Adicionar cor..." style="flex:1;padding:7px;border:1px solid #ccc;border-radius:4px;font-size:13px;">
+    <button id="ups-cor-add" style="padding:7px 14px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600;">+</button>
+  </div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;">
+    <button id="ups-cor-pular" style="padding:7px 16px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:white;">Pular Etapa</button>
+    <button id="ups-cor-confirmar" style="padding:7px 20px;background:#28a745;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px;">Confirmar</button>
+  </div>
+</div>`;
+    document.body.appendChild(div);
+
+    function mostrarToast(msg) {
+      const t = document.createElement('div');
+      t.textContent = msg;
+      t.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#28a745;color:#fff;padding:8px 20px;border-radius:6px;font-size:14px;z-index:10000000;opacity:0;transition:opacity .3s;pointer-events:none;';
+      document.body.appendChild(t);
+      requestAnimationFrame(() => { t.style.opacity = '1'; });
+      setTimeout(() => {
+        t.style.opacity = '0';
+        setTimeout(() => t.remove(), 300);
+      }, 2000);
+    }
+
+    div.querySelectorAll('.ups-cor-chk').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const label = chk.closest('label');
+        if (label) label.style.background = chk.checked ? '#e8f5e9' : '#fafafa';
+      });
+    });
+
+    function coletarCores() {
+      const labels = div.querySelectorAll('#ups-cor-lista > label');
+      return Array.from(labels).map(label => {
+        const chk = label.querySelector('.ups-cor-chk');
+        const text = label.querySelector('span').textContent.trim();
+        return { nome: text, checked: chk.checked };
+      });
+    }
+
+    document.getElementById('ups-cor-add').onclick = () => {
+      const input = document.getElementById('ups-cor-input');
+      const nomeRaw = input.value.trim();
+      if (!nomeRaw) return;
+      const lista = document.getElementById('ups-cor-lista');
+      const existente = Array.from(lista.querySelectorAll('label')).some(label => {
+        const text = label.querySelector('span').textContent.trim();
+        return text === nomeRaw;
+      });
+      if (!existente) {
+        const label = document.createElement('label');
+        label.style.cssText = 'display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:#e8f5e9;';
+        label.innerHTML = `<input type="checkbox" class="ups-cor-chk" checked style="margin:0;"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${nomeRaw}</span>`;
+        label.querySelector('.ups-cor-chk').addEventListener('change', function() {
+          label.style.background = this.checked ? '#e8f5e9' : '#fafafa';
+        });
+        lista.appendChild(label);
+        mostrarToast(`${nomeRaw} adicionada`);
+      } else {
+        const target = Array.from(lista.querySelectorAll('label')).find(label => {
+          const text = label.querySelector('span').textContent.trim();
+          return text === nomeRaw;
+        });
+        if (target) {
+          const chk = target.querySelector('.ups-cor-chk');
+          if (chk && !chk.checked) {
+            chk.checked = true;
+            target.style.background = '#e8f5e9';
+            mostrarToast(`${nomeRaw} marcada`);
+          }
+        }
+      }
+      input.value = '';
+    };
+    document.getElementById('ups-cor-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); document.getElementById('ups-cor-add').click(); }
+    });
+
+    document.getElementById('ups-cor-confirmar').onclick = () => {
+      div.remove();
+      resolve({ confirmou: true, cores: coletarCores() });
+    };
+    document.getElementById('ups-cor-pular').onclick = () => {
+      div.remove();
+      resolve({ confirmou: false, cores: [] });
+    };
+  });
+}
+
+async function aplicarCoresNaPagina(cores) {
+  const forms = document.querySelectorAll('.ant-form-item');
+  let section = null;
+  for (const s of forms) {
+    const lbl = s.querySelector('.ant-form-item-label');
+    if (lbl && lbl.textContent.trim().includes('Especificação Principal')) { section = s; break; }
+  }
+  if (!section) return;
+
+  for (const cor of cores) {
+    if (!cor.nome) continue;
+    const nomeExato = cor.nome.trim();
+    const norm = normalizarCor(nomeExato);
+    if (cor.checked) {
+      const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
+      for (const w of wrappers) {
+        const cb = w.querySelector('.ant-checkbox-input');
+        const nomePagina = ((cb && cb.value) || w.textContent.trim()).trim();
+        if (normalizarCor(nomePagina) === norm && nomePagina !== nomeExato) {
+          if (cb && cb.checked) {
+            w.click();
+            await sleep(100);
+          }
+        }
+      }
+    }
+    let encontrou = false;
+    const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
+    for (const w of wrappers) {
+      const cb = w.querySelector('.ant-checkbox-input');
+      const nomePagina = ((cb && cb.value) || w.textContent.trim()).trim();
+      if (nomePagina === nomeExato) {
+        encontrou = true;
+        if (cb && cb.checked !== cor.checked) {
+          w.click();
+          await sleep(100);
+        }
+      }
+    }
+    if (!encontrou && cor.checked) {
+      const addBtn = Array.from(document.querySelectorAll('button')).find(b =>
+        b.textContent.trim() === 'Adicionar Opções'
+      );
+      if (!addBtn) continue;
+      addBtn.click();
+      await sleep(1000);
+      const input = document.querySelector('.ant-popover-inner-content input.ant-input');
+      if (input) {
+        const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+        input.focus();
+        nativeSetter.call(input, cor.nome);
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        await sleep(300);
+        const salvarBtn = document.querySelector('.ant-popover-inner-content button.my_ant_btn_primary');
+        if (salvarBtn) {
+          salvarBtn.click();
+          await sleep(1000);
+        }
+      }
+    }
+  }
+  if (window.__temEstadoSalvo) setTimeout(() => { window.__upsLoadingPreset = false; }, 100);
 }
 
 // ========== OVERLAY DE PROGRESSO (macro medidas) ==========
@@ -3746,16 +3918,187 @@ async function recortarImagemQuadradaEmMassa() {
   cortarBtn.click();
   for (let i = 0; i < 120; i++) {
     await sleep(1000);
-    const aplicarBtn = Array.from(document.querySelectorAll('button')).find(b => b.textContent.trim() === 'Aplicar');
-    if (aplicarBtn && aplicarBtn.offsetParent !== null) {
-      await sleep(300);
+    const modal = document.querySelector('.ant-modal-content');
+    if (!modal) continue;
+    const aplicarBtn = Array.from(modal.querySelectorAll('button')).find(b => b.textContent.trim().includes('Aplicar'));
+    if (aplicarBtn) {
+      await sleep(500);
+      aplicarBtn.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+      aplicarBtn.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
       aplicarBtn.click();
       return;
     }
-    const dialogs = document.querySelectorAll('[role="dialog"]');
-    if (dialogs.length === 0) return;
   }
   throw new Error('Timeout aguardando processamento');
+}
+
+function abrirPopupEditarMedidas(nomeExistente, bib, chavesFixas, atualizarSelectMedidas, atualizarDesc) {
+  const existing = document.getElementById('ups-popup-medidas');
+  if (existing) existing.remove();
+
+  // Buscar dados mais recentes do storage
+  chrome.storage.local.get(["biblioteca"], (res) => {
+    const bibAtualizada = res.biblioteca || {};
+    const dados = (nomeExistente && bibAtualizada[nomeExistente]) ? bibAtualizada[nomeExistente] : {};
+
+    const div = document.createElement('div');
+    div.id = 'ups-popup-medidas';
+    div.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.25);z-index:9999999;width:500px;max-height:80vh;overflow-y:auto;padding:12px;font-family:sans-serif;';
+
+    const titulo = nomeExistente ? `Editar "${nomeExistente}"` : 'Criar Nova Tabela de Medidas';
+
+    div.innerHTML = `
+<div style="font-size:14px;font-weight:bold;margin-bottom:10px;">${titulo}</div>
+<label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Nome da Tabela</label>
+<input id="ups-pm-nome" type="text" value="${nomeExistente || ''}" placeholder="Ex: PP-16" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;" ${nomeExistente ? 'disabled' : ''}>
+<label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Descrição</label>
+<textarea id="ups-pm-desc" placeholder="Descrição do produto (opcional)..." style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;height:40px;resize:vertical;font-family:sans-serif;">${(dados.descricao || '')}</textarea>
+<label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Tamanhos</label>
+<div id="ups-pm-grid" style="margin-bottom:6px;"></div>
+<div style="display:flex;gap:4px;align-items:center;margin-bottom:8px;">
+<input id="ups-pm-add-tam" type="text" placeholder="Tamanho" style="width:90px;padding:3px;border:1px solid #ccc;border-radius:4px;font-size:11px;text-transform:uppercase;">
+<input id="ups-pm-add-larg" type="text" placeholder="Largura" style="width:80px;padding:3px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
+<input id="ups-pm-add-alt" type="text" placeholder="Altura" style="width:80px;padding:3px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
+<button id="ups-pm-add-btn" style="padding:3px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:12px;">+</button>
+</div>
+<div style="display:flex;gap:6px;justify-content:flex-end;">
+<button id="ups-pm-cancelar" style="padding:5px 14px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:11px;background:white;height:28px;display:flex;align-items:center;">Cancelar</button>
+<button id="ups-pm-salvar" style="padding:5px 14px;background:#28a745;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:11px;height:28px;display:flex;align-items:center;">Salvar</button>
+${nomeExistente ? '<button id="ups-pm-excluir" style="padding:5px 14px;background:#dc3545;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:11px;height:28px;display:flex;align-items:center;">Excluir Tabela</button>' : ''}
+</div>`;
+
+    document.body.appendChild(div);
+
+    const gridDiv = document.getElementById('ups-pm-grid');
+    let tabela = { ...dados };
+
+    function renderGrid() {
+      const tamanhos = Object.keys(tabela).filter(k => !chavesFixas.has(k) && tabela[k] && typeof tabela[k] === 'object' && (tabela[k].b || tabela[k].c));
+      if (tamanhos.length === 0) {
+        gridDiv.innerHTML = '<div style="color:#999;font-size:11px;padding:4px 0;">Nenhum tamanho adicionado.</div>';
+        return;
+      }
+      const ordemLetras = ['PP','P','M','G','GG','EGG','G1','G2','G3','G4','G5'];
+      const ordemIndex = {};
+      ordemLetras.forEach((s, i) => { ordemIndex[s.toUpperCase()] = i; });
+      tamanhos.sort((a, b) => {
+        const aNum = /^\d+$/.test(a);
+        const bNum = /^\d+$/.test(b);
+        if (aNum && bNum) return parseInt(a, 10) - parseInt(b, 10);
+        if (aNum) return -1;
+        if (bNum) return 1;
+        const ai = ordemIndex[a.toUpperCase()];
+        const bi = ordemIndex[b.toUpperCase()];
+        if (ai !== undefined && bi !== undefined) return ai - bi;
+        if (ai !== undefined) return -1;
+        if (bi !== undefined) return 1;
+        return a.localeCompare(b);
+      });
+      gridDiv.innerHTML = `<table style="width:100%;border-collapse:collapse;font-family:sans-serif;margin-bottom:6px;">
+<thead><tr style="background:#eee;"><th style="padding:1px 6px;border:1px solid #ccc;font-size:10px;text-align:left;">Tamanho</th><th style="padding:1px 6px;border:1px solid #ccc;font-size:10px;text-align:left;">Largura</th><th style="padding:1px 6px;border:1px solid #ccc;font-size:10px;text-align:left;">Altura</th><th style="padding:1px 6px;border:1px solid #ccc;font-size:10px;text-align:center;width:30px;"></th></tr></thead>
+<tbody>${tamanhos.map(t => `
+<tr><td style="padding:1px 6px;border:1px solid #ccc;font-size:10px;font-weight:bold;text-transform:uppercase;">${t}</td>
+<td style="padding:1px 6px;border:1px solid #ccc;font-size:10px;"><input class="ups-pm-g-b" data-tam="${t}" type="text" value="${tabela[t].b || ''}" placeholder="Largura" style="width:55px;padding:1px 3px;border:1px solid #ccc;border-radius:2px;font-size:10px;box-sizing:border-box;"></td>
+<td style="padding:1px 6px;border:1px solid #ccc;font-size:10px;"><input class="ups-pm-g-c" data-tam="${t}" type="text" value="${tabela[t].c || ''}" placeholder="Altura" style="width:55px;padding:1px 3px;border:1px solid #ccc;border-radius:2px;font-size:10px;box-sizing:border-box;"></td>
+<td style="padding:1px;border:1px solid #ccc;text-align:center;"><button data-tam="${t}" class="ups-pm-rm" style="padding:0px 4px;border:1px solid #dc3545;color:#dc3545;border-radius:2px;cursor:pointer;font-size:10px;background:white;line-height:1.2;">×</button></td></tr>`).join('')}
+</tbody></table>`;
+
+      gridDiv.querySelectorAll('.ups-pm-rm').forEach(btn => {
+        btn.onclick = function() {
+          const tam = this.getAttribute('data-tam');
+          delete tabela[tam];
+          renderGrid();
+        };
+      });
+    }
+
+    renderGrid();
+
+    document.getElementById('ups-pm-add-tam').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('ups-pm-add-btn').click();
+    });
+
+    document.getElementById('ups-pm-add-btn').onclick = function() {
+      const tam = document.getElementById('ups-pm-add-tam').value.trim().toUpperCase();
+      const larg = document.getElementById('ups-pm-add-larg').value.trim();
+      const alt = document.getElementById('ups-pm-add-alt').value.trim();
+      if (!tam) return;
+      tabela[tam] = { b: larg || '', c: alt || '' };
+      renderGrid();
+      document.getElementById('ups-pm-add-tam').value = '';
+      document.getElementById('ups-pm-add-larg').value = '';
+      document.getElementById('ups-pm-add-alt').value = '';
+      document.getElementById('ups-pm-add-tam').focus();
+    };
+
+    document.getElementById('ups-pm-cancelar').onclick = () => div.remove();
+
+    document.getElementById('ups-pm-salvar').onclick = function() {
+      const nome = document.getElementById('ups-pm-nome').value.trim();
+      if (!nome) { mostrarFeedback('Dê um nome para a tabela!', '#dc3545'); return; }
+      if (!nome.match(/^[a-zA-Z0-9\s\-_À-ÿ]+$/)) { mostrarFeedback('Nome inválido', '#dc3545'); return; }
+      const desc = document.getElementById('ups-pm-desc').value.trim();
+
+      // Coletar valores do grid
+      const novaTabela = { descricao: desc };
+      document.querySelectorAll('.ups-pm-g-b').forEach(inp => {
+        const tam = inp.getAttribute('data-tam');
+        const b = inp.value;
+        const c = document.querySelector(`.ups-pm-g-c[data-tam="${tam}"]`).value;
+        novaTabela[tam] = { b: b || '', c: c || '' };
+      });
+
+      // Preservar macros e preços se existirem
+      if (nomeExistente && dados.macros) novaTabela.macros = dados.macros;
+      if (nomeExistente && dados.precos) novaTabela.precos = dados.precos;
+
+      chrome.storage.local.get(["biblioteca"], (r) => {
+        const b = r.biblioteca || {};
+        b[nome] = novaTabela;
+        chrome.storage.local.set({ biblioteca: b, ultimaSelecionada: nome }, () => {
+          bib[nome] = novaTabela;
+          if (nomeExistente && nomeExistente !== nome && bib[nomeExistente]) {
+            delete bib[nomeExistente];
+          }
+          atualizarSelectMedidas(nome);
+          atualizarDesc(nome);
+          div.remove();
+          mostrarFeedback('Tabela "' + nome + '" salva!', '#28a745');
+        });
+      });
+    };
+
+    if (nomeExistente) {
+      document.getElementById('ups-pm-excluir').onclick = function() {
+        const confDiv = document.createElement('div');
+        confDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:9999998;display:flex;align-items:center;justify-content:center;';
+        confDiv.innerHTML = '<div style="background:white;border-radius:12px;padding:24px;width:300px;box-shadow:0 8px 32px rgba(0,0,0,0.25);text-align:center;font-family:sans-serif;">' +
+          '<div style="font-size:15px;font-weight:bold;margin-bottom:12px;">Excluir "' + nomeExistente + '"?</div>' +
+          '<div style="display:flex;gap:8px;justify-content:center;">' +
+          '<button id="ups-pm-conf-cancelar" style="padding:7px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:white;">Cancelar</button>' +
+          '<button id="ups-pm-conf-excluir" style="padding:7px 20px;background:#dc3545;color:white;border:none;border-radius:6px;cursor:pointer;font-weight:bold;font-size:13px;">Excluir</button>' +
+          '</div></div>';
+        document.body.appendChild(confDiv);
+        document.getElementById('ups-pm-conf-cancelar').onclick = () => confDiv.remove();
+        document.getElementById('ups-pm-conf-excluir').onclick = () => {
+          confDiv.remove();
+          chrome.storage.local.get(["biblioteca"], (r) => {
+            const b = r.biblioteca || {};
+            if (b[nomeExistente]) {
+              delete b[nomeExistente];
+              chrome.storage.local.set({ biblioteca: b }, () => {
+                if (bib[nomeExistente]) delete bib[nomeExistente];
+                atualizarSelectMedidas('');
+                atualizarDesc('');
+                div.remove();
+                mostrarFeedback('Tabela "' + nomeExistente + '" excluída!', '#28a745');
+              });
+            }
+          });
+        };
+      };
+    }
+  });
 }
 
 function upsDialog(opts) {
@@ -3769,7 +4112,7 @@ function upsDialog(opts) {
 <div style="background:#fff;border-radius:10px;padding:24px;width:400px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">
 <div style="font-size:16px;font-weight:600;color:#333;margin-bottom:12px;">${opts.title || ''}</div>
 <div style="font-size:14px;color:#555;margin-bottom:16px;line-height:1.5;">${opts.message}</div>
-${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;font-size:14px;box-sizing:border-box;margin-bottom:12px;" placeholder="' + (opts.placeholder || '') + '" value="' + (opts.value || '') + '" data-bwignore="" data-1p-ignore="" autocomplete="off">' : ''}
+${opts.input ? '<input id="ups-dialog-input" type="text" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;font-size:14px;box-sizing:border-box;margin-bottom:12px;text-transform:uppercase;" placeholder="' + (opts.placeholder || '') + '" value="' + (opts.value || '').toUpperCase() + '" data-bwignore="" data-1p-ignore="" autocomplete="off" oninput="this.value = this.value.toUpperCase()">' : ''}
 <div style="display:flex;gap:8px;justify-content:center;">
 ${opts.cancel ? '<button id="ups-dialog-cancel" style="padding:8px 20px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:13px;background:#fff;color:#555;">Cancelar</button>' : ''}
 <button id="ups-dialog-ok" style="padding:8px 20px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">${opts.okText || 'OK'}</button>
