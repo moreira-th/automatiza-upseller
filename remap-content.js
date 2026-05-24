@@ -43,6 +43,8 @@ function findTextContainer(text) {
   return null;
 }
 
+let _personalizadasAdicionadas = 0;
+
 async function stepSelecionarTamanho() {
   const dialog = findMainDialog();
   if (!dialog) throw new Error('Diálogo não encontrado para selecionar Tamanho');
@@ -92,6 +94,7 @@ async function stepConfirmarCriacao() {
 }
 
 async function stepMapearVariantes() {
+  _personalizadasAdicionadas = 0;
   const mainDialog = findMainDialog();
   if (!mainDialog) throw new Error('Diálogo principal não encontrado');
 
@@ -126,6 +129,7 @@ async function stepMapearVariantes() {
   }
 
   let failures = [];
+  nextVariant:
   for (const { name } of variantRows) {
     let mapped = false;
     for (let attempt = 0; attempt < 5 && !mapped; attempt++) {
@@ -180,6 +184,7 @@ async function stepMapearVariantes() {
                     input.dispatchEvent(new Event('input', { bubbles: true }));
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                   }
+                  _personalizadasAdicionadas++;
                   found = true;
                   break;
                 }
@@ -187,11 +192,16 @@ async function stepMapearVariantes() {
             }
 
             if (found) { mapped = true; await sleep(500); break; }
+            // Dropdown was visible but option not available — close and skip remaining attempts
+            nativeClick(selectEl);
+            await sleep(200);
+            attempt = 5;
           }
         }
         if (mapped) break;
+        if (attempt > 4) break;
       }
-      if (!mapped) await sleep(500);
+      if (!mapped && attempt <= 4) await sleep(500);
     }
 
     if (!mapped) {
@@ -224,7 +234,7 @@ async function stepOK() {
   if (!btn) return;
   await sleep(2000);
   nativeClick(btn);
-  await sleep(1500);
+  await sleep(1500 + 1000 * _personalizadasAdicionadas);
 }
 
 async function stepFechar() {
@@ -766,12 +776,20 @@ function abrirDialogPrecos() {
 <input type="hidden" id="ups-ps-sub" value="">
 <div id="ups-ps-sub-tags" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;"></div>
 <input id="ups-ps-sub-input" type="text" placeholder="Tamanhos (vírgula ou Enter)" style="border:none;outline:none;flex:1;min-width:80px;padding:0;font-size:13px;background:transparent;">
-</div>
-<label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;padding-top:4px;">
-<input type="checkbox" id="ups-ps-sku" style="margin:0;"> Gerar SKU
-</label>
-</div>
-</div>
+            </div>
+            </div>
+            <div style="display:flex;gap:6px;align-items:center;margin-top:4px;">
+            <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+            <input type="checkbox" id="ups-ps-sku" style="margin:0;"> Gerar SKU
+            </label>
+            <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+            <input type="checkbox" id="ups-ps-crop" style="margin:0;"> Recortar Img Quadrada
+            </label>
+            <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+            <input type="checkbox" id="ups-ps-confirmar-cores" style="margin:0;"> Confirmar cores?
+            </label>
+            </div>
+            </div>
 
 <div style="display:flex;gap:8px;justify-content:flex-end;border-top:1px solid #eee;padding-top:12px;">
 <button id="ups-pc" style="padding:8px 20px;border:1px solid #ccc;border-radius:4px;cursor:pointer;font-size:13px;background:white;">Cancelar</button>
@@ -840,6 +858,8 @@ function abrirDialogPrecos() {
         atualizarTagsSubPrecos();
       }
       document.getElementById('ups-ps-sku').checked = !!(dados.sku || dados.gerarSku);
+      document.getElementById('ups-ps-crop').checked = !!dados.crop;
+      if (dados.confirmarCores !== undefined) document.getElementById('ups-ps-confirmar-cores').checked = !!dados.confirmarCores;
     });
   }
 
@@ -903,6 +923,8 @@ function abrirDialogPrecos() {
         pacote: document.getElementById('ups-epkg').value.trim()
       },
       sku: document.getElementById('ups-ps-sku').checked,
+      crop: document.getElementById('ups-ps-crop').checked,
+      confirmarCores: document.getElementById('ups-ps-confirmar-cores').checked,
       ativar: document.getElementById('ups-ativar-macro').checked
     };
     chrome.storage.local.get(["biblioteca", "bibliotecaMacros"], (res) => {
@@ -1012,6 +1034,8 @@ function abrirDialogPrecos() {
         atualizarTagsSubPrecos();
       }
       document.getElementById('ups-ps-sku').checked = !!(savedM.sku || savedM.gerarSku);
+      document.getElementById('ups-ps-crop').checked = !!savedM.crop;
+      if (savedM.confirmarCores !== undefined) document.getElementById('ups-ps-confirmar-cores').checked = !!savedM.confirmarCores;
       document.getElementById('ups-ativar-macro').checked = savedM.ativar !== false;
     }
     if (savedP) {
@@ -1124,6 +1148,8 @@ function abrirDialogPrecos() {
     const epkgVal = document.getElementById('ups-epkg').value.trim();
     const pbVal = document.getElementById('ups-pb').value.trim();
     const skuChecked = document.getElementById('ups-ps-sku').checked;
+    const cropChecked = document.getElementById('ups-ps-crop').checked;
+    const confirmarCoresChecked = document.getElementById('ups-ps-confirmar-cores').checked;
 
     overlay.remove();
     await sleep(100);
@@ -1135,8 +1161,25 @@ function abrirDialogPrecos() {
     if (hasEmMassa) steps.push('emMassa');
     if (precoAtivo && pbVal) steps.push('preco');
     if (macroAtivo && skuChecked) steps.push('sku');
+    if (macroAtivo && cropChecked) steps.push('crop');
+    if (macroAtivo && confirmarCoresChecked && lerCoresEspecificacaoPrincipal().length > 0) steps.push('confirmarCores');
 
     let stepIdx = 0;
+
+    // 0. Confirmar Cores (before sub)
+    if (steps.includes('confirmarCores')) {
+      stepIdx++;
+      criarOverlayProgresso();
+      atualizarOverlayProgresso({ message: 'Aguardando confirmação de cores...', step: stepIdx, total: steps.length });
+      const coresPagina = lerCoresEspecificacaoPrincipal();
+      if (coresPagina.length > 0) {
+        const result = await mostrarDialogoConfirmarCores(coresPagina);
+        if (result.confirmou) {
+          await aplicarCoresNaPagina(result.cores);
+          await sleep(500);
+        }
+      }
+    }
 
     // 1. Subespecificação (must be first)
     if (steps.includes('sub')) {
@@ -1216,7 +1259,21 @@ function abrirDialogPrecos() {
             await preencherGuiaTamanhos(dados);
           }
         }
-      } catch (e) { /* silent */ }
+        } catch (e) { /* silent */ }
+
+      // Crop (after guia)
+      if (steps.includes('crop')) {
+        stepIdx++;
+        criarOverlayProgresso();
+        atualizarOverlayProgresso({ message: 'Recortando imagem quadrada...', step: stepIdx, total: steps.length });
+        try {
+          await recortarImagemQuadradaEmMassa();
+        } catch (e) {
+          mostrarErroOverlayProgresso('Erro no recorte: ' + e.message);
+          setTimeout(() => removerOverlayProgresso(), 3000);
+          return;
+        }
+      }
 
       atualizarOverlayProgresso({ message: 'Concluído em ' + ((Date.now() - startTime) / 1000).toFixed(1) + 's', step: Math.max(stepIdx, 1), total: Math.max(stepIdx, 1) });
       await sleep(1200);
@@ -1237,6 +1294,8 @@ function abrirDialogPrecos() {
             pacote: epkgVal
           },
           sku: skuChecked,
+          crop: cropChecked,
+          confirmarCores: confirmarCoresChecked,
           ativar: macroAtivo
         }
       });
@@ -2087,8 +2146,9 @@ function abrirDialogMedidas() {
     if (nomes.length === 0) {
       body.innerHTML = '<div style="color:#999;padding:16px;text-align:center;">Nenhuma tabela salva. Crie uma na aba Medidas primeiro.</div>';
       document.getElementById('ups-mk').style.display = 'none';
-      return;
     }
+
+    if (nomes.length > 0) {
 
     selectedTable = ativa && bib[ativa] ? ativa : nomes[0];
 
@@ -2168,6 +2228,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     }
     select.onchange = atualizarDesc;
     atualizarDesc();
+    }
 
     const tagInput = document.getElementById('ups-ma-sub-input');
     if (tagInput) {
@@ -2547,9 +2608,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
           multiMedidasConfig: res.multiMedidasConfig || {}
         };
-        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        chrome.downloads.download({ url, filename: `upseller-backup_${dia}-${mes}-${ano}.json`, saveAs: true });
+        chrome.runtime.sendMessage({ action: 'export-data', data: exportData, filename: `upseller-backup_${dia}-${mes}-${ano}.json` });
       });
     };
 
@@ -3048,7 +3107,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
           overrides,
           atributosAtivo,
           atrPreset,
-          confirmarCores: confirmarCoresAtivo,
+          confirmarCores: macroAtivo && confirmarCoresAtivo,
           macro: temMacro ? {
             sub: document.getElementById('ups-ma-sub').value.trim(),
             emMassa: {
@@ -3073,7 +3132,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
     let totalSteps = 0;
     if (needsRemap) totalSteps++;
     if (temSub && macroAtivo) totalSteps++;
-    if (confirmarCoresAtivo && lerCoresEspecificacaoPrincipal().length > 0) totalSteps++;
+    if (confirmarCoresAtivo && macroAtivo && lerCoresEspecificacaoPrincipal().length > 0) totalSteps++;
     if (temEmMassa && macroAtivo) totalSteps++;
     if (aplicarPreco) totalSteps++;
     if (medidasAtivo) totalSteps++; // desc
@@ -3105,7 +3164,7 @@ ${nomes.map(n => `<option value="${n}"${n === selectedTable ? ' selected' : ''}>
       chrome.storage.local.get(["biblioteca", "bibliotecaAtributos"], async (res) => {
         try {
           // 1.5 — Confirmar Cores (antes da Subespecificação)
-          if (confirmarCoresAtivo) {
+          if (confirmarCoresAtivo && macroAtivo) {
             const coresPagina = lerCoresEspecificacaoPrincipal();
             if (coresPagina.length > 0) {
               nextStep('Aguardando confirmação de cores...');
@@ -3401,20 +3460,18 @@ function removerOverlayMulti() {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'start-remap-full') {
+    criarOverlayProgresso();
+    let step = 0;
     runAutomation((p) => {
+      step++;
+      atualizarOverlayProgresso({ message: p.message, step, total: p.total || step });
       chrome.runtime.sendMessage({ action: 'progress', ...p });
-      const overlayPct = p.step && p.total ? Math.round((p.step / p.total) * 100) : 0;
-      atualizarOverlayMulti({ message: p.message, pct: overlayPct });
     }).then(() => {
+      removerOverlayProgresso();
       chrome.runtime.sendMessage({ action: 'completed' });
     }).catch((err) => {
+      mostrarErroOverlayProgresso('Erro: ' + err.message);
       chrome.runtime.sendMessage({ action: 'error', message: err.message });
-      const stepEl = document.getElementById('umo-step');
-      const barEl = document.getElementById('umo-bar');
-      const pctEl = document.getElementById('umo-pct');
-      if (stepEl) { stepEl.textContent = 'Erro: ' + err.message; stepEl.style.color = '#ff6b6b'; }
-      if (barEl) barEl.style.background = '#ff6b6b';
-      if (pctEl) pctEl.textContent = 'Erro';
     });
     sendResponse({ status: 'started' });
     return true;
@@ -3811,8 +3868,16 @@ function injetarBotaoImagemMassa() {
   op2.addEventListener('mouseleave', () => op2.style.background = '');
   op2.addEventListener('click', (e) => { e.stopPropagation(); fecharDropdown(); perguntarLinkTabela(); });
 
+  const op3 = document.createElement('div');
+  op3.style.cssText = 'padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;';
+  op3.innerHTML = '<span>🖼</span> Recortar Img Quadrada';
+  op3.addEventListener('mouseenter', () => op3.style.background = '#f5f5f5');
+  op3.addEventListener('mouseleave', () => op3.style.background = '');
+  op3.addEventListener('click', async (e) => { e.stopPropagation(); fecharDropdown(); try { await recortarImagemQuadradaEmMassa(); mostrarFeedback('Imagens recortadas com sucesso!', '#28a745'); } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); } });
+
   menu.appendChild(op1);
   menu.appendChild(op2);
+  menu.appendChild(op3);
   document.body.appendChild(menu);
 
   function abrirDropdown() {

@@ -465,6 +465,12 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       });
     });
   }
+
+  if (msg.action === 'export-data') {
+    const blob = new Blob([JSON.stringify(msg.data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    chrome.downloads.download({ url, filename: msg.filename, saveAs: true });
+  }
 }); } catch (e) {}
 
 function startKeepAlive() {
