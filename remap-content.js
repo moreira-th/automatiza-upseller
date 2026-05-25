@@ -4730,7 +4730,7 @@ function injetarBotaoOverlay() {
   const btn = document.createElement('div');
   btn.id = 'ups-floating-btn';
   btn.style.cssText = 'position:fixed;z-index:999999999;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#4078f2;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);';
-  btn.innerHTML = `<div style="width:100%;height:100%;border-radius:50%;background:url('https://img.magnific.com/vetores-premium/robo-bonito-dos-desenhos-animados-vector-icon-ilustracao-conceito-superior-do-icone-do-robo-de-techology-isolado-vetor-superior-estilo-cartoon-plana_138676-1474.jpg?w=1060') center center/cover no-repeat;"></div>`;
+  btn.innerHTML = `<svg viewBox="0 0 24 24" fill="white" style="width:24px;height:24px;"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1.07A7 7 0 0 1 13 22h-2a7 7 0 0 1-6.93-3H3a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2zm-2 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm4 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>`;
   btn.title = 'Automatiza Shein - UpSeller';
   btn.addEventListener('click', abrirDialogMedidas);
   function posicionarTop() {
