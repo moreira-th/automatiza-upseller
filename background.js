@@ -432,6 +432,7 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               });
               concluidas++;
             }
+            vxeVm.$forceUpdate();
             upsShowDialog('Imagem adicionada em ' + tableData.length + ' cores');
             document.body.dispatchEvent(new CustomEvent('ups-upload-done', { detail: { url: cdnUrl, source: source } }));
           } catch(e) {
@@ -552,9 +553,19 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   }
 
   if (msg.action === 'export-data') {
-    const blob = new Blob([JSON.stringify(msg.data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    chrome.downloads.download({ url, filename: msg.filename, saveAs: true });
+    try {
+      const jsonStr = JSON.stringify(msg.data, null, 2);
+      // Usar FileReader + data URL ao invés de URL.createObjectURL
+      const reader = new FileReader();
+      reader.onload = function() {
+        chrome.downloads.download({ url: reader.result, filename: msg.filename, saveAs: true }, (id) => {
+          if (chrome.runtime.lastError) console.error('[BG] download error:', chrome.runtime.lastError.message);
+          else console.log('[BG] download id:', id);
+        });
+      };
+      reader.onerror = function(e) { console.error('[BG] FileReader error:', e); };
+      reader.readAsDataURL(new Blob([jsonStr], { type: 'application/json' }));
+    } catch(e) { console.error('[BG] export error:', e); }
   }
 }); } catch (e) {}
 

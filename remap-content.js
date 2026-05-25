@@ -243,7 +243,19 @@ async function stepMapearVariantes() {
               }
             }
 
-            // If not found, select "Valor de Variante Personalizada"
+            // If no exact match, try normalized match (ignore case, accents, punctuation)
+            if (!found) {
+              const normName = normalizarCor(name);
+              for (const item of items) {
+                if (normalizarCor(item.textContent) === normName) {
+                  nativeClick(item);
+                  found = true;
+                  break;
+                }
+              }
+            }
+
+            // If still not found, select "Valor de Variante Personalizada"
             if (!found) {
               for (const item of items) {
                 if (item.textContent.trim() === 'Valor de Variante Personalizada') {
@@ -294,7 +306,6 @@ async function stepSalvar() {
   for (const btn of buttons) {
     if (btn.textContent.trim() === 'Salvar') {
       nativeClick(btn);
-      await esperarBotao('OK', 10000);
       return;
     }
   }
@@ -305,14 +316,12 @@ async function stepOK() {
   const btn = await esperarBotao('OK', 10000);
   if (!btn) return;
   nativeClick(btn);
-  await esperarBotaoDesaparecer('OK', 8000 + 1000 * _personalizadasAdicionadas);
 }
 
 async function stepFechar() {
   const btn = await esperarBotao('Fechar', 10000);
   if (!btn) return;
   nativeClick(btn);
-  await esperarBotaoDesaparecer('Fechar', 8000);
 }
 
 async function stepAbrirRemapeamento() {
@@ -366,16 +375,21 @@ async function runAutomation(sendProgress) {
   }
   steps.push(
     { name: 'Confirmar tipo (Passo 1)', fn: stepConfirmar },
-    { name: 'Confirmar criação de variantes', fn: stepConfirmarCriacao },
     { name: 'Mapear variantes', fn: stepMapearVariantes },
     { name: 'Salvar remapeamento', fn: stepSalvar },
-    { name: 'Confirmar OK', fn: stepOK },
-    { name: 'Fechar diálogo de sucesso', fn: stepFechar },
   );
   for (let i = 0; i < steps.length; i++) {
+    // Adiciona OK e Fechar dinamicamente se houver variantes personalizadas
+    if (steps[i].name === 'Salvar remapeamento' && _personalizadasAdicionadas > 0) {
+      steps.push(
+        { name: 'Confirmar OK', fn: stepOK },
+        { name: 'Fechar diálogo de sucesso', fn: stepFechar },
+      );
+    }
     sendProgress({ step: i + 1, total: steps.length, message: steps[i].name });
     await steps[i].fn();
   }
+  sendProgress({ step: steps.length, total: steps.length, message: 'Remapeamento concluído' });
 }
 
 async function preencherGuiaTamanhos(dados) {
@@ -1360,7 +1374,7 @@ function abrirDialogPrecos() {
       if (coresPagina.length > 0) {
         const result = await mostrarDialogoConfirmarCores(coresPagina);
         if (result.confirmou) {
-          await aplicarCoresNaPagina(result.cores);
+              aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
           await sleep(500);
         }
       }
@@ -3059,7 +3073,9 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     document.addEventListener('click', fecharMenu);
 
     document.getElementById('ups-op-export-action').onclick = () => {
+      console.log('[UPS] Export clicked');
       chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "bibliotecaPresetsOverlay", "ultimosPrecos", "ultimosMacros", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
+        console.log('[UPS] Storage read done, sending export message');
         const hoje = new Date();
         const dia = String(hoje.getDate()).padStart(2, '0');
         const mes = String(hoje.getMonth() + 1).padStart(2, '0');
@@ -3076,7 +3092,9 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
           multiMedidasConfig: res.multiMedidasConfig || {}
         };
-        chrome.runtime.sendMessage({ action: 'export-data', data: exportData, filename: `upseller-backup_${dia}-${mes}-${ano}.json` });
+        chrome.runtime.sendMessage({ action: 'export-data', data: exportData, filename: `upseller-backup_${dia}-${mes}-${ano}.json` }, (resp) => {
+          console.log('[UPS] Message response:', resp);
+        });
       });
     };
 
@@ -3473,7 +3491,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
               nextStep('Aguardando confirmação de cores...');
               const result = await mostrarDialogoConfirmarCores(coresPagina);
               if (result.confirmou) {
-                await aplicarCoresNaPagina(result.cores);
+          aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
                 await sleep(500);
               }
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
@@ -3692,7 +3710,7 @@ function mostrarDialogoConfirmarCores(coresAtuais) {
   <div style="font-size:16px;font-weight:600;margin-bottom:4px;">🎨 Confirmar Cores</div>
   <div style="font-size:13px;color:#555;margin-bottom:12px;">Selecione as cores que deseja manter marcadas na Especificação Principal:</div>
   <div id="ups-cor-lista" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:260px;overflow-y:auto;margin-bottom:12px;padding:4px 0;">
-    ${coresAtuais.map((c, i) => `
+    ${coresAtuais.sort((a, b) => (a.nome || '').toLowerCase().localeCompare((b.nome || '').toLowerCase())).map((c, i) => `
       <label style="display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:${c.checked ? '#e8f5e9' : '#fafafa'};" data-idx="${i}">
         <input type="checkbox" class="ups-cor-chk" ${c.checked ? 'checked' : ''} style="margin:0;" data-idx="${i}">
         <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${c.nome}</span>
@@ -3966,7 +3984,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       step++;
       atualizarOverlayProgresso({ message: p.message, step, total: p.total || step });
       chrome.runtime.sendMessage({ action: 'progress', ...p });
-    }).then(() => {
+    }).then(async () => {
+      atualizarOverlayProgresso({ message: '✓ Remapeamento concluído', step: step, total: step });
+      await sleep(500);
       removerOverlayProgresso();
       chrome.runtime.sendMessage({ action: 'completed' });
     }).catch((err) => {
@@ -4058,9 +4078,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (precisaRemapear()) {
           try {
             stepDone('Remapeando...');
-            await runAutomation((p) => {
-              chrome.runtime.sendMessage({ action: 'progress', message: 'Remapeando: ' + p.message, step: progressStep, total: totalSteps });
-            });
+            await runAutomation(() => {});
           } catch (e) { /* silent */ }
         }
         // Confirmar Cores (antes da Subespecificação)
@@ -4070,7 +4088,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             stepDone('Aguardando confirmação de cores...');
             const result = await mostrarDialogoConfirmarCores(coresPagina);
             if (result.confirmou) {
-              await aplicarCoresNaPagina(result.cores);
+                aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
               await sleep(500);
             }
           }
@@ -4548,22 +4566,23 @@ function injetarBotaoImagemMassa() {
 
   const op3 = document.createElement('div');
   op3.style.cssText = 'padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;';
-  op3.innerHTML = '<span>🖼</span> Ajustar Imagens';
+  op3.innerHTML = '<span>🖼</span> Ajustar Imagens (cores + recort.)';
   op3.addEventListener('mouseenter', () => op3.style.background = '#f5f5f5');
   op3.addEventListener('mouseleave', () => op3.style.background = '');
-  op3.addEventListener('click', async (e) => { e.stopPropagation(); fecharDropdown(); try { await recortarImagemQuadradaEmMassa(); mostrarFeedback('Imagens recortadas com sucesso!', '#28a745'); } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); } });
-
-  const op4 = document.createElement('div');
-  op4.style.cssText = 'padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;';
-  op4.innerHTML = '<span>🎨</span> Cores por Detalhe';
-  op4.addEventListener('mouseenter', () => op4.style.background = '#f5f5f5');
-  op4.addEventListener('mouseleave', () => op4.style.background = '');
-  op4.addEventListener('click', async (e) => { e.stopPropagation(); fecharDropdown(); await upsCopiarCoresDetalhe(); });
+  op3.addEventListener('click', async (e) => {
+    e.stopPropagation(); fecharDropdown();
+    try {
+      mostrarFeedback('1/2: Copiando cores...', '#4078f2');
+      await upsCopiarCoresDetalheAsync();
+      mostrarFeedback('2/2: Recortando imagens...', '#4078f2');
+      await recortarImagemQuadradaEmMassa();
+      mostrarFeedback('Imagens ajustadas com sucesso!', '#28a745');
+    } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); }
+  });
 
   menu.appendChild(op1);
   menu.appendChild(op2);
   menu.appendChild(op3);
-  menu.appendChild(op4);
   document.body.appendChild(menu);
 
   function abrirDropdown() {
@@ -4762,8 +4781,116 @@ observer.observe(document.body, { childList: true, subtree: true });
 // ===== SUPORTE A DRAFTS (Editar Atributos em Massa) =====
 var __upsPresetsCache = null;
 
+function clickInMain(el, cb) {
+  if (!el) return;
+  var uid = '_ups_' + Date.now();
+  el.setAttribute('data-ups', uid);
+  chrome.runtime.sendMessage({ type: 'ups-hover-main', selector: '[data-ups="' + uid + '"]' }, function() {
+    void chrome.runtime.lastError; // ignore port closed
+    setTimeout(function() {
+      chrome.runtime.sendMessage({ type: 'ups-click-main', selector: '[data-ups="' + uid + '"]' }, function() {
+        void chrome.runtime.lastError; // ignore port closed
+        el.removeAttribute('data-ups');
+        if (cb) cb();
+      });
+    }, 150);
+  });
+}
+
+function showUpsNotification(msg) {
+  var existing = document.getElementById('ups-notification');
+  if (existing) existing.remove();
+  var el = document.createElement('div');
+  el.id = 'ups-notification';
+  el.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:9999999;padding:8px 20px;border-radius:6px;background:#fff;border:1px solid #e8e8e8;box-shadow:0 4px 16px rgba(0,0,0,0.15);font-size:13px;color:#333;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;align-items:center;gap:8px;';
+  el.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#faad14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' + msg;
+  document.body.appendChild(el);
+  setTimeout(function() { if (el.parentNode) el.remove(); }, 3000);
+}
+
 if (window.location.pathname.includes('/shein/drafts')) {
+  setTimeout(monitorToolbarDrafts, 2000);
   setTimeout(monitorModalEditarAtributos, 2000);
+}
+
+function monitorToolbarDrafts() {
+  setInterval(() => {
+    const container = document.querySelector('.list_btn');
+    if (!container) return;
+    if (document.getElementById('ups-atr-massa-toolbar-btn')) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'ups-atr-massa-toolbar-btn';
+    btn.type = 'button';
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;pointer-events:none;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Atributos em Massa';
+    btn.title = 'Editar Atributos em Massa nos produtos selecionados';
+    btn.style.cssText = 'display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:4px;background:transparent;color:#4078f2;border:1px solid #4078f2;cursor:pointer;font-size:12px;font-weight:400;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;transition:all .2s;line-height:1.4;margin-left:8px;z-index:999;pointer-events:auto;';
+    btn.addEventListener('mouseenter', () => {
+      btn.style.background = 'rgba(64,120,242,0.05)';
+      btn.style.borderColor = '#4078f2';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.background = 'transparent';
+      btn.style.borderColor = '#4078f2';
+    });
+
+    container.appendChild(btn);
+
+    let running = false;
+    btn.addEventListener('click', () => {
+      if (running) return;
+      const selectedCount = parseInt(document.querySelector('.checked')?.textContent || '0');
+      if (selectedCount === 0) {
+        showUpsNotification('Selecione pelo menos um produto para usar Atributos em Massa.');
+        return;
+      }
+      running = true;
+      btn.style.opacity = '0.6';
+      btn.style.cursor = 'default';
+      // 1) Open "Ações em Massa" dropdown via MAIN world click
+      const acoesLink = Array.from(document.querySelectorAll('.list_btn .ant-dropdown-trigger')).find(el => el.textContent.trim().includes('Ações'));
+      if (!acoesLink) {
+        running = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+        return;
+      }
+      const origHref = acoesLink.getAttribute('href');
+      if (origHref && origHref.startsWith('javascript:')) {
+        acoesLink.removeAttribute('href');
+      }
+      clickInMain(acoesLink, function() {
+        // 2) Find menu item with retry, then click "Editar Atributos"
+        let attempts = 0;
+        const findAndClick = () => {
+          const menuItem = Array.from(document.querySelectorAll('.ant-dropdown-menu-item')).find(el => el.textContent.trim() === 'Editar Atributos');
+          if (menuItem) {
+            clickInMain(menuItem, function() {
+              // 3) Wait for modal to open, then show our overlay
+              setTimeout(() => {
+                const modal = document.querySelector('.ant-modal-root.my_modal.my_tab_modal');
+                if (modal) {
+                  setTimeout(function() { abrirDialogAtributosDrafts(); }, 500);
+                }
+                running = false;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+              }, 2000);
+            });
+          } else if (attempts < 15) {
+            attempts++;
+            setTimeout(findAndClick, 400);
+          } else {
+            running = false;
+            btn.style.opacity = '1';
+            btn.style.cursor = 'pointer';
+            showUpsNotification('Não foi possível abrir o menu. Tente novamente.');
+          }
+        };
+        setTimeout(findAndClick, 200);
+      });
+    });
+  }, 1500);
 }
 
 function monitorModalEditarAtributos() {
@@ -4785,9 +4912,17 @@ function injetarBotaoAtributosDrafts(modal) {
   if (!content) return;
   const btn = document.createElement('div');
   btn.id = 'ups-drafts-atr-btn';
-  btn.textContent = '⚡ Atributos em Massa';
-  btn.title = 'Aplicar Presets de Atributos';
-  btn.style.cssText = 'position:absolute;top:8px;right:48px;z-index:999999;padding:4px 12px;border-radius:14px;background:#4078f2;color:white;border:none;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:4px;box-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1.4;';
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Atributos em Massa';
+  btn.title = 'Aplicar Presets de Atributos em todas as categorias';
+  btn.style.cssText = 'position:absolute;top:16px;right:48px;z-index:999999;display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:4px;background:transparent;color:#4078f2;border:1px solid #4078f2;cursor:pointer;font-size:12px;font-weight:400;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;transition:all .2s;line-height:1.4;';
+  btn.addEventListener('mouseenter', () => {
+    btn.style.background = 'rgba(64,120,242,0.05)';
+    btn.style.borderColor = '#4078f2';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.background = 'transparent';
+    btn.style.borderColor = '#4078f2';
+  });
   const header = content.querySelector('.ant-modal-header');
   if (header) {
     header.style.position = 'relative';
