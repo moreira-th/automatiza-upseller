@@ -1,0 +1,87 @@
+{
+  "plano": "refatoracao-dead-code",
+  "versao": "1.6.7",
+  "data": "2026-05-24",
+  "status": "pendente",
+  "tarefas": [
+    {
+      "id": 1,
+      "severidade": "alta",
+      "titulo": "Remover upsHoverElement + handler ups-hover-main",
+      "subtarefas": [
+        {
+          "id": "1a",
+          "descricao": "remap-content.js: Remover função upsHoverElement (linhas 4859-4864)",
+          "codigo_backup": "function upsHoverElement(el) {\n  try {\n    var id = '_ups_hv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);\n    el.setAttribute('data-ups-h', id);\n    chrome.runtime.sendMessage({ type: 'ups-hover-main', selector: '[data-ups-h=\"' + id + '\"]' });\n  } catch(e) { console.error('ups:hover error', e); }\n}"
+        },
+        {
+          "id": "1b",
+          "descricao": "background.js: Remover handler ups-hover-main (linhas 485-503, 19 linhas)",
+          "codigo_backup": "if (msg.type === 'ups-hover-main') {\n  const tabId = sender.tab ? sender.tab.id : null;\n  if (tabId && msg.selector) {\n    chrome.scripting.executeScript({\n      target: { tabId: tabId },\n      world: 'MAIN',\n      func: (sel) => {\n        var el = document.querySelector(sel);\n        if (el) {\n          el.removeAttribute('data-ups-h');\n          el.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true, cancelable: true }));\n          el.dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));\n        }\n      },\n      args: [msg.selector]\n    }).catch(function(){ });\n  }\n  return false;\n}"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "severidade": "alta",
+      "titulo": "Remover handler fill-size-guide do popup (ALT+Z in-popup sem receiver)",
+      "subtarefas": [
+        {
+          "id": "2a",
+          "descricao": "popup.js: Remover btnPreencher.onclick (linhas 103-119) e keyboard listener ALT+Z (linhas 122-125)",
+          "nota": "O ALT+Z in-popup nunca funcionou pois remap-content.js não tem handler para 'fill-size-guide'. O atalho global Alt+Z do manifest.json NÃO é afetado."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "severidade": "media",
+      "titulo": "Remover segunda chamada redundante de preencherListaPresets",
+      "subtarefas": [
+        {
+          "id": "3a",
+          "descricao": "remap-content.js: Remover preencherListaPresets() redundante na linha ~2614"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "severidade": "media",
+      "titulo": "Corrigir memory leak de fecharMenu",
+      "subtarefas": [
+        {
+          "id": "4a",
+          "descricao": "remap-content.js linhas 2804-2805: Mudar removeEventListener/addEventListener para pattern correto (salvar referência e reusar)",
+          "abordagem": "Extrair fecharMenu para escopo superior ou usar uma flag para evitar múltiplos listeners"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "severidade": "baixa",
+      "titulo": "Remover logs de debug verbosos em upsProcessarCategoriaPopup",
+      "subtarefas": [
+        {
+          "id": "5a",
+          "descricao": "remap-content.js linhas 4670-4808: Remover 18 console.log de debug"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "severidade": "baixa",
+      "titulo": "Extrair scrollStep/maxScroll para helper compartilhado",
+      "subtarefas": [
+        {
+          "id": "6a",
+          "descricao": "Criar helpers getScrollStep(el) e getMaxScroll(el) e usar em setPrecosCompletos e setColunaEmMassa"
+        }
+      ]
+    }
+  ],
+  "itens_gitignored": [
+    "47 arquivos .yml (Playwright snapshots, ~45000 linhas)",
+    "14 arquivos .md/.txt (accessibility trees, ~15000 linhas)",
+    "upseller-remap-extension/ (extensão legada, 456 linhas)"
+  ]
+}

@@ -255,7 +255,7 @@ btnSingle.addEventListener('click', async () => {
   stepCount.textContent = '';
   progressFill.style.width = '0%';
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab || !tab.url.includes('app.upseller.com/pt/products/shein/edit/')) {
+  if (!tab || (!tab.url.includes('app.upseller.com/pt/products/shein/edit/') && !tab.url.includes('app.upseller.com/pt/products/shein/drafts'))) {
     setError('Abra um produto Shein em edição primeiro');
     return;
   }

@@ -1,5 +1,78 @@
+/*
+ * UpSeller Moreira — v1.4.0
+ * =========================
+ * Automações para UpSeller:
+ *   - Remapeamento de Variantes
+ *   - Tabela de Medidas + Descrições
+ *   - Preços Especiais em Massa
+ *   - Recorte de Imagem Quadrada
+ *   - Multi-Aba
+ *   - Presets de Configuração (Overlay)
+ * Feito por Thales Moreira.
+ */
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function esperarBotao(texto, timeoutMs) {
+  timeoutMs = timeoutMs || 8000;
+  var start = Date.now();
+  return new Promise(function(resolve) {
+    function check() {
+      var btn = findButtonByText(texto);
+      if (btn && !btn.disabled) { resolve(btn); return; }
+      if (Date.now() - start > timeoutMs) { resolve(null); return; }
+      setTimeout(check, 200);
+    }
+    check();
+  });
+}
+
+function esperarBotaoDesaparecer(texto, timeoutMs) {
+  timeoutMs = timeoutMs || 8000;
+  var start = Date.now();
+  return new Promise(function(resolve) {
+    function check() {
+      var btn = findButtonByText(texto);
+      if (!btn) { resolve(true); return; }
+      if (Date.now() - start > timeoutMs) { resolve(false); return; }
+      setTimeout(check, 200);
+    }
+    check();
+  });
+}
+
+function esperarElemento(seletor, timeoutMs) {
+  timeoutMs = timeoutMs || 8000;
+  var start = Date.now();
+  return new Promise(function(resolve) {
+    function check() {
+      var el = document.querySelector(seletor);
+      if (el && el.offsetHeight > 0) { resolve(el); return; }
+      if (Date.now() - start > timeoutMs) { resolve(null); return; }
+      setTimeout(check, 200);
+    }
+    check();
+  });
+}
+
+function esperarBotaoContem(texto, timeoutMs) {
+  timeoutMs = timeoutMs || 8000;
+  var start = Date.now();
+  return new Promise(function(resolve) {
+    function check() {
+      var buttons = document.querySelectorAll('button');
+      for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i].textContent.trim().includes(texto) && !buttons[i].disabled) {
+          resolve(buttons[i]); return;
+        }
+      }
+      if (Date.now() - start > timeoutMs) { resolve(null); return; }
+      setTimeout(check, 200);
+    }
+    check();
+  });
 }
 
 function nativeClick(el) {
@@ -49,7 +122,6 @@ async function stepSelecionarTamanho() {
   const dialog = findMainDialog();
   if (!dialog) throw new Error('Diálogo não encontrado para selecionar Tamanho');
 
-  // Find the row where the first cell text is "Tamanho"
   const rows = dialog.querySelectorAll('tr');
   let tamanhoRow = null;
   for (const row of rows) {
@@ -59,23 +131,20 @@ async function stepSelecionarTamanho() {
       break;
     }
   }
-  if (!tamanhoRow) return; // já selecionado ou não encontrado
+  if (!tamanhoRow) return;
 
   const selectWrapper = tamanhoRow.querySelector('.ant-select');
   if (!selectWrapper) return;
 
-  // Abrir dropdown
   selectWrapper.click();
-  await sleep(500);
-
-  const dropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+  const dropdown = await esperarElemento('.ant-select-dropdown:not(.ant-select-dropdown-hidden)', 5000);
   if (!dropdown) return;
 
   const option = Array.from(dropdown.querySelectorAll('li')).find(li => li.textContent.trim() === 'Tamanho');
   if (!option) return;
 
   option.click();
-  await sleep(500);
+  await sleep(300);
 }
 
 async function stepConfirmar() {
@@ -86,11 +155,10 @@ async function stepConfirmar() {
 }
 
 async function stepConfirmarCriacao() {
-  const btn = findButtonByText('OK');
+  const btn = await esperarBotao('OK', 8000);
   if (!btn) return;
-  await sleep(1000);
   nativeClick(btn);
-  await sleep(1000);
+  await esperarBotaoDesaparecer('OK', 8000);
 }
 
 async function stepMapearVariantes() {
@@ -120,7 +188,7 @@ async function stepMapearVariantes() {
       }
     }
     if (variantRows.length > 0) break;
-    await sleep(1000);
+    await sleep(600);
   }
 
   if (variantRows.length === 0) {
@@ -144,18 +212,22 @@ async function stepMapearVariantes() {
 
             // Open dropdown
             nativeClick(selectEl);
-            await sleep(300);
+            await sleep(200);
 
-            const dropdowns = document.querySelectorAll('.ant-select-dropdown');
             let visibleDropdown = null;
-            for (const dd of dropdowns) {
-              if (!dd.classList.contains('ant-select-dropdown-hidden') && dd.style.display !== 'none') {
-                visibleDropdown = dd;
-                break;
+            for (let ddAttempt = 0; ddAttempt < 10; ddAttempt++) {
+              const dropdowns = document.querySelectorAll('.ant-select-dropdown');
+              for (const dd of dropdowns) {
+                if (!dd.classList.contains('ant-select-dropdown-hidden') && dd.style.display !== 'none') {
+                  visibleDropdown = dd;
+                  break;
+                }
               }
+              if (visibleDropdown) break;
+              await sleep(200);
             }
             if (!visibleDropdown) {
-              await sleep(500);
+              await sleep(300);
               continue;
             }
 
@@ -222,7 +294,7 @@ async function stepSalvar() {
   for (const btn of buttons) {
     if (btn.textContent.trim() === 'Salvar') {
       nativeClick(btn);
-      await sleep(2000);
+      await esperarBotao('OK', 10000);
       return;
     }
   }
@@ -230,34 +302,26 @@ async function stepSalvar() {
 }
 
 async function stepOK() {
-  const btn = findButtonByText('OK');
+  const btn = await esperarBotao('OK', 10000);
   if (!btn) return;
-  await sleep(2000);
   nativeClick(btn);
-  await sleep(1500 + 1000 * _personalizadasAdicionadas);
+  await esperarBotaoDesaparecer('OK', 8000 + 1000 * _personalizadasAdicionadas);
 }
 
 async function stepFechar() {
-  const btn = findButtonByText('Fechar');
+  const btn = await esperarBotao('Fechar', 10000);
   if (!btn) return;
-  await sleep(2000);
   nativeClick(btn);
-  await sleep(1000);
+  await esperarBotaoDesaparecer('Fechar', 8000);
 }
 
 async function stepAbrirRemapeamento() {
   const remapLink = findTextContainer('Remapeamento de Variante');
   if (!remapLink) throw new Error('Link "Remapeamento de Variante" não encontrado');
   nativeClick(remapLink);
-  // Wait for dialog to open
-  for (let attempt = 0; attempt < 15; attempt++) {
-    if (findMainDialog() || document.querySelector('.ant-modal-content')) {
-      await sleep(1000);
-      return;
-    }
-    await sleep(1000);
-  }
-  throw new Error('Diálogo de remapeamento não abriu após clicar no link');
+  const dialog = await esperarElemento('.ant-modal-content', 15000);
+  if (!dialog) throw new Error('Diálogo de remapeamento não abriu após clicar no link');
+  await sleep(500);
 }
 
 function temSubespecificacao() {
@@ -727,9 +791,11 @@ function abrirDialogPrecos() {
 <input id="ups-pb" type="text" placeholder="Ex: 59,90" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:14px;box-sizing:border-box;margin-bottom:12px;">
 
 <label style="font-size:13px;font-weight:600;display:block;margin-bottom:4px;">Sobrescrever por Tamanho</label>
-<div style="display:flex;gap:4px;margin-bottom:8px;">
-<select id="ups-pt" style="flex:1;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:13px;">
-<option value="">Tamanho...</option>${tamanhos.map(t => `<option value="${t}">${t}</option>`).join('')}</select>
+<div style="position:relative;display:flex;gap:4px;margin-bottom:8px;">
+<div id="ups-pt-wrapper" style="flex:1;position:relative;">
+<input id="ups-pt" type="text" placeholder="Tamanho..." readonly style="width:100%;padding:6px 28px 6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;cursor:pointer;box-sizing:border-box;background:white url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 fill=%22none%22 stroke=%22%23999%22 stroke-width=%221.5%22/></svg>') no-repeat right 8px center;">
+<div id="ups-pt-dd" style="display:none;position:fixed;background:white;border:1px solid #ccc;border-radius:4px;max-height:180px;overflow-y:auto;z-index:99999999;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
+</div>
 <input id="ups-pv" type="text" placeholder="R$" style="width:70px;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:13px;">
 <button id="ups-pa" style="padding:6px 14px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:14px;">+</button>
 </div>
@@ -783,7 +849,7 @@ function abrirDialogPrecos() {
             <input type="checkbox" id="ups-ps-sku" style="margin:0;"> Gerar SKU
             </label>
             <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
-            <input type="checkbox" id="ups-ps-crop" style="margin:0;"> Recortar Img Quadrada
+            <input type="checkbox" id="ups-ps-crop" style="margin:0;"> Ajustar Imagens
             </label>
             <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
             <input type="checkbox" id="ups-ps-confirmar-cores" style="margin:0;"> Confirmar cores?
@@ -804,6 +870,125 @@ function abrirDialogPrecos() {
       overlay.remove();
     }
   });
+
+  // Dropdown customizado de tamanhos
+  function extrairTamanhosDaTabela() {
+    // Ler direto do storage (evita problemas com scroll virtual do VXE)
+    return new Promise((resolve) => {
+      chrome.storage.local.get(["biblioteca", "ultimaSelecionada"], (res) => {
+        const bib = res.biblioteca || {};
+        const sel = res.ultimaSelecionada || '';
+        const dados = bib[sel];
+        if (dados) {
+          const chavesFixas = new Set(['descricao','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote']);
+          const tamanhos = Object.keys(dados).filter(k => !chavesFixas.has(k) && dados[k] && typeof dados[k] === 'object' && (dados[k].b || dados[k].c));
+          console.log('[UPS-prec] Tamanhos do storage:', tamanhos);
+          resolve(tamanhos.sort((a, b) => {
+            const order = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+            const ai = order.indexOf(a), bi = order.indexOf(b);
+            if (ai !== -1 && bi !== -1) return ai - bi;
+            if (ai !== -1) return -1;
+            if (bi !== -1) return 1;
+            return a.localeCompare(b);
+          }));
+          return;
+        }
+        // Fallback: ler do DOM
+        const table = document.querySelector('.vxe-table');
+        console.log('[UPS-prec] Fallback DOM - Tabela:', !!table);
+        if (!table) { resolve([]); return; }
+        const allHeaders = table.querySelectorAll('.vxe-header--column');
+        let tamCol = 'col_3';
+        allHeaders.forEach((cell) => {
+          const txt = cell.textContent.trim().toLowerCase();
+          if (!txt) return;
+          const cls = Array.from(cell.classList).find(c => c.startsWith('col_'));
+          if (!cls) return;
+          if (txt === 'tamanho' || (txt.includes('tamanho') && !txt.includes('pacote')) || ['variação', 'grade'].some(k => txt.includes(k))) tamCol = cls;
+        });
+        const listaTamanhos = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+        const rows = table.querySelectorAll('.vxe-body--row');
+        const encontrados = new Set();
+        rows.forEach(row => {
+          try {
+            const tamEl = row.querySelector('.' + tamCol);
+            if (!tamEl) return;
+            const tamText = tamEl.textContent.trim().toUpperCase();
+            const tam = listaTamanhos.reduce((found, t) => tamText.includes(t) ? (t.length > found.length ? t : found) : found, '');
+            if (tam) encontrados.add(tam);
+          } catch (e) { /* skip */ }
+        });
+        resolve(Array.from(encontrados).sort((a, b) => {
+          const order = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+          return order.indexOf(a) - order.indexOf(b);
+        }));
+      });
+    });
+  }
+
+  async function popularDropdownTamanhos() {
+    const dd = document.getElementById('ups-pt-dd');
+    if (!dd) return;
+    const tamanhosTabela = await extrairTamanhosDaTabela();
+    let html = '';
+    if (tamanhosTabela.length > 0) {
+      tamanhosTabela.forEach(t => {
+        html += `<div data-tam="${t}" style="padding:6px 10px;cursor:pointer;font-size:13px;color:#333;" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">${t}</div>`;
+      });
+      html += '<div style="height:1px;background:#eee;margin:2px 0;"></div>';
+    }
+    html += '<div data-tam="manual" style="padding:6px 10px;cursor:pointer;font-size:12px;color:#4078f2;font-style:italic;" onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">✏️ Digitar manualmente...</div>';
+    dd.innerHTML = html;
+    dd.querySelectorAll('[data-tam]').forEach(item => {
+      item.onclick = (e) => {
+        e.stopPropagation();
+        const val = item.getAttribute('data-tam');
+        const input = document.getElementById('ups-pt');
+        if (val === 'manual') {
+          input.removeAttribute('readonly');
+          input.value = '';
+          input.placeholder = 'Digite o tamanho...';
+          input.style.background = 'white';
+          input.focus();
+        } else {
+          input.setAttribute('readonly', '');
+          input.value = val;
+          input.style.background = 'white';
+        }
+        dd.style.display = 'none';
+      };
+    });
+  }
+
+  const ptInput = document.getElementById('ups-pt');
+  const ptDd = document.getElementById('ups-pt-dd');
+  if (ptInput && ptDd) {
+    ptInput.onclick = async () => {
+      const isOpen = ptDd.style.display === 'block';
+      document.querySelectorAll('#ups-pt-dd').forEach(d => d.style.display = 'none');
+      if (!isOpen) {
+        await popularDropdownTamanhos();
+        const rect = ptInput.getBoundingClientRect();
+        ptDd.style.top = (rect.bottom + 4) + 'px';
+        ptDd.style.left = rect.left + 'px';
+        ptDd.style.width = rect.width + 'px';
+        ptDd.style.display = 'block';
+      }
+    };
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#ups-pt-wrapper')) {
+        ptDd.style.display = 'none';
+      }
+    });
+    ptInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        ptDd.style.display = 'none';
+        const next = document.getElementById('ups-pv');
+        if (next) next.focus();
+      }
+    });
+  }
 
   function renderOverridesLocal() {
     const c = document.getElementById('ups-po');
@@ -1757,8 +1942,11 @@ function abrirDialogMedidas() {
 </div>
 <button id="ups-mp-excluir" style="display:none;width:100%;margin-bottom:4px;padding:3px;border:1px solid #dc3545;color:#dc3545;border-radius:4px;cursor:pointer;font-size:11px;background:white;">× Excluir</button>
 <input id="ups-mp-nb" type="text" placeholder="Preço massa R$" style="width:100%;padding:5px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;margin-bottom:4px;">
-<div style="display:flex;gap:3px;margin-bottom:4px;">
-<select id="ups-mp-nt" style="flex:1;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;"><option value="">Tam</option></select>
+<div style="position:relative;display:flex;gap:3px;margin-bottom:4px;">
+<div id="ups-mp-nt-wrapper" style="flex:1;position:relative;">
+<input id="ups-mp-nt" type="text" placeholder="Tam..." readonly style="width:100%;padding:4px 24px 4px 6px;border:1px solid #ccc;border-radius:4px;font-size:11px;cursor:pointer;box-sizing:border-box;background:white url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 fill=%22none%22 stroke=%22%23999%22 stroke-width=%221.5%22/></svg>') no-repeat right 6px center;">
+<div id="ups-mp-nt-dd" style="display:none;position:fixed;background:white;border:1px solid #ccc;border-radius:4px;max-height:160px;overflow-y:auto;z-index:99999999;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
+</div>
 <input id="ups-mp-nv" type="text" placeholder="R$" style="width:90px;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
 <button id="ups-mp-na" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;">+</button>
 </div>
@@ -1813,7 +2001,7 @@ function abrirDialogMedidas() {
     <input type="checkbox" id="ups-ma-sku" style="margin:0;"> Gerar SKU
     </label>
     <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
-    <input type="checkbox" id="ups-ma-crop" style="margin:0;"> Recortar Img Quadrada
+    <input type="checkbox" id="ups-ma-crop" style="margin:0;"> Ajustar Img Quadrada
     </label>
     <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
     <input type="checkbox" id="ups-ma-confirmar-cores" style="margin:0;"> Confirmar cores?
@@ -1931,10 +2119,122 @@ function abrirDialogMedidas() {
     });
   }
 
-  function preencherSelectTamNovo() {
-    const sel = document.getElementById('ups-mp-nt');
-    sel.innerHTML = '<option value="">Tam</option>';
-    listaTam.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
+  function extrairTamanhosDaTabela() {
+    // Ler direto do storage (evita problemas com scroll virtual do VXE)
+    return new Promise((resolve) => {
+      chrome.storage.local.get(["biblioteca", "ultimaSelecionada"], (res) => {
+        const bib = res.biblioteca || {};
+        const sel = res.ultimaSelecionada || '';
+        const dados = bib[sel];
+        if (dados) {
+          const chavesFixas = new Set(['descricao','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote']);
+          const tamanhos = Object.keys(dados).filter(k => !chavesFixas.has(k) && dados[k] && typeof dados[k] === 'object' && (dados[k].b || dados[k].c));
+          console.log('[UPS-med] Tamanhos do storage:', tamanhos);
+          resolve(tamanhos.sort((a, b) => {
+            const order = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+            const ai = order.indexOf(a), bi = order.indexOf(b);
+            if (ai !== -1 && bi !== -1) return ai - bi;
+            if (ai !== -1) return -1;
+            if (bi !== -1) return 1;
+            return a.localeCompare(b);
+          }));
+          return;
+        }
+        // Fallback: ler do DOM
+        const table = document.querySelector('.vxe-table');
+        console.log('[UPS-med] Fallback DOM - Tabela:', !!table);
+        if (!table) { resolve([]); return; }
+        const allHeaders = table.querySelectorAll('.vxe-header--column');
+        let tamCol = 'col_3';
+        allHeaders.forEach((cell) => {
+          const txt = cell.textContent.trim().toLowerCase();
+          if (!txt) return;
+          const cls = Array.from(cell.classList).find(c => c.startsWith('col_'));
+          if (!cls) return;
+          if (txt === 'tamanho' || (txt.includes('tamanho') && !txt.includes('pacote')) || ['variação', 'grade'].some(k => txt.includes(k))) tamCol = cls;
+        });
+        const listaTamanhos = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+        const rows = table.querySelectorAll('.vxe-body--row');
+        const encontrados = new Set();
+        rows.forEach(row => {
+          try {
+            const tamEl = row.querySelector('.' + tamCol);
+            if (!tamEl) return;
+            const tamText = tamEl.textContent.trim().toUpperCase();
+            const tam = listaTamanhos.reduce((found, t) => tamText.includes(t) ? (t.length > found.length ? t : found) : found, '');
+            if (tam) encontrados.add(tam);
+          } catch (e) { /* skip */ }
+        });
+        resolve(Array.from(encontrados).sort((a, b) => {
+          const order = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+          return order.indexOf(a) - order.indexOf(b);
+        }));
+      });
+    });
+  }
+
+  async function popularDropdownTamanhosMedidas() {
+    const dd = document.getElementById('ups-mp-nt-dd');
+    if (!dd) return;
+    const tamanhosTabela = await extrairTamanhosDaTabela();
+    let html = '';
+    if (tamanhosTabela.length > 0) {
+      tamanhosTabela.forEach(t => {
+        html += `<div data-tam="${t}" style="padding:5px 8px;cursor:pointer;font-size:11px;color:#333;" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">${t}</div>`;
+      });
+      html += '<div style="height:1px;background:#eee;margin:2px 0;"></div>';
+    }
+    html += '<div data-tam="manual" style="padding:5px 8px;cursor:pointer;font-size:11px;color:#4078f2;font-style:italic;" onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">✏️ Digitar...</div>';
+    dd.innerHTML = html;
+    dd.querySelectorAll('[data-tam]').forEach(item => {
+      item.onclick = (e) => {
+        e.stopPropagation();
+        const val = item.getAttribute('data-tam');
+        const input = document.getElementById('ups-mp-nt');
+        if (val === 'manual') {
+          input.removeAttribute('readonly');
+          input.value = '';
+          input.placeholder = 'Digite...';
+          input.style.background = 'white';
+          input.focus();
+        } else {
+          input.setAttribute('readonly', '');
+          input.value = val;
+          input.style.background = 'white';
+        }
+        dd.style.display = 'none';
+      };
+    });
+  }
+
+  const mpNtInput = document.getElementById('ups-mp-nt');
+  const mpNtDd = document.getElementById('ups-mp-nt-dd');
+  if (mpNtInput && mpNtDd) {
+    mpNtInput.onclick = async () => {
+      const isOpen = mpNtDd.style.display === 'block';
+      document.querySelectorAll('#ups-mp-nt-dd').forEach(d => d.style.display = 'none');
+      if (!isOpen) {
+        await popularDropdownTamanhosMedidas();
+        const rect = mpNtInput.getBoundingClientRect();
+        mpNtDd.style.top = (rect.bottom + 4) + 'px';
+        mpNtDd.style.left = rect.left + 'px';
+        mpNtDd.style.width = rect.width + 'px';
+        mpNtDd.style.display = 'block';
+      }
+    };
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#ups-mp-nt-wrapper')) {
+        mpNtDd.style.display = 'none';
+      }
+    });
+    mpNtInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        mpNtDd.style.display = 'none';
+        const next = document.getElementById('ups-mp-nv');
+        if (next) next.focus();
+      }
+    });
   }
 
   document.getElementById('ups-mp-na').onclick = () => {
@@ -2129,18 +2429,23 @@ function abrirDialogMedidas() {
     item.querySelector('.ups-ac-ar').textContent = '▼';
   }
 
-  document.getElementById('ups-mp-carregar').onchange = (e) => {
+  var mpCarregar = document.getElementById('ups-mp-carregar');
+  if (mpCarregar) mpCarregar.onchange = (e) => {
     const val = e.target.value;
     if (!val) return;
     const [tipo, ...nomeParts] = val.split(':');
     carregarPresetNoNovo(tipo, nomeParts.join(':'), () => expandirAcordeao('ups-ab-2'));
   };
 
-  document.getElementById('ups-mp-salvar').onclick = salvarPresetMedidas;
-  document.getElementById('ups-mp-excluir').onclick = deletarPresetMedidas;
+  var mpSalvar = document.getElementById('ups-mp-salvar');
+  if (mpSalvar) mpSalvar.onclick = salvarPresetMedidas;
+  var mpExcluir = document.getElementById('ups-mp-excluir');
+  if (mpExcluir) mpExcluir.onclick = deletarPresetMedidas;
 
   chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "ultimaSelecionada", "bibliotecaPrecos", "ultimosPrecos", "ultimosMacros", "ultimoEstadoMedidas"], (res) => {
-    const bib = res.biblioteca || {};
+    try {
+      if (!body) return;
+      const bib = res.biblioteca || {};
     const nomes = Object.keys(bib).filter(n =>
       Object.keys(bib[n]).some(k => listaTam.includes(k))
     );
@@ -2166,7 +2471,6 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
       document.getElementById('ups-mk').style.display = 'none';
     }
 
-    preencherSelectTamNovo();
     preencherSelectSalvosMedidas();
 
     function atualizarPrecos(nome) {
@@ -2197,15 +2501,19 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     }
 
     function renderDisplayMedidas(nome) {
+      console.log('[UPS-med] renderDisplayMedidas chamada com:', nome);
       const display = document.getElementById('ups-mt-display');
+      console.log('[UPS-med] display element:', !!display);
       if (!nome) {
         display.innerHTML = '<span style="color:#999;">(nenhuma tabela selecionada)</span>';
         return;
       }
 
       chrome.storage.local.get(["biblioteca"], (res) => {
+        console.log('[UPS-med] storage callback - biblioteca keys:', Object.keys(res.biblioteca || {}));
         const bibAtualizada = res.biblioteca || {};
         const dados = bibAtualizada[nome];
+        console.log('[UPS-med] dados para', nome, ':', dados ? 'OK' : 'NULO');
 
         if (!dados) {
           display.innerHTML = '<span style="color:#999;">(nenhuma tabela selecionada)</span>';
@@ -2213,6 +2521,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         }
 
         let tamanhos = Object.keys(dados).filter(k => !chavesFixas.has(k) && dados[k] && typeof dados[k] === 'object' && (dados[k].b || dados[k].c));
+        console.log('[UPS-med] tamanhos filtrados:', tamanhos);
         if (tamanhos.length === 0) {
           display.innerHTML = '<span style="color:#999;">(sem tamanhos)</span>';
           return;
@@ -2248,10 +2557,13 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     }
 
     const select = document.getElementById('ups-mt');
+    console.log('[UPS-med] select ups-mt:', !!select, 'value:', select ? select.value : 'N/A');
 
     function atualizarDesc(nome) {
+      console.log('[UPS-med] atualizarDesc chamada com:', nome, 'select.value:', select ? select.value : 'N/A');
       if (!nome || typeof nome === 'object') nome = select.value;
-      if (window.__upsLoadingPreset) return;
+      console.log('[UPS-med] nome resolvido:', nome);
+      if (window.__upsLoadingPreset) { console.log('[UPS-med] bloqueado por __upsLoadingPreset'); return; }
       
       if (!nome) {
         document.getElementById('ups-mt-rm').style.display = 'none';
@@ -2309,9 +2621,15 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     }
 
     window.__temEstadoSalvo = res.ultimoEstadoMedidas && Object.keys(res.ultimoEstadoMedidas).length > 0;
+    console.log('[UPS-med] nomes:', nomes.length, 'selectedTable:', selectedTable, '__temEstadoSalvo:', window.__temEstadoSalvo);
     if (nomes.length > 0) {
-      select.addEventListener('change', atualizarDesc);
+      select.addEventListener('change', function(e) {
+        console.log('[UPS-med] CHANGE disparado! value:', e.target.value);
+        atualizarDesc(e.target.value);
+      });
       if (!window.__temEstadoSalvo) atualizarDesc(selectedTable);
+    } else {
+      console.log('[UPS-med] Nenhuma tabela para adicionar listener');
     }
 
     function atualizarSelectMedidas(selecionar) {
@@ -2798,12 +3116,16 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
             ultimoEstadoMedidas: dados.ultimoEstadoMedidas || {},
             multiMedidasConfig: dados.multiMedidasConfig || {}
           }, () => {
-            e.target.value = "";
-            preencherListaPresets();
-            preencherSelectSalvosMedidas();
-            preencherSelectMacrosMedidas();
-            preencherSelectAtributos();
-            mostrarToastFeedback('Backup restaurado com sucesso!');
+            try {
+              e.target.value = "";
+              preencherListaPresets();
+              preencherSelectSalvosMedidas();
+              preencherSelectMacrosMedidas();
+              preencherSelectAtributos();
+              mostrarToastFeedback('Backup restaurado com sucesso!');
+            } catch (err) {
+              mostrarToastFeedback('Erro ao aplicar backup: ' + err.message);
+            }
           });
         } catch (err) {
           mostrarToastFeedback('Erro ao importar: ' + err.message);
@@ -2811,6 +3133,9 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
       };
       reader.readAsText(arquivo);
     };
+  } catch(e) {
+    console.error('ups: abrirDialogMedidas import error', e);
+  }
   });
 
     function preencherSelectAtributos() {
@@ -2979,6 +3304,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
       }, 50);
     }
     atualizarMultiHabilitado();
+    window.__upsLoadingPreset = false;
   }
 
 
@@ -3117,7 +3443,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     if (atributosAtivo) totalSteps++; // atributos
     if (temSku && macroAtivo) totalSteps++;
     if (medidasAtivo) totalSteps++; // guia
-    if (temCrop && macroAtivo) totalSteps++; // recortar img quadrada
+    if (temCrop && macroAtivo) totalSteps++; // ajustar img quadrada
 
     let stepCounter = 0;
 
@@ -3164,6 +3490,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
 
           // 3 — Editar em Massa (quant, preço, peso, pacote)
           if (temEmMassa && macroAtivo) {
+            await sleep(500);
             nextStep('Aplicando Editar em Massa...');
             const cols = encontrarColunasMassa();
             const eq = document.getElementById('ups-ma-eq').value.trim();
@@ -3280,16 +3607,17 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
             }
           }
 
-          // 9 — Recortar Imagem Quadrada (must be last — triggers dialog)
+          // 9 — Ajustar Imagem Quadrada (must be last — triggers dialog)
           if (temCrop && macroAtivo) {
-            nextStep('Recortando imagem quadrada...');
+            nextStep('Ajustando imagem quadrada...');
             const overlayEl = document.getElementById('upseller-progress-overlay');
             if (overlayEl) overlayEl.style.display = 'none';
             try {
+              await upsCopiarCoresDetalheAsync();
               await recortarImagemQuadradaEmMassa();
             } catch (e) {
               if (overlayEl) overlayEl.style.display = '';
-              mostrarErroOverlayProgresso('Erro no recorte: ' + e.message);
+              mostrarErroOverlayProgresso('Erro no ajuste: ' + e.message);
               setTimeout(() => removerOverlayProgresso(), 3000);
               return;
             }
@@ -3720,7 +4048,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (hasAtributos) totalSteps++; // atributos
         if (hasMacro && macro.sku) totalSteps++;
         totalSteps++; // guia
-        if (hasMacro && macro.crop) totalSteps++; // recortar img quadrada
+        if (hasMacro && macro.crop) totalSteps++; // ajustar img quadrada
 
         function stepDone(msg) {
           progressStep++;
@@ -3756,6 +4084,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             await sleep(2000);
           }
           if (macro.emMassa && (macro.emMassa.quantidade || macro.emMassa.preco || macro.emMassa.peso || macro.emMassa.pacote)) {
+            await sleep(500);
             stepDone('Aplicando Editar em Massa...');
             const cols = encontrarColunasMassa();
             if (macro.emMassa.quantidade && cols.quant) await setColunaEmMassa(cols.quant, macro.emMassa.quantidade, 'input.ant-input.ant-input-sm');
@@ -3823,10 +4152,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           await preencherGuiaTamanhos(dados);
         }
 
-        // Recortar Imagem Quadrada (last action — triggers dialog)
+        // Ajustar Imagem Quadrada (last action — triggers dialog)
         if (hasMacro && macro.crop) {
-          stepDone('Recortando imagem quadrada...');
+          stepDone('Ajustando imagem quadrada...');
           try {
+            await upsCopiarCoresDetalheAsync();
             await recortarImagemQuadradaEmMassa();
           } catch (e) {
             chrome.runtime.sendMessage({ action: 'error', message: 'Erro no recorte: ' + e.message });
@@ -3882,54 +4212,58 @@ async function recortarImagemQuadradaEmMassa() {
   if (!nativeBtn) throw new Error('Botão Recortar em massa não encontrado');
   nativeBtn.click();
   let dialog = null;
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 40; i++) {
     dialog = document.querySelector('.ant-modal-content');
-    if (dialog && dialog.textContent.includes('Recortar em massa')) break;
+    if (dialog && dialog.offsetHeight > 0 && dialog.textContent.includes('Recortar em massa')) break;
     await sleep(300);
   }
   if (!dialog || !dialog.textContent.includes('Recortar em massa')) throw new Error('Diálogo Recortar em massa não abriu');
-  await sleep(800);
-  const sections = dialog.querySelectorAll('[class*="img_list_box"]');
+  await sleep(500);
+   const sections = dialog.querySelectorAll('[class*="img_list_box"]');
   let selecionadas = 0;
-  for (const section of sections) {
-    let imgBox = null;
-    const caption = Array.from(section.querySelectorAll('*')).find(el => el.textContent.trim() === 'Imagem Quadrada');
-    if (caption) {
-      const container = caption.parentElement;
-      if (container) imgBox = container.querySelector('.img_box');
-    }
-    if (!imgBox) {
-      const allImgs = section.querySelectorAll('img');
-      for (const img of allImgs) {
-        if (img.src && img.src.includes('_square.')) {
-          imgBox = img.closest('.img_box');
-          if (imgBox) break;
-        }
+  function clickImgBoxByCaption(section, captionText) {
+    const caption = Array.from(section.querySelectorAll('*')).find(el => el.textContent.trim() === captionText);
+    if (!caption) return false;
+    const container = caption.parentElement;
+    if (!container) return false;
+    const imgBox = container.querySelector('.img_box');
+    if (!imgBox) return false;
+    imgBox.click();
+    return true;
+  }
+  function clickImgBoxBySrc(section, pattern) {
+    const allImgs = section.querySelectorAll('img');
+    for (const img of allImgs) {
+      if (img.src && img.src.includes(pattern)) {
+        const imgBox = img.closest('.img_box');
+        if (imgBox) { imgBox.click(); return true; }
       }
     }
-    if (imgBox) { imgBox.click(); selecionadas++; await sleep(100); }
+    return false;
   }
-  if (selecionadas === 0) throw new Error('Nenhuma imagem quadrada encontrada');
+  for (const section of sections) {
+    let clicked = false;
+    if (clickImgBoxByCaption(section, 'Imagem Quadrada')) { clicked = true; }
+    else { clicked = clickImgBoxBySrc(section, '_square.'); }
+    
+    if (clickImgBoxByCaption(section, 'Imagem de Cores')) { clicked = true; }
+    else { clicked = clickImgBoxBySrc(section, '_piece.') || clicked; }
+    
+    if (clicked) { selecionadas++; await sleep(100); }
+  }
+  if (selecionadas === 0) throw new Error('Nenhuma imagem encontrada');
   const footer = dialog.querySelector('.ant-modal-footer');
   const cortarBtn = footer
     ? Array.from(footer.querySelectorAll('button')).find(b => b.textContent.trim() === 'Cortar')
     : Array.from(dialog.querySelectorAll('button')).find(b => b.textContent.trim() === 'Cortar');
   if (!cortarBtn) throw new Error('Botão Cortar não encontrado');
   cortarBtn.click();
-  for (let i = 0; i < 120; i++) {
-    await sleep(1000);
-    const modal = document.querySelector('.ant-modal-content');
-    if (!modal) continue;
-    const aplicarBtn = Array.from(modal.querySelectorAll('button')).find(b => b.textContent.trim().includes('Aplicar'));
-    if (aplicarBtn) {
-      await sleep(500);
-      aplicarBtn.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
-      aplicarBtn.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
-      aplicarBtn.click();
-      return;
-    }
-  }
-  throw new Error('Timeout aguardando processamento');
+  const aplicarBtn = await esperarBotaoContem('Aplicar', 120000);
+  if (!aplicarBtn) throw new Error('Botão Aplicar não encontrado');
+  aplicarBtn.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+  aplicarBtn.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+  aplicarBtn.click();
+  return;
 }
 
 function abrirPopupEditarMedidas(nomeExistente, bib, chavesFixas, atualizarSelectMedidas, atualizarDesc) {
@@ -4094,8 +4428,9 @@ ${nomeExistente ? '<button id="ups-pm-excluir" style="padding:5px 14px;backgroun
                 mostrarFeedback('Tabela "' + nomeExistente + '" excluída!', '#28a745');
               });
             }
-          });
-        };
+    });
+  };
+
       };
     }
   });
@@ -4213,14 +4548,22 @@ function injetarBotaoImagemMassa() {
 
   const op3 = document.createElement('div');
   op3.style.cssText = 'padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;';
-  op3.innerHTML = '<span>🖼</span> Recortar Img Quadrada';
+  op3.innerHTML = '<span>🖼</span> Ajustar Imagens';
   op3.addEventListener('mouseenter', () => op3.style.background = '#f5f5f5');
   op3.addEventListener('mouseleave', () => op3.style.background = '');
   op3.addEventListener('click', async (e) => { e.stopPropagation(); fecharDropdown(); try { await recortarImagemQuadradaEmMassa(); mostrarFeedback('Imagens recortadas com sucesso!', '#28a745'); } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); } });
 
+  const op4 = document.createElement('div');
+  op4.style.cssText = 'padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;';
+  op4.innerHTML = '<span>🎨</span> Cores por Detalhe';
+  op4.addEventListener('mouseenter', () => op4.style.background = '#f5f5f5');
+  op4.addEventListener('mouseleave', () => op4.style.background = '');
+  op4.addEventListener('click', async (e) => { e.stopPropagation(); fecharDropdown(); await upsCopiarCoresDetalhe(); });
+
   menu.appendChild(op1);
   menu.appendChild(op2);
   menu.appendChild(op3);
+  menu.appendChild(op4);
   document.body.appendChild(menu);
 
   function abrirDropdown() {
@@ -4398,18 +4741,440 @@ function injetarBotaoOverlay() {
 }
 
 // Inject buttons on page load
-setTimeout(() => { injetarBotaoImagemMassa(); injetarBotaoOverlay(); injetarBotaoSkuNoAnuncio(); }, 3000);
+setTimeout(() => { try { injetarBotaoImagemMassa(); } catch(e) {} try { injetarBotaoOverlay(); } catch(e) {} try { injetarBotaoSkuNoAnuncio(); } catch(e) {} }, 3000);
 
 // Watch for dynamic tab navigation (Mídia section loaded later)
 const observer = new MutationObserver(() => {
-  if (!document.getElementById('ups-img-massa-btn')) {
-    setTimeout(injetarBotaoImagemMassa, 500);
-  }
-  if (!document.getElementById('ups-floating-btn')) {
-    setTimeout(injetarBotaoOverlay, 500);
-  }
-  if (!document.getElementById('ups-gerar-sku-btn')) {
-    setTimeout(injetarBotaoSkuNoAnuncio, 500);
-  }
+  try {
+    if (!document.getElementById('ups-img-massa-btn')) {
+      setTimeout(() => { try { injetarBotaoImagemMassa(); } catch(e) {} }, 500);
+    }
+    if (!document.getElementById('ups-floating-btn')) {
+      setTimeout(() => { try { injetarBotaoOverlay(); } catch(e) {} }, 500);
+    }
+    if (!document.getElementById('ups-gerar-sku-btn')) {
+      setTimeout(() => { try { injetarBotaoSkuNoAnuncio(); } catch(e) {} }, 500);
+    }
+  } catch(e) {}
 });
 observer.observe(document.body, { childList: true, subtree: true });
+
+// ===== SUPORTE A DRAFTS (Editar Atributos em Massa) =====
+var __upsPresetsCache = null;
+
+if (window.location.pathname.includes('/shein/drafts')) {
+  setTimeout(monitorModalEditarAtributos, 2000);
+}
+
+function monitorModalEditarAtributos() {
+  setInterval(() => {
+    const modal = document.querySelector('.ant-modal-root.my_modal.my_tab_modal');
+    if (modal && !document.getElementById('ups-drafts-atr-btn')) {
+      injetarBotaoAtributosDrafts(modal);
+    } else if (!modal) {
+      const btn = document.getElementById('ups-drafts-atr-btn');
+      if (btn) btn.remove();
+      const overlay = document.getElementById('ups-drafts-atr-overlay');
+      if (overlay) overlay.remove();
+    }
+  }, 1500);
+}
+
+function injetarBotaoAtributosDrafts(modal) {
+  const content = modal.querySelector('.ant-modal-content');
+  if (!content) return;
+  const btn = document.createElement('div');
+  btn.id = 'ups-drafts-atr-btn';
+  btn.textContent = '⚡ Atributos em Massa';
+  btn.title = 'Aplicar Presets de Atributos';
+  btn.style.cssText = 'position:absolute;top:8px;right:48px;z-index:999999;padding:4px 12px;border-radius:14px;background:#4078f2;color:white;border:none;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:4px;box-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1.4;';
+  const header = content.querySelector('.ant-modal-header');
+  if (header) {
+    header.style.position = 'relative';
+    header.appendChild(btn);
+  }
+  btn.onclick = () => abrirDialogAtributosDrafts();
+}
+
+function abrirDialogAtributosDrafts() {
+  const existing = document.getElementById('ups-drafts-atr-overlay');
+  if (existing) existing.remove();
+
+  const cats = document.querySelectorAll('.ant-modal-root .category_item');
+  const qtd = cats.length;
+
+  const linhas = Array.from(cats).map((cat, i) => {
+    const name = (cat.querySelector('.f_title')?.textContent || 'Categoria ' + (i + 1)).trim();
+    const count = cat.querySelector('.f_blue b')?.textContent || '';
+    return '<div style="display:flex;align-items:center;gap:6px;padding:5px 4px;border-bottom:1px solid #f0f0f0;">' +
+      '<input type="checkbox" id="ups-dc-' + i + '" checked style="flex-shrink:0;">' +
+      '<span style="flex:1;font-size:12px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="' + name.replace(/"/g, '&quot;') + '">' + name + (count ? ' <b>(' + count + ')</b>' : '') + '</span>' +
+      '<select id="ups-dps-' + i + '" style="width:160px;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;flex-shrink:0;"><option value="">Preset...</option></select>' +
+      '</div>';
+  });
+
+  const overlay = document.createElement('div');
+  overlay.id = 'ups-drafts-atr-overlay';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:9999999;display:flex;align-items:center;justify-content:center;';
+  overlay.innerHTML = '<div style="background:white;border-radius:8px;padding:16px;width:680px;max-width:90vw;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;">' +
+    '<div style="font-size:14px;font-weight:700;margin-bottom:10px;color:#333;">Atributos em Massa - Editar Atributos</div>' +
+    '<div style="margin-bottom:6px;display:flex;font-size:11px;font-weight:600;color:#888;padding:0 4px;"><span style="flex:1;">Categoria</span><span style="width:160px;text-align:center;">Preset</span></div>' +
+    '<div style="max-height:360px;overflow-y:auto;border:1px solid #eee;border-radius:4px;margin-bottom:10px;">' + linhas.join('') + '</div>' +
+    '<div style="display:flex;gap:8px;">' +
+    '<button id="ups-drafts-executar" style="flex:1;padding:7px;border:none;border-radius:5px;background:#4078f2;color:white;font-size:13px;font-weight:600;cursor:pointer;">Executar</button>' +
+    '<button id="ups-drafts-fechar" style="padding:7px 16px;border:1px solid #ccc;border-radius:5px;background:white;color:#666;font-size:13px;cursor:pointer;">Fechar</button>' +
+    '</div></div>';
+  document.body.appendChild(overlay);
+
+  chrome.storage.local.get(["bibliotecaAtributos"], (res) => {
+    const bibAtr = res.bibliotecaAtributos || {};
+    __upsPresetsCache = bibAtr;
+    for (let i = 0; i < qtd; i++) {
+      const sel = document.getElementById('ups-dps-' + i);
+      if (!sel) continue;
+      Object.keys(bibAtr).forEach(nome => {
+        const opt = document.createElement('option');
+        opt.value = 'bib:' + nome;
+        opt.textContent = nome + ' (' + Object.keys(bibAtr[nome]).length + ')';
+        sel.appendChild(opt);
+      });
+    }
+  });
+
+  document.getElementById('ups-drafts-fechar').onclick = () => overlay.remove();
+  document.getElementById('ups-drafts-executar').onclick = () => {
+    var tasks = [];
+    document.querySelectorAll('.ant-modal-root .category_item').forEach((cat, i) => {
+      var cb = document.getElementById('ups-dc-' + i);
+      var sel = document.getElementById('ups-dps-' + i);
+      if (!cb || !cb.checked || !sel || !sel.value) return;
+      tasks.push({ cat: cat, idx: i, presetVal: sel.value });
+    });
+    overlay.remove();
+    upsExecutarAtributosPopup(tasks);
+  };
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
+}
+
+async function upsExecutarAtributosPopup(tasks) {
+  if (!tasks || !tasks.length) { upsToastDrafts('Nenhuma categoria com preset selecionado'); return; }
+  criarOverlayProgresso();
+  var uppStep = document.getElementById('upp-step');
+  if (uppStep) uppStep.textContent = 'Preparando presets...';
+  var cache = __upsPresetsCache;
+  if (!cache) {
+    cache = await new Promise(function(resolve) { chrome.storage.local.get(["bibliotecaAtributos"], function(r) { resolve(r.bibliotecaAtributos || {}); }); });
+    __upsPresetsCache = cache;
+  }
+  var totalAplicadas = 0;
+  var totalCats = 0;
+  for (var t = 0; t < tasks.length; t++) {
+    var tk = tasks[t];
+    var parts = tk.presetVal.split(':');
+    var tipo = parts[0];
+    var nome = parts.slice(1).join(':');
+    var dados = null;
+    if (tipo === 'bib') dados = cache[nome];
+    if (!dados) continue;
+    if (uppStep) uppStep.textContent = 'Categoria ' + (t + 1) + ' de ' + tasks.length + ': ' + nome;
+    var aplicadas = await upsProcessarCategoriaPopup(tk.cat, dados);
+    totalAplicadas += aplicadas;
+    totalCats++;
+    var titleClose = tk.cat.querySelector('.category_title');
+    if (titleClose) { upsClickElement(titleClose); await sleep(500); }
+  }
+  removerOverlayProgresso();
+  upsToastDrafts(totalAplicadas + ' atributos aplicados em ' + totalCats + ' categorias');
+}
+
+async function upsProcessarCategoriaPopup(cat, dados) {
+  var attrBox = cat.querySelector('.attr_box');
+  if (!attrBox || attrBox.style.display === 'none') {
+    var title = cat.querySelector('.category_title');
+    if (title) {
+      upsClickElement(title);
+      for (var w = 0; w < 30; w++) {
+        await sleep(300);
+        attrBox = cat.querySelector('.attr_box');
+        if (attrBox && attrBox.style.display !== 'none') break;
+      }
+    }
+  }
+  if (!attrBox || attrBox.style.display === 'none') return 0;
+  // Esperar spinner sumir (conteúdo inicial carregado)
+  for (var w = 0; w < 40; w++) {
+    await sleep(300);
+    var spinner = cat.querySelector('.ant-spin, .anticon-loading');
+    if (!spinner) break;
+  }
+  // Clicar "Mais Atributos" se existir
+  var mais = Array.from(cat.querySelectorAll('*')).find(function(el) { return el.textContent.trim() === 'Mais Atributos'; });
+  if (mais) {
+    upsClickElement(mais);
+    await sleep(800);
+    // Esperar novos forms carregarem
+    for (var w = 0; w < 40; w++) {
+      await sleep(300);
+      var forms = cat.querySelectorAll('.ant-form-item');
+      if (forms.length > 2) break; // Mais de 2 forms = carregou novos
+      spinner = cat.querySelector('.ant-spin, .anticon-loading');
+      if (!spinner && forms.length > 0) break;
+    }
+  }
+  var forms = cat.querySelectorAll('.ant-form-item');
+  if (!forms.length) return 0;
+  var normal = function(s) { return s.replace(/[:\s]+/g, ' ').trim().toLowerCase(); };
+  var keys = Object.keys(dados);
+  var aplicadas = 0;
+  for (var k = 0; k < keys.length; k++) {
+    var key = keys[k];
+    var value = dados[key];
+    for (var f = 0; f < forms.length; f++) {
+      var textEl = forms[f].querySelector('.my_checkbox_label .text_cont');
+      if (!textEl) continue;
+      if (normal(textEl.textContent) !== normal(key)) continue;
+      var checkbox = forms[f].querySelector('.ant-checkbox-input');
+      if (!checkbox) continue;
+      var wrapper = checkbox.closest('.ant-checkbox-wrapper') || checkbox.closest('label') || checkbox.parentElement;
+      if (!wrapper) continue;
+       if (!checkbox.checked) {
+         upsClickElement(wrapper);
+         await sleep(400);
+         if (!checkbox.checked) {
+           var span = wrapper.querySelector('.ant-checkbox-inner');
+           if (span) { upsClickElement(span); await sleep(300); }
+           if (!checkbox.checked) break;
+         }
+       }
+       var attrBoxField = forms[f].querySelector('.item_attr_box');
+       if (attrBoxField) {
+         // Compound composition field (Composição, etc.) in popup
+         console.log('[UPS] Composição detectada:', key, 'Value:', value);
+         var pairs = String(value).split(', ');
+         console.log('[UPS] Pairs:', pairs);
+         var existing = attrBoxField.children;
+         console.log('[UPS] Existing rows:', existing.length);
+         // Remove excess rows
+         while (existing.length > pairs.length) {
+           var lastRow = existing[existing.length - 1];
+           var rmBtn = lastRow.querySelector('[class*="minus"]');
+           if (rmBtn) { upsClickElement(rmBtn); await sleep(400); existing = attrBoxField.children; }
+           else break;
+         }
+         for (var p = 0; p < pairs.length; p++) {
+           var pair = pairs[p];
+           console.log('[UPS] Processing pair', p + ':', pair);
+           var lastSpace = pair.lastIndexOf(' ');
+           var mat = lastSpace > 0 ? pair.substring(0, lastSpace).trim() : pair;
+           var pct = lastSpace > 0 ? pair.substring(lastSpace + 1).trim() : '';
+           console.log('[UPS] Pair', p, '-> material:', mat, 'percentage:', pct);
+           existing = attrBoxField.children;
+           var row = null;
+           if (p < existing.length) {
+             row = existing[p];
+           } else {
+             var lastRow = existing[existing.length - 1];
+             var addBtn = lastRow.querySelector('[class*="plus"]');
+             if (addBtn) { upsClickElement(addBtn); await sleep(600); existing = attrBoxField.children; }
+             else break;
+             row = existing[existing.length - 1];
+           }
+           if (!row) { console.log('[UPS] Row not found'); continue; }
+           // Set select (material)
+           var rowSelect = row.querySelector('.ant-select');
+           console.log('[UPS] rowSelect found:', !!rowSelect);
+           if (rowSelect && mat) {
+             var openDd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+             if (openDd) {
+               document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+               await sleep(300);
+             }
+             console.log('[UPS] Clicking rowSelect...');
+             upsClickElement(rowSelect);
+             await sleep(500);
+             var comboBox = rowSelect.querySelector('[role="combobox"]');
+             var ariaId = comboBox ? comboBox.getAttribute('aria-controls') : null;
+             var dd = null;
+             if (ariaId) dd = document.querySelector('#' + CSS.escape(ariaId) + ':not(.ant-select-dropdown-hidden)');
+             if (!dd) dd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+             console.log('[UPS] Dropdown found:', !!dd);
+             if (dd) {
+               var optList = dd.querySelectorAll('li');
+               console.log('[UPS] Options in dropdown:', optList.length);
+               var optMatch = Array.from(optList).find(function(li) { return normal(li.textContent) === normal(mat); });
+               console.log('[UPS] Option matched:', !!optMatch, '- material:', mat);
+               if (optMatch) { 
+                 console.log('[UPS] Clicking option:', optMatch.textContent);
+                 upsClickElement(optMatch); 
+                 await sleep(300); 
+               }
+             }
+           }
+           // Set input (percentage)
+           var rowInput = row.querySelector('input.ant-input:not(.ant-select-search__field)');
+           console.log('[UPS] rowInput found:', !!rowInput, 'pct:', pct);
+           if (rowInput && pct) {
+             rowInput.focus();
+             rowInput.value = pct;
+             rowInput.dispatchEvent(new Event('input', { bubbles: true }));
+             rowInput.dispatchEvent(new Event('change', { bubbles: true }));
+             rowInput.blur();
+             console.log('[UPS] Input set to:', pct);
+             aplicadas++;
+           }
+         }
+         console.log('[UPS] Composição done. Aplicadas:', aplicadas);
+         break;
+       }
+        var select = forms[f].querySelector('.ant-select:not(.ant-select-disabled)');
+        var input = forms[f].querySelector('input:not([type="hidden"]):not([type="checkbox"]):not(.ant-checkbox-input):not([disabled])');
+        if (select) {
+          // Check if it's a multi-select
+          var isMultiple = !!select.querySelector('.ant-select-selection--multiple');
+          
+           if (isMultiple) {
+            // Multi-select: value is "opt1, opt2, opt3"
+            console.log('[UPS] Multi-select detectado:', key, 'Value:', value);
+            var values = String(value).split(', ');
+            console.log('[UPS] Values to set:', values);
+            
+            // Remove existing choices (re-query after each click)
+            var maxTries = 20;
+            while (maxTries-- > 0) {
+              var removes = select.querySelectorAll('.ant-select-selection__choice__remove');
+              if (!removes.length) break;
+              upsClickElement(removes[0]);
+              await sleep(400);
+            }
+            
+            // Add each value
+            for (var v = 0; v < values.length; v++) {
+              var val = values[v].trim();
+              if (!val) continue;
+              
+              console.log('[UPS] Adicionando valor:', val);
+              
+              // Open dropdown
+              var ddAberto = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+              if (ddAberto) {
+                document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+                await sleep(150);
+              }
+              
+              upsClickElement(select);
+              await sleep(400);
+              
+              var comboBox = select.querySelector('[role="combobox"]');
+              var ariaId = comboBox ? comboBox.getAttribute('aria-controls') : null;
+              var dd = null;
+              if (ariaId) dd = document.querySelector('#' + CSS.escape(ariaId) + ':not(.ant-select-dropdown-hidden)');
+              if (!dd) dd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+              
+              if (dd) {
+                var optList = dd.querySelectorAll('li');
+                var optMatch = Array.from(optList).find(function(li) { return normal(li.textContent) === normal(val); });
+                if (optMatch) {
+                  console.log('[UPS] Opção encontrada e clicada:', val);
+                  upsClickElement(optMatch);
+                  await sleep(200);
+                  aplicadas++;
+                } else {
+                  console.log('[UPS] Opção NÃO encontrada:', val);
+                }
+              }
+              
+              var esc = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true });
+              document.dispatchEvent(esc);
+              await sleep(150);
+            }
+            console.log('[UPS] Multi-select concluído. Aplicadas:', aplicadas);
+          } else {
+            // Single select
+         var ddAberto = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+         if (ddAberto) {
+           document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+           await sleep(150);
+         }
+         upsClickElement(select);
+         await sleep(400);
+         var comboBox = select.querySelector('[role="combobox"]');
+         var ariaId = comboBox ? comboBox.getAttribute('aria-controls') : null;
+         var dd = null;
+         if (ariaId) dd = document.querySelector('#' + CSS.escape(ariaId) + ':not(.ant-select-dropdown-hidden)');
+         if (!dd) dd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+         if (dd) {
+           var opts = dd.querySelectorAll('li');
+           var opt = Array.from(opts).find(function(li) { return normal(li.textContent) === normal(value); });
+           if (opt) {
+             upsClickElement(opt);
+             await sleep(200);
+             aplicadas++;
+           } else {
+             upsClickElement(wrapper);
+             await sleep(100);
+           }
+         }
+          }
+       } else if (input) {
+        input.focus();
+        input.value = value;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        input.blur();
+        aplicadas++;
+      }
+      break;
+    }
+    await sleep(100);
+  }
+  return aplicadas;
+}
+
+function upsClickElement(el) {
+  try {
+    var id = '_ups_ck_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+    el.setAttribute('data-ups', id);
+    chrome.runtime.sendMessage({ type: 'ups-click-main', selector: '[data-ups="' + id + '"]' });
+  } catch(e) { console.error('ups:click error', e); }
+}
+
+function upsHoverElement(el) {
+  try {
+    var id = '_ups_hv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+    el.setAttribute('data-ups-h', id);
+    chrome.runtime.sendMessage({ type: 'ups-hover-main', selector: '[data-ups-h="' + id + '"]' });
+  } catch(e) { console.error('ups:hover error', e); }
+}
+
+function upsCopiarCoresDetalhe() {
+  upsToastDrafts('Copiando cores...');
+  window.addEventListener('ups-cores-done', function(e) {
+    if (e.detail.error) upsToastDrafts('Erro: ' + e.detail.error);
+    else upsToastDrafts(e.detail.count + ' cores preenchidas');
+  }, { once: true });
+  chrome.runtime.sendMessage({ type: 'ups-cores-main' });
+}
+
+function upsCopiarCoresDetalheAsync() {
+  return new Promise(function(resolve, reject) {
+    window.addEventListener('ups-cores-done', function(e) {
+      if (e.detail.error) reject(new Error(e.detail.error));
+      else resolve(e.detail.count);
+    }, { once: true });
+    chrome.runtime.sendMessage({ type: 'ups-cores-main' });
+  });
+}
+
+function upsToastDrafts(msg) {
+  var el = document.getElementById('ups-drafts-toast');
+  if (el) el.remove();
+  var toast = document.createElement('div');
+  toast.id = 'ups-drafts-toast';
+  toast.textContent = msg;
+  toast.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#28a745;color:white;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:99999999;box-shadow:0 4px 12px rgba(0,0,0,0.2);font-family:sans-serif;';
+  document.body.appendChild(toast);
+  setTimeout(function() { toast.remove(); }, 3000);
+}

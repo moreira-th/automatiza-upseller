@@ -466,6 +466,91 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     });
   }
 
+  if (msg.type === 'ups-click-main') {
+    const tabId = sender.tab ? sender.tab.id : null;
+    if (tabId && msg.selector) {
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        world: 'MAIN',
+        func: (sel) => {
+          var el = document.querySelector(sel);
+          if (el) { el.removeAttribute('data-ups'); el.click(); }
+        },
+        args: [msg.selector]
+      }).catch(function(){ });
+    }
+    return false;
+  }
+
+  if (msg.type === 'ups-hover-main') {
+    const tabId = sender.tab ? sender.tab.id : null;
+    if (tabId && msg.selector) {
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        world: 'MAIN',
+        func: (sel) => {
+          var el = document.querySelector(sel);
+          if (el) {
+            el.removeAttribute('data-ups-h');
+            el.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true, cancelable: true }));
+            el.dispatchEvent(new MouseEvent('mouseover', { bubbles: true, cancelable: true }));
+          }
+        },
+        args: [msg.selector]
+      }).catch(function(){ });
+    }
+    return false;
+  }
+
+  if (msg.type === 'ups-cores-main') {
+    const tabId = sender.tab ? sender.tab.id : null;
+    if (tabId) {
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        world: 'MAIN',
+        func: () => {
+          var tables = document.querySelectorAll('table.vxe-table--body');
+          var vxeVm = null;
+          for (var i = 0; i < tables.length; i++) {
+            if (tables[i].querySelector('.anticon-plus')) {
+              var el = tables[i];
+              while (el) {
+                if (el.__vue__ && el.__vue__.tableData) { vxeVm = el.__vue__; break; }
+                el = el.parentElement;
+              }
+              break;
+            }
+          }
+          if (!vxeVm) { window.dispatchEvent(new CustomEvent('ups-cores-done', { detail: { error: 'vxeVm nao encontrado' } })); return; }
+          
+          var rows = vxeVm.tableData;
+          var cores = 0;
+          for (var i = 0; i < rows.length; i++) {
+            var row = rows[i];
+            if (!row.detailsImgs || row.detailsImgs.length === 0) continue;
+            var capa = row.detailsImgs[0];
+            
+            // Imagem de Cores
+            var pieceImg = row.pieceImg;
+            pieceImg.imageUrl = capa.imageUrl;
+            pieceImg.url = capa.url || capa.imageUrl;
+            if (capa.imgInfo) pieceImg.imgInfo = capa.imgInfo;
+            
+            // Imagem Quadrada
+            var squareImg = row.squareImg;
+            squareImg.imageUrl = capa.imageUrl;
+            squareImg.url = capa.url || capa.imageUrl;
+            if (capa.imgInfo) squareImg.imgInfo = capa.imgInfo;
+            
+            cores++;
+          }
+          window.dispatchEvent(new CustomEvent('ups-cores-done', { detail: { count: cores } }));
+        }
+      }).catch(function(e){ console.error('ups:cores error', e); });
+    }
+    return false;
+  }
+
   if (msg.action === 'export-data') {
     const blob = new Blob([JSON.stringify(msg.data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
