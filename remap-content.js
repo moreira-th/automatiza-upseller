@@ -4757,6 +4757,29 @@ function injetarBotaoOverlay() {
     }
   }, 1000);
   document.body.appendChild(btn);
+  injetarBotaoPrecoEspecial(btn);
+}
+
+function injetarBotaoPrecoEspecial(refBtn) {
+  if (document.getElementById('ups-floating-btn-preco')) return;
+  const btn2 = document.createElement('div');
+  btn2.id = 'ups-floating-btn-preco';
+  btn2.style.cssText = 'position:fixed;z-index:999999999;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#28a745;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold;color:#fff;margin-top:8px;';
+  btn2.innerHTML = '$';
+  btn2.title = 'Preço Especial';
+  btn2.addEventListener('click', abrirDialogPrecos);
+  function posicionarTop() {
+    const r = refBtn.getBoundingClientRect();
+    btn2.style.top = (r.bottom + 8) + 'px';
+  }
+  function posicionarRight() {
+    btn2.style.right = refBtn.style.right;
+  }
+  function posicionarCompleto() { posicionarTop(); posicionarRight(); }
+  posicionarCompleto();
+  window.addEventListener('resize', posicionarRight);
+  setInterval(() => { posicionarCompleto(); }, 1000);
+  document.body.appendChild(btn2);
 }
 
 // Inject buttons on page load
@@ -4770,6 +4793,9 @@ const observer = new MutationObserver(() => {
     }
     if (!document.getElementById('ups-floating-btn')) {
       setTimeout(() => { try { injetarBotaoOverlay(); } catch(e) {} }, 500);
+    }
+    if (!document.getElementById('ups-floating-btn-preco')) {
+      setTimeout(() => { try { injetarBotaoPrecoEspecial(document.getElementById('ups-floating-btn')); } catch(e) {} }, 500);
     }
     if (!document.getElementById('ups-gerar-sku-btn')) {
       setTimeout(() => { try { injetarBotaoSkuNoAnuncio(); } catch(e) {} }, 500);
