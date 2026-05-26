@@ -129,86 +129,144 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-document.getElementById('btnExportar').onclick = () => {
-  chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "bibliotecaPresetsOverlay", "ultimosPrecos", "ultimosMacros", "ultimosLinks", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
-    let nomeBase = document.getElementById('nomeTabela').value.trim();
-    if (!nomeBase) nomeBase = "SHEIN_MEDIDAS";
-    const hoje = new Date();
-    const dia = String(hoje.getDate()).padStart(2, '0');
-    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
-    const ano = hoje.getFullYear();
-    const nomeArquivo = `${nomeBase}_${dia}-${mes}-${ano}.json`;
-    const exportData = {
-      biblioteca: res.biblioteca || {},
-      bibliotecaAtributos: res.bibliotecaAtributos || {},
-      bibliotecaPrecos: res.bibliotecaPrecos || {},
-      bibliotecaMacros: res.bibliotecaMacros || {},
-      bibliotecaPresetsOverlay: res.bibliotecaPresetsOverlay || {},
-      ultimosPrecos: res.ultimosPrecos || {},
-      ultimosMacros: res.ultimosMacros || {},
-      ultimosLinks: res.ultimosLinks || {},
-      ultimaSelecionada: res.ultimaSelecionada || "",
-      ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
-      multiMedidasConfig: res.multiMedidasConfig || {}
-    };
-    const jsonString = JSON.stringify(exportData, null, 2);
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    chrome.downloads.download({ url, filename: nomeArquivo, saveAs: true });
+var CATEGORIAS_EXPORT = [
+  { id: 'Overlay', rotulo: 'Presets do Usuário', desc: 'Presets, última tabela selecionada e estado da overlay', keys: ['bibliotecaPresetsOverlay','ultimaSelecionada','ultimoEstadoMedidas'] },
+  { id: 'Medidas', rotulo: 'Medidas e Descrição', desc: 'Tabelas com largura/altura por tamanho', keys: ['biblioteca'] },
+  { id: 'PrecoEspecial', rotulo: 'Preço Especial', desc: 'Preços salvos e último preço aplicado', keys: ['bibliotecaPrecos','ultimosPrecos'] },
+  { id: 'EditarMassa', rotulo: 'Editar em Massa', desc: 'Macros e último macro executado', keys: ['bibliotecaMacros','ultimosMacros'] },
+  { id: 'Atributos', rotulo: 'Atributos', desc: 'Atributos customizados salvos', keys: ['bibliotecaAtributos'] },
+  { id: 'LinksRecentes', rotulo: 'Links Recentes', desc: 'Últimos links de imagem usados', keys: ['ultimosLinks'] }
+];
+
+function abrirDialogoSelecao(titulo, categorias, textoConfirmar, onConfirmar) {
+  var existing = document.getElementById('ups-dlg-sel');
+  if (existing) existing.remove();
+  var overlay = document.createElement('div');
+  overlay.id = 'ups-dlg-sel';
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;';
+  var html = '<div style="background:white;border-radius:8px;padding:20px;width:420px;max-width:95vw;max-height:85vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;">';
+  html += '<div style="font-size:15px;font-weight:bold;margin-bottom:4px;">' + titulo + '</div>';
+  html += '<div style="font-size:11px;color:#999;margin-bottom:12px;">Marque os dados que deseja incluir</div>';
+  html += '<label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:10px;color:#4078f2;"><input type="checkbox" id="ups-dlg-sel-all" style="cursor:pointer;" checked>Selecionar Todos</label>';
+  for (var ci = 0; ci < categorias.length; ci++) {
+    var cat = categorias[ci];
+    var dis = cat.desabilitado ? 'disabled' : '';
+    var chk = cat.marcado ? 'checked' : '';
+    var op = cat.desabilitado ? 'opacity:0.45;' : '';
+    html += '<label class="ups-dlg-sel-label" style="display:flex;align-items:flex-start;gap:6px;margin-bottom:8px;cursor:pointer;' + op + '">';
+    html += '<input type="checkbox" class="ups-dlg-sel-cat" data-id="' + cat.id + '" ' + chk + ' ' + dis + ' style="margin-top:2px;cursor:pointer;">';
+    html += '<div><div style="font-size:12px;font-weight:600;">' + cat.rotulo + '</div>';
+    if (cat.desc) html += '<div style="font-size:10px;color:#888;">' + cat.desc + '</div>';
+    html += '</div></label>';
+  }
+  html += '<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px;">';
+  html += '<button id="ups-dlg-sel-cancel" style="padding:6px 16px;border:1px solid #ccc;border-radius:6px;cursor:pointer;font-size:12px;background:white;">Cancelar</button>';
+  html += '<button id="ups-dlg-sel-ok" style="padding:6px 16px;border:none;border-radius:6px;cursor:pointer;font-size:12px;background:#4078f2;color:white;font-weight:bold;">' + textoConfirmar + '</button></div></div>';
+  overlay.innerHTML = html;
+  document.body.appendChild(overlay);
+  var checks = overlay.querySelectorAll('.ups-dlg-sel-cat');
+  var allCb = overlay.querySelector('#ups-dlg-sel-all');
+  allCb.onchange = function() { checks.forEach(function(cb) { if (!cb.disabled) cb.checked = allCb.checked; }); };
+  checks.forEach(function(cb) { cb.onchange = function() {
+    var allOn = true;
+    checks.forEach(function(c) { if (!c.disabled && !c.checked) allOn = false; });
+    allCb.checked = allOn;
+  }; });
+  overlay.querySelector('#ups-dlg-sel-cancel').onclick = function() { overlay.remove(); };
+  overlay.querySelector('#ups-dlg-sel-ok').onclick = function() {
+    var ids = [];
+    checks.forEach(function(cb) { if (cb.checked && !cb.disabled) ids.push(cb.getAttribute('data-id')); });
+    overlay.remove();
+    if (ids.length > 0) onConfirmar(ids);
+  };
+  overlay.addEventListener('click', function(ev) { if (ev.target === overlay) overlay.remove(); });
+}
+
+document.getElementById('btnExportar').onclick = function() {
+  var allKeys = [];
+  CATEGORIAS_EXPORT.forEach(function(c) { allKeys.push.apply(allKeys, c.keys); });
+  chrome.storage.local.get(allKeys, function(res) {
+    var categorias = CATEGORIAS_EXPORT.map(function(c) { return { id: c.id, rotulo: c.rotulo, desc: c.desc, marcado: true, desabilitado: false }; });
+    abrirDialogoSelecao('Exportar Dados', categorias, 'Exportar', function(idsSelecionados) {
+      var nomeBase = document.getElementById('nomeTabela').value.trim();
+      if (!nomeBase) nomeBase = 'SHEIN_MEDIDAS';
+      var hoje = new Date();
+      var dia = String(hoje.getDate()).padStart(2, '0');
+      var mes = String(hoje.getMonth() + 1).padStart(2, '0');
+      var ano = hoje.getFullYear();
+      var nomeArquivo = nomeBase + '_' + dia + '-' + mes + '-' + ano + '.json';
+      var exportData = {};
+      for (var i = 0; i < idsSelecionados.length; i++) {
+        var cat = CATEGORIAS_EXPORT.find(function(c) { return c.id === idsSelecionados[i]; });
+        if (!cat) continue;
+        for (var k = 0; k < cat.keys.length; k++) {
+          var key = cat.keys[k];
+          exportData[key] = res[key] !== undefined ? res[key] : (key === 'ultimaSelecionada' ? '' : {});
+        }
+      }
+      var jsonString = JSON.stringify(exportData, null, 2);
+      var blob = new Blob([jsonString], { type: 'application/json' });
+      var url = URL.createObjectURL(blob);
+      chrome.downloads.download({ url: url, filename: nomeArquivo, saveAs: true });
+    });
   });
 };
 
-document.getElementById('btnImportar').onclick = () => document.getElementById('fileInput').click();
-document.getElementById('fileInput').onchange = (e) => {
-  const arquivo = e.target.files[0];
+document.getElementById('btnImportar').onclick = function() { document.getElementById('fileInput').click(); };
+document.getElementById('fileInput').onchange = function(e) {
+  var arquivo = e.target.files[0];
   if (!arquivo) return;
-  const reader = new FileReader();
-  reader.onload = (ev) => {
+  var reader = new FileReader();
+  reader.onload = function(ev) {
     try {
-      const dadosRecuperados = JSON.parse(ev.target.result);
-      const bib = dadosRecuperados.biblioteca || dadosRecuperados;
-      const bibPrecos = dadosRecuperados.bibliotecaPrecos || {};
-      const bibMacros = dadosRecuperados.bibliotecaMacros || {};
-      const bibAtr = dadosRecuperados.bibliotecaAtributos || {};
-      const bibOverlay = dadosRecuperados.bibliotecaPresetsOverlay || {};
-      const ultimosPrecos = dadosRecuperados.ultimosPrecos || {};
-      const ultimosMacros = dadosRecuperados.ultimosMacros || {};
-      const ultimosLinks = dadosRecuperados.ultimosLinks || {};
-      const ultimaSelecionada = dadosRecuperados.ultimaSelecionada || "";
-      const ultimoEstadoMedidas = dadosRecuperados.ultimoEstadoMedidas || {};
-      const multiMedidasConfig = dadosRecuperados.multiMedidasConfig || {};
-      // Migrate old biblioteca[nome].atributos → bibliotecaAtributos
-      Object.keys(bib).forEach(nome => {
-        if (bib[nome].atributos && Object.keys(bib[nome].atributos).length) {
-          if (!bibAtr[nome]) bibAtr[nome] = bib[nome].atributos;
-          delete bib[nome].atributos;
+      var dados = JSON.parse(ev.target.result);
+      var categorias = CATEGORIAS_EXPORT.map(function(c) {
+        var tem = false;
+        for (var k = 0; k < c.keys.length; k++) {
+          var val = dados[c.keys[k]];
+          if (val !== undefined && val !== null && val !== '' && (typeof val !== 'object' || Object.keys(val).length > 0)) { tem = true; break; }
         }
+        return { id: c.id, rotulo: c.rotulo, desc: c.desc, marcado: tem, desabilitado: !tem };
       });
-      chrome.storage.local.set({
-        biblioteca: bib,
-        bibliotecaAtributos: bibAtr,
-        bibliotecaPrecos: bibPrecos,
-        bibliotecaMacros: bibMacros,
-        bibliotecaPresetsOverlay: bibOverlay,
-        ultimosPrecos,
-        ultimosMacros,
-        ultimosLinks,
-        ultimaSelecionada,
-        ultimoEstadoMedidas,
-        multiMedidasConfig
-      }, () => {
-        e.target.value = "";
-        atualizarSelect();
-        preencherSelectPresets();
-        setTimeout(() => { alert("Backup completo restaurado!"); }, 100);
+      var algum = categorias.some(function(c) { return c.marcado; });
+      if (!algum) { e.target.value = ''; alert('Arquivo não contém dados reconhecidos.'); return; }
+      abrirDialogoSelecao('Importar Dados', categorias, 'Importar', function(idsSelecionados) {
+        var setData = {};
+        for (var i = 0; i < idsSelecionados.length; i++) {
+          var cat = CATEGORIAS_EXPORT.find(function(c) { return c.id === idsSelecionados[i]; });
+          if (!cat) continue;
+          for (var k = 0; k < cat.keys.length; k++) {
+            if (dados[cat.keys[k]] !== undefined) setData[cat.keys[k]] = dados[cat.keys[k]];
+          }
+        }
+        if (setData.biblioteca && setData.bibliotecaAtributos) {
+          var bibAtr = setData.bibliotecaAtributos;
+          Object.keys(setData.biblioteca).forEach(function(nome) {
+            if (setData.biblioteca[nome].atributos && Object.keys(setData.biblioteca[nome].atributos).length) {
+              if (!bibAtr[nome]) bibAtr[nome] = setData.biblioteca[nome].atributos;
+              delete setData.biblioteca[nome].atributos;
+            }
+          });
+          setData.bibliotecaAtributos = bibAtr;
+        } else if (setData.biblioteca) {
+          Object.keys(setData.biblioteca).forEach(function(nome) {
+            if (setData.biblioteca[nome].atributos) delete setData.biblioteca[nome].atributos;
+          });
+        }
+        chrome.storage.local.set(setData, function() {
+          e.target.value = '';
+          atualizarSelect();
+          preencherSelectPresets();
+          setTimeout(function() { alert('Backup completo restaurado!'); }, 100);
+        });
       });
     } catch (err) {
-      console.error("Erro na importação:", err);
-      alert("Erro: O arquivo selecionado é inválido ou está corrompido.");
-      e.target.value = "";
+      console.error('Erro na importação:', err);
+      alert('Erro: O arquivo selecionado é inválido ou está corrompido.');
+      e.target.value = '';
     }
   };
-  reader.onerror = () => { alert("Erro ao ler o arquivo."); };
+  reader.onerror = function() { alert('Erro ao ler o arquivo.'); };
   reader.readAsText(arquivo);
 };
 
