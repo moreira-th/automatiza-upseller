@@ -255,6 +255,21 @@ async function stepMapearVariantes() {
               }
             }
 
+            // If still not found, try English → Portuguese translation match
+            if (!found) {
+              const traducoes = traduzirCorEnPt(name);
+              for (let t = 0; t < traducoes.length && !found; t++) {
+                const normTrad = normalizarCor(traducoes[t]);
+                for (const item of items) {
+                  if (normalizarCor(item.textContent) === normTrad) {
+                    nativeClick(item);
+                    found = true;
+                    break;
+                  }
+                }
+              }
+            }
+
             // If still not found, select "Valor de Variante Personalizada"
             if (!found) {
               for (const item of items) {
@@ -3740,6 +3755,142 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
 
 function normalizarCor(s) {
   return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+}
+
+function traduzirCorEnPt(name) {
+  // Split compound names into words for partial matching
+  var lower = name.toLowerCase().trim();
+  var words = lower.split(/[\s\/\-]+/);
+  var candidates = [];
+
+  // Helper: add candidate if not already present
+  function add() { for (var i = 0; i < arguments.length; i++) { if (candidates.indexOf(arguments[i]) === -1) candidates.push(arguments[i]); } }
+
+  // Build translation candidates based on words found
+  // Blues
+  if (words.indexOf('blue') !== -1) {
+    if (words.indexOf('light') !== -1) add('Azul Claro');
+    else if (words.indexOf('dark') !== -1) add('Azul Escuro');
+    else if (words.indexOf('navy') !== -1) add('Azul Marinho');
+    else if (words.indexOf('royal') !== -1) add('Azul Royal');
+    else if (words.indexOf('sky') !== -1 || words.indexOf('baby') !== -1 || words.indexOf('light') !== -1) add('Azul bebê');
+    else if (words.indexOf('dusty') !== -1 || words.indexOf('powder') !== -1) add('Azul Empoeirado');
+    else if (words.indexOf('cadet') !== -1) add('Azul cadete');
+    else if (words.indexOf('mint') !== -1) add('Azul menta');
+    else if (words.indexOf('petroleum') !== -1 || words.indexOf('petroleo') !== -1) add('Azul petróleo');
+    else if (words.indexOf('and') !== -1 && lower.indexOf('white') !== -1) add('Azul e Branco');
+    else if (words.indexOf('and') !== -1 && lower.indexOf('black') !== -1) add('azul e preto');
+    else add('Azul');
+  }
+  if (lower === 'navy') add('Azul Marinho');
+
+  // Reds
+  if (words.indexOf('red') !== -1) {
+    if (words.indexOf('dark') !== -1) add('Vermelho Escuro');
+    else if (words.indexOf('wine') !== -1 || words.indexOf('burgundy') !== -1) add('Vinho', 'Bordô', 'Marsala');
+    else if (words.indexOf('and') !== -1 && lower.indexOf('white') !== -1) add('Vermelho e Branco');
+    else if (words.indexOf('and') !== -1 && lower.indexOf('black') !== -1 || lower.indexOf('preto') !== -1) add('Vermelho e preto');
+    else add('Vermelho');
+  }
+
+  // Greens
+  if (words.indexOf('green') !== -1) {
+    if (words.indexOf('dark') !== -1) add('Verde Escuro');
+    else if (words.indexOf('light') !== -1) add('Verde Claro');
+    else if (words.indexOf('mint') !== -1) add('Verde Menta');
+    else if (words.indexOf('olive') !== -1) add('Verde Oliva');
+    else if (words.indexOf('military') !== -1 || words.indexOf('army') !== -1) add('Verde Militar');
+    else if (words.indexOf('lime') !== -1) add('Verde Limão');
+    else add('Verde');
+  }
+
+  // Pinks
+  if (words.indexOf('pink') !== -1) {
+    if (words.indexOf('hot') !== -1 || words.indexOf('fuchsia') !== -1 || words.indexOf('fucsia') !== -1) add('Rosa chiclete', 'Fúcsia');
+    else if (words.indexOf('baby') !== -1 || words.indexOf('light') !== -1) add('Rosa Bebê');
+    else if (words.indexOf('dusty') !== -1 || words.indexOf('powder') !== -1) add('Rosa empoeirado');
+    else if (words.indexOf('rose') !== -1) add('Rosê');
+    else if (words.indexOf('coral') !== -1) add('Coral');
+    else add('Pink', 'Rosa');
+  }
+  if (words.indexOf('fuchsia') !== -1 || words.indexOf('fucsia') !== -1) add('Fúcsia');
+  if (words.indexOf('rose') !== -1 || words.indexOf('rosé') !== -1 || words.indexOf('rosê') !== -1) add('Rosê');
+  if (lower.indexOf('hotpink') !== -1) add('Rosa chiclete', 'Fúcsia');
+  if (lower.indexOf('babypink') !== -1) add('Rosa Bebê');
+
+  // Purples
+  if (words.indexOf('purple') !== -1) {
+    if (words.indexOf('dusty') !== -1 || words.indexOf('powder') !== -1) add('Roxo empoeirado');
+    else add('Roxo');
+  }
+  if (words.indexOf('lavender') !== -1) add('Lavanda');
+  if (words.indexOf('violet') !== -1 || words.indexOf('violeta') !== -1) add('Violeta');
+  if (words.indexOf('mauve') !== -1 || words.indexOf('malva') !== -1) add('Malva');
+  if (lower === 'lilac') add('Lavanda', 'Malva', 'Violeta');
+
+  // Yellows
+  if (words.indexOf('yellow') !== -1) {
+    if (words.indexOf('mustard') !== -1 || words.indexOf('mostarda') !== -1) add('Amarelo mostarda');
+    else if (words.indexOf('light') !== -1) add('Luz amarela', 'Ganso amarelo');
+    else add('Amarelo');
+  }
+  if (words.indexOf('mustard') !== -1 || words.indexOf('mostarda') !== -1) add('Amarelo mostarda');
+
+  // Oranges
+  if (words.indexOf('orange') !== -1) {
+    if (words.indexOf('burnt') !== -1 || words.indexOf('burned') !== -1 || words.indexOf('queimado') !== -1) add('Laranja Queimado');
+    else if (words.indexOf('dark') !== -1) add('Laranja Queimado');
+    else add('Laranja');
+  }
+
+  // Browns
+  if (words.indexOf('brown') !== -1) {
+    if (words.indexOf('light') !== -1) add('Marrom Claro');
+    else if (words.indexOf('dark') !== -1) add('Chocolate', 'Marrom');
+    else add('Marrom');
+  }
+  if (words.indexOf('coffee') !== -1 || words.indexOf('café') !== -1) add('Café');
+  if (words.indexOf('chocolate') !== -1) add('Chocolate');
+  if (words.indexOf('tan') !== -1 || words.indexOf('caramel') !== -1) add('Caramelo', 'Castanho', 'Bege');
+  if (words.indexOf('camel') !== -1) add('Caramelo');
+
+  // Neutrals
+  if (words.indexOf('white') !== -1 || lower.indexOf('branco') !== -1) {
+    if (words.indexOf('off') !== -1) add('Creme');
+    else add('Branco');
+  }
+  if (words.indexOf('black') !== -1 || lower.indexOf('preto') !== -1) add('Preto');
+  if (words.indexOf('grey') !== -1 || words.indexOf('gray') !== -1) {
+    if (words.indexOf('light') !== -1) add('Cinza Claro');
+    else if (words.indexOf('dark') !== -1) add('Chumbo', 'Cinza Escuro');
+    else add('Cinza');
+  }
+  if (words.indexOf('silver') !== -1 || words.indexOf('prata') !== -1) add('Prata');
+  if (words.indexOf('gold') !== -1 || words.indexOf('golden') !== -1 || words.indexOf('dourado') !== -1) add('Dourado');
+  if (words.indexOf('bronze') !== -1) add('Bronze');
+  if (words.indexOf('champagne') !== -1 || words.indexOf('champanhe') !== -1) add('Champanhe');
+  if (words.indexOf('cream') !== -1 || words.indexOf('creme') !== -1 || lower.indexOf('marfim') !== -1 || lower.indexOf('ivory') !== -1) add('Creme');
+
+  // Wine / Burgundy
+  if (words.indexOf('burgundy') !== -1 || words.indexOf('bordeaux') !== -1) add('Bordô', 'Vinho', 'Marsala');
+  if (words.indexOf('wine') !== -1) add('Vinho', 'Bordô', 'Marsala');
+  if (words.indexOf('marsala') !== -1) add('Marsala');
+
+  // Others
+  if (words.indexOf('coral') !== -1) add('Coral');
+  if (words.indexOf('watermelon') !== -1 || words.indexOf('melancia') !== -1) add('Melancia');
+  if (words.indexOf('ginger') !== -1 || words.indexOf('gengibre') !== -1) add('Gengibre');
+  if (words.indexOf('khaki') !== -1 || words.indexOf('caqui') !== -1) add('Caqui');
+  if (words.indexOf('apricot') !== -1 || words.indexOf('peach') !== -1 || words.indexOf('pêssego') !== -1 || words.indexOf('pessego') !== -1) add('Pêssego');
+  if (words.indexOf('multicolor') !== -1 || words.indexOf('multicolorido') !== -1 || words.indexOf('multi') !== -1) add('Multicolorido');
+  if (words.indexOf('transparent') !== -1 || words.indexOf('transparente') !== -1) add('Transparente');
+  if (words.indexOf('lead') !== -1 || words.indexOf('chumbo') !== -1) add('Chumbo');
+  if (words.indexOf('beige') !== -1 || words.indexOf('bege') !== -1) add('Bege');
+  if (words.indexOf('damask') !== -1 || words.indexOf('damasco') !== -1) add('Damasco');
+  if (words.indexOf('plum') !== -1 || lower.indexOf('ameixa') !== -1) add('Vinho', 'Marsala', 'Bordô');
+
+  // If no candidates found, return empty
+  return candidates;
 }
 
 function lerCoresEspecificacaoPrincipal() {
