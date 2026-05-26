@@ -130,7 +130,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.getElementById('btnExportar').onclick = () => {
-  chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "ultimosPrecos", "ultimosMacros", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
+  chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "bibliotecaPresetsOverlay", "ultimosPrecos", "ultimosMacros", "ultimosLinks", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
     let nomeBase = document.getElementById('nomeTabela').value.trim();
     if (!nomeBase) nomeBase = "SHEIN_MEDIDAS";
     const hoje = new Date();
@@ -143,8 +143,10 @@ document.getElementById('btnExportar').onclick = () => {
       bibliotecaAtributos: res.bibliotecaAtributos || {},
       bibliotecaPrecos: res.bibliotecaPrecos || {},
       bibliotecaMacros: res.bibliotecaMacros || {},
+      bibliotecaPresetsOverlay: res.bibliotecaPresetsOverlay || {},
       ultimosPrecos: res.ultimosPrecos || {},
       ultimosMacros: res.ultimosMacros || {},
+      ultimosLinks: res.ultimosLinks || {},
       ultimaSelecionada: res.ultimaSelecionada || "",
       ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
       multiMedidasConfig: res.multiMedidasConfig || {}
@@ -168,8 +170,10 @@ document.getElementById('fileInput').onchange = (e) => {
       const bibPrecos = dadosRecuperados.bibliotecaPrecos || {};
       const bibMacros = dadosRecuperados.bibliotecaMacros || {};
       const bibAtr = dadosRecuperados.bibliotecaAtributos || {};
+      const bibOverlay = dadosRecuperados.bibliotecaPresetsOverlay || {};
       const ultimosPrecos = dadosRecuperados.ultimosPrecos || {};
       const ultimosMacros = dadosRecuperados.ultimosMacros || {};
+      const ultimosLinks = dadosRecuperados.ultimosLinks || {};
       const ultimaSelecionada = dadosRecuperados.ultimaSelecionada || "";
       const ultimoEstadoMedidas = dadosRecuperados.ultimoEstadoMedidas || {};
       const multiMedidasConfig = dadosRecuperados.multiMedidasConfig || {};
@@ -185,8 +189,10 @@ document.getElementById('fileInput').onchange = (e) => {
         bibliotecaAtributos: bibAtr,
         bibliotecaPrecos: bibPrecos,
         bibliotecaMacros: bibMacros,
+        bibliotecaPresetsOverlay: bibOverlay,
         ultimosPrecos,
         ultimosMacros,
+        ultimosLinks,
         ultimaSelecionada,
         ultimoEstadoMedidas,
         multiMedidasConfig

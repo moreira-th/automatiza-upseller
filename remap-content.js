@@ -3074,7 +3074,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
 
     document.getElementById('ups-op-export-action').onclick = () => {
       console.log('[UPS] Export clicked');
-      chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "bibliotecaPresetsOverlay", "ultimosPrecos", "ultimosMacros", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
+      chrome.storage.local.get(["biblioteca", "bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros", "bibliotecaPresetsOverlay", "ultimosPrecos", "ultimosMacros", "ultimosLinks", "ultimaSelecionada", "ultimoEstadoMedidas", "multiMedidasConfig"], (res) => {
         console.log('[UPS] Storage read done, sending export message');
         const hoje = new Date();
         const dia = String(hoje.getDate()).padStart(2, '0');
@@ -3088,6 +3088,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           bibliotecaPresetsOverlay: res.bibliotecaPresetsOverlay || {},
           ultimosPrecos: res.ultimosPrecos || {},
           ultimosMacros: res.ultimosMacros || {},
+          ultimosLinks: res.ultimosLinks || {},
           ultimaSelecionada: res.ultimaSelecionada || "",
           ultimoEstadoMedidas: res.ultimoEstadoMedidas || {},
           multiMedidasConfig: res.multiMedidasConfig || {}
@@ -3130,6 +3131,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
             bibliotecaPresetsOverlay: bibOverlay,
             ultimosPrecos: dados.ultimosPrecos || {},
             ultimosMacros: dados.ultimosMacros || {},
+            ultimosLinks: dados.ultimosLinks || {},
             ultimaSelecionada: dados.ultimaSelecionada || "",
             ultimoEstadoMedidas: dados.ultimoEstadoMedidas || {},
             multiMedidasConfig: dados.multiMedidasConfig || {}
