@@ -3769,11 +3769,11 @@ function traduzirCorEnPt(name) {
   // Build translation candidates based on words found
   // Blues
   if (words.indexOf('blue') !== -1) {
-    if (words.indexOf('light') !== -1) add('Azul Claro');
+    if (words.indexOf('light') !== -1) add('Azul bebê');
     else if (words.indexOf('dark') !== -1) add('Azul Escuro');
     else if (words.indexOf('navy') !== -1) add('Azul Marinho');
     else if (words.indexOf('royal') !== -1) add('Azul Royal');
-    else if (words.indexOf('sky') !== -1 || words.indexOf('baby') !== -1 || words.indexOf('light') !== -1) add('Azul bebê');
+    else if (words.indexOf('sky') !== -1 || words.indexOf('baby') !== -1) add('Azul bebê');
     else if (words.indexOf('dusty') !== -1 || words.indexOf('powder') !== -1) add('Azul Empoeirado');
     else if (words.indexOf('cadet') !== -1) add('Azul cadete');
     else if (words.indexOf('mint') !== -1) add('Azul menta');
