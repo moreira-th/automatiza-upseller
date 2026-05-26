@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UpSeller Moreira",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Automações para UpSeller: Remapeamento de Variantes + Tabela de Medidas + Descrições + Recorte de Imagem + Multi-Aba + Drafts. Feito por Thales Moreira.",
   "permissions": [
     "storage",
