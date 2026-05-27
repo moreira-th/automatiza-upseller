@@ -1668,12 +1668,22 @@ function mostrarPainelMedidasFaltantes(faltantes, selectedTable, dados) {
 
 // ========== FUNÇÕES DE ATRIBUTOS ==========
 function expandirAtributos() {
-  const all = document.querySelectorAll('*');
-  for (const el of all) {
-    if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
-    if (el.textContent.trim() === 'Mais Atributos') {
-      nativeClick(el);
-      return true;
+  var forms = document.querySelectorAll('.ant-form-item');
+  if (forms.length > 5) return true;
+
+  for (var t = 0; t < 4; t++) {
+    if (t > 0) {
+      var waitStart = Date.now();
+      while (Date.now() - waitStart < 200) { /* busy-wait */ }
+    }
+    var all = document.querySelectorAll('*');
+    for (var ei = 0; ei < all.length; ei++) {
+      var el = all[ei];
+      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+      if (el.textContent.trim().toLowerCase() === 'mais atributos') {
+        nativeClick(el);
+        return true;
+      }
     }
   }
   return false;
@@ -2114,7 +2124,17 @@ function abrirDialogMedidas() {
 </div>
 <div class="ups-ac-body" id="ups-ab-3">
 <div class="ups-ac-body-inner">
-<div style="font-size:12px;color:#666;line-height:1.5;">Aplica as configurações desta overlay em todas as abas de edição abertas automaticamente.</div>
+<div style="margin-bottom:6px;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+    <span id="ups-multi-label-seq" style="font-size:12px;font-weight:600;color:#888;transition:color .25s;">SEQUENCIAL</span>
+    <div id="ups-multi-toggle" style="position:relative;width:44px;height:22px;background:#4caf50;border-radius:11px;cursor:pointer;transition:background .25s;" data-modo="cascata">
+      <div id="ups-multi-knob" style="position:absolute;top:2px;right:2px;width:18px;height:18px;background:white;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.2);transition:all .25s;"></div>
+    </div>
+    <span id="ups-multi-label-par" style="font-size:12px;font-weight:600;color:#4caf50;transition:color .25s;">PARALELO</span>
+  </div>
+  <div id="ups-multi-desc" style="font-size:11px;color:#666;margin-top:4px;line-height:1.4;text-align:center;">Distribui as abas em janelas separadas e executa todas ao mesmo tempo.</div>
+</div>
+<div style="font-size:12px;color:#999;line-height:1.5;">Aplica as configuracoes desta overlay em todas as abas de edicao abertas automaticamente.</div>
 </div>
 </div>
 </div>
@@ -2163,6 +2183,32 @@ function abrirDialogMedidas() {
       }
     });
   });
+
+  // Toggle Paralelo / Sequencial
+  var multiToggle = document.getElementById('ups-multi-toggle');
+  if (multiToggle) {
+    multiToggle.onclick = function() {
+      var current = this.getAttribute('data-modo');
+      var next = current === 'cascata' ? 'sequencial' : 'cascata';
+      this.setAttribute('data-modo', next);
+      var isCascata = next === 'cascata';
+      var knob = document.getElementById('ups-multi-knob');
+      var labelSeq = document.getElementById('ups-multi-label-seq');
+      var labelPar = document.getElementById('ups-multi-label-par');
+      var desc = document.getElementById('ups-multi-desc');
+      if (isCascata) {
+        this.style.background = '#4caf50';
+        knob.style.left = 'auto'; knob.style.right = '2px';
+        labelSeq.style.color = '#888'; labelPar.style.color = '#4caf50';
+        if (desc) desc.textContent = 'Distribui as abas em janelas separadas e executa todas ao mesmo tempo.';
+      } else {
+        this.style.background = '#ff9800';
+        knob.style.left = '2px'; knob.style.right = 'auto';
+        labelSeq.style.color = '#ff9800'; labelPar.style.color = '#888';
+        if (desc) desc.textContent = 'Processa uma aba por vez, na mesma janela.';
+      }
+    };
+  }
 
   const body = document.getElementById('ups-mm-body');
   let selectedTable = '';
@@ -3535,6 +3581,8 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     if (multiAtivo) {
       const atrSelect = document.getElementById('ups-atr-carregar');
       const atrPreset = atrSelect ? atrSelect.value : '';
+      const multiToggle = document.getElementById('ups-multi-toggle');
+      const multiModo = multiToggle ? multiToggle.getAttribute('data-modo') : 'cascata';
       chrome.runtime.sendMessage({
         action: 'start-multi-medidas',
         config: {
@@ -3543,6 +3591,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           overrides,
           atributosAtivo,
           atrPreset,
+          multiModo: multiModo,
           confirmarCores: macroAtivo && confirmarCoresAtivo,
           macro: temMacro ? {
             sub: document.getElementById('ups-ma-sub').value.trim(),
@@ -4062,6 +4111,7 @@ function mostrarDialogoConfirmarCores(coresAtuais) {
 
     document.getElementById('ups-cor-confirmar').onclick = () => {
       div.remove();
+      chrome.runtime.sendMessage({ action: 'cores-confirmed' }, () => { void chrome.runtime.lastError; });
       resolve({ confirmou: true, cores: coletarCores() });
     };
     document.getElementById('ups-cor-pular').onclick = () => {

@@ -233,6 +233,17 @@ let multiMedidasConfig = null;
 let keepAliveInterval = null;
 
 const SESSION_KEY = 'multiTabState';
+const SESSION_KEY_PARALLEL = 'multiTabParallel';
+
+// Estado do modo paralelo (cascata)
+let cascadeWindows = [];
+let originalWindowId = null;
+let parallelTotal = 0;
+let parallelCompleted = 0;
+let tabOriginalIndexes = {};
+let baseReturnIndex = null;
+let returnedCount = 0;
+let draftsAnchorIndex = null;
 
 function salvarEstadoMulti() {
   chrome.storage.session.set({
@@ -274,33 +285,100 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   }
 
   if (msg.action === 'start-multi-medidas') {
-    chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/shein/edit/*' }, (tabs) => {
+    var sourceWindowId = sender.tab ? sender.tab.windowId : null;
+    chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/shein/edit/*' }, async (tabs) => {
       tabQueue = tabs.map(t => t.id);
       if (tabQueue.length === 0) {
         chrome.runtime.sendMessage({ action: 'multi-error', message: 'Nenhuma aba de edição encontrada' });
         return;
       }
-      processingTabs = true;
-      multiProcessType = 'medidas';
       multiMedidasConfig = msg.config;
-      currentTabIndex = 0;
-      salvarEstadoMulti();
-      startKeepAlive();
-      chrome.runtime.sendMessage({
-        action: 'multi-progress',
-        tab: 0,
-        total: tabQueue.length,
-        message: `Aba 1 de ${tabQueue.length}`
-      });
-      processTabMedidas(currentTabIndex);
+      multiProcessType = 'medidas';
+      var modo = msg.config.multiModo || 'cascata';
+
+      if (modo === 'sequencial' || tabQueue.length <= 1) {
+        processingTabs = true;
+        currentTabIndex = 0;
+        salvarEstadoMulti();
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: `Aba 1 de ${tabQueue.length}`
+        });
+        processTabMedidas(currentTabIndex);
+      } else {
+        try {
+          await tileTabs(tabQueue, sourceWindowId);
+        } catch (e) {
+          chrome.runtime.sendMessage({ action: 'multi-error', message: 'Erro ao distribuir janelas: ' + e.message });
+          return;
+        }
+        processingTabs = true;
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: `Paralelo: ${tabQueue.length} abas`
+        });
+        // Mostrar overlay de progresso em todas as tabs
+        tabQueue.forEach(function(tabId, idx) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'show-multi-overlay',
+            tab: idx + 1,
+            total: tabQueue.length
+          }, function() { void chrome.runtime.lastError; });
+        });
+        await sleep(500);
+        // Dispara macro em todas as tabs simultaneamente
+        tabQueue.forEach(function(tabId) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'executar-macro-full',
+            config: msg.config
+          }, function() { void chrome.runtime.lastError; });
+        });
+      }
     });
     return true;
   }
 
   if (msg.action === 'completed' || msg.action === 'error') {
+    // Modo paralelo (cascata) — retorna cada tab independentemente
+    if (cascadeWindows.length > 0 && parallelTotal > 0) {
+      (async function() {
+        var tabId = sender.tab ? sender.tab.id : null;
+        var tabWinId = sender.tab ? sender.tab.windowId : null;
+
+        if (!processingTabs) {
+          chrome.storage.session.get(SESSION_KEY_PARALLEL, async (res) => {
+            var p = res[SESSION_KEY_PARALLEL];
+            if (p) {
+              cascadeWindows = p.cascadeWindows || [];
+              originalWindowId = p.originalWindowId;
+              tabQueue = p.tabQueue || [];
+              tabOriginalIndexes = p.tabOriginalIndexes || {};
+              parallelTotal = tabQueue.length;
+              parallelCompleted = p.parallelCompleted || 0;
+              baseReturnIndex = p.baseReturnIndex;
+              returnedCount = p.returnedCount || 0;
+              draftsAnchorIndex = p.draftsAnchorIndex;
+            }
+            await moveCompletedTab(tabId, tabWinId);
+          });
+          return;
+        }
+
+        await moveCompletedTab(tabId, tabWinId);
+      })();
+      return;
+    }
+
+    // Modo sequencial (comportamento atual)
     if (!processingTabs) {
       chrome.storage.session.get(SESSION_KEY, (res) => {
-        const saved = res[SESSION_KEY];
+        var saved = res[SESSION_KEY];
         if (saved && saved.processingTabs) {
           processingTabs = saved.processingTabs;
           tabQueue = saved.tabQueue;
@@ -315,16 +393,47 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     processNextTab();
   }
 
+  if (msg.action === 'cores-confirmed') {
+    if (cascadeWindows.length > 1) {
+      chrome.tabs.get(sender.tab.id).then(function(tab) {
+        var idx = cascadeWindows.lastIndexOf(tab.windowId);
+        if (idx > 0) {
+          chrome.windows.update(cascadeWindows[idx - 1], { focused: true });
+        }
+      }).catch(function() { /* tab/window gone */ });
+    }
+  }
+
   if (msg.action === 'cancel-multi') {
     processingTabs = false;
     stopKeepAlive();
     limparEstadoMulti();
-    // Abort current tab execution
-    if (tabQueue && tabQueue.length > 0 && currentTabIndex < tabQueue.length) {
-      chrome.tabs.sendMessage(tabQueue[currentTabIndex], { action: 'abort-macro' }).catch(() => {});
+    // Modo paralelo: cancelar todas as tabs e reagrupar
+    if (cascadeWindows.length > 0) {
+      tabQueue.forEach(function(tid) {
+        chrome.tabs.sendMessage(tid, { action: 'abort-macro' }).catch(function() {});
+      });
+      gatherTabs().then(function() {
+        chrome.storage.session.remove(SESSION_KEY_PARALLEL, function() {});
+      });
+      cascadeWindows = [];
+      parallelTotal = 0;
+      parallelCompleted = 0;
+      tabOriginalIndexes = {};
+      baseReturnIndex = null;
+      returnedCount = 0;
+      draftsAnchorIndex = null;
+      tabQueue = [];
+      chrome.runtime.sendMessage({ action: 'multi-cancelled' });
+      sendResponse({ status: 'cancelled' });
+      return true;
     }
-    tabQueue.forEach(tid => {
-      chrome.tabs.sendMessage(tid, { action: 'multi-cancelled' }).catch(() => {});
+    // Abort current tab execution (sequencial)
+    if (tabQueue && tabQueue.length > 0 && currentTabIndex < tabQueue.length) {
+      chrome.tabs.sendMessage(tabQueue[currentTabIndex], { action: 'abort-macro' }).catch(function() {});
+    }
+    tabQueue.forEach(function(tid) {
+      chrome.tabs.sendMessage(tid, { action: 'multi-cancelled' }).catch(function() {});
     });
     tabQueue = [];
     chrome.runtime.sendMessage({ action: 'multi-cancelled', total: currentTabIndex });
@@ -457,14 +566,20 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   }
 
   if (msg.action === 'progress' && processingTabs && tabQueue.length > 0) {
-    tabQueue.forEach(tid => {
-      chrome.tabs.sendMessage(tid, {
-        action: 'update-multi-overlay',
-        tab: currentTabIndex + 1,
-        total: tabQueue.length,
-        message: msg.message
+    if (cascadeWindows.length > 0) {
+      tabQueue.forEach(function(tid) {
+        chrome.tabs.sendMessage(tid, { action: 'update-multi-overlay', message: msg.message });
       });
-    });
+    } else {
+      tabQueue.forEach(function(tid) {
+        chrome.tabs.sendMessage(tid, {
+          action: 'update-multi-overlay',
+          tab: currentTabIndex + 1,
+          total: tabQueue.length,
+          message: msg.message
+        });
+      });
+    }
   }
 
   if (msg.type === 'ups-click-main') {
@@ -670,5 +785,177 @@ function hideOverlayAllTabs(total) {
         }).catch(() => {});
       }
     });
+  });
+}
+
+// ===== TILE / PARALELO =====
+
+function sleep(ms) {
+  return new Promise(function(resolve) { setTimeout(resolve, ms); });
+}
+
+async function moveCompletedTab(tabId, tabWinId) {
+  if (!tabId) return;
+
+  if (tabWinId && tabWinId !== originalWindowId) {
+    var targetIdx = baseReturnIndex + returnedCount;
+    try {
+      await chrome.tabs.move(tabId, { windowId: originalWindowId, index: targetIdx });
+    } catch (e) { /* skip */ }
+  }
+  returnedCount++;
+  parallelCompleted++;
+
+  var stateUpdate = {};
+  stateUpdate[SESSION_KEY_PARALLEL] = {
+    cascadeWindows: cascadeWindows, originalWindowId: originalWindowId,
+    tabQueue: tabQueue, tabOriginalIndexes: tabOriginalIndexes,
+    baseReturnIndex: baseReturnIndex, returnedCount: returnedCount,
+    parallelCompleted: parallelCompleted, draftsAnchorIndex: draftsAnchorIndex
+  };
+  chrome.storage.session.set(stateUpdate, function() {});
+
+  if (parallelCompleted >= parallelTotal) {
+    await cleanupParallel();
+  }
+}
+
+async function cleanupParallel() {
+  for (var ci = 0; ci < cascadeWindows.length; ci++) {
+    if (cascadeWindows[ci] === originalWindowId) continue;
+    try {
+      var remaining = await chrome.tabs.query({ windowId: cascadeWindows[ci] });
+      if (remaining.length === 0) await chrome.windows.remove(cascadeWindows[ci]);
+    } catch (e) { /* ignore */ }
+  }
+  try {
+    await chrome.windows.update(originalWindowId, { state: 'maximized' });
+  } catch (e) { /* ignore */ }
+
+  stopKeepAlive();
+  chrome.storage.session.remove(SESSION_KEY_PARALLEL, function() {});
+  chrome.runtime.sendMessage({ action: 'multi-complete', total: parallelTotal });
+  hideOverlayAllTabs(parallelTotal);
+
+  cascadeWindows = [];
+  parallelTotal = 0;
+  parallelCompleted = 0;
+  originalWindowId = null;
+  tabOriginalIndexes = {};
+  baseReturnIndex = null;
+  returnedCount = 0;
+  draftsAnchorIndex = null;
+}
+
+async function tileTabs(tabIds, sourceWindowId) {
+  var displays = await chrome.system.display.getInfo();
+  var display = displays.find(function(d) { return d.isPrimary; }) || displays[0];
+  var baseLeft = display.workArea.left;
+  var baseTop = display.workArea.top;
+  var CASCADE_OFFSET = 40;
+  var WIDTH = 1024;
+  var HEIGHT = 600;
+
+  originalWindowId = sourceWindowId;
+  if (!originalWindowId) {
+    var currentWin = await chrome.windows.getLastFocused();
+    originalWindowId = currentWin.id;
+  }
+  cascadeWindows = [];
+  parallelTotal = tabIds.length;
+  parallelCompleted = 0;
+  baseReturnIndex = null;
+  returnedCount = 0;
+  draftsAnchorIndex = null;
+
+  var allCurrentTabs = await chrome.tabs.query({ windowId: originalWindowId });
+  for (var ai = 0; ai < allCurrentTabs.length; ai++) {
+    if (allCurrentTabs[ai].url && allCurrentTabs[ai].url.indexOf('/pt/products/shein/drafts') !== -1) {
+      draftsAnchorIndex = allCurrentTabs[ai].index;
+      baseReturnIndex = draftsAnchorIndex + 1;
+      break;
+    }
+  }
+  if (baseReturnIndex === null) baseReturnIndex = 0;
+
+  tabOriginalIndexes = {};
+  for (var aj = 0; aj < allCurrentTabs.length; aj++) {
+    if (tabIds.includes(allCurrentTabs[aj].id)) {
+      tabOriginalIndexes[allCurrentTabs[aj].id] = allCurrentTabs[aj].index;
+    }
+  }
+
+  var state = { cascadeWindows: [], originalWindowId: originalWindowId, tabQueue: tabIds, tabOriginalIndexes: tabOriginalIndexes, baseReturnIndex: baseReturnIndex, returnedCount: 0, parallelCompleted: 0, draftsAnchorIndex: draftsAnchorIndex };
+
+  for (var i = 0; i < tabIds.length; i++) {
+    var left = baseLeft + CASCADE_OFFSET * i;
+    var top = baseTop + CASCADE_OFFSET * i;
+
+    if (i === 0) {
+      await chrome.windows.update(originalWindowId, { state: 'normal' });
+      await chrome.windows.update(originalWindowId, { left: left, top: top, width: WIDTH, height: HEIGHT });
+      cascadeWindows.push(originalWindowId);
+    } else {
+      var win = await chrome.windows.create({
+        tabId: tabIds[i],
+        left: left, top: top,
+        width: WIDTH, height: HEIGHT,
+        focused: false
+      });
+      cascadeWindows.push(win.id);
+      await sleep(200);
+    }
+
+    chrome.tabs.update(tabIds[i], { autoDiscardable: false }).catch(function() {});
+  }
+
+  state.cascadeWindows = cascadeWindows;
+  var storageObj = {};
+  storageObj[SESSION_KEY_PARALLEL] = state;
+  chrome.storage.session.set(storageObj, function() {});
+}
+
+async function gatherTabs() {
+  var allTabs = [];
+  for (var wi = 0; wi < cascadeWindows.length; wi++) {
+    try {
+      var tabs = await chrome.tabs.query({ windowId: cascadeWindows[wi] });
+      allTabs.push.apply(allTabs, tabs.filter(function(t) { return tabQueue.includes(t.id); }));
+    } catch (e) { /* window gone */ }
+  }
+
+  for (var ti = 0; ti < allTabs.length; ti++) {
+    if (allTabs[ti].windowId === originalWindowId) continue;
+    try {
+      var savedIdx = tabOriginalIndexes[allTabs[ti].id];
+      await chrome.tabs.move(allTabs[ti].id, { windowId: originalWindowId, index: savedIdx !== undefined ? savedIdx : -1 });
+    } catch (e) { /* skip */ }
+  }
+
+  for (var ci = 0; ci < cascadeWindows.length; ci++) {
+    if (cascadeWindows[ci] === originalWindowId) continue;
+    try {
+      var remaining = await chrome.tabs.query({ windowId: cascadeWindows[ci] });
+      if (remaining.length === 0) await chrome.windows.remove(cascadeWindows[ci]);
+    } catch (e) { /* ignore */ }
+  }
+
+  try {
+    await chrome.windows.update(originalWindowId, { state: 'maximized' });
+  } catch (e) { /* ignore */ }
+
+  cascadeWindows = [];
+  parallelTotal = 0;
+  parallelCompleted = 0;
+  originalWindowId = null;
+  tabOriginalIndexes = {};
+  baseReturnIndex = null;
+  returnedCount = 0;
+  draftsAnchorIndex = null;
+}
+
+function broadcastToAll(message) {
+  tabQueue.forEach(function(tid) {
+    chrome.tabs.sendMessage(tid, message).catch(function() {});
   });
 }
