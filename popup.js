@@ -135,7 +135,8 @@ var CATEGORIAS_EXPORT = [
   { id: 'PrecoEspecial', rotulo: 'Preço Especial', desc: 'Preços salvos e último preço aplicado', keys: ['bibliotecaPrecos','ultimosPrecos'] },
   { id: 'EditarMassa', rotulo: 'Editar em Massa', desc: 'Macros e último macro executado', keys: ['bibliotecaMacros','ultimosMacros'] },
   { id: 'Atributos', rotulo: 'Atributos', desc: 'Atributos customizados salvos', keys: ['bibliotecaAtributos'] },
-  { id: 'LinksRecentes', rotulo: 'Links Recentes', desc: 'Últimos links de imagem usados', keys: ['ultimosLinks'] }
+  { id: 'LinksRecentes', rotulo: 'Links Recentes', desc: 'Últimos links de imagem usados', keys: ['ultimosLinks'] },
+  { id: 'RemapCustom', rotulo: 'Remap de Cores', desc: 'Remapeamento customizado de cores', keys: ['bibliotecaRemapCustom'] }
 ];
 
 function abrirDialogoSelecao(titulo, categorias, textoConfirmar, onConfirmar) {
@@ -560,4 +561,75 @@ document.addEventListener('DOMContentLoaded', () => {
   preencherSelectTam();
   preencherSelectPresets();
   restaurarUltimosPrecos();
+  carregarCoresRemap();
+});
+
+// ========== TAB CORES ==========
+var _remapCustomData = {};
+
+function carregarCoresRemap() {
+  chrome.storage.local.get(['bibliotecaRemapCustom'], function(res) {
+    _remapCustomData = res.bibliotecaRemapCustom || {};
+    renderizarCoresLista();
+  });
+}
+
+function renderizarCoresLista() {
+  var lista = document.getElementById('coresLista');
+  if (!lista) return;
+  var keys = Object.keys(_remapCustomData);
+  if (keys.length === 0) {
+    lista.innerHTML = '<div style="color:#999;text-align:center;padding:12px;font-size:11px;">Nenhum mapeamento</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < keys.length; i++) {
+    var orig = keys[i];
+    var dest = _remapCustomData[orig];
+    html += '<div style="display:flex;align-items:center;padding:4px 0;border-bottom:1px solid #f0f0f0;font-size:11px;">' +
+      '<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + orig + '</span>' +
+      '<span style="color:#999;margin:0 6px;">→</span>' +
+      '<span style="flex:1;color:var(--primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + dest + '</span>' +
+      '<button class="btn-del-cor" data-key="' + orig + '" style="margin-left:6px;padding:2px 6px;background:var(--danger);color:white;border:none;border-radius:3px;cursor:pointer;font-size:12px;line-height:1;">✕</button>' +
+      '</div>';
+  }
+  lista.innerHTML = html;
+  var btns = lista.querySelectorAll('.btn-del-cor');
+  for (var j = 0; j < btns.length; j++) {
+    btns[j].onclick = function() {
+      var key = this.getAttribute('data-key');
+      delete _remapCustomData[key];
+      renderizarCoresLista();
+    };
+  }
+}
+
+document.getElementById('btnAddCor').onclick = function() {
+  var orig = document.getElementById('corOriginal').value.trim();
+  var dest = document.getElementById('corDesejada').value.trim();
+  if (!orig || !dest) return;
+  _remapCustomData[orig] = dest;
+  document.getElementById('corOriginal').value = '';
+  document.getElementById('corDesejada').value = '';
+  renderizarCoresLista();
+};
+
+document.getElementById('btnSalvarCores').onclick = function() {
+  var btn = document.getElementById('btnSalvarCores');
+  chrome.storage.local.set({ bibliotecaRemapCustom: _remapCustomData }, function() {
+    btn.textContent = 'SALVO ✓';
+    btn.style.background = '#28a745';
+    setTimeout(function() {
+      btn.textContent = 'SALVAR';
+      btn.style.background = '';
+    }, 2000);
+    carregarCoresRemap();
+  });
+};
+
+document.getElementById('corOriginal').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('btnAddCor').click();
+});
+document.getElementById('corDesejada').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') document.getElementById('btnAddCor').click();
 });

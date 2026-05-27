@@ -163,6 +163,16 @@ async function stepConfirmarCriacao() {
 
 async function stepMapearVariantes() {
   _personalizadasAdicionadas = 0;
+  var _customTarget = null;
+  var remapCustom = {};
+  try {
+    var remapData = await new Promise(function(resolve) {
+      chrome.storage.local.get(['bibliotecaRemapCustom'], function(res) {
+        resolve(res.bibliotecaRemapCustom || {});
+      });
+    });
+    for (var rk in remapData) remapCustom[normalizarCor(rk)] = remapData[rk];
+  } catch(e) {}
   const mainDialog = findMainDialog();
   if (!mainDialog) throw new Error('Diálogo principal não encontrado');
 
@@ -234,17 +244,46 @@ async function stepMapearVariantes() {
             const items = visibleDropdown.querySelectorAll('li');
             let found = false;
 
-            // Try to find matching value in dropdown (exact match: case, accent, space)
-            for (const item of items) {
-              if (item.textContent.trim() === name) {
-                nativeClick(item);
-                found = true;
-                break;
+            // Try custom remap first (user-defined from CORES tab — highest priority)
+            if (!found && remapCustom) {
+              var targetName = remapCustom[normalizarCor(name)];
+              if (targetName) {
+                _customTarget = targetName;
+                var normTarget = normalizarCor(targetName);
+                for (const item of items) {
+                  if (normalizarCor(item.textContent) === normTarget) {
+                    nativeClick(item);
+                    found = true;
+                    _customTarget = null;
+                    break;
+                  }
+                }
+                if (!found) {
+                  for (const item of items) {
+                    if (item.textContent.trim() === targetName) {
+                      nativeClick(item);
+                      found = true;
+                      _customTarget = null;
+                      break;
+                    }
+                  }
+                }
+              }
+            }
+
+            // Try exact match (only if no custom remap target pending)
+            if (!found && !_customTarget) {
+              for (const item of items) {
+                if (item.textContent.trim() === name) {
+                  nativeClick(item);
+                  found = true;
+                  break;
+                }
               }
             }
 
             // If no exact match, try normalized match (ignore case, accents, punctuation)
-            if (!found) {
+            if (!found && !_customTarget) {
               const normName = normalizarCor(name);
               for (const item of items) {
                 if (normalizarCor(item.textContent) === normName) {
@@ -256,7 +295,7 @@ async function stepMapearVariantes() {
             }
 
             // If still not found, try English → Portuguese translation match
-            if (!found) {
+            if (!found && !_customTarget) {
               const traducoes = traduzirCorEnPt(name);
               for (let t = 0; t < traducoes.length && !found; t++) {
                 const normTrad = normalizarCor(traducoes[t]);
@@ -279,10 +318,11 @@ async function stepMapearVariantes() {
                   // Find the text input that appears and set its value
                   const input = selectEl.closest('td, th')?.querySelector('input[type="text"], textarea');
                   if (input) {
-                    input.value = name;
+                    input.value = _customTarget || name;
                     input.dispatchEvent(new Event('input', { bubbles: true }));
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                   }
+                  _customTarget = null;
                   _personalizadasAdicionadas++;
                   found = true;
                   break;
@@ -1390,7 +1430,7 @@ function abrirDialogPrecos() {
         const result = await mostrarDialogoConfirmarCores(coresPagina);
         if (result.confirmou) {
               aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
-          await sleep(500);
+          await sleep(250);
         }
       }
     }
@@ -1483,7 +1523,7 @@ function abrirDialogPrecos() {
         const overlayEl = document.getElementById('upseller-progress-overlay');
         if (overlayEl) overlayEl.style.display = 'none';
         try {
-          await recortarImagemQuadradaEmMassa();
+          await ajustarCoresERecortar();
         } catch (e) {
           if (overlayEl) overlayEl.style.display = '';
           mostrarErroOverlayProgresso('Erro no recorte: ' + e.message);
@@ -3093,7 +3133,8 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
       { id: 'PrecoEspecial', rotulo: 'Preço Especial', desc: 'Preços salvos e último preço aplicado', keys: ['bibliotecaPrecos','ultimosPrecos'] },
       { id: 'EditarMassa', rotulo: 'Editar em Massa', desc: 'Macros e último macro executado', keys: ['bibliotecaMacros','ultimosMacros'] },
       { id: 'Atributos', rotulo: 'Atributos', desc: 'Atributos customizados salvos', keys: ['bibliotecaAtributos'] },
-      { id: 'LinksRecentes', rotulo: 'Links Recentes', desc: 'Últimos links de imagem usados', keys: ['ultimosLinks'] }
+      { id: 'LinksRecentes', rotulo: 'Links Recentes', desc: 'Últimos links de imagem usados', keys: ['ultimosLinks'] },
+      { id: 'RemapCustom', rotulo: 'Remap de Cores', desc: 'Remapeamento customizado de cores', keys: ['bibliotecaRemapCustom'] }
     ];
 
     function abrirDialogoSelecao(titulo, categorias, textoConfirmar, onConfirmar) {
@@ -3560,13 +3601,13 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         try {
           // 1.5 — Confirmar Cores (antes da Subespecificação)
           if (confirmarCoresAtivo && macroAtivo) {
-            const coresPagina = lerCoresEspecificacaoPrincipal();
+            const coresPagina = await esperarAtualizacaoCores(needsRemap);
             if (coresPagina.length > 0) {
               nextStep('Aguardando confirmação de cores...');
               const result = await mostrarDialogoConfirmarCores(coresPagina);
               if (result.confirmou) {
           aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
-                await sleep(500);
+                await sleep(250);
               }
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
             }
@@ -3705,8 +3746,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
             const overlayEl = document.getElementById('upseller-progress-overlay');
             if (overlayEl) overlayEl.style.display = 'none';
             try {
-              await upsCopiarCoresDetalheAsync();
-              await recortarImagemQuadradaEmMassa();
+              await ajustarCoresERecortar();
             } catch (e) {
               if (overlayEl) overlayEl.style.display = '';
               mostrarErroOverlayProgresso('Erro no ajuste: ' + e.message);
@@ -3908,6 +3948,22 @@ function lerCoresEspecificacaoPrincipal() {
   return [];
 }
 
+async function esperarAtualizacaoCores(teveRemap) {
+  var coresAntigas = lerCoresEspecificacaoPrincipal();
+  if (!teveRemap || coresAntigas.length === 0) return coresAntigas;
+  var nomesAntigos = coresAntigas.map(function(c) { return c.nome; }).sort().join(',');
+  for (var t = 0; t < 3; t++) {
+    await sleep(250);
+    var novas = lerCoresEspecificacaoPrincipal();
+    var nomesNovos = novas.map(function(c) { return c.nome; }).sort().join(',');
+    if (nomesNovos !== nomesAntigos) {
+      await sleep(250);
+      return novas;
+    }
+  }
+  return lerCoresEspecificacaoPrincipal();
+}
+
 function mostrarDialogoConfirmarCores(coresAtuais) {
   return new Promise((resolve) => {
     const existing = document.getElementById('ups-cor-dialog');
@@ -4016,60 +4072,56 @@ function mostrarDialogoConfirmarCores(coresAtuais) {
 }
 
 async function aplicarCoresNaPagina(cores) {
-  const forms = document.querySelectorAll('.ant-form-item');
-  let section = null;
-  for (const s of forms) {
-    const lbl = s.querySelector('.ant-form-item-label');
+  var forms = document.querySelectorAll('.ant-form-item');
+  var section = null;
+  for (var si = 0; si < forms.length; si++) {
+    var s = forms[si];
+    var lbl = s.querySelector('.ant-form-item-label');
     if (lbl && lbl.textContent.trim().includes('Especificação Principal')) { section = s; break; }
   }
   if (!section) return;
 
-  for (const cor of cores) {
+  for (var ci = 0; ci < cores.length; ci++) {
+    var cor = cores[ci];
     if (!cor.nome) continue;
-    const nomeExato = cor.nome.trim();
-    const norm = normalizarCor(nomeExato);
-    if (cor.checked) {
-      const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
-      for (const w of wrappers) {
-        const cb = w.querySelector('.ant-checkbox-input');
-        const nomePagina = ((cb && cb.value) || w.textContent.trim()).trim();
-        if (normalizarCor(nomePagina) === norm && nomePagina !== nomeExato) {
-          if (cb && cb.checked) {
-            w.click();
-            await sleep(100);
-          }
-        }
-      }
-    }
-    let encontrou = false;
-    const wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
-    for (const w of wrappers) {
-      const cb = w.querySelector('.ant-checkbox-input');
-      const nomePagina = ((cb && cb.value) || w.textContent.trim()).trim();
+    var nomeExato = cor.nome.trim();
+    var norm = normalizarCor(nomeExato);
+
+    var wrappers = section.querySelectorAll('.ant-checkbox-wrapper');
+    var matchWrapper = null;
+
+    for (var wi = 0; wi < wrappers.length; wi++) {
+      var w = wrappers[wi];
+      var cb = w.querySelector('.ant-checkbox-input');
+      var nomePagina = ((cb && cb.value) || w.textContent.trim()).trim();
       if (nomePagina === nomeExato) {
-        encontrou = true;
-        if (cb && cb.checked !== cor.checked) {
-          w.click();
-          await sleep(100);
-        }
+        matchWrapper = w;
+        break;
       }
     }
-    if (!encontrou && cor.checked) {
-      const addBtn = Array.from(document.querySelectorAll('button')).find(b =>
-        b.textContent.trim() === 'Adicionar Opções'
-      );
+
+    if (matchWrapper) {
+      var cbMatch = matchWrapper.querySelector('.ant-checkbox-input');
+      if (cbMatch && cbMatch.checked !== cor.checked) {
+        matchWrapper.click();
+        await sleep(100);
+      }
+    } else if (cor.checked) {
+      var addBtn = Array.from(document.querySelectorAll('button')).find(function(b) {
+        return b.textContent.trim() === 'Adicionar Opções';
+      });
       if (!addBtn) continue;
       addBtn.click();
       await sleep(1000);
-      const input = document.querySelector('.ant-popover-inner-content input.ant-input');
+      var input = document.querySelector('.ant-popover-inner-content input.ant-input');
       if (input) {
-        const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+        var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
         input.focus();
         nativeSetter.call(input, cor.nome);
         input.dispatchEvent(new Event('input', { bubbles: true }));
         input.dispatchEvent(new Event('change', { bubbles: true }));
         await sleep(300);
-        const salvarBtn = document.querySelector('.ant-popover-inner-content button.my_ant_btn_primary');
+        var salvarBtn = document.querySelector('.ant-popover-inner-content button.my_ant_btn_primary');
         if (salvarBtn) {
           salvarBtn.click();
           await sleep(1000);
@@ -4077,7 +4129,7 @@ async function aplicarCoresNaPagina(cores) {
       }
     }
   }
-  if (window.__temEstadoSalvo) setTimeout(() => { window.__upsLoadingPreset = false; }, 100);
+  if (window.__temEstadoSalvo) setTimeout(function() { window.__upsLoadingPreset = false; }, 100);
 }
 
 // ========== OVERLAY DE PROGRESSO (macro medidas) ==========
@@ -4285,7 +4337,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           chrome.runtime.sendMessage({ action: 'progress', message: msg, step: progressStep, total: totalSteps });
         }
 
-        if (precisaRemapear()) {
+        var teveRemap = precisaRemapear();
+        if (teveRemap) {
           try {
             stepDone('Remapeando...');
             await runAutomation(() => {});
@@ -4293,13 +4346,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         }
         // Confirmar Cores (antes da Subespecificação)
         if (config.confirmarCores) {
-          const coresPagina = lerCoresEspecificacaoPrincipal();
+          const coresPagina = await esperarAtualizacaoCores(teveRemap);
           if (coresPagina.length > 0) {
             stepDone('Aguardando confirmação de cores...');
             const result = await mostrarDialogoConfirmarCores(coresPagina);
             if (result.confirmou) {
                 aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
-              await sleep(500);
+              await sleep(250);
             }
           }
         }
@@ -4384,8 +4437,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if (hasMacro && macro.crop) {
           stepDone('Ajustando imagem quadrada...');
           try {
-            await upsCopiarCoresDetalheAsync();
-            await recortarImagemQuadradaEmMassa();
+            await ajustarCoresERecortar();
           } catch (e) {
             chrome.runtime.sendMessage({ action: 'error', message: 'Erro no recorte: ' + e.message });
             return;
@@ -4419,6 +4471,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'open-medidas-dialog') {
     abrirDialogMedidas();
     sendResponse({ status: 'opened' });
+    return true;
+  }
+
+  if (request.action === 'fill-size-guide') {
+    preencherGuiaTamanhos(request.dados).then(result => {
+      sendResponse(result);
+    }).catch(err => {
+      sendResponse({ error: err.message });
+    });
     return true;
   }
 });
@@ -4782,10 +4843,8 @@ function injetarBotaoImagemMassa() {
   op3.addEventListener('click', async (e) => {
     e.stopPropagation(); fecharDropdown();
     try {
-      mostrarFeedback('1/2: Copiando cores...', '#4078f2');
-      await upsCopiarCoresDetalheAsync();
-      mostrarFeedback('2/2: Recortando imagens...', '#4078f2');
-      await recortarImagemQuadradaEmMassa();
+      mostrarFeedback('Copiando cores e recortando...', '#4078f2');
+      await ajustarCoresERecortar();
       mostrarFeedback('Imagens ajustadas com sucesso!', '#28a745');
     } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); }
   });
@@ -5537,6 +5596,11 @@ function upsCopiarCoresDetalheAsync() {
     }, { once: true });
     chrome.runtime.sendMessage({ type: 'ups-cores-main' });
   });
+}
+
+async function ajustarCoresERecortar() {
+  await upsCopiarCoresDetalheAsync();
+  await recortarImagemQuadradaEmMassa();
 }
 
 function upsToastDrafts(msg) {
