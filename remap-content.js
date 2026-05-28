@@ -117,39 +117,113 @@ function findTextContainer(text) {
 }
 
 let _personalizadasAdicionadas = 0;
+var _currentRemapDialog = null;
 
 async function stepSelecionarTamanho() {
-  const dialog = findMainDialog();
-  if (!dialog) throw new Error('Diálogo não encontrado para selecionar Tamanho');
+  var dialog = _currentRemapDialog || findMainDialog();
+  if (!dialog) return;
 
-  const rows = dialog.querySelectorAll('tr');
-  let tamanhoRow = null;
-  for (const row of rows) {
-    const firstCell = row.querySelector('td:first-child, th:first-child');
-    if (firstCell && firstCell.textContent.trim() === 'Tamanho') {
-      tamanhoRow = row;
-      break;
+  var tamanhoRow = null;
+  for (var attempt = 0; attempt < 3; attempt++) {
+    if (attempt > 0) await sleep(500);
+    const rows = dialog.querySelectorAll('tr');
+    for (const row of rows) {
+      const firstCell = row.querySelector('td:first-child, th:first-child');
+      if (firstCell && firstCell.textContent.trim() === 'Tamanho') {
+        tamanhoRow = row;
+        break;
+      }
     }
+    if (tamanhoRow) break;
   }
   if (!tamanhoRow) return;
 
-  const selectWrapper = tamanhoRow.querySelector('.ant-select');
+  var selectWrapper = tamanhoRow.querySelector('.ant-select');
   if (!selectWrapper) return;
 
+  if (selectWrapper.scrollIntoView) selectWrapper.scrollIntoView({ block: 'center' });
+  await sleep(200);
+
+  // close any existing dropdown first
+  var openDd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+  if (openDd) {
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', code: 'Escape', keyCode: 27, bubbles: true }));
+    await sleep(300);
+  }
+
   selectWrapper.click();
-  const dropdown = await esperarElemento('.ant-select-dropdown:not(.ant-select-dropdown-hidden)', 5000);
-  if (!dropdown) return;
+  await sleep(600);
 
-  const option = Array.from(dropdown.querySelectorAll('li')).find(li => li.textContent.trim() === 'Tamanho');
-  if (!option) return;
+  for (var retry = 0; retry < 5; retry++) {
+    if (retry > 0) {
+      var prevDd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+      if (prevDd) {
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', code: 'Escape', keyCode: 27, bubbles: true }));
+        await sleep(300);
+      }
+      selectWrapper.click();
+      await sleep(400);
+    }
+    // find dropdown by aria-controls of THIS select
+    var combo = selectWrapper.querySelector('[role="combobox"]');
+    var ariaId = combo ? combo.getAttribute('aria-controls') : null;
+    var dd = null;
+    if (ariaId) {
+      dd = document.getElementById(ariaId);
+    }
+    if (!dd) {
+      dd = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+    }
+    if (!dd) continue;
 
-  option.click();
-  await sleep(300);
+    // find "Tamanho" option
+    var opt = Array.from(dd.querySelectorAll('li')).find(function(li) { return li.textContent.trim() === 'Tamanho'; });
+    if (!opt) {
+      opt = Array.from(dd.querySelectorAll('[role="option"], .ant-select-dropdown-menu-item')).find(function(el) { return el.textContent.trim() === 'Tamanho'; });
+    }
+    if (!opt) {
+      var allChildren = dd.querySelectorAll('*');
+      for (var ci = 0; ci < allChildren.length; ci++) {
+        if (allChildren[ci].textContent.trim() === 'Tamanho' && allChildren[ci].children.length === 0) {
+          opt = allChildren[ci];
+          break;
+        }
+      }
+    }
+    if (!opt) continue;
+
+    // click at the option's exact position
+    var rect = opt.getBoundingClientRect();
+    var cx = rect.left + rect.width / 2;
+    var cy = rect.top + rect.height / 2;
+    var elAtPoint = document.elementFromPoint(cx, cy);
+    if (elAtPoint) {
+      var evtBase = { bubbles: true, cancelable: true, composed: true, view: window, clientX: cx, clientY: cy, screenX: cx, screenY: cy, button: 0 };
+      elAtPoint.dispatchEvent(new MouseEvent('mousedown', evtBase));
+      elAtPoint.dispatchEvent(new MouseEvent('mouseup', evtBase));
+      elAtPoint.dispatchEvent(new MouseEvent('click', evtBase));
+    }
+    opt.click();
+
+    // poll for selection
+    for (var pw = 0; pw < 20; pw++) {
+      await sleep(150);
+      var curSel = tamanhoRow.querySelector('.ant-select');
+      if (!curSel) break;
+      var selVal = curSel.querySelector('.ant-select-selection-selected-value');
+      if (selVal && selVal.textContent.trim() === 'Tamanho') return;
+      var dd2 = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+      if (!dd2) break;
+    }
+  }
 }
 
 async function stepConfirmar() {
-  const btn = findButtonByText('Confirmar');
-  if (!btn) throw new Error('Botão Confirmar não encontrado');
+  var dialog = _currentRemapDialog || findMainDialog();
+  if (!dialog) throw new Error('Diálogo não encontrado');
+  const btns = dialog.querySelectorAll('button');
+  const btn = Array.from(btns).find(b => b.textContent.trim() === 'Confirmar');
+  if (!btn) throw new Error('Botão Confirmar não encontrado no dialog');
   nativeClick(btn);
   await sleep(500);
 }
@@ -173,7 +247,7 @@ async function stepMapearVariantes() {
     });
     for (var rk in remapData) remapCustom[normalizarCor(rk)] = remapData[rk];
   } catch(e) {}
-  const mainDialog = findMainDialog();
+  var mainDialog = _currentRemapDialog || findMainDialog();
   if (!mainDialog) throw new Error('Diálogo principal não encontrado');
 
   // Collect all rows with .ant-select (both Cor and Tamanho)
@@ -355,7 +429,7 @@ async function stepMapearVariantes() {
 }
 
 async function stepSalvar() {
-  const mainDialog = findMainDialog();
+  var mainDialog = _currentRemapDialog || findMainDialog();
   if (!mainDialog) throw new Error('Diálogo não encontrado');
   const buttons = mainDialog.querySelectorAll('button');
   for (const btn of buttons) {
@@ -377,14 +451,17 @@ async function stepFechar() {
   const btn = await esperarBotao('Fechar', 10000);
   if (!btn) return;
   nativeClick(btn);
+  _currentRemapDialog = null;
 }
 
 async function stepAbrirRemapeamento() {
+  _currentRemapDialog = null;
   const remapLink = findTextContainer('Remapeamento de Variante');
   if (!remapLink) throw new Error('Link "Remapeamento de Variante" não encontrado');
   nativeClick(remapLink);
   const dialog = await esperarElemento('.ant-modal-content', 15000);
   if (!dialog) throw new Error('Diálogo de remapeamento não abriu após clicar no link');
+  _currentRemapDialog = dialog;
   await sleep(500);
 }
 
@@ -421,13 +498,10 @@ function precisaRemapear() {
 }
 
 async function runAutomation(sendProgress) {
-  const hasSizes = temSubespecificacao();
   const steps = [
     { name: 'Abrir remapeamento de variantes', fn: stepAbrirRemapeamento },
+    { name: 'Selecionar Tamanho', fn: stepSelecionarTamanho },
   ];
-  if (hasSizes) {
-    steps.push({ name: 'Selecionar Tamanho', fn: stepSelecionarTamanho });
-  }
   steps.push(
     { name: 'Confirmar tipo (Passo 1)', fn: stepConfirmar },
     { name: 'Mapear variantes', fn: stepMapearVariantes },
@@ -1671,6 +1745,16 @@ function expandirAtributos() {
   var forms = document.querySelectorAll('.ant-form-item');
   if (forms.length > 5) return true;
 
+  var btn = document.querySelector('.is_more.pointer');
+  if (btn) {
+    var txt = btn.innerText ? btn.innerText.trim().toLowerCase() : '';
+    if (txt === 'mais atributos') {
+      if (btn.scrollIntoView) btn.scrollIntoView({ block: 'center' });
+      btn.click();
+      return true;
+    }
+  }
+
   for (var t = 0; t < 4; t++) {
     if (t > 0) {
       var waitStart = Date.now();
@@ -1680,8 +1764,10 @@ function expandirAtributos() {
     for (var ei = 0; ei < all.length; ei++) {
       var el = all[ei];
       if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
-      if (el.textContent.trim().toLowerCase() === 'mais atributos') {
-        nativeClick(el);
+      var txt = el.innerText ? el.innerText.trim().toLowerCase() : '';
+      if (txt === 'mais atributos') {
+        if (el.scrollIntoView) el.scrollIntoView({ block: 'center' });
+        el.click();
         return true;
       }
     }
@@ -1689,8 +1775,46 @@ function expandirAtributos() {
   return false;
 }
 
-function lerAtributos() {
+function waitForFormCount(target, timeout) {
+  return new Promise(function(resolve) {
+    var maxWait = Date.now() + (timeout || 5000);
+    function check() {
+      var forms = document.querySelectorAll('.ant-form-item');
+      if (forms.length >= target || Date.now() > maxWait) {
+        resolve(forms.length >= target);
+      } else {
+        setTimeout(check, 150);
+      }
+    }
+    check();
+  });
+}
+
+function expandirAtributos() {
+  var btn = document.querySelector('.is_more.pointer');
+  if (!btn) return false;
+  var txt = btn.innerText ? btn.innerText.trim().toLowerCase() : '';
+  if (txt === 'menos atributos') return true; // already expanded
+  if (txt !== 'mais atributos') return false; // different state
+  btn.scrollIntoView({ block: 'center' });
+  btn.click();
+  return true;
+}
+
+async function esperarAtributosExpandirem() {
+  for (var w = 0; w < 30; w++) {
+    await sleep(200);
+    var forms = document.querySelectorAll('.ant-form-item');
+    var btn = document.querySelector('.is_more.pointer');
+    if (forms.length > 5) return true;
+    if (btn && btn.innerText.trim().toLowerCase() === 'menos atributos') return true;
+  }
+  return false;
+}
+
+async function lerAtributos() {
   expandirAtributos();
+  await esperarAtributosExpandirem();
   const attrLabels = document.querySelectorAll('.ant-form-item');
   const normal = s => s.replace(/[:\s]+/g, ' ').trim().toLowerCase();
   const attrs = {};
@@ -2080,7 +2204,7 @@ function abrirDialogMedidas() {
     <input type="checkbox" id="ups-ma-sku" style="margin:0;"> Gerar SKU
     </label>
     <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
-    <input type="checkbox" id="ups-ma-crop" style="margin:0;"> Ajustar Img Quadrada
+    <input type="checkbox" id="ups-ma-crop" style="margin:0;"> Ajustar Imagens
     </label>
     <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
     <input type="checkbox" id="ups-ma-confirmar-cores" style="margin:0;"> Confirmar cores?
@@ -3724,8 +3848,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           // 6 — Atributos
           if (atributosAtivo) {
             nextStep('Aplicando atributos...');
-            expandirAtributos();
-            await sleep(800);
+            if (expandirAtributos()) { await esperarAtributosExpandirem(); }
             const atrSelect = document.getElementById('ups-atr-carregar');
             const atrVal = atrSelect ? atrSelect.value : '';
             if (atrVal) {
@@ -4457,8 +4580,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         // Atributos
         if (hasAtributos) {
-          expandirAtributos();
-          await sleep(1200);
+          if (expandirAtributos()) { await esperarAtributosExpandirem(); }
           const [tipo, ...nomeParts] = config.atrPreset.split(':');
           const nomePreset = nomeParts.join(':');
           const bibAtr = await new Promise(resolve => chrome.storage.local.get(["bibliotecaAtributos", "bibliotecaPrecos", "bibliotecaMacros"], resolve));
@@ -5023,19 +5145,30 @@ function injetarBotaoSkuNoAnuncio() {
   const container = inp.parentElement;
   if (container.style.position !== 'relative') container.style.position = 'relative';
   inp.style.paddingLeft = '36px';
+
+  var debounceTimer = null;
+  inp.addEventListener('input', function() {
+    if (!inp.value.trim()) return;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(function() {
+      gerarSkuEmMassa();
+    }, 500);
+  });
+
   const btn = document.createElement('span');
   btn.id = 'ups-gerar-sku-btn';
   btn.textContent = '⚡';
   btn.title = 'Gerar SKU';
   btn.style.cssText = 'cursor:pointer;font-size:14px;position:absolute;left:6px;top:50%;transform:translateY(-50%);user-select:none;line-height:1;z-index:1;border:1px solid #bbb;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;';
-  btn.addEventListener('click', (e) => {
+  btn.addEventListener('click', function(e) {
     e.stopPropagation();
     e.preventDefault();
     gerarSkuEmMassa();
   });
-  inp.addEventListener('keydown', (e) => {
+  inp.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+      clearTimeout(debounceTimer);
       gerarSkuEmMassa();
     }
   });
