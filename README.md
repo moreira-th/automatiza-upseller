@@ -14,10 +14,17 @@ Feito por [Thales Moreira](https://github.com/moreira-th).
 | **Tabela de Medidas** | Preenche busto/cintura/quadril para cada tamanho (PP–16) na guia de tamanhos |
 | **Descrições** | Injeta a descrição salva da biblioteca no campo de texto do produto |
 | **Preços Especiais** | Aplica preço em massa com overrides por tamanho na tabela de variantes |
-| **Multi-Aba** | Executa remapeamento + medidas + descrição + preços em todas as abas abertas de edição |
-| **Presets de Preço** | Salva/carrega/deleta combinações de preço (vinculadas à tabela ou avulsas) |
-| **Menu de Contexto** | Acesso rápido via clique direito: remapear, preencher medidas, aplicar preços |
-| **Atalhos de Teclado** | `Alt+Z` = abrir diálogo de medidas, `Alt+X` = abrir diálogo de preços |
+| **Editar em Massa** | Quantidade, preço, peso e pacote em todas as variantes de uma vez |
+| **Atributos Customizados** | Expande, limpa e aplica presets de atributos (composição, decote, etc.) |
+| **Cores** | Confirma/copia cores da especificação principal, tradução EN→PT |
+| **SKU Automático** | Botão ⚡ no campo N° do Anúncio com auto-trigger após 500ms sem digitar |
+| **Recorte de Imagem** | Recorte em massa + cópia de cores para imagem de detalhe |
+| **Multi-Aba** | Executa em paralelo ou sequencial em múltiplas abas de edição |
+| **Presets** | Salva/carrega/deleta configurações completas da overlay |
+| **Export/Import** | Backup/restauração seletiva por categoria de dados |
+| **Drafts** | Atributos em massa nos produtos selecionados na listagem de drafts |
+| **Botões Flutuantes** | Atalhos visuais na página: ⚙️ Automatiza, 💲 Preço Especial |
+| **Atalhos de Teclado** | `Alt+Z` = executar macro, `Alt+X` = aplicar preços |
 
 ## Instalação
 
@@ -75,13 +82,30 @@ Os dados ficam no `chrome.storage.local` do navegador e podem ser exportados na 
 
 ```
 upseller-unificado/
-├── manifest.json        — Configuração MV3, permissões, atalhos
-├── background.js        — Service worker: menus, atalhos, coordenação multi-aba
-├── popup.html           — Popup com 4 abas (CSS inline)
-├── popup.js             — Lógica do popup: grid de medidas, biblioteca, preços
-├── remap-content.js     — Content script: automação da página + diálogos in-page
-├── icons/               — Ícones 16/48/128
-└── README.md            — Este documento
+├── manifest.json          — Configuração MV3, permissões, atalhos
+├── background.js          — Service worker: menus, atalhos, coordenação multi-aba
+├── popup.html             — Popup com abas (CSS inline)
+├── popup.js               — Lógica do popup: grid de medidas, biblioteca, preços
+│
+├── state.js               — Estado global compartilhado
+├── common.js              — Utilitários: sleep, esperarElemento, nativeClick...
+├── message-router.js      — chrome.runtime.onMessage centralizado
+├── main.js                — Entry point: MutationObserver + inicialização
+│
+├── remapeamento.js        — Automação de variantes: stepSelecionarTamanho, runAutomation...
+├── medidas.js             — Overlay "Automatiza Shein" + guia de tamanhos + painel medidas
+├── precos.js              — Preço especial: setPrecosCompletos, abrirDialogPrecos
+├── editar-massa.js        — Editar em massa: subespecificacaoMassa, setColunaEmMassa...
+├── sku.js                 — Gerar SKU em massa + auto-trigger 500ms
+├── atributos.js           — Expandir/ler/aplicar atributos customizados
+├── cores.js               — Confirmar/copiar cores, traduzir EN→PT
+├── imagem.js              — Recortar imagem quadrada + ajustarCoresERecortar
+├── overlay.js             — Overlay de progresso (macro) + overlay multi-aba
+├── drafts.js              — Atributos em massa na página de drafts
+├── injectors.js           — Botões flutuantes injetados na página
+│
+├── icons/                 — Ícones 16/48/128
+└── README.md              — Este documento
 ```
 
 ## Tecnologias

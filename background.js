@@ -397,8 +397,8 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (cascadeWindows.length > 1) {
       chrome.tabs.get(sender.tab.id).then(function(tab) {
         var idx = cascadeWindows.lastIndexOf(tab.windowId);
-        if (idx > 0) {
-          chrome.windows.update(cascadeWindows[idx - 1], { focused: true });
+        if (idx >= 0 && idx + 1 < cascadeWindows.length) {
+          chrome.windows.update(cascadeWindows[idx + 1], { focused: true });
         }
       }).catch(function() { /* tab/window gone */ });
     }
@@ -445,17 +445,6 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     // Inject upload code into page's MAIN world (bypass CSP & isolated world)
     const tabId = sender.tab ? sender.tab.id : null;
     if (!tabId) { sendResponse({ error: 'no tab' }); return true; }
-    
-    // Validate message size
-    if (msg.dataUrl && msg.dataUrl.length > 900000) {
-      chrome.scripting.executeScript({
-        target: { tabId: tabId },
-        world: 'MAIN',
-        func: () => { var d = document.createElement('div'); d.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;"><div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;"><div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">Arquivo muito grande. Máximo 5MB.</div><button onclick="this.closest(\'[style*=\\"position:fixed\\"]\').remove()" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div></div>'; document.body.appendChild(d); }
-      });
-      sendResponse({ error: 'message too large' });
-      return true;
-    }
     
     chrome.scripting.executeScript({
       target: { tabId: tabId },
@@ -562,6 +551,19 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     });
     
     sendResponse({ status: 'injected' });
+    return true;
+  }
+  
+  if (msg.action === 'download-image') {
+    fetch(msg.url)
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); })
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onload = () => sendResponse({ dataUrl: reader.result });
+        reader.onerror = () => sendResponse({ error: 'Failed to read blob' });
+        reader.readAsDataURL(blob);
+      })
+      .catch(err => sendResponse({ error: err.message }));
     return true;
   }
 
@@ -805,6 +807,20 @@ async function moveCompletedTab(tabId, tabWinId) {
   }
   returnedCount++;
   parallelCompleted++;
+
+  // Focus next pending window (skip original window and completed ones)
+  if (parallelCompleted < parallelTotal) {
+    for (var wi = 0; wi < cascadeWindows.length; wi++) {
+      if (cascadeWindows[wi] === originalWindowId || cascadeWindows[wi] === tabWinId) continue;
+      try {
+        var wTabs = await chrome.tabs.query({ windowId: cascadeWindows[wi] });
+        if (wTabs.length > 0) {
+          chrome.windows.update(cascadeWindows[wi], { focused: true });
+          break;
+        }
+      } catch (e) { /* skip */ }
+    }
+  }
 
   var stateUpdate = {};
   stateUpdate[SESSION_KEY_PARALLEL] = {
