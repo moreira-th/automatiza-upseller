@@ -494,7 +494,11 @@ function mostrarDialogoConfirmarCores(coresAtuais) {
   <div style="font-size:16px;font-weight:600;margin-bottom:4px;">🎨 Confirmar Cores</div>
   <div style="font-size:13px;color:#555;margin-bottom:12px;">Selecione as cores que deseja manter marcadas na Especificação Principal:</div>
   <div id="ups-cor-lista" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:260px;overflow-y:auto;margin-bottom:12px;padding:4px 0;">
-    ${coresAtuais.sort((a, b) => (a.nome || '').toLowerCase().localeCompare((b.nome || '').toLowerCase())).map((c, i) => `
+    ${coresAtuais.sort((a, b) => {
+        if (a.checked && !b.checked) return -1;
+        if (!a.checked && b.checked) return 1;
+        return (a.nome || '').toLowerCase().localeCompare((b.nome || '').toLowerCase());
+      }).map((c, i) => `
       <label style="display:flex;align-items:center;gap:5px;padding:5px 6px;font-size:13px;cursor:pointer;border-radius:4px;border:1px solid #e0e0e0;background:${c.checked ? '#e8f5e9' : '#fafafa'};" data-idx="${i}">
         <input type="checkbox" class="ups-cor-chk" ${c.checked ? 'checked' : ''} style="margin:0;" data-idx="${i}">
         <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${c.nome}</span>

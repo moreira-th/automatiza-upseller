@@ -3717,7 +3717,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       atualizarOverlayProgresso({ message: p.message, step, total: p.total || step });
       chrome.runtime.sendMessage({ action: 'progress', ...p });
     }).then(async () => {
-      atualizarOverlayProgresso({ message: '✓ Remapeamento concluído', step: step, total: step });
+      await sleep(1500);
+      try {
+        step++;
+        atualizarOverlayProgresso({ message: 'Gerando SKU...', step: step, total: step });
+        await gerarSkuEmMassa();
+      } catch(e) { /* silent */ }
+      atualizarOverlayProgresso({ message: '✓ Concluído', step: step, total: step });
       await sleep(500);
       removerOverlayProgresso();
       chrome.runtime.sendMessage({ action: 'completed' });
