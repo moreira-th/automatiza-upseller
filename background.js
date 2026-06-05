@@ -379,26 +379,30 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (!processingTabs) {
       chrome.storage.session.get(SESSION_KEY, (res) => {
         var saved = res[SESSION_KEY];
-        if (saved && saved.processingTabs) {
+        if (saved && saved.processingTabs && tabQueue && tabQueue.includes(sender.tab.id)) {
           processingTabs = saved.processingTabs;
           tabQueue = saved.tabQueue;
           currentTabIndex = saved.currentTabIndex;
           multiProcessType = saved.multiProcessType;
           multiMedidasConfig = saved.multiMedidasConfig;
           processNextTab();
+        } else if (saved && saved.processingTabs) {
+          chrome.storage.session.remove(SESSION_KEY);
         }
       });
       return;
     }
-    processNextTab();
+    if (tabQueue && tabQueue.includes(sender.tab.id)) {
+      processNextTab();
+    }
   }
 
   if (msg.action === 'cores-confirmed') {
     if (cascadeWindows.length > 1) {
       chrome.tabs.get(sender.tab.id).then(function(tab) {
         var idx = cascadeWindows.lastIndexOf(tab.windowId);
-        if (idx > 0) {
-          chrome.windows.update(cascadeWindows[idx - 1], { focused: true });
+        if (idx >= 0 && idx + 1 < cascadeWindows.length) {
+          chrome.windows.update(cascadeWindows[idx + 1], { focused: true });
         }
       }).catch(function() { /* tab/window gone */ });
     }
@@ -446,29 +450,16 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     const tabId = sender.tab ? sender.tab.id : null;
     if (!tabId) { sendResponse({ error: 'no tab' }); return true; }
     
-    // Validate message size
-    if (msg.dataUrl && msg.dataUrl.length > 900000) {
-      chrome.scripting.executeScript({
-        target: { tabId: tabId },
-        world: 'MAIN',
-        func: () => { var d = document.createElement('div'); d.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;"><div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;"><div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">Arquivo muito grande. Máximo 5MB.</div><button onclick="this.closest(\'[style*=\\"position:fixed\\"]\').remove()" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div></div>'; document.body.appendChild(d); }
-      });
-      sendResponse({ error: 'message too large' });
-      return true;
-    }
-    
     chrome.scripting.executeScript({
       target: { tabId: tabId },
       world: 'MAIN',
         func: (dataUrl, fileName, source) => {
-        function upsShowDialog(msg) {
+        function upsShowDialog(msg, isError) {
           var d = document.createElement('div');
-          d.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:9999999;display:flex;align-items:center;justify-content:center;';
-          d.innerHTML = '<div style="background:#fff;border-radius:10px;padding:24px;width:360px;max-width:90vw;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;text-align:center;">' +
-            '<div style="font-size:15px;color:#333;margin-bottom:16px;line-height:1.5;">' + msg + '</div>' +
-            '<button id="ups-ok-btn" style="padding:8px 24px;border:none;border-radius:6px;cursor:pointer;font-size:13px;background:#4078f2;color:#fff;font-weight:600;">OK</button></div>';
-          d.querySelector('#ups-ok-btn').onclick = function() { d.remove(); };
+          d.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999999;background:' + (isError ? '#dc3545' : '#28a745') + ';color:#fff;padding:12px 20px;border-radius:6px;font-size:14px;font-family:sans-serif;box-shadow:0 2px 10px rgba(0,0,0,0.3);max-width:400px;text-align:center;';
+          d.textContent = msg;
           document.body.appendChild(d);
+          setTimeout(function() { d.remove(); }, 2000);
         }
         async function doUpload() {
           const ext = (fileName || 'imagem.png').split('.').pop().replace(/[^a-z0-9]/gi, '') || 'png';
@@ -479,7 +470,7 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             var blob = await resp.blob();
             file = new File([blob], fileName, { type: blob.type || 'image/png' });
           } catch(e) {
-            upsShowDialog('Erro ao processar imagem: ' + e.message);
+            upsShowDialog('Erro ao processar imagem: ' + e.message, true);
             return;
           }
           try {
@@ -513,7 +504,7 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             for (var i = 0; i < tables.length; i++) {
               if (tables[i].querySelector('.anticon-plus')) { mediaTable = tables[i]; break; }
             }
-            if (!mediaTable) { upsShowDialog('Tabela de mídia não encontrada'); return; }
+            if (!mediaTable) { upsShowDialog('Tabela de mídia não encontrada', true); return; }
             
             var el = mediaTable;
             var vxeVm = null;
@@ -521,7 +512,7 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               if (el.__vue__ && el.__vue__.tableData) { vxeVm = el.__vue__; break; }
               el = el.parentElement;
             }
-            if (!vxeVm) { upsShowDialog('Dados da tabela não encontrados'); return; }
+            if (!vxeVm) { upsShowDialog('Dados da tabela não encontrados', true); return; }
             
             var tableData = vxeVm.tableData;
             var concluidas = 0;
@@ -562,6 +553,19 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     });
     
     sendResponse({ status: 'injected' });
+    return true;
+  }
+  
+  if (msg.action === 'download-image') {
+    fetch(msg.url)
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); })
+      .then(blob => {
+        const reader = new FileReader();
+        reader.onload = () => sendResponse({ dataUrl: reader.result });
+        reader.onerror = () => sendResponse({ error: 'Failed to read blob' });
+        reader.readAsDataURL(blob);
+      })
+      .catch(err => sendResponse({ error: err.message }));
     return true;
   }
 
@@ -805,6 +809,20 @@ async function moveCompletedTab(tabId, tabWinId) {
   }
   returnedCount++;
   parallelCompleted++;
+
+  // Focus next pending window (skip original window and completed ones)
+  if (parallelCompleted < parallelTotal) {
+    for (var wi = 0; wi < cascadeWindows.length; wi++) {
+      if (cascadeWindows[wi] === originalWindowId || cascadeWindows[wi] === tabWinId) continue;
+      try {
+        var wTabs = await chrome.tabs.query({ windowId: cascadeWindows[wi] });
+        if (wTabs.length > 0) {
+          chrome.windows.update(cascadeWindows[wi], { focused: true });
+          break;
+        }
+      } catch (e) { /* skip */ }
+    }
+  }
 
   var stateUpdate = {};
   stateUpdate[SESSION_KEY_PARALLEL] = {
