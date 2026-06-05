@@ -263,9 +263,12 @@ async function stepMapearVariantes() {
                   // Find the text input that appears and set its value
                   const input = selectEl.closest('td, th')?.querySelector('input[type="text"], textarea');
                   if (input) {
-                    input.value = _customTarget || name;
+                    var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                    input.focus();
+                    nativeSetter.call(input, _customTarget || name);
                     input.dispatchEvent(new Event('input', { bubbles: true }));
                     input.dispatchEvent(new Event('change', { bubbles: true }));
+                    input.blur();
                   }
                   _customTarget = null;
                   _personalizadasAdicionadas++;
@@ -2285,8 +2288,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
               nextStep('Aguardando confirmação de cores...');
               const result = await mostrarDialogoConfirmarCores(coresPagina);
               if (result.confirmou) {
-          aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
-                await sleep(250);
+          await aplicarCoresNaPagina(result.cores);
               }
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
             }
@@ -3401,10 +3403,9 @@ function abrirDialogPrecos() {
       if (coresPagina.length > 0) {
         const result = await mostrarDialogoConfirmarCores(coresPagina);
         if (result.confirmou) {
-              aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
-          await sleep(250);
+              await aplicarCoresNaPagina(result.cores);
+          }
         }
-      }
     }
 
     // 1. Subespecificação (must be first)
@@ -3827,9 +3828,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             stepDone('Aguardando confirmação de cores...');
             const result = await mostrarDialogoConfirmarCores(coresPagina);
             if (result.confirmou) {
-                aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
-              await sleep(250);
-            }
+                await aplicarCoresNaPagina(result.cores);
+              }
           }
         }
 
