@@ -2288,7 +2288,8 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
               nextStep('Aguardando confirmação de cores...');
               const result = await mostrarDialogoConfirmarCores(coresPagina);
               if (result.confirmou) {
-          await aplicarCoresNaPagina(result.cores);
+          aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
+                await sleep(250);
               }
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
             }
@@ -3403,7 +3404,8 @@ function abrirDialogPrecos() {
       if (coresPagina.length > 0) {
         const result = await mostrarDialogoConfirmarCores(coresPagina);
         if (result.confirmou) {
-              await aplicarCoresNaPagina(result.cores);
+              aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
+          await sleep(250);
           }
         }
     }
@@ -3828,7 +3830,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             stepDone('Aguardando confirmação de cores...');
             const result = await mostrarDialogoConfirmarCores(coresPagina);
             if (result.confirmou) {
-                await aplicarCoresNaPagina(result.cores);
+                aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
+              await sleep(250);
               }
           }
         }
