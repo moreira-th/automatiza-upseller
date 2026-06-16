@@ -2340,10 +2340,12 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
               const ta = document.querySelector('.ant-form-item-control textarea.ant-input');
               if (ta) {
                 ta.focus();
-                ta.value = dados.descricao;
+                var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+                nativeSetter.call(ta, dados.descricao);
                 ta.dispatchEvent(new Event('input', { bubbles: true }));
                 ta.dispatchEvent(new Event('change', { bubbles: true }));
                 ta.blur();
+                ta.scrollTop = 0;
               }
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
             }
@@ -3870,10 +3872,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           const ta = document.querySelector('.ant-form-item-control textarea.ant-input');
           if (ta) {
             ta.focus();
-            ta.value = dadosDesc.descricao;
+            var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+            nativeSetter.call(ta, dadosDesc.descricao);
             ta.dispatchEvent(new Event('input', { bubbles: true }));
             ta.dispatchEvent(new Event('change', { bubbles: true }));
             ta.blur();
+            ta.scrollTop = 0;
           }
         }
         stepDone('Capitalizando título...');

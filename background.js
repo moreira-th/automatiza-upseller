@@ -3,10 +3,12 @@ function preencherDescricaoNoSite(texto) {
   const textarea = document.querySelector('.ant-form-item-control textarea.ant-input');
   if (textarea && texto) {
     textarea.focus();
-    textarea.value = texto;
+    var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set;
+    nativeSetter.call(textarea, texto);
     textarea.dispatchEvent(new Event('input', { bubbles: true }));
     textarea.dispatchEvent(new Event('change', { bubbles: true }));
     textarea.blur();
+    textarea.scrollTop = 0;
   } else {
     alert("Campo de descrição não encontrado nesta página!");
   }
