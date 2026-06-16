@@ -258,7 +258,8 @@ async function aplicarAtributo(label, value) {
         const rowInput = row.querySelector('input.ant-input');
         if (rowInput && pct) {
           rowInput.focus();
-          rowInput.value = pct;
+          var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          nativeSetter.call(rowInput, pct);
           rowInput.dispatchEvent(new Event('input', { bubbles: true }));
           rowInput.dispatchEvent(new Event('change', { bubbles: true }));
           rowInput.blur();
@@ -305,7 +306,8 @@ async function aplicarAtributo(label, value) {
     }
     if (input) {
       input.focus();
-      input.value = value;
+      var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+      nativeSetter.call(input, value);
       input.dispatchEvent(new Event('input', { bubbles: true }));
       input.dispatchEvent(new Event('change', { bubbles: true }));
       input.blur();
