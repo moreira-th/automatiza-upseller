@@ -18,15 +18,15 @@ async function gerarSkuEmMassa() {
   return { success: true };
 }
 function injetarBotaoSkuNoAnuncio() {
-  if (document.getElementById('ups-gerar-sku-btn')) return;
   const inp = Array.from(document.querySelectorAll('input.ant-input')).find(i => {
     const formItem = i.closest('.ant-form-item');
     return formItem && formItem.textContent.includes('Anúncio');
   });
   if (!inp) { setTimeout(injetarBotaoSkuNoAnuncio, 2000); return; }
-  const container = inp.parentElement;
-  if (container.style.position !== 'relative') container.style.position = 'relative';
-  inp.style.paddingLeft = '36px';
+  if (inp.dataset.upsSku) return;
+  inp.dataset.upsSku = '1';
+
+  inp.style.paddingLeft = '';
 
   var debounceTimer = null;
   inp.addEventListener('input', function() {
@@ -36,25 +36,6 @@ function injetarBotaoSkuNoAnuncio() {
       gerarSkuEmMassa();
     }, 500);
   });
-
-  const btn = document.createElement('span');
-  btn.id = 'ups-gerar-sku-btn';
-  btn.textContent = '⚡';
-  btn.title = 'Gerar SKU';
-  btn.style.cssText = 'cursor:pointer;font-size:14px;position:absolute;left:6px;top:50%;transform:translateY(-50%);user-select:none;line-height:1;z-index:1;border:1px solid #bbb;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:#f5f5f5;';
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    gerarSkuEmMassa();
-  });
-  inp.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      clearTimeout(debounceTimer);
-      gerarSkuEmMassa();
-    }
-  });
-  container.appendChild(btn);
 }
 // ========== ATRIBUTOS ==========
 function expandirAtributos() {

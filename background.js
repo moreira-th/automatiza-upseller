@@ -14,6 +14,142 @@ function preencherDescricaoNoSite(texto) {
   }
 }
 
+// ===== ATRIBUTOS TEMU (injetada no mundo MAIN da página) =====
+function aplicarAtributosTemuPageWorld(__DATA) {
+  var counters = { applied: 0, skipped: 0, failed: 0 };
+  console.log('[TEMU-ATTR] Iniciando aplicação de', __DATA.length, 'atributos');
+
+  function stripAccents(s) {
+    var str = (s || '').trim().toLowerCase();
+    try { str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch(e) {}
+    return str;
+  }
+
+  var attrSection = document.querySelector('#attributes');
+  if (!attrSection) { console.error('[TEMU-ATTR] #attributes NÃO ENCONTRADO'); return; }
+
+  var maisBtn = Array.from(attrSection.querySelectorAll('*')).find(function(el) {
+    return el.innerText && el.innerText.trim().toLowerCase() === 'mais atributos';
+  });
+  if (maisBtn) maisBtn.click();
+
+  var items = attrSection.querySelectorAll('.ant-form-item');
+  console.log('[TEMU-ATTR] Form items:', items.length);
+
+  var idx = 0;
+  var total = __DATA.length;
+
+  function processNext() {
+    if (idx >= total) {
+      console.log('[TEMU-ATTR] FINALIZADO:', counters.applied, 'aplicados,', counters.skipped, 'pulados,', counters.failed, 'falharam');
+      return;
+    }
+    var entry = __DATA[idx]; idx++;
+
+    var item = null;
+    for (var i = 0; i < items.length; i++) {
+      var label = items[i].querySelector('.ant-form-item-label label');
+      if (!label) continue;
+      var labelText = label.textContent.trim().replace('*', '').trim();
+      if (stripAccents(labelText) === stripAccents(entry.label)) { item = items[i]; break; }
+    }
+    if (!item) { counters.failed++; setTimeout(processNext, 50); return; }
+
+    if (entry.isPercent) {
+      var pctInput = item.querySelector('input.ant-input-number-input');
+      if (pctInput && !pctInput.disabled) {
+        try {
+          pctInput.focus();
+          var ns = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          ns.call(pctInput, String(entry.value));
+          pctInput.dispatchEvent(new Event('input', { bubbles: true }));
+          pctInput.dispatchEvent(new Event('change', { bubbles: true }));
+          pctInput.blur();
+          counters.applied++;
+        } catch(e) { counters.failed++; }
+      } else { counters.failed++; }
+      setTimeout(processNext, 80);
+      return;
+    }
+
+    var select = item.querySelector('.ant-select');
+    if (!select) { counters.failed++; setTimeout(processNext, 50); return; }
+
+    var currentVal = select.querySelector('.ant-select-selection-selected-value');
+    if (currentVal && stripAccents(currentVal.textContent) === stripAccents(entry.value)) {
+      counters.skipped++; setTimeout(processNext, 50); return;
+    }
+
+    document.body.click();
+    var selectionEl = select.querySelector('.ant-select-selection');
+    if (!selectionEl) { counters.failed++; setTimeout(processNext, 50); return; }
+    item.scrollIntoView({ behavior: 'auto', block: 'center' });
+    selectionEl.click();
+    console.log('[TEMU-ATTR]', idx + '/' + total, entry.label, '→', entry.value);
+
+    setTimeout(function() {
+      var dropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+      if (!dropdown) { counters.failed++; setTimeout(processNext, 50); return; }
+
+      var virtualList = dropdown.querySelector('.rc-virtual-list-holder');
+      if (virtualList) {
+        virtualList.scrollTop = virtualList.scrollHeight;
+        setTimeout(function() { virtualList.scrollTop = 0; }, 100);
+      }
+
+      var searchInput = dropdown.querySelector('.ant-select-search__field');
+      if (searchInput) {
+        try {
+          searchInput.focus();
+          var ns2 = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          ns2.call(searchInput, String(entry.value));
+          searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+          setTimeout(function() {
+            searchInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13, bubbles: true }));
+            counters.applied++;
+            setTimeout(processNext, 250);
+          }, 200);
+        } catch(e) { counters.failed++; setTimeout(processNext, 200); }
+        return;
+      }
+
+      var opts = dropdown.querySelectorAll('.ant-select-dropdown-menu-item, li[role], li');
+      var vn = stripAccents(entry.value);
+      var option = null;
+      for (var o = 0; o < opts.length; o++) {
+        if (stripAccents(opts[o].textContent) === vn) { option = opts[o]; break; }
+      }
+      if (!option) {
+        for (var o2 = 0; o2 < opts.length; o2++) {
+          if (stripAccents(opts[o2].textContent).indexOf(vn) >= 0 && vn.length > 2) { option = opts[o2]; break; }
+        }
+      }
+      if (option) {
+        option.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        option.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+        option.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        counters.applied++;
+      } else {
+        counters.failed++;
+        document.body.click();
+      }
+      setTimeout(processNext, 250);
+    }, 350);
+  }
+
+  processNext();
+}
+
+function execAtributos(tabId, data, sendResponse) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    world: 'MAIN',
+    func: aplicarAtributosTemuPageWorld,
+    args: [data]
+  }).then(function() { sendResponse({ ok: true }); })
+    .catch(function(e) { console.error('[BG] ERRO atributos-temu:', e.message); sendResponse({ ok: false, error: e.message }); });
+}
+
 // ===== MENU DE CONTEXTO =====
 function atualizarMenus() {
   chrome.contextMenus.removeAll(() => {
@@ -40,24 +176,45 @@ function atualizarMenus() {
         documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
       });
 
-      // --- Medidas - Preencher + Descrições ---
-      chrome.contextMenus.create({
-        id: "executarMacroDireito",
-        title: "✅ Preencher Medidas",
-        contexts: ["all"],
-        documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
-      });
+      // --- Medidas: submenu ---
+      if (Object.keys(biblioteca).length > 0) {
+        chrome.contextMenus.create({
+          id: "medidasParent",
+          title: "📏 Medidas",
+          contexts: ["all"],
+          documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
+        });
+        for (let nome in biblioteca) {
+          chrome.contextMenus.create({
+            id: "medidas_" + nome,
+            parentId: "medidasParent",
+            title: nome,
+            contexts: ["all"],
+            documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
+          });
+        }
+      }
       chrome.contextMenus.create({
         id: "separador2",
         type: "separator",
         contexts: ["all"],
         documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
       });
-      for (let nome in biblioteca) {
-        if (biblioteca[nome].descricao && biblioteca[nome].descricao.trim() !== "") {
+
+      // --- Descrição: submenu ---
+      const nomesDesc = Object.keys(biblioteca).filter(n => biblioteca[n].descricao && biblioteca[n].descricao.trim() !== "");
+      if (nomesDesc.length > 0) {
+        chrome.contextMenus.create({
+          id: "descParent",
+          title: "📝 Descrição",
+          contexts: ["all"],
+          documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
+        });
+        for (let nome of nomesDesc) {
           chrome.contextMenus.create({
             id: "desc_" + nome,
-            title: "📏 Descrição: " + nome,
+            parentId: "descParent",
+            title: nome,
             contexts: ["all"],
             documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
           });
@@ -113,14 +270,34 @@ try { chrome.storage.onChanged.addListener((changes) => {
 }); } catch (e) {}
 
 try { chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "executarMacroDireito") {
-    chrome.tabs.sendMessage(tab.id, { action: 'open-medidas-dialog' }, () => {
-      if (chrome.runtime.lastError) {
+  const isTemu = (tab && tab.url && tab.url.includes('/temu/'));
+
+  if (info.menuItemId.startsWith("medidas_")) {
+    const nomeTabela = info.menuItemId.replace("medidas_", "");
+    chrome.storage.local.get(["biblioteca"], (res) => {
+      const dados = res.biblioteca?.[nomeTabela];
+      if (!dados) {
         chrome.scripting.executeScript({
           target: { tabId: tab.id },
-          func: () => { alert("Erro: extensão não carregada nesta página."); }
+          func: () => { alert("Tabela de medidas não encontrada."); }
         });
+        return;
       }
+      const action = isTemu ? 'fill-size-guide-temu' : 'fill-size-guide';
+      chrome.tabs.sendMessage(tab.id, { action: action, dados }, (resp) => {
+        if (chrome.runtime.lastError) {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => { alert("Erro: extensão não carregada nesta página."); }
+          });
+        } else if (resp && resp.missing && resp.missing.length > 0) {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: (m) => { alert("Tamanhos sem medida: " + m.join(", ")); },
+            args: [resp.missing]
+          });
+        }
+      });
     });
   } else if (info.menuItemId.startsWith("desc_")) {
     const nomeTabela = info.menuItemId.replace("desc_", "");
@@ -128,15 +305,27 @@ try { chrome.contextMenus.onClicked.addListener((info, tab) => {
       chrome.storage.local.get(["biblioteca"], (res) => {
         const texto = res.biblioteca[nomeTabela]?.descricao;
         if (texto) {
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: preencherDescricaoNoSite,
-            args: [texto]
-          });
+          if (isTemu) {
+            chrome.tabs.sendMessage(tab.id, { action: 'fill-desc-temu', texto }, () => {
+              if (chrome.runtime.lastError) {
+                chrome.scripting.executeScript({
+                  target: { tabId: tab.id },
+                  func: () => { alert("Erro: extensão não carregada nesta página."); }
+                });
+              }
+            });
+          } else {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: preencherDescricaoNoSite,
+              args: [texto]
+            });
+          }
         }
       });
     });
   } else if (info.menuItemId === "remapearVariante") {
+    if (isTemu) return;
     chrome.tabs.sendMessage(tab.id, { action: 'start-remap-full' }, () => {
       if (chrome.runtime.lastError) {
         chrome.scripting.executeScript({
@@ -146,7 +335,8 @@ try { chrome.contextMenus.onClicked.addListener((info, tab) => {
       }
     });
   } else if (info.menuItemId === "aplicarPrecos") {
-    chrome.tabs.sendMessage(tab.id, { action: 'open-precos-dialog' }, () => {
+    const action = isTemu ? 'open-temu-dialog' : 'open-precos-dialog';
+    chrome.tabs.sendMessage(tab.id, { action: action }, () => {
       if (chrome.runtime.lastError) {
         chrome.scripting.executeScript({
           target: { tabId: tab.id },
@@ -172,26 +362,49 @@ try { chrome.contextMenus.onClicked.addListener((info, tab) => {
         });
         return;
       }
-      chrome.tabs.sendMessage(tab.id, {
-        action: 'set-precos-completos',
-        bulkPrice: dados.bulkPrice,
-        overrides: dados.overrides || {}
-      }, (resp) => {
-        if (chrome.runtime.lastError) {
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: () => { alert("Erro: extensão não carregada nesta página."); }
-          });
-        } else if (resp && resp.error) {
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: (msg) => { alert(msg); },
-            args: [resp.error]
-          });
-        } else {
-          chrome.storage.local.set({ ultimosPrecos: { bulkPrice: dados.bulkPrice, overrides: dados.overrides || {} } });
-        }
-      });
+      if (isTemu) {
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'set-precos-temu',
+          bulkPrice: dados.bulkPrice,
+          listPrice: dados.listPrice || ''
+        }, (resp) => {
+          if (chrome.runtime.lastError) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: () => { alert("Erro: extensão não carregada nesta página."); }
+            });
+          } else if (resp && resp.error) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: (msg) => { alert(msg); },
+              args: [resp.error]
+            });
+          } else {
+            chrome.storage.local.set({ ultimosPrecosTemu: { bulkPrice: dados.bulkPrice, listPrice: dados.listPrice || '' } });
+          }
+        });
+      } else {
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'set-precos-completos',
+          bulkPrice: dados.bulkPrice,
+          overrides: dados.overrides || {}
+        }, (resp) => {
+          if (chrome.runtime.lastError) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: () => { alert("Erro: extensão não carregada nesta página."); }
+            });
+          } else if (resp && resp.error) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: (msg) => { alert(msg); },
+              args: [resp.error]
+            });
+          } else {
+            chrome.storage.local.set({ ultimosPrecos: { bulkPrice: dados.bulkPrice, overrides: dados.overrides || {} } });
+          }
+        });
+      }
     });
   }
 }); } catch (e) {}
@@ -201,7 +414,9 @@ try { chrome.commands.onCommand.addListener((command) => {
   if (command === "executar-macro") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs[0]) return;
-      chrome.tabs.sendMessage(tabs[0].id, { action: 'open-medidas-dialog' }, () => {
+      const isTemu = tabs[0].url && tabs[0].url.includes('/temu/');
+      const action = isTemu ? 'open-temu-dialog' : 'open-medidas-dialog';
+      chrome.tabs.sendMessage(tabs[0].id, { action: action }, () => {
         if (chrome.runtime.lastError) {
           chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
@@ -214,7 +429,9 @@ try { chrome.commands.onCommand.addListener((command) => {
   if (command === "aplicar-precos") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs[0]) return;
-      chrome.tabs.sendMessage(tabs[0].id, { action: 'open-precos-dialog' }, () => {
+      const isTemu = tabs[0].url && tabs[0].url.includes('/temu/');
+      const action = isTemu ? 'open-temu-mass-dialog' : 'open-precos-dialog';
+      chrome.tabs.sendMessage(tabs[0].id, { action: action }, () => {
         if (chrome.runtime.lastError) {
           chrome.scripting.executeScript({
             target: { tabId: tabs[0].id },
@@ -688,6 +905,20 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       reader.readAsDataURL(new Blob([jsonStr], { type: 'application/json' }));
     } catch(e) { console.error('[BG] export error:', e); }
   }
+
+  if (msg.action === 'aplicar-atributos-temu') {
+    var tabId = sender.tab ? sender.tab.id : null;
+    if (!tabId) {
+      // Fallback: get active tab
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        if (!tabs[0]) { sendResponse({ ok: false, error: 'no tab' }); return; }
+        execAtributos(tabs[0].id, msg.data, sendResponse);
+      });
+    } else {
+      execAtributos(tabId, msg.data, sendResponse);
+    }
+    return true; // keep channel open for async sendResponse
+  }
 }); } catch (e) {}
 
 function startKeepAlive() {
@@ -755,6 +986,33 @@ function processTabMedidas(index) {
   });
 }
 
+function processTabTemu(index) {
+  const tabId = tabQueue[index];
+  chrome.tabs.update(tabId, { active: true }, () => {
+    setTimeout(() => {
+      chrome.tabs.sendMessage(tabId, {
+        action: 'show-multi-overlay',
+        tab: index + 1,
+        total: tabQueue.length
+      });
+      setTimeout(() => {
+        chrome.tabs.sendMessage(tabId, {
+          action: 'executar-temu-macro',
+          dados: multiMedidasConfig
+        }, (response) => {
+          if (chrome.runtime.lastError) {
+            chrome.runtime.sendMessage({
+              action: 'multi-error',
+              message: `Aba ${index + 1}: ${chrome.runtime.lastError.message}`
+            });
+            processNextTab();
+          }
+        });
+      }, 500);
+    }, 1500);
+  });
+}
+
 function processNextTab() {
   currentTabIndex++;
   if (currentTabIndex >= tabQueue.length) {
@@ -772,6 +1030,8 @@ function processNextTab() {
     });
     if (multiProcessType === 'medidas') {
       processTabMedidas(currentTabIndex);
+    } else if (multiProcessType === 'temu') {
+      processTabTemu(currentTabIndex);
     } else {
       processTab(currentTabIndex);
     }
@@ -979,3 +1239,133 @@ function broadcastToAll(message) {
     chrome.tabs.sendMessage(tid, message).catch(function() {});
   });
 }
+
+// ===== APLICAR COR (Copiar Imagem → Variantes com o mesmo Cor) =====
+function aplicarCorPageWorld(rowIdx) {
+  var row = document.querySelectorAll('#media .variant_row')[rowIdx];
+  if (!row) return false;
+  var copyDiv = row.querySelector('.my_dropdown_btn');
+  if (!copyDiv || !copyDiv.__vue__) return false;
+  var vue = copyDiv.__vue__;
+  if (!vue.menuClick || !vue.menus) return false;
+  var dropdown = vue.$children[0];
+  var internal = dropdown && dropdown.$children[0];
+  if (!internal) return false;
+
+  internal.sVisible = true;
+  return true;
+}
+
+function selecionarCorNoDropdown(rowIdx) {
+  var row = document.querySelectorAll('#media .variant_row')[rowIdx];
+  if (!row) return false;
+  var copyDiv = row.querySelector('.my_dropdown_btn');
+  if (!copyDiv || !copyDiv.__vue__) return false;
+  var vue = copyDiv.__vue__;
+  if (!vue.menuClick || !vue.menus) return false;
+  var dropdown = vue.$children[0];
+  var internal = dropdown && dropdown.$children[0];
+
+  vue.menuClick({ key: 'Cor' });
+
+  if (internal) internal.sVisible = false;
+  return true;
+}
+
+chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
+  if (msg.action === 'aplicar-cor-abrir') {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      if (!tabs || !tabs[0]) { sendResponse({ ok: false }); return; }
+      chrome.scripting.executeScript({
+        target: { tabId: tabs[0].id },
+        world: 'MAIN',
+        func: aplicarCorPageWorld,
+        args: [msg.rowIdx]
+      }).then(function(r) { sendResponse({ ok: r[0] && r[0].result }); })
+        .catch(function() { sendResponse({ ok: false }); });
+    });
+    return true;
+  }
+  if (msg.action === 'aplicar-cor-selecionar') {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      if (!tabs || !tabs[0]) { sendResponse({ ok: false }); return; }
+      chrome.scripting.executeScript({
+        target: { tabId: tabs[0].id },
+        world: 'MAIN',
+        func: selecionarCorNoDropdown,
+        args: [msg.rowIdx]
+      }).then(function(r) { sendResponse({ ok: r[0] && r[0].result }); })
+        .catch(function() { sendResponse({ ok: false }); });
+    });
+    return true;
+  }
+
+  if (msg.action === 'executar-temu-multi') {
+    var dados = msg.dados;
+    var modo = dados.multiModo || 'sequencial';
+    var sourceWindowId = sender.tab ? sender.tab.windowId : null;
+
+    chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/temu/edit/*' }, async function(tabs) {
+      tabQueue = tabs.map(function(t) { return t.id; });
+      if (tabQueue.length === 0) {
+        chrome.runtime.sendMessage({ action: 'multi-error', message: 'Nenhuma aba Temu encontrada' });
+        sendResponse({ ok: false });
+        return;
+      }
+
+      multiMedidasConfig = dados;
+      multiProcessType = 'temu';
+
+      if (modo === 'sequencial' || tabQueue.length <= 1) {
+        processingTabs = true;
+        currentTabIndex = 0;
+        salvarEstadoMulti();
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: 'Aba 1 de ' + tabQueue.length
+        });
+        processTabTemu(currentTabIndex);
+      } else {
+        try {
+          await tileTabs(tabQueue, sourceWindowId);
+        } catch (e) {
+          chrome.runtime.sendMessage({ action: 'multi-error', message: 'Erro ao distribuir janelas: ' + e.message });
+          sendResponse({ ok: false });
+          return;
+        }
+        processingTabs = true;
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: 'Paralelo: ' + tabQueue.length + ' abas'
+        });
+        tabQueue.forEach(function(tabId, idx) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'show-multi-overlay',
+            tab: idx + 1,
+            total: tabQueue.length
+          }, function() { void chrome.runtime.lastError; });
+        });
+        await sleep(500);
+        tabQueue.forEach(function(tabId) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'executar-temu-macro',
+            dados: dados
+          }, function() { void chrome.runtime.lastError; });
+        });
+      }
+      sendResponse({ ok: true });
+    });
+    return true;
+  }
+
+  if (msg.action === 'executar-temu-macro') {
+    // Handled by temu.js content script
+    return false;
+  }
+});

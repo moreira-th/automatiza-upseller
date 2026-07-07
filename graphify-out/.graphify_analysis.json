@@ -1,0 +1,288 @@
+{
+  "communities": {
+    "0": [
+      "automacao",
+      "automacao_abrirdialogmedidas",
+      "automacao_abrirdialogprecos",
+      "automacao_abrirpopupeditarmedidas",
+      "automacao_abrirsubespecificacaosenecessario",
+      "automacao_detectartamanhosfaltantes",
+      "automacao_encontrarcolunasmassa",
+      "automacao_mostrarpainelmedidasfaltantes",
+      "automacao_precisaremapear",
+      "automacao_preencherguiatamanhos",
+      "automacao_runautomation",
+      "automacao_setcolunaemmassa",
+      "automacao_setprecoscompletos",
+      "automacao_stepabrirremapeamento",
+      "automacao_stepconfirmar",
+      "automacao_stepdone",
+      "automacao_stepfechar",
+      "automacao_stepmapearvariantes",
+      "automacao_stepok",
+      "automacao_stepsalvar",
+      "automacao_stepselecionartamanho",
+      "automacao_subespecificacaomassa",
+      "automacao_upsdialog",
+      "core",
+      "core_capitalizartitulo",
+      "core_esperarbotao",
+      "core_esperarelemento",
+      "core_findbuttonbytext",
+      "core_findmaindialog",
+      "core_findtextcontainer",
+      "core_nativeclick",
+      "core_sleep",
+      "extras_traduzircorenpt"
+    ],
+    "1": [
+      "core_esperarbotaocontem",
+      "extras",
+      "extras_abrirdialogatributosdrafts",
+      "extras_abrirdropdownselect",
+      "extras_ajustarcoreserecortar",
+      "extras_aplicaratributo",
+      "extras_aplicarcoresnapagina",
+      "extras_clickinmain",
+      "extras_esperaratributosexpandirem",
+      "extras_esperaratualizacaocores",
+      "extras_expandiratributos",
+      "extras_gerarskuemmassa",
+      "extras_injetarbotaoatributosdrafts",
+      "extras_injetarbotaoimagemmassa",
+      "extras_injetarbotaoskunoanuncio",
+      "extras_leratributos",
+      "extras_lercoresespecificacaoprincipal",
+      "extras_limparatributoscustomizados",
+      "extras_monitormodaleditaratributos",
+      "extras_monitortoolbardrafts",
+      "extras_mostrardialogoconfirmarcores",
+      "extras_mostrarfeedback",
+      "extras_normalizarcor",
+      "extras_recortarimagemquadradaemmassa",
+      "extras_salvarlinkrecente",
+      "extras_showupsnotification",
+      "extras_uploadimagemviabackground",
+      "extras_upscopiarcoresdetalheasync"
+    ],
+    "2": [
+      "popup",
+      "popup_abrirdialogoselecao",
+      "popup_atualizarselect",
+      "popup_btnmulti",
+      "popup_btnsingle",
+      "popup_carregarcoresremap",
+      "popup_carregardados",
+      "popup_carregarpreset",
+      "popup_configurarabas",
+      "popup_deletarpreset",
+      "popup_gerargrid",
+      "popup_listatamanhos",
+      "popup_overrides",
+      "popup_preencherselectpresets",
+      "popup_preencherselecttam",
+      "popup_progressfill",
+      "popup_renderizarcoreslista",
+      "popup_renderoverrides",
+      "popup_restaurarultimosprecos",
+      "popup_salvarpreset",
+      "popup_salvarultimosprecos",
+      "popup_seterror",
+      "popup_setrunning",
+      "popup_setsuccess",
+      "popup_stepcount",
+      "popup_stepinfo",
+      "popup_updateprogress"
+    ],
+    "3": [
+      "background",
+      "background_atualizarmenus",
+      "background_broadcasttoall",
+      "background_cascadewindows",
+      "background_cleanupparallel",
+      "background_doupload",
+      "background_gathertabs",
+      "background_hideoverlayalltabs",
+      "background_limparestadomulti",
+      "background_movecompletedtab",
+      "background_preencherdescricaonosite",
+      "background_processnexttab",
+      "background_processtab",
+      "background_processtabmedidas",
+      "background_salvarestadomulti",
+      "background_sleep",
+      "background_startkeepalive",
+      "background_stopkeepalive",
+      "background_taboriginalindexes",
+      "background_tabqueue",
+      "background_tiletabs",
+      "background_upsshowdialog"
+    ],
+    "4": [
+      "manifest",
+      "manifest_action",
+      "manifest_action_default_icon",
+      "manifest_action_default_popup",
+      "manifest_background",
+      "manifest_background_service_worker",
+      "manifest_commands",
+      "manifest_commands_aplicar_precos",
+      "manifest_commands_executar_macro",
+      "manifest_content_scripts",
+      "manifest_description",
+      "manifest_executar_macro_suggested_key",
+      "manifest_host_permissions",
+      "manifest_icons",
+      "manifest_icons_128",
+      "manifest_icons_16",
+      "manifest_icons_48",
+      "manifest_manifest_version",
+      "manifest_name",
+      "manifest_permissions",
+      "manifest_suggested_key_default",
+      "manifest_version"
+    ],
+    "5": [
+      "extras_upsclickelement",
+      "extras_upsexecutaratributospopup",
+      "extras_upsprocessarcategoriapopup",
+      "extras_upstoastdrafts",
+      "overlay",
+      "overlay_atualizaroverlaymulti",
+      "overlay_atualizaroverlayprogresso",
+      "overlay_criaroverlaymulti",
+      "overlay_criaroverlayprogresso",
+      "overlay_injetarbotaooverlay",
+      "overlay_injetarbotaoprecoespecial",
+      "overlay_mostrarerrooverlayprogresso",
+      "overlay_removeroverlaymulti",
+      "overlay_removeroverlayprogresso"
+    ],
+    "6": [
+      "entry",
+      "entry_observer"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08712121212121213,
+    "1": 0.09259259259259259,
+    "2": 0.08262108262108261,
+    "3": 0.1341991341991342,
+    "4": 0.11688311688311688,
+    "5": 0.17582417582417584,
+    "6": 1.0
+  },
+  "gods": [
+    {
+      "id": "core_nativeclick",
+      "label": "nativeClick()",
+      "degree": 7
+    },
+    {
+      "id": "background_processnexttab",
+      "label": "processNextTab()",
+      "degree": 6
+    },
+    {
+      "id": "extras_upsexecutaratributospopup",
+      "label": "upsExecutarAtributosPopup()",
+      "degree": 6
+    },
+    {
+      "id": "automacao_stepmapearvariantes",
+      "label": "stepMapearVariantes()",
+      "degree": 5
+    },
+    {
+      "id": "core_findmaindialog",
+      "label": "findMainDialog()",
+      "degree": 5
+    },
+    {
+      "id": "automacao_stepabrirremapeamento",
+      "label": "stepAbrirRemapeamento()",
+      "degree": 4
+    },
+    {
+      "id": "background_cleanupparallel",
+      "label": "cleanupParallel()",
+      "degree": 4
+    },
+    {
+      "id": "manifest_icons",
+      "label": "icons",
+      "degree": 4
+    },
+    {
+      "id": "manifest_action_default_icon",
+      "label": "default_icon",
+      "degree": 4
+    },
+    {
+      "id": "automacao_stepconfirmar",
+      "label": "stepConfirmar()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "stepSelecionarTamanho()",
+      "target": "findMainDialog()",
+      "source_files": [
+        "automacao.js",
+        "core.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `stepSelecionarTamanho()` unexpectedly reaches hub `findMainDialog()`"
+    },
+    {
+      "source": "stepMapearVariantes()",
+      "target": "normalizarCor()",
+      "source_files": [
+        "automacao.js",
+        "extras.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "stepMapearVariantes()",
+      "target": "traduzirCorEnPt()",
+      "source_files": [
+        "automacao.js",
+        "extras.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `traduzirCorEnPt()` unexpectedly reaches hub `stepMapearVariantes()`"
+    },
+    {
+      "source": "upsExecutarAtributosPopup()",
+      "target": "criarOverlayProgresso()",
+      "source_files": [
+        "extras.js",
+        "overlay.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `criarOverlayProgresso()` unexpectedly reaches hub `upsExecutarAtributosPopup()`"
+    },
+    {
+      "source": "upsExecutarAtributosPopup()",
+      "target": "removerOverlayProgresso()",
+      "source_files": [
+        "extras.js",
+        "overlay.js"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `removerOverlayProgresso()` unexpectedly reaches hub `upsExecutarAtributosPopup()`"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

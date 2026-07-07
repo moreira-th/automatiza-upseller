@@ -6,20 +6,28 @@
 
 // ========== INITIAL INJECTIONS ==========
 setTimeout(function() {
-  try { injetarBotaoImagemMassa(); } catch(e) {}
-  try { injetarBotaoOverlay(); } catch(e) {}
+  if (!location.href.includes('/temu/')) {
+    try { injetarBotaoImagemMassa(); } catch(e) {}
+    try { injetarBotaoOverlay(); } catch(e) {}
+  } else {
+    try { injetarBotaoTemu(); } catch(e) {}
+    try { initSKUAutoTemu(); } catch(e) {}
+  }
   try { injetarBotaoSkuNoAnuncio(); } catch(e) {}
 }, 3000);
 
 const observer = new MutationObserver(function() {
-  if (!document.getElementById('ups-floating-btn')) {
-    setTimeout(function() { try { injetarBotaoOverlay(); } catch(e) {} }, 500);
-  }
-  if (!document.getElementById('ups-floating-btn-preco')) {
-    setTimeout(function() { try { injetarBotaoPrecoEspecial(document.getElementById('ups-floating-btn')); } catch(e) {} }, 500);
-  }
-  if (!document.getElementById('ups-gerar-sku-btn')) {
-    setTimeout(function() { try { injetarBotaoSkuNoAnuncio(); } catch(e) {} }, 500);
+  if (location.href.includes('/temu/')) {
+    if (!document.getElementById('ups-temu-btn')) {
+      setTimeout(function() { try { injetarBotaoTemu(); } catch(e) {} }, 500);
+    }
+  } else {
+    if (!document.getElementById('ups-floating-btn')) {
+      setTimeout(function() { try { injetarBotaoOverlay(); } catch(e) {} }, 500);
+    }
+    if (!document.getElementById('ups-floating-btn-preco')) {
+      setTimeout(function() { try { injetarBotaoPrecoEspecial(document.getElementById('ups-floating-btn')); } catch(e) {} }, 500);
+    }
   }
 });
 observer.observe(document.body, { childList: true, subtree: true });

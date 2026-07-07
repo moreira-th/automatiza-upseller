@@ -391,7 +391,7 @@ async function preencherGuiaTamanhos(dados) {
   for (let i = 0; i < 20; i++) {
     dialog = document.querySelector('.ant-modal-content');
     if (dialog && dialog.textContent.includes('Editar Guia de Tamanhos')) break;
-    await sleep(1000);
+    await sleep(500);
   }
   if (!dialog || !dialog.textContent.includes('Editar Guia de Tamanhos')) {
     return { missing: [] };
@@ -400,7 +400,7 @@ async function preencherGuiaTamanhos(dados) {
   const selectWrapper = dialog.querySelector('.ant-select');
   if (selectWrapper) {
     selectWrapper.click();
-    await sleep(500);
+    await sleep(600);
     const dropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
     if (dropdown) {
       const option = Array.from(dropdown.querySelectorAll('li')).find(li => li.textContent.trim() === 'Tamanho');
@@ -416,8 +416,9 @@ async function preencherGuiaTamanhos(dados) {
 
   const injetar = (input, val) => {
     if (input && val !== undefined && val !== '') {
+      var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
       input.focus();
-      input.value = val;
+      nativeSetter.call(input, val);
       input.dispatchEvent(new Event('input', { bubbles: true }));
       input.dispatchEvent(new Event('change', { bubbles: true }));
       input.blur();
@@ -564,7 +565,7 @@ function abrirDialogMedidas() {
   overlay.innerHTML = `
 <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:999999;display:flex;align-items:center;justify-content:center;">
 <div style="background:white;border-radius:8px;padding:20px;width:90vw;min-width:540px;max-width:680px;box-shadow:0 8px 32px rgba(0,0,0,0.25);font-family:sans-serif;max-height:85vh;overflow-y:auto;">
-<div style="font-size:18px;font-weight:bold;margin-bottom:10px;text-align:center;">Automatiza Shein - UpSeller</div>
+<div style="font-size:18px;font-weight:bold;margin-bottom:10px;text-align:center;">Automação Shein - UpSeller</div>
 
 <div style="display:flex;gap:4px;margin-bottom:10px;">
 <select id="ups-op-select" style="flex:1;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;"><option value="">📋 Carregar Nova Configuração...</option></select>
@@ -869,7 +870,7 @@ function abrirDialogMedidas() {
         const sel = res.ultimaSelecionada || '';
         const dados = bib[sel];
         if (dados) {
-          const chavesFixas = new Set(['descricao','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote']);
+          const chavesFixas = new Set(['descricao','topicos','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote','paisOrigem']);
           const tamanhos = Object.keys(dados).filter(k => !chavesFixas.has(k) && dados[k] && typeof dados[k] === 'object' && (dados[k].b || dados[k].c));
           console.log('[UPS-med] Tamanhos do storage:', tamanhos);
           resolve(tamanhos.sort((a, b) => {
@@ -1195,7 +1196,7 @@ function abrirDialogMedidas() {
     const ultimos = res.ultimosPrecos;
 
     selectedTable = (ativa && bib[ativa]) ? ativa : (nomes.length > 0 ? nomes[0] : '');
-    const chavesFixas = new Set(['descricao','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote']);
+    const chavesFixas = new Set(['descricao','topicos','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote','paisOrigem']);
 
     body.innerHTML = `
 <label style="font-size:13px;font-weight:600;display:block;margin-bottom:8px;">Tabela de Medidas</label>
@@ -2275,6 +2276,12 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           await runAutomation((p) => {
             atualizarOverlayProgresso({ message: 'Remapeando: ' + p.message, step: stepCounter, total: totalSteps });
           });
+          // Espera o diálogo de remapeamento fechar e a página recarregar
+          for (let r = 0; r < 20; r++) {
+            const dlg = document.querySelector('.ant-modal-content');
+            if (!dlg) break;
+            await sleep(250);
+          }
         } catch (e) { /* ignore remap errors */ }
         if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
       }
@@ -2500,6 +2507,8 @@ function abrirPopupEditarMedidas(nomeExistente, bib, chavesFixas, atualizarSelec
 <input id="ups-pm-nome" type="text" value="${nomeExistente || ''}" placeholder="Ex: PP-16" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;" ${nomeExistente ? 'disabled' : ''}>
 <label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Descrição</label>
 <textarea id="ups-pm-desc" placeholder="Descrição do produto (opcional)..." style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;height:40px;resize:vertical;font-family:sans-serif;">${(dados.descricao || '')}</textarea>
+<label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Tópicos (Temu)</label>
+<textarea id="ups-pm-topicos" placeholder="Um tópico por linha (opcional, apenas Temu)..." style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;height:40px;resize:vertical;font-family:sans-serif;">${((dados.topicos || []).join('\n'))}</textarea>
 <label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Tamanhos</label>
 <div id="ups-pm-grid" style="margin-bottom:6px;"></div>
 <div style="display:flex;gap:4px;align-items:center;margin-bottom:8px;">
@@ -2586,9 +2595,11 @@ ${nomeExistente ? '<button id="ups-pm-excluir" style="padding:5px 14px;backgroun
       if (!nome) { mostrarFeedback('Dê um nome para a tabela!', '#dc3545'); return; }
       if (!nome.match(/^[a-zA-Z0-9\s\-_À-ÿ]+$/)) { mostrarFeedback('Nome inválido', '#dc3545'); return; }
       const desc = document.getElementById('ups-pm-desc').value.trim();
+      const topicosRaw = document.getElementById('ups-pm-topicos').value.trim();
+      const topicos = topicosRaw ? topicosRaw.split('\n').map(function(l) { return l.trim(); }).filter(Boolean) : [];
 
       // Coletar valores do grid
-      const novaTabela = { descricao: desc };
+      const novaTabela = { descricao: desc, topicos: topicos };
       document.querySelectorAll('.ups-pm-g-b').forEach(inp => {
         const tam = inp.getAttribute('data-tam');
         const b = inp.value;
@@ -2900,6 +2911,9 @@ function abrirDialogPrecos() {
             <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
             <input type="checkbox" id="ups-ps-confirmar-cores" style="margin:0;"> Confirmar cores?
             </label>
+            <label style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+            <input type="checkbox" id="ups-p-remap" style="margin:0;"> F. Remapeamento
+            </label>
             </div>
             </div>
 
@@ -2926,7 +2940,7 @@ function abrirDialogPrecos() {
         const sel = res.ultimaSelecionada || '';
         const dados = bib[sel];
         if (dados) {
-          const chavesFixas = new Set(['descricao','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote']);
+          const chavesFixas = new Set(['descricao','topicos','macros','precos','emMassa','sku','crop','confirmarCores','ativar','sub','quantidade','preco','peso','pacote','paisOrigem']);
           const tamanhos = Object.keys(dados).filter(k => !chavesFixas.has(k) && dados[k] && typeof dados[k] === 'object' && (dados[k].b || dados[k].c));
           console.log('[UPS-prec] Tamanhos do storage:', tamanhos);
           resolve(tamanhos.sort((a, b) => {
@@ -3381,6 +3395,7 @@ function abrirDialogPrecos() {
     const skuChecked = document.getElementById('ups-ps-sku').checked;
     const cropChecked = document.getElementById('ups-ps-crop').checked;
     const confirmarCoresChecked = document.getElementById('ups-ps-confirmar-cores').checked;
+    const forcarRemap = document.getElementById('ups-p-remap').checked;
 
     overlay.remove();
     await sleep(100);
@@ -3394,8 +3409,24 @@ function abrirDialogPrecos() {
     if (macroAtivo && skuChecked) steps.push('sku');
     if (macroAtivo && cropChecked) steps.push('crop');
     if (macroAtivo && confirmarCoresChecked && lerCoresEspecificacaoPrincipal().length > 0) steps.push('confirmarCores');
+    if (forcarRemap) steps.unshift('remap');
 
     let stepIdx = 0;
+
+    // -1. Remapeamento (antes de tudo)
+    if (steps.includes('remap')) {
+      stepIdx++;
+      criarOverlayProgresso();
+      atualizarOverlayProgresso({ message: 'Remapeando...', step: stepIdx, total: steps.length });
+      try {
+        await runAutomation(() => {});
+        for (let r = 0; r < 20; r++) {
+          const dlg = document.querySelector('.ant-modal-content');
+          if (!dlg) break;
+          await sleep(250);
+        }
+      } catch (e) { /* silent */ }
+    }
 
     // 0. Confirmar Cores (before sub)
     if (steps.includes('confirmarCores')) {
@@ -3775,6 +3806,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (barEl) barEl.style.background = '#dc3545';
     if (pctEl) pctEl.textContent = '—';
     if (cancelBtn) cancelBtn.style.display = 'none';
+    removerOverlayProgresso();
     setTimeout(() => removerOverlayMulti(), 2000);
     sendResponse({ status: 'ok' });
     return true;
@@ -3823,7 +3855,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           try {
             stepDone('Remapeando...');
             await runAutomation(() => {});
+            // Espera o diálogo de remapeamento fechar e a página recarregar
+            for (let r = 0; r < 20; r++) {
+              const dlg = document.querySelector('.ant-modal-content');
+              if (!dlg) break;
+              await sleep(250);
+            }
           } catch (e) { /* silent */ }
+          if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
         }
         // Confirmar Cores (antes da Subespecificação)
         if (config.confirmarCores) {
@@ -3843,6 +3882,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           if (macro.sub) {
             stepDone('Aplicando Subespecificação...');
             await subespecificacaoMassa(macro.sub);
+            if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
             await sleep(2000);
           }
           if (macro.emMassa && (macro.emMassa.quantidade || macro.emMassa.preco || macro.emMassa.peso || macro.emMassa.pacote)) {
@@ -3858,6 +3898,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             }
           }
         }
+        if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
 
         if (config.bulkPrice) {
           stepDone('Aplicando preços...');
@@ -3882,6 +3923,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         }
         stepDone('Capitalizando título...');
         capitalizarTitulo();
+        if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
 
         if (hasMacro && macro.sku) {
           stepDone('Gerando SKU...');
@@ -3902,11 +3944,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             await sleep(500);
             stepDone('Aplicando atributos...');
             for (const key of Object.keys(dados)) {
+              if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
               await aplicarAtributo(key, dados[key]);
               await sleep(400);
             }
           }
         }
+        if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
 
         // Guia de Tamanhos
         const dados = bibData.biblioteca && bibData.biblioteca[config.selectedTable];

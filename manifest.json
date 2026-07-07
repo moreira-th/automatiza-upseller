@@ -33,13 +33,16 @@
     {
       "matches": [
         "https://app.upseller.com/pt/products/shein/edit/*",
-        "https://app.upseller.com/pt/products/shein/drafts*"
+        "https://app.upseller.com/pt/products/shein/drafts*",
+        "https://app.upseller.com/pt/products/temu/edit/*",
+        "https://app.upseller.com/pt/products/temu/drafts*"
       ],
       "js": [
         "core.js",
         "overlay.js",
         "extras.js",
         "automacao.js",
+        "temu.js",
         "entry.js"
       ],
       "run_at": "document_idle"

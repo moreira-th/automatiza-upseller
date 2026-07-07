@@ -1,0 +1,42 @@
+{
+  "arquivo": "automacao.js",
+  "funcao": "setColunaEmMassa",
+  "descricao": "Delays da função de Editar em Massa da Shein antes da otimização",
+  "delays": [
+    {
+      "id": 1,
+      "linha": 3625,
+      "tipo": "sleep",
+      "valor": 500,
+      "descricao": "Delay inicial antes do primeiro setRows()"
+    },
+    {
+      "id": 2,
+      "linha": 3630,
+      "tipo": "sleep",
+      "valor": 300,
+      "descricao": "Delay por chunk de scroll (dentro do loop for)"
+    },
+    {
+      "id": 3,
+      "linha": 3634,
+      "tipo": "sleep",
+      "valor": 300,
+      "descricao": "Delay após último scroll (antes do setRows final)"
+    },
+    {
+      "id": 4,
+      "linha": 3638,
+      "tipo": "sleep",
+      "valor": 400,
+      "descricao": "Delay após voltar scroll ao topo"
+    },
+    {
+      "id": 5,
+      "linha": 3643,
+      "tipo": "setTimeout",
+      "valor": 500,
+      "descricao": "Scroll left final (assíncrono)"
+    }
+  ]
+}
