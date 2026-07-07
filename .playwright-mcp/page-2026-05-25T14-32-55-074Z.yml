@@ -1,0 +1,487 @@
+- generic [ref=e1]:
+  - generic [ref=e10]:
+    - banner [ref=e12]:
+      - menu [ref=e16]:
+        - menuitem "Home" [ref=e17] [cursor=pointer]:
+          - generic [ref=e18]: Home
+        - menuitem "Produtos" [ref=e19]:
+          - generic [ref=e21] [cursor=pointer]: Produtos
+        - menuitem "Pedidos" [ref=e22]:
+          - generic [ref=e24] [cursor=pointer]: Pedidos
+        - menuitem "Compras" [ref=e25]:
+          - generic [ref=e27] [cursor=pointer]: Compras
+        - menuitem "Estoque" [ref=e28]:
+          - generic [ref=e30] [cursor=pointer]: Estoque
+        - menuitem "SAC" [ref=e31]:
+          - generic [ref=e33] [cursor=pointer]: SAC
+        - menuitem "Análises" [ref=e34]:
+          - generic [ref=e36] [cursor=pointer]: Análises
+        - menuitem "Financeiro" [ref=e37]:
+          - generic [ref=e39] [cursor=pointer]: Financeiro
+      - generic [ref=e40]:
+        - generic [ref=e42] [cursor=pointer]: 
+        - separator [ref=e43]
+        - generic [ref=e44] [cursor=pointer]:
+          - 'generic "icon: question-circle" [ref=e45]':
+            - img [ref=e46]
+          - text: Ajuda
+        - generic [ref=e51] [cursor=pointer]:
+          - 'generic "icon: bell" [ref=e52]':
+            - img [ref=e53]
+          - superscript [ref=e55]
+        - generic [ref=e57] [cursor=pointer]: 
+        - separator [ref=e58]
+        - generic [ref=e59] [cursor=pointer]:
+          - generic "thalesmoreira" [ref=e61]
+          - generic [ref=e62]: 
+    - generic [ref=e63]:
+      - complementary [ref=e65]:
+        - generic [ref=e67]:
+          - menu [ref=e68]:
+            - listitem [ref=e69]:
+              - generic "Shein - Anúncios" [ref=e71]:
+                - generic "Shein - Anúncios" [ref=e72]
+              - list [ref=e73]:
+                - menuitem "Rascunhos 8" [ref=e74] [cursor=pointer]:
+                  - generic [ref=e75]:
+                    - generic "Rascunhos" [ref=e77]
+                    - generic [ref=e78]: "8"
+                - menuitem "Publicando 0" [ref=e79] [cursor=pointer]:
+                  - generic [ref=e80]:
+                    - generic "Publicando" [ref=e82]
+                    - generic [ref=e83]: "0"
+                - menuitem "Falhou 0" [ref=e84] [cursor=pointer]:
+                  - generic [ref=e85]:
+                    - generic "Falhou" [ref=e87]
+                    - generic [ref=e88]: "0"
+                - menuitem "Ativo 31" [ref=e89] [cursor=pointer]:
+                  - generic [ref=e90]:
+                    - generic "Ativo" [ref=e92]
+                    - generic [ref=e93]: "31"
+          - generic [ref=e95]:
+            - text: "Dicas:"
+            - generic [ref=e96]: Edite o anúncio importado/ migrado/duplicado antes de publicar para evitar a violação das regras da plataforma devido à publicação duplicidada de um anúncio.
+      - main [ref=e98]:
+        - generic [ref=e100]:
+          - generic [ref=e102]:
+            - generic [ref=e104]:
+              - combobox [ref=e106] [cursor=pointer]:
+                - generic "Título" [ref=e108]
+                - generic [ref=e111]: 
+              - generic [ref=e113]:
+                - textbox [ref=e114]
+                - 'generic "icon: search" [ref=e116] [cursor=pointer]':
+                  - img [ref=e117]
+            - generic [ref=e121]:
+              - generic [ref=e122]: Todas Lojas
+              - generic [ref=e124] [cursor=pointer]: 
+          - generic [ref=e125]:
+            - generic "(8/5000)" [ref=e132]
+            - 'button "icon: plus Criar Anúncio" [ref=e134] [cursor=pointer]':
+              - 'generic "icon: plus"':
+                - img
+              - generic: Criar Anúncio
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - generic [ref=e142]: Selecionado 0
+            - generic [ref=e143] [cursor=pointer]:
+              - button "Publicar em Massa" [ref=e145]:
+                - generic: Publicar em Massa
+              - button "Editar em Massa" [ref=e147]:
+                - generic: Editar em Massa
+              - link "Ações em Massa " [active] [ref=e149]:
+                - /url: javascript:void(0);
+                - generic: Ações em Massa
+                - generic: 
+          - generic [ref=e150]:
+            - generic [ref=e151] [cursor=pointer]:
+              - generic [ref=e152]: Ordem
+              - generic [ref=e153]: 
+            - generic [ref=e155]:
+              - generic [ref=e156]: Total 8
+              - generic [ref=e157]:
+                - 'button "icon: left" [disabled] [ref=e158]':
+                  - 'generic "icon: left"':
+                    - img
+                - generic [ref=e161] [cursor=pointer]: 1/1
+                - 'button "icon: right" [disabled] [ref=e162]':
+                  - 'generic "icon: right"':
+                    - img
+              - combobox [ref=e165] [cursor=pointer]:
+                - generic "50/página" [ref=e167]
+                - generic [ref=e169]: 
+        - table [ref=e174]:
+          - rowgroup [ref=e175]:
+            - 'row "Nome Número do Produto icon: question-circle Preço Preço especial Preço de Custo icon: question-circle Quantidade Criado/Atualizado Ação" [ref=e176]':
+              - columnheader [ref=e177]:
+                - checkbox [ref=e180] [cursor=pointer]
+              - columnheader [ref=e182]
+              - columnheader "Nome" [ref=e183]:
+                - generic "Nome" [ref=e184]
+              - 'columnheader "Número do Produto icon: question-circle" [ref=e185]':
+                - generic "SKU" [ref=e186]:
+                  - generic [ref=e187]:
+                    - generic [ref=e188]: Número do Produto
+                    - 'generic "icon: question-circle" [ref=e189]':
+                      - img [ref=e190]
+              - columnheader "Preço" [ref=e193]:
+                - generic "Preço" [ref=e194]
+              - columnheader "Preço especial" [ref=e195]:
+                - generic "Preço especial" [ref=e196]
+              - 'columnheader "Preço de Custo icon: question-circle" [ref=e197]':
+                - generic "Preço de Custo" [ref=e198]:
+                  - generic [ref=e199]:
+                    - generic [ref=e200]: Preço de Custo
+                    - 'generic "icon: question-circle" [ref=e201]':
+                      - img [ref=e202]
+              - columnheader "Quantidade" [ref=e205]:
+                - generic "Quantidade" [ref=e206]
+              - columnheader "Criado/Atualizado" [ref=e207]:
+                - generic "Criado/Atualizado" [ref=e208]
+              - columnheader "Ação" [ref=e209]:
+                - generic "Ação" [ref=e210]
+          - rowgroup [ref=e211]:
+            - 'row " Camiseta Feminina Estampada Love 3 Coração Dourado Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (1) icon: down Perda de Variante 604754981831866 R$‎‎ 33,02 - - 1000 24/05/2026 17:40 24/05/2026 17:58 Editar Mais " [ref=e212]':
+              - cell [ref=e213]:
+                - checkbox [ref=e216] [cursor=pointer]
+              - cell "" [ref=e218]:
+                - generic [ref=e219]:
+                  - img [ref=e224] [cursor=pointer]
+                  - generic [ref=e227]: 
+              - 'cell "Camiseta Feminina Estampada Love 3 Coração Dourado Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (1) icon: down Perda de Variante" [ref=e228]':
+                - generic [ref=e229]:
+                  - generic "Camiseta Feminina Estampada Love 3 Coração Dourado Elegante Blusa Camisa Verão Casual Confortavel Blusa" [ref=e230]:
+                    - generic [ref=e233] [cursor=pointer]: Camiseta Feminina Estampada Love 3 Coração Dourado Elegante Blusa Camisa Verão Casual Confortavel Blusa
+                  - generic "João Shein" [ref=e234]
+                  - generic [ref=e235]:
+                    - 'link "Variantes (1) icon: down" [ref=e237] [cursor=pointer]':
+                      - /url: javascript:void(0)
+                      - text: Variantes (1)
+                      - 'generic "icon: down" [ref=e238]':
+                        - img [ref=e239]
+                    - generic [ref=e242]: Perda de Variante
+              - cell "604754981831866" [ref=e243]:
+                - generic "604754981831866" [ref=e245]:
+                  - generic [ref=e246] [cursor=pointer]: "604754981831866"
+              - cell "R$‎‎ 33,02" [ref=e247]:
+                - generic [ref=e249]: R$‎‎ 33,02
+              - cell "-" [ref=e250]:
+                - generic [ref=e252]: "-"
+              - cell "-" [ref=e253]:
+                - generic [ref=e255]: "-"
+              - cell "1000" [ref=e256]:
+                - generic [ref=e259]: "1000"
+              - cell "24/05/2026 17:40 24/05/2026 17:58" [ref=e260]:
+                - generic [ref=e261]:
+                  - generic "24/05/2026 17:40:11" [ref=e262]: 24/05/2026 17:40
+                  - generic "24/05/2026 17:58:03" [ref=e263]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e264]:
+                - generic [ref=e266] [cursor=pointer]:
+                  - link "Editar" [ref=e268]:
+                    - /url: /products/shein/edit/598752940452059
+                  - link "Mais " [ref=e269]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e270]: 
+            - 'row " Camiseta Feminina Estampada Coraçoes Risco no Meio Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (10) icon: down 604660492505320 R$‎ 25,29 - 25,68 - - 10000 24/05/2026 17:40 24/05/2026 17:58 Editar Mais " [ref=e271]':
+              - cell [ref=e272]:
+                - checkbox [ref=e275] [cursor=pointer]
+              - cell "" [ref=e277]:
+                - generic [ref=e278]:
+                  - img [ref=e283] [cursor=pointer]
+                  - generic [ref=e286]: 
+              - 'cell "Camiseta Feminina Estampada Coraçoes Risco no Meio Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (10) icon: down" [ref=e287]':
+                - generic [ref=e288]:
+                  - generic "Camiseta Feminina Estampada Coraçoes Risco no Meio Elegante Blusa Camisa Verão Casual Confortavel Blusa" [ref=e289]:
+                    - generic [ref=e292] [cursor=pointer]: Camiseta Feminina Estampada Coraçoes Risco no Meio Elegante Blusa Camisa Verão Casual Confortavel Blusa
+                  - generic "João Shein" [ref=e293]
+                  - 'link "Variantes (10) icon: down" [ref=e296] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (10)
+                    - 'generic "icon: down" [ref=e297]':
+                      - img [ref=e298]
+              - cell "604660492505320" [ref=e300]:
+                - generic "604660492505320" [ref=e302]:
+                  - generic [ref=e303] [cursor=pointer]: "604660492505320"
+              - cell "R$‎ 25,29 - 25,68" [ref=e304]:
+                - generic [ref=e306]: R$‎ 25,29 - 25,68
+              - cell "-" [ref=e307]:
+                - generic [ref=e309]: "-"
+              - cell "-" [ref=e310]:
+                - generic [ref=e312]: "-"
+              - cell "10000" [ref=e313]:
+                - generic [ref=e316]: "10000"
+              - cell "24/05/2026 17:40 24/05/2026 17:58" [ref=e317]:
+                - generic [ref=e318]:
+                  - generic "24/05/2026 17:40:07" [ref=e319]: 24/05/2026 17:40
+                  - generic "24/05/2026 17:58:03" [ref=e320]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e321]:
+                - generic [ref=e323] [cursor=pointer]:
+                  - link "Editar" [ref=e325]:
+                    - /url: /products/shein/edit/598752940452048
+                  - link "Mais " [ref=e326]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e327]: 
+            - 'row " Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Panda Bolso João Shein Variantes (14) icon: down 605220180481296 R$‎ 53,81 - 65,13 - - 14000 24/05/2026 17:40 24/05/2026 17:58 Editar Mais " [ref=e328]':
+              - cell [ref=e329]:
+                - checkbox [ref=e332] [cursor=pointer]
+              - cell "" [ref=e334]:
+                - generic [ref=e335]:
+                  - img [ref=e340] [cursor=pointer]
+                  - generic [ref=e343]: 
+              - 'cell "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Panda Bolso João Shein Variantes (14) icon: down" [ref=e344]':
+                - generic [ref=e345]:
+                  - generic "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Panda Bolso" [ref=e346]:
+                    - generic [ref=e349] [cursor=pointer]: Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Panda Bolso
+                  - generic "João Shein" [ref=e350]
+                  - 'link "Variantes (14) icon: down" [ref=e353] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (14)
+                    - 'generic "icon: down" [ref=e354]':
+                      - img [ref=e355]
+              - cell "605220180481296" [ref=e357]:
+                - generic "605220180481296" [ref=e359]:
+                  - generic [ref=e360] [cursor=pointer]: "605220180481296"
+              - cell "R$‎ 53,81 - 65,13" [ref=e361]:
+                - generic [ref=e363]: R$‎ 53,81 - 65,13
+              - cell "-" [ref=e364]:
+                - generic [ref=e366]: "-"
+              - cell "-" [ref=e367]:
+                - generic [ref=e369]: "-"
+              - cell "14000" [ref=e370]:
+                - generic [ref=e373]: "14000"
+              - cell "24/05/2026 17:40 24/05/2026 17:58" [ref=e374]:
+                - generic [ref=e375]:
+                  - generic "24/05/2026 17:40:04" [ref=e376]: 24/05/2026 17:40
+                  - generic "24/05/2026 17:58:03" [ref=e377]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e378]:
+                - generic [ref=e380] [cursor=pointer]:
+                  - link "Editar" [ref=e382]:
+                    - /url: /products/shein/edit/598752940452033
+                  - link "Mais " [ref=e383]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e384]: 
+            - 'row " Camiseta Feminina Estampada Mao Lua Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (48) icon: down 604892420795973 R$‎ 24,49 - 26,34 - - 48000 24/05/2026 17:40 24/05/2026 17:58 Editar Mais " [ref=e385]':
+              - cell [ref=e386]:
+                - checkbox [ref=e389] [cursor=pointer]
+              - cell "" [ref=e391]:
+                - generic [ref=e392]:
+                  - img [ref=e397] [cursor=pointer]
+                  - generic [ref=e400]: 
+              - 'cell "Camiseta Feminina Estampada Mao Lua Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (48) icon: down" [ref=e401]':
+                - generic [ref=e402]:
+                  - generic "Camiseta Feminina Estampada Mao Lua Elegante Blusa Camisa Verão Casual Confortavel Blusa" [ref=e403]:
+                    - generic [ref=e406] [cursor=pointer]: Camiseta Feminina Estampada Mao Lua Elegante Blusa Camisa Verão Casual Confortavel Blusa
+                  - generic "João Shein" [ref=e407]
+                  - 'link "Variantes (48) icon: down" [ref=e410] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (48)
+                    - 'generic "icon: down" [ref=e411]':
+                      - img [ref=e412]
+              - cell "604892420795973" [ref=e414]:
+                - generic "604892420795973" [ref=e416]:
+                  - generic [ref=e417] [cursor=pointer]: "604892420795973"
+              - cell "R$‎ 24,49 - 26,34" [ref=e418]:
+                - generic [ref=e420]: R$‎ 24,49 - 26,34
+              - cell "-" [ref=e421]:
+                - generic [ref=e423]: "-"
+              - cell "-" [ref=e424]:
+                - generic [ref=e426]: "-"
+              - cell "48000" [ref=e427]:
+                - generic [ref=e430]: "48000"
+              - cell "24/05/2026 17:40 24/05/2026 17:58" [ref=e431]:
+                - generic [ref=e432]:
+                  - generic "24/05/2026 17:40:01" [ref=e433]: 24/05/2026 17:40
+                  - generic "24/05/2026 17:58:03" [ref=e434]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e435]:
+                - generic [ref=e437] [cursor=pointer]:
+                  - link "Editar" [ref=e439]:
+                    - /url: /products/shein/edit/598752940451984
+                  - link "Mais " [ref=e440]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e441]: 
+            - 'row " Camiseta Feminina Estampada Coração Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (48) icon: down 604754981825722 R$‎‎ 31,25 - - 48000 24/05/2026 17:39 24/05/2026 17:58 Editar Mais " [ref=e442]':
+              - cell [ref=e443]:
+                - checkbox [ref=e446] [cursor=pointer]
+              - cell "" [ref=e448]:
+                - generic [ref=e449]:
+                  - img [ref=e454] [cursor=pointer]
+                  - generic [ref=e457]: 
+              - 'cell "Camiseta Feminina Estampada Coração Elegante Blusa Camisa Verão Casual Confortavel Blusa João Shein Variantes (48) icon: down" [ref=e458]':
+                - generic [ref=e459]:
+                  - generic "Camiseta Feminina Estampada Coração Elegante Blusa Camisa Verão Casual Confortavel Blusa" [ref=e460]:
+                    - generic [ref=e463] [cursor=pointer]: Camiseta Feminina Estampada Coração Elegante Blusa Camisa Verão Casual Confortavel Blusa
+                  - generic "João Shein" [ref=e464]
+                  - 'link "Variantes (48) icon: down" [ref=e467] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (48)
+                    - 'generic "icon: down" [ref=e468]':
+                      - img [ref=e469]
+              - cell "604754981825722" [ref=e471]:
+                - generic "604754981825722" [ref=e473]:
+                  - generic [ref=e474] [cursor=pointer]: "604754981825722"
+              - cell "R$‎‎ 31,25" [ref=e475]:
+                - generic [ref=e477]: R$‎‎ 31,25
+              - cell "-" [ref=e478]:
+                - generic [ref=e480]: "-"
+              - cell "-" [ref=e481]:
+                - generic [ref=e483]: "-"
+              - cell "48000" [ref=e484]:
+                - generic [ref=e487]: "48000"
+              - cell "24/05/2026 17:39 24/05/2026 17:58" [ref=e488]:
+                - generic [ref=e489]:
+                  - generic "24/05/2026 17:39:58" [ref=e490]: 24/05/2026 17:39
+                  - generic "24/05/2026 17:58:03" [ref=e491]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e492]:
+                - generic [ref=e494] [cursor=pointer]:
+                  - link "Editar" [ref=e496]:
+                    - /url: /products/shein/edit/598752940451935
+                  - link "Mais " [ref=e497]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e498]: 
+            - 'row " Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Urso Avião João Shein Variantes (48) icon: down 604601705191702 R$‎‎ 63,09 - - 48000 24/05/2026 17:39 24/05/2026 17:58 Editar Mais " [ref=e499]':
+              - cell [ref=e500]:
+                - checkbox [ref=e503] [cursor=pointer]
+              - cell "" [ref=e505]:
+                - generic [ref=e506]:
+                  - img [ref=e511] [cursor=pointer]
+                  - generic [ref=e514]: 
+              - 'cell "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Urso Avião João Shein Variantes (48) icon: down" [ref=e515]':
+                - generic [ref=e516]:
+                  - generic "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Urso Avião" [ref=e517]:
+                    - generic [ref=e520] [cursor=pointer]: Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Urso Avião
+                  - generic "João Shein" [ref=e521]
+                  - 'link "Variantes (48) icon: down" [ref=e524] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (48)
+                    - 'generic "icon: down" [ref=e525]':
+                      - img [ref=e526]
+              - cell "604601705191702" [ref=e528]:
+                - generic "604601705191702" [ref=e530]:
+                  - generic [ref=e531] [cursor=pointer]: "604601705191702"
+              - cell "R$‎‎ 63,09" [ref=e532]:
+                - generic [ref=e534]: R$‎‎ 63,09
+              - cell "-" [ref=e535]:
+                - generic [ref=e537]: "-"
+              - cell "-" [ref=e538]:
+                - generic [ref=e540]: "-"
+              - cell "48000" [ref=e541]:
+                - generic [ref=e544]: "48000"
+              - cell "24/05/2026 17:39 24/05/2026 17:58" [ref=e545]:
+                - generic [ref=e546]:
+                  - generic "24/05/2026 17:39:55" [ref=e547]: 24/05/2026 17:39
+                  - generic "24/05/2026 17:58:03" [ref=e548]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e549]:
+                - generic [ref=e551] [cursor=pointer]:
+                  - link "Editar" [ref=e553]:
+                    - /url: /products/shein/edit/598752940451886
+                  - link "Mais " [ref=e554]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e555]: 
+            - 'row " Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Bicicleta João Shein Variantes (47) icon: down 605426338885092 R$‎ 63,09 - 63,90 - - 47000 24/05/2026 17:39 24/05/2026 17:58 Editar Mais " [ref=e556]':
+              - cell [ref=e557]:
+                - checkbox [ref=e560] [cursor=pointer]
+              - cell "" [ref=e562]:
+                - generic [ref=e563]:
+                  - img [ref=e568] [cursor=pointer]
+                  - generic [ref=e571]: 
+              - 'cell "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Bicicleta João Shein Variantes (47) icon: down" [ref=e572]':
+                - generic [ref=e573]:
+                  - generic "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Bicicleta" [ref=e574]:
+                    - generic [ref=e577] [cursor=pointer]: Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Bicicleta
+                  - generic "João Shein" [ref=e578]
+                  - 'link "Variantes (47) icon: down" [ref=e581] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (47)
+                    - 'generic "icon: down" [ref=e582]':
+                      - img [ref=e583]
+              - cell "605426338885092" [ref=e585]:
+                - generic "605426338885092" [ref=e587]:
+                  - generic [ref=e588] [cursor=pointer]: "605426338885092"
+              - cell "R$‎ 63,09 - 63,90" [ref=e589]:
+                - generic [ref=e591]: R$‎ 63,09 - 63,90
+              - cell "-" [ref=e592]:
+                - generic [ref=e594]: "-"
+              - cell "-" [ref=e595]:
+                - generic [ref=e597]: "-"
+              - cell "47000" [ref=e598]:
+                - generic [ref=e601]: "47000"
+              - cell "24/05/2026 17:39 24/05/2026 17:58" [ref=e602]:
+                - generic [ref=e603]:
+                  - generic "24/05/2026 17:39:52" [ref=e604]: 24/05/2026 17:39
+                  - generic "24/05/2026 17:58:03" [ref=e605]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e606]:
+                - generic [ref=e608] [cursor=pointer]:
+                  - link "Editar" [ref=e610]:
+                    - /url: /products/shein/edit/598752940451838
+                  - link "Mais " [ref=e611]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e612]: 
+            - 'row " Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Coruja João Shein Variantes (48) icon: down 605014022056789 R$‎ 45,53 - 53,79 - - 48000 24/05/2026 17:39 24/05/2026 17:58 Editar Mais " [ref=e613]':
+              - cell [ref=e614]:
+                - checkbox [ref=e617] [cursor=pointer]
+              - cell "" [ref=e619]:
+                - generic [ref=e620]:
+                  - img [ref=e625] [cursor=pointer]
+                  - generic [ref=e628]: 
+              - 'cell "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Coruja João Shein Variantes (48) icon: down" [ref=e629]':
+                - generic [ref=e630]:
+                  - generic "Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Coruja" [ref=e631]:
+                    - generic [ref=e634] [cursor=pointer]: Camiseta Feminina Estampada Elegante Blusa Camisa Verão Casual Confortavel Blusa Coruja
+                  - generic "João Shein" [ref=e635]
+                  - 'link "Variantes (48) icon: down" [ref=e638] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (48)
+                    - 'generic "icon: down" [ref=e639]':
+                      - img [ref=e640]
+              - cell "605014022056789" [ref=e642]:
+                - generic "605014022056789" [ref=e644]:
+                  - generic [ref=e645] [cursor=pointer]: "605014022056789"
+              - cell "R$‎ 45,53 - 53,79" [ref=e646]:
+                - generic [ref=e648]: R$‎ 45,53 - 53,79
+              - cell "-" [ref=e649]:
+                - generic [ref=e651]: "-"
+              - cell "-" [ref=e652]:
+                - generic [ref=e654]: "-"
+              - cell "48000" [ref=e655]:
+                - generic [ref=e658]: "48000"
+              - cell "24/05/2026 17:39 24/05/2026 17:58" [ref=e659]:
+                - generic [ref=e660]:
+                  - generic "24/05/2026 17:39:49" [ref=e661]: 24/05/2026 17:39
+                  - generic "24/05/2026 17:58:03" [ref=e662]: 24/05/2026 17:58
+              - cell "Editar Mais " [ref=e663]:
+                - generic [ref=e665] [cursor=pointer]:
+                  - link "Editar" [ref=e667]:
+                    - /url: /products/shein/edit/598752940451789
+                  - link "Mais " [ref=e668]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e669]: 
+    - generic [ref=e670]:
+      - generic [ref=e674] [cursor=pointer]: 
+      - generic: 
+      - generic [ref=e677] [cursor=pointer]: 
+      - text: 
+  - menu [ref=e679]:
+    - menuitem "Editar Preço" [ref=e680] [cursor=pointer]:
+      - generic "Editar Preço" [ref=e682]
+    - menuitem "Editar Preço de Custo" [ref=e683] [cursor=pointer]:
+      - generic "Editar Preço de Custo" [ref=e685]
+    - menuitem "Editar Preço Especial" [ref=e686] [cursor=pointer]:
+      - generic "Editar Preço Especial" [ref=e688]
+    - listitem [ref=e689]
+    - menuitem "Editar Quantidade" [ref=e690] [cursor=pointer]:
+      - generic "Editar Quantidade" [ref=e692]
+    - menuitem "Editar Atributos" [ref=e693] [cursor=pointer]:
+      - generic "Editar Atributos" [ref=e695]
+    - menuitem "Editar Tamanho/Peso do Pacote" [ref=e696] [cursor=pointer]:
+      - generic "Editar Tamanho/Peso do Pacote" [ref=e698]
+    - listitem [ref=e699]
+    - menuitem "Excluir" [ref=e700] [cursor=pointer]:
+      - generic "Excluir" [ref=e702]

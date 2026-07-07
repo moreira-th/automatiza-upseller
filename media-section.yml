@@ -1,0 +1,92 @@
+- generic [ref=e4] [box=0,-2810,1487,3835]:
+  - generic [ref=e6] [box=176,0,1136,60]:
+    - generic [ref=e7] [box=176,0,287,60]:
+      - generic [ref=e10] [box=192,23,243,16]:
+        - text: Shein / Editar Anúncio
+        - generic [ref=e11] [box=357,21,70,22]: Rascunho
+      - generic [ref=e14] [cursor=pointer] [box=144,18,16,24]: 
+    - generic [ref=e15] [box=1142,0,170,60]:
+      - button "Salvar" [ref=e17] [cursor=pointer] [box=1142,12,80,36]:
+        - generic [box=1162,19,40,21]: Salvar
+      - button "Publicar" [ref=e19] [cursor=pointer] [box=1232,12,80,36]:
+        - generic [box=1246,19,51,21]: Publicar
+  - generic [ref=e20] [box=176,-2770,1136,3795]:
+    - generic [ref=e24] [box=1327,80,158,120]:
+      - link "Informação Básica" [ref=e28] [cursor=pointer] [box=1345,87,140,16]:
+        - /url: /pt/products/shein/edit/8554887782365798#basic
+      - link "Atributos" [ref=e30] [cursor=pointer] [box=1345,117,140,16]:
+        - /url: /pt/products/shein/edit/8554887782365798#attributes
+      - link "Informações de Venda" [ref=e32] [cursor=pointer] [box=1345,147,140,16]:
+        - /url: /pt/products/shein/edit/8554887782365798#variants
+      - link "Mídia" [active] [ref=e34] [cursor=pointer] [box=1345,177,140,16]:
+        - /url: /pt/products/shein/edit/8554887782365798#variantsImg
+    - generic [ref=e35] [box=176,-2730,1136,710]:
+      - generic [ref=e39] [box=192,-2714,1102,14]: Informação Básica
+      - generic [ref=e42] [box=232,-2659,1036,606]:
+        - generic [ref=e43] [box=232,-2659,1036,36]:
+          - generic "Loja" [ref=e45] [box=232,-2652,26,24]: "* Loja"
+          - combobox [ref=e50] [cursor=pointer] [box=405,-2659,648,36]
+        - generic [ref=e56] [box=232,-2603,1036,36]:
+          - generic "Nome" [ref=e58] [box=232,-2596,37,24]: "* Nome"
+          - generic [ref=e61] [box=405,-2603,648,36]
+        - generic [ref=e71] [box=232,-2547,1036,36]:
+          - generic "Categoria" [ref=e73] [box=232,-2540,61,24]: "* Categoria"
+          - generic [ref=e76] [box=405,-2547,648,36]
+        - generic [ref=e85] [box=232,-2491,1036,326]:
+          - generic "Descrição" [ref=e87] [box=232,-2484,62,24]
+          - generic [ref=e91] [box=405,-2491,648,326]
+        - generic [ref=e96] [box=232,-2145,1036,36]:
+          - generic "N° do Anúncio" [ref=e98] [box=232,-2138,89,24]: "* N° do Anúncio"
+          - generic [ref=e101] [box=405,-2145,648,36]
+        - generic [ref=e104] [box=232,-2089,1036,36]:
+          - generic "Link do Fornecedor" [ref=e106] [box=232,-2082,121,24]
+          - generic [ref=e110] [box=405,-2089,648,36]
+    - generic [ref=e114] [box=176,-2004,1136,306]:
+      - generic [ref=e118] [box=192,-1987,1102,16]:
+        - generic [ref=e119] [box=192,-1987,63,16]: Atributos
+        - 'generic "icon: ellipsis" [ref=e121] [box=1279,-1987,16,16]':
+          - img [ref=e122] [box=1279,-1987,16,16]
+      - generic [ref=e125] [box=232,-1932,1036,148]:
+        - generic [ref=e127] [box=232,-1932,1036,36]:
+          - generic "Marca" [ref=e129] [box=232,-1925,39,24]
+          - generic [ref=e132] [box=405,-1932,648,36]
+        - generic [ref=e143] [box=232,-1876,1036,92]:
+          - generic [ref=e144] [box=232,-1876,1036,36]
+          - generic [ref=e166] [box=232,-1820,1036,36]
+          - text:                      
+        - generic [ref=e184] [cursor=pointer] [box=176,-1744,1134,45]:
+          - text: Mais Atributos
+          - 'generic "icon: down" [ref=e185] [box=778,-1727,12,12]'
+    - generic [ref=e188] [box=176,-1682,1136,1746]:
+      - generic [ref=e192] [box=192,-1665,1102,15]:
+        - generic [ref=e193] [box=192,-1665,184,15]: Informações de Venda
+        - generic [ref=e194] [box=1133,-1665,162,15]: Remapeamento de Variante
+      - generic [ref=e196] [box=232,-1610,1036,1641]:
+        - list [ref=e197] [box=246,-1610,1022,24]:
+          - listitem [ref=e198] [box=246,-1610,1022,24]: Adicione até 3 atributo, a especificação principal pode ser adicionado imagens, não poderá ser modificadas após a publicação.
+        - generic [ref=e200] [box=232,-1574,1036,831]:
+          - generic [ref=e201] [box=232,-1574,1036,427]
+          - generic [ref=e711] [box=232,-1127,1036,383]
+        - generic [ref=e2158] [box=232,-723,1036,714]:
+          - generic [ref=e2160] [box=232,-723,173,21]: Lista de Variantes (25)
+          - generic [ref=e2162] [box=232,-687,1036,677]
+        - generic [ref=e2923] [box=232,10,1036,21]:
+          - text: Guia de Tamanhos*
+          - generic [ref=e2924] [cursor=pointer] [box=360,13,218,16]: Editar Guia de Tamanhos
+    - generic [ref=e2925] [box=176,80,1136,908]:
+      - generic [ref=e2929] [box=192,97,1102,14]: Mídia
+      - generic [ref=e2931] [box=232,152,1036,804]:
+        - generic [ref=e2932] [box=232,152,1036,84]:
+          - generic [ref=e2936] [box=244,152,1024,42]: "Imagens Detalhadas: Por favor, envie de 2 a 11 imagens, com proporção entre 3:4 e 1:1, e tamanho entre 900 e 2200 px.Recomendamos usar a proporção 3:4, pois imagens 1:1 serão automaticamente estendidas para 3:4 pela Shein. Para a melhor exibição, é aconselhável seguir a proporção recomendada."
+          - generic [ref=e2940] [box=244,194,548,21]: "Imagem Quadrada: Envie 1 imagem com proporção 1:1 e tamanho entre 900 e 2200 px."
+          - generic [ref=e2944] [box=244,215,393,21]: "Imagem de Cores: Envie 1 imagem com tamanho de 80×80 px."
+        - generic [ref=e2945] [box=232,254,1036,702]:
+          - generic [ref=e2947] [box=661,254,608,36]
+          - generic [ref=e2963] [box=232,306,1036,650]
+    - generic [ref=e3250] [box=1328,582,32,172]:
+      - generic [ref=e3254] [cursor=pointer] [box=1336,590,16,17]: 
+      - generic [box=1328,626,32,0]: 
+      - generic [ref=e3257] [cursor=pointer] [box=1337,634,14,17]: 
+      - generic [ref=e3260] [cursor=pointer] [box=1336,678,14,17]: 
+      - text: 
+      - generic [ref=e3344] [cursor=pointer] [box=1336,722,16,17]: 

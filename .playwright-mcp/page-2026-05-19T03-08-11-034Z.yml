@@ -1,0 +1,60 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e9] [cursor=pointer]:
+      - 'generic "icon: global" [ref=e10]':
+        - img [ref=e11]
+      - text: PT
+      - generic [ref=e13]: 
+    - generic [ref=e15]:
+      - generic [ref=e20]: Login
+      - generic [ref=e24]:
+        - textbox [ref=e25]
+        - generic [ref=e26]: Endereço de Email
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - textbox [ref=e32]
+          - 'generic "icon: eye-invisible" [ref=e34] [cursor=pointer]':
+            - img [ref=e35]
+        - generic [ref=e38]: Senha
+      - generic [ref=e42]:
+        - textbox [ref=e43]
+        - generic [ref=e44]: CAPTCHA
+        - button "CAPTCHA" [ref=e45] [cursor=pointer]:
+          - img "CAPTCHA" [ref=e46]
+      - button "Login" [ref=e51] [cursor=pointer]:
+        - generic: Login
+      - generic [ref=e55]:
+        - generic [ref=e57]:
+          - text: Ao continuar o login, você concorda e aceita
+          - link "Termos de Serviço" [ref=e58] [cursor=pointer]:
+            - /url: https://www.upseller.com/pt/terms-of-service
+          - text: e
+          - link "Política de Privacidade" [ref=e59] [cursor=pointer]:
+            - /url: https://www.upseller.com/pt/privacy-policy
+          - text: .
+        - generic [ref=e60]:
+          - generic [ref=e61] [cursor=pointer]:
+            - checkbox "Mantenha-me conectado por 14 dias" [checked] [ref=e63]
+            - text: Mantenha-me conectado por 14 dias
+          - button "Esqueci minha senha" [ref=e65] [cursor=pointer]:
+            - generic: Esqueci minha senha
+      - button "Cadastre-se grátis" [ref=e70] [cursor=pointer]:
+        - generic: Cadastre-se grátis
+    - generic [ref=e73]:
+      - text: Precisa de ajuda?
+      - generic [ref=e74] [cursor=pointer]:
+        - generic [ref=e75]: 
+        - generic [ref=e76]: Fale conosco
+  - contentinfo [ref=e77]:
+    - generic [ref=e78]: © 2026 UpSeller
+    - separator [ref=e79]
+    - link "Termos de Serviço" [ref=e81] [cursor=pointer]:
+      - /url: https://www.upseller.com/pt/terms-of-service
+    - separator [ref=e82]
+    - link "Política de Privacidade" [ref=e84] [cursor=pointer]:
+      - /url: https://www.upseller.com/pt/privacy-policy
+    - separator [ref=e85]
+    - generic [ref=e86]: Feedback
+    - separator [ref=e87]
+    - generic [ref=e88]: Central de Ajuda
+  - generic: 

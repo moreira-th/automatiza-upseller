@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "Responda sempre em português.",
+    "Use mensagens curtas e diretas.",
+    "Antes de modificar arquivos, explique brevemente o que vai fazer."
+  ],
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp"
+      ]
+    }
+  },
+  "skills": {
+    "debug-macro": {
+      "description": "Diagnosticar erros na macro da extensão UpSeller. Use quando a macro parar, botões não clicarem, overlay não abrir ou multi-aba falhar.",
+      "location": ".opencode/skills/debug-macro.md"
+    },
+    "adicionar-feature": {
+      "description": "Guia para adicionar checkbox, toggle ou botão na overlay Automatiza Shein. Use para novas funcionalidades na overlay.",
+      "location": ".opencode/skills/adicionar-feature.md"
+    },
+    "teste-upseller": {
+      "description": "Testar funcionalidades no UpSeller via Playwright. Use para abrir anúncio, testar fetch de imagem, clicar em botões ou verificar estado da página.",
+      "location": ".opencode/skills/teste-upseller.md"
+    }
+  },
+  "agents": {
+    "upseller-explorer": {
+      "description": "Explorar o código da extensão UpSeller. Conhece a estrutura dos módulos core.js, overlay.js, extras.js e automacao.js. Use para encontrar funções, handlers e dependências.",
+      "location": ".opencode/agents/upseller-explorer.md"
+    },
+    "snapshot-analyzer": {
+      "description": "Analisar snapshots YAML do Playwright das páginas do UpSeller. Use para identificar diálogos, overlays, campos e botões no estado atual da página.",
+      "location": ".opencode/agents/snapshot-analyzer.md"
+    }
+  }
+}

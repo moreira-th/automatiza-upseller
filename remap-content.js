@@ -29,20 +29,6 @@ function esperarBotao(texto, timeoutMs) {
   });
 }
 
-function esperarBotaoDesaparecer(texto, timeoutMs) {
-  timeoutMs = timeoutMs || 8000;
-  var start = Date.now();
-  return new Promise(function(resolve) {
-    function check() {
-      var btn = findButtonByText(texto);
-      if (!btn) { resolve(true); return; }
-      if (Date.now() - start > timeoutMs) { resolve(false); return; }
-      setTimeout(check, 200);
-    }
-    check();
-  });
-}
-
 function esperarElemento(seletor, timeoutMs) {
   timeoutMs = timeoutMs || 8000;
   var start = Date.now();
@@ -226,13 +212,6 @@ async function stepConfirmar() {
   if (!btn) throw new Error('Botão Confirmar não encontrado no dialog');
   nativeClick(btn);
   await sleep(500);
-}
-
-async function stepConfirmarCriacao() {
-  const btn = await esperarBotao('OK', 8000);
-  if (!btn) return;
-  nativeClick(btn);
-  await esperarBotaoDesaparecer('OK', 8000);
 }
 
 async function stepMapearVariantes() {
@@ -463,17 +442,6 @@ async function stepAbrirRemapeamento() {
   if (!dialog) throw new Error('Diálogo de remapeamento não abriu após clicar no link');
   _currentRemapDialog = dialog;
   await sleep(500);
-}
-
-function temSubespecificacao() {
-  const forms = document.querySelectorAll('.ant-form-item');
-  for (const section of forms) {
-    const label = section.querySelector('.ant-form-item-label');
-    if (label && label.textContent.trim().includes('Subespecificação')) {
-      return section.querySelectorAll('.ant-checkbox-wrapper').length > 0;
-    }
-  }
-  return false;
 }
 
 function precisaRemapear() {
@@ -1737,56 +1705,6 @@ function mostrarPainelMedidasFaltantes(faltantes, selectedTable, dados) {
       panel.remove();
       resolve({});
     };
-  });
-}
-
-// ========== FUNÇÕES DE ATRIBUTOS ==========
-function expandirAtributos() {
-  var forms = document.querySelectorAll('.ant-form-item');
-  if (forms.length > 5) return true;
-
-  var btn = document.querySelector('.is_more.pointer');
-  if (btn) {
-    var txt = btn.innerText ? btn.innerText.trim().toLowerCase() : '';
-    if (txt === 'mais atributos') {
-      if (btn.scrollIntoView) btn.scrollIntoView({ block: 'center' });
-      btn.click();
-      return true;
-    }
-  }
-
-  for (var t = 0; t < 4; t++) {
-    if (t > 0) {
-      var waitStart = Date.now();
-      while (Date.now() - waitStart < 200) { /* busy-wait */ }
-    }
-    var all = document.querySelectorAll('*');
-    for (var ei = 0; ei < all.length; ei++) {
-      var el = all[ei];
-      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
-      var txt = el.innerText ? el.innerText.trim().toLowerCase() : '';
-      if (txt === 'mais atributos') {
-        if (el.scrollIntoView) el.scrollIntoView({ block: 'center' });
-        el.click();
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
-function waitForFormCount(target, timeout) {
-  return new Promise(function(resolve) {
-    var maxWait = Date.now() + (timeout || 5000);
-    function check() {
-      var forms = document.querySelectorAll('.ant-form-item');
-      if (forms.length >= target || Date.now() > maxWait) {
-        resolve(forms.length >= target);
-      } else {
-        setTimeout(check, 150);
-      }
-    }
-    check();
   });
 }
 
@@ -5753,25 +5671,7 @@ function upsClickElement(el) {
     chrome.runtime.sendMessage({ type: 'ups-click-main', selector: '[data-ups="' + id + '"]' });
   } catch(e) { console.error('ups:click error', e); }
 }
-
-function upsHoverElement(el) {
-  try {
-    var id = '_ups_hv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
-    el.setAttribute('data-ups-h', id);
-    chrome.runtime.sendMessage({ type: 'ups-hover-main', selector: '[data-ups-h="' + id + '"]' });
-  } catch(e) { console.error('ups:hover error', e); }
-}
-
-function upsCopiarCoresDetalhe() {
-  upsToastDrafts('Copiando cores...');
-  window.addEventListener('ups-cores-done', function(e) {
-    if (e.detail.error) upsToastDrafts('Erro: ' + e.detail.error);
-    else upsToastDrafts(e.detail.count + ' cores preenchidas');
-  }, { once: true });
-  chrome.runtime.sendMessage({ type: 'ups-cores-main' });
-}
-
-function upsCopiarCoresDetalheAsync() {
+ {
   return new Promise(function(resolve, reject) {
     window.addEventListener('ups-cores-done', function(e) {
       if (e.detail.error) reject(new Error(e.detail.error));

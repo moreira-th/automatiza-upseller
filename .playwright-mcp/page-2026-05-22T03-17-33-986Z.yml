@@ -1,0 +1,9 @@
+- generic [ref=e2]:
+  - img "Lu mostrando o Super App no celular" [ref=e5]
+  - generic [ref=e6]:
+    - heading "Não tem o SuperApp Magalu?" [level=1] [ref=e7]
+    - generic [ref=e8]: Então, pra aproveitar essa e muitas outras vantagens exclusivas, é só fazer o download na loja de apps do seu celular.
+    - link "Baixe grátis para Android" [ref=e9] [cursor=pointer]:
+      - /url: https://play.google.com/store/apps/details?id=com.luizalabs.mlapp
+    - link "Baixe grátis para iOS" [ref=e10] [cursor=pointer]:
+      - /url: https://apps.apple.com/br/app/magalu-compras-online/id891130066

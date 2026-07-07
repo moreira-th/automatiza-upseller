@@ -1,0 +1,7 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e6]
+    - generic [ref=e20]
+  - generic "Automatiza Shein - UpSeller" [ref=e4090] [cursor=pointer]:
+    - img [ref=e4091]
+  - generic "Preço Especial" [ref=e4093] [cursor=pointer]: $

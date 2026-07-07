@@ -1,0 +1,246 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e9]:
+      - img "temu" [ref=e11] [cursor=pointer]
+      - img [ref=e13]
+      - generic [ref=e15]: Todos os dados serão criptografados
+    - main [ref=e16]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - heading "Faça login/Registre-se" [level=1] [ref=e22]
+          - generic [ref=e23]:
+            - img [ref=e24]
+            - generic [ref=e26]: Todos os dados estão protegidos
+          - generic "Ajuste de preço(No prazo de 30 dias) Envio grátis acima de R$69 (exceto itens enviados por vendedores)(undefined) Devoluções gratuitas(Até 90 dias) Garantia de entrega(Reembolso por qualquer problema)" [ref=e27]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e31]:
+                - generic "Ajuste de preço" [ref=e32]
+                - generic "No prazo de 30 dias" [ref=e33]
+            - generic [ref=e35]:
+              - img [ref=e36]
+              - generic "Envio grátis acima de R$69 (exceto itens enviados por vendedores)" [ref=e38]
+            - generic [ref=e40]:
+              - img [ref=e41]
+              - generic [ref=e42]:
+                - generic "Devoluções gratuitas" [ref=e43]
+                - generic "Até 90 dias" [ref=e44]
+            - generic [ref=e46]:
+              - img [ref=e47]
+              - generic [ref=e48]:
+                - generic "Garantia de entrega" [ref=e49]
+                - generic "Reembolso por qualquer problema" [ref=e50]
+        - generic [ref=e52]:
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - generic [ref=e57]: E-mail ou número de telefone
+              - generic [ref=e59]:
+                - text: +
+                - textbox "E-mail ou número de telefone" [active] [ref=e61]
+            - button "Continuar" [ref=e64] [cursor=pointer]
+          - generic [ref=e67]: OU
+          - generic [ref=e70]:
+            - button "Continuar com Google" [ref=e71] [cursor=pointer]:
+              - img [ref=e72]
+              - generic [ref=e73]:
+                - generic: Continuar com Google Continuar com Facebook Continuar com Apple
+                - generic [ref=e74]: Continuar com Google
+            - button "Continuar com Facebook" [ref=e75] [cursor=pointer]:
+              - img [ref=e76]
+              - generic [ref=e78]:
+                - generic: Continuar com Google Continuar com Facebook Continuar com Apple
+                - generic [ref=e79]: Continuar com Facebook
+            - button "Continuar com Apple" [ref=e80] [cursor=pointer]:
+              - img [ref=e81]
+              - generic [ref=e83]:
+                - generic: Continuar com Google Continuar com Facebook Continuar com Apple
+                - generic [ref=e84]: Continuar com Apple
+        - button "Está tendo dificuldades para fazer login" [ref=e86] [cursor=pointer]: Está tendo dificuldades para fazer login?
+        - generic [ref=e87]:
+          - text: Ao continuar, concorda com
+          - link "Termos de Utilização - abre em uma nova guia, link." [ref=e89] [cursor=pointer]:
+            - /url: /terms-of-use.html
+            - text: Termos de Utilização
+          - text: e
+          - link "Política de Privacidade - abre em uma nova guia, link." [ref=e91] [cursor=pointer]:
+            - /url: /bgp_private_policy.html
+            - text: Política de Privacidade
+          - text: .
+    - contentinfo [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: Informações da empresa
+            - list [ref=e97]:
+              - listitem [ref=e98]:
+                - link "Sobre a Temu" [ref=e99] [cursor=pointer]:
+                  - /url: /br/about-temu.html
+              - listitem [ref=e100]:
+                - 'link "Programa de Afiliados e Influenciadores: Junte-se para ganhar" [ref=e101] [cursor=pointer]':
+                  - /url: /br/affiliate_influencer_program.html
+              - listitem [ref=e102]:
+                - link "Fale conosco" [ref=e103] [cursor=pointer]:
+                  - /url: /br/contact-us.html
+              - listitem [ref=e104]:
+                - link "Carreiras" [ref=e105] [cursor=pointer]:
+                  - /url: /br/careers.html
+              - listitem [ref=e106]:
+                - link "Imprensa" [ref=e107] [cursor=pointer]:
+                  - /url: /br/press.html
+              - listitem [ref=e108]:
+                - link "Programa de Plantação de Árvores da Temu" [ref=e109] [cursor=pointer]:
+                  - /url: /br/tree-landing.html
+          - generic [ref=e110]:
+            - generic [ref=e111]: Serviço de Atendimento ao Cliente
+            - list [ref=e112]:
+              - listitem [ref=e113]:
+                - link "Política de devolução e reembolso" [ref=e114] [cursor=pointer]:
+                  - /url: /br/return-and-refund-policy.html
+              - listitem [ref=e115]:
+                - link "Política de Propriedade Intelectual" [ref=e116] [cursor=pointer]:
+                  - /url: /br/intellectual-property-policy.html
+              - listitem [ref=e117]:
+                - link "Informações de envio" [ref=e118] [cursor=pointer]:
+                  - /url: /br/shipping-info.html
+              - listitem [ref=e119]:
+                - link "Relatar atividades suspeitas" [ref=e120] [cursor=pointer]:
+                  - /url: /br/bgch_report_suspicious.html
+          - generic [ref=e121]:
+            - generic [ref=e122]: Ajuda
+            - list [ref=e123]:
+              - listitem [ref=e124]:
+                - link "Atendimento ao Cliente e FAQ" [ref=e125] [cursor=pointer]:
+                  - /url: /br/support-center.html
+              - listitem [ref=e126]:
+                - link "Centro de segurança" [ref=e127] [cursor=pointer]:
+                  - /url: /br/safety-center.html
+              - listitem [ref=e128]:
+                - link "Proteção de compras da Temu" [ref=e129] [cursor=pointer]:
+                  - /url: /br/temu-purchase-protection.html
+              - listitem [ref=e130]:
+                - link "Parcerias com a Temu" [ref=e131] [cursor=pointer]:
+                  - /url: /br/partner-with-temu.html
+          - generic [ref=e132]:
+            - button "Comece a vender para milhões de compradores na Temu Abra uma Loja" [ref=e133] [cursor=pointer]:
+              - generic [ref=e135]:
+                - generic [ref=e136]: Comece a vender para milhões de compradores na Temu
+                - generic [ref=e140]: Abra uma Loja
+            - generic [ref=e141]:
+              - link "Baixe o app Temu" [ref=e142] [cursor=pointer]:
+                - /url: /br/app.html
+                - generic [ref=e143]: Baixe o app Temu
+              - generic [ref=e144]:
+                - generic [ref=e145]:
+                  - generic [ref=e146]:
+                    - img [ref=e147]
+                    - generic [ref=e148]: Alertas de redução de preço
+                  - generic [ref=e150]:
+                    - img [ref=e151]
+                    - generic [ref=e152]: Localize as encomendas em qualquer altura
+                - generic [ref=e153]:
+                  - generic [ref=e154]:
+                    - img [ref=e155]
+                    - generic [ref=e156]: Finalização da compra mais rápida e segura
+                  - generic [ref=e158]:
+                    - img [ref=e159]
+                    - generic [ref=e160]: Alertas de artigos com pouco stock
+                - generic [ref=e161]:
+                  - generic [ref=e162]:
+                    - img [ref=e163]
+                    - generic [ref=e164]: Ofertas exclusivas
+                  - generic [ref=e166]:
+                    - img [ref=e167]
+                    - generic [ref=e168]: Alertas de cupões e ofertas
+              - generic [ref=e169]:
+                - link "Baixe na App Store" [ref=e170] [cursor=pointer]:
+                  - /url: https://apps.apple.com/us/app/temu-team-up-price-down/id1641486558
+                  - img [ref=e171]
+                  - generic [ref=e172]:
+                    - generic [ref=e173]: Disponível na
+                    - generic [ref=e174]: App Store
+                - link "Baixe no Google Play" [ref=e175] [cursor=pointer]:
+                  - /url: https://play.google.com/store/apps/details?id=com.einnovation.temu&hl=en_US&gl=US
+                  - img [ref=e176]
+                  - generic [ref=e177]:
+                    - generic [ref=e178]: Disponível no
+                    - generic [ref=e179]: Google Play
+            - generic [ref=e180]:
+              - generic [ref=e181]: Encontre-nos
+              - generic [ref=e182]:
+                - link "Instagram" [ref=e183] [cursor=pointer]:
+                  - /url: https://www.instagram.com/temu/
+                  - img [ref=e184]
+                - link "Facebook" [ref=e185] [cursor=pointer]:
+                  - /url: https://www.facebook.com/shoptemu
+                  - img [ref=e186]
+                - link "Twitter" [ref=e187] [cursor=pointer]:
+                  - /url: https://x.com/shoptemu
+                  - img [ref=e188]
+                - link "Tiktok" [ref=e189] [cursor=pointer]:
+                  - /url: https://www.tiktok.com/@temu
+                  - img [ref=e190]
+                - link "Youtube" [ref=e191] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@temu
+                  - img [ref=e192]
+                - link "Pinterest" [ref=e193] [cursor=pointer]:
+                  - /url: https://www.pinterest.com/shoptemu/
+                  - img [ref=e194]
+        - generic [ref=e195]:
+          - generic [ref=e196]:
+            - generic [ref=e197]: Certificações de segurança
+            - generic [ref=e198]:
+              - img "PCI DSS" [ref=e199]
+              - img "Visa Secure" [ref=e200]
+              - img "Mastercard ID Check" [ref=e201]
+              - img "SafeKey" [ref=e202]
+              - img "Discover ProtectBuy" [ref=e203]
+              - img "JCB J/Secure" [ref=e204]
+              - img "APWG" [ref=e205]
+              - img "Secured by PayPal" [ref=e206]
+          - generic [ref=e207]:
+            - generic [ref=e208]: Aceitamos
+            - generic [ref=e209]:
+              - img "pix" [ref=e210]
+              - img "cartão visa" [ref=e211]
+              - img "cartão mastercard" [ref=e212]
+              - img "hipercard" [ref=e213]
+              - img "cartão elo" [ref=e214]
+              - img "cartão maestro" [ref=e215]
+              - img "cartão amex" [ref=e216]
+              - img "cartão discover" [ref=e217]
+              - img "cartão dc" [ref=e218]
+              - img "cartão jcb" [ref=e219]
+              - img "boleto" [ref=e220]
+              - img "applepay" [ref=e221]
+              - img "PayPal" [ref=e222]
+              - img "googlepay" [ref=e223]
+              - img "pixInstallment" [ref=e224]
+              - img "nubank" [ref=e225]
+        - generic [ref=e226]:
+          - generic [ref=e227]:
+            - text: © 2022－2026 Whaleco Inc.
+            - link "Termos de uso" [ref=e228] [cursor=pointer]:
+              - /url: /br/terms-of-use.html
+              - generic [ref=e229]: Termos de uso
+            - link "Política de privacidade" [ref=e230] [cursor=pointer]:
+              - /url: /br/privacy-and-cookie-policy.html?title=Privacy%20%26%20Cookie%20Policy&_bg_fs=0
+              - generic [ref=e231]: Política de privacidade
+            - link "Suas escolhas de privacidade" [ref=e232] [cursor=pointer]:
+              - /url: /br/bgp-privacy-policy-and-setting.html
+              - generic [ref=e233]: Suas escolhas de privacidade
+              - img [ref=e234]
+            - link "Opções de anúncios" [ref=e235] [cursor=pointer]:
+              - /url: /br/cookie-and-similar-technologies-policy.html?anchor_id=limit_interest_base_advertising
+              - generic [ref=e236]: Opções de anúncios
+          - generic [ref=e237]: "Operadora: Elementary Innovation Pte. Ltd. – Endereço: 6 Raffles Quay, #14-06, Singapura (048580)."
+          - generic [ref=e238]: "Representante Legal no Brasil: WHALECO BRASIL INTERMEDIAÇÃO LTDA / CNPJ nº 61.201.565/0001-21 – Av. Paulista 2064, Andar 14, Sala 1419, Bela Vista, São Paulo/SP – CEP: 01310-928."
+          - generic [ref=e239]:
+            - text: "Para consultas e resolução de disputas, entre em contato com:"
+            - link "Atendimento ao Cliente." [ref=e240] [cursor=pointer]:
+              - /url: /br/support-center.html?_x_sessn_id=kf7qlhafm4
+    - toolbar [ref=e241]:
+      - generic:
+        - button "Início":
+          - generic [ref=e244]: Início
+  - button "Extrair" [ref=e245] [cursor=pointer]:
+    - img "Extrair" [ref=e246]

@@ -1,0 +1,44 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [active]:
+      - button "Ir para o conteúdo principal":
+        - generic: Ir para o conteúdo principal
+    - generic [ref=e8]:
+      - navigation [ref=e9]:
+        - generic [ref=e10]:
+          - link [ref=e12] [cursor=pointer]:
+            - /url: /
+            - img [ref=e13]
+          - link "Precisa de ajuda?" [ref=e16] [cursor=pointer]:
+            - /url: https://help.shopee.com.br/br/s
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - img [ref=e20]
+          - generic [ref=e32]: Página indisponível
+          - generic [ref=e33]: Parece que você ainda não está logado. Faça login para continuar ou volte para a página inicial.
+          - generic [ref=e34]:
+            - button "Entrar" [ref=e35] [cursor=pointer]
+            - button "Voltar à Página Inicial" [ref=e36] [cursor=pointer]
+        - generic [ref=e37]: "ID: 66245a7fffc-0604-40b2-b481-be432202f8d6"
+    - generic [ref=e39]:
+      - generic [ref=e41]:
+        - text: Usamos cookies para melhorar sua experiência na Shopee. Para mais informações consulte nossa
+        - link "Política de privacidade" [ref=e42] [cursor=pointer]:
+          - /url: https://help.shopee.com.br/portal/article/77068
+        - text: .
+      - generic [ref=e43]:
+        - button "Configurações de cookies" [ref=e44] [cursor=pointer]
+        - button "Aceitar todos os cookies" [ref=e45] [cursor=pointer]
+    - generic [ref=e47] [cursor=pointer]:
+      - img "Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." [ref=e48]
+      - img "Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." [ref=e49]
+  - dialog [ref=e51]:
+    - generic [ref=e52]:
+      - img "Worldmap" [ref=e54]
+      - generic [ref=e55]: Selecione seu idioma
+      - generic [ref=e56]:
+        - button "Português (BR)" [ref=e58] [cursor=pointer]
+        - button "English*" [ref=e60] [cursor=pointer]
+      - generic [ref=e61]: "* Esses idiomas serão traduzidos automaticamente por um serviço de terceiros."
+  - generic:
+    - img

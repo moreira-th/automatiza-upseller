@@ -1,0 +1,27 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic:
+      - button "Ir para o conteúdo principal":
+        - generic: Ir para o conteúdo principal
+    - generic [ref=e2408]:
+      - generic [ref=e2410]:
+        - text: Usamos cookies para melhorar sua experiência na Shopee. Para mais informações consulte nossa
+        - link "Política de privacidade" [ref=e2411] [cursor=pointer]:
+          - /url: https://help.shopee.com.br/portal/article/77068
+        - text: .
+      - generic [ref=e2412]:
+        - button "Configurações de cookies" [ref=e2413] [cursor=pointer]
+        - button "Aceitar todos os cookies" [ref=e2414] [cursor=pointer]
+    - generic [ref=e2391] [cursor=pointer]:
+      - img "Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." [ref=e2392]
+      - img "Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." [ref=e2393]
+  - dialog [ref=e2395]:
+    - generic [ref=e2396]:
+      - img "Worldmap" [ref=e2398]
+      - generic [ref=e2399]: Selecione seu idioma
+      - generic [ref=e2400]:
+        - button "Português (BR)" [ref=e2402] [cursor=pointer]
+        - button "English*" [ref=e2404] [cursor=pointer]
+      - generic [ref=e2405]: "* Esses idiomas serão traduzidos automaticamente por um serviço de terceiros."
+  - generic:
+    - img

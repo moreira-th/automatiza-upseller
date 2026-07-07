@@ -13,7 +13,8 @@
     "system.display"
   ],
   "host_permissions": [
-    "https://app.upseller.com/*"
+    "https://app.upseller.com/*",
+    "https://*.upseller.cn/*"
   ],
   "icons": {
     "16": "icons/icon16.png",
@@ -34,7 +35,23 @@
         "https://app.upseller.com/pt/products/shein/edit/*",
         "https://app.upseller.com/pt/products/shein/drafts*"
       ],
-      "js": ["remap-content.js"],
+      "js": [
+        "state.js",
+        "common.js",
+        "remapeamento.js",
+        "medidas.js",
+        "precos.js",
+        "editar-massa.js",
+        "sku.js",
+        "atributos.js",
+        "cores.js",
+        "imagem.js",
+        "overlay.js",
+        "drafts.js",
+        "injectors.js",
+        "message-router.js",
+        "main.js"
+      ],
       "run_at": "document_idle"
     }
   ],

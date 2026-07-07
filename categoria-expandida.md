@@ -1,0 +1,940 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e5]:
+      - menu [ref=e9]:
+        - menuitem "Home" [ref=e10] [cursor=pointer]:
+          - generic [ref=e11]: Home
+        - menuitem "Produtos" [ref=e12]:
+          - generic [ref=e14] [cursor=pointer]: Produtos
+        - menuitem "Pedidos" [ref=e15]:
+          - generic [ref=e17] [cursor=pointer]: Pedidos
+        - menuitem "Compras" [ref=e18]:
+          - generic [ref=e20] [cursor=pointer]: Compras
+        - menuitem "Estoque" [ref=e21]:
+          - generic [ref=e23] [cursor=pointer]: Estoque
+        - menuitem "SAC" [ref=e24]:
+          - generic [ref=e26] [cursor=pointer]: SAC
+        - menuitem "Análises" [ref=e27]:
+          - generic [ref=e29] [cursor=pointer]: Análises
+        - menuitem "Financeiro" [ref=e30]:
+          - generic [ref=e32] [cursor=pointer]: Financeiro
+      - generic [ref=e33]:
+        - generic [ref=e35] [cursor=pointer]: 
+        - separator [ref=e36]
+        - generic [ref=e37] [cursor=pointer]:
+          - 'generic "icon: question-circle" [ref=e38]':
+            - img [ref=e39]
+          - text: Ajuda
+        - 'generic "icon: bell" [ref=e782] [cursor=pointer]':
+          - img [ref=e783]
+        - generic [ref=e43] [cursor=pointer]: 
+        - separator [ref=e44]
+        - generic [ref=e45] [cursor=pointer]:
+          - generic "thalesmoreira" [ref=e47]
+          - generic [ref=e48]: 
+    - generic [ref=e49]:
+      - complementary [ref=e51]:
+        - generic [ref=e53]:
+          - menu [ref=e54]:
+            - listitem [ref=e55]:
+              - generic "Shein - Anúncios" [ref=e57]:
+                - generic "Shein - Anúncios" [ref=e58]
+              - list [ref=e59]:
+                - menuitem "Rascunhos 10" [ref=e60] [cursor=pointer]:
+                  - generic [ref=e61]:
+                    - generic "Rascunhos" [ref=e63]
+                    - generic [ref=e64]: "10"
+                - menuitem "Publicando 0" [ref=e65] [cursor=pointer]:
+                  - generic [ref=e66]:
+                    - generic "Publicando" [ref=e68]
+                    - generic [ref=e69]: "0"
+                - menuitem "Falhou 0" [ref=e70] [cursor=pointer]:
+                  - generic [ref=e71]:
+                    - generic "Falhou" [ref=e73]
+                    - generic [ref=e74]: "0"
+                - menuitem "Ativo 0" [ref=e75] [cursor=pointer]:
+                  - generic [ref=e76]:
+                    - generic "Ativo" [ref=e78]
+                    - generic [ref=e79]: "0"
+          - generic [ref=e81]:
+            - text: "Dicas:"
+            - generic [ref=e82]: Edite o anúncio importado/ migrado/duplicado antes de publicar para evitar a violação das regras da plataforma devido à publicação duplicidada de um anúncio.
+      - main [ref=e84]:
+        - generic [ref=e86]:
+          - generic [ref=e88]:
+            - generic [ref=e90]:
+              - combobox [ref=e92] [cursor=pointer]:
+                - generic "Título" [ref=e94]
+                - generic [ref=e97]: 
+              - generic [ref=e99]:
+                - textbox [ref=e100]
+                - 'generic "icon: search" [ref=e102] [cursor=pointer]':
+                  - img [ref=e103]
+            - generic [ref=e107]:
+              - generic [ref=e108]: Todas Lojas
+              - generic [ref=e110] [cursor=pointer]: 
+          - generic [ref=e111]:
+            - generic "(10/5000)" [ref=e118]
+            - 'button "icon: plus Criar Anúncio" [ref=e120] [cursor=pointer]':
+              - 'generic "icon: plus"':
+                - img
+              - generic: Criar Anúncio
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e128]: Selecionado 3
+            - generic [ref=e129] [cursor=pointer]:
+              - button "Publicar em Massa" [ref=e131]:
+                - generic: Publicar em Massa
+              - button "Editar em Massa" [ref=e133]:
+                - generic: Editar em Massa
+              - link "Ações em Massa " [ref=e135]:
+                - /url: javascript:void(0);
+                - generic: Ações em Massa
+                - generic: 
+          - generic [ref=e136]:
+            - generic [ref=e137] [cursor=pointer]:
+              - generic [ref=e138]: Ordem
+              - generic [ref=e139]: 
+            - generic [ref=e141]:
+              - generic [ref=e142]: Total 10
+              - generic [ref=e143]:
+                - 'button "icon: left" [disabled] [ref=e144]':
+                  - 'generic "icon: left"':
+                    - img
+                - generic [ref=e147] [cursor=pointer]: 1/1
+                - 'button "icon: right" [disabled] [ref=e148]':
+                  - 'generic "icon: right"':
+                    - img
+              - combobox [ref=e151] [cursor=pointer]:
+                - generic "50/página" [ref=e153]
+                - generic [ref=e155]: 
+        - table [ref=e160]:
+          - rowgroup [ref=e161]:
+            - 'row "Nome Número do Produto icon: question-circle Preço Preço especial Preço de Custo icon: question-circle Quantidade Criado/Atualizado Ação" [ref=e162]':
+              - columnheader [ref=e163]:
+                - checkbox [ref=e166] [cursor=pointer]
+              - columnheader [ref=e168]
+              - columnheader "Nome" [ref=e169]:
+                - generic "Nome" [ref=e170]
+              - 'columnheader "Número do Produto icon: question-circle" [ref=e171]':
+                - generic "SKU" [ref=e172]:
+                  - generic [ref=e173]:
+                    - generic [ref=e174]: Número do Produto
+                    - 'generic "icon: question-circle" [ref=e175]':
+                      - img [ref=e176]
+              - columnheader "Preço" [ref=e179]:
+                - generic "Preço" [ref=e180]
+              - columnheader "Preço especial" [ref=e181]:
+                - generic "Preço especial" [ref=e182]
+              - 'columnheader "Preço de Custo icon: question-circle" [ref=e183]':
+                - generic "Preço de Custo" [ref=e184]:
+                  - generic [ref=e185]:
+                    - generic [ref=e186]: Preço de Custo
+                    - 'generic "icon: question-circle" [ref=e187]':
+                      - img [ref=e188]
+              - columnheader "Quantidade" [ref=e191]:
+                - generic "Quantidade" [ref=e192]
+              - columnheader "Criado/Atualizado" [ref=e193]:
+                - generic "Criado/Atualizado" [ref=e194]
+              - columnheader "Ação" [ref=e195]:
+                - generic "Ação" [ref=e196]
+          - rowgroup [ref=e197]:
+            - 'row " Moletom Canguru Feminino Estampado Coração Risco No Meio Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down 809 ‎ 109,90 39,90 - 59,90 - 1750000 24/05/2026 02:23 24/05/2026 15:17 Editar Mais " [ref=e198]':
+              - cell [ref=e199]:
+                - checkbox [ref=e202] [cursor=pointer]
+              - cell "" [ref=e204]:
+                - generic [ref=e205]:
+                  - img [ref=e210] [cursor=pointer]
+                  - generic [ref=e213]: 
+              - 'cell "Moletom Canguru Feminino Estampado Coração Risco No Meio Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down" [ref=e214]':
+                - generic [ref=e215]:
+                  - generic "Moletom Canguru Feminino Estampado Coração Risco No Meio Blusa De Frio Capuz Bolso Touca" [ref=e216]:
+                    - generic [ref=e219] [cursor=pointer]: Moletom Canguru Feminino Estampado Coração Risco No Meio Blusa De Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e220]
+                  - 'link "Variantes (35) icon: down" [ref=e223] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (35)
+                    - 'generic "icon: down" [ref=e224]':
+                      - img [ref=e225]
+              - cell "809" [ref=e227]:
+                - generic "809" [ref=e229]:
+                  - generic [ref=e230] [cursor=pointer]: "809"
+              - cell "‎ 109,90" [ref=e231]:
+                - generic [ref=e233]: ‎ 109,90
+              - cell "39,90 - 59,90" [ref=e234]:
+                - generic [ref=e236]: 39,90 - 59,90
+              - cell "-" [ref=e237]:
+                - generic [ref=e239]: "-"
+              - cell "1750000" [ref=e240]:
+                - generic [ref=e243]: "1750000"
+              - cell "24/05/2026 02:23 24/05/2026 15:17" [ref=e244]:
+                - generic [ref=e245]:
+                  - generic "24/05/2026 02:23:30" [ref=e246]: 24/05/2026 02:23
+                  - generic "24/05/2026 15:17:58" [ref=e247]: 24/05/2026 15:17
+              - cell "Editar Mais " [ref=e248]:
+                - generic [ref=e250] [cursor=pointer]:
+                  - link "Editar" [ref=e252]:
+                    - /url: /products/shein/edit/598752940429476
+                  - link "Mais " [ref=e253]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e254]: 
+            - 'row " Moletom Canguru Feminino Estampado 3 Corações Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down 807 ‎ 109,90 39,90 - 59,90 - 1750000 24/05/2026 02:23 24/05/2026 15:17 Editar Mais " [ref=e255]':
+              - cell [ref=e256]:
+                - checkbox [ref=e259] [cursor=pointer]
+              - cell "" [ref=e261]:
+                - generic [ref=e262]:
+                  - img [ref=e267] [cursor=pointer]
+                  - generic [ref=e270]: 
+              - 'cell "Moletom Canguru Feminino Estampado 3 Corações Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down" [ref=e271]':
+                - generic [ref=e272]:
+                  - generic "Moletom Canguru Feminino Estampado 3 Corações Blusa De Frio Capuz Bolso Touca" [ref=e273]:
+                    - generic [ref=e276] [cursor=pointer]: Moletom Canguru Feminino Estampado 3 Corações Blusa De Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e277]
+                  - 'link "Variantes (35) icon: down" [ref=e280] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (35)
+                    - 'generic "icon: down" [ref=e281]':
+                      - img [ref=e282]
+              - cell "807" [ref=e284]:
+                - generic "807" [ref=e286]:
+                  - generic [ref=e287] [cursor=pointer]: "807"
+              - cell "‎ 109,90" [ref=e288]:
+                - generic [ref=e290]: ‎ 109,90
+              - cell "39,90 - 59,90" [ref=e291]:
+                - generic [ref=e293]: 39,90 - 59,90
+              - cell "-" [ref=e294]:
+                - generic [ref=e296]: "-"
+              - cell "1750000" [ref=e297]:
+                - generic [ref=e300]: "1750000"
+              - cell "24/05/2026 02:23 24/05/2026 15:17" [ref=e301]:
+                - generic [ref=e302]:
+                  - generic "24/05/2026 02:23:24" [ref=e303]: 24/05/2026 02:23
+                  - generic "24/05/2026 15:17:39" [ref=e304]: 24/05/2026 15:17
+              - cell "Editar Mais " [ref=e305]:
+                - generic [ref=e307] [cursor=pointer]:
+                  - link "Editar" [ref=e309]:
+                    - /url: /products/shein/edit/598752940429410
+                  - link "Mais " [ref=e310]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e311]: 
+            - 'row " Moletom Canguru Feminino Estampado Love Oncas Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down 808 ‎ 109,90 39,90 - 59,90 - 1750000 24/05/2026 02:23 24/05/2026 15:08 Editar Mais " [ref=e312]':
+              - cell [ref=e313]:
+                - checkbox [ref=e316] [cursor=pointer]
+              - cell "" [ref=e318]:
+                - generic [ref=e319]:
+                  - img [ref=e324] [cursor=pointer]
+                  - generic [ref=e327]: 
+              - 'cell "Moletom Canguru Feminino Estampado Love Oncas Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down" [ref=e328]':
+                - generic [ref=e329]:
+                  - generic "Moletom Canguru Feminino Estampado Love Oncas Blusa De Frio Capuz Bolso Touca" [ref=e330]:
+                    - generic [ref=e333] [cursor=pointer]: Moletom Canguru Feminino Estampado Love Oncas Blusa De Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e334]
+                  - 'link "Variantes (35) icon: down" [ref=e337] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (35)
+                    - 'generic "icon: down" [ref=e338]':
+                      - img [ref=e339]
+              - cell "808" [ref=e341]:
+                - generic "808" [ref=e343]:
+                  - generic [ref=e344] [cursor=pointer]: "808"
+              - cell "‎ 109,90" [ref=e345]:
+                - generic [ref=e347]: ‎ 109,90
+              - cell "39,90 - 59,90" [ref=e348]:
+                - generic [ref=e350]: 39,90 - 59,90
+              - cell "-" [ref=e351]:
+                - generic [ref=e353]: "-"
+              - cell "1750000" [ref=e354]:
+                - generic [ref=e357]: "1750000"
+              - cell "24/05/2026 02:23 24/05/2026 15:08" [ref=e358]:
+                - generic [ref=e359]:
+                  - generic "24/05/2026 02:23:27" [ref=e360]: 24/05/2026 02:23
+                  - generic "24/05/2026 15:08:17" [ref=e361]: 24/05/2026 15:08
+              - cell "Editar Mais " [ref=e362]:
+                - generic [ref=e364] [cursor=pointer]:
+                  - link "Editar" [ref=e366]:
+                    - /url: /products/shein/edit/598752940429443
+                  - link "Mais " [ref=e367]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e368]: 
+            - 'row " Moletom Canguru Feminino Estampado Dorama Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down 806 ‎ 109,90 39,90 - 59,90 - 1750000 24/05/2026 02:23 24/05/2026 14:51 Editar Mais " [ref=e369]':
+              - cell [ref=e370]:
+                - checkbox [ref=e373] [cursor=pointer]
+              - cell "" [ref=e375]:
+                - generic [ref=e376]:
+                  - img [ref=e381] [cursor=pointer]
+                  - generic [ref=e384]: 
+              - 'cell "Moletom Canguru Feminino Estampado Dorama Blusa De Frio Capuz Bolso Touca João Shein Variantes (35) icon: down" [ref=e385]':
+                - generic [ref=e386]:
+                  - generic "Moletom Canguru Feminino Estampado Dorama Blusa De Frio Capuz Bolso Touca" [ref=e387]:
+                    - generic [ref=e390] [cursor=pointer]: Moletom Canguru Feminino Estampado Dorama Blusa De Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e391]
+                  - 'link "Variantes (35) icon: down" [ref=e394] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (35)
+                    - 'generic "icon: down" [ref=e395]':
+                      - img [ref=e396]
+              - cell "806" [ref=e398]:
+                - generic "806" [ref=e400]:
+                  - generic [ref=e401] [cursor=pointer]: "806"
+              - cell "‎ 109,90" [ref=e402]:
+                - generic [ref=e404]: ‎ 109,90
+              - cell "39,90 - 59,90" [ref=e405]:
+                - generic [ref=e407]: 39,90 - 59,90
+              - cell "-" [ref=e408]:
+                - generic [ref=e410]: "-"
+              - cell "1750000" [ref=e411]:
+                - generic [ref=e414]: "1750000"
+              - cell "24/05/2026 02:23 24/05/2026 14:51" [ref=e415]:
+                - generic [ref=e416]:
+                  - generic "24/05/2026 02:23:21" [ref=e417]: 24/05/2026 02:23
+                  - generic "24/05/2026 14:51:32" [ref=e418]: 24/05/2026 14:51
+              - cell "Editar Mais " [ref=e419]:
+                - generic [ref=e421] [cursor=pointer]:
+                  - link "Editar" [ref=e423]:
+                    - /url: /products/shein/edit/598752940429377
+                  - link "Mais " [ref=e424]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e425]: 
+            - 'row " Moletom Canguru Feminino Estampado Coração Corações Blusa De Frio Capuz Bolso Touca João Shein Variantes (40) icon: down 805 ‎ 109,90 39,90 - 59,90 - 2000000 24/05/2026 02:23 24/05/2026 06:41 Editar Mais " [ref=e426]':
+              - cell [ref=e427]:
+                - checkbox [ref=e430] [cursor=pointer]
+              - cell "" [ref=e432]:
+                - generic [ref=e433]:
+                  - img [ref=e438] [cursor=pointer]
+                  - generic [ref=e441]: 
+              - 'cell "Moletom Canguru Feminino Estampado Coração Corações Blusa De Frio Capuz Bolso Touca João Shein Variantes (40) icon: down" [ref=e442]':
+                - generic [ref=e443]:
+                  - generic "Moletom Canguru Feminino Estampado Coração Corações Blusa De Frio Capuz Bolso Touca" [ref=e444]:
+                    - generic [ref=e447] [cursor=pointer]: Moletom Canguru Feminino Estampado Coração Corações Blusa De Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e448]
+                  - 'link "Variantes (40) icon: down" [ref=e451] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (40)
+                    - 'generic "icon: down" [ref=e452]':
+                      - img [ref=e453]
+              - cell "805" [ref=e455]:
+                - generic "805" [ref=e457]:
+                  - generic [ref=e458] [cursor=pointer]: "805"
+              - cell "‎ 109,90" [ref=e459]:
+                - generic [ref=e461]: ‎ 109,90
+              - cell "39,90 - 59,90" [ref=e462]:
+                - generic [ref=e464]: 39,90 - 59,90
+              - cell "-" [ref=e465]:
+                - generic [ref=e467]: "-"
+              - cell "2000000" [ref=e468]:
+                - generic [ref=e471]: "2000000"
+              - cell "24/05/2026 02:23 24/05/2026 06:41" [ref=e472]:
+                - generic [ref=e473]:
+                  - generic "24/05/2026 02:23:18" [ref=e474]: 24/05/2026 02:23
+                  - generic "24/05/2026 06:41:19" [ref=e475]: 24/05/2026 06:41
+              - cell "Editar Mais " [ref=e476]:
+                - generic [ref=e478] [cursor=pointer]:
+                  - link "Editar" [ref=e480]:
+                    - /url: /products/shein/edit/598752940429344
+                  - link "Mais " [ref=e481]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e482]: 
+            - 'row " Moletom Canguru Feminino Estampado Love 3 Coração Dourado Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante 605012679834341 R$‎‎ 109,90 - - 8000 24/05/2026 02:23 24/05/2026 03:54 Editar Mais " [ref=e483]':
+              - cell [ref=e484]:
+                - checkbox [checked] [ref=e487] [cursor=pointer]
+              - cell "" [ref=e489]:
+                - generic [ref=e490]:
+                  - img [ref=e495] [cursor=pointer]
+                  - generic [ref=e498]: 
+              - 'cell "Moletom Canguru Feminino Estampado Love 3 Coração Dourado Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante" [ref=e499]':
+                - generic [ref=e500]:
+                  - generic "Moletom Canguru Feminino Estampado Love 3 Coração Dourado Blusa de Frio Capuz Bolso Touca" [ref=e501]:
+                    - generic [ref=e504] [cursor=pointer]: Moletom Canguru Feminino Estampado Love 3 Coração Dourado Blusa de Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e505]
+                  - generic [ref=e506]:
+                    - 'link "Variantes (8) icon: down" [ref=e508] [cursor=pointer]':
+                      - /url: javascript:void(0)
+                      - text: Variantes (8)
+                      - 'generic "icon: down" [ref=e509]':
+                        - img [ref=e510]
+                    - generic [ref=e513]: Perda de Variante
+              - cell "605012679834341" [ref=e514]:
+                - generic "605012679834341" [ref=e516]:
+                  - generic [ref=e517] [cursor=pointer]: "605012679834341"
+              - cell "R$‎‎ 109,90" [ref=e518]:
+                - generic [ref=e520]: R$‎‎ 109,90
+              - cell "-" [ref=e521]:
+                - generic [ref=e523]: "-"
+              - cell "-" [ref=e524]:
+                - generic [ref=e526]: "-"
+              - cell "8000" [ref=e527]:
+                - generic [ref=e530]: "8000"
+              - cell "24/05/2026 02:23 24/05/2026 03:54" [ref=e531]:
+                - generic [ref=e532]:
+                  - generic "24/05/2026 02:23:33" [ref=e533]: 24/05/2026 02:23
+                  - generic "24/05/2026 03:54:24" [ref=e534]: 24/05/2026 03:54
+              - cell "Editar Mais " [ref=e535]:
+                - generic [ref=e537] [cursor=pointer]:
+                  - link "Editar" [ref=e539]:
+                    - /url: /products/shein/edit/598752940429509
+                  - link "Mais " [ref=e540]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e541]: 
+            - 'row " Moletom Canguru Feminino Estampado Mão Lua Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante 605150118795473 R$‎‎ 109,90 - - 8000 24/05/2026 02:23 24/05/2026 03:54 Editar Mais " [ref=e542]':
+              - cell [ref=e543]:
+                - checkbox [checked] [ref=e546] [cursor=pointer]
+              - cell "" [ref=e548]:
+                - generic [ref=e549]:
+                  - img [ref=e554] [cursor=pointer]
+                  - generic [ref=e557]: 
+              - 'cell "Moletom Canguru Feminino Estampado Mão Lua Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante" [ref=e558]':
+                - generic [ref=e559]:
+                  - generic "Moletom Canguru Feminino Estampado Mão Lua Blusa de Frio Capuz Bolso Touca" [ref=e560]:
+                    - generic [ref=e563] [cursor=pointer]: Moletom Canguru Feminino Estampado Mão Lua Blusa de Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e564]
+                  - generic [ref=e565]:
+                    - 'link "Variantes (8) icon: down" [ref=e567] [cursor=pointer]':
+                      - /url: javascript:void(0)
+                      - text: Variantes (8)
+                      - 'generic "icon: down" [ref=e568]':
+                        - img [ref=e569]
+                    - generic [ref=e572]: Perda de Variante
+              - cell "605150118795473" [ref=e573]:
+                - generic "605150118795473" [ref=e575]:
+                  - generic [ref=e576] [cursor=pointer]: "605150118795473"
+              - cell "R$‎‎ 109,90" [ref=e577]:
+                - generic [ref=e579]: R$‎‎ 109,90
+              - cell "-" [ref=e580]:
+                - generic [ref=e582]: "-"
+              - cell "-" [ref=e583]:
+                - generic [ref=e585]: "-"
+              - cell "8000" [ref=e586]:
+                - generic [ref=e589]: "8000"
+              - cell "24/05/2026 02:23 24/05/2026 03:54" [ref=e590]:
+                - generic [ref=e591]:
+                  - generic "24/05/2026 02:23:36" [ref=e592]: 24/05/2026 02:23
+                  - generic "24/05/2026 03:54:24" [ref=e593]: 24/05/2026 03:54
+              - cell "Editar Mais " [ref=e594]:
+                - generic [ref=e596] [cursor=pointer]:
+                  - link "Editar" [ref=e598]:
+                    - /url: /products/shein/edit/598752940429542
+                  - link "Mais " [ref=e599]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e600]: 
+            - 'row " Moletom Canguru Feminino Estampado Coração Rosa Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante 604978320106907 R$‎‎ 109,90 - - 8000 24/05/2026 02:23 24/05/2026 03:54 Editar Mais " [ref=e601]':
+              - cell [ref=e602]:
+                - checkbox [checked] [ref=e605] [cursor=pointer]
+              - cell "" [ref=e607]:
+                - generic [ref=e608]:
+                  - img [ref=e613] [cursor=pointer]
+                  - generic [ref=e616]: 
+              - 'cell "Moletom Canguru Feminino Estampado Coração Rosa Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante" [ref=e617]':
+                - generic [ref=e618]:
+                  - generic "Moletom Canguru Feminino Estampado Coração Rosa Blusa de Frio Capuz Bolso Touca" [ref=e619]:
+                    - generic [ref=e622] [cursor=pointer]: Moletom Canguru Feminino Estampado Coração Rosa Blusa de Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e623]
+                  - generic [ref=e624]:
+                    - 'link "Variantes (8) icon: down" [ref=e626] [cursor=pointer]':
+                      - /url: javascript:void(0)
+                      - text: Variantes (8)
+                      - 'generic "icon: down" [ref=e627]':
+                        - img [ref=e628]
+                    - generic [ref=e631]: Perda de Variante
+              - cell "604978320106907" [ref=e632]:
+                - generic "604978320106907" [ref=e634]:
+                  - generic [ref=e635] [cursor=pointer]: "604978320106907"
+              - cell "R$‎‎ 109,90" [ref=e636]:
+                - generic [ref=e638]: R$‎‎ 109,90
+              - cell "-" [ref=e639]:
+                - generic [ref=e641]: "-"
+              - cell "-" [ref=e642]:
+                - generic [ref=e644]: "-"
+              - cell "8000" [ref=e645]:
+                - generic [ref=e648]: "8000"
+              - cell "24/05/2026 02:23 24/05/2026 03:54" [ref=e649]:
+                - generic [ref=e650]:
+                  - generic "24/05/2026 02:23:39" [ref=e651]: 24/05/2026 02:23
+                  - generic "24/05/2026 03:54:24" [ref=e652]: 24/05/2026 03:54
+              - cell "Editar Mais " [ref=e653]:
+                - generic [ref=e655] [cursor=pointer]:
+                  - link "Editar" [ref=e657]:
+                    - /url: /products/shein/edit/598752940429575
+                  - link "Mais " [ref=e658]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e659]: 
+            - 'row " Moletom Canguru Feminino Estampado Jesus Meu Melhor Amigo Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante 604806521410183 R$‎‎ 109,90 - - 8000 24/05/2026 02:23 24/05/2026 03:54 Editar Mais " [ref=e660]':
+              - cell [ref=e661]:
+                - checkbox [ref=e664] [cursor=pointer]
+              - cell "" [ref=e666]:
+                - generic [ref=e667]:
+                  - img [ref=e672] [cursor=pointer]
+                  - generic [ref=e675]: 
+              - 'cell "Moletom Canguru Feminino Estampado Jesus Meu Melhor Amigo Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante" [ref=e676]':
+                - generic [ref=e677]:
+                  - generic "Moletom Canguru Feminino Estampado Jesus Meu Melhor Amigo Blusa de Frio Capuz Bolso Touca" [ref=e678]:
+                    - generic [ref=e681] [cursor=pointer]: Moletom Canguru Feminino Estampado Jesus Meu Melhor Amigo Blusa de Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e682]
+                  - generic [ref=e683]:
+                    - 'link "Variantes (8) icon: down" [ref=e685] [cursor=pointer]':
+                      - /url: javascript:void(0)
+                      - text: Variantes (8)
+                      - 'generic "icon: down" [ref=e686]':
+                        - img [ref=e687]
+                    - generic [ref=e690]: Perda de Variante
+              - cell "604806521410183" [ref=e691]:
+                - generic "604806521410183" [ref=e693]:
+                  - generic [ref=e694] [cursor=pointer]: "604806521410183"
+              - cell "R$‎‎ 109,90" [ref=e695]:
+                - generic [ref=e697]: R$‎‎ 109,90
+              - cell "-" [ref=e698]:
+                - generic [ref=e700]: "-"
+              - cell "-" [ref=e701]:
+                - generic [ref=e703]: "-"
+              - cell "8000" [ref=e704]:
+                - generic [ref=e707]: "8000"
+              - cell "24/05/2026 02:23 24/05/2026 03:54" [ref=e708]:
+                - generic [ref=e709]:
+                  - generic "24/05/2026 02:23:42" [ref=e710]: 24/05/2026 02:23
+                  - generic "24/05/2026 03:54:24" [ref=e711]: 24/05/2026 03:54
+              - cell "Editar Mais " [ref=e712]:
+                - generic [ref=e714] [cursor=pointer]:
+                  - link "Editar" [ref=e716]:
+                    - /url: /products/shein/edit/598752940429608
+                  - link "Mais " [ref=e717]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e718]: 
+            - 'row " Moletom Canguru Feminino Estampado Panda Bolso Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante 605424996731598 R$‎‎ 109,90 - - 8000 24/05/2026 02:23 24/05/2026 03:54 Editar Mais " [ref=e719]':
+              - cell [ref=e720]:
+                - checkbox [ref=e723] [cursor=pointer]
+              - cell "" [ref=e725]:
+                - generic [ref=e726]:
+                  - img [ref=e731] [cursor=pointer]
+                  - generic [ref=e734]: 
+              - 'cell "Moletom Canguru Feminino Estampado Panda Bolso Blusa de Frio Capuz Bolso Touca João Shein Variantes (8) icon: down Perda de Variante" [ref=e735]':
+                - generic [ref=e736]:
+                  - generic "Moletom Canguru Feminino Estampado Panda Bolso Blusa de Frio Capuz Bolso Touca" [ref=e737]:
+                    - generic [ref=e740] [cursor=pointer]: Moletom Canguru Feminino Estampado Panda Bolso Blusa de Frio Capuz Bolso Touca
+                  - generic "João Shein" [ref=e741]
+                  - generic [ref=e742]:
+                    - 'link "Variantes (8) icon: down" [ref=e744] [cursor=pointer]':
+                      - /url: javascript:void(0)
+                      - text: Variantes (8)
+                      - 'generic "icon: down" [ref=e745]':
+                        - img [ref=e746]
+                    - generic [ref=e749]: Perda de Variante
+              - cell "605424996731598" [ref=e750]:
+                - generic "605424996731598" [ref=e752]:
+                  - generic [ref=e753] [cursor=pointer]: "605424996731598"
+              - cell "R$‎‎ 109,90" [ref=e754]:
+                - generic [ref=e756]: R$‎‎ 109,90
+              - cell "-" [ref=e757]:
+                - generic [ref=e759]: "-"
+              - cell "-" [ref=e760]:
+                - generic [ref=e762]: "-"
+              - cell "8000" [ref=e763]:
+                - generic [ref=e766]: "8000"
+              - cell "24/05/2026 02:23 24/05/2026 03:54" [ref=e767]:
+                - generic [ref=e768]:
+                  - generic "24/05/2026 02:23:45" [ref=e769]: 24/05/2026 02:23
+                  - generic "24/05/2026 03:54:24" [ref=e770]: 24/05/2026 03:54
+              - cell "Editar Mais " [ref=e771]:
+                - generic [ref=e773] [cursor=pointer]:
+                  - link "Editar" [ref=e775]:
+                    - /url: /products/shein/edit/598752940429641
+                  - link "Mais " [ref=e776]:
+                    - /url: javascript:void(0);
+                    - text: Mais
+                    - generic [ref=e777]: 
+    - generic [ref=e778]:
+      - generic [ref=e788] [cursor=pointer]: 
+      - generic: 
+      - generic [ref=e791] [cursor=pointer]: 
+      - text: 
+      - generic [ref=e795] [cursor=pointer]: 
+  - dialog "Editar Atributos" [active] [ref=e797]:
+    - document:
+      - generic [ref=e798]:
+        - button "Close" [ref=e799] [cursor=pointer]:
+          - generic [ref=e801]: 
+        - generic [ref=e802]:
+          - generic [ref=e803]: Editar Atributos
+          - generic "Aplicar Presets de Atributos" [ref=e843] [cursor=pointer]: ⚡
+        - generic [ref=e805]:
+          - generic [ref=e807]:
+            - tablist [ref=e808]:
+              - generic [ref=e809]:
+                - generic:
+                  - generic:
+                    - 'generic "icon: left"':
+                      - img
+                - generic:
+                  - generic:
+                    - 'generic "icon: right"':
+                      - img
+                - tab "João Shein" [selected] [ref=e814] [cursor=pointer]:
+                  - generic "João Shein" [ref=e816]
+            - generic:
+              - tabpanel
+          - generic [ref=e818]:
+            - 'generic "icon: info-circle" [ref=e819]':
+              - img [ref=e820]
+            - generic [ref=e823]: "Anúncio Selecionado 3, as categorias são as seguintes, selecione e edite separadamente os atributos:"
+          - list [ref=e826]:
+            - listitem [ref=e827]:
+              - generic "Vestuário Feminino > Roupas Femininas > Moletons e blusas de moletom femininas" [ref=e828] [cursor=pointer]:
+                - text: Vestuário Feminino > ... > Moletons e blusas de moletom femininas
+                - generic [ref=e829]: (3)
+                - 'generic "icon: up" [ref=e846]':
+                  - img [ref=e847]
+              - generic [ref=e850]:
+                - generic [ref=e851]:
+                  - generic [ref=e853]:
+                    - generic "Marca" [ref=e856]:
+                      - checkbox "Marca" [ref=e859] [cursor=pointer]
+                      - text: Marca
+                    - generic [ref=e863]:
+                      - combobox [ref=e865]:
+                        - generic [ref=e869]: 
+                      - 'generic "icon: sync" [ref=e870] [cursor=pointer]':
+                        - img [ref=e871]
+                  - generic [ref=e873]:
+                    - generic [ref=e874]:
+                      - generic [ref=e876]:
+                        - text: "*"
+                        - generic "Elasticidade do tecido" [ref=e877]:
+                          - checkbox "* Elasticidade do tecido" [ref=e880] [cursor=pointer]
+                          - text: Elasticidade do tecido
+                      - combobox [ref=e886]:
+                        - generic [ref=e887]:
+                          - generic [ref=e888]: Por favor selecione
+                          - list:
+                            - listitem [ref=e889]:
+                              - textbox [disabled] [ref=e891]
+                    - generic [ref=e892]:
+                      - generic [ref=e894]:
+                        - text: "*"
+                        - generic "Material" [ref=e895]:
+                          - checkbox "* Material" [ref=e898] [cursor=pointer]
+                          - text: Material
+                      - combobox [ref=e904]:
+                        - generic [ref=e908]: 
+                    - generic [ref=e909]:
+                      - generic "Cinto" [ref=e912]:
+                        - checkbox "Cinto" [ref=e915] [cursor=pointer]
+                        - text: Cinto
+                      - combobox [ref=e921]:
+                        - generic [ref=e925]: 
+                    - generic [ref=e926]:
+                      - generic "Detalhes" [ref=e929]:
+                        - checkbox "Detalhes" [ref=e932] [cursor=pointer]
+                        - text: Detalhes
+                      - combobox [ref=e938]:
+                        - generic [ref=e939]:
+                          - generic [ref=e940]: Por favor selecione
+                          - list:
+                            - listitem [ref=e941]:
+                              - textbox [disabled] [ref=e943]
+                    - generic [ref=e944]:
+                      - generic "Caimento da peça" [ref=e947]:
+                        - checkbox "Caimento da peça" [ref=e950] [cursor=pointer]
+                        - text: Caimento da peça
+                      - combobox [ref=e956]:
+                        - generic [ref=e960]: 
+                    - generic [ref=e961]:
+                      - generic "Comprimento" [ref=e964]:
+                        - checkbox "Comprimento" [ref=e967] [cursor=pointer]
+                        - text: Comprimento
+                      - combobox [ref=e973]:
+                        - generic [ref=e977]: 
+                    - generic [ref=e978]:
+                      - generic "Possui forro" [ref=e981]:
+                        - checkbox "Possui forro" [ref=e984] [cursor=pointer]
+                        - text: Possui forro
+                      - combobox [ref=e990]:
+                        - generic [ref=e991]:
+                          - generic [ref=e992]: Por favor selecione
+                          - list:
+                            - listitem [ref=e993]:
+                              - textbox [disabled] [ref=e995]
+                    - generic [ref=e996]:
+                      - generic "Composição" [ref=e999]:
+                        - checkbox "Composição" [ref=e1002] [cursor=pointer]
+                        - text: Composição
+                      - generic [ref=e1008]:
+                        - combobox [ref=e1010]:
+                          - generic [ref=e1012]: Por favor selecione
+                          - generic [ref=e1015]: 
+                        - generic [ref=e1017]:
+                          - textbox [disabled] [ref=e1018]
+                          - generic [ref=e1019]: "%"
+                        - 'generic "icon: plus-circle" [ref=e1021] [cursor=pointer]':
+                          - img [ref=e1022]
+                    - generic [ref=e1025]:
+                      - generic "Decote" [ref=e1028]:
+                        - checkbox "Decote" [ref=e1031] [cursor=pointer]
+                        - text: Decote
+                      - combobox [ref=e1037]:
+                        - generic [ref=e1041]: 
+                    - generic [ref=e1042]:
+                      - generic "Estação" [ref=e1045]:
+                        - checkbox "Estação" [ref=e1048] [cursor=pointer]
+                        - text: Estação
+                      - combobox [ref=e1054]:
+                        - generic [ref=e1055]:
+                          - generic [ref=e1056]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1057]:
+                              - textbox [disabled] [ref=e1059]
+                    - generic [ref=e1060]:
+                      - generic "Comprimento da Manga" [ref=e1063]:
+                        - checkbox "Comprimento da Manga" [ref=e1066] [cursor=pointer]
+                        - text: Comprimento da Manga
+                      - combobox [ref=e1072]:
+                        - generic [ref=e1076]: 
+                    - generic [ref=e1077]:
+                      - generic "Tipo de manga" [ref=e1080]:
+                        - checkbox "Tipo de manga" [ref=e1083] [cursor=pointer]
+                        - text: Tipo de manga
+                      - combobox [ref=e1089]:
+                        - generic [ref=e1093]: 
+                    - generic [ref=e1094]:
+                      - generic "Tipo" [ref=e1097]:
+                        - checkbox "Tipo" [ref=e1100] [cursor=pointer]
+                        - text: Tipo
+                      - combobox [ref=e1106]:
+                        - generic [ref=e1107]:
+                          - generic [ref=e1108]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1109]:
+                              - textbox [disabled] [ref=e1111]
+                    - generic [ref=e1112]:
+                      - generic "Ocasião" [ref=e1115]:
+                        - checkbox "Ocasião" [ref=e1118] [cursor=pointer]
+                        - text: Ocasião
+                      - combobox [ref=e1124]:
+                        - generic [ref=e1125]:
+                          - generic [ref=e1126]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1127]:
+                              - textbox [disabled] [ref=e1129]
+                    - generic [ref=e1130]:
+                      - generic "Forma da bainha" [ref=e1133]:
+                        - checkbox "Forma da bainha" [ref=e1136] [cursor=pointer]
+                        - text: Forma da bainha
+                      - combobox [ref=e1142]:
+                        - generic [ref=e1146]: 
+                    - generic [ref=e1147]:
+                      - generic "Tipos de abertura central" [ref=e1150]:
+                        - checkbox "Tipos de abertura central" [ref=e1153] [cursor=pointer]
+                        - text: Tipos de abertura central
+                      - combobox [ref=e1159]:
+                        - generic [ref=e1163]: 
+                    - generic [ref=e1164]:
+                      - generic "Idade" [ref=e1167]:
+                        - checkbox "Idade" [ref=e1170] [cursor=pointer]
+                        - text: Idade
+                      - combobox [ref=e1176]:
+                        - generic [ref=e1177]:
+                          - generic [ref=e1178]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1179]:
+                              - textbox [disabled] [ref=e1181]
+                    - generic [ref=e1182]:
+                      - generic "Localização" [ref=e1185]:
+                        - checkbox "Localização" [ref=e1188] [cursor=pointer]
+                        - text: Localização
+                      - combobox [ref=e1194]:
+                        - generic [ref=e1198]: 
+                    - generic [ref=e1199]:
+                      - generic "Usuários (Romwe)" [ref=e1202]:
+                        - checkbox "Usuários (Romwe)" [ref=e1205] [cursor=pointer]
+                        - text: Usuários (Romwe)
+                      - combobox [ref=e1211]:
+                        - generic [ref=e1212]:
+                          - generic [ref=e1213]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1214]:
+                              - textbox [disabled] [ref=e1216]
+                    - generic [ref=e1217]:
+                      - generic "Usuários (Shein)" [ref=e1220]:
+                        - checkbox "Usuários (Shein)" [ref=e1223] [cursor=pointer]
+                        - text: Usuários (Shein)
+                      - combobox [ref=e1229]:
+                        - generic [ref=e1230]:
+                          - generic [ref=e1231]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1232]:
+                              - textbox [disabled] [ref=e1234]
+                    - generic [ref=e1235]:
+                      - generic "Translúcido" [ref=e1238]:
+                        - checkbox "Translúcido" [ref=e1241] [cursor=pointer]
+                        - text: Translúcido
+                      - combobox [ref=e1247]:
+                        - generic [ref=e1251]: 
+                    - generic [ref=e1252]:
+                      - generic "Características" [ref=e1255]:
+                        - checkbox "Características" [ref=e1258] [cursor=pointer]
+                        - text: Características
+                      - combobox [ref=e1264]:
+                        - generic [ref=e1265]:
+                          - generic [ref=e1266]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1267]:
+                              - textbox [disabled] [ref=e1269]
+                    - generic [ref=e1270]:
+                      - generic "Enchimento" [ref=e1273]:
+                        - checkbox "Enchimento" [ref=e1276] [cursor=pointer]
+                        - text: Enchimento
+                      - combobox [ref=e1282]:
+                        - generic [ref=e1283]:
+                          - generic [ref=e1284]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1285]:
+                              - textbox [disabled] [ref=e1287]
+                    - generic [ref=e1288]:
+                      - generic "Instruções de manutenção" [ref=e1291]:
+                        - checkbox "Instruções de manutenção" [ref=e1294] [cursor=pointer]
+                        - text: Instruções de manutenção
+                      - combobox [ref=e1300]:
+                        - generic [ref=e1304]: 
+                    - generic [ref=e1305]:
+                      - generic "Composição do forro" [ref=e1308]:
+                        - checkbox "Composição do forro" [ref=e1311] [cursor=pointer]
+                        - text: Composição do forro
+                      - generic [ref=e1317]:
+                        - combobox [ref=e1319]:
+                          - generic [ref=e1321]: Por favor selecione
+                          - generic [ref=e1324]: 
+                        - generic [ref=e1326]:
+                          - textbox [disabled] [ref=e1327]
+                          - generic [ref=e1328]: "%"
+                        - 'generic "icon: plus-circle" [ref=e1330] [cursor=pointer]':
+                          - img [ref=e1331]
+                    - generic [ref=e1334]:
+                      - generic "Número de peças" [ref=e1337]:
+                        - checkbox "Número de peças" [ref=e1340] [cursor=pointer]
+                        - text: Número de peças
+                      - combobox [ref=e1346]:
+                        - generic [ref=e1350]: 
+                    - generic [ref=e1351]:
+                      - generic "Tipo de função" [ref=e1354]:
+                        - checkbox "Tipo de função" [ref=e1357] [cursor=pointer]
+                        - text: Tipo de função
+                      - combobox [ref=e1363]:
+                        - generic [ref=e1364]:
+                          - generic [ref=e1365]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1366]:
+                              - textbox [disabled] [ref=e1368]
+                    - generic [ref=e1369]:
+                      - generic "Revestimento" [ref=e1372]:
+                        - checkbox "Revestimento" [ref=e1375] [cursor=pointer]
+                        - text: Revestimento
+                      - generic [ref=e1381]:
+                        - combobox [ref=e1383]:
+                          - generic [ref=e1385]: Por favor selecione
+                          - generic [ref=e1388]: 
+                        - generic [ref=e1390]:
+                          - textbox [disabled] [ref=e1391]
+                          - generic [ref=e1392]: "%"
+                        - 'generic "icon: plus-circle" [ref=e1394] [cursor=pointer]':
+                          - img [ref=e1395]
+                    - generic [ref=e1398]:
+                      - generic "Quantidade" [ref=e1401]:
+                        - checkbox "Quantidade" [ref=e1404] [cursor=pointer]
+                        - text: Quantidade
+                      - generic [ref=e1410]:
+                        - combobox [ref=e1412]:
+                          - generic [ref=e1414]: Por favor selecione
+                          - generic [ref=e1417]: 
+                        - textbox [disabled] [ref=e1418]
+                        - 'generic "icon: plus-circle" [ref=e1420] [cursor=pointer]':
+                          - img [ref=e1421]
+                    - generic [ref=e1424]:
+                      - generic "Linho para manter aquecido" [ref=e1427]:
+                        - checkbox "Linho para manter aquecido" [ref=e1430] [cursor=pointer]
+                        - text: Linho para manter aquecido
+                      - combobox [ref=e1436]:
+                        - generic [ref=e1440]: 
+                    - generic [ref=e1441]:
+                      - generic "Possui bolso" [ref=e1444]:
+                        - checkbox "Possui bolso" [ref=e1447] [cursor=pointer]
+                        - text: Possui bolso
+                      - combobox [ref=e1453]:
+                        - generic [ref=e1457]: 
+                    - generic [ref=e1458]:
+                      - generic "Material secundário" [ref=e1461]:
+                        - checkbox "Material secundário" [ref=e1464] [cursor=pointer]
+                        - text: Material secundário
+                      - combobox [ref=e1470]:
+                        - generic [ref=e1471]:
+                          - generic [ref=e1472]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1473]:
+                              - textbox [disabled] [ref=e1475]
+                    - generic [ref=e1476]:
+                      - generic "Festivais" [ref=e1479]:
+                        - checkbox "Festivais" [ref=e1482] [cursor=pointer]
+                        - text: Festivais
+                      - combobox [ref=e1488]:
+                        - generic [ref=e1489]:
+                          - generic [ref=e1490]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1491]:
+                              - textbox [disabled] [ref=e1493]
+                    - generic [ref=e1494]:
+                      - generic "Temperatura" [ref=e1497]:
+                        - checkbox "Temperatura" [ref=e1500] [cursor=pointer]
+                        - text: Temperatura
+                      - combobox [ref=e1506]:
+                        - generic [ref=e1510]: 
+                    - generic [ref=e1511]:
+                      - generic "Tipo de ingrediente" [ref=e1514]:
+                        - checkbox "Tipo de ingrediente" [ref=e1517] [cursor=pointer]
+                        - text: Tipo de ingrediente
+                      - combobox [ref=e1523]:
+                        - generic [ref=e1527]: 
+                    - generic [ref=e1528]:
+                      - generic "Tipo de forro" [ref=e1531]:
+                        - checkbox "Tipo de forro" [ref=e1534] [cursor=pointer]
+                        - text: Tipo de forro
+                      - combobox [ref=e1540]:
+                        - generic [ref=e1541]:
+                          - generic [ref=e1542]: Por favor selecione
+                          - list:
+                            - listitem [ref=e1543]:
+                              - textbox [disabled] [ref=e1545]
+                    - generic [ref=e1546]:
+                      - generic "Ingrediente principal tipo 2" [ref=e1549]:
+                        - checkbox "Ingrediente principal tipo 2" [ref=e1552] [cursor=pointer]
+                        - text: Ingrediente principal tipo 2
+                      - combobox [ref=e1558]:
+                        - generic [ref=e1562]: 
+                    - generic [ref=e1563]:
+                      - generic "Peso do material principal 2 (g/m²)" [ref=e1566]:
+                        - checkbox "Peso do material principal 2 (g/m²)" [ref=e1569] [cursor=pointer]
+                        - text: Peso do material principal 2 (g/m²)
+                      - textbox [disabled] [ref=e1574]
+                    - generic [ref=e1575]:
+                      - generic "Peso do material principal (g/m²)" [ref=e1578]:
+                        - checkbox "Peso do material principal (g/m²)" [ref=e1581] [cursor=pointer]
+                        - text: Peso do material principal (g/m²)
+                      - textbox [disabled] [ref=e1586]
+                    - generic [ref=e1587]:
+                      - generic "Peso do forro (g/m²)" [ref=e1590]:
+                        - checkbox "Peso do forro (g/m²)" [ref=e1593] [cursor=pointer]
+                        - text: Peso do forro (g/m²)
+                      - textbox [disabled] [ref=e1598]
+                - generic [ref=e1599] [cursor=pointer]:
+                  - text: Menos Atributos
+                  - 'generic "icon: up" [ref=e1600]':
+                    - img [ref=e1601]
+        - generic [ref=e838]:
+          - button "Cancelar" [ref=e840] [cursor=pointer]:
+            - generic: Cancelar
+          - button "Confirmar" [ref=e842] [cursor=pointer]:
+            - generic: Confirmar

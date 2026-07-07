@@ -1,0 +1,990 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Pular para
+    - list "Pular para" [ref=e6]:
+      - listitem [ref=e7]:
+        - button "Conteúdo principal" [ref=e435] [cursor=pointer]:
+          - generic [ref=e10]: Conteúdo principal
+  - generic [ref=e11]:
+    - button "0 itens no carrinho" [ref=e13] [cursor=pointer]:
+      - img [ref=e15]
+      - generic [ref=e17]: Subtotal
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - generic [ref=e88]:
+          - region [ref=e89]:
+            - generic [ref=e90]:
+              - button "Frete grátis Em pedidos acima de R$69" [ref=e92] [cursor=pointer]:
+                - img [ref=e93]
+                - generic [ref=e96]:
+                  - generic [ref=e99]: Frete grátis
+                  - generic [ref=e100]: Em pedidos acima de R$69
+              - list [ref=e104]:
+                - listitem [ref=e105]:
+                  - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e107] [cursor=pointer]:
+                    - img [ref=e108]
+                    - generic [ref=e111]:
+                      - generic [ref=e114]: Sem imposto de importação
+                      - generic [ref=e115]: Para itens enviados por vendedores
+                - listitem [ref=e116]:
+                  - button "Garantia de entrega Reembolso para qualquer problema" [ref=e118] [cursor=pointer]:
+                    - img [ref=e119]
+                    - generic [ref=e122]:
+                      - generic [ref=e125]: Garantia de entrega
+                      - generic [ref=e126]: Reembolso para qualquer problema
+                - listitem [ref=e127]:
+                  - button "Devoluções gratuitas Até 90 dias*" [ref=e129] [cursor=pointer]:
+                    - img [ref=e130]
+                    - generic [ref=e133]:
+                      - generic [ref=e136]: Devoluções gratuitas
+                      - generic [ref=e137]: Até 90 dias*
+                - listitem [ref=e138]:
+                  - button "Ajuste de preço No prazo de 30 dias" [ref=e140] [cursor=pointer]:
+                    - img [ref=e141]
+                    - generic [ref=e144]:
+                      - generic [ref=e147]: Ajuste de preço
+                      - generic [ref=e148]: No prazo de 30 dias
+                - listitem [ref=e149]:
+                  - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e151] [cursor=pointer]:
+                    - img [ref=e152]
+                    - generic [ref=e155]:
+                      - generic [ref=e158]: Sem imposto de importação
+                      - generic [ref=e159]: Para itens enviados por vendedores
+              - button "Obtenha o app Temu" [ref=e162] [cursor=pointer]:
+                - img [ref=e163]
+                - generic [ref=e169]: Obtenha o app Temu
+              - generic [ref=e172] [cursor=pointer]:
+                - generic [ref=e173]:
+                  - generic [ref=e174]: Milhões de compradores esperam por você
+                  - link "Junte-se agora" [ref=e436]:
+                    - /url: https://br.seller.temu.com/login.html?login_scene=201&shop_region=29&shop_site=132
+                    - generic [ref=e437]:
+                      - generic [ref=e438]: Junte-se agora
+                      - img [ref=e439]
+                - img [ref=e176]
+          - navigation [ref=e177]:
+            - generic [ref=e178]:
+              - link "temu temu" [ref=e441] [cursor=pointer]:
+                - /url: /br
+                - generic [ref=e442]:
+                  - img "temu" [ref=e443]
+                  - img "temu" [ref=e445]
+              - button "Categorias" [ref=e448] [cursor=pointer]:
+                - generic [ref=e449]:
+                  - generic [ref=e451]: Categorias
+                  - img [ref=e452]
+              - search [ref=e180]:
+                - generic [ref=e181]:
+                  - searchbox "Caixa de pesquisa. Você pode clicar duas vezes para inserir um termo de busca e pesquisar no Temu." [ref=e182]
+                  - button "Enviar pesquisa" [ref=e454] [cursor=pointer]:
+                    - img [ref=e455]
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: Pesquisar na Temu
+              - generic [ref=e186]:
+                - link "Pedidos e Conta" [ref=e189]:
+                  - generic [ref=e190] [cursor=pointer]:
+                    - img [ref=e192]
+                    - generic [ref=e193]:
+                      - generic [ref=e195]:
+                        - text: Olá,
+                        - generic [ref=e196]: th***ra
+                      - generic "Pedidos e Conta" [ref=e197]
+                - link "Atendimento" [ref=e200]:
+                  - generic [ref=e201] [cursor=pointer]:
+                    - img [ref=e203]
+                    - generic "Atendimento" [ref=e206]
+                - button "Brasil Português" [ref=e209]:
+                  - generic [ref=e210] [cursor=pointer]:
+                    - img [ref=e212]
+                    - generic "Português" [ref=e214]
+                - link "Ir para o carrinho" [ref=e216]:
+                  - img [ref=e219] [cursor=pointer]
+        - generic:
+          - region:
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                  - generic:
+                    - button "Frete grátis acima de R$69":
+                      - generic: Frete grátis acima de R$69
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                      - generic:
+                        - button "Sem imposto de importação para todos os itens enviados por vendedores":
+                          - generic: Sem imposto de importação para todos os itens enviados por vendedores
+                  - generic:
+                    - generic:
+                      - img
+                      - generic:
+                        - button "Nunca pague além do necessário com nossa Garantia de Melhor Preço":
+                          - generic: Nunca pague além do necessário com nossa Garantia de Melhor Preço
+                  - generic:
+                    - generic:
+                      - img
+                      - generic:
+                        - button "Sem imposto de importação para todos os itens enviados por vendedores":
+                          - generic: Sem imposto de importação para todos os itens enviados por vendedores
+      - main [ref=e221]:
+        - generic [ref=e222]:
+          - generic [ref=e224]:
+            - img [ref=e225]
+            - text: 0% de Imposto de Importação (era 20%) em compras internacionais até US$50 conforme Medida Provisória.
+          - region [ref=e226]:
+            - link "Por que comprar na Temu? Privacidade garantida Pagamentos seguros Garantia de entrega" [ref=e457] [cursor=pointer]:
+              - /url: /br/whychoosetemu.html
+              - generic [ref=e458]:
+                - img [ref=e459]
+                - generic [ref=e461]: Por que comprar na Temu?
+              - generic [ref=e462]:
+                - img [ref=e463]
+                - generic [ref=e465]:
+                  - generic [ref=e467]:
+                    - img [ref=e468]
+                    - generic [ref=e470]: Privacidade garantida
+                  - generic [ref=e473]:
+                    - img [ref=e474]
+                    - generic [ref=e476]: Pagamentos seguros
+                  - generic [ref=e479]:
+                    - img [ref=e480]
+                    - generic [ref=e482]: Garantia de entrega
+        - region [ref=e231]:
+          - heading "Novas descobertas" [level=2] [ref=e233]
+          - tabpanel [ref=e483]:
+            - generic [ref=e484]:
+              - region [ref=e485]:
+                - group "Conjunto de 2 Relógios Eletrónicos Elegantes e Românticos para Homens e Mulheres Adolescentes, Estilo Fashion de Luxo, Negócios e Lazer, com Bracelete com Padrão em Forma de Coração, Adequado para Decoração e Uso Diário, Presentes de Feriado, Presentes de Aniversário, Natal para Mulheres, a Melhor Escolha para Presentes" [ref=e488] [cursor=pointer]:
+                  - generic [ref=e489]:
+                    - generic [ref=e492]:
+                      - link "imagem do item Conjunto de 2 Relógios Eletrónicos Elegantes e Românticos para Homens e Mulheres Adolescentes, Estilo Fashion de Luxo, Negócios e Lazer, com Bracelete com Padrão em Forma de Coração, Adequado para Decoração e Uso Diário, Presentes de Feriado, Presentes de Aniversário, Natal para Mulheres, a Melhor Escolha para Presentes Abrir em uma nova aba." [ref=e495]:
+                        - generic [ref=e496]:
+                          - img [ref=e497]
+                          - img [ref=e498]
+                      - button "Olhar rápido" [ref=e501]:
+                        - generic [ref=e503]:
+                          - img [ref=e504]
+                          - generic [ref=e506]: Olhar rápido
+                    - link "Conjunto de 2 Relógios Eletrónicos Elegantes e Românticos para Homens e Mulheres Adolescentes, Estilo Fashion de Luxo, Negócios e Lazer, com Bracelete com Padrão em Forma de Coração, Adequado para Decoração e Uso Diário, Presentes de Feriado, Presentes de Aniversário, Natal para Mulheres, a Melhor Escolha para Presentes Abrir em uma nova aba." [ref=e511]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605563962385207&_oak_mp_inf=ELfG98ad2IkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJTx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Fproduct%2Ffancy%2F06a135ee-75f2-40bd-844c-f43f7b569216.jpg&spec_gallery_id=617574&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTQxNw&_oak_gallery_order=1323496210%2C1515319230%2C1180597159%2C382127300%2C1367244388
+                      - heading "Conjunto de 2 Relógios Eletrónicos Elegantes e Românticos para Homens e Mulheres Adolescentes, Estilo Fashion de Luxo, Negócios e Lazer, com Bracelete com Padrão em Forma de Coração, Adequado para Decoração e Uso Diário, Presentes de Feriado, Presentes de Aniversário, Natal para Mulheres, a Melhor Escolha para Presentes Abrir em uma nova aba." [level=3] [ref=e512]:
+                        - generic [ref=e513]: Conjunto de 2 Relógios Eletrónicos Elegantes e Românticos para Homens e Mulheres Adolescentes, Estilo Fashion de Luxo, Negócios e Lazer, com Bracelete com Padrão em Forma de Coração, Adequado para Decoração e Uso Diário, Presentes de Feriado, Presentes de Aniversário, Natal para Mulheres, a Melhor Escolha para Presentes
+                        - generic [ref=e514]: Abrir em uma nova aba.
+                    - generic [ref=e518]:
+                      - generic [ref=e519]:
+                        - generic [ref=e521]:
+                          - generic [ref=e522]: R$14,17
+                          - generic [ref=e523]: R$14,17
+                        - generic [ref=e527]:
+                          - generic [ref=e528]: Preço original 22,67
+                          - text: 22,67
+                      - button "Adicionar ao carrinho" [ref=e530]:
+                        - img [ref=e532]
+                - group "Protetor de colchão Impermeável vários tamanhos bloqueia 100% liquidos" [ref=e535] [cursor=pointer]:
+                  - generic [ref=e536]:
+                    - generic [ref=e539]:
+                      - link "imagem do item Protetor de colchão Impermeável vários tamanhos bloqueia 100% liquidos Abrir em uma nova aba." [ref=e542]:
+                        - generic [ref=e543]:
+                          - img [ref=e544]
+                          - img [ref=e545]
+                      - button "Olhar rápido" [ref=e548]:
+                        - generic [ref=e550]:
+                          - img [ref=e551]
+                          - generic [ref=e553]: Olhar rápido
+                    - link "Protetor de colchão Impermeável vários tamanhos bloqueia 100% liquidos Abrir em uma nova aba." [ref=e558]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604714179603549&_oak_mp_inf=EN3Y9u6%2Fv4kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJTx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F211a2a44448%2F8d668a0d-feab-41f3-9bca-88653ac20f73_1024x1024.jpeg.format.jpg&spec_gallery_id=604714179603549&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MjY0OA&_oak_gallery_order=187307355%2C763210891%2C2114267526%2C1853776052%2C2042006796
+                      - heading "Protetor de colchão Impermeável vários tamanhos bloqueia 100% liquidos Abrir em uma nova aba." [level=3] [ref=e559]:
+                        - generic [ref=e560]: Protetor de colchão Impermeável vários tamanhos bloqueia 100% liquidos
+                        - generic [ref=e561]: Abrir em uma nova aba.
+                    - generic [ref=e565]:
+                      - generic [ref=e566]:
+                        - generic [ref=e568]:
+                          - generic [ref=e569]: R$26,48
+                          - generic [ref=e570]: R$26,48
+                        - generic [ref=e574]:
+                          - generic [ref=e575]: Preço original 35,17
+                          - text: 35,17
+                      - button "Adicionar ao carrinho" [ref=e577]:
+                        - img [ref=e579]
+                - group "Bolsa Térmica Frasqueira Alça Transversal Marmita Alimento" [ref=e582] [cursor=pointer]:
+                  - generic [ref=e583]:
+                    - generic [ref=e586]:
+                      - link "imagem do item Bolsa Térmica Frasqueira Alça Transversal Marmita Alimento Abrir em uma nova aba." [ref=e589]:
+                        - generic [ref=e590]:
+                          - img [ref=e591]
+                          - img [ref=e592]
+                      - button "Olhar rápido" [ref=e595]:
+                        - generic [ref=e597]:
+                          - img [ref=e598]
+                          - generic [ref=e600]: Olhar rápido
+                    - link "Bolsa Térmica Frasqueira Alça Transversal Marmita Alimento Abrir em uma nova aba." [ref=e605]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604657002868865&_oak_mp_inf=EIHh9%2B7qvYkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJXx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F20195058c20%2Faa0c572b-62aa-41b6-b9c0-48e961236237.jpeg&spec_gallery_id=67590&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTk5MQ&_oak_gallery_order=1711798358%2C334454606%2C1913773376%2C1300167126%2C1565812300
+                      - heading "Bolsa Térmica Frasqueira Alça Transversal Marmita Alimento Abrir em uma nova aba." [level=3] [ref=e606]:
+                        - generic [ref=e607]: Bolsa Térmica Frasqueira Alça Transversal Marmita Alimento
+                        - generic [ref=e608]: Abrir em uma nova aba.
+                    - generic [ref=e612]:
+                      - generic [ref=e613]:
+                        - generic [ref=e615]:
+                          - generic [ref=e616]: R$19,91
+                          - generic [ref=e617]: R$19,91
+                        - generic [ref=e621]:
+                          - generic [ref=e622]: Preço original 34,99
+                          - text: 34,99
+                      - button "Adicionar ao carrinho" [ref=e624]:
+                        - img [ref=e626]
+                - group "Kit Com 5 Boxers Masculina poliamida Cueca Boxer Confortável" [ref=e629] [cursor=pointer]:
+                  - generic [ref=e630]:
+                    - generic [ref=e633]:
+                      - link "imagem do item Kit Com 5 Boxers Masculina poliamida Cueca Boxer Confortável Abrir em uma nova aba." [ref=e636]:
+                        - generic [ref=e637]:
+                          - img [ref=e638]
+                          - img [ref=e639]
+                      - button "Olhar rápido" [ref=e642]:
+                        - generic [ref=e644]:
+                          - img [ref=e645]
+                          - generic [ref=e647]: Olhar rápido
+                    - link "Kit Com 5 Boxers Masculina poliamida Cueca Boxer Confortável Abrir em uma nova aba." [ref=e652]:
+                      - /url: /goods.html?_bg_fs=1&goods_id=605427412602895&refer_page_el_sn=200024&refer_page_name=home&refer_page_id=10005_1779198376216_s5oh29jhd9&refer_page_sn=10005&_x_sessn_id=7soe6q88q9
+                      - heading "Kit Com 5 Boxers Masculina poliamida Cueca Boxer Confortável Abrir em uma nova aba." [level=3] [ref=e653]:
+                        - generic [ref=e654]: Kit Com 5 Boxers Masculina poliamida Cueca Boxer Confortável
+                        - generic [ref=e655]: Abrir em uma nova aba.
+                    - generic [ref=e659]:
+                      - generic [ref=e662]:
+                        - generic [ref=e663]: R$36,62
+                        - generic [ref=e664]: R$36,62
+                      - button "Adicionar ao carrinho" [ref=e667]:
+                        - img [ref=e669]
+                - group "Caixa Som Bluetooth 5.3 Zealt S32 Sem Fio Alto Falante Subwoofer USB Bateria 1500mAh" [ref=e672] [cursor=pointer]:
+                  - generic [ref=e673]:
+                    - generic [ref=e676]:
+                      - link "imagem do item Caixa Som Bluetooth 5.3 Zealt S32 Sem Fio Alto Falante Subwoofer USB Bateria 1500mAh Abrir em uma nova aba." [ref=e679]:
+                        - generic [ref=e680]:
+                          - img [ref=e681]
+                          - img [ref=e682]
+                      - button "Olhar rápido" [ref=e685]:
+                        - generic [ref=e687]:
+                          - img [ref=e688]
+                          - generic [ref=e690]: Olhar rápido
+                    - link "Caixa Som Bluetooth 5.3 Zealt S32 Sem Fio Alto Falante Subwoofer USB Bateria 1500mAh Abrir em uma nova aba." [ref=e695]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604995499952630&_oak_mp_inf=EPaT9u7Xx4kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJXx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F21140d63c60%2F9ca9c150-7e3b-41f4-a964-f3ef6dfef99f_1000x1000.jpeg.format.jpg&spec_gallery_id=622232&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=Njk5OQ&_oak_gallery_order=1356693903%2C1324605983%2C702180876%2C468943752%2C1520810039
+                      - heading "Caixa Som Bluetooth 5.3 Zealt S32 Sem Fio Alto Falante Subwoofer USB Bateria 1500mAh Abrir em uma nova aba." [level=3] [ref=e696]:
+                        - generic [ref=e697]: Caixa Som Bluetooth 5.3 Zealt S32 Sem Fio Alto Falante Subwoofer USB Bateria 1500mAh
+                        - generic [ref=e698]: Abrir em uma nova aba.
+                    - generic [ref=e702]:
+                      - generic [ref=e703]:
+                        - generic [ref=e705]:
+                          - generic [ref=e706]: R$69,99
+                          - generic [ref=e707]: R$69,99
+                        - generic [ref=e711]:
+                          - generic [ref=e712]: Preço original 134,99
+                          - text: 134,99
+                      - button "Adicionar ao carrinho" [ref=e714]:
+                        - img [ref=e716]
+                - group "Kit 5 Panos de Prato 100% Algodão 45x70 Atoalhado Grosso Toalha Copa Premium Jacquard" [ref=e719] [cursor=pointer]:
+                  - generic [ref=e720]:
+                    - generic [ref=e723]:
+                      - link "imagem do item Kit 5 Panos de Prato 100% Algodão 45x70 Atoalhado Grosso Toalha Copa Premium Jacquard Abrir em uma nova aba." [ref=e726]:
+                        - generic [ref=e727]:
+                          - img [ref=e728]
+                          - img [ref=e729]
+                      - button "Olhar rápido" [ref=e732]:
+                        - generic [ref=e734]:
+                          - img [ref=e735]
+                          - generic [ref=e737]: Olhar rápido
+                    - link "Kit 5 Panos de Prato 100% Algodão 45x70 Atoalhado Grosso Toalha Copa Premium Jacquard Abrir em uma nova aba." [ref=e742]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604611100402250&_oak_mp_inf=EMrE9%2B6%2FvIkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJXx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F211a2a44448%2F16a587ad-8a60-4f21-afab-c0bae8a1badd_1024x1024.png&spec_gallery_id=30099381808&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=Mjk0NQ&_oak_gallery_order=61892140%2C769974039%2C1974080007%2C1910475407%2C277863890
+                      - heading "Kit 5 Panos de Prato 100% Algodão 45x70 Atoalhado Grosso Toalha Copa Premium Jacquard Abrir em uma nova aba." [level=3] [ref=e743]:
+                        - generic [ref=e744]: Kit 5 Panos de Prato 100% Algodão 45x70 Atoalhado Grosso Toalha Copa Premium Jacquard
+                        - generic [ref=e745]: Abrir em uma nova aba.
+                    - generic [ref=e749]:
+                      - generic [ref=e750]:
+                        - generic [ref=e752]:
+                          - generic [ref=e753]: R$29,45
+                          - generic [ref=e754]: R$29,45
+                        - generic [ref=e758]:
+                          - generic [ref=e759]: Preço original 45,90
+                          - text: 45,90
+                      - button "Adicionar ao carrinho" [ref=e761]:
+                        - img [ref=e763]
+                - group "Kit 3 Blusas Femininas 100% Algodão – Confortáveis, Macias, Estampas de Coração, Casual e Moderna P M G GG" [ref=e766] [cursor=pointer]:
+                  - generic [ref=e767]:
+                    - generic [ref=e770]:
+                      - link "imagem do item Kit 3 Blusas Femininas 100% Algodão – Confortáveis, Macias, Estampas de Coração, Casual e Moderna P M G GG Abrir em uma nova aba." [ref=e773]:
+                        - generic [ref=e774]:
+                          - img [ref=e775]
+                          - img [ref=e776]
+                      - button "Olhar rápido" [ref=e779]:
+                        - generic [ref=e781]:
+                          - img [ref=e782]
+                          - generic [ref=e784]: Olhar rápido
+                    - link "Kit 3 Blusas Femininas 100% Algodão – Confortáveis, Macias, Estampas de Coração, Casual e Moderna P M G GG Abrir em uma nova aba." [ref=e789]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605362451255509&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F20add7012c%2Ffef0b820-61db-426f-938f-ea7dc63cf6cc_1340x1787.png&spec_id=16066&spec_gallery_id=68697&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=NTgwMw&_oak_gallery_order=2006608195%2C1176081963%2C1681702070%2C972420451%2C374184623&spec_ids=16066,289520240,292245202,292244543,289515846,289525114&_oak_mp_inf=ENWh%2BO6u0okBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJbx7oPkMw%3D%3D
+                      - heading "Kit 3 Blusas Femininas 100% Algodão – Confortáveis, Macias, Estampas de Coração, Casual e Moderna P M G GG Abrir em uma nova aba." [level=3] [ref=e790]:
+                        - generic [ref=e791]: Kit 3 Blusas Femininas 100% Algodão – Confortáveis, Macias, Estampas de Coração, Casual e Moderna P M G GG
+                        - generic [ref=e792]: Abrir em uma nova aba.
+                    - generic [ref=e796]:
+                      - generic [ref=e797]:
+                        - generic [ref=e799]:
+                          - generic [ref=e800]: R$58,03
+                          - generic [ref=e801]: R$58,03
+                        - generic [ref=e805]:
+                          - generic [ref=e806]: Preço original 83,99
+                          - text: 83,99
+                      - button "Adicionar ao carrinho" [ref=e808]:
+                        - img [ref=e810]
+                - group "Conjunto Aprimorado de 9 Peças Resistentes ao Calor, 3 Combinações de Tamanhos, Antiderrapante, Resistente ao Calor, à Prova de Arranhões, Essencial para Cozinha, Empilhável para Fácil Armazenamento, Almofadas Protetoras Especializadas para Panelas Antiaderentes, Acessórios para Panelas" [ref=e813] [cursor=pointer]:
+                  - generic [ref=e814]:
+                    - generic [ref=e817]:
+                      - link "imagem do item Conjunto Aprimorado de 9 Peças Resistentes ao Calor, 3 Combinações de Tamanhos, Antiderrapante, Resistente ao Calor, à Prova de Arranhões, Essencial para Cozinha, Empilhável para Fácil Armazenamento, Almofadas Protetoras Especializadas para Panelas Antiaderentes, Acessórios para Panelas Abrir em uma nova aba." [ref=e820]:
+                        - generic [ref=e821]:
+                          - img [ref=e822]
+                          - img [ref=e823]
+                      - button "Olhar rápido" [ref=e826]:
+                        - generic [ref=e828]:
+                          - img [ref=e829]
+                          - generic [ref=e831]: Olhar rápido
+                    - link "Conjunto Aprimorado de 9 Peças Resistentes ao Calor, 3 Combinações de Tamanhos, Antiderrapante, Resistente ao Calor, à Prova de Arranhões, Essencial para Cozinha, Empilhável para Fácil Armazenamento, Almofadas Protetoras Especializadas para Panelas Antiaderentes, Acessórios para Panelas Abrir em uma nova aba." [ref=e836]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605963041997191&_oak_mp_inf=EIeD9p7s44kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJbx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Fproduct%2Fopen%2Fb1acd1dc4e51415aabe0261e189fd0c5-goods.jpeg&spec_gallery_id=31490657771&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MzYzOQ&_oak_gallery_order=1215923911%2C1469084514%2C937213283%2C2144507305%2C1868909893
+                      - heading "Conjunto Aprimorado de 9 Peças Resistentes ao Calor, 3 Combinações de Tamanhos, Antiderrapante, Resistente ao Calor, à Prova de Arranhões, Essencial para Cozinha, Empilhável para Fácil Armazenamento, Almofadas Protetoras Especializadas para Panelas Antiaderentes, Acessórios para Panelas Abrir em uma nova aba." [level=3] [ref=e837]:
+                        - generic [ref=e838]: Conjunto Aprimorado de 9 Peças Resistentes ao Calor, 3 Combinações de Tamanhos, Antiderrapante, Resistente ao Calor, à Prova de Arranhões, Essencial para Cozinha, Empilhável para Fácil Armazenamento, Almofadas Protetoras Especializadas para Panelas Antiaderentes, Acessórios para Panelas
+                        - generic [ref=e839]: Abrir em uma nova aba.
+                    - generic [ref=e843]:
+                      - generic [ref=e846]:
+                        - generic [ref=e847]: R$36,39
+                        - generic [ref=e848]: R$36,39
+                      - button "Adicionar ao carrinho" [ref=e851]:
+                        - img [ref=e853]
+                - group "Filtro de Café Reutilizável em Inox Compatível com Suporte de Cone Padrão Lavável" [ref=e856] [cursor=pointer]:
+                  - generic [ref=e857]:
+                    - generic [ref=e860]:
+                      - link "imagem do item Filtro de Café Reutilizável em Inox Compatível com Suporte de Cone Padrão Lavável Abrir em uma nova aba." [ref=e863]:
+                        - generic [ref=e864]:
+                          - img [ref=e865]
+                          - img [ref=e866]
+                      - button "Olhar rápido" [ref=e869]:
+                        - generic [ref=e871]:
+                          - img [ref=e872]
+                          - generic [ref=e874]: Olhar rápido
+                    - link "Filtro de Café Reutilizável em Inox Compatível com Suporte de Cone Padrão Lavável Abrir em uma nova aba." [ref=e879]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605396274098379&_oak_mp_inf=EMvh9u6s04kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJbx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F21a488e82c%2F9e55df64-6dd0-4221-98ce-0c76232c4311_1024x1024.jpeg.format.jpg&spec_gallery_id=594815&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTg5MA&_oak_gallery_order=1068461945%2C912316459%2C915258748%2C214770566%2C258109971
+                      - heading "Filtro de Café Reutilizável em Inox Compatível com Suporte de Cone Padrão Lavável Abrir em uma nova aba." [level=3] [ref=e880]:
+                        - generic [ref=e881]: Filtro de Café Reutilizável em Inox Compatível com Suporte de Cone Padrão Lavável
+                        - generic [ref=e882]: Abrir em uma nova aba.
+                    - generic [ref=e886]:
+                      - generic [ref=e887]:
+                        - generic [ref=e889]:
+                          - generic [ref=e890]: R$18,90
+                          - generic [ref=e891]: R$18,90
+                        - generic [ref=e895]:
+                          - generic [ref=e896]: Preço original 33,00
+                          - text: 33,00
+                      - button "Adicionar ao carrinho" [ref=e898]:
+                        - img [ref=e900]
+                - group "1 Par - Brincos Femininos Curvos de Três Pontas Banhados a Ouro 18K, com Design Deslumbrante e Luxuoso. O Estilo Único é Adequado para Uso Diário, Festivais de Música e Várias Ocasiões. Um Presente Perfeito para Mulheres, Hipoalergênico" [ref=e903] [cursor=pointer]:
+                  - generic [ref=e904]:
+                    - generic [ref=e907]:
+                      - link "imagem do item 1 Par - Brincos Femininos Curvos de Três Pontas Banhados a Ouro 18K, com Design Deslumbrante e Luxuoso. O Estilo Único é Adequado para Uso Diário, Festivais de Música e Várias Ocasiões. Um Presente Perfeito para Mulheres, Hipoalergênico Abrir em uma nova aba." [ref=e910]:
+                        - generic [ref=e911]:
+                          - img [ref=e912]
+                          - img [ref=e913]
+                      - button "Olhar rápido" [ref=e916]:
+                        - generic [ref=e918]:
+                          - img [ref=e919]
+                          - generic [ref=e921]: Olhar rápido
+                    - link "1 Par - Brincos Femininos Curvos de Três Pontas Banhados a Ouro 18K, com Design Deslumbrante e Luxuoso. O Estilo Único é Adequado para Uso Diário, Festivais de Música e Várias Ocasiões. Um Presente Perfeito para Mulheres, Hipoalergênico Abrir em uma nova aba." [ref=e926]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605925410714414&_oak_mp_inf=EK7m9obg4okBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJfx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Fproduct%2Ffancy%2F6f7d243e-cb12-4497-86e6-4528fa81708c.jpg&spec_gallery_id=31360411197&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=ODc3&_oak_gallery_order=1419317455%2C1399521045%2C104561163%2C1450350725%2C213734780
+                      - heading "1 Par - Brincos Femininos Curvos de Três Pontas Banhados a Ouro 18K, com Design Deslumbrante e Luxuoso. O Estilo Único é Adequado para Uso Diário, Festivais de Música e Várias Ocasiões. Um Presente Perfeito para Mulheres, Hipoalergênico Abrir em uma nova aba." [level=3] [ref=e927]:
+                        - generic [ref=e928]: 1 Par - Brincos Femininos Curvos de Três Pontas Banhados a Ouro 18K, com Design Deslumbrante e Luxuoso. O Estilo Único é Adequado para Uso Diário, Festivais de Música e Várias Ocasiões. Um Presente Perfeito para Mulheres, Hipoalergênico
+                        - generic [ref=e929]: Abrir em uma nova aba.
+                    - generic [ref=e933]:
+                      - generic [ref=e934]:
+                        - generic [ref=e936]:
+                          - generic [ref=e937]: R$8,77
+                          - generic [ref=e938]: R$8,77
+                        - generic [ref=e942]:
+                          - generic [ref=e943]: Preço original 19,52
+                          - text: 19,52
+                      - button "Adicionar ao carrinho" [ref=e945]:
+                        - img [ref=e947]
+                - group "ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável com Tampa e Canudo" [ref=e950] [cursor=pointer]:
+                  - generic [ref=e951]:
+                    - generic [ref=e954]:
+                      - link "imagem do item ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável com Tampa e Canudo Abrir em uma nova aba." [ref=e957]:
+                        - generic [ref=e958]:
+                          - img [ref=e959]
+                          - img [ref=e960]
+                      - button "Olhar rápido" [ref=e963]:
+                        - generic [ref=e965]:
+                          - img [ref=e966]
+                          - generic [ref=e968]: Olhar rápido
+                    - link "ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável com Tampa e Canudo Abrir em uma nova aba." [ref=e973]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605097237039401&_oak_mp_inf=EKmS%2Be7SyokBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJfx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F2019505e2c8%2F9bb136c6-168f-49ae-b64e-859ebe0ee272_1600x1600.jpeg.format.jpg&spec_gallery_id=66853&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=NDU4MQ&_oak_gallery_order=532252545%2C759863707%2C399020001%2C1738893931%2C663417870
+                      - heading "ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável com Tampa e Canudo Abrir em uma nova aba." [level=3] [ref=e974]:
+                        - generic [ref=e975]: ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/1.2L Garrafa Térmica Inoxidável com Tampa e Canudo
+                        - generic [ref=e976]: Abrir em uma nova aba.
+                    - generic [ref=e980]:
+                      - generic [ref=e981]:
+                        - generic [ref=e983]:
+                          - generic [ref=e984]: R$45,81
+                          - generic [ref=e985]: R$45,81
+                        - generic [ref=e989]:
+                          - generic [ref=e990]: Preço original 86,14
+                          - text: 86,14
+                      - button "Adicionar ao carrinho" [ref=e992]:
+                        - img [ref=e994]
+                - group "Cofre Desafio Woodbox Cofrinho 10k / 1k Metodo Japones Kabebo MDF Adesivado" [ref=e997] [cursor=pointer]:
+                  - generic [ref=e998]:
+                    - generic [ref=e1001]:
+                      - link "imagem do item Cofre Desafio Woodbox Cofrinho 10k / 1k Metodo Japones Kabebo MDF Adesivado Abrir em uma nova aba." [ref=e1004]:
+                        - generic [ref=e1005]:
+                          - img [ref=e1006]
+                          - img [ref=e1007]
+                      - button "Olhar rápido" [ref=e1010]:
+                        - generic [ref=e1012]:
+                          - img [ref=e1013]
+                          - generic [ref=e1015]: Olhar rápido
+                    - link "Cofre Desafio Woodbox Cofrinho 10k / 1k Metodo Japones Kabebo MDF Adesivado Abrir em uma nova aba." [ref=e1020]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604975904205687&_oak_mp_inf=EPfW%2BO6Ox4kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJfx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F20add70114%2F8764ac89-97b6-498c-8390-2b8a7d74ea46_1200x1200.png&spec_gallery_id=537994&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTMxOQ&_oak_gallery_order=964167885%2C728117032%2C1938729229
+                      - heading "Cofre Desafio Woodbox Cofrinho 10k / 1k Metodo Japones Kabebo MDF Adesivado Abrir em uma nova aba." [level=3] [ref=e1021]:
+                        - generic [ref=e1022]: Cofre Desafio Woodbox Cofrinho 10k / 1k Metodo Japones Kabebo MDF Adesivado
+                        - generic [ref=e1023]: Abrir em uma nova aba.
+                    - generic [ref=e1027]:
+                      - generic [ref=e1028]:
+                        - generic [ref=e1030]:
+                          - generic [ref=e1031]: R$13,19
+                          - generic [ref=e1032]: R$13,19
+                        - generic [ref=e1036]:
+                          - generic [ref=e1037]: Preço original 14,90
+                          - text: 14,90
+                      - button "Adicionar ao carrinho" [ref=e1039]:
+                        - img [ref=e1041]
+                - group "Galaxy S25 PLUS 24 PRO 23 ULTRA e NOTE 20 A55 A56 A16 e Mais Modelos Projetados com Moldura Macia Eletroplatinada, Proteção Contra Quedas e Impactos, Capa Protetora Durável para Smartphones Combinando Tecnologia Avançada de Eletroplatinagem e Painel de Vidro com Padrão HD SX1021DD305, Proteção para" [ref=e1044] [cursor=pointer]:
+                  - generic [ref=e1045]:
+                    - generic [ref=e1048]:
+                      - link "imagem do item Galaxy S25 PLUS 24 PRO 23 ULTRA e NOTE 20 A55 A56 A16 e Mais Modelos Projetados com Moldura Macia Eletroplatinada, Proteção Contra Quedas e Impactos, Capa Protetora Durável para Smartphones Combinando Tecnologia Avançada de Eletroplatinagem e Painel de Vidro com Padrão HD SX1021DD305, Proteção para Abrir em uma nova aba." [ref=e1051]:
+                        - generic [ref=e1052]:
+                          - img [ref=e1053]
+                          - img [ref=e1054]
+                      - button "Olhar rápido" [ref=e1057]:
+                        - generic [ref=e1059]:
+                          - img [ref=e1060]
+                          - generic [ref=e1062]: Olhar rápido
+                    - link "Galaxy S25 PLUS 24 PRO 23 ULTRA e NOTE 20 A55 A56 A16 e Mais Modelos Projetados com Moldura Macia Eletroplatinada, Proteção Contra Quedas e Impactos, Capa Protetora Durável para Smartphones Combinando Tecnologia Avançada de Eletroplatinagem e Painel de Vidro com Padrão HD SX1021DD305, Proteção para Abrir em uma nova aba." [ref=e1067]:
+                      - /url: goods.html?_bg_fs=1&goods_id=601104629905336&_oak_mp_inf=ELjvwJ%2B51ogBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJfx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Fproduct%2Fopen%2Ff9f6ecac53c54eac8be83330fb131863-goods.jpeg&spec_gallery_id=97221&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MzA5Nw&_oak_gallery_order=451661080%2C369557806%2C1686881054%2C113322555%2C1534826687
+                      - heading "Galaxy S25 PLUS 24 PRO 23 ULTRA e NOTE 20 A55 A56 A16 e Mais Modelos Projetados com Moldura Macia Eletroplatinada, Proteção Contra Quedas e Impactos, Capa Protetora Durável para Smartphones Combinando Tecnologia Avançada de Eletroplatinagem e Painel de Vidro com Padrão HD SX1021DD305, Proteção para Abrir em uma nova aba." [level=3] [ref=e1068]:
+                        - generic [ref=e1069]: Galaxy S25 PLUS 24 PRO 23 ULTRA e NOTE 20 A55 A56 A16 e Mais Modelos Projetados com Moldura Macia Eletroplatinada, Proteção Contra Quedas e Impactos, Capa Protetora Durável para Smartphones Combinando Tecnologia Avançada de Eletroplatinagem e Painel de Vidro com Padrão HD SX1021DD305, Proteção para
+                        - generic [ref=e1070]: Abrir em uma nova aba.
+                    - generic [ref=e1074]:
+                      - generic [ref=e1077]:
+                        - generic [ref=e1078]: R$30,97
+                        - generic [ref=e1079]: R$30,97
+                      - button "Adicionar ao carrinho" [ref=e1082]:
+                        - img [ref=e1084]
+                - group "DLI Drone E88 Fotografia Aérea 1080P Câmera Dupla Controle Remoto Dobrável de Fluxo+1 Baterias" [ref=e1087] [cursor=pointer]:
+                  - generic [ref=e1088]:
+                    - generic [ref=e1091]:
+                      - link "imagem do item DLI Drone E88 Fotografia Aérea 1080P Câmera Dupla Controle Remoto Dobrável de Fluxo+1 Baterias Abrir em uma nova aba." [ref=e1094]:
+                        - generic [ref=e1095]:
+                          - img [ref=e1096]
+                          - img [ref=e1097]
+                      - button "Olhar rápido" [ref=e1100]:
+                        - generic [ref=e1102]:
+                          - img [ref=e1103]
+                          - generic [ref=e1105]: Olhar rápido
+                    - link "DLI Drone E88 Fotografia Aérea 1080P Câmera Dupla Controle Remoto Dobrável de Fluxo+1 Baterias Abrir em uma nova aba." [ref=e1110]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604721964261669&_oak_mp_inf=EKXC%2BO7cv4kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJfx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F212a0c6ef8%2F52bd9f5f-5b47-41d5-8745-a96e9e80c1e1_1200x1200.jpeg.format.jpg&spec_gallery_id=607214&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTIxMDM&_oak_gallery_order=2040467464%2C1800904007%2C1767689219%2C1504141649%2C287104724
+                      - heading "DLI Drone E88 Fotografia Aérea 1080P Câmera Dupla Controle Remoto Dobrável de Fluxo+1 Baterias Abrir em uma nova aba." [level=3] [ref=e1111]:
+                        - generic [ref=e1112]: DLI Drone E88 Fotografia Aérea 1080P Câmera Dupla Controle Remoto Dobrável de Fluxo+1 Baterias
+                        - generic [ref=e1113]: Abrir em uma nova aba.
+                    - generic [ref=e1117]:
+                      - generic [ref=e1118]:
+                        - generic [ref=e1120]:
+                          - generic [ref=e1121]: R$121,03
+                          - generic [ref=e1122]: R$121,03
+                        - generic [ref=e1126]:
+                          - generic [ref=e1127]: Preço original 189,60
+                          - text: 189,60
+                      - button "Adicionar ao carrinho" [ref=e1129]:
+                        - img [ref=e1131]
+                - group "Kit Com 5 Boxers Masculinas Microfibra Cueca Boxer Masculina Cueca Box" [ref=e1134] [cursor=pointer]:
+                  - generic [ref=e1135]:
+                    - generic [ref=e1138]:
+                      - link "imagem do item Kit Com 5 Boxers Masculinas Microfibra Cueca Boxer Masculina Cueca Box Abrir em uma nova aba." [ref=e1141]:
+                        - generic [ref=e1142]:
+                          - img [ref=e1143]
+                          - img [ref=e1144]
+                      - button "Olhar rápido" [ref=e1147]:
+                        - generic [ref=e1149]:
+                          - img [ref=e1150]
+                          - generic [ref=e1152]: Olhar rápido
+                    - link "Kit Com 5 Boxers Masculinas Microfibra Cueca Boxer Masculina Cueca Box Abrir em uma nova aba." [ref=e1157]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605014022017550&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F5e94593a%2F1b384ebc-2816-4bd3-819d-27c8881861b9%2F70d177592c21bb44f9e1df24f6c1a87c.jpeg.a.jpg&spec_id=16066&spec_gallery_id=230842&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MjQ1Mw&_oak_gallery_order=415414835%2C1270216547%2C1837209798%2C973354602%2C768372685&spec_ids=16066&_oak_mp_inf=EI6k9%2B6cyIkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJjx7oPkMw%3D%3D
+                      - heading "Kit Com 5 Boxers Masculinas Microfibra Cueca Boxer Masculina Cueca Box Abrir em uma nova aba." [level=3] [ref=e1158]:
+                        - generic [ref=e1159]: Kit Com 5 Boxers Masculinas Microfibra Cueca Boxer Masculina Cueca Box
+                        - generic [ref=e1160]: Abrir em uma nova aba.
+                    - generic [ref=e1164]:
+                      - generic [ref=e1165]:
+                        - generic [ref=e1167]:
+                          - generic [ref=e1168]: R$24,53
+                          - generic [ref=e1169]: R$24,53
+                        - generic [ref=e1173]:
+                          - generic [ref=e1174]: Preço original 67,63
+                          - text: 67,63
+                      - button "Adicionar ao carrinho" [ref=e1176]:
+                        - img [ref=e1178]
+                - group "Tênis Esportivo Academia Caminhada ao ar livre confortável Lançamento Unissex para Corrida up" [ref=e1181] [cursor=pointer]:
+                  - generic [ref=e1182]:
+                    - generic [ref=e1185]:
+                      - link "imagem do item Tênis Esportivo Academia Caminhada ao ar livre confortável Lançamento Unissex para Corrida up Abrir em uma nova aba." [ref=e1188]:
+                        - generic [ref=e1189]:
+                          - img [ref=e1190]
+                          - img [ref=e1191]
+                      - button "Olhar rápido" [ref=e1194]:
+                        - generic [ref=e1196]:
+                          - img [ref=e1197]
+                          - generic [ref=e1199]: Olhar rápido
+                    - link "Tênis Esportivo Academia Caminhada ao ar livre confortável Lançamento Unissex para Corrida up Abrir em uma nova aba." [ref=e1204]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604910674347824&_oak_mp_inf=ELCO9u6bxYkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJjx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F211a2a4a1cc%2F5e546806-cbf3-4491-a43e-3dedf597a212_1200x1200.jpeg.format.jpg&spec_gallery_id=31107507813&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=NTM0Ng&_oak_gallery_order=222011613%2C1980188424%2C1021907338%2C399827811%2C884218445
+                      - heading "Tênis Esportivo Academia Caminhada ao ar livre confortável Lançamento Unissex para Corrida up Abrir em uma nova aba." [level=3] [ref=e1205]:
+                        - generic [ref=e1206]: Tênis Esportivo Academia Caminhada ao ar livre confortável Lançamento Unissex para Corrida up
+                        - generic [ref=e1207]: Abrir em uma nova aba.
+                    - generic [ref=e1211]:
+                      - generic [ref=e1212]:
+                        - generic [ref=e1214]:
+                          - generic [ref=e1215]: R$53,46
+                          - generic [ref=e1216]: R$53,46
+                        - generic [ref=e1220]:
+                          - generic [ref=e1221]: Preço original 97,00
+                          - text: 97,00
+                      - button "Adicionar ao carrinho" [ref=e1223]:
+                        - img [ref=e1225]
+                - group "Mochila Unissex Reforçada para Viagem e Compartimento para Notebook - Cabo de Aço Grande Resistente e Moderna" [ref=e1228] [cursor=pointer]:
+                  - generic [ref=e1229]:
+                    - generic [ref=e1232]:
+                      - link "imagem do item Mochila Unissex Reforçada para Viagem e Compartimento para Notebook - Cabo de Aço Grande Resistente e Moderna Abrir em uma nova aba." [ref=e1235]:
+                        - generic [ref=e1236]:
+                          - img [ref=e1237]
+                          - img [ref=e1238]
+                      - button "Olhar rápido" [ref=e1241]:
+                        - generic [ref=e1243]:
+                          - img [ref=e1244]
+                          - generic [ref=e1246]: Olhar rápido
+                    - link "Mochila Unissex Reforçada para Viagem e Compartimento para Notebook - Cabo de Aço Grande Resistente e Moderna Abrir em uma nova aba." [ref=e1251]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605314887863096&_oak_mp_inf=ELiW%2Bdb90IkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJjx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F20add702f4%2Fc504d85f-7149-44ae-952a-7d249eec74fc.jpeg&spec_gallery_id=422136&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MjkzMw&_oak_gallery_order=337035229%2C1040294779%2C717082598%2C1666564384%2C150188186
+                      - heading "Mochila Unissex Reforçada para Viagem e Compartimento para Notebook - Cabo de Aço Grande Resistente e Moderna Abrir em uma nova aba." [level=3] [ref=e1252]:
+                        - generic [ref=e1253]: Mochila Unissex Reforçada para Viagem e Compartimento para Notebook - Cabo de Aço Grande Resistente e Moderna
+                        - generic [ref=e1254]: Abrir em uma nova aba.
+                    - generic [ref=e1258]:
+                      - generic [ref=e1259]:
+                        - generic [ref=e1261]:
+                          - generic [ref=e1262]: R$29,33
+                          - generic [ref=e1263]: R$29,33
+                        - generic [ref=e1266]:
+                          - generic [ref=e1267]:
+                            - generic [ref=e1268]: Preço original 34,57
+                            - text: 34,57
+                          - button "Detalhes" [ref=e1269]:
+                            - img "Detalhes" [ref=e1270]
+                      - button "Adicionar ao carrinho" [ref=e1272]:
+                        - img [ref=e1274]
+                - group "Pote Hermético de Vidro Borossilicato com Tampa Trava – Anti Vazamento, Micro-ondas, Freezer, Marmita e Organização" [ref=e1277] [cursor=pointer]:
+                  - generic [ref=e1278]:
+                    - generic [ref=e1281]:
+                      - link "imagem do item Pote Hermético de Vidro Borossilicato com Tampa Trava – Anti Vazamento, Micro-ondas, Freezer, Marmita e Organização Abrir em uma nova aba." [ref=e1284]:
+                        - generic [ref=e1285]:
+                          - img [ref=e1286]
+                          - img [ref=e1287]
+                      - button "Olhar rápido" [ref=e1290]:
+                        - generic [ref=e1292]:
+                          - img [ref=e1293]
+                          - generic [ref=e1295]: Olhar rápido
+                    - link "Pote Hermético de Vidro Borossilicato com Tampa Trava – Anti Vazamento, Micro-ondas, Freezer, Marmita e Organização Abrir em uma nova aba." [ref=e1300]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605423922992143&_oak_mp_inf=EI%2Bo%2Be6T1IkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJjx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F21137b24c6c%2F85ca6e32-0607-4cc1-b53c-80806a006936_1024x1024.jpeg.format.jpg&spec_gallery_id=31849840200&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTg5NA&_oak_gallery_order=346492587%2C1207017446%2C1174485237%2C1139720922%2C2072244317
+                      - heading "Pote Hermético de Vidro Borossilicato com Tampa Trava – Anti Vazamento, Micro-ondas, Freezer, Marmita e Organização Abrir em uma nova aba." [level=3] [ref=e1301]:
+                        - generic [ref=e1302]: Pote Hermético de Vidro Borossilicato com Tampa Trava – Anti Vazamento, Micro-ondas, Freezer, Marmita e Organização
+                        - generic [ref=e1303]: Abrir em uma nova aba.
+                    - generic [ref=e1307]:
+                      - generic [ref=e1308]:
+                        - generic [ref=e1310]:
+                          - generic [ref=e1311]: R$18,94
+                          - generic [ref=e1312]: R$18,94
+                        - generic [ref=e1315]:
+                          - generic [ref=e1316]:
+                            - generic [ref=e1317]: Preço original 25,12
+                            - text: 25,12
+                          - button "Detalhes" [ref=e1318]:
+                            - img "Detalhes" [ref=e1319]
+                      - button "Adicionar ao carrinho" [ref=e1321]:
+                        - img [ref=e1323]
+                - group "Blusa Feminina Algodão Cristã Evangélica TShirt Camiseta Onde há Fé Marsala" [ref=e1326] [cursor=pointer]:
+                  - generic [ref=e1327]:
+                    - generic [ref=e1330]:
+                      - link "imagem do item Blusa Feminina Algodão Cristã Evangélica TShirt Camiseta Onde há Fé Marsala Abrir em uma nova aba." [ref=e1333]:
+                        - generic [ref=e1334]:
+                          - img [ref=e1335]
+                          - img [ref=e1336]
+                      - button "Olhar rápido" [ref=e1339]:
+                        - generic [ref=e1341]:
+                          - img [ref=e1342]
+                          - generic [ref=e1344]: Olhar rápido
+                    - link "Blusa Feminina Algodão Cristã Evangélica TShirt Camiseta Onde há Fé Marsala Abrir em uma nova aba." [ref=e1349]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605156292799678&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F20add7012c%2F20707265-df65-4d63-9e8e-f39f0ebfe2f9.jpeg&spec_id=103796251&spec_gallery_id=163861&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTY5OA&_oak_gallery_order=876126448%2C1202654326%2C1554199572%2C629445808%2C1702230972&spec_ids=103796251,3002,165682163,16104,197719322,16101&_oak_mp_inf=EL7Z9u6uzIkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJnx7oPkMw%3D%3D
+                      - heading "Blusa Feminina Algodão Cristã Evangélica TShirt Camiseta Onde há Fé Marsala Abrir em uma nova aba." [level=3] [ref=e1350]:
+                        - generic [ref=e1351]: Blusa Feminina Algodão Cristã Evangélica TShirt Camiseta Onde há Fé Marsala
+                        - generic [ref=e1352]: Abrir em uma nova aba.
+                    - generic [ref=e1356]:
+                      - generic [ref=e1357]:
+                        - generic [ref=e1359]:
+                          - generic [ref=e1360]: R$16,98
+                          - generic [ref=e1361]: R$16,98
+                        - generic [ref=e1365]:
+                          - generic [ref=e1366]: Preço original 35,90
+                          - text: 35,90
+                      - button "Adicionar ao carrinho" [ref=e1368]:
+                        - img [ref=e1370]
+                - group "Blusa Feminina da Moda de Manga Curta e Gola Redonda com Estampa de Gatinho Fofo e Delicado Escalando uma Corda, Estampa de Tamanho Padrão, Lavável à Máquina, Adequada para Uso Casual na Primavera, Verão e Outono. Design Estampado sem Textura" [ref=e1373] [cursor=pointer]:
+                  - generic [ref=e1374]:
+                    - generic [ref=e1377]:
+                      - link "imagem do item Blusa Feminina da Moda de Manga Curta e Gola Redonda com Estampa de Gatinho Fofo e Delicado Escalando uma Corda, Estampa de Tamanho Padrão, Lavável à Máquina, Adequada para Uso Casual na Primavera, Verão e Outono. Design Estampado sem Textura Abrir em uma nova aba." [ref=e1380]:
+                        - generic [ref=e1381]:
+                          - img [ref=e1382]
+                          - img [ref=e1383]
+                      - button "Olhar rápido" [ref=e1386]:
+                        - generic [ref=e1388]:
+                          - img [ref=e1389]
+                          - generic [ref=e1391]: Olhar rápido
+                    - link "Blusa Feminina da Moda de Manga Curta e Gola Redonda com Estampa de Gatinho Fofo e Delicado Escalando uma Corda, Estampa de Tamanho Padrão, Lavável à Máquina, Adequada para Uso Casual na Primavera, Verão e Outono. Design Estampado sem Textura Abrir em uma nova aba." [ref=e1396]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605283262798758&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F211a2a49c9a%2F1af9f84a-8a73-47e9-a650-00a52453d0c2.jpeg&spec_id=129920586&spec_gallery_id=230863&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MjYyNg&_oak_gallery_order=1390081774&spec_ids=129920586&_oak_mp_inf=EKa3%2BO6H0IkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJnx7oPkMw%3D%3D
+                      - heading "Blusa Feminina da Moda de Manga Curta e Gola Redonda com Estampa de Gatinho Fofo e Delicado Escalando uma Corda, Estampa de Tamanho Padrão, Lavável à Máquina, Adequada para Uso Casual na Primavera, Verão e Outono. Design Estampado sem Textura Abrir em uma nova aba." [level=3] [ref=e1397]:
+                        - generic [ref=e1398]: Blusa Feminina da Moda de Manga Curta e Gola Redonda com Estampa de Gatinho Fofo e Delicado Escalando uma Corda, Estampa de Tamanho Padrão, Lavável à Máquina, Adequada para Uso Casual na Primavera, Verão e Outono. Design Estampado sem Textura
+                        - generic [ref=e1399]: Abrir em uma nova aba.
+                    - generic [ref=e1403]:
+                      - generic [ref=e1404]:
+                        - generic [ref=e1406]:
+                          - generic [ref=e1407]: R$26,26
+                          - generic [ref=e1408]: R$26,26
+                        - generic [ref=e1412]:
+                          - generic [ref=e1413]: Preço original 49,90
+                          - text: 49,90
+                      - button "Adicionar ao carrinho" [ref=e1415]:
+                        - img [ref=e1417]
+                - group "Um Par de Brincos Curvos em Forma de Garra para Mulher, Banhados a Ouro de 18K, Apresentando um Design Luxuoso e Deslumbrante, Estilo Único Adequado para Festivais de Música e Várias Ocasiões do Dia a Dia, um Presente Perfeito para Mulheres, Hipoalergénico" [ref=e1420] [cursor=pointer]:
+                  - generic [ref=e1421]:
+                    - generic [ref=e1424]:
+                      - link "imagem do item Um Par de Brincos Curvos em Forma de Garra para Mulher, Banhados a Ouro de 18K, Apresentando um Design Luxuoso e Deslumbrante, Estilo Único Adequado para Festivais de Música e Várias Ocasiões do Dia a Dia, um Presente Perfeito para Mulheres, Hipoalergénico Abrir em uma nova aba." [ref=e1427]:
+                        - generic [ref=e1428]:
+                          - img [ref=e1429]
+                          - img [ref=e1430]
+                      - button "Olhar rápido" [ref=e1433]:
+                        - generic [ref=e1435]:
+                          - img [ref=e1436]
+                          - generic [ref=e1438]: Olhar rápido
+                    - link "Um Par de Brincos Curvos em Forma de Garra para Mulher, Banhados a Ouro de 18K, Apresentando um Design Luxuoso e Deslumbrante, Estilo Único Adequado para Festivais de Música e Várias Ocasiões do Dia a Dia, um Presente Perfeito para Mulheres, Hipoalergénico Abrir em uma nova aba." [ref=e1443]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605943932755379&_oak_mp_inf=ELO79oal44kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJrx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Fproduct%2Ffancy%2F9f259d1b-b383-47a2-baf2-697a4bb32d82.jpg&spec_gallery_id=30299636834&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=ODI0&_oak_gallery_order=988268159%2C549312728%2C1036259677%2C1003379855%2C1501466134
+                      - heading "Um Par de Brincos Curvos em Forma de Garra para Mulher, Banhados a Ouro de 18K, Apresentando um Design Luxuoso e Deslumbrante, Estilo Único Adequado para Festivais de Música e Várias Ocasiões do Dia a Dia, um Presente Perfeito para Mulheres, Hipoalergénico Abrir em uma nova aba." [level=3] [ref=e1444]:
+                        - generic [ref=e1445]: Um Par de Brincos Curvos em Forma de Garra para Mulher, Banhados a Ouro de 18K, Apresentando um Design Luxuoso e Deslumbrante, Estilo Único Adequado para Festivais de Música e Várias Ocasiões do Dia a Dia, um Presente Perfeito para Mulheres, Hipoalergénico
+                        - generic [ref=e1446]: Abrir em uma nova aba.
+                    - generic [ref=e1450]:
+                      - generic [ref=e1451]:
+                        - generic [ref=e1453]:
+                          - generic [ref=e1454]: R$8,24
+                          - generic [ref=e1455]: R$8,24
+                        - generic [ref=e1459]:
+                          - generic [ref=e1460]: Preço original 18,90
+                          - text: 18,90
+                      - button "Adicionar ao carrinho" [ref=e1462]:
+                        - img [ref=e1464]
+                - group "Porta Papel Toalha Triplo Suporte Preto Rolos Para Cozinha 3 em 1" [ref=e1467] [cursor=pointer]:
+                  - generic [ref=e1468]:
+                    - generic [ref=e1471]:
+                      - link "imagem do item Porta Papel Toalha Triplo Suporte Preto Rolos Para Cozinha 3 em 1 Abrir em uma nova aba." [ref=e1474]:
+                        - generic [ref=e1475]:
+                          - img [ref=e1476]
+                          - img [ref=e1477]
+                      - button "Olhar rápido" [ref=e1480]:
+                        - generic [ref=e1482]:
+                          - img [ref=e1483]
+                          - generic [ref=e1485]: Olhar rápido
+                    - link "Porta Papel Toalha Triplo Suporte Preto Rolos Para Cozinha 3 em 1 Abrir em uma nova aba." [ref=e1490]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604625864362517&_oak_mp_inf=EJWU%2BO72vIkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJrx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F20add70000%2F0c7639aa-f867-475e-9ebe-a9612880fe94.jpeg&spec_gallery_id=279127&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTMzNw&_oak_gallery_order=700782108%2C1428771743
+                      - heading "Porta Papel Toalha Triplo Suporte Preto Rolos Para Cozinha 3 em 1 Abrir em uma nova aba." [level=3] [ref=e1491]:
+                        - generic [ref=e1492]: Porta Papel Toalha Triplo Suporte Preto Rolos Para Cozinha 3 em 1
+                        - generic [ref=e1493]: Abrir em uma nova aba.
+                    - generic [ref=e1497]:
+                      - generic [ref=e1500]:
+                        - generic [ref=e1501]: R$13,37
+                        - generic [ref=e1502]: R$13,37
+                      - button "Adicionar ao carrinho" [ref=e1505]:
+                        - img [ref=e1507]
+                - group "Fone Ouvido F9 TWS Sem Fio 5.0 Bluetooth Estério Redução De Ruído Charging Compartment - Alta Definição" [ref=e1510] [cursor=pointer]:
+                  - generic [ref=e1511]:
+                    - generic [ref=e1514]:
+                      - link "imagem do item Fone Ouvido F9 TWS Sem Fio 5.0 Bluetooth Estério Redução De Ruído Charging Compartment - Alta Definição Abrir em uma nova aba." [ref=e1517]:
+                        - generic [ref=e1518]:
+                          - img [ref=e1519]
+                          - img [ref=e1520]
+                      - button "Olhar rápido" [ref=e1523]:
+                        - generic [ref=e1525]:
+                          - img [ref=e1526]
+                          - generic [ref=e1528]: Olhar rápido
+                    - link "Fone Ouvido F9 TWS Sem Fio 5.0 Bluetooth Estério Redução De Ruído Charging Compartment - Alta Definição Abrir em uma nova aba." [ref=e1533]:
+                      - /url: goods.html?_bg_fs=1&goods_id=604582109404162&_oak_mp_inf=EIK4%2Be7Tu4kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJrx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F5c39ef99%2F7d610410-0c79-4188-9e14-001f05cebd7f%2F04aca7f2bcb0a6bb436d567cc3bb7b65.jpeg.a.jpg&spec_gallery_id=31589726379&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTU5NA&_oak_gallery_order=646711218%2C79298637%2C1319489145%2C714904556%2C2144514228
+                      - heading "Fone Ouvido F9 TWS Sem Fio 5.0 Bluetooth Estério Redução De Ruído Charging Compartment - Alta Definição Abrir em uma nova aba." [level=3] [ref=e1534]:
+                        - generic [ref=e1535]: Fone Ouvido F9 TWS Sem Fio 5.0 Bluetooth Estério Redução De Ruído Charging Compartment - Alta Definição
+                        - generic [ref=e1536]: Abrir em uma nova aba.
+                    - generic [ref=e1540]:
+                      - generic [ref=e1541]:
+                        - generic [ref=e1543]:
+                          - generic [ref=e1544]: R$15,94
+                          - generic [ref=e1545]: R$15,94
+                        - generic [ref=e1548]:
+                          - generic [ref=e1549]:
+                            - generic [ref=e1550]: Preço original 34,25
+                            - text: 34,25
+                          - button "Detalhes" [ref=e1551]:
+                            - img "Detalhes" [ref=e1552]
+                      - button "Adicionar ao carrinho" [ref=e1554]:
+                        - img [ref=e1556]
+                - group "Sapateira Organizadora 4 Andares Compacta Resistente e Ideal para Seu Lar" [ref=e1559] [cursor=pointer]:
+                  - generic [ref=e1560]:
+                    - generic [ref=e1563]:
+                      - link "imagem do item Sapateira Organizadora 4 Andares Compacta Resistente e Ideal para Seu Lar Abrir em uma nova aba." [ref=e1566]:
+                        - generic [ref=e1567]:
+                          - img [ref=e1568]
+                          - img [ref=e1569]
+                      - button "Olhar rápido" [ref=e1572]:
+                        - generic [ref=e1574]:
+                          - img [ref=e1575]
+                          - generic [ref=e1577]: Olhar rápido
+                    - link "Sapateira Organizadora 4 Andares Compacta Resistente e Ideal para Seu Lar Abrir em uma nova aba." [ref=e1582]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605161929967123&_oak_mp_inf=EJOM%2BO7DzIkBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJrx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2F21137b256b0%2Faf02ea3e-9823-48b5-a7ff-07113727b26c_846x846.jpeg.format.jpg&spec_gallery_id=32053040726&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MTg5Ng&_oak_gallery_order=1605922584%2C1801841184
+                      - heading "Sapateira Organizadora 4 Andares Compacta Resistente e Ideal para Seu Lar Abrir em uma nova aba." [level=3] [ref=e1583]:
+                        - generic [ref=e1584]: Sapateira Organizadora 4 Andares Compacta Resistente e Ideal para Seu Lar
+                        - generic [ref=e1585]: Abrir em uma nova aba.
+                    - generic [ref=e1589]:
+                      - generic [ref=e1590]:
+                        - generic [ref=e1592]:
+                          - generic [ref=e1593]: R$18,96
+                          - generic [ref=e1594]: R$18,96
+                        - generic [ref=e1598]:
+                          - generic [ref=e1599]: Preço original 35,99
+                          - text: 35,99
+                      - button "Adicionar ao carrinho" [ref=e1601]:
+                        - img [ref=e1603]
+                - group "tênis fe." [ref=e1606] [cursor=pointer]:
+                  - generic [ref=e1607]:
+                    - generic [ref=e1610]:
+                      - link "imagem do item tênis fe. Abrir em uma nova aba." [ref=e1613]:
+                        - generic [ref=e1614]:
+                          - img [ref=e1615]
+                          - img [ref=e1616]
+                      - button "Olhar rápido" [ref=e1619]:
+                        - generic [ref=e1621]:
+                          - img [ref=e1622]
+                          - generic [ref=e1624]: Olhar rápido
+                    - link "tênis fe. Abrir em uma nova aba." [ref=e1629]:
+                      - /url: goods.html?_bg_fs=1&goods_id=605263935455848&_oak_mp_inf=EOiE%2Be6%2Fz4kBGitiYWNrdXBfYzgzNjQxMTYtZjI1Yy00ZTY2LTllOTUtZWRmOTI4MjZkNDQ3IJrx7oPkMw%3D%3D&top_gallery_url=https%3A%2F%2Fimg.kwcdn.com%2Flocal-image%2Fs132%2Fb101aeac%2F976c2d2a-6e4d-450e-bc00-7df84dd8fdd2%2Fef79dae699f9a9dec9848a17628b46a9.jpeg.a.jpg&spec_gallery_id=605263935455848&refer_page_sn=0&freesia_scene=1&_oak_freesia_scene=1&_oak_rec_ext_1=MjQ1OA&_oak_gallery_order=1337897163%2C1485713293%2C397140319%2C257809176%2C1872466772
+                      - heading "tênis fe. Abrir em uma nova aba." [level=3] [ref=e1630]:
+                        - generic [ref=e1631]: tênis fe.
+                        - generic [ref=e1632]: Abrir em uma nova aba.
+                    - generic [ref=e1636]:
+                      - generic [ref=e1637]:
+                        - generic [ref=e1639]:
+                          - generic [ref=e1640]: R$24,58
+                          - generic [ref=e1641]: R$24,58
+                        - generic [ref=e1645]:
+                          - generic [ref=e1646]: Preço original 49,99
+                          - text: 49,99
+                      - button "Adicionar ao carrinho" [ref=e1648]:
+                        - img [ref=e1650]
+              - region [ref=e1701]
+            - generic: Kit Com 5 Boxers Masculina poliamida Cueca Boxer Confortável
+      - contentinfo [ref=e1703]:
+        - generic [ref=e1704]:
+          - generic [ref=e1705]:
+            - generic [ref=e1706]:
+              - generic [ref=e1707]: Informações da empresa
+              - list [ref=e1708]:
+                - listitem [ref=e1709]:
+                  - link "Sobre a Temu" [ref=e1710] [cursor=pointer]:
+                    - /url: /br/about-temu.html
+                - listitem [ref=e1711]:
+                  - 'link "Programa de Afiliados e Influenciadores: Junte-se para ganhar" [ref=e1712] [cursor=pointer]':
+                    - /url: /br/affiliate_influencer_program.html
+                - listitem [ref=e1713]:
+                  - link "Fale conosco" [ref=e1714] [cursor=pointer]:
+                    - /url: /br/contact-us.html
+                - listitem [ref=e1715]:
+                  - link "Carreiras" [ref=e1716] [cursor=pointer]:
+                    - /url: /br/careers.html
+                - listitem [ref=e1717]:
+                  - link "Imprensa" [ref=e1718] [cursor=pointer]:
+                    - /url: /br/press.html
+                - listitem [ref=e1719]:
+                  - link "Programa de Plantação de Árvores da Temu" [ref=e1720] [cursor=pointer]:
+                    - /url: /br/tree-landing.html
+            - generic [ref=e1721]:
+              - generic [ref=e1722]: Serviço de Atendimento ao Cliente
+              - list [ref=e1723]:
+                - listitem [ref=e1724]:
+                  - link "Política de devolução e reembolso" [ref=e1725] [cursor=pointer]:
+                    - /url: /br/return-and-refund-policy.html
+                - listitem [ref=e1726]:
+                  - link "Política de Propriedade Intelectual" [ref=e1727] [cursor=pointer]:
+                    - /url: /br/intellectual-property-policy.html
+                - listitem [ref=e1728]:
+                  - link "Informações de envio" [ref=e1729] [cursor=pointer]:
+                    - /url: /br/shipping-info.html
+                - listitem [ref=e1730]:
+                  - link "Relatar atividades suspeitas" [ref=e1731] [cursor=pointer]:
+                    - /url: /br/bgch_report_suspicious.html
+            - generic [ref=e1732]:
+              - generic [ref=e1733]: Ajuda
+              - list [ref=e1734]:
+                - listitem [ref=e1735]:
+                  - link "Atendimento ao Cliente e FAQ" [ref=e1736] [cursor=pointer]:
+                    - /url: /br/support-center.html
+                - listitem [ref=e1737]:
+                  - link "Centro de segurança" [ref=e1738] [cursor=pointer]:
+                    - /url: /br/safety-center.html
+                - listitem [ref=e1739]:
+                  - link "Proteção de compras da Temu" [ref=e1740] [cursor=pointer]:
+                    - /url: /br/temu-purchase-protection.html
+                - listitem [ref=e1741]:
+                  - link "Parcerias com a Temu" [ref=e1742] [cursor=pointer]:
+                    - /url: /br/partner-with-temu.html
+            - generic [ref=e1743]:
+              - generic [ref=e1746]:
+                - generic [ref=e1747]: Comece a vender para milhões de compradores na Temu
+                - button "Abra uma Loja" [ref=e1748] [cursor=pointer]:
+                  - generic [ref=e1751]: Abra uma Loja
+              - generic [ref=e1752]:
+                - link "Baixe o app Temu" [ref=e1753] [cursor=pointer]:
+                  - /url: /br/app.html
+                  - generic [ref=e1754]: Baixe o app Temu
+                - generic [ref=e1755]:
+                  - generic [ref=e1756]:
+                    - generic [ref=e1757]:
+                      - img [ref=e1758]
+                      - generic [ref=e1759]: Alertas de redução de preço
+                    - generic [ref=e1761]:
+                      - img [ref=e1762]
+                      - generic [ref=e1763]: Localize as encomendas em qualquer altura
+                  - generic [ref=e1764]:
+                    - generic [ref=e1765]:
+                      - img [ref=e1766]
+                      - generic [ref=e1767]: Finalização da compra mais rápida e segura
+                    - generic [ref=e1769]:
+                      - img [ref=e1770]
+                      - generic [ref=e1771]: Alertas de artigos com pouco stock
+                  - generic [ref=e1772]:
+                    - generic [ref=e1773]:
+                      - img [ref=e1774]
+                      - generic [ref=e1775]: Ofertas exclusivas
+                    - generic [ref=e1777]:
+                      - img [ref=e1778]
+                      - generic [ref=e1779]: Alertas de cupões e ofertas
+                - generic [ref=e1780]:
+                  - link "Baixe na App Store" [ref=e1781] [cursor=pointer]:
+                    - /url: https://apps.apple.com/us/app/temu-team-up-price-down/id1641486558
+                    - img [ref=e1782]
+                    - generic [ref=e1783]:
+                      - generic [ref=e1784]: Disponível na
+                      - generic [ref=e1785]: App Store
+                  - link "Baixe no Google Play" [ref=e1786] [cursor=pointer]:
+                    - /url: https://play.google.com/store/apps/details?id=com.einnovation.temu&hl=en_US&gl=US
+                    - img [ref=e1787]
+                    - generic [ref=e1788]:
+                      - generic [ref=e1789]: Disponível no
+                      - generic [ref=e1790]: Google Play
+              - generic [ref=e1791]:
+                - generic [ref=e1792]: Encontre-nos
+                - generic [ref=e1793]:
+                  - link "Instagram" [ref=e1794] [cursor=pointer]:
+                    - /url: https://www.instagram.com/temu/
+                    - img [ref=e1795]
+                  - link "Facebook" [ref=e1796] [cursor=pointer]:
+                    - /url: https://www.facebook.com/shoptemu
+                    - img [ref=e1797]
+                  - link "Twitter" [ref=e1798] [cursor=pointer]:
+                    - /url: https://x.com/shoptemu
+                    - img [ref=e1799]
+                  - link "Tiktok" [ref=e1800] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@temu
+                    - img [ref=e1801]
+                  - link "Youtube" [ref=e1802] [cursor=pointer]:
+                    - /url: https://www.youtube.com/@temu
+                    - img [ref=e1803]
+                  - link "Pinterest" [ref=e1804] [cursor=pointer]:
+                    - /url: https://www.pinterest.com/shoptemu/
+                    - img [ref=e1805]
+          - generic [ref=e1806]:
+            - generic [ref=e1807]:
+              - generic [ref=e1808]: Certificações de segurança
+              - generic [ref=e1809]:
+                - img "PCI DSS" [ref=e1810]
+                - img "Visa Secure" [ref=e1811]
+                - img "Mastercard ID Check" [ref=e1812]
+                - img "SafeKey" [ref=e1813]
+                - img "Discover ProtectBuy" [ref=e1814]
+                - img "JCB J/Secure" [ref=e1815]
+                - img "APWG" [ref=e1816]
+                - img "Secured by PayPal" [ref=e1817]
+            - generic [ref=e1818]:
+              - generic [ref=e1819]: Aceitamos
+              - generic [ref=e1820]:
+                - img "pix" [ref=e1821]
+                - img "cartão visa" [ref=e1822]
+                - img "cartão mastercard" [ref=e1823]
+                - img "hipercard" [ref=e1824]
+                - img "cartão elo" [ref=e1825]
+                - img "cartão maestro" [ref=e1826]
+                - img "cartão amex" [ref=e1827]
+                - img "cartão discover" [ref=e1828]
+                - img "cartão dc" [ref=e1829]
+                - img "cartão jcb" [ref=e1830]
+                - img "boleto" [ref=e1831]
+                - img "applepay" [ref=e1832]
+                - img "PayPal" [ref=e1833]
+                - img "googlepay" [ref=e1834]
+                - img "pixInstallment" [ref=e1835]
+                - img "nubank" [ref=e1836]
+          - generic [ref=e1837]:
+            - generic [ref=e1838]:
+              - text: © 2022－2026 Whaleco Inc.
+              - link "Termos de uso" [ref=e1839] [cursor=pointer]:
+                - /url: /br/terms-of-use.html
+                - generic [ref=e1840]: Termos de uso
+              - link "Política de privacidade" [ref=e1841] [cursor=pointer]:
+                - /url: /br/privacy-and-cookie-policy.html?title=Privacy%20%26%20Cookie%20Policy&_bg_fs=0
+                - generic [ref=e1842]: Política de privacidade
+              - link "Suas escolhas de privacidade" [ref=e1843] [cursor=pointer]:
+                - /url: /br/bgp-privacy-policy-and-setting.html
+                - generic [ref=e1844]: Suas escolhas de privacidade
+                - img [ref=e1845]
+              - link "Escolhas de anúncios" [ref=e1846] [cursor=pointer]:
+                - /url: /br/cookie-and-similar-technologies-policy.html?anchor_id=limit_interest_base_advertising
+                - generic [ref=e1847]: Escolhas de anúncios
+            - generic [ref=e1848]: "Operadora: Elementary Innovation Pte. Ltd. – Endereço: 6 Raffles Quay, #14-06, Singapura (048580)."
+            - generic [ref=e1849]: "Representante Legal no Brasil: WHALECO BRASIL INTERMEDIAÇÃO LTDA / CNPJ nº 61.201.565/0001-21 – Av. Paulista 2064, Andar 14, Sala 1419, Bela Vista, São Paulo/SP – CEP: 01310-928."
+            - generic [ref=e1850]:
+              - text: "Para consultas e resolução de disputas, entre em contato com:"
+              - link "Atendimento ao Cliente." [ref=e1851] [cursor=pointer]:
+                - /url: /br/support-center.html?_x_sessn_id=kf7qlhafm4
+      - toolbar [ref=e1852]:
+        - button "99+ Mensagens Mensagens" [ref=e1855] [cursor=pointer]:
+          - generic [ref=e1857]:
+            - img [ref=e1858]
+            - generic [ref=e1861]: 99+
+          - generic [ref=e1862]:
+            - generic [ref=e1863]: Mensagens
+            - generic [ref=e1864]: Mensagens
+        - button "Feedback" [ref=e1867] [cursor=pointer]:
+          - generic [ref=e1869]: Feedback
+        - generic:
+          - button "Início":
+            - generic [ref=e1872]: Início

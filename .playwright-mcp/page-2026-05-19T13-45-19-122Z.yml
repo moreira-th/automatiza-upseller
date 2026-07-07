@@ -1,0 +1,104 @@
+- generic [ref=e3]:
+  - button "0 itens no carrinho" [ref=e5] [cursor=pointer]:
+    - img [ref=e7]
+    - generic [ref=e9]: Subtotal
+  - generic [ref=e77]:
+    - generic [ref=e80]:
+      - region [ref=e81]:
+        - generic [ref=e82]:
+          - button "Frete grátis Em pedidos acima de R$69" [ref=e84] [cursor=pointer]:
+            - img [ref=e85]
+            - generic [ref=e88]:
+              - generic [ref=e91]: Frete grátis
+              - generic [ref=e92]: Em pedidos acima de R$69
+          - list [ref=e96]:
+            - listitem [ref=e97]:
+              - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e99] [cursor=pointer]:
+                - img [ref=e100]
+                - generic [ref=e103]:
+                  - generic [ref=e106]: Sem imposto de importação
+                  - generic [ref=e107]: Para itens enviados por vendedores
+            - listitem [ref=e108]:
+              - button "Garantia de entrega Reembolso para qualquer problema" [ref=e110] [cursor=pointer]:
+                - img [ref=e111]
+                - generic [ref=e114]:
+                  - generic [ref=e117]: Garantia de entrega
+                  - generic [ref=e118]: Reembolso para qualquer problema
+            - listitem [ref=e119]:
+              - button "Devoluções gratuitas Até 90 dias*" [ref=e121] [cursor=pointer]:
+                - img [ref=e122]
+                - generic [ref=e125]:
+                  - generic [ref=e128]: Devoluções gratuitas
+                  - generic [ref=e129]: Até 90 dias*
+            - listitem [ref=e130]:
+              - button "Ajuste de preço No prazo de 30 dias" [ref=e132] [cursor=pointer]:
+                - img [ref=e133]
+                - generic [ref=e136]:
+                  - generic [ref=e139]: Ajuste de preço
+                  - generic [ref=e140]: No prazo de 30 dias
+            - listitem [ref=e141]:
+              - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e143] [cursor=pointer]:
+                - img [ref=e144]
+                - generic [ref=e147]:
+                  - generic [ref=e150]: Sem imposto de importação
+                  - generic [ref=e151]: Para itens enviados por vendedores
+          - button "Obtenha o app Temu" [ref=e154] [cursor=pointer]:
+            - img [ref=e155]
+            - generic [ref=e161]: Obtenha o app Temu
+          - generic [ref=e164] [cursor=pointer]:
+            - generic [ref=e165]:
+              - generic [ref=e166]: Milhões de compradores esperam por você
+              - link "Junte-se agora":
+                - /url: https://br.seller.temu.com/login.html?login_scene=201&shop_region=29&shop_site=132
+                - generic:
+                  - generic: Junte-se agora
+                  - img
+            - img [ref=e168]
+      - navigation [ref=e169]:
+        - generic [ref=e170]:
+          - link "temu temu":
+            - /url: /
+            - generic:
+              - img "temu"
+              - img "temu"
+          - generic:
+            - button "Categorias":
+              - generic:
+                - generic:
+                  - generic: Categorias
+                - img
+          - search [ref=e172]:
+            - generic [ref=e173]:
+              - searchbox "Caixa de pesquisa. Você pode clicar duas vezes para inserir um termo de busca e pesquisar no Temu." [disabled] [ref=e174]: camiseta masculina
+              - button "eliminar" [ref=e175] [cursor=pointer]:
+                - img "common_successful" [ref=e176]
+              - link "Enviar pesquisa" [ref=e178] [cursor=pointer]:
+                - /url: /search_result.html?search_key=camiseta%20masculina&search_method=user&refer_page_el_sn=200010
+                - button "Enviar pesquisa" [ref=e179]:
+                  - img [ref=e180]
+              - generic:
+                - link:
+                  - /url: /search_result.html?search_key=camiseta%20masculina&search_method=user&refer_page_el_sn=200010
+          - generic [ref=e182]:
+            - link "Pedidos e Conta" [ref=e185]:
+              - generic [ref=e186] [cursor=pointer]:
+                - img [ref=e188]
+                - generic [ref=e189]:
+                  - generic [ref=e191]:
+                    - text: Olá,
+                    - generic [ref=e192]: th***ra
+                  - generic "Pedidos e Conta" [ref=e193]
+            - link "Atendimento" [ref=e196]:
+              - generic [ref=e197] [cursor=pointer]:
+                - img [ref=e199]
+                - generic "Atendimento" [ref=e202]
+            - button "Brasil Português" [ref=e205]:
+              - generic [ref=e206] [cursor=pointer]:
+                - img [ref=e208]
+                - generic "Português" [ref=e210]
+            - link "Ir para o carrinho" [ref=e212]:
+              - img [ref=e215] [cursor=pointer]
+    - main [ref=e217]:
+      - generic [ref=e220]:
+        - img "97df6d40 15a3 41ba b9a3 fa2126a2a9fa.png.slim.png" [ref=e221]
+        - generic [ref=e223]: Sem resultados para "camiseta masculina"

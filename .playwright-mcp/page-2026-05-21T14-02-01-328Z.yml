@@ -1,0 +1,19 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: ⚡ UpSeller Moreira
+    - generic [ref=e4] [cursor=pointer]: X
+  - generic [ref=e5]:
+    - button "REMAPEAMENTO" [ref=e6] [cursor=pointer]
+    - button "BIBLIOTECA" [ref=e7] [cursor=pointer]
+    - button "MEDIDAS" [ref=e8] [cursor=pointer]
+    - button "PREÇOS" [ref=e9] [cursor=pointer]
+  - generic [ref=e18]:
+    - generic [ref=e19]:
+      - combobox [ref=e20]:
+        - option "Carregar salva..."
+        - option "CAMISETA" [selected]
+      - button "EXCLUIR SELECIONADA" [ref=e21] [cursor=pointer]
+    - button "EXECUTAR (ALT+Z)" [ref=e22] [cursor=pointer]
+    - generic [ref=e23]:
+      - button "EXPORTAR DADOS" [active] [ref=e24] [cursor=pointer]
+      - button "IMPORTAR DADOS" [ref=e25] [cursor=pointer]

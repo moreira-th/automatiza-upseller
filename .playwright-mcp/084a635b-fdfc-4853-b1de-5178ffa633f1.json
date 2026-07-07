@@ -1,0 +1,38 @@
+{
+  "biblioteca": {
+    "CAMISETA": {
+      "PP": {
+        "b": "43",
+        "c": "61"
+      },
+      "descricao": "Teste"
+    }
+  },
+  "bibliotecaPrecos": {
+    "TESTE_PRECO": {
+      "bulkPrice": "99.90"
+    }
+  },
+  "bibliotecaMacros": {
+    "TESTE_MACRO": {
+      "quantidade": "100"
+    }
+  },
+  "ultimosPrecos": {
+    "ativarPreco": true,
+    "bulkPrice": "50.00"
+  },
+  "ultimosMacros": {
+    "ativarMacro": true,
+    "preco": "109.90",
+    "quantidade": "50000"
+  },
+  "ultimaSelecionada": "CAMISETA",
+  "ultimoEstadoMedidas": {
+    "selectedTable": "CAMISETA",
+    "toggles": {
+      "mp": false,
+      "mt": true
+    }
+  }
+}

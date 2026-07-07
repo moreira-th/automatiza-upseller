@@ -1,0 +1,203 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e5]:
+      - menu [ref=e9]:
+        - menuitem "Home" [ref=e10] [cursor=pointer]:
+          - generic [ref=e11]: Home
+        - menuitem "Produtos" [ref=e12]:
+          - generic [ref=e14] [cursor=pointer]: Produtos
+        - menuitem "Pedidos" [ref=e15]:
+          - generic [ref=e17] [cursor=pointer]: Pedidos
+        - menuitem "Compras" [ref=e18]:
+          - generic [ref=e20] [cursor=pointer]: Compras
+        - menuitem "Estoque" [ref=e21]:
+          - generic [ref=e23] [cursor=pointer]: Estoque
+        - menuitem "SAC" [ref=e24]:
+          - generic [ref=e26] [cursor=pointer]: SAC
+        - menuitem "Análises" [ref=e27]:
+          - generic [ref=e29] [cursor=pointer]: Análises
+        - menuitem "Financeiro" [ref=e30]:
+          - generic [ref=e32] [cursor=pointer]: Financeiro
+      - generic [ref=e33]:
+        - generic [ref=e35] [cursor=pointer]: 
+        - separator [ref=e36]
+        - generic [ref=e37] [cursor=pointer]:
+          - 'generic "icon: question-circle" [ref=e38]':
+            - img [ref=e39]
+          - text: Ajuda
+        - generic [ref=e44] [cursor=pointer]:
+          - 'generic "icon: bell" [ref=e45]':
+            - img [ref=e46]
+          - superscript [ref=e48]
+        - generic [ref=e50] [cursor=pointer]: 
+        - separator [ref=e51]
+        - generic [ref=e52] [cursor=pointer]:
+          - generic "lojasonline0101" [ref=e54]
+          - generic [ref=e55]: 
+    - generic [ref=e56]:
+      - complementary [ref=e58]:
+        - generic [ref=e60]:
+          - menu [ref=e61]:
+            - listitem [ref=e62]:
+              - generic "Shopee - Anúncios" [ref=e64]:
+                - generic "Shopee - Anúncios" [ref=e65]
+                - generic [ref=e66]: 
+              - list [ref=e67]:
+                - menuitem "Rascunhos 0" [ref=e68] [cursor=pointer]:
+                  - generic [ref=e69]:
+                    - generic "Rascunhos" [ref=e71]
+                    - generic [ref=e72]: "0"
+                - menuitem "Publicando 0" [ref=e73] [cursor=pointer]:
+                  - generic [ref=e74]:
+                    - generic "Publicando" [ref=e76]
+                    - generic [ref=e77]: "0"
+                - menuitem "Falhou 0" [ref=e78] [cursor=pointer]:
+                  - generic [ref=e79]:
+                    - generic "Falhou" [ref=e81]
+                    - generic [ref=e82]: "0"
+                - menuitem "Ativo 609" [ref=e83] [cursor=pointer]:
+                  - generic [ref=e84]:
+                    - generic "Ativo" [ref=e86]
+                    - generic [ref=e87]: "609"
+                - menuitem "Impulsionando Produto " [ref=e88] [cursor=pointer]:
+                  - generic [ref=e90]:
+                    - generic "Impulsionando Produto" [ref=e91]
+                    - generic [ref=e92]: 
+                - menuitem "Modelo de Autopeças " [ref=e93] [cursor=pointer]:
+                  - generic [ref=e95]:
+                    - generic "Modelo de Autopeças" [ref=e96]
+                    - generic [ref=e97]: 
+          - generic [ref=e99]:
+            - text: "Dicas:"
+            - generic [ref=e100]: Edite o anúncio importado/ migrado/duplicado antes de publicar para evitar a violação das regras da plataforma devido à publicação duplicidada de um anúncio.
+      - main [ref=e102]:
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - generic [ref=e108]:
+              - combobox [ref=e110] [cursor=pointer]:
+                - generic "Nome do Anúncio" [ref=e112]
+                - generic [ref=e115]: 
+              - generic [ref=e117]:
+                - textbox [ref=e118]
+                - 'generic "icon: search" [ref=e120] [cursor=pointer]':
+                  - img [ref=e121]
+            - generic [ref=e126]:
+              - generic [ref=e127]: Todas Lojas
+              - generic [ref=e129] [cursor=pointer]: 
+          - generic [ref=e130]:
+            - generic "(0/5000)" [ref=e136]
+            - button "Importar & Exportar " [ref=e138] [cursor=pointer]:
+              - generic: Importar & Exportar
+              - generic:
+                - generic: 
+            - 'button "icon: plus Criar Anúncio" [ref=e140] [cursor=pointer]':
+              - 'generic "icon: plus"':
+                - img
+              - generic: Criar Anúncio
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e148]: Selecionado 0
+            - generic [ref=e149] [cursor=pointer]:
+              - button "Publicar em Massa" [ref=e151]:
+                - generic: Publicar em Massa
+              - button "Editar em Massa" [ref=e153]:
+                - generic: Editar em Massa
+              - link "Ações em Massa " [ref=e155]:
+                - /url: javascript:void(0);
+                - generic: Ações em Massa
+                - generic: 
+          - generic [ref=e156]:
+            - generic [ref=e157] [cursor=pointer]:
+              - generic [ref=e158]: Ordem
+              - generic [ref=e159]: 
+            - generic [ref=e161]:
+              - generic [ref=e162]: Total 0
+              - generic [ref=e163]:
+                - 'button "icon: left" [disabled] [ref=e164]':
+                  - 'generic "icon: left"':
+                    - img
+                - generic [ref=e167] [cursor=pointer]: 1/1
+                - 'button "icon: right" [disabled] [ref=e168]':
+                  - 'generic "icon: right"':
+                    - img
+              - combobox [ref=e171] [cursor=pointer]:
+                - generic "50/página" [ref=e173]
+                - generic [ref=e175]: 
+        - generic [ref=e179]:
+          - table [ref=e180]:
+            - rowgroup [ref=e181]:
+              - row "Nome do Anúncio SKU Principal/ID do Anúncios Preço Preço com Desconto Quantidade Criado/Atualizado Ações" [ref=e182]:
+                - columnheader [ref=e183]:
+                  - checkbox [ref=e186] [cursor=pointer]
+                - columnheader [ref=e188]
+                - columnheader "Nome do Anúncio" [ref=e189]:
+                  - generic "Nome do Anúncio" [ref=e190]
+                - columnheader "SKU Principal/ID do Anúncios" [ref=e191]:
+                  - generic "SKU Principal/ID do Anúncios" [ref=e192]
+                - columnheader "Preço" [ref=e193]:
+                  - generic "Preço" [ref=e194]
+                - columnheader "Preço com Desconto" [ref=e195]:
+                  - generic "Preço com Desconto" [ref=e196]
+                - columnheader "Quantidade" [ref=e197]:
+                  - generic "Quantidade" [ref=e198]
+                - columnheader "Criado/Atualizado" [ref=e199]:
+                  - generic "Criado/Atualizado" [ref=e200]
+                - columnheader "Ações" [ref=e201]:
+                  - generic "Ações" [ref=e202]
+            - rowgroup
+          - generic [ref=e203]:
+            - img [ref=e205]
+            - paragraph [ref=e211]:
+              - generic [ref=e213]: Nenhum Dado Disponível
+    - generic [ref=e214]:
+      - generic [ref=e220] [cursor=pointer]: 
+      - generic: 
+      - generic [ref=e223] [cursor=pointer]: 
+      - generic [ref=e226] [cursor=pointer]: 
+  - dialog "Tutorial de Criação de Anúncios" [ref=e228]:
+    - document:
+      - generic [ref=e229]:
+        - button "Close" [ref=e230] [cursor=pointer]:
+          - generic [ref=e232]: 
+        - generic [ref=e234]: Tutorial de Criação de Anúncios
+        - generic [ref=e236]:
+          - iframe [ref=e239]:
+            - generic "Player de vídeo do YouTube" [ref=f2e3]:
+              - alert [ref=f2e5]:
+                - generic [ref=f2e6]:
+                  - generic [ref=f2e7]:
+                    - img
+                  - generic [ref=f2e8]:
+                    - generic [ref=f2e9]: Faça login para confirmar que você não é um bot
+                    - generic [ref=f2e10]:
+                      - generic [ref=f2e11]:
+                        - text: Isso ajuda a proteger nossa comunidade.
+                        - link "Saiba mais" [ref=f2e12] [cursor=pointer]:
+                          - /url: https://support.google.com/youtube/answer/3037019#zippy=%2Ccheck-that-youre-signed-into-youtube
+                      - generic [ref=f2e13]: Fazer login
+                - link "Acesse o YouTube para pesquisar mais vídeos" [ref=f2e14] [cursor=pointer]:
+                  - /url: https://www.youtube.com
+                  - img
+          - link "Ver Mais" [ref=e241] [cursor=pointer]:
+            - /url: javascript:void(0);
+            - text: Ver Mais
+            - generic [ref=e242]: 
+  - dialog "Avisos IMPORTANTE" [ref=e245]:
+    - document:
+      - generic [ref=e246]:
+        - button "Close" [ref=e247] [cursor=pointer]:
+          - generic [ref=e249]: 
+        - generic [ref=e252]: Avisos IMPORTANTE
+        - generic [ref=e256]:
+          - heading "[Aviso] Sobre os erros ao programar o envio e ao subir NF-e de pedidos da Shopee" [level=2] [ref=e257]
+          - generic [ref=e258]: Pela Equipe do UpSeller jun 08, 2026
+          - iframe [ref=e260]:
+            - generic [ref=f4e3]:
+              - text: Sobre os erros ao programar o envio e ao subir NF-e de pedidos da Shopee
+              - text: "Erro: A plataforma não retornou o método de envio, por favor tente mais tarde."
+              - text: "Erro: [Shopee] Falha ao subir, o pedido está no status Pendente."
+              - text: Esse problema é causado por uma instabilidade da sistema Shopee. Recomendamos que você tente novamente mais tarde.
+              - text: Já reportamos os problemas à Shopee e estamos acompanhando de perto. Assim que a plataforma corrigir, o UpSeller informará a todos imediatamente.
+              - text: Pedimos desculpas pelos transtornos causados e agradecemos sua compreensão.
+        - button "Fechar" [ref=e268] [cursor=pointer]:
+          - generic: Fechar

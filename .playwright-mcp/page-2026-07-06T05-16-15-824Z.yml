@@ -1,0 +1,243 @@
+- generic [active] [ref=f7e1]:
+  - generic [ref=f7e4]:
+    - generic [ref=f7e6]:
+      - generic [ref=f7e7]:
+        - generic [ref=f7e10]:
+          - text: Temu / Editar Anúncio
+          - generic [ref=f7e11]: Rascunho
+        - generic [ref=f7e14] [cursor=pointer]: 
+      - generic [ref=f7e15]:
+        - button "Salvar" [ref=f7e17] [cursor=pointer]:
+          - generic: Salvar
+        - button "Publicar" [ref=f7e19] [cursor=pointer]:
+          - generic: Publicar
+    - generic [ref=f7e20]:
+      - generic [ref=f7e24]:
+        - link "Informação Básica" [ref=f7e28] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/16509991751918487#basic
+        - link "Descrição do Anúncio" [ref=f7e30] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/16509991751918487#description
+        - link "Atributos" [ref=f7e32] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/16509991751918487#attributes
+        - link "Informações de Venda" [ref=f7e34] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/16509991751918487#sales
+        - link "Envio" [ref=f7e36] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/16509991751918487#shipping
+        - link "Segurança e Conformidade" [ref=f7e38] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/16509991751918487#safety
+      - generic [ref=f7e39]:
+        - generic [ref=f7e43]: Informação Básica
+        - generic [ref=f7e46]:
+          - generic [ref=f7e47]:
+            - generic "Loja" [ref=f7e49]: "* Loja"
+            - combobox [ref=f7e54] [cursor=pointer]:
+              - generic "Alb temu" [ref=f7e56]
+              - generic [ref=f7e59]: 
+          - generic [ref=f7e60]:
+            - generic "Nome" [ref=f7e62]: "* Nome"
+            - generic [ref=f7e65]:
+              - generic [ref=f7e66]:
+                - textbox [ref=f7e67]: Camiseta Básica de Gola Redonda Masculina, Estampa Gato Espiando - Estilosa, Tecido Premium, Malha de Algodão Respirável, Para Academia, Treino, Casual, Street, Primavera, Verão e Inverno
+                - generic [ref=f7e73] [cursor=pointer]: 
+              - generic [ref=f7e74]: 187/500
+          - generic [ref=f7e75]:
+            - generic "Categoria" [ref=f7e77]: "* Categoria"
+            - generic [ref=f7e80]:
+              - generic [ref=f7e83]:
+                - textbox "Vestuário, calçado e jóias > Homem > Vestuário > Camisetas e regatas > Camisetas" [ref=f7e84]:
+                  - /placeholder: Selecionar uma Categoria
+                - generic [ref=f7e86]: 
+              - button "Selecionar Categoria" [ref=f7e88] [cursor=pointer]:
+                - generic: Selecionar Categoria
+          - generic [ref=f7e89]:
+            - generic "SKU Principal" [ref=f7e91]
+            - generic [ref=f7e94]:
+              - textbox [ref=f7e95]
+              - generic [ref=f7e96]: 0/128
+          - generic [ref=f7e97]:
+            - generic "Marca" [ref=f7e99]
+            - generic [ref=f7e102]:
+              - generic [ref=f7e103] [cursor=pointer]:
+                - textbox "Please select" [ref=f7e104]
+                - generic [ref=f7e106]: 
+              - 'generic "icon: sync" [ref=f7e107] [cursor=pointer]':
+                - img [ref=f7e108]
+          - generic [ref=f7e110]:
+            - generic "Link de Referência" [ref=f7e112]
+            - generic [ref=f7e115]:
+              - generic [ref=f7e116]:
+                - textbox [ref=f7e117]
+                - button "Visita" [disabled] [ref=f7e119]:
+                  - separator
+                  - generic: Visita
+              - generic [ref=f7e120]: Forneça links deste produto de outras plataformas (se disponíveis) para acelerar o processamento e possibilitar recomendações mais precisas de preço base.
+      - generic [ref=f7e121]:
+        - generic [ref=f7e125]: Descrição do Anúncio
+        - generic [ref=f7e127]:
+          - generic [ref=f7e128]:
+            - generic [ref=f7e129]:
+              - generic "Descrição" [ref=f7e131]
+              - generic [ref=f7e135]:
+                - textbox [ref=f7e136]: "Camiseta Manga Curta Gola Redonda – Conforto, Estilo e Versatilidade em um só produto Produzida com tecido premium de malha 100% algodão, esta camiseta oferece um toque macio, respirável e resistente. Ideal para qualquer ocasião — seja no lazer, academia, eventos ou no dia a dia — ela garante conforto e liberdade de movimentos com um caimento impecável. Destaques do produto Tecido premium: malha de alta qualidade que mantém a forma e a cor por muito mais tempo. Conforto absoluto: leve, macia e ideal para todas as estações. Versátil: combina facilmente com qualquer look, do casual ao esportivo. Acabamento reforçado: gola redonda e costuras resistentes que garantem durabilidade. Benefícios Sensação de frescor durante o uso. Visual moderno e atemporal. Perfeita para treinos, passeios ou momentos de descanso. Tabela de Medidas: PP: Largura: 41 cm | Altura: 60 cm P: Largura: 50 cm | Altura: 70 cm | M: Largura: 51 cm | Altura: 73 cm | G: Largura: 53 cm | Altura: 75 cm | GG: Largura: 54 cm | Altura: 76 cm Garanta já a sua e sinta a diferença do conforto premium em cada detalhe."
+                - generic [ref=f7e137]: 1087/10000
+            - generic [ref=f7e140]:
+              - generic "Tópico" [ref=f7e142]
+              - generic [ref=f7e145]:
+                - generic [ref=f7e146]:
+                  - textbox [ref=f7e147]: "• Qualidade Premium: confeccionada em malha 100% algodão, com toque macio, respirável e acabamento impecável."
+                  - generic [ref=f7e148]:
+                    - text: 109/700
+                    - generic [ref=f7e149] [cursor=pointer]: 
+                - generic [ref=f7e150]:
+                  - textbox [ref=f7e151]: "• Design Versátil: gola redonda estampada e modelagem moderna que combina com qualquer estilo — ideal para o dia a dia, academia ou eventos casuais."
+                  - generic [ref=f7e152]:
+                    - text: 148/700
+                    - generic [ref=f7e153] [cursor=pointer]: 
+                - generic [ref=f7e154]:
+                  - textbox [ref=f7e155]: "• Durabilidade e Conforto: costuras reforçadas, caimento perfeito e tecido e estampa que mantém a forma mesmo após várias lavagens."
+                  - generic [ref=f7e156]:
+                    - text: 131/700
+                    - generic [ref=f7e157] [cursor=pointer]: 
+            - 'button "icon: plus Adicionar Mais" [ref=f7e164] [cursor=pointer]':
+              - 'generic "icon: plus"':
+                - img
+              - generic: Adicionar Mais
+            - generic [ref=f7e165]:
+              - generic "Vídeo de Detalhes" [ref=f7e167]
+              - generic [ref=f7e171]:
+                - 'generic "icon: plus" [ref=f7e176] [cursor=pointer]':
+                  - img [ref=f7e177]
+                - list [ref=f7e180]:
+                  - listitem [ref=f7e181]: O vídeo de detalhes será exibido no topo da seção de detalhes do produto.
+                  - listitem [ref=f7e182]: Faça o upload do vídeo menor de 100MB, duração não superior a 180 segundos, relação de aspecto de 1:1, 4:3 ou 16:9, resolução mínima de 720P.
+          - generic [ref=f7e185]:
+            - generic "Imagens de Detalhes" [ref=f7e187]
+            - generic [ref=f7e190]:
+              - generic [ref=f7e191]:
+                - generic [ref=f7e192]:
+                  - 'button "icon: plus Adicionar Imagens" [ref=f7e194] [cursor=pointer]':
+                    - 'generic "icon: plus"':
+                      - img
+                    - generic: Adicionar Imagens
+                  - generic [ref=f7e195]:
+                    - text: (
+                    - generic [ref=f7e197]: 5/50
+                    - text: )
+                - generic [ref=f7e198]:
+                  - generic [ref=f7e201] [cursor=pointer]:
+                    - generic: 
+                    - generic: Recortar em massa
+                  - separator [ref=f7e202]
+                  - 'link "icon: edit Editar Imagens" [ref=f7e205] [cursor=pointer]':
+                    - /url: javascript:void(0);
+                    - 'generic "icon: edit"':
+                      - img
+                    - generic: Editar Imagens
+                  - separator [ref=f7e206]
+                  - generic [ref=f7e208] [cursor=pointer]:
+                    - generic: 
+                    - generic: Exportar
+              - list [ref=f7e210]:
+                - listitem [ref=f7e211]: A imagem de detalhes será exibida abaixo do vídeo de detalhes na seção de detalhes do produto.
+                - listitem [ref=f7e212]: Faça o upload da imagem menor de 3MB, relação de aspecto ≥ 1:3 e largura e altura ≥ 480px
+              - generic [ref=f7e215]:
+                - generic [ref=f7e220] [cursor=pointer]:
+                  - img [ref=f7e221]
+                  - generic [ref=f7e223]: 1500 × 2000
+                - generic [ref=f7e228] [cursor=pointer]:
+                  - img [ref=f7e229]
+                  - generic [ref=f7e231]: 1500 × 2000
+                - generic [ref=f7e236] [cursor=pointer]:
+                  - img [ref=f7e237]
+                  - generic [ref=f7e239]: 1500 × 2000
+                - generic [ref=f7e244] [cursor=pointer]:
+                  - img [ref=f7e245]
+                  - generic [ref=f7e247]: 1500 × 2000
+                - generic [ref=f7e252] [cursor=pointer]:
+                  - img [ref=f7e253]
+                  - generic [ref=f7e255]: 1500 × 2000
+      - generic [ref=f7e256]:
+        - generic [ref=f7e260]:
+          - generic [ref=f7e261]: Atributos
+          - 'generic "icon: ellipsis" [ref=f7e264] [cursor=pointer]':
+            - img [ref=f7e265]
+        - generic [ref=f7e268]:
+          - generic [ref=f7e269]:
+            - generic [ref=f7e270]:
+              - generic [ref=f7e272]:
+                - text: "*"
+                - generic "Material" [ref=f7e273]
+              - combobox [ref=f7e280] [cursor=pointer]:
+                - generic "Algodão" [ref=f7e282]
+                - 'generic "icon: close-circle" [ref=f7e284]':
+                  - img [ref=f7e285]
+                - generic [ref=f7e289]: 
+            - generic [ref=f7e290]:
+              - generic [ref=f7e292]:
+                - text: "*"
+                - generic "Composição" [ref=f7e293]
+              - generic [ref=f7e299]:
+                - combobox [ref=f7e301] [cursor=pointer]:
+                  - generic "Algodão" [ref=f7e303]
+                  - 'generic "icon: close-circle" [ref=f7e305]':
+                    - img [ref=f7e306]
+                  - generic [ref=f7e310]: 
+                - generic [ref=f7e311]:
+                  - textbox [ref=f7e312]: "100.00"
+                  - combobox [ref=f7e314] [cursor=pointer]:
+                    - generic "%" [ref=f7e316]
+                    - 'generic "icon: close-circle" [ref=f7e318]':
+                      - img [ref=f7e319]
+                    - generic [ref=f7e323]: 
+                - 'generic "icon: plus-circle" [ref=f7e324] [cursor=pointer]':
+                  - img [ref=f7e325]
+          - generic [ref=f7e328] [cursor=pointer]:
+            - text: Mais Atributos
+            - 'generic "icon: down" [ref=f7e329]':
+              - img [ref=f7e330]
+      - generic [ref=f7e336]:
+        - generic [ref=f7e337]: Informações de Venda
+        - generic [ref=f7e338]: Remapeamento de Variante
+      - generic [ref=f7e340]:
+        - generic [ref=f7e344]: Envio
+        - generic [ref=f7e347]:
+          - generic [ref=f7e348]:
+            - generic "Tempo de Envio" [ref=f7e350]: "* Tempo de Envio"
+            - generic [ref=f7e355]:
+              - generic [ref=f7e356] [cursor=pointer]:
+                - radio "1 Dias" [ref=f7e358]
+                - text: 1 Dias
+              - generic [ref=f7e360] [cursor=pointer]:
+                - radio "2 Dias" [ref=f7e362]
+                - text: 2 Dias
+          - generic [ref=f7e364]:
+            - generic "Modelo de Envio" [ref=f7e366]: "* Modelo de Envio"
+            - generic [ref=f7e369]:
+              - combobox [ref=f7e371] [cursor=pointer]:
+                - generic [ref=f7e373]: Por favor selecione
+                - generic [ref=f7e376]: 
+              - 'generic "icon: sync" [ref=f7e377] [cursor=pointer]':
+                - img [ref=f7e378]
+          - generic [ref=f7e380]:
+            - generic "Canal de Envio" [ref=f7e382]: "* Canal de Envio"
+            - generic [ref=f7e388] [cursor=pointer]:
+              - radio "Envio por próprio" [checked] [ref=f7e390]
+              - text: Envio por próprio
+      - generic [ref=f7e392]:
+        - generic [ref=f7e396]: Segurança e Conformidade
+        - generic [ref=f7e399]:
+          - generic [ref=f7e400]:
+            - generic "Guias ou Documentos do Produto" [ref=f7e402]
+            - 'button "icon: upload Enviar" [ref=f7e409]':
+              - 'button "icon: upload Enviar" [ref=f7e411] [cursor=pointer]':
+                - 'generic "icon: upload"':
+                  - img
+                - generic: Enviar
+          - generic [ref=f7e412]:
+            - generic "País/Região de Origem" [ref=f7e414]
+            - generic [ref=f7e418]:
+              - combobox [ref=f7e424] [cursor=pointer]:
+                - generic [ref=f7e426]: Por favor selecione
+                - generic [ref=f7e428]: 
+              - text: 
+  - generic "Automatiza Temu - UpSeller" [ref=f7e430] [cursor=pointer]: T

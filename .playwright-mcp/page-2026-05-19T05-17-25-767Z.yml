@@ -1,0 +1,88 @@
+- generic [active] [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Extensões" [level=1] [ref=e9]
+      - generic [ref=e12]:
+        - button [ref=e13] [cursor=pointer]
+        - generic [ref=e14]:
+          - generic [ref=e15]: Pesquise extensões
+          - searchbox "Pesquise extensões" [ref=e16]
+      - generic [ref=e19]:
+        - generic [ref=e20]: Modo do desenvolvedor
+        - button "Modo do desenvolvedor" [pressed] [ref=e21] [cursor=pointer]
+    - generic [ref=e25]:
+      - button "Carregar sem compactação" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]:
+          - generic: Carregar sem compactação
+      - button "Compactar extensão" [ref=e28] [cursor=pointer]:
+        - generic [ref=e29]:
+          - generic: Compactar extensão
+      - button "Atualizar" [ref=e30] [cursor=pointer]:
+        - generic [ref=e31]:
+          - generic: Atualizar
+  - generic [ref=e32]:
+    - navigation [ref=e34]:
+      - menu [ref=e35]:
+        - generic:
+          - menuitem "Minhas extensões" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Minhas extensões
+          - menuitem "Atalhos do teclado" [ref=e37] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Atalhos do teclado
+      - generic [ref=e40]:
+        - text: Você desenvolve extensões? Acompanhe as
+        - link "novidades" [ref=e41] [cursor=pointer]:
+          - /url: https://developer.chrome.com/docs/extensions/whats-new?utm_source=ext_sidebar&hl=pt-BR
+        - text: na documentação para desenvolvedores do Chrome.
+      - generic [ref=e43]:
+        - generic:
+          - img
+        - generic [ref=e44]:
+          - text: Encontre mais extensões e temas na
+          - link "Chrome Web Store" [ref=e45] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/category/extensions?utm_source=ext_sidebar&hl=pt-BR
+    - main [ref=e46]:
+      - generic [ref=e49]:
+        - heading "UpSeller Canivete Suíço" [level=2] [ref=e51]
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e54]: Ativar a extensão
+            - generic "Atalho Ativar a extensão para a extensão UpSeller Canivete Suíço" [ref=e57]:
+              - generic [ref=e58]:
+                - textbox "Atalho Ativar a extensão para a extensão UpSeller Canivete Suíço" [ref=e62]:
+                  - /placeholder: Não definido
+                - generic:
+                  - button "Editar o atalho Ativar a extensão para a extensão UpSeller Canivete Suíço" [ref=e63] [cursor=pointer]
+                  - button "Limpar" [disabled]
+            - combobox "Escopo do atalho Ativar a extensão para a extensão UpSeller Canivete Suíço" [disabled]:
+              - option "No Chromium" [selected]
+              - option "Global"
+          - generic [ref=e64]:
+            - generic [ref=e65]: Aplica os últimos preços especiais salvos
+            - generic "Atalho Aplica os últimos preços especiais salvos para a extensão UpSeller Canivete Suíço" [ref=e68]:
+              - generic [ref=e69]:
+                - textbox "Atalho Aplica os últimos preços especiais salvos para a extensão UpSeller Canivete Suíço" [ref=e73]:
+                  - /placeholder: "Atalho definido: Alt + X"
+                  - text: Alt + X
+                - generic:
+                  - button "Editar o atalho Aplica os últimos preços especiais salvos para a extensão UpSeller Canivete Suíço" [ref=e74] [cursor=pointer]
+                  - button "Limpar" [ref=e75] [cursor=pointer]
+            - combobox "Escopo do atalho Aplica os últimos preços especiais salvos para a extensão UpSeller Canivete Suíço" [ref=e76] [cursor=pointer]:
+              - option "No Chromium" [selected]
+              - option "Global"
+          - generic [ref=e77]:
+            - generic [ref=e78]: Executa o preenchimento da tabela ativa (medidas)
+            - generic "Atalho Executa o preenchimento da tabela ativa (medidas) para a extensão UpSeller Canivete Suíço" [ref=e81]:
+              - generic [ref=e82]:
+                - textbox "Atalho Executa o preenchimento da tabela ativa (medidas) para a extensão UpSeller Canivete Suíço" [ref=e86]:
+                  - /placeholder: "Atalho definido: Alt + Z"
+                  - text: Alt + Z
+                - generic:
+                  - button "Editar o atalho Executa o preenchimento da tabela ativa (medidas) para a extensão UpSeller Canivete Suíço" [ref=e87] [cursor=pointer]
+                  - button "Limpar" [ref=e88] [cursor=pointer]
+            - combobox "Escopo do atalho Executa o preenchimento da tabela ativa (medidas) para a extensão UpSeller Canivete Suíço" [ref=e89] [cursor=pointer]:
+              - option "No Chromium" [selected]
+              - option "Global"

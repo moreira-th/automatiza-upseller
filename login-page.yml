@@ -1,0 +1,53 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e9] [cursor=pointer]:
+        - 'generic "icon: global" [ref=e10]':
+          - img [ref=e11]
+        - text: PT
+        - generic [ref=e13]: 
+      - generic [ref=e15]:
+        - generic [ref=e20]: Login
+        - generic [ref=e24]:
+          - textbox [active] [ref=e25]
+          - generic [ref=e26]: Endereço de Email
+        - generic [ref=e30]:
+          - generic [ref=e31]
+          - generic [ref=e38]: Senha
+        - generic [ref=e42]:
+          - textbox [ref=e43]
+          - generic [ref=e44]: CAPTCHA
+          - button "CAPTCHA" [ref=e45] [cursor=pointer]
+        - button "Login" [ref=e51] [cursor=pointer]:
+          - generic: Login
+        - generic [ref=e55]:
+          - generic [ref=e57]
+          - generic [ref=e60]
+        - button "Cadastre-se grátis" [ref=e70] [cursor=pointer]:
+          - generic: Cadastre-se grátis
+      - generic [ref=e72]:
+        - generic [ref=e73]: Precisa de ajuda?
+        - generic [ref=e76] [cursor=pointer]:
+          - generic [ref=e77]: 
+          - generic [ref=e78]: WhatsApp
+    - contentinfo [ref=e79]:
+      - generic [ref=e80]: © 2026 UpSeller
+      - separator [ref=e81]
+      - link "Termos de Serviço" [ref=e83] [cursor=pointer]:
+        - /url: https://www.upseller.com/pt/terms-of-service
+      - separator [ref=e84]
+      - link "Política de Privacidade" [ref=e86] [cursor=pointer]:
+        - /url: https://www.upseller.com/pt/privacy-policy
+      - separator [ref=e87]
+      - generic [ref=e88]: Feedback
+      - separator [ref=e89]
+      - generic [ref=e90]: Central de Ajuda
+    - generic: 
+  - generic [ref=e93]:
+    - generic [ref=e94]:
+      - generic [ref=e96]: 拖动下方拼图完成验证
+      - img "close" [ref=e98] [cursor=pointer]
+    - img [ref=e102]
+    - generic [ref=e107]:
+      - generic [ref=e109]: 安全验证
+      - img "refresh" [ref=e112] [cursor=pointer]

@@ -1,0 +1,36 @@
+- generic [active] [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Extensões" [level=1] [ref=e9]
+      - generic [ref=e12]:
+        - button [ref=e13] [cursor=pointer]
+        - generic [ref=e14]:
+          - generic [ref=e15]: Pesquise extensões
+          - searchbox "Pesquise extensões" [ref=e16]
+      - generic [ref=e19]:
+        - generic [ref=e20]: Modo do desenvolvedor
+        - button "Modo do desenvolvedor" [ref=e21] [cursor=pointer]
+  - generic [ref=e24]:
+    - navigation [ref=e26]:
+      - menu [ref=e27]:
+        - generic:
+          - menuitem "Minhas extensões" [ref=e28] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Minhas extensões
+          - menuitem "Atalhos do teclado" [ref=e29] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Atalhos do teclado
+      - generic [ref=e31]:
+        - generic:
+          - img
+        - generic [ref=e32]:
+          - text: Encontre mais extensões e temas na
+          - link "Chrome Web Store" [ref=e33] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/category/extensions?utm_source=ext_sidebar&hl=pt-BR
+    - main [ref=e34]:
+      - generic [ref=e39]:
+        - text: Encontre extensões e temas na
+        - link "Chrome Web Store" [ref=e40] [cursor=pointer]:
+          - /url: https://chrome.google.com/webstore/category/extensions

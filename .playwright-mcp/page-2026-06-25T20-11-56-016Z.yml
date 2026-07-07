@@ -1,0 +1,51 @@
+- generic [active] [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Extensões" [level=1] [ref=e9]
+      - generic [ref=e12]:
+        - button [ref=e13] [cursor=pointer]
+        - generic [ref=e14]:
+          - generic [ref=e15]: Pesquise extensões
+          - searchbox "Pesquise extensões" [ref=e16]
+      - generic [ref=e19]:
+        - generic [ref=e20]: Modo do desenvolvedor
+        - button "Modo do desenvolvedor" [pressed] [ref=e21] [cursor=pointer]
+    - generic [ref=e42]:
+      - button "Carregar sem compactação" [ref=e43] [cursor=pointer]:
+        - generic [ref=e44]:
+          - generic: Carregar sem compactação
+      - button "Compactar extensão" [ref=e45] [cursor=pointer]:
+        - generic [ref=e46]:
+          - generic: Compactar extensão
+      - button "Atualizar" [ref=e47] [cursor=pointer]:
+        - generic [ref=e48]:
+          - generic: Atualizar
+  - generic [ref=e24]:
+    - navigation [ref=e26]:
+      - menu [ref=e27]:
+        - generic:
+          - menuitem "Minhas extensões" [ref=e28] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Minhas extensões
+          - menuitem "Atalhos do teclado" [ref=e29] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Atalhos do teclado
+      - generic [ref=e51]:
+        - text: Você desenvolve extensões? Acompanhe as
+        - link "novidades" [ref=e52] [cursor=pointer]:
+          - /url: https://developer.chrome.com/docs/extensions/whats-new?utm_source=ext_sidebar&hl=pt-BR
+        - text: na documentação para desenvolvedores do Chrome.
+      - generic [ref=e31]:
+        - generic:
+          - img
+        - generic [ref=e32]:
+          - text: Encontre mais extensões e temas na
+          - link "Chrome Web Store" [ref=e53] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/category/extensions?utm_source=ext_sidebar&hl=pt-BR
+    - main [ref=e34]:
+      - generic [ref=e39]:
+        - text: Encontre extensões e temas na
+        - link "Chrome Web Store" [ref=e40] [cursor=pointer]:
+          - /url: https://chrome.google.com/webstore/category/extensions

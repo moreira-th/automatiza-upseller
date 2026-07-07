@@ -1,0 +1,78 @@
+- generic [active] [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Extensões" [level=1] [ref=e9]
+      - generic [ref=e12]:
+        - button [ref=e13] [cursor=pointer]
+        - generic [ref=e14]:
+          - generic [ref=e15]: Pesquise extensões
+          - searchbox "Pesquise extensões" [ref=e16]
+      - generic [ref=e19]:
+        - generic [ref=e20]: Modo do desenvolvedor
+        - button "Modo do desenvolvedor" [pressed] [ref=e21] [cursor=pointer]
+    - generic [ref=e25]:
+      - button "Carregar sem compactação" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]:
+          - generic: Carregar sem compactação
+      - button "Compactar extensão" [ref=e28] [cursor=pointer]:
+        - generic [ref=e29]:
+          - generic: Compactar extensão
+      - button "Atualizar" [ref=e30] [cursor=pointer]:
+        - generic [ref=e31]:
+          - generic: Atualizar
+  - generic [ref=e32]:
+    - navigation [ref=e34]:
+      - menu [ref=e35]:
+        - generic:
+          - menuitem "Minhas extensões" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Minhas extensões
+          - menuitem "Atalhos do teclado" [ref=e37] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Atalhos do teclado
+      - generic [ref=e40]:
+        - text: Você desenvolve extensões? Acompanhe as
+        - link "novidades" [ref=e41] [cursor=pointer]:
+          - /url: https://developer.chrome.com/docs/extensions/whats-new?utm_source=ext_sidebar&hl=pt-BR
+        - text: na documentação para desenvolvedores do Chrome.
+      - generic [ref=e43]:
+        - generic:
+          - img
+        - generic [ref=e44]:
+          - text: Encontre mais extensões e temas na
+          - link "Chrome Web Store" [ref=e45] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/category/extensions?utm_source=ext_sidebar&hl=pt-BR
+    - main [ref=e46]:
+      - generic [ref=e50]:
+        - heading "Todas as extensões" [level=2] [ref=e51]
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - img [ref=e57]
+              - img "Extensão descompactada" [ref=e59]:
+                - generic [ref=e60]:
+                  - img
+            - generic [ref=e61]:
+              - generic [ref=e63]:
+                - heading "UpSeller Moreira" [level=3] [ref=e64]
+                - generic [ref=e65]: 1.3.0
+              - generic [ref=e66]: "Automações para UpSeller: Remapeamento de Variantes + Tabela de Medidas + Descrições. Feito por Thales Moreira."
+              - generic [ref=e67]: "ID: fjcjahpenphjjfhjckgednchgmgikilm"
+              - generic [ref=e69]:
+                - generic [ref=e70]: "Inspecionar visualizações:"
+                - link "service worker" [ref=e71] [cursor=pointer]
+          - generic [ref=e72]:
+            - generic [ref=e73]:
+              - button "Saiba mais" [ref=e74] [cursor=pointer]:
+                - generic [ref=e75]:
+                  - generic: Saiba mais
+              - button "Remover" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]:
+                  - generic: Remover
+              - button "Erros" [ref=e78] [cursor=pointer]:
+                - generic [ref=e79]:
+                  - generic: Erros
+            - button "Recarregar" [ref=e80] [cursor=pointer]
+            - button "Extensão ativada" [pressed] [ref=e81] [cursor=pointer]

@@ -1,0 +1,2150 @@
+- generic [ref=e3]:
+  - banner [ref=e5]:
+    - menu [ref=e9]:
+      - menuitem "Home" [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: Home
+      - menuitem "Produtos" [ref=e12]:
+        - generic [ref=e14] [cursor=pointer]: Produtos
+      - menuitem "Pedidos" [ref=e15]:
+        - generic [ref=e17] [cursor=pointer]: Pedidos
+      - menuitem "Compras" [ref=e18]:
+        - generic [ref=e20] [cursor=pointer]: Compras
+      - menuitem "Estoque" [ref=e21]:
+        - generic [ref=e23] [cursor=pointer]: Estoque
+      - menuitem "SAC" [ref=e24]:
+        - generic [ref=e26] [cursor=pointer]: SAC
+      - menuitem "Análises" [ref=e27]:
+        - generic [ref=e29] [cursor=pointer]: Análises
+      - menuitem "Financeiro" [ref=e30]:
+        - generic [ref=e32] [cursor=pointer]: Financeiro
+    - generic [ref=e33]:
+      - generic [ref=e35] [cursor=pointer]: 
+      - separator [ref=e36]
+      - generic [ref=e37] [cursor=pointer]:
+        - 'generic "icon: question-circle" [ref=e38]':
+          - img [ref=e39]
+        - text: Ajuda
+      - 'generic "icon: bell" [ref=e45] [cursor=pointer]':
+        - img [ref=e46]
+      - generic [ref=e49] [cursor=pointer]: 
+      - separator [ref=e50]
+      - generic [ref=e51] [cursor=pointer]:
+        - generic "micaelcosta688" [ref=e53]
+        - generic [ref=e54]: 
+  - generic [ref=e55]:
+    - complementary [ref=e57]:
+      - generic [ref=e59]:
+        - menu [ref=e60]:
+          - listitem [ref=e61]:
+            - generic "Shein - Anúncios" [ref=e63]:
+              - generic "Shein - Anúncios" [ref=e64]
+            - list [ref=e65]:
+              - menuitem "Rascunhos 142" [ref=e66] [cursor=pointer]:
+                - generic [ref=e67]:
+                  - generic "Rascunhos" [ref=e69]
+                  - generic [ref=e70]: "142"
+              - menuitem "Publicando 0" [ref=e71] [cursor=pointer]:
+                - generic [ref=e72]:
+                  - generic "Publicando" [ref=e74]
+                  - generic [ref=e75]: "0"
+              - menuitem "Falhou 0" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]:
+                  - generic "Falhou" [ref=e79]
+                  - generic [ref=e80]: "0"
+              - menuitem "Ativo 1278" [ref=e81] [cursor=pointer]:
+                - generic [ref=e82]:
+                  - generic "Ativo" [ref=e84]
+                  - generic [ref=e85]: "1278"
+        - generic [ref=e87]:
+          - text: "Dicas:"
+          - generic [ref=e88]: Edite o anúncio importado/ migrado/duplicado antes de publicar para evitar a violação das regras da plataforma devido à publicação duplicidada de um anúncio.
+    - main [ref=e90]:
+      - generic [ref=e92]:
+        - generic [ref=e94]:
+          - generic [ref=e96]:
+            - combobox [ref=e98] [cursor=pointer]:
+              - generic "Título" [ref=e100]
+              - generic [ref=e103]: 
+            - generic [ref=e105]:
+              - textbox [ref=e106]
+              - 'generic "icon: search" [ref=e108] [cursor=pointer]':
+                - img [ref=e109]
+          - generic [ref=e113]:
+            - generic [ref=e114]: Todas Lojas
+            - generic [ref=e116] [cursor=pointer]: 
+        - generic [ref=e117]:
+          - generic "(142/5000)" [ref=e124]
+          - 'button "icon: plus Criar Anúncio" [ref=e126] [cursor=pointer]':
+            - 'generic "icon: plus"':
+              - img
+            - generic: Criar Anúncio
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e134]: Selecionado 0
+          - generic [ref=e135] [cursor=pointer]:
+            - button "Publicar em Massa" [ref=e137]:
+              - generic: Publicar em Massa
+            - button "Editar em Massa" [ref=e139]:
+              - generic: Editar em Massa
+            - link "Ações em Massa " [ref=e141]:
+              - /url: javascript:void(0);
+              - generic: Ações em Massa
+              - generic: 
+        - generic [ref=e142]:
+          - generic [ref=e143] [cursor=pointer]:
+            - generic [ref=e144]: Ordem
+            - generic [ref=e145]: 
+          - generic [ref=e147]:
+            - generic [ref=e148]: Total 142
+            - generic [ref=e149]:
+              - 'button "icon: left" [disabled] [ref=e150]':
+                - 'generic "icon: left"':
+                  - img
+              - generic [ref=e153] [cursor=pointer]: 1/3
+              - 'button "icon: right" [ref=e154] [cursor=pointer]':
+                - 'generic "icon: right"':
+                  - img
+            - combobox [ref=e157] [cursor=pointer]:
+              - generic "50/página" [ref=e159]
+              - generic [ref=e161]: 
+      - table [ref=e166]:
+        - rowgroup [ref=e167]:
+          - 'row "Nome Número do Produto icon: question-circle Preço Preço especial Preço de Custo icon: question-circle Quantidade Criado/Atualizado Ação" [ref=e168]':
+            - columnheader [ref=e169]:
+              - checkbox [ref=e172] [cursor=pointer]
+            - columnheader [ref=e174]
+            - columnheader "Nome" [ref=e175]:
+              - generic "Nome" [ref=e176]
+            - 'columnheader "Número do Produto icon: question-circle" [ref=e177]':
+              - generic "SKU" [ref=e178]:
+                - generic [ref=e179]:
+                  - generic [ref=e180]: Número do Produto
+                  - 'generic "icon: question-circle" [ref=e181]':
+                    - img [ref=e182]
+            - columnheader "Preço" [ref=e185]:
+              - generic "Preço" [ref=e186]
+            - columnheader "Preço especial" [ref=e187]:
+              - generic "Preço especial" [ref=e188]
+            - 'columnheader "Preço de Custo icon: question-circle" [ref=e189]':
+              - generic "Preço de Custo" [ref=e190]:
+                - generic [ref=e191]:
+                  - generic [ref=e192]: Preço de Custo
+                  - 'generic "icon: question-circle" [ref=e193]':
+                    - img [ref=e194]
+            - columnheader "Quantidade" [ref=e197]:
+              - generic "Quantidade" [ref=e198]
+            - columnheader "Criado/Atualizado" [ref=e199]:
+              - generic "Criado/Atualizado" [ref=e200]
+            - columnheader "Ação" [ref=e201]:
+              - generic "Ação" [ref=e202]
+        - rowgroup [ref=e203]:
+          - 'row " Moletom Canguru Bolso Capuz Inverno Brasil South America Seleção Brasileira Bronx Outfit Variantes (30) icon: down 414418456 R$‎‎ 129,90 - - 600 23/05/2026 01:50 23/05/2026 01:51 Editar Mais " [ref=e204]':
+            - cell [ref=e205]:
+              - checkbox [ref=e208] [cursor=pointer]
+            - cell "" [ref=e210]:
+              - generic [ref=e211]:
+                - img [ref=e216] [cursor=pointer]
+                - generic [ref=e219]: 
+            - 'cell "Moletom Canguru Bolso Capuz Inverno Brasil South America Seleção Brasileira Bronx Outfit Variantes (30) icon: down" [ref=e220]':
+              - generic [ref=e221]:
+                - generic "Moletom Canguru Bolso Capuz Inverno Brasil South America Seleção Brasileira" [ref=e222]:
+                  - generic [ref=e225] [cursor=pointer]: Moletom Canguru Bolso Capuz Inverno Brasil South America Seleção Brasileira
+                - generic "Bronx Outfit" [ref=e226]
+                - 'link "Variantes (30) icon: down" [ref=e229] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (30)
+                  - 'generic "icon: down" [ref=e230]':
+                    - img [ref=e231]
+            - cell "414418456" [ref=e233]:
+              - generic "414418456" [ref=e235]:
+                - generic [ref=e236] [cursor=pointer]: "414418456"
+            - cell "R$‎‎ 129,90" [ref=e237]:
+              - generic [ref=e239]: R$‎‎ 129,90
+            - cell "-" [ref=e240]:
+              - generic [ref=e242]: "-"
+            - cell "-" [ref=e243]:
+              - generic [ref=e245]: "-"
+            - cell "600" [ref=e246]:
+              - generic [ref=e249]: "600"
+            - cell "23/05/2026 01:50 23/05/2026 01:51" [ref=e250]:
+              - generic [ref=e251]:
+                - generic "23/05/2026 01:50:25" [ref=e252]: 23/05/2026 01:50
+                - generic "23/05/2026 01:51:39" [ref=e253]: 23/05/2026 01:51
+            - cell "Editar Mais " [ref=e254]:
+              - generic [ref=e256] [cursor=pointer]:
+                - link "Editar" [ref=e258]:
+                  - /url: /products/shein/edit/4409247925342130
+                - link "Mais " [ref=e259]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e260]: 
+          - 'row " moleton estampado aranha lançamento UNISSEX 100% algodão moleton com regulagem nos capuz Bronx Outfit Variantes (10) icon: down 55652991 R$‎‎ 129,90 - - 200 23/05/2026 01:50 23/05/2026 01:51 Editar Mais " [ref=e261]':
+            - cell [ref=e262]:
+              - checkbox [ref=e265] [cursor=pointer]
+            - cell "" [ref=e267]:
+              - generic [ref=e268]:
+                - img [ref=e273] [cursor=pointer]
+                - generic [ref=e276]: 
+            - 'cell "moleton estampado aranha lançamento UNISSEX 100% algodão moleton com regulagem nos capuz Bronx Outfit Variantes (10) icon: down" [ref=e277]':
+              - generic [ref=e278]:
+                - generic "moleton estampado aranha lançamento UNISSEX 100% algodão moleton com regulagem nos capuz" [ref=e279]:
+                  - generic [ref=e282] [cursor=pointer]: moleton estampado aranha lançamento UNISSEX 100% algodão moleton com regulagem nos capuz
+                - generic "Bronx Outfit" [ref=e283]
+                - 'link "Variantes (10) icon: down" [ref=e286] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e287]':
+                    - img [ref=e288]
+            - cell "55652991" [ref=e290]:
+              - generic "55652991" [ref=e292]:
+                - generic [ref=e293] [cursor=pointer]: "55652991"
+            - cell "R$‎‎ 129,90" [ref=e294]:
+              - generic [ref=e296]: R$‎‎ 129,90
+            - cell "-" [ref=e297]:
+              - generic [ref=e299]: "-"
+            - cell "-" [ref=e300]:
+              - generic [ref=e302]: "-"
+            - cell "200" [ref=e303]:
+              - generic [ref=e306]: "200"
+            - cell "23/05/2026 01:50 23/05/2026 01:51" [ref=e307]:
+              - generic [ref=e308]:
+                - generic "23/05/2026 01:50:25" [ref=e309]: 23/05/2026 01:50
+                - generic "23/05/2026 01:51:03" [ref=e310]: 23/05/2026 01:51
+            - cell "Editar Mais " [ref=e311]:
+              - generic [ref=e313] [cursor=pointer]:
+                - link "Editar" [ref=e315]:
+                  - /url: /products/shein/edit/4409247925342161
+                - link "Mais " [ref=e316]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e317]: 
+          - 'row " Blusa Moletom Unissex Brooklyn New York Casaco de Frio Manga Longa Flanelado Bolso e Capuz Canguru Quentinho Inverno Bronx Outfit Variantes (16) icon: down 424862411 R$‎‎ 129,90 - - 320 23/05/2026 01:50 23/05/2026 01:51 Editar Mais " [ref=e318]':
+            - cell [ref=e319]:
+              - checkbox [ref=e322] [cursor=pointer]
+            - cell "" [ref=e324]:
+              - generic [ref=e325]:
+                - img [ref=e330] [cursor=pointer]
+                - generic [ref=e333]: 
+            - 'cell "Blusa Moletom Unissex Brooklyn New York Casaco de Frio Manga Longa Flanelado Bolso e Capuz Canguru Quentinho Inverno Bronx Outfit Variantes (16) icon: down" [ref=e334]':
+              - generic [ref=e335]:
+                - generic "Blusa Moletom Unissex Brooklyn New York Casaco de Frio Manga Longa Flanelado Bolso e Capuz Canguru Quentinho Inverno" [ref=e336]:
+                  - generic [ref=e339] [cursor=pointer]: Blusa Moletom Unissex Brooklyn New York Casaco de Frio Manga Longa Flanelado Bolso e Capuz Canguru Quentinho Inverno
+                - generic "Bronx Outfit" [ref=e340]
+                - 'link "Variantes (16) icon: down" [ref=e343] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (16)
+                  - 'generic "icon: down" [ref=e344]':
+                    - img [ref=e345]
+            - cell "424862411" [ref=e347]:
+              - generic "424862411" [ref=e349]:
+                - generic [ref=e350] [cursor=pointer]: "424862411"
+            - cell "R$‎‎ 129,90" [ref=e351]:
+              - generic [ref=e353]: R$‎‎ 129,90
+            - cell "-" [ref=e354]:
+              - generic [ref=e356]: "-"
+            - cell "-" [ref=e357]:
+              - generic [ref=e359]: "-"
+            - cell "320" [ref=e360]:
+              - generic [ref=e363]: "320"
+            - cell "23/05/2026 01:50 23/05/2026 01:51" [ref=e364]:
+              - generic [ref=e365]:
+                - generic "23/05/2026 01:50:25" [ref=e366]: 23/05/2026 01:50
+                - generic "23/05/2026 01:51:03" [ref=e367]: 23/05/2026 01:51
+            - cell "Editar Mais " [ref=e368]:
+              - generic [ref=e370] [cursor=pointer]:
+                - link "Editar" [ref=e372]:
+                  - /url: /products/shein/edit/4409247925342172
+                - link "Mais " [ref=e373]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e374]: 
+          - 'row " Moletom gola careca feminino estampa casual delicada para todas as estações modelo casual blogueira Bronx Outfit Variantes (5) icon: down 88101729 R$‎‎ 129,90 - - 100 23/05/2026 01:50 23/05/2026 01:51 Editar Mais " [ref=e375]':
+            - cell [ref=e376]:
+              - checkbox [ref=e379] [cursor=pointer]
+            - cell "" [ref=e381]:
+              - generic [ref=e382]:
+                - img [ref=e387] [cursor=pointer]
+                - generic [ref=e390]: 
+            - 'cell "Moletom gola careca feminino estampa casual delicada para todas as estações modelo casual blogueira Bronx Outfit Variantes (5) icon: down" [ref=e391]':
+              - generic [ref=e392]:
+                - generic "Moletom gola careca feminino estampa casual delicada para todas as estações modelo casual blogueira" [ref=e393]:
+                  - generic [ref=e396] [cursor=pointer]: Moletom gola careca feminino estampa casual delicada para todas as estações modelo casual blogueira
+                - generic "Bronx Outfit" [ref=e397]
+                - 'link "Variantes (5) icon: down" [ref=e400] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e401]':
+                    - img [ref=e402]
+            - cell "88101729" [ref=e404]:
+              - generic "88101729" [ref=e406]:
+                - generic [ref=e407] [cursor=pointer]: "88101729"
+            - cell "R$‎‎ 129,90" [ref=e408]:
+              - generic [ref=e410]: R$‎‎ 129,90
+            - cell "-" [ref=e411]:
+              - generic [ref=e413]: "-"
+            - cell "-" [ref=e414]:
+              - generic [ref=e416]: "-"
+            - cell "100" [ref=e417]:
+              - generic [ref=e420]: "100"
+            - cell "23/05/2026 01:50 23/05/2026 01:51" [ref=e421]:
+              - generic [ref=e422]:
+                - generic "23/05/2026 01:50:25" [ref=e423]: 23/05/2026 01:50
+                - generic "23/05/2026 01:51:03" [ref=e424]: 23/05/2026 01:51
+            - cell "Editar Mais " [ref=e425]:
+              - generic [ref=e427] [cursor=pointer]:
+                - link "Editar" [ref=e429]:
+                  - /url: /products/shein/edit/4409247925342189
+                - link "Mais " [ref=e430]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e431]: 
+          - 'row " Suéter estampado 100% algodão moleton estampado capybara confortável Bronx Outfit Variantes (8) icon: down 58868368 R$‎‎ 129,90 - - 160 23/05/2026 01:50 23/05/2026 01:51 Editar Mais " [ref=e432]':
+            - cell [ref=e433]:
+              - checkbox [ref=e436] [cursor=pointer]
+            - cell "" [ref=e438]:
+              - generic [ref=e439]:
+                - img [ref=e444] [cursor=pointer]
+                - generic [ref=e447]: 
+            - 'cell "Suéter estampado 100% algodão moleton estampado capybara confortável Bronx Outfit Variantes (8) icon: down" [ref=e448]':
+              - generic [ref=e449]:
+                - generic "Suéter estampado 100% algodão moleton estampado capybara confortável" [ref=e450]:
+                  - generic [ref=e453] [cursor=pointer]: Suéter estampado 100% algodão moleton estampado capybara confortável
+                - generic "Bronx Outfit" [ref=e454]
+                - 'link "Variantes (8) icon: down" [ref=e457] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (8)
+                  - 'generic "icon: down" [ref=e458]':
+                    - img [ref=e459]
+            - cell "58868368" [ref=e461]:
+              - generic "58868368" [ref=e463]:
+                - generic [ref=e464] [cursor=pointer]: "58868368"
+            - cell "R$‎‎ 129,90" [ref=e465]:
+              - generic [ref=e467]: R$‎‎ 129,90
+            - cell "-" [ref=e468]:
+              - generic [ref=e470]: "-"
+            - cell "-" [ref=e471]:
+              - generic [ref=e473]: "-"
+            - cell "160" [ref=e474]:
+              - generic [ref=e477]: "160"
+            - cell "23/05/2026 01:50 23/05/2026 01:51" [ref=e478]:
+              - generic [ref=e479]:
+                - generic "23/05/2026 01:50:25" [ref=e480]: 23/05/2026 01:50
+                - generic "23/05/2026 01:51:03" [ref=e481]: 23/05/2026 01:51
+            - cell "Editar Mais " [ref=e482]:
+              - generic [ref=e484] [cursor=pointer]:
+                - link "Editar" [ref=e486]:
+                  - /url: /products/shein/edit/4409247925342195
+                - link "Mais " [ref=e487]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e488]: 
+          - 'row " Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão Aura Fashion Variantes (10) icon: down 353034262 ‎ 109,90 12,90 - 33,90 - 500000 20/05/2026 17:22 21/05/2026 23:35 Editar Mais " [ref=e489]':
+            - cell [ref=e490]:
+              - checkbox [ref=e493] [cursor=pointer]
+            - cell "" [ref=e495]:
+              - generic [ref=e496]:
+                - img [ref=e501] [cursor=pointer]
+                - generic [ref=e504]: 
+            - 'cell "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão Aura Fashion Variantes (10) icon: down" [ref=e505]':
+              - generic [ref=e506]:
+                - 'generic "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão" [ref=e507]':
+                  - generic [ref=e510] [cursor=pointer]: "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão"
+                - generic "Aura Fashion" [ref=e511]
+                - 'link "Variantes (10) icon: down" [ref=e514] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e515]':
+                    - img [ref=e516]
+            - cell "353034262" [ref=e518]:
+              - generic "353034262" [ref=e520]:
+                - generic [ref=e521] [cursor=pointer]: "353034262"
+            - cell "‎ 109,90" [ref=e522]:
+              - generic [ref=e524]: ‎ 109,90
+            - cell "12,90 - 33,90" [ref=e525]:
+              - generic [ref=e527]: 12,90 - 33,90
+            - cell "-" [ref=e528]:
+              - generic [ref=e530]: "-"
+            - cell "500000" [ref=e531]:
+              - generic [ref=e534]: "500000"
+            - cell "20/05/2026 17:22 21/05/2026 23:35" [ref=e535]:
+              - generic [ref=e536]:
+                - generic "20/05/2026 17:22:58" [ref=e537]: 20/05/2026 17:22
+                - generic "21/05/2026 23:35:26" [ref=e538]: 21/05/2026 23:35
+            - cell "Editar Mais " [ref=e539]:
+              - generic [ref=e541] [cursor=pointer]:
+                - link "Editar" [ref=e543]:
+                  - /url: /products/shein/edit/4409247924583686
+                - link "Mais " [ref=e544]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e545]: 
+          - 'row " Camisa Feminina Flores Coração Tendencia Blogueirinha Camisa Verão 100% Algodão Máximo Conforto E Qualidade Bronx Outfit Variantes (5) icon: down 149331657 ‎ 109,90 12,90 - 33,90 - 250000 20/05/2026 17:22 21/05/2026 14:12 Editar Mais " [ref=e546]':
+            - cell [ref=e547]:
+              - checkbox [ref=e550] [cursor=pointer]
+            - cell "" [ref=e552]:
+              - generic [ref=e553]:
+                - img [ref=e558] [cursor=pointer]
+                - generic [ref=e561]: 
+            - 'cell "Camisa Feminina Flores Coração Tendencia Blogueirinha Camisa Verão 100% Algodão Máximo Conforto E Qualidade Bronx Outfit Variantes (5) icon: down" [ref=e562]':
+              - generic [ref=e563]:
+                - generic "Camisa Feminina Flores Coração Tendencia Blogueirinha Camisa Verão 100% Algodão Máximo Conforto E Qualidade" [ref=e564]:
+                  - generic [ref=e567] [cursor=pointer]: Camisa Feminina Flores Coração Tendencia Blogueirinha Camisa Verão 100% Algodão Máximo Conforto E Qualidade
+                - generic "Bronx Outfit" [ref=e568]
+                - 'link "Variantes (5) icon: down" [ref=e571] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e572]':
+                    - img [ref=e573]
+            - cell "149331657" [ref=e575]:
+              - generic "149331657" [ref=e577]:
+                - generic [ref=e578] [cursor=pointer]: "149331657"
+            - cell "‎ 109,90" [ref=e579]:
+              - generic [ref=e581]: ‎ 109,90
+            - cell "12,90 - 33,90" [ref=e582]:
+              - generic [ref=e584]: 12,90 - 33,90
+            - cell "-" [ref=e585]:
+              - generic [ref=e587]: "-"
+            - cell "250000" [ref=e588]:
+              - generic [ref=e591]: "250000"
+            - cell "20/05/2026 17:22 21/05/2026 14:12" [ref=e592]:
+              - generic [ref=e593]:
+                - generic "20/05/2026 17:22:58" [ref=e594]: 20/05/2026 17:22
+                - generic "21/05/2026 14:12:12" [ref=e595]: 21/05/2026 14:12
+            - cell "Editar Mais " [ref=e596]:
+              - generic [ref=e598] [cursor=pointer]:
+                - link "Editar" [ref=e600]:
+                  - /url: /products/shein/edit/4409247924583669
+                - link "Mais " [ref=e601]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e602]: 
+          - 'row " Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão Strit Grif Variantes (10) icon: down 353034262 R$‎‎ 99,00 - - 900000 20/05/2026 17:22 20/05/2026 17:23 Editar Mais " [ref=e603]':
+            - cell [ref=e604]:
+              - checkbox [ref=e607] [cursor=pointer]
+            - cell "" [ref=e609]:
+              - generic [ref=e610]:
+                - img [ref=e615] [cursor=pointer]
+                - generic [ref=e618]: 
+            - 'cell "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão Strit Grif Variantes (10) icon: down" [ref=e619]':
+              - generic [ref=e620]:
+                - 'generic "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão" [ref=e621]':
+                  - generic [ref=e624] [cursor=pointer]: "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão"
+                - generic "Strit Grif" [ref=e625]
+                - 'link "Variantes (10) icon: down" [ref=e628] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e629]':
+                    - img [ref=e630]
+            - cell "353034262" [ref=e632]:
+              - generic "353034262" [ref=e634]:
+                - generic [ref=e635] [cursor=pointer]: "353034262"
+            - cell "R$‎‎ 99,00" [ref=e636]:
+              - generic [ref=e638]: R$‎‎ 99,00
+            - cell "-" [ref=e639]:
+              - generic [ref=e641]: "-"
+            - cell "-" [ref=e642]:
+              - generic [ref=e644]: "-"
+            - cell "900000" [ref=e645]:
+              - generic [ref=e648]: "900000"
+            - cell "20/05/2026 17:22 20/05/2026 17:23" [ref=e649]:
+              - generic [ref=e650]:
+                - generic "20/05/2026 17:22:58" [ref=e651]: 20/05/2026 17:22
+                - generic "20/05/2026 17:23:55" [ref=e652]: 20/05/2026 17:23
+            - cell "Editar Mais " [ref=e653]:
+              - generic [ref=e655] [cursor=pointer]:
+                - link "Editar" [ref=e657]:
+                  - /url: /products/shein/edit/4409247924583697
+                - link "Mais " [ref=e658]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e659]: 
+          - 'row " Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão MC-GRIFFE Variantes (10) icon: down 353034262 R$‎‎ 99,00 - - 900000 20/05/2026 17:22 20/05/2026 17:23 Editar Mais " [ref=e660]':
+            - cell [ref=e661]:
+              - checkbox [ref=e664] [cursor=pointer]
+            - cell "" [ref=e666]:
+              - generic [ref=e667]:
+                - img [ref=e672] [cursor=pointer]
+                - generic [ref=e675]: 
+            - 'cell "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão MC-GRIFFE Variantes (10) icon: down" [ref=e676]':
+              - generic [ref=e677]:
+                - 'generic "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão" [ref=e678]':
+                  - generic [ref=e681] [cursor=pointer]: "Camiseta Regata Feminina Estampada Modelo: \"Flor Palavras Elogio\" Moda T-shirt Feminina com Estampa Camiseta Casual De Manga Cavada Promoção Blusinha Feminina, Conforto Moda Verão"
+                - generic "MC-GRIFFE" [ref=e682]
+                - 'link "Variantes (10) icon: down" [ref=e685] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e686]':
+                    - img [ref=e687]
+            - cell "353034262" [ref=e689]:
+              - generic "353034262" [ref=e691]:
+                - generic [ref=e692] [cursor=pointer]: "353034262"
+            - cell "R$‎‎ 99,00" [ref=e693]:
+              - generic [ref=e695]: R$‎‎ 99,00
+            - cell "-" [ref=e696]:
+              - generic [ref=e698]: "-"
+            - cell "-" [ref=e699]:
+              - generic [ref=e701]: "-"
+            - cell "900000" [ref=e702]:
+              - generic [ref=e705]: "900000"
+            - cell "20/05/2026 17:22 20/05/2026 17:23" [ref=e706]:
+              - generic [ref=e707]:
+                - generic "20/05/2026 17:22:58" [ref=e708]: 20/05/2026 17:22
+                - generic "20/05/2026 17:23:55" [ref=e709]: 20/05/2026 17:23
+            - cell "Editar Mais " [ref=e710]:
+              - generic [ref=e712] [cursor=pointer]:
+                - link "Editar" [ref=e714]:
+                  - /url: /products/shein/edit/4409247924583675
+                - link "Mais " [ref=e715]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e716]: 
+          - 'row " Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade Strit Grif Variantes (5) icon: down 149331657 R$‎ 14,90 - 29,90 - - 100 20/05/2026 17:22 20/05/2026 17:22 Editar Mais " [ref=e717]':
+            - cell [ref=e718]:
+              - checkbox [ref=e721] [cursor=pointer]
+            - cell "" [ref=e723]:
+              - generic [ref=e724]:
+                - img [ref=e729] [cursor=pointer]
+                - generic [ref=e732]: 
+            - 'cell "Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade Strit Grif Variantes (5) icon: down" [ref=e733]':
+              - generic [ref=e734]:
+                - generic "Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade" [ref=e735]:
+                  - generic [ref=e738] [cursor=pointer]: Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade
+                - generic "Strit Grif" [ref=e739]
+                - 'link "Variantes (5) icon: down" [ref=e742] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e743]':
+                    - img [ref=e744]
+            - cell "149331657" [ref=e746]:
+              - generic "149331657" [ref=e748]:
+                - generic [ref=e749] [cursor=pointer]: "149331657"
+            - cell "R$‎ 14,90 - 29,90" [ref=e750]:
+              - generic [ref=e752]: R$‎ 14,90 - 29,90
+            - cell "-" [ref=e753]:
+              - generic [ref=e755]: "-"
+            - cell "-" [ref=e756]:
+              - generic [ref=e758]: "-"
+            - cell "100" [ref=e759]:
+              - generic [ref=e762]: "100"
+            - cell "20/05/2026 17:22 20/05/2026 17:22" [ref=e763]:
+              - generic [ref=e764]:
+                - generic "20/05/2026 17:22:58" [ref=e765]: 20/05/2026 17:22
+                - generic "20/05/2026 17:22:58" [ref=e766]: 20/05/2026 17:22
+            - cell "Editar Mais " [ref=e767]:
+              - generic [ref=e769] [cursor=pointer]:
+                - link "Editar" [ref=e771]:
+                  - /url: /products/shein/edit/4409247924583663
+                - link "Mais " [ref=e772]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e773]: 
+          - 'row " Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade Aura Fashion Variantes (5) icon: down 149331657 R$‎ 14,90 - 29,90 - - 100 20/05/2026 17:22 20/05/2026 17:22 Editar Mais " [ref=e774]':
+            - cell [ref=e775]:
+              - checkbox [ref=e778] [cursor=pointer]
+            - cell "" [ref=e780]:
+              - generic [ref=e781]:
+                - img [ref=e786] [cursor=pointer]
+                - generic [ref=e789]: 
+            - 'cell "Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade Aura Fashion Variantes (5) icon: down" [ref=e790]':
+              - generic [ref=e791]:
+                - generic "Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade" [ref=e792]:
+                  - generic [ref=e795] [cursor=pointer]: Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade
+                - generic "Aura Fashion" [ref=e796]
+                - 'link "Variantes (5) icon: down" [ref=e799] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e800]':
+                    - img [ref=e801]
+            - cell "149331657" [ref=e803]:
+              - generic "149331657" [ref=e805]:
+                - generic [ref=e806] [cursor=pointer]: "149331657"
+            - cell "R$‎ 14,90 - 29,90" [ref=e807]:
+              - generic [ref=e809]: R$‎ 14,90 - 29,90
+            - cell "-" [ref=e810]:
+              - generic [ref=e812]: "-"
+            - cell "-" [ref=e813]:
+              - generic [ref=e815]: "-"
+            - cell "100" [ref=e816]:
+              - generic [ref=e819]: "100"
+            - cell "20/05/2026 17:22 20/05/2026 17:22" [ref=e820]:
+              - generic [ref=e821]:
+                - generic "20/05/2026 17:22:58" [ref=e822]: 20/05/2026 17:22
+                - generic "20/05/2026 17:22:58" [ref=e823]: 20/05/2026 17:22
+            - cell "Editar Mais " [ref=e824]:
+              - generic [ref=e826] [cursor=pointer]:
+                - link "Editar" [ref=e828]:
+                  - /url: /products/shein/edit/4409247924583657
+                - link "Mais " [ref=e829]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e830]: 
+          - 'row " Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade MC-GRIFFE Variantes (5) icon: down 149331657 R$‎ 14,90 - 29,90 - - 100 20/05/2026 17:22 20/05/2026 17:22 Editar Mais " [ref=e831]':
+            - cell [ref=e832]:
+              - checkbox [ref=e835] [cursor=pointer]
+            - cell "" [ref=e837]:
+              - generic [ref=e838]:
+                - img [ref=e843] [cursor=pointer]
+                - generic [ref=e846]: 
+            - 'cell "Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade MC-GRIFFE Variantes (5) icon: down" [ref=e847]':
+              - generic [ref=e848]:
+                - generic "Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade" [ref=e849]:
+                  - generic [ref=e852] [cursor=pointer]: Camisa feminina flores coração tendencia blogueirinha camisa verão 100% algodão máximo conforto e qualidade
+                - generic "MC-GRIFFE" [ref=e853]
+                - 'link "Variantes (5) icon: down" [ref=e856] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e857]':
+                    - img [ref=e858]
+            - cell "149331657" [ref=e860]:
+              - generic "149331657" [ref=e862]:
+                - generic [ref=e863] [cursor=pointer]: "149331657"
+            - cell "R$‎ 14,90 - 29,90" [ref=e864]:
+              - generic [ref=e866]: R$‎ 14,90 - 29,90
+            - cell "-" [ref=e867]:
+              - generic [ref=e869]: "-"
+            - cell "-" [ref=e870]:
+              - generic [ref=e872]: "-"
+            - cell "100" [ref=e873]:
+              - generic [ref=e876]: "100"
+            - cell "20/05/2026 17:22 20/05/2026 17:22" [ref=e877]:
+              - generic [ref=e878]:
+                - generic "20/05/2026 17:22:58" [ref=e879]: 20/05/2026 17:22
+                - generic "20/05/2026 17:22:58" [ref=e880]: 20/05/2026 17:22
+            - cell "Editar Mais " [ref=e881]:
+              - generic [ref=e883] [cursor=pointer]:
+                - link "Editar" [ref=e885]:
+                  - /url: /products/shein/edit/4409247924583651
+                - link "Mais " [ref=e886]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e887]: 
+          - 'row " Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas Aura Fashion Variantes (28) icon: down 58813579 R$‎‎ 69,90 - - 560 20/05/2026 16:28 20/05/2026 16:28 Editar Mais " [ref=e888]':
+            - cell [ref=e889]:
+              - checkbox [ref=e892] [cursor=pointer]
+            - cell "" [ref=e894]:
+              - generic [ref=e895]:
+                - img [ref=e900] [cursor=pointer]
+                - generic [ref=e903]: 
+            - 'cell "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas Aura Fashion Variantes (28) icon: down" [ref=e904]':
+              - generic [ref=e905]:
+                - generic "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas" [ref=e906]:
+                  - generic [ref=e909] [cursor=pointer]: Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas
+                - generic "Aura Fashion" [ref=e910]
+                - 'link "Variantes (28) icon: down" [ref=e913] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (28)
+                  - 'generic "icon: down" [ref=e914]':
+                    - img [ref=e915]
+            - cell "58813579" [ref=e917]:
+              - generic "58813579" [ref=e919]:
+                - generic [ref=e920] [cursor=pointer]: "58813579"
+            - cell "R$‎‎ 69,90" [ref=e921]:
+              - generic [ref=e923]: R$‎‎ 69,90
+            - cell "-" [ref=e924]:
+              - generic [ref=e926]: "-"
+            - cell "-" [ref=e927]:
+              - generic [ref=e929]: "-"
+            - cell "560" [ref=e930]:
+              - generic [ref=e933]: "560"
+            - cell "20/05/2026 16:28 20/05/2026 16:28" [ref=e934]:
+              - generic [ref=e935]:
+                - generic "20/05/2026 16:28:58" [ref=e936]: 20/05/2026 16:28
+                - generic "20/05/2026 16:28:58" [ref=e937]: 20/05/2026 16:28
+            - cell "Editar Mais " [ref=e938]:
+              - generic [ref=e940] [cursor=pointer]:
+                - link "Editar" [ref=e942]:
+                  - /url: /products/shein/edit/4409247924549058
+                - link "Mais " [ref=e943]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e944]: 
+          - 'row " Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas Bronx Outfit Variantes (28) icon: down 58813579 R$‎‎ 69,90 - - 560 20/05/2026 16:28 20/05/2026 16:28 Editar Mais " [ref=e945]':
+            - cell [ref=e946]:
+              - checkbox [ref=e949] [cursor=pointer]
+            - cell "" [ref=e951]:
+              - generic [ref=e952]:
+                - img [ref=e957] [cursor=pointer]
+                - generic [ref=e960]: 
+            - 'cell "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas Bronx Outfit Variantes (28) icon: down" [ref=e961]':
+              - generic [ref=e962]:
+                - generic "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas" [ref=e963]:
+                  - generic [ref=e966] [cursor=pointer]: Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas
+                - generic "Bronx Outfit" [ref=e967]
+                - 'link "Variantes (28) icon: down" [ref=e970] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (28)
+                  - 'generic "icon: down" [ref=e971]':
+                    - img [ref=e972]
+            - cell "58813579" [ref=e974]:
+              - generic "58813579" [ref=e976]:
+                - generic [ref=e977] [cursor=pointer]: "58813579"
+            - cell "R$‎‎ 69,90" [ref=e978]:
+              - generic [ref=e980]: R$‎‎ 69,90
+            - cell "-" [ref=e981]:
+              - generic [ref=e983]: "-"
+            - cell "-" [ref=e984]:
+              - generic [ref=e986]: "-"
+            - cell "560" [ref=e987]:
+              - generic [ref=e990]: "560"
+            - cell "20/05/2026 16:28 20/05/2026 16:28" [ref=e991]:
+              - generic [ref=e992]:
+                - generic "20/05/2026 16:28:58" [ref=e993]: 20/05/2026 16:28
+                - generic "20/05/2026 16:28:58" [ref=e994]: 20/05/2026 16:28
+            - cell "Editar Mais " [ref=e995]:
+              - generic [ref=e997] [cursor=pointer]:
+                - link "Editar" [ref=e999]:
+                  - /url: /products/shein/edit/4409247924549029
+                - link "Mais " [ref=e1000]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1001]: 
+          - 'row " Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas Strit Grif Variantes (28) icon: down 58813579 R$‎‎ 69,90 - - 560 20/05/2026 16:28 20/05/2026 16:28 Editar Mais " [ref=e1002]':
+            - cell [ref=e1003]:
+              - checkbox [ref=e1006] [cursor=pointer]
+            - cell "" [ref=e1008]:
+              - generic [ref=e1009]:
+                - img [ref=e1014] [cursor=pointer]
+                - generic [ref=e1017]: 
+            - 'cell "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas Strit Grif Variantes (28) icon: down" [ref=e1018]':
+              - generic [ref=e1019]:
+                - generic "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas" [ref=e1020]:
+                  - generic [ref=e1023] [cursor=pointer]: Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas
+                - generic "Strit Grif" [ref=e1024]
+                - 'link "Variantes (28) icon: down" [ref=e1027] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (28)
+                  - 'generic "icon: down" [ref=e1028]':
+                    - img [ref=e1029]
+            - cell "58813579" [ref=e1031]:
+              - generic "58813579" [ref=e1033]:
+                - generic [ref=e1034] [cursor=pointer]: "58813579"
+            - cell "R$‎‎ 69,90" [ref=e1035]:
+              - generic [ref=e1037]: R$‎‎ 69,90
+            - cell "-" [ref=e1038]:
+              - generic [ref=e1040]: "-"
+            - cell "-" [ref=e1041]:
+              - generic [ref=e1043]: "-"
+            - cell "560" [ref=e1044]:
+              - generic [ref=e1047]: "560"
+            - cell "20/05/2026 16:28 20/05/2026 16:28" [ref=e1048]:
+              - generic [ref=e1049]:
+                - generic "20/05/2026 16:28:58" [ref=e1050]: 20/05/2026 16:28
+                - generic "20/05/2026 16:28:58" [ref=e1051]: 20/05/2026 16:28
+            - cell "Editar Mais " [ref=e1052]:
+              - generic [ref=e1054] [cursor=pointer]:
+                - link "Editar" [ref=e1056]:
+                  - /url: /products/shein/edit/4409247924549000
+                - link "Mais " [ref=e1057]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1058]: 
+          - 'row " Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas MC-GRIFFE Variantes (28) icon: down 58813579 R$‎‎ 69,90 - - 560 20/05/2026 16:28 20/05/2026 16:28 Editar Mais " [ref=e1059]':
+            - cell [ref=e1060]:
+              - checkbox [ref=e1063] [cursor=pointer]
+            - cell "" [ref=e1065]:
+              - generic [ref=e1066]:
+                - img [ref=e1071] [cursor=pointer]
+                - generic [ref=e1074]: 
+            - 'cell "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas MC-GRIFFE Variantes (28) icon: down" [ref=e1075]':
+              - generic [ref=e1076]:
+                - generic "Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas" [ref=e1077]:
+                  - generic [ref=e1080] [cursor=pointer]: Moletom Streetwear Espadilha com Capuz – Flanelado Algodão Jogo de Cartas
+                - generic "MC-GRIFFE" [ref=e1081]
+                - 'link "Variantes (28) icon: down" [ref=e1084] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (28)
+                  - 'generic "icon: down" [ref=e1085]':
+                    - img [ref=e1086]
+            - cell "58813579" [ref=e1088]:
+              - generic "58813579" [ref=e1090]:
+                - generic [ref=e1091] [cursor=pointer]: "58813579"
+            - cell "R$‎‎ 69,90" [ref=e1092]:
+              - generic [ref=e1094]: R$‎‎ 69,90
+            - cell "-" [ref=e1095]:
+              - generic [ref=e1097]: "-"
+            - cell "-" [ref=e1098]:
+              - generic [ref=e1100]: "-"
+            - cell "560" [ref=e1101]:
+              - generic [ref=e1104]: "560"
+            - cell "20/05/2026 16:28 20/05/2026 16:28" [ref=e1105]:
+              - generic [ref=e1106]:
+                - generic "20/05/2026 16:28:58" [ref=e1107]: 20/05/2026 16:28
+                - generic "20/05/2026 16:28:58" [ref=e1108]: 20/05/2026 16:28
+            - cell "Editar Mais " [ref=e1109]:
+              - generic [ref=e1111] [cursor=pointer]:
+                - link "Editar" [ref=e1113]:
+                  - /url: /products/shein/edit/4409247924548971
+                - link "Mais " [ref=e1114]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1115]: 
+          - 'row " Moletom Canguru Capybara fofa para Meninas Adolescentes Blusa Frio Outono/Inverno Infantil MC-GRIFFE Variantes (21) icon: down 411629470 R$‎‎ 159,00 - - 1890000 17/05/2026 12:22 19/05/2026 21:02 Editar Mais " [ref=e1116]':
+            - cell [ref=e1117]:
+              - checkbox [ref=e1120] [cursor=pointer]
+            - cell "" [ref=e1122]:
+              - generic [ref=e1123]:
+                - img [ref=e1128] [cursor=pointer]
+                - generic [ref=e1131]: 
+            - 'cell "Moletom Canguru Capybara fofa para Meninas Adolescentes Blusa Frio Outono/Inverno Infantil MC-GRIFFE Variantes (21) icon: down" [ref=e1132]':
+              - generic [ref=e1133]:
+                - generic "Moletom Canguru Capybara fofa para Meninas Adolescentes Blusa Frio Outono/Inverno Infantil" [ref=e1134]:
+                  - generic [ref=e1137] [cursor=pointer]: Moletom Canguru Capybara fofa para Meninas Adolescentes Blusa Frio Outono/Inverno Infantil
+                - generic "MC-GRIFFE" [ref=e1138]
+                - 'link "Variantes (21) icon: down" [ref=e1141] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (21)
+                  - 'generic "icon: down" [ref=e1142]':
+                    - img [ref=e1143]
+            - cell "411629470" [ref=e1145]:
+              - generic "411629470" [ref=e1147]:
+                - generic [ref=e1148] [cursor=pointer]: "411629470"
+            - cell "R$‎‎ 159,00" [ref=e1149]:
+              - generic [ref=e1151]: R$‎‎ 159,00
+            - cell "-" [ref=e1152]:
+              - generic [ref=e1154]: "-"
+            - cell "-" [ref=e1155]:
+              - generic [ref=e1157]: "-"
+            - cell "1890000" [ref=e1158]:
+              - generic [ref=e1161]: "1890000"
+            - cell "17/05/2026 12:22 19/05/2026 21:02" [ref=e1162]:
+              - generic [ref=e1163]:
+                - generic "17/05/2026 12:22:40" [ref=e1164]: 17/05/2026 12:22
+                - generic "19/05/2026 21:02:13" [ref=e1165]: 19/05/2026 21:02
+            - cell "Editar Mais " [ref=e1166]:
+              - generic [ref=e1168] [cursor=pointer]:
+                - link "Editar" [ref=e1170]:
+                  - /url: /products/shein/edit/4409247923712464
+                - link "Mais " [ref=e1171]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1172]: 
+          - 'row " Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja Strit Grif Variantes (5) icon: down 447366883 R$‎ 56,90 - 69,90 - - 100 19/05/2026 19:08 19/05/2026 19:08 Editar Mais " [ref=e1173]':
+            - cell [ref=e1174]:
+              - checkbox [ref=e1177] [cursor=pointer]
+            - cell "" [ref=e1179]:
+              - generic [ref=e1180]:
+                - generic [ref=e1184] [cursor=pointer]:
+                  - img
+                - generic [ref=e1187]: 
+            - 'cell "Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja Strit Grif Variantes (5) icon: down" [ref=e1188]':
+              - generic [ref=e1189]:
+                - 'generic "Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja" [ref=e1190]':
+                  - generic [ref=e1193] [cursor=pointer]: "Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja"
+                - generic "Strit Grif" [ref=e1194]
+                - 'link "Variantes (5) icon: down" [ref=e1197] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e1198]':
+                    - img [ref=e1199]
+            - cell "447366883" [ref=e1201]:
+              - generic "447366883" [ref=e1203]:
+                - generic [ref=e1204] [cursor=pointer]: "447366883"
+            - cell "R$‎ 56,90 - 69,90" [ref=e1205]:
+              - generic [ref=e1207]: R$‎ 56,90 - 69,90
+            - cell "-" [ref=e1208]:
+              - generic [ref=e1210]: "-"
+            - cell "-" [ref=e1211]:
+              - generic [ref=e1213]: "-"
+            - cell "100" [ref=e1214]:
+              - generic [ref=e1217]: "100"
+            - cell "19/05/2026 19:08 19/05/2026 19:08" [ref=e1218]:
+              - generic [ref=e1219]:
+                - generic "19/05/2026 19:08:37" [ref=e1220]: 19/05/2026 19:08
+                - generic "19/05/2026 19:08:37" [ref=e1221]: 19/05/2026 19:08
+            - cell "Editar Mais " [ref=e1222]:
+              - generic [ref=e1224] [cursor=pointer]:
+                - link "Editar" [ref=e1226]:
+                  - /url: /products/shein/edit/4409247924272443
+                - link "Mais " [ref=e1227]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1228]: 
+          - 'row " Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja MC-GRIFFE Variantes (5) icon: down 447366883 R$‎ 56,90 - 69,90 - - 100 19/05/2026 19:08 19/05/2026 19:08 Editar Mais " [ref=e1229]':
+            - cell [ref=e1230]:
+              - checkbox [ref=e1233] [cursor=pointer]
+            - cell "" [ref=e1235]:
+              - generic [ref=e1236]:
+                - generic [ref=e1240] [cursor=pointer]:
+                  - img
+                - generic [ref=e1243]: 
+            - 'cell "Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja MC-GRIFFE Variantes (5) icon: down" [ref=e1244]':
+              - generic [ref=e1245]:
+                - 'generic "Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja" [ref=e1246]':
+                  - generic [ref=e1249] [cursor=pointer]: "Blusa de Frio Moletom Canguru com Capuz de Outono Inverno Casaco Confortável Premium Novidade Especial Modelo: Simple Joy- Sofisticada Promoção Exclusiva na Loja"
+                - generic "MC-GRIFFE" [ref=e1250]
+                - 'link "Variantes (5) icon: down" [ref=e1253] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e1254]':
+                    - img [ref=e1255]
+            - cell "447366883" [ref=e1257]:
+              - generic "447366883" [ref=e1259]:
+                - generic [ref=e1260] [cursor=pointer]: "447366883"
+            - cell "R$‎ 56,90 - 69,90" [ref=e1261]:
+              - generic [ref=e1263]: R$‎ 56,90 - 69,90
+            - cell "-" [ref=e1264]:
+              - generic [ref=e1266]: "-"
+            - cell "-" [ref=e1267]:
+              - generic [ref=e1269]: "-"
+            - cell "100" [ref=e1270]:
+              - generic [ref=e1273]: "100"
+            - cell "19/05/2026 19:08 19/05/2026 19:08" [ref=e1274]:
+              - generic [ref=e1275]:
+                - generic "19/05/2026 19:08:37" [ref=e1276]: 19/05/2026 19:08
+                - generic "19/05/2026 19:08:37" [ref=e1277]: 19/05/2026 19:08
+            - cell "Editar Mais " [ref=e1278]:
+              - generic [ref=e1280] [cursor=pointer]:
+                - link "Editar" [ref=e1282]:
+                  - /url: /products/shein/edit/4409247924272437
+                - link "Mais " [ref=e1283]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1284]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium MC-GRIFFE Variantes (25) icon: down 016-CANG-NewYorkCheerful R$‎‎ 109,90 R$‎‎ 89,90 - 1250000 19/05/2026 04:37 19/05/2026 04:37 Editar Mais " [ref=e1285]':
+            - cell [ref=e1286]:
+              - checkbox [ref=e1289] [cursor=pointer]
+            - cell [ref=e1291]:
+              - generic [ref=e1296] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium MC-GRIFFE Variantes (25) icon: down" [ref=e1297]':
+              - generic [ref=e1298]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium" [ref=e1299]:
+                  - generic [ref=e1302] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium
+                - generic "MC-GRIFFE" [ref=e1303]
+                - 'link "Variantes (25) icon: down" [ref=e1306] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e1307]':
+                    - img [ref=e1308]
+            - cell "016-CANG-NewYorkCheerful" [ref=e1310]:
+              - generic "016-CANG-NewYorkCheerful" [ref=e1312]:
+                - generic [ref=e1313] [cursor=pointer]: 016-CANG-NewYorkCheerful
+            - cell "R$‎‎ 109,90" [ref=e1314]:
+              - generic [ref=e1316]: R$‎‎ 109,90
+            - cell "R$‎‎ 89,90" [ref=e1317]:
+              - generic [ref=e1319]: R$‎‎ 89,90
+            - cell "-" [ref=e1320]:
+              - generic [ref=e1322]: "-"
+            - cell "1250000" [ref=e1323]:
+              - generic [ref=e1326]: "1250000"
+            - cell "19/05/2026 04:37 19/05/2026 04:37" [ref=e1327]:
+              - generic [ref=e1328]:
+                - generic "19/05/2026 04:37:25" [ref=e1329]: 19/05/2026 04:37
+                - generic "19/05/2026 04:37:25" [ref=e1330]: 19/05/2026 04:37
+            - cell "Editar Mais " [ref=e1331]:
+              - generic [ref=e1333] [cursor=pointer]:
+                - link "Editar" [ref=e1335]:
+                  - /url: /products/shein/edit/4409247924098763
+                - link "Mais " [ref=e1336]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1337]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium MC-GRIFFE Variantes (25) icon: down 016-CANG-NewYorkCheerful R$‎‎ 109,90 R$‎‎ 89,90 - 1250000 19/05/2026 04:37 19/05/2026 04:37 Editar Mais " [ref=e1338]':
+            - cell [ref=e1339]:
+              - checkbox [ref=e1342] [cursor=pointer]
+            - cell [ref=e1344]:
+              - generic [ref=e1349] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium MC-GRIFFE Variantes (25) icon: down" [ref=e1350]':
+              - generic [ref=e1351]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium" [ref=e1352]:
+                  - generic [ref=e1355] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino New York Cheerful Confortável Premium
+                - generic "MC-GRIFFE" [ref=e1356]
+                - 'link "Variantes (25) icon: down" [ref=e1359] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e1360]':
+                    - img [ref=e1361]
+            - cell "016-CANG-NewYorkCheerful" [ref=e1363]:
+              - generic "016-CANG-NewYorkCheerful" [ref=e1365]:
+                - generic [ref=e1366] [cursor=pointer]: 016-CANG-NewYorkCheerful
+            - cell "R$‎‎ 109,90" [ref=e1367]:
+              - generic [ref=e1369]: R$‎‎ 109,90
+            - cell "R$‎‎ 89,90" [ref=e1370]:
+              - generic [ref=e1372]: R$‎‎ 89,90
+            - cell "-" [ref=e1373]:
+              - generic [ref=e1375]: "-"
+            - cell "1250000" [ref=e1376]:
+              - generic [ref=e1379]: "1250000"
+            - cell "19/05/2026 04:37 19/05/2026 04:37" [ref=e1380]:
+              - generic [ref=e1381]:
+                - generic "19/05/2026 04:37:25" [ref=e1382]: 19/05/2026 04:37
+                - generic "19/05/2026 04:37:25" [ref=e1383]: 19/05/2026 04:37
+            - cell "Editar Mais " [ref=e1384]:
+              - generic [ref=e1386] [cursor=pointer]:
+                - link "Editar" [ref=e1388]:
+                  - /url: /products/shein/edit/4409247924098737
+                - link "Mais " [ref=e1389]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1390]: 
+          - 'row "Blusa Moletom Gola Careca Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium MC-GRIFFE Variantes (25) icon: down 001-CARE-Corações R$‎‎ 109,90 R$‎‎ 89,90 - 1250000 18/05/2026 01:53 18/05/2026 01:53 Editar Mais " [ref=e1391]':
+            - cell [ref=e1392]:
+              - checkbox [ref=e1395] [cursor=pointer]
+            - cell [ref=e1397]:
+              - generic [ref=e1402] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Gola Careca Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium MC-GRIFFE Variantes (25) icon: down" [ref=e1403]':
+              - generic [ref=e1404]:
+                - generic "Blusa Moletom Gola Careca Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium" [ref=e1405]:
+                  - generic [ref=e1408] [cursor=pointer]: Blusa Moletom Gola Careca Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium
+                - generic "MC-GRIFFE" [ref=e1409]
+                - 'link "Variantes (25) icon: down" [ref=e1412] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e1413]':
+                    - img [ref=e1414]
+            - cell "001-CARE-Corações" [ref=e1416]:
+              - generic "001-CARE-Corações" [ref=e1418]:
+                - generic [ref=e1419] [cursor=pointer]: 001-CARE-Corações
+            - cell "R$‎‎ 109,90" [ref=e1420]:
+              - generic [ref=e1422]: R$‎‎ 109,90
+            - cell "R$‎‎ 89,90" [ref=e1423]:
+              - generic [ref=e1425]: R$‎‎ 89,90
+            - cell "-" [ref=e1426]:
+              - generic [ref=e1428]: "-"
+            - cell "1250000" [ref=e1429]:
+              - generic [ref=e1432]: "1250000"
+            - cell "18/05/2026 01:53 18/05/2026 01:53" [ref=e1433]:
+              - generic [ref=e1434]:
+                - generic "18/05/2026 01:53:55" [ref=e1435]: 18/05/2026 01:53
+                - generic "18/05/2026 01:53:55" [ref=e1436]: 18/05/2026 01:53
+            - cell "Editar Mais " [ref=e1437]:
+              - generic [ref=e1439] [cursor=pointer]:
+                - link "Editar" [ref=e1441]:
+                  - /url: /products/shein/edit/4409247923788694
+                - link "Mais " [ref=e1442]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1443]: 
+          - 'row " Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia Strit Grif Variantes (20) icon: down 173843930 R$‎‎ 27,90 - - 400 17/05/2026 12:22 17/05/2026 12:22 Editar Mais " [ref=e1444]':
+            - cell [ref=e1445]:
+              - checkbox [ref=e1448] [cursor=pointer]
+            - cell "" [ref=e1450]:
+              - generic [ref=e1451]:
+                - generic [ref=e1455] [cursor=pointer]:
+                  - img
+                - generic [ref=e1458]: 
+            - 'cell "Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia Strit Grif Variantes (20) icon: down" [ref=e1459]':
+              - generic [ref=e1460]:
+                - generic "Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia" [ref=e1461]:
+                  - generic [ref=e1464] [cursor=pointer]: Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia
+                - generic "Strit Grif" [ref=e1465]
+                - 'link "Variantes (20) icon: down" [ref=e1468] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e1469]':
+                    - img [ref=e1470]
+            - cell "173843930" [ref=e1472]:
+              - generic "173843930" [ref=e1474]:
+                - generic [ref=e1475] [cursor=pointer]: "173843930"
+            - cell "R$‎‎ 27,90" [ref=e1476]:
+              - generic [ref=e1478]: R$‎‎ 27,90
+            - cell "-" [ref=e1479]:
+              - generic [ref=e1481]: "-"
+            - cell "-" [ref=e1482]:
+              - generic [ref=e1484]: "-"
+            - cell "400" [ref=e1485]:
+              - generic [ref=e1488]: "400"
+            - cell "17/05/2026 12:22 17/05/2026 12:22" [ref=e1489]:
+              - generic [ref=e1490]:
+                - generic "17/05/2026 12:22:40" [ref=e1491]: 17/05/2026 12:22
+                - generic "17/05/2026 12:22:40" [ref=e1492]: 17/05/2026 12:22
+            - cell "Editar Mais " [ref=e1493]:
+              - generic [ref=e1495] [cursor=pointer]:
+                - link "Editar" [ref=e1497]:
+                  - /url: /products/shein/edit/4409247923712443
+                - link "Mais " [ref=e1498]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1499]: 
+          - 'row " Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia MC-GRIFFE Variantes (20) icon: down 173843930 R$‎‎ 27,90 - - 400 17/05/2026 12:22 17/05/2026 12:22 Editar Mais " [ref=e1500]':
+            - cell [ref=e1501]:
+              - checkbox [ref=e1504] [cursor=pointer]
+            - cell "" [ref=e1506]:
+              - generic [ref=e1507]:
+                - generic [ref=e1511] [cursor=pointer]:
+                  - img
+                - generic [ref=e1514]: 
+            - 'cell "Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia MC-GRIFFE Variantes (20) icon: down" [ref=e1515]':
+              - generic [ref=e1516]:
+                - generic "Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia" [ref=e1517]:
+                  - generic [ref=e1520] [cursor=pointer]: Camisa Regata Masculina Boos Camiseta básica 100% Algodao Moda Casual Confortável Verao Treino Academia
+                - generic "MC-GRIFFE" [ref=e1521]
+                - 'link "Variantes (20) icon: down" [ref=e1524] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e1525]':
+                    - img [ref=e1526]
+            - cell "173843930" [ref=e1528]:
+              - generic "173843930" [ref=e1530]:
+                - generic [ref=e1531] [cursor=pointer]: "173843930"
+            - cell "R$‎‎ 27,90" [ref=e1532]:
+              - generic [ref=e1534]: R$‎‎ 27,90
+            - cell "-" [ref=e1535]:
+              - generic [ref=e1537]: "-"
+            - cell "-" [ref=e1538]:
+              - generic [ref=e1540]: "-"
+            - cell "400" [ref=e1541]:
+              - generic [ref=e1544]: "400"
+            - cell "17/05/2026 12:22 17/05/2026 12:22" [ref=e1545]:
+              - generic [ref=e1546]:
+                - generic "17/05/2026 12:22:40" [ref=e1547]: 17/05/2026 12:22
+                - generic "17/05/2026 12:22:40" [ref=e1548]: 17/05/2026 12:22
+            - cell "Editar Mais " [ref=e1549]:
+              - generic [ref=e1551] [cursor=pointer]:
+                - link "Editar" [ref=e1553]:
+                  - /url: /products/shein/edit/4409247923712422
+                - link "Mais " [ref=e1554]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1555]: 
+          - 'row " Regata Masculina BS Gola Redonda Camisa 100% Algodao Casual Academia Esporte Caminhada Strit Grif Variantes (15) icon: down 196325077 R$‎ 14,80 - 39,90 - - 300 17/05/2026 12:22 17/05/2026 12:22 Editar Mais " [ref=e1556]':
+            - cell [ref=e1557]:
+              - checkbox [ref=e1560] [cursor=pointer]
+            - cell "" [ref=e1562]:
+              - generic [ref=e1563]:
+                - generic [ref=e1567] [cursor=pointer]:
+                  - img
+                - generic [ref=e1570]: 
+            - 'cell "Regata Masculina BS Gola Redonda Camisa 100% Algodao Casual Academia Esporte Caminhada Strit Grif Variantes (15) icon: down" [ref=e1571]':
+              - generic [ref=e1572]:
+                - generic "Regata Masculina BS Gola Redonda Camisa 100% Algodao Casual Academia Esporte Caminhada" [ref=e1573]:
+                  - generic [ref=e1576] [cursor=pointer]: Regata Masculina BS Gola Redonda Camisa 100% Algodao Casual Academia Esporte Caminhada
+                - generic "Strit Grif" [ref=e1577]
+                - 'link "Variantes (15) icon: down" [ref=e1580] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (15)
+                  - 'generic "icon: down" [ref=e1581]':
+                    - img [ref=e1582]
+            - cell "196325077" [ref=e1584]:
+              - generic "196325077" [ref=e1586]:
+                - generic [ref=e1587] [cursor=pointer]: "196325077"
+            - cell "R$‎ 14,80 - 39,90" [ref=e1588]:
+              - generic [ref=e1590]: R$‎ 14,80 - 39,90
+            - cell "-" [ref=e1591]:
+              - generic [ref=e1593]: "-"
+            - cell "-" [ref=e1594]:
+              - generic [ref=e1596]: "-"
+            - cell "300" [ref=e1597]:
+              - generic [ref=e1600]: "300"
+            - cell "17/05/2026 12:22 17/05/2026 12:22" [ref=e1601]:
+              - generic [ref=e1602]:
+                - generic "17/05/2026 12:22:40" [ref=e1603]: 17/05/2026 12:22
+                - generic "17/05/2026 12:22:40" [ref=e1604]: 17/05/2026 12:22
+            - cell "Editar Mais " [ref=e1605]:
+              - generic [ref=e1607] [cursor=pointer]:
+                - link "Editar" [ref=e1609]:
+                  - /url: /products/shein/edit/4409247923712406
+                - link "Mais " [ref=e1610]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1611]: 
+          - 'row " Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão Strit Grif Variantes (28) icon: down 354133964 R$‎ 19,90 - 24,50 - - 560 17/05/2026 11:26 17/05/2026 11:26 Editar Mais " [ref=e1612]':
+            - cell [ref=e1613]:
+              - checkbox [ref=e1616] [cursor=pointer]
+            - cell "" [ref=e1618]:
+              - generic [ref=e1619]:
+                - generic [ref=e1623] [cursor=pointer]:
+                  - img
+                - generic [ref=e1626]: 
+            - 'cell "Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão Strit Grif Variantes (28) icon: down" [ref=e1627]':
+              - generic [ref=e1628]:
+                - generic "Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão" [ref=e1629]:
+                  - generic [ref=e1632] [cursor=pointer]: Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão
+                - generic "Strit Grif" [ref=e1633]
+                - 'link "Variantes (28) icon: down" [ref=e1636] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (28)
+                  - 'generic "icon: down" [ref=e1637]':
+                    - img [ref=e1638]
+            - cell "354133964" [ref=e1640]:
+              - generic "354133964" [ref=e1642]:
+                - generic [ref=e1643] [cursor=pointer]: "354133964"
+            - cell "R$‎ 19,90 - 24,50" [ref=e1644]:
+              - generic [ref=e1646]: R$‎ 19,90 - 24,50
+            - cell "-" [ref=e1647]:
+              - generic [ref=e1649]: "-"
+            - cell "-" [ref=e1650]:
+              - generic [ref=e1652]: "-"
+            - cell "560" [ref=e1653]:
+              - generic [ref=e1656]: "560"
+            - cell "17/05/2026 11:26 17/05/2026 11:26" [ref=e1657]:
+              - generic [ref=e1658]:
+                - generic "17/05/2026 11:26:39" [ref=e1659]: 17/05/2026 11:26
+                - generic "17/05/2026 11:26:39" [ref=e1660]: 17/05/2026 11:26
+            - cell "Editar Mais " [ref=e1661]:
+              - generic [ref=e1663] [cursor=pointer]:
+                - link "Editar" [ref=e1665]:
+                  - /url: /products/shein/edit/4409247923709347
+                - link "Mais " [ref=e1666]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1667]: 
+          - 'row " Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão MC-GRIFFE Variantes (28) icon: down 354133964 R$‎ 19,90 - 24,50 - - 560 17/05/2026 11:26 17/05/2026 11:26 Editar Mais " [ref=e1668]':
+            - cell [ref=e1669]:
+              - checkbox [ref=e1672] [cursor=pointer]
+            - cell "" [ref=e1674]:
+              - generic [ref=e1675]:
+                - generic [ref=e1679] [cursor=pointer]:
+                  - img
+                - generic [ref=e1682]: 
+            - 'cell "Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão MC-GRIFFE Variantes (28) icon: down" [ref=e1683]':
+              - generic [ref=e1684]:
+                - generic "Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão" [ref=e1685]:
+                  - generic [ref=e1688] [cursor=pointer]: Camiseta Feminina Brasil Copa Estampada Casual 100% Algodão Manga Curta Confortável Verão
+                - generic "MC-GRIFFE" [ref=e1689]
+                - 'link "Variantes (28) icon: down" [ref=e1692] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (28)
+                  - 'generic "icon: down" [ref=e1693]':
+                    - img [ref=e1694]
+            - cell "354133964" [ref=e1696]:
+              - generic "354133964" [ref=e1698]:
+                - generic [ref=e1699] [cursor=pointer]: "354133964"
+            - cell "R$‎ 19,90 - 24,50" [ref=e1700]:
+              - generic [ref=e1702]: R$‎ 19,90 - 24,50
+            - cell "-" [ref=e1703]:
+              - generic [ref=e1705]: "-"
+            - cell "-" [ref=e1706]:
+              - generic [ref=e1708]: "-"
+            - cell "560" [ref=e1709]:
+              - generic [ref=e1712]: "560"
+            - cell "17/05/2026 11:26 17/05/2026 11:26" [ref=e1713]:
+              - generic [ref=e1714]:
+                - generic "17/05/2026 11:26:39" [ref=e1715]: 17/05/2026 11:26
+                - generic "17/05/2026 11:26:39" [ref=e1716]: 17/05/2026 11:26
+            - cell "Editar Mais " [ref=e1717]:
+              - generic [ref=e1719] [cursor=pointer]:
+                - link "Editar" [ref=e1721]:
+                  - /url: /products/shein/edit/4409247923709318
+                - link "Mais " [ref=e1722]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1723]: 
+          - 'row " Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt Strit Grif Variantes (16) icon: down 377361005 R$‎‎ 24,78 - - 320 17/05/2026 11:26 17/05/2026 11:26 Editar Mais " [ref=e1724]':
+            - cell [ref=e1725]:
+              - checkbox [ref=e1728] [cursor=pointer]
+            - cell "" [ref=e1730]:
+              - generic [ref=e1731]:
+                - generic [ref=e1735] [cursor=pointer]:
+                  - img
+                - generic [ref=e1738]: 
+            - 'cell "Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt Strit Grif Variantes (16) icon: down" [ref=e1739]':
+              - generic [ref=e1740]:
+                - generic "Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt" [ref=e1741]:
+                  - generic [ref=e1744] [cursor=pointer]: Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt
+                - generic "Strit Grif" [ref=e1745]
+                - 'link "Variantes (16) icon: down" [ref=e1748] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (16)
+                  - 'generic "icon: down" [ref=e1749]':
+                    - img [ref=e1750]
+            - cell "377361005" [ref=e1752]:
+              - generic "377361005" [ref=e1754]:
+                - generic [ref=e1755] [cursor=pointer]: "377361005"
+            - cell "R$‎‎ 24,78" [ref=e1756]:
+              - generic [ref=e1758]: R$‎‎ 24,78
+            - cell "-" [ref=e1759]:
+              - generic [ref=e1761]: "-"
+            - cell "-" [ref=e1762]:
+              - generic [ref=e1764]: "-"
+            - cell "320" [ref=e1765]:
+              - generic [ref=e1768]: "320"
+            - cell "17/05/2026 11:26 17/05/2026 11:26" [ref=e1769]:
+              - generic [ref=e1770]:
+                - generic "17/05/2026 11:26:39" [ref=e1771]: 17/05/2026 11:26
+                - generic "17/05/2026 11:26:39" [ref=e1772]: 17/05/2026 11:26
+            - cell "Editar Mais " [ref=e1773]:
+              - generic [ref=e1775] [cursor=pointer]:
+                - link "Editar" [ref=e1777]:
+                  - /url: /products/shein/edit/4409247923709301
+                - link "Mais " [ref=e1778]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1779]: 
+          - 'row " Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt MC-GRIFFE Variantes (16) icon: down 377361005 R$‎‎ 24,78 - - 320 17/05/2026 11:26 17/05/2026 11:26 Editar Mais " [ref=e1780]':
+            - cell [ref=e1781]:
+              - checkbox [ref=e1784] [cursor=pointer]
+            - cell "" [ref=e1786]:
+              - generic [ref=e1787]:
+                - generic [ref=e1791] [cursor=pointer]:
+                  - img
+                - generic [ref=e1794]: 
+            - 'cell "Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt MC-GRIFFE Variantes (16) icon: down" [ref=e1795]':
+              - generic [ref=e1796]:
+                - generic "Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt" [ref=e1797]:
+                  - generic [ref=e1800] [cursor=pointer]: Camiseta Baby Look Feminina Estampado Cowgirl Boiadeira 100% Algodão Tshirt
+                - generic "MC-GRIFFE" [ref=e1801]
+                - 'link "Variantes (16) icon: down" [ref=e1804] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (16)
+                  - 'generic "icon: down" [ref=e1805]':
+                    - img [ref=e1806]
+            - cell "377361005" [ref=e1808]:
+              - generic "377361005" [ref=e1810]:
+                - generic [ref=e1811] [cursor=pointer]: "377361005"
+            - cell "R$‎‎ 24,78" [ref=e1812]:
+              - generic [ref=e1814]: R$‎‎ 24,78
+            - cell "-" [ref=e1815]:
+              - generic [ref=e1817]: "-"
+            - cell "-" [ref=e1818]:
+              - generic [ref=e1820]: "-"
+            - cell "320" [ref=e1821]:
+              - generic [ref=e1824]: "320"
+            - cell "17/05/2026 11:26 17/05/2026 11:26" [ref=e1825]:
+              - generic [ref=e1826]:
+                - generic "17/05/2026 11:26:38" [ref=e1827]: 17/05/2026 11:26
+                - generic "17/05/2026 11:26:39" [ref=e1828]: 17/05/2026 11:26
+            - cell "Editar Mais " [ref=e1829]:
+              - generic [ref=e1831] [cursor=pointer]:
+                - link "Editar" [ref=e1833]:
+                  - /url: /products/shein/edit/4409247923709284
+                - link "Mais " [ref=e1834]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1835]: 
+          - 'row " T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão Strit Grif Variantes (15) icon: down 407753037 R$‎ 12,90 - 33,90 - - 300 17/05/2026 11:17 17/05/2026 11:17 Editar Mais " [ref=e1836]':
+            - cell [ref=e1837]:
+              - checkbox [ref=e1840] [cursor=pointer]
+            - cell "" [ref=e1842]:
+              - generic [ref=e1843]:
+                - generic [ref=e1847] [cursor=pointer]:
+                  - img
+                - generic [ref=e1850]: 
+            - 'cell "T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão Strit Grif Variantes (15) icon: down" [ref=e1851]':
+              - generic [ref=e1852]:
+                - generic "T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão" [ref=e1853]:
+                  - generic [ref=e1856] [cursor=pointer]: T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão
+                - generic "Strit Grif" [ref=e1857]
+                - 'link "Variantes (15) icon: down" [ref=e1860] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (15)
+                  - 'generic "icon: down" [ref=e1861]':
+                    - img [ref=e1862]
+            - cell "407753037" [ref=e1864]:
+              - generic "407753037" [ref=e1866]:
+                - generic [ref=e1867] [cursor=pointer]: "407753037"
+            - cell "R$‎ 12,90 - 33,90" [ref=e1868]:
+              - generic [ref=e1870]: R$‎ 12,90 - 33,90
+            - cell "-" [ref=e1871]:
+              - generic [ref=e1873]: "-"
+            - cell "-" [ref=e1874]:
+              - generic [ref=e1876]: "-"
+            - cell "300" [ref=e1877]:
+              - generic [ref=e1880]: "300"
+            - cell "17/05/2026 11:17 17/05/2026 11:17" [ref=e1881]:
+              - generic [ref=e1882]:
+                - generic "17/05/2026 11:17:01" [ref=e1883]: 17/05/2026 11:17
+                - generic "17/05/2026 11:17:01" [ref=e1884]: 17/05/2026 11:17
+            - cell "Editar Mais " [ref=e1885]:
+              - generic [ref=e1887] [cursor=pointer]:
+                - link "Editar" [ref=e1889]:
+                  - /url: /products/shein/edit/4409247923709145
+                - link "Mais " [ref=e1890]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1891]: 
+          - 'row " T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão MC-GRIFFE Variantes (15) icon: down 407753037 R$‎ 12,90 - 33,90 - - 300 17/05/2026 11:17 17/05/2026 11:17 Editar Mais " [ref=e1892]':
+            - cell [ref=e1893]:
+              - checkbox [ref=e1896] [cursor=pointer]
+            - cell "" [ref=e1898]:
+              - generic [ref=e1899]:
+                - generic [ref=e1903] [cursor=pointer]:
+                  - img
+                - generic [ref=e1906]: 
+            - 'cell "T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão MC-GRIFFE Variantes (15) icon: down" [ref=e1907]':
+              - generic [ref=e1908]:
+                - generic "T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão" [ref=e1909]:
+                  - generic [ref=e1912] [cursor=pointer]: T-shirt Camiseta Estampada de Laço Pequeno no Peito Super Delicado Feminina Camisa 100% Algodão de Manga Curta Gola Redonda Para a Primavera/Verão
+                - generic "MC-GRIFFE" [ref=e1913]
+                - 'link "Variantes (15) icon: down" [ref=e1916] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (15)
+                  - 'generic "icon: down" [ref=e1917]':
+                    - img [ref=e1918]
+            - cell "407753037" [ref=e1920]:
+              - generic "407753037" [ref=e1922]:
+                - generic [ref=e1923] [cursor=pointer]: "407753037"
+            - cell "R$‎ 12,90 - 33,90" [ref=e1924]:
+              - generic [ref=e1926]: R$‎ 12,90 - 33,90
+            - cell "-" [ref=e1927]:
+              - generic [ref=e1929]: "-"
+            - cell "-" [ref=e1930]:
+              - generic [ref=e1932]: "-"
+            - cell "300" [ref=e1933]:
+              - generic [ref=e1936]: "300"
+            - cell "17/05/2026 11:17 17/05/2026 11:17" [ref=e1937]:
+              - generic [ref=e1938]:
+                - generic "17/05/2026 11:17:01" [ref=e1939]: 17/05/2026 11:17
+                - generic "17/05/2026 11:17:01" [ref=e1940]: 17/05/2026 11:17
+            - cell "Editar Mais " [ref=e1941]:
+              - generic [ref=e1943] [cursor=pointer]:
+                - link "Editar" [ref=e1945]:
+                  - /url: /products/shein/edit/4409247923709129
+                - link "Mais " [ref=e1946]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1947]: 
+          - 'row " Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato Strit Grif Variantes (5) icon: down 417152478 R$‎‎ 99,00 - - 454500 17/05/2026 10:28 17/05/2026 10:30 Editar Mais " [ref=e1948]':
+            - cell [ref=e1949]:
+              - checkbox [ref=e1952] [cursor=pointer]
+            - cell "" [ref=e1954]:
+              - generic [ref=e1955]:
+                - generic [ref=e1959] [cursor=pointer]:
+                  - img
+                - generic [ref=e1962]: 
+            - 'cell "Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato Strit Grif Variantes (5) icon: down" [ref=e1963]':
+              - generic [ref=e1964]:
+                - generic "Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato" [ref=e1965]:
+                  - generic [ref=e1968] [cursor=pointer]: Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato
+                - generic "Strit Grif" [ref=e1969]
+                - 'link "Variantes (5) icon: down" [ref=e1972] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e1973]':
+                    - img [ref=e1974]
+            - cell "417152478" [ref=e1976]:
+              - generic "417152478" [ref=e1978]:
+                - generic [ref=e1979] [cursor=pointer]: "417152478"
+            - cell "R$‎‎ 99,00" [ref=e1980]:
+              - generic [ref=e1982]: R$‎‎ 99,00
+            - cell "-" [ref=e1983]:
+              - generic [ref=e1985]: "-"
+            - cell "-" [ref=e1986]:
+              - generic [ref=e1988]: "-"
+            - cell "454500" [ref=e1989]:
+              - generic [ref=e1992]: "454500"
+            - cell "17/05/2026 10:28 17/05/2026 10:30" [ref=e1993]:
+              - generic [ref=e1994]:
+                - generic "17/05/2026 10:28:21" [ref=e1995]: 17/05/2026 10:28
+                - generic "17/05/2026 10:30:32" [ref=e1996]: 17/05/2026 10:30
+            - cell "Editar Mais " [ref=e1997]:
+              - generic [ref=e1999] [cursor=pointer]:
+                - link "Editar" [ref=e2001]:
+                  - /url: /products/shein/edit/4409247923705889
+                - link "Mais " [ref=e2002]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2003]: 
+          - 'row " Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato MC-GRIFFE Variantes (5) icon: down 417152478 R$‎‎ 99,00 - - 454500 17/05/2026 10:28 17/05/2026 10:28 Editar Mais " [ref=e2004]':
+            - cell [ref=e2005]:
+              - checkbox [ref=e2008] [cursor=pointer]
+            - cell "" [ref=e2010]:
+              - generic [ref=e2011]:
+                - generic [ref=e2015] [cursor=pointer]:
+                  - img
+                - generic [ref=e2018]: 
+            - 'cell "Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato MC-GRIFFE Variantes (5) icon: down" [ref=e2019]':
+              - generic [ref=e2020]:
+                - generic "Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato" [ref=e2021]:
+                  - generic [ref=e2024] [cursor=pointer]: Camiseta Feminina T-Shirt Estampada Italia Limão Tropical Camiseta 100% Algodão Elegante Envio Imediato
+                - generic "MC-GRIFFE" [ref=e2025]
+                - 'link "Variantes (5) icon: down" [ref=e2028] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2029]':
+                    - img [ref=e2030]
+            - cell "417152478" [ref=e2032]:
+              - generic "417152478" [ref=e2034]:
+                - generic [ref=e2035] [cursor=pointer]: "417152478"
+            - cell "R$‎‎ 99,00" [ref=e2036]:
+              - generic [ref=e2038]: R$‎‎ 99,00
+            - cell "-" [ref=e2039]:
+              - generic [ref=e2041]: "-"
+            - cell "-" [ref=e2042]:
+              - generic [ref=e2044]: "-"
+            - cell "454500" [ref=e2045]:
+              - generic [ref=e2048]: "454500"
+            - cell "17/05/2026 10:28 17/05/2026 10:28" [ref=e2049]:
+              - generic [ref=e2050]:
+                - generic "17/05/2026 10:28:21" [ref=e2051]: 17/05/2026 10:28
+                - generic "17/05/2026 10:28:56" [ref=e2052]: 17/05/2026 10:28
+            - cell "Editar Mais " [ref=e2053]:
+              - generic [ref=e2055] [cursor=pointer]:
+                - link "Editar" [ref=e2057]:
+                  - /url: /products/shein/edit/4409247923705883
+                - link "Mais " [ref=e2058]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2059]: 
+          - 'row " Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão Bronx Outfit Variantes (25) icon: down 418094663 R$‎ 12,90 - 33,90 - - 500 13/05/2026 16:35 13/05/2026 16:35 Editar Mais " [ref=e2060]':
+            - cell [ref=e2061]:
+              - checkbox [ref=e2064] [cursor=pointer]
+            - cell "" [ref=e2066]:
+              - generic [ref=e2067]:
+                - generic [ref=e2071] [cursor=pointer]:
+                  - img
+                - generic [ref=e2074]: 
+            - 'cell "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão Bronx Outfit Variantes (25) icon: down" [ref=e2075]':
+              - generic [ref=e2076]:
+                - generic "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão" [ref=e2077]:
+                  - generic [ref=e2080] [cursor=pointer]: Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão
+                - generic "Bronx Outfit" [ref=e2081]
+                - 'link "Variantes (25) icon: down" [ref=e2084] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2085]':
+                    - img [ref=e2086]
+            - cell "418094663" [ref=e2088]:
+              - generic "418094663" [ref=e2090]:
+                - generic [ref=e2091] [cursor=pointer]: "418094663"
+            - cell "R$‎ 12,90 - 33,90" [ref=e2092]:
+              - generic [ref=e2094]: R$‎ 12,90 - 33,90
+            - cell "-" [ref=e2095]:
+              - generic [ref=e2097]: "-"
+            - cell "-" [ref=e2098]:
+              - generic [ref=e2100]: "-"
+            - cell "500" [ref=e2101]:
+              - generic [ref=e2104]: "500"
+            - cell "13/05/2026 16:35 13/05/2026 16:35" [ref=e2105]:
+              - generic [ref=e2106]:
+                - generic "13/05/2026 16:35:57" [ref=e2107]: 13/05/2026 16:35
+                - generic "13/05/2026 16:35:57" [ref=e2108]: 13/05/2026 16:35
+            - cell "Editar Mais " [ref=e2109]:
+              - generic [ref=e2111] [cursor=pointer]:
+                - link "Editar" [ref=e2113]:
+                  - /url: /products/shein/edit/4409247922746089
+                - link "Mais " [ref=e2114]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2115]: 
+          - 'row " Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão Aura Fashion Variantes (25) icon: down 418094663 R$‎ 12,90 - 33,90 - - 500 13/05/2026 16:35 13/05/2026 16:35 Editar Mais " [ref=e2116]':
+            - cell [ref=e2117]:
+              - checkbox [ref=e2120] [cursor=pointer]
+            - cell "" [ref=e2122]:
+              - generic [ref=e2123]:
+                - generic [ref=e2127] [cursor=pointer]:
+                  - img
+                - generic [ref=e2130]: 
+            - 'cell "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão Aura Fashion Variantes (25) icon: down" [ref=e2131]':
+              - generic [ref=e2132]:
+                - generic "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão" [ref=e2133]:
+                  - generic [ref=e2136] [cursor=pointer]: Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão
+                - generic "Aura Fashion" [ref=e2137]
+                - 'link "Variantes (25) icon: down" [ref=e2140] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2141]':
+                    - img [ref=e2142]
+            - cell "418094663" [ref=e2144]:
+              - generic "418094663" [ref=e2146]:
+                - generic [ref=e2147] [cursor=pointer]: "418094663"
+            - cell "R$‎ 12,90 - 33,90" [ref=e2148]:
+              - generic [ref=e2150]: R$‎ 12,90 - 33,90
+            - cell "-" [ref=e2151]:
+              - generic [ref=e2153]: "-"
+            - cell "-" [ref=e2154]:
+              - generic [ref=e2156]: "-"
+            - cell "500" [ref=e2157]:
+              - generic [ref=e2160]: "500"
+            - cell "13/05/2026 16:35 13/05/2026 16:35" [ref=e2161]:
+              - generic [ref=e2162]:
+                - generic "13/05/2026 16:35:57" [ref=e2163]: 13/05/2026 16:35
+                - generic "13/05/2026 16:35:57" [ref=e2164]: 13/05/2026 16:35
+            - cell "Editar Mais " [ref=e2165]:
+              - generic [ref=e2167] [cursor=pointer]:
+                - link "Editar" [ref=e2169]:
+                  - /url: /products/shein/edit/4409247922746063
+                - link "Mais " [ref=e2170]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2171]: 
+          - 'row " Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão Strit Grif Variantes (25) icon: down 418094663 R$‎ 12,90 - 33,90 - - 500 13/05/2026 16:35 13/05/2026 16:35 Editar Mais " [ref=e2172]':
+            - cell [ref=e2173]:
+              - checkbox [ref=e2176] [cursor=pointer]
+            - cell "" [ref=e2178]:
+              - generic [ref=e2179]:
+                - generic [ref=e2183] [cursor=pointer]:
+                  - img
+                - generic [ref=e2186]: 
+            - 'cell "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão Strit Grif Variantes (25) icon: down" [ref=e2187]':
+              - generic [ref=e2188]:
+                - generic "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão" [ref=e2189]:
+                  - generic [ref=e2192] [cursor=pointer]: Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão
+                - generic "Strit Grif" [ref=e2193]
+                - 'link "Variantes (25) icon: down" [ref=e2196] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2197]':
+                    - img [ref=e2198]
+            - cell "418094663" [ref=e2200]:
+              - generic "418094663" [ref=e2202]:
+                - generic [ref=e2203] [cursor=pointer]: "418094663"
+            - cell "R$‎ 12,90 - 33,90" [ref=e2204]:
+              - generic [ref=e2206]: R$‎ 12,90 - 33,90
+            - cell "-" [ref=e2207]:
+              - generic [ref=e2209]: "-"
+            - cell "-" [ref=e2210]:
+              - generic [ref=e2212]: "-"
+            - cell "500" [ref=e2213]:
+              - generic [ref=e2216]: "500"
+            - cell "13/05/2026 16:35 13/05/2026 16:35" [ref=e2217]:
+              - generic [ref=e2218]:
+                - generic "13/05/2026 16:35:57" [ref=e2219]: 13/05/2026 16:35
+                - generic "13/05/2026 16:35:57" [ref=e2220]: 13/05/2026 16:35
+            - cell "Editar Mais " [ref=e2221]:
+              - generic [ref=e2223] [cursor=pointer]:
+                - link "Editar" [ref=e2225]:
+                  - /url: /products/shein/edit/4409247922746037
+                - link "Mais " [ref=e2226]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2227]: 
+          - 'row " Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão MC-GRIFFE Variantes (25) icon: down 418094663 R$‎ 12,90 - 33,90 - - 500 13/05/2026 16:35 13/05/2026 16:35 Editar Mais " [ref=e2228]':
+            - cell [ref=e2229]:
+              - checkbox [ref=e2232] [cursor=pointer]
+            - cell "" [ref=e2234]:
+              - generic [ref=e2235]:
+                - generic [ref=e2239] [cursor=pointer]:
+                  - img
+                - generic [ref=e2242]: 
+            - 'cell "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão MC-GRIFFE Variantes (25) icon: down" [ref=e2243]':
+              - generic [ref=e2244]:
+                - generic "Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão" [ref=e2245]:
+                  - generic [ref=e2248] [cursor=pointer]: Camiseta Feminina T-Shirt Estampada Carinha Blusa 100% Algodão com Manga Curta e Gola Redonda Estilo Primavera Verão
+                - generic "MC-GRIFFE" [ref=e2249]
+                - 'link "Variantes (25) icon: down" [ref=e2252] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2253]':
+                    - img [ref=e2254]
+            - cell "418094663" [ref=e2256]:
+              - generic "418094663" [ref=e2258]:
+                - generic [ref=e2259] [cursor=pointer]: "418094663"
+            - cell "R$‎ 12,90 - 33,90" [ref=e2260]:
+              - generic [ref=e2262]: R$‎ 12,90 - 33,90
+            - cell "-" [ref=e2263]:
+              - generic [ref=e2265]: "-"
+            - cell "-" [ref=e2266]:
+              - generic [ref=e2268]: "-"
+            - cell "500" [ref=e2269]:
+              - generic [ref=e2272]: "500"
+            - cell "13/05/2026 16:35 13/05/2026 16:35" [ref=e2273]:
+              - generic [ref=e2274]:
+                - generic "13/05/2026 16:35:57" [ref=e2275]: 13/05/2026 16:35
+                - generic "13/05/2026 16:35:57" [ref=e2276]: 13/05/2026 16:35
+            - cell "Editar Mais " [ref=e2277]:
+              - generic [ref=e2279] [cursor=pointer]:
+                - link "Editar" [ref=e2281]:
+                  - /url: /products/shein/edit/4409247922746004
+                - link "Mais " [ref=e2282]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2283]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium Bronx Outfit Variantes (25) icon: down 001-CANG-Corações R$‎‎ 109,90 R$‎‎ 89,90 - 1250000 13/05/2026 03:19 13/05/2026 03:19 Editar Mais " [ref=e2284]':
+            - cell [ref=e2285]:
+              - checkbox [ref=e2288] [cursor=pointer]
+            - cell [ref=e2290]:
+              - generic [ref=e2295] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium Bronx Outfit Variantes (25) icon: down" [ref=e2296]':
+              - generic [ref=e2297]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium" [ref=e2298]:
+                  - generic [ref=e2301] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium
+                - generic "Bronx Outfit" [ref=e2302]
+                - 'link "Variantes (25) icon: down" [ref=e2305] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2306]':
+                    - img [ref=e2307]
+            - cell "001-CANG-Corações" [ref=e2309]:
+              - generic "001-CANG-Corações" [ref=e2311]:
+                - generic [ref=e2312] [cursor=pointer]: 001-CANG-Corações
+            - cell "R$‎‎ 109,90" [ref=e2313]:
+              - generic [ref=e2315]: R$‎‎ 109,90
+            - cell "R$‎‎ 89,90" [ref=e2316]:
+              - generic [ref=e2318]: R$‎‎ 89,90
+            - cell "-" [ref=e2319]:
+              - generic [ref=e2321]: "-"
+            - cell "1250000" [ref=e2322]:
+              - generic [ref=e2325]: "1250000"
+            - cell "13/05/2026 03:19 13/05/2026 03:19" [ref=e2326]:
+              - generic [ref=e2327]:
+                - generic "13/05/2026 03:19:07" [ref=e2328]: 13/05/2026 03:19
+                - generic "13/05/2026 03:19:07" [ref=e2329]: 13/05/2026 03:19
+            - cell "Editar Mais " [ref=e2330]:
+              - generic [ref=e2332] [cursor=pointer]:
+                - link "Editar" [ref=e2334]:
+                  - /url: /products/shein/edit/4409247922460514
+                - link "Mais " [ref=e2335]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2336]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium Bronx Outfit Variantes (25) icon: down 001-CANG-Corações R$‎‎ 109,90 R$‎‎ 89,90 - 1250000 13/05/2026 03:19 13/05/2026 03:19 Editar Mais " [ref=e2337]':
+            - cell [ref=e2338]:
+              - checkbox [ref=e2341] [cursor=pointer]
+            - cell [ref=e2343]:
+              - generic [ref=e2348] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium Bronx Outfit Variantes (25) icon: down" [ref=e2349]':
+              - generic [ref=e2350]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium" [ref=e2351]:
+                  - generic [ref=e2354] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium
+                - generic "Bronx Outfit" [ref=e2355]
+                - 'link "Variantes (25) icon: down" [ref=e2358] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2359]':
+                    - img [ref=e2360]
+            - cell "001-CANG-Corações" [ref=e2362]:
+              - generic "001-CANG-Corações" [ref=e2364]:
+                - generic [ref=e2365] [cursor=pointer]: 001-CANG-Corações
+            - cell "R$‎‎ 109,90" [ref=e2366]:
+              - generic [ref=e2368]: R$‎‎ 109,90
+            - cell "R$‎‎ 89,90" [ref=e2369]:
+              - generic [ref=e2371]: R$‎‎ 89,90
+            - cell "-" [ref=e2372]:
+              - generic [ref=e2374]: "-"
+            - cell "1250000" [ref=e2375]:
+              - generic [ref=e2378]: "1250000"
+            - cell "13/05/2026 03:19 13/05/2026 03:19" [ref=e2379]:
+              - generic [ref=e2380]:
+                - generic "13/05/2026 03:19:07" [ref=e2381]: 13/05/2026 03:19
+                - generic "13/05/2026 03:19:07" [ref=e2382]: 13/05/2026 03:19
+            - cell "Editar Mais " [ref=e2383]:
+              - generic [ref=e2385] [cursor=pointer]:
+                - link "Editar" [ref=e2387]:
+                  - /url: /products/shein/edit/4409247922460488
+                - link "Mais " [ref=e2388]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2389]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium Bronx Outfit Variantes (25) icon: down 001-CANG-Corações R$‎‎ 109,90 R$‎‎ 89,90 - 1250000 13/05/2026 03:19 13/05/2026 03:19 Editar Mais " [ref=e2390]':
+            - cell [ref=e2391]:
+              - checkbox [ref=e2394] [cursor=pointer]
+            - cell [ref=e2396]:
+              - generic [ref=e2401] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium Bronx Outfit Variantes (25) icon: down" [ref=e2402]':
+              - generic [ref=e2403]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium" [ref=e2404]:
+                  - generic [ref=e2407] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Feminino Chique Confortável Confortável Premium
+                - generic "Bronx Outfit" [ref=e2408]
+                - 'link "Variantes (25) icon: down" [ref=e2411] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e2412]':
+                    - img [ref=e2413]
+            - cell "001-CANG-Corações" [ref=e2415]:
+              - generic "001-CANG-Corações" [ref=e2417]:
+                - generic [ref=e2418] [cursor=pointer]: 001-CANG-Corações
+            - cell "R$‎‎ 109,90" [ref=e2419]:
+              - generic [ref=e2421]: R$‎‎ 109,90
+            - cell "R$‎‎ 89,90" [ref=e2422]:
+              - generic [ref=e2424]: R$‎‎ 89,90
+            - cell "-" [ref=e2425]:
+              - generic [ref=e2427]: "-"
+            - cell "1250000" [ref=e2428]:
+              - generic [ref=e2431]: "1250000"
+            - cell "13/05/2026 03:19 13/05/2026 03:19" [ref=e2432]:
+              - generic [ref=e2433]:
+                - generic "13/05/2026 03:19:07" [ref=e2434]: 13/05/2026 03:19
+                - generic "13/05/2026 03:19:07" [ref=e2435]: 13/05/2026 03:19
+            - cell "Editar Mais " [ref=e2436]:
+              - generic [ref=e2438] [cursor=pointer]:
+                - link "Editar" [ref=e2440]:
+                  - /url: /products/shein/edit/4409247922460462
+                - link "Mais " [ref=e2441]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2442]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2443]':
+            - cell [ref=e2444]:
+              - checkbox [ref=e2447] [cursor=pointer]
+            - cell [ref=e2449]:
+              - generic [ref=e2454] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2455]':
+              - generic [ref=e2456]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2457]:
+                  - generic [ref=e2460] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2461]
+                - 'link "Variantes (5) icon: down" [ref=e2464] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2465]':
+                    - img [ref=e2466]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2468]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2470]:
+                - generic [ref=e2471] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2472]:
+              - generic [ref=e2474]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2475]:
+              - generic [ref=e2477]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2478]:
+              - generic [ref=e2480]: "-"
+            - cell "250000" [ref=e2481]:
+              - generic [ref=e2484]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2485]:
+              - generic [ref=e2486]:
+                - generic "13/05/2026 01:45:43" [ref=e2487]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2488]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2489]:
+              - generic [ref=e2491] [cursor=pointer]:
+                - link "Editar" [ref=e2493]:
+                  - /url: /products/shein/edit/4409247922460079
+                - link "Mais " [ref=e2494]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2495]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2496]':
+            - cell [ref=e2497]:
+              - checkbox [ref=e2500] [cursor=pointer]
+            - cell [ref=e2502]:
+              - generic [ref=e2507] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2508]':
+              - generic [ref=e2509]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2510]:
+                  - generic [ref=e2513] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2514]
+                - 'link "Variantes (5) icon: down" [ref=e2517] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2518]':
+                    - img [ref=e2519]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2521]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2523]:
+                - generic [ref=e2524] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2525]:
+              - generic [ref=e2527]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2528]:
+              - generic [ref=e2530]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2531]:
+              - generic [ref=e2533]: "-"
+            - cell "250000" [ref=e2534]:
+              - generic [ref=e2537]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2538]:
+              - generic [ref=e2539]:
+                - generic "13/05/2026 01:45:43" [ref=e2540]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2541]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2542]:
+              - generic [ref=e2544] [cursor=pointer]:
+                - link "Editar" [ref=e2546]:
+                  - /url: /products/shein/edit/4409247922460073
+                - link "Mais " [ref=e2547]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2548]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2549]':
+            - cell [ref=e2550]:
+              - checkbox [ref=e2553] [cursor=pointer]
+            - cell [ref=e2555]:
+              - generic [ref=e2560] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2561]':
+              - generic [ref=e2562]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2563]:
+                  - generic [ref=e2566] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2567]
+                - 'link "Variantes (5) icon: down" [ref=e2570] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2571]':
+                    - img [ref=e2572]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2574]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2576]:
+                - generic [ref=e2577] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2578]:
+              - generic [ref=e2580]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2581]:
+              - generic [ref=e2583]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2584]:
+              - generic [ref=e2586]: "-"
+            - cell "250000" [ref=e2587]:
+              - generic [ref=e2590]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2591]:
+              - generic [ref=e2592]:
+                - generic "13/05/2026 01:45:43" [ref=e2593]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2594]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2595]:
+              - generic [ref=e2597] [cursor=pointer]:
+                - link "Editar" [ref=e2599]:
+                  - /url: /products/shein/edit/4409247922460067
+                - link "Mais " [ref=e2600]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2601]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2602]':
+            - cell [ref=e2603]:
+              - checkbox [ref=e2606] [cursor=pointer]
+            - cell [ref=e2608]:
+              - generic [ref=e2613] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2614]':
+              - generic [ref=e2615]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2616]:
+                  - generic [ref=e2619] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2620]
+                - 'link "Variantes (5) icon: down" [ref=e2623] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2624]':
+                    - img [ref=e2625]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2627]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2629]:
+                - generic [ref=e2630] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2631]:
+              - generic [ref=e2633]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2634]:
+              - generic [ref=e2636]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2637]:
+              - generic [ref=e2639]: "-"
+            - cell "250000" [ref=e2640]:
+              - generic [ref=e2643]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2644]:
+              - generic [ref=e2645]:
+                - generic "13/05/2026 01:45:43" [ref=e2646]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2647]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2648]:
+              - generic [ref=e2650] [cursor=pointer]:
+                - link "Editar" [ref=e2652]:
+                  - /url: /products/shein/edit/4409247922460055
+                - link "Mais " [ref=e2653]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2654]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2655]':
+            - cell [ref=e2656]:
+              - checkbox [ref=e2659] [cursor=pointer]
+            - cell [ref=e2661]:
+              - generic [ref=e2666] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2667]':
+              - generic [ref=e2668]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2669]:
+                  - generic [ref=e2672] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2673]
+                - 'link "Variantes (5) icon: down" [ref=e2676] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2677]':
+                    - img [ref=e2678]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2680]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2682]:
+                - generic [ref=e2683] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2684]:
+              - generic [ref=e2686]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2687]:
+              - generic [ref=e2689]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2690]:
+              - generic [ref=e2692]: "-"
+            - cell "250000" [ref=e2693]:
+              - generic [ref=e2696]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2697]:
+              - generic [ref=e2698]:
+                - generic "13/05/2026 01:45:43" [ref=e2699]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2700]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2701]:
+              - generic [ref=e2703] [cursor=pointer]:
+                - link "Editar" [ref=e2705]:
+                  - /url: /products/shein/edit/4409247922460049
+                - link "Mais " [ref=e2706]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2707]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2708]':
+            - cell [ref=e2709]:
+              - checkbox [ref=e2712] [cursor=pointer]
+            - cell [ref=e2714]:
+              - generic [ref=e2719] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2720]':
+              - generic [ref=e2721]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2722]:
+                  - generic [ref=e2725] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2726]
+                - 'link "Variantes (5) icon: down" [ref=e2729] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2730]':
+                    - img [ref=e2731]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2733]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2735]:
+                - generic [ref=e2736] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2737]:
+              - generic [ref=e2739]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2740]:
+              - generic [ref=e2742]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2743]:
+              - generic [ref=e2745]: "-"
+            - cell "250000" [ref=e2746]:
+              - generic [ref=e2749]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2750]:
+              - generic [ref=e2751]:
+                - generic "13/05/2026 01:45:43" [ref=e2752]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2753]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2754]:
+              - generic [ref=e2756] [cursor=pointer]:
+                - link "Editar" [ref=e2758]:
+                  - /url: /products/shein/edit/4409247922460043
+                - link "Mais " [ref=e2759]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2760]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2761]':
+            - cell [ref=e2762]:
+              - checkbox [ref=e2765] [cursor=pointer]
+            - cell [ref=e2767]:
+              - generic [ref=e2772] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2773]':
+              - generic [ref=e2774]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2775]:
+                  - generic [ref=e2778] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2779]
+                - 'link "Variantes (5) icon: down" [ref=e2782] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2783]':
+                    - img [ref=e2784]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2786]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2788]:
+                - generic [ref=e2789] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2790]:
+              - generic [ref=e2792]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2793]:
+              - generic [ref=e2795]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2796]:
+              - generic [ref=e2798]: "-"
+            - cell "250000" [ref=e2799]:
+              - generic [ref=e2802]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2803]:
+              - generic [ref=e2804]:
+                - generic "13/05/2026 01:45:43" [ref=e2805]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2806]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2807]:
+              - generic [ref=e2809] [cursor=pointer]:
+                - link "Editar" [ref=e2811]:
+                  - /url: /products/shein/edit/4409247922460037
+                - link "Mais " [ref=e2812]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2813]: 
+          - 'row "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down 388-CANGURU-BrazilBandeira R$‎‎ 109,90 R$‎ 39,90 - 69,90 - 250000 13/05/2026 01:45 13/05/2026 01:45 Editar Mais " [ref=e2814]':
+            - cell [ref=e2815]:
+              - checkbox [ref=e2818] [cursor=pointer]
+            - cell [ref=e2820]:
+              - generic [ref=e2825] [cursor=pointer]:
+                - img
+            - 'cell "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium Bronx Outfit Variantes (5) icon: down" [ref=e2826]':
+              - generic [ref=e2827]:
+                - generic "Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium" [ref=e2828]:
+                  - generic [ref=e2831] [cursor=pointer]: Blusa Moletom Canguru Bolso Casaco Blusa de Frio Preto Masculino e Feminino Brazil Bandeira Confortável Premium
+                - generic "Bronx Outfit" [ref=e2832]
+                - 'link "Variantes (5) icon: down" [ref=e2835] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2836]':
+                    - img [ref=e2837]
+            - cell "388-CANGURU-BrazilBandeira" [ref=e2839]:
+              - generic "388-CANGURU-BrazilBandeira" [ref=e2841]:
+                - generic [ref=e2842] [cursor=pointer]: 388-CANGURU-BrazilBandeira
+            - cell "R$‎‎ 109,90" [ref=e2843]:
+              - generic [ref=e2845]: R$‎‎ 109,90
+            - cell "R$‎ 39,90 - 69,90" [ref=e2846]:
+              - generic [ref=e2848]: R$‎ 39,90 - 69,90
+            - cell "-" [ref=e2849]:
+              - generic [ref=e2851]: "-"
+            - cell "250000" [ref=e2852]:
+              - generic [ref=e2855]: "250000"
+            - cell "13/05/2026 01:45 13/05/2026 01:45" [ref=e2856]:
+              - generic [ref=e2857]:
+                - generic "13/05/2026 01:45:43" [ref=e2858]: 13/05/2026 01:45
+                - generic "13/05/2026 01:45:43" [ref=e2859]: 13/05/2026 01:45
+            - cell "Editar Mais " [ref=e2860]:
+              - generic [ref=e2862] [cursor=pointer]:
+                - link "Editar" [ref=e2864]:
+                  - /url: /products/shein/edit/4409247922460031
+                - link "Mais " [ref=e2865]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2866]: 
+          - 'row " Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado Aura Fashion Variantes (20) icon: down 384459803 R$‎‎ 120,00 - - 1800000 12/05/2026 21:32 12/05/2026 21:53 Editar Mais " [ref=e2867]':
+            - cell [ref=e2868]:
+              - checkbox [ref=e2871] [cursor=pointer]
+            - cell "" [ref=e2873]:
+              - generic [ref=e2874]:
+                - generic [ref=e2878] [cursor=pointer]:
+                  - img
+                - generic [ref=e2881]: 
+            - 'cell "Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado Aura Fashion Variantes (20) icon: down" [ref=e2882]':
+              - generic [ref=e2883]:
+                - generic "Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado" [ref=e2884]:
+                  - generic [ref=e2887] [cursor=pointer]: Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado
+                - generic "Aura Fashion" [ref=e2888]
+                - 'link "Variantes (20) icon: down" [ref=e2891] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e2892]':
+                    - img [ref=e2893]
+            - cell "384459803" [ref=e2895]:
+              - generic "384459803" [ref=e2897]:
+                - generic [ref=e2898] [cursor=pointer]: "384459803"
+            - cell "R$‎‎ 120,00" [ref=e2899]:
+              - generic [ref=e2901]: R$‎‎ 120,00
+            - cell "-" [ref=e2902]:
+              - generic [ref=e2904]: "-"
+            - cell "-" [ref=e2905]:
+              - generic [ref=e2907]: "-"
+            - cell "1800000" [ref=e2908]:
+              - generic [ref=e2911]: "1800000"
+            - cell "12/05/2026 21:32 12/05/2026 21:53" [ref=e2912]:
+              - generic [ref=e2913]:
+                - generic "12/05/2026 21:32:13" [ref=e2914]: 12/05/2026 21:32
+                - generic "12/05/2026 21:53:17" [ref=e2915]: 12/05/2026 21:53
+            - cell "Editar Mais " [ref=e2916]:
+              - generic [ref=e2918] [cursor=pointer]:
+                - link "Editar" [ref=e2920]:
+                  - /url: /products/shein/edit/4409247922338051
+                - link "Mais " [ref=e2921]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2922]: 
+          - 'row " Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado Strit Grif Variantes (20) icon: down 384459803 R$‎‎ 120,00 - - 1800000 12/05/2026 21:32 12/05/2026 21:53 Editar Mais " [ref=e2923]':
+            - cell [ref=e2924]:
+              - checkbox [ref=e2927] [cursor=pointer]
+            - cell "" [ref=e2929]:
+              - generic [ref=e2930]:
+                - generic [ref=e2934] [cursor=pointer]:
+                  - img
+                - generic [ref=e2937]: 
+            - 'cell "Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado Strit Grif Variantes (20) icon: down" [ref=e2938]':
+              - generic [ref=e2939]:
+                - generic "Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado" [ref=e2940]:
+                  - generic [ref=e2943] [cursor=pointer]: Camisa Brasil Básica Unissex Hexa Copa 2026 Camiseta Streetwear Seleção Torcedor Escudo Dourado
+                - generic "Strit Grif" [ref=e2944]
+                - 'link "Variantes (20) icon: down" [ref=e2947] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e2948]':
+                    - img [ref=e2949]
+            - cell "384459803" [ref=e2951]:
+              - generic "384459803" [ref=e2953]:
+                - generic [ref=e2954] [cursor=pointer]: "384459803"
+            - cell "R$‎‎ 120,00" [ref=e2955]:
+              - generic [ref=e2957]: R$‎‎ 120,00
+            - cell "-" [ref=e2958]:
+              - generic [ref=e2960]: "-"
+            - cell "-" [ref=e2961]:
+              - generic [ref=e2963]: "-"
+            - cell "1800000" [ref=e2964]:
+              - generic [ref=e2967]: "1800000"
+            - cell "12/05/2026 21:32 12/05/2026 21:53" [ref=e2968]:
+              - generic [ref=e2969]:
+                - generic "12/05/2026 21:32:13" [ref=e2970]: 12/05/2026 21:32
+                - generic "12/05/2026 21:53:17" [ref=e2971]: 12/05/2026 21:53
+            - cell "Editar Mais " [ref=e2972]:
+              - generic [ref=e2974] [cursor=pointer]:
+                - link "Editar" [ref=e2976]:
+                  - /url: /products/shein/edit/4409247922338030
+                - link "Mais " [ref=e2977]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2978]: 
+  - generic [ref=e2979]:
+    - generic [ref=e2983] [cursor=pointer]: 
+    - generic: 
+    - generic [ref=e2986] [cursor=pointer]: 
+    - text: 

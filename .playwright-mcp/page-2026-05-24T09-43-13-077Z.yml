@@ -1,0 +1,421 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e10] [cursor=pointer]:
+          - link "VENDA NA SHEINCADASTRE-SE AGORA" [ref=e11]:
+            - img [ref=e13]
+            - generic [ref=e15]: VENDA NA SHEIN
+            - paragraph [ref=e16]: CADASTRE-SE AGORA
+          - link "FRETE GRÁTISVEJA CONDIÇÕES" [ref=e17]:
+            - img [ref=e19]
+            - generic [ref=e24]: FRETE GRÁTIS
+            - paragraph [ref=e25]: VEJA CONDIÇÕES
+          - generic [ref=e28]:
+            - generic:
+              - link "DEVOLUÇÃO GRÁTISCONFIRA POLÍTICA DE DEVOLUÇÃO" [ref=e30]:
+                - img [ref=e32]
+                - generic [ref=e35]: DEVOLUÇÃO GRÁTIS
+                - paragraph [ref=e36]: CONFIRA POLÍTICA DE DEVOLUÇÃO
+              - link "SHEIN NA REMESSA CONFORMESHEIN COM VOCÊ!" [ref=e38]:
+                - img [ref=e40]
+                - generic [ref=e43]: SHEIN NA REMESSA CONFORME
+                - paragraph [ref=e44]: SHEIN COM VOCÊ!
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - link "shein logo" [ref=e51] [cursor=pointer]:
+              - /url: https://br.shein.com
+              - img [ref=e52]
+            - search "Pesquisa" [ref=e57]:
+              - 'button "Pesquisa: Shein Mod" [ref=e58]':
+                - paragraph [ref=e59]: Shein Mod
+                - img [ref=e60]
+              - generic [ref=e61]: Use up and down arrow keys to navigate search Buscas recentes and Pesquisar e Encontrar. Press Enter to select.
+              - button "Pesquisa" [ref=e63] [cursor=pointer]:
+                - img [ref=e65]
+            - generic [ref=e67]:
+              - link "personal center" [ref=e70] [cursor=pointer]:
+                - /url: /user/auth/login?direction=nav
+                - img [ref=e72]
+              - link "Cart" [ref=e77] [cursor=pointer]:
+                - img [ref=e78]
+                - generic [ref=e82]: "0"
+              - link "Save" [ref=e84] [cursor=pointer]:
+                - /url: javascript:;
+                - img [ref=e86]
+                - code [ref=e88]: "0"
+              - button "Atendimento ao Cliente" [ref=e91] [cursor=pointer]:
+                - img [ref=e93]
+              - button "Language and Currency Selector" [ref=e100]:
+                - img [ref=e103] [cursor=pointer]
+          - navigation "Category navigation" [ref=e107]:
+            - button "Categorias" [ref=e108] [cursor=pointer]:
+              - text: Categorias
+              - img [ref=e110]
+            - menubar "Category menu" [ref=e112]:
+              - generic [ref=e113]:
+                - menuitem "Só para você" [ref=e114] [cursor=pointer]
+                - menuitem "Novo em" [ref=e115] [cursor=pointer]
+                - menuitem "Envio nacional" [ref=e116] [cursor=pointer]
+                - menuitem "Promoção" [ref=e117] [cursor=pointer]
+                - menuitem "Roupas femininas" [ref=e118] [cursor=pointer]
+                - menuitem "Moda praia" [ref=e119] [cursor=pointer]
+                - menuitem "Sapatos" [ref=e120] [cursor=pointer]
+                - menuitem "Infantil" [ref=e121] [cursor=pointer]
+                - menuitem "Roupas masculinas" [ref=e122] [cursor=pointer]
+                - menuitem "Casa & Decoração" [ref=e123] [cursor=pointer]
+                - menuitem "Tamanhos Grandes" [ref=e124] [cursor=pointer]
+                - menuitem "Joias e acessórios" [ref=e125] [cursor=pointer]
+                - menuitem "Pijamas e roupas íntimas" [ref=e126] [cursor=pointer]
+                - menuitem "Beleza e saúde" [ref=e127] [cursor=pointer]
+                - menuitem "Bolsas E Malas" [ref=e128] [cursor=pointer]
+                - menuitem "Esportivo" [ref=e129] [cursor=pointer]
+                - menuitem "Bebê e maternidade" [ref=e130] [cursor=pointer]
+                - menuitem "Casa E Decoração" [ref=e131] [cursor=pointer]
+                - menuitem "Celulares E Acessórios" [ref=e132] [cursor=pointer]
+                - menuitem "Eletrônicos" [ref=e133] [cursor=pointer]
+                - menuitem "Jogos E Brinquedos" [ref=e134] [cursor=pointer]
+                - menuitem "Ferramentas E Utilidades" [ref=e135] [cursor=pointer]
+                - menuitem "Itens de casa" [ref=e136] [cursor=pointer]
+                - menuitem "Material De Escritório & Escola" [ref=e137] [cursor=pointer]
+                - menuitem "Pets" [ref=e138] [cursor=pointer]
+                - menuitem "Acessórios automotivos" [ref=e139] [cursor=pointer]
+                - menuitem "Alimentos e Bebidas" [ref=e140] [cursor=pointer]
+            - group "Navigation scroll controls" [ref=e142]:
+              - button "Scroll left" [disabled] [ref=e143]:
+                - img [ref=e144]
+              - button "Scroll right" [ref=e146] [cursor=pointer]:
+                - img [ref=e147]
+      - main [ref=e149]:
+        - generic [ref=e150]:
+          - generic [ref=e152] [cursor=pointer]:
+            - link "Marcadores de campanha e filtragem de produtos" [ref=e153]:
+              - link [ref=e155]:
+                - /url: /recommend/All-Sale-sc-10050072765.html?fromPageType=home&src_module=all&src_identifier=on%3DONE_THIRD_COMPONENT%60cn%3DONE_THIRD_COMPONENT_5%60hz%3D-%60jc%3DitemPicking_10050072765%60ps%3D1_1&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DONE_THIRD_COMPONENT_OI%3D0_0_CN%3DONE_THIRD_IMAGE_A_TI%3D50001_aod%3D0_PS%3D1-1_ABT%3D0
+                - img [ref=e156]
+              - generic [ref=e159]: Mais Vendidos
+            - link "Marcadores de campanha e filtragem de produtos" [ref=e160]:
+              - link [ref=e162]:
+                - /url: /recommend/Envio-Nacional-sc-10050060174.html?fromPageType=home&src_module=all&src_identifier=on%3DONE_THIRD_COMPONENT%60cn%3DONE_THIRD_COMPONENT_5%60hz%3D-%60jc%3DitemPicking_10050060174%60ps%3D1_2&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DONE_THIRD_COMPONENT_OI%3D0_0_CN%3DONE_THIRD_IMAGE_A_TI%3D50001_aod%3D0_PS%3D1-2_ABT%3D0
+                - img [ref=e163]
+              - generic [ref=e166]: Envio Nacional
+            - link "Marcadores de campanha e filtragem de produtos" [ref=e167]:
+              - link [ref=e169]:
+                - /url: /shein-picks.html?hrefTarget=10078&fromPageType=home&src_module=all&src_identifier=on%3DONE_THIRD_COMPONENT%60cn%3DONE_THIRD_COMPONENT_5%60hz%3D-%60jc%3DsheinPicks_10078%60ps%3D1_3&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DONE_THIRD_COMPONENT_OI%3D0_0_CN%3DONE_THIRD_IMAGE_A_TI%3D50001_aod%3D0_PS%3D1-3_ABT%3D0
+                - img [ref=e170]
+              - generic [ref=e173]: SHEIN Trends
+          - generic [ref=e175] [cursor=pointer]:
+            - generic [ref=e178]:
+              - generic:
+                - link "#SHEINcomAmor" [ref=e179]:
+                  - generic:
+                    - link [ref=e181]:
+                      - /url: javascript:;
+                      - img [ref=e182]
+                    - generic [ref=e184]:
+                      - link "SHEGLAM Blush LíQuido Color Bloom-Blush LíQuido Real LíQuido à Prova D'áGua De Longa DuraçãO Alta PigmentaçãO NãO Desbota Brilho Duradouro Maquiagem Leve Para O Rosto Marca Beleza Maquiagem Maquiagens CosméTico Para Mulheres E Garotas Perfeito Para Outono E Inverno Ideal Para Y2K Moda Elegante Adequado Para AniversáRio Dia Das MãEs Carnaval Prenda Festa De Pronto Melhor Cor R$24,76" [ref=e187]:
+                        - img "SHEGLAM Blush LíQuido Color Bloom-Blush LíQuido Real LíQuido à Prova D'áGua De Longa DuraçãO Alta PigmentaçãO NãO Desbota Brilho Duradouro Maquiagem Leve Para O Rosto Marca Beleza Maquiagem Maquiagens CosméTico Para Mulheres E Garotas Perfeito Para Outono E Inverno Ideal Para Y2K Moda Elegante Adequado Para AniversáRio Dia Das MãEs Carnaval Prenda Festa De Pronto Melhor Cor" [ref=e191]
+                        - generic "R$24,76" [ref=e196]:
+                          - paragraph [ref=e198]:
+                            - generic [ref=e199]: R$24,76
+                      - link "SHEGLAM Spray Fixador Lock'D In Efeito Matificante Secagem RáPida Spray Fixador De Maquiagem De Longa DuraçãO Controle De Oleosidade NãO Oleoso Fixador De Maquiagem Natal Inverno VerãO Spray Fixador Marca Beleza Maquiagem Maquiagens CosméTico Para Mulheres E Garotas Perfeito Para Outono E Inverno Ideal Para Y2K Moda Elegante Adequado Para AniversáRio Dia Das MãEs Carnaval Prenda Festa De Pronto Melhor Cor R$27,16" [ref=e203]:
+                        - img "SHEGLAM Spray Fixador Lock'D In Efeito Matificante Secagem RáPida Spray Fixador De Maquiagem De Longa DuraçãO Controle De Oleosidade NãO Oleoso Fixador De Maquiagem Natal Inverno VerãO Spray Fixador Marca Beleza Maquiagem Maquiagens CosméTico Para Mulheres E Garotas Perfeito Para Outono E Inverno Ideal Para Y2K Moda Elegante Adequado Para AniversáRio Dia Das MãEs Carnaval Prenda Festa De Pronto Melhor Cor" [ref=e207]
+                        - generic "R$27,16" [ref=e212]:
+                          - paragraph [ref=e214]:
+                            - generic [ref=e215]: R$27,16
+                - link "Tendências agora" [ref=e217]:
+                  - generic:
+                    - link [ref=e219]:
+                      - /url: javascript:;
+                      - img [ref=e220]
+                    - generic [ref=e222]:
+                      - 'link "Coolane 2 Peças Conjunto: Top de Manga Longa com Estampa Gráfica em Tricô Preto e Calça com Cordão R$107,16" [ref=e225]':
+                        - 'img "Coolane 2 Peças Conjunto: Top de Manga Longa com Estampa Gráfica em Tricô Preto e Calça com Cordão" [ref=e229]'
+                        - generic "R$107,16" [ref=e234]:
+                          - paragraph [ref=e236]:
+                            - generic [ref=e237]: R$107,16
+                      - link "SHEIN PETITE Top Cropped Bandeau Sexy de Festa de Moda Marrom em PU, Corpete de Couro Marrom, Top de Festa, Top de Boate, Corpete Marrom, Top de Festa, Top de Couro, Top de Verão, Corpete Bandeau, Top de Halloween, Top de Natal, Top de Ano Novo R$79,18" [ref=e241]:
+                        - img "SHEIN PETITE Top Cropped Bandeau Sexy de Festa de Moda Marrom em PU, Corpete de Couro Marrom, Top de Festa, Top de Boate, Corpete Marrom, Top de Festa, Top de Couro, Top de Verão, Corpete Bandeau, Top de Halloween, Top de Natal, Top de Ano Novo" [ref=e245]
+                        - generic "R$79,18" [ref=e250]:
+                          - paragraph [ref=e252]:
+                            - generic [ref=e253]: R$79,18
+                - link "Marcadores de campanha e filtragem de produtos" [ref=e255]:
+                  - link [ref=e257]:
+                    - /url: javascript:;
+                    - img [ref=e258]
+                - link "Marcadores de campanha e filtragem de produtos" [ref=e259]:
+                  - link [ref=e261]:
+                    - /url: javascript:;
+                    - img [ref=e262]
+                - link "Marcadores de campanha e filtragem de produtos" [ref=e263]:
+                  - link [ref=e265]:
+                    - /url: javascript:;
+                    - img [ref=e266]
+                - link "Estilo para ele, Conforto para casa" [ref=e267]:
+                  - generic:
+                    - link [ref=e269]:
+                      - /url: javascript:;
+                      - img [ref=e270]
+                    - generic [ref=e272]:
+                      - link "AMERICANA MANGA CURTA R$25,51" [ref=e275]:
+                        - img "AMERICANA MANGA CURTA" [ref=e279]
+                        - generic "R$25,51" [ref=e284]:
+                          - paragraph [ref=e286]:
+                            - generic [ref=e287]: R$25,51
+                      - link "Manfinity Homme Jaqueta Masculina de Ajuste Solto com Acabamento Listrado (Sem Camiseta), Jaqueta Leve, Lisa, Marido, Manga Longa, Trabalho, Jaquetas Masculinas Casuais, Outono R$171,19" [ref=e291]:
+                        - img "Manfinity Homme Jaqueta Masculina de Ajuste Solto com Acabamento Listrado (Sem Camiseta), Jaqueta Leve, Lisa, Marido, Manga Longa, Trabalho, Jaquetas Masculinas Casuais, Outono" [ref=e295]
+                        - generic "R$171,19" [ref=e300]:
+                          - paragraph [ref=e302]:
+                            - generic [ref=e303]: R$171,19
+                - link "Moda Infantil em Promoção!" [ref=e305]:
+                  - link [ref=e307]:
+                    - /url: javascript:;
+                    - img [ref=e308]
+            - button "Slide anterior" [ref=e309]:
+              - img [ref=e311]
+            - button "Próximo slide" [ref=e313]:
+              - img [ref=e315]
+          - generic [ref=e326] [cursor=pointer]:
+            - link "Product Brand" [ref=e327]:
+              - link [ref=e329]:
+                - /url: /store/home?store_code=4534970445&fromPageType=home&src_module=all&src_identifier=on%3DONE_THIRD_COMPONENT%60cn%3DONE_THIRD_COMPONENT_4%60hz%3D-%60jc%3DthirdPartyStoreHome_4534970445%60ps%3D1_1&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DONE_THIRD_COMPONENT_OI%3D0_2_CN%3DONE_THIRD_IMAGE_B_TI%3D50001_aod%3D0_PS%3D1-1_ABT%3D0
+                - img [ref=e330]
+              - link [ref=e333]:
+                - /url: javascript:;
+                - img [ref=e334]
+            - link "Product Brand" [ref=e335]:
+              - link [ref=e337]:
+                - /url: /store/home?store_code=1929683292&fromPageType=home&src_module=all&src_identifier=on%3DONE_THIRD_COMPONENT%60cn%3DONE_THIRD_COMPONENT_4%60hz%3D-%60jc%3DthirdPartyStoreHome_1929683292%60ps%3D1_2&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DONE_THIRD_COMPONENT_OI%3D0_2_CN%3DONE_THIRD_IMAGE_B_TI%3D50001_aod%3D0_PS%3D1-2_ABT%3D0
+                - img [ref=e338]
+              - link [ref=e341]:
+                - /url: javascript:;
+                - img [ref=e342]
+            - link "Product Brand" [ref=e343]:
+              - link [ref=e345]:
+                - /url: /store/home?store_code=6817474474&fromPageType=home&src_module=all&src_identifier=on%3DONE_THIRD_COMPONENT%60cn%3DONE_THIRD_COMPONENT_4%60hz%3D-%60jc%3DthirdPartyStoreHome_6817474474%60ps%3D1_3&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DONE_THIRD_COMPONENT_OI%3D0_2_CN%3DONE_THIRD_IMAGE_B_TI%3D50001_aod%3D0_PS%3D1-3_ABT%3D0
+                - img [ref=e346]
+              - link [ref=e349]:
+                - /url: javascript:;
+                - img [ref=e350]
+        - generic [ref=e351]:
+          - generic [ref=e354]:
+            - generic:
+              - generic [ref=e355]:
+                - generic:
+                  - link "Feminino" [ref=e356] [cursor=pointer]:
+                    - link [ref=e358]:
+                      - /url: /Women-Clothing-c-2030.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2030%60ps%3D2_1_1&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_1_ABT%3D0
+                      - img [ref=e359]
+                    - generic [ref=e360]: Feminino
+                  - link "Jóias e Acessórios" [ref=e361] [cursor=pointer]:
+                    - link [ref=e363]:
+                      - /url: /RecommendSelection/Jewelry-Accessories-sc-017291431.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3DitemPicking_017291431%60ps%3D2_2_1&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_1_ABT%3D0
+                      - img [ref=e364]
+                    - generic [ref=e365]: Jóias e Acessórios
+              - generic [ref=e366]:
+                - generic:
+                  - link "Plus Size" [ref=e367] [cursor=pointer]:
+                    - link [ref=e369]:
+                      - /url: /Women-Plus-Clothing-c-1888.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_1888%60ps%3D2_1_2&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_2_ABT%3D0
+                      - img [ref=e370]
+                    - generic [ref=e371]: Plus Size
+                  - link "Bebê e Maternidade" [ref=e372] [cursor=pointer]:
+                    - link [ref=e374]:
+                      - /url: /RecommendSelection/Baby-Maternity-sc-017172967.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3DitemPicking_017172967%60ps%3D2_2_2&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_2_ABT%3D0
+                      - img [ref=e375]
+                    - generic [ref=e376]: Bebê e Maternidade
+              - generic [ref=e377]:
+                - generic:
+                  - link "Infantil" [ref=e378] [cursor=pointer]:
+                    - link [ref=e380]:
+                      - /url: /Kids-c-2031.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2031%60ps%3D2_1_3&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_3_ABT%3D0
+                      - img [ref=e381]
+                    - generic [ref=e382]: Infantil
+                  - link "Outono e Inverno" [ref=e383] [cursor=pointer]:
+                    - link [ref=e385]:
+                      - /url: /RecommendSelection/Fall-Winter-sc-0171717757.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3DitemPicking_0171717757%60ps%3D2_2_3&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_3_ABT%3D0
+                      - img [ref=e386]
+                    - generic [ref=e387]: Outono e Inverno
+              - generic [ref=e388]:
+                - generic:
+                  - link "Masculino" [ref=e389] [cursor=pointer]:
+                    - link [ref=e391]:
+                      - /url: /Men-c-2026.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2026%60ps%3D2_1_4&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_4_ABT%3D0
+                      - img [ref=e392]
+                    - generic [ref=e393]: Masculino
+                  - link "Beleza e Saúde" [ref=e394] [cursor=pointer]:
+                    - link [ref=e396]:
+                      - /url: /Beauty-Health-c-1864.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_1864%60ps%3D2_2_4&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_4_ABT%3D0
+                      - img [ref=e397]
+                    - generic [ref=e398]: Beleza e Saúde
+              - generic [ref=e399]:
+                - generic:
+                  - link "Lingerie e Pijamas" [ref=e400] [cursor=pointer]:
+                    - link [ref=e402]:
+                      - /url: /Underwear-Sleepwear-c-2038.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2038%60ps%3D2_1_5&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_5_ABT%3D0
+                      - img [ref=e403]
+                    - generic [ref=e404]: Lingerie e Pijamas
+                  - link "Calçados" [ref=e405] [cursor=pointer]:
+                    - link [ref=e407]:
+                      - /url: /Shoes-c-3636.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_3636%60ps%3D2_2_5&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_5_ABT%3D0
+                      - img [ref=e408]
+                    - generic [ref=e409]: Calçados
+              - generic [ref=e410]:
+                - generic:
+                  - link "Tops" [ref=e411] [cursor=pointer]:
+                    - link [ref=e413]:
+                      - /url: /Women-Tops,-Blouses-Tee-c-1766.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_1766%60ps%3D2_1_6&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_6_ABT%3D0
+                      - img [ref=e414]
+                    - generic [ref=e415]: Tops
+                  - link "Casa e Decoração" [ref=e416] [cursor=pointer]:
+                    - link [ref=e418]:
+                      - /url: /Home-Living-c-2032.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2032%60ps%3D2_2_6&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_6_ABT%3D0
+                      - img [ref=e419]
+                    - generic [ref=e420]: Casa e Decoração
+              - generic [ref=e421]:
+                - generic:
+                  - link "Vestidos" [ref=e422] [cursor=pointer]:
+                    - link [ref=e424]:
+                      - /url: /Women-Dresses-c-12472.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_12472%60ps%3D2_1_7&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_7_ABT%3D0
+                      - img [ref=e425]
+                    - generic [ref=e426]: Vestidos
+                  - link "Moda Esportiva" [ref=e427] [cursor=pointer]:
+                    - link [ref=e429]:
+                      - /url: /Sports-Outdoor-c-3195.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_3195%60ps%3D2_2_7&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_7_ABT%3D0
+                      - img [ref=e430]
+                    - generic [ref=e431]: Moda Esportiva
+              - generic [ref=e432]:
+                - generic:
+                  - link "Celular e Acessórios" [ref=e433] [cursor=pointer]:
+                    - link [ref=e435]:
+                      - /url: /Cell-Phones-Accessories-c-2274.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2274%60ps%3D2_1_8&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_8_ABT%3D0
+                      - img [ref=e436]
+                    - generic [ref=e437]: Celular e Acessórios
+                  - link "Bolsas e Bagagens" [ref=e438] [cursor=pointer]:
+                    - link [ref=e440]:
+                      - /url: /Bags-Luggage-c-3637.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_3637%60ps%3D2_2_8&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_8_ABT%3D0
+                      - img [ref=e441]
+                    - generic [ref=e442]: Bolsas e Bagagens
+              - generic [ref=e443]:
+                - generic:
+                  - link "Têxtil e Costura" [ref=e444] [cursor=pointer]:
+                    - link [ref=e446]:
+                      - /url: /Home-Textile-c-4083.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_4083%60ps%3D2_1_9&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_9_ABT%3D0
+                      - img [ref=e447]
+                    - generic [ref=e448]: Têxtil e Costura
+                  - link "Ferramentas & Reforma" [ref=e449] [cursor=pointer]:
+                    - link [ref=e451]:
+                      - /url: /Tools-Home-Improvement-c-4327.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_4327%60ps%3D2_2_9&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_9_ABT%3D0
+                      - img [ref=e452]
+                    - generic [ref=e453]: Ferramentas & Reforma
+              - generic [ref=e454]:
+                - generic:
+                  - link "Jogos e Brinquedos" [ref=e455] [cursor=pointer]:
+                    - link [ref=e457]:
+                      - /url: /Toys-Games-c-4328.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_4328%60ps%3D2_1_10&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_10_ABT%3D0
+                      - img [ref=e458]
+                    - generic [ref=e459]: Jogos e Brinquedos
+                  - link "Eletrônicos" [ref=e460] [cursor=pointer]:
+                    - link [ref=e462]:
+                      - /url: /Electronics-c-2273.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2273%60ps%3D2_2_10&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_10_ABT%3D0
+                      - img [ref=e463]
+                    - generic [ref=e464]: Eletrônicos
+              - generic [ref=e465]:
+                - generic:
+                  - link "Pets" [ref=e466] [cursor=pointer]:
+                    - link [ref=e468]:
+                      - /url: /Pet-Supplies-c-2400.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2400%60ps%3D2_1_11&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_11_ABT%3D0
+                      - img [ref=e469]
+                    - generic [ref=e470]: Pets
+                  - link "Escritório e papelaria" [ref=e471] [cursor=pointer]:
+                    - link [ref=e473]:
+                      - /url: /Office-School-Supplies-c-2297.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_2297%60ps%3D2_2_11&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_11_ABT%3D0
+                      - img [ref=e474]
+                    - generic [ref=e475]: Escritório e papelaria
+              - generic [ref=e476]:
+                - generic:
+                  - link "Automotivo" [ref=e477] [cursor=pointer]:
+                    - link [ref=e479]:
+                      - /url: /Automotive-c-3657.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_3657%60ps%3D2_1_12&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_12_ABT%3D0
+                      - img [ref=e480]
+                    - generic [ref=e481]: Automotivo
+                  - link "Personalizados" [ref=e482] [cursor=pointer]:
+                    - link [ref=e484]:
+                      - /url: /recommend/Customization-sc-1001781205.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3DitemPicking_1001781205%60ps%3D2_2_12&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-2_12_ABT%3D0
+                      - img [ref=e485]
+                    - generic [ref=e486]: Personalizados
+              - link "Eletrodomésticos" [ref=e488] [cursor=pointer]:
+                - link [ref=e490]:
+                  - /url: /Home-Appliances-c-3650.html?entranceType=sbc&fromPageType=home&src_module=all&src_identifier=on%3DCATEGORY_RECOMMEND_COMPONENT%60cn%3DCATEGORY_RECOMMEND_COMPONENT_1%60hz%3D-%60jc%3Dreal_3650%60ps%3D2_1_13&src_tab_page_id=page_home1779615790317&ici=CCCSN%3Dall_ON%3DCATEGORY_RECOMMEND_COMPONENT_OI%3D118727108_CN%3DCATEGORY_RECOMMEND_PLACEHOLDER_TI%3D50001_aod%3D0_PS%3D2-1_13_ABT%3D0
+                  - img [ref=e491]
+                - generic [ref=e492]: Eletrodomésticos
+          - button "Previous slide" [disabled] [ref=e493]:
+            - img [ref=e495]
+          - button "Next slide" [ref=e497] [cursor=pointer]:
+            - img [ref=e499]
+        - generic [ref=e501]:
+          - generic [ref=e502]:
+            - link "Super Ofertas" [ref=e503] [cursor=pointer]:
+              - link [ref=e505]:
+                - /url: javascript:;
+                - img [ref=e506]
+            - generic [ref=e507]:
+              - link "LuxeNights Conjunto de Pijama Cetim com Acabamento em Contraste Branco, Roupas de Outono e Inverno R$60,54 Oferta Relâmpago" [ref=e509] [cursor=pointer]:
+                - img "LuxeNights Conjunto de Pijama Cetim com Acabamento em Contraste Branco, Roupas de Outono e Inverno" [ref=e513]
+                - generic [ref=e515]:
+                  - generic "R$60,54" [ref=e517]:
+                    - paragraph [ref=e519]:
+                      - generic [ref=e520]: R$60,54
+                  - generic [ref=e521]: Oferta Relâmpago
+              - link "SHEGLAM LáPis Delineador Labial So Lippy-LáPis Delineador Labial Cremoso Mojave Matte De Alta PigmentaçãO, NãO Desbota Facilmente, Sedoso, Suave, Fosco, Contorno, Maquiagem Labial, , Festa De Natal, Lip Combo Marca Beleza Maquiagem Maquiagens CosméTico Para Mulheres E Garotas Perfeito Para Outono E Inverno Ideal Para Y2K Moda Elegante Adequado Para AniversáRio Dia Das MãEs Carnaval Prenda Festa De Pronto Melhor Cor R$11,96 40% OFF" [ref=e523] [cursor=pointer]:
+                - img "SHEGLAM LáPis Delineador Labial So Lippy-LáPis Delineador Labial Cremoso Mojave Matte De Alta PigmentaçãO, NãO Desbota Facilmente, Sedoso, Suave, Fosco, Contorno, Maquiagem Labial, , Festa De Natal, Lip Combo Marca Beleza Maquiagem Maquiagens CosméTico Para Mulheres E Garotas Perfeito Para Outono E Inverno Ideal Para Y2K Moda Elegante Adequado Para AniversáRio Dia Das MãEs Carnaval Prenda Festa De Pronto Melhor Cor" [ref=e527]
+                - generic [ref=e529]:
+                  - generic "R$11,96" [ref=e531]:
+                    - paragraph [ref=e533]:
+                      - generic [ref=e534]: R$11,96
+                  - generic [ref=e535]: 40% OFF
+              - link "Novidade Meia-Calça Térmica Forrada Peluciada Translúcida de Lã Feminina Super Elástica Slim 220g - R$24,99 55% OFF" [ref=e537] [cursor=pointer]:
+                - img "Novidade Meia-Calça Térmica Forrada Peluciada Translúcida de Lã Feminina Super Elástica Slim 220g -" [ref=e541]
+                - generic [ref=e543]:
+                  - generic "R$24,99" [ref=e545]:
+                    - paragraph [ref=e547]:
+                      - generic [ref=e548]: R$24,99
+                  - generic [ref=e549]: 55% OFF
+          - generic [ref=e550]:
+            - link "Principais tendências" [ref=e551] [cursor=pointer]:
+              - link [ref=e553]:
+                - /url: javascript:;
+                - img [ref=e554]
+            - generic [ref=e555]:
+              - 'link "SHEIN PETITE Denim Denim Casuais Femininos, Moda e Simples para Uso Diário R$151,12 #Estampa de onça" [ref=e557] [cursor=pointer]':
+                - img "SHEIN PETITE Denim Denim Casuais Femininos, Moda e Simples para Uso Diário" [ref=e561]
+                - generic [ref=e563]:
+                  - generic "R$151,12" [ref=e565]:
+                    - paragraph [ref=e567]:
+                      - generic [ref=e568]: R$151,12
+                  - generic [ref=e569]: "#Estampa de onça"
+              - 'link "1 Peça Bolsa de Ombro de Couro PU Sólido e Retrô Feminina com Múltiplos Bolsos, Grande Capacidade, Vem com um Enfeite Acessório Destacável (O Enfeite Acessório Pode Variar Ligeiramente) R$21,99 #Bolsas Y2K" [ref=e571] [cursor=pointer]':
+                - img "1 Peça Bolsa de Ombro de Couro PU Sólido e Retrô Feminina com Múltiplos Bolsos, Grande Capacidade, Vem com um Enfeite Acessório Destacável (O Enfeite Acessório Pode Variar Ligeiramente)" [ref=e575]
+                - generic [ref=e577]:
+                  - generic "R$21,99" [ref=e579]:
+                    - paragraph [ref=e581]:
+                      - generic [ref=e582]: R$21,99
+                  - generic [ref=e583]: "#Bolsas Y2K"
+              - 'link "CAJUNI Vestido Boho Feminino Estampa de Árvore de Banana, Vestido Preto Casual de Verão com Amarração Oca na Cintura Sem Mangas, Vestido Casual de Férias R$83,12 #Flores Tropicais" [ref=e585] [cursor=pointer]':
+                - img "CAJUNI Vestido Boho Feminino Estampa de Árvore de Banana, Vestido Preto Casual de Verão com Amarração Oca na Cintura Sem Mangas, Vestido Casual de Férias" [ref=e589]
+                - generic [ref=e591]:
+                  - generic "R$83,12" [ref=e593]:
+                    - paragraph [ref=e595]:
+                      - generic [ref=e596]: R$83,12
+                  - generic [ref=e597]: "#Flores Tropicais"
+    - contentinfo [ref=e652]
+  - generic [ref=e653]:
+    - img
+    - paragraph [ref=e656]:
+      - text: Usamos cookies para melhorar a sua experiência na Shein. Para mais informações consulte nossa
+      - link "Política de Privacidade" [ref=e657] [cursor=pointer]:
+        - /url: /Privacy-Security-Policy-a-282.html
+      - text: .
+    - generic [ref=e658]:
+      - generic [ref=e659]: Configurar cookies
+      - generic [ref=e660]: Aceitar todos os cookies

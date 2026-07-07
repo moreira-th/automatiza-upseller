@@ -1,0 +1,312 @@
+- generic [ref=e3]:
+  - button "0 itens no carrinho" [ref=e5] [cursor=pointer]:
+    - img [ref=e7]
+    - generic [ref=e9]: Subtotal
+  - generic [ref=e77]:
+    - generic [ref=e78]:
+      - generic [ref=e80]:
+        - region [ref=e81]:
+          - generic [ref=e82]:
+            - button "Frete grátis Em pedidos acima de R$69" [ref=e84] [cursor=pointer]:
+              - img [ref=e85]
+              - generic [ref=e88]:
+                - generic [ref=e91]: Frete grátis
+                - generic [ref=e92]: Em pedidos acima de R$69
+            - list [ref=e96]:
+              - listitem [ref=e97]:
+                - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e99] [cursor=pointer]:
+                  - img [ref=e100]
+                  - generic [ref=e103]:
+                    - generic [ref=e106]: Sem imposto de importação
+                    - generic [ref=e107]: Para itens enviados por vendedores
+              - listitem [ref=e108]:
+                - button "Garantia de entrega Reembolso para qualquer problema" [ref=e110] [cursor=pointer]:
+                  - img [ref=e111]
+                  - generic [ref=e114]:
+                    - generic [ref=e117]: Garantia de entrega
+                    - generic [ref=e118]: Reembolso para qualquer problema
+              - listitem [ref=e119]:
+                - button "Devoluções gratuitas Até 90 dias*" [ref=e121] [cursor=pointer]:
+                  - img [ref=e122]
+                  - generic [ref=e125]:
+                    - generic [ref=e128]: Devoluções gratuitas
+                    - generic [ref=e129]: Até 90 dias*
+              - listitem [ref=e130]:
+                - button "Ajuste de preço No prazo de 30 dias" [ref=e132] [cursor=pointer]:
+                  - img [ref=e133]
+                  - generic [ref=e136]:
+                    - generic [ref=e139]: Ajuste de preço
+                    - generic [ref=e140]: No prazo de 30 dias
+              - listitem [ref=e141]:
+                - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e143] [cursor=pointer]:
+                  - img [ref=e144]
+                  - generic [ref=e147]:
+                    - generic [ref=e150]: Sem imposto de importação
+                    - generic [ref=e151]: Para itens enviados por vendedores
+            - button "Obtenha o app Temu" [ref=e154] [cursor=pointer]:
+              - img [ref=e155]
+              - generic [ref=e161]: Obtenha o app Temu
+            - generic [ref=e164] [cursor=pointer]:
+              - generic [ref=e165]:
+                - generic [ref=e166]: Milhões de compradores esperam por você
+                - link "Junte-se agora" [ref=e224]:
+                  - /url: https://br.seller.temu.com/login.html?login_scene=201&shop_region=29&shop_site=132
+                  - generic [ref=e225]:
+                    - generic [ref=e226]: Junte-se agora
+                    - img [ref=e227]
+              - img [ref=e168]
+        - navigation [ref=e169]:
+          - generic [ref=e170]:
+            - link "temu temu" [ref=e229] [cursor=pointer]:
+              - /url: /br
+              - generic [ref=e230]:
+                - img "temu" [ref=e231]
+                - img "temu" [ref=e233]
+            - button "Categorias" [ref=e236] [cursor=pointer]:
+              - generic [ref=e237]:
+                - generic [ref=e239]: Categorias
+                - img [ref=e240]
+            - search [ref=e172]:
+              - generic [ref=e173]:
+                - searchbox "Caixa de pesquisa. Você pode clicar duas vezes para inserir um termo de busca e pesquisar no Temu." [ref=e420]: camiseta masculinacamiseta
+                - button "eliminar" [ref=e175] [cursor=pointer]:
+                  - img "common_successful" [ref=e176]
+                - button "Enviar pesquisa" [ref=e416] [cursor=pointer]:
+                  - img [ref=e417]
+            - generic [ref=e182]:
+              - link "Pedidos e Conta" [ref=e185]:
+                - generic [ref=e186] [cursor=pointer]:
+                  - img [ref=e188]
+                  - generic [ref=e189]:
+                    - generic [ref=e191]:
+                      - text: Olá,
+                      - generic [ref=e192]: th***ra
+                    - generic "Pedidos e Conta" [ref=e193]
+              - link "Atendimento" [ref=e196]:
+                - generic [ref=e197] [cursor=pointer]:
+                  - img [ref=e199]
+                  - generic "Atendimento" [ref=e202]
+              - button "Brasil Português" [ref=e205]:
+                - generic [ref=e206] [cursor=pointer]:
+                  - img [ref=e208]
+                  - generic "Português" [ref=e210]
+              - link "Ir para o carrinho" [ref=e212]:
+                - img [ref=e215] [cursor=pointer]
+      - generic:
+        - region:
+          - generic:
+            - generic:
+              - generic:
+                - img
+                - generic:
+                  - button "Frete grátis acima de R$69":
+                    - generic: Frete grátis acima de R$69
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - button "Sem imposto de importação para todos os itens enviados por vendedores":
+                        - generic: Sem imposto de importação para todos os itens enviados por vendedores
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - button "Nunca pague além do necessário com nossa Garantia de Melhor Preço":
+                        - generic: Nunca pague além do necessário com nossa Garantia de Melhor Preço
+                - generic:
+                  - generic:
+                    - img
+                    - generic:
+                      - button "Sem imposto de importação para todos os itens enviados por vendedores":
+                        - generic: Sem imposto de importação para todos os itens enviados por vendedores
+    - main [ref=e217]:
+      - generic [ref=e423]:
+        - img "97df6d40 15a3 41ba b9a3 fa2126a2a9fa.png.slim.png" [ref=e424]
+        - generic [ref=e426]: Sem resultados para "camiseta masculinacamiseta"
+    - contentinfo [ref=e245]:
+      - generic [ref=e246]:
+        - generic [ref=e247]:
+          - generic [ref=e248]:
+            - generic [ref=e249]: Informações da empresa
+            - list [ref=e250]:
+              - listitem [ref=e251]:
+                - link "Sobre a Temu" [ref=e252] [cursor=pointer]:
+                  - /url: /br/about-temu.html
+              - listitem [ref=e253]:
+                - 'link "Programa de Afiliados e Influenciadores: Junte-se para ganhar" [ref=e254] [cursor=pointer]':
+                  - /url: /br/affiliate_influencer_program.html
+              - listitem [ref=e255]:
+                - link "Fale conosco" [ref=e256] [cursor=pointer]:
+                  - /url: /br/contact-us.html
+              - listitem [ref=e257]:
+                - link "Carreiras" [ref=e258] [cursor=pointer]:
+                  - /url: /br/careers.html
+              - listitem [ref=e259]:
+                - link "Imprensa" [ref=e260] [cursor=pointer]:
+                  - /url: /br/press.html
+              - listitem [ref=e261]:
+                - link "Programa de Plantação de Árvores da Temu" [ref=e262] [cursor=pointer]:
+                  - /url: /br/tree-landing.html
+          - generic [ref=e263]:
+            - generic [ref=e264]: Serviço de Atendimento ao Cliente
+            - list [ref=e265]:
+              - listitem [ref=e266]:
+                - link "Política de devolução e reembolso" [ref=e267] [cursor=pointer]:
+                  - /url: /br/return-and-refund-policy.html
+              - listitem [ref=e268]:
+                - link "Política de Propriedade Intelectual" [ref=e269] [cursor=pointer]:
+                  - /url: /br/intellectual-property-policy.html
+              - listitem [ref=e270]:
+                - link "Informações de envio" [ref=e271] [cursor=pointer]:
+                  - /url: /br/shipping-info.html
+              - listitem [ref=e272]:
+                - link "Relatar atividades suspeitas" [ref=e273] [cursor=pointer]:
+                  - /url: /br/bgch_report_suspicious.html
+          - generic [ref=e274]:
+            - generic [ref=e275]: Ajuda
+            - list [ref=e276]:
+              - listitem [ref=e277]:
+                - link "Atendimento ao Cliente e FAQ" [ref=e278] [cursor=pointer]:
+                  - /url: /br/support-center.html
+              - listitem [ref=e279]:
+                - link "Centro de segurança" [ref=e280] [cursor=pointer]:
+                  - /url: /br/safety-center.html
+              - listitem [ref=e281]:
+                - link "Proteção de compras da Temu" [ref=e282] [cursor=pointer]:
+                  - /url: /br/temu-purchase-protection.html
+              - listitem [ref=e283]:
+                - link "Parcerias com a Temu" [ref=e284] [cursor=pointer]:
+                  - /url: /br/partner-with-temu.html
+          - generic [ref=e285]:
+            - generic [ref=e288]:
+              - generic [ref=e289]: Comece a vender para milhões de compradores na Temu
+              - button "Abra uma Loja" [ref=e290] [cursor=pointer]:
+                - generic [ref=e293]: Abra uma Loja
+            - generic [ref=e294]:
+              - link "Baixe o app Temu" [ref=e295] [cursor=pointer]:
+                - /url: /br/app.html
+                - generic [ref=e296]: Baixe o app Temu
+              - generic [ref=e297]:
+                - generic [ref=e298]:
+                  - generic [ref=e299]:
+                    - img [ref=e300]
+                    - generic [ref=e301]: Alertas de redução de preço
+                  - generic [ref=e303]:
+                    - img [ref=e304]
+                    - generic [ref=e305]: Localize as encomendas em qualquer altura
+                - generic [ref=e306]:
+                  - generic [ref=e307]:
+                    - img [ref=e308]
+                    - generic [ref=e309]: Finalização da compra mais rápida e segura
+                  - generic [ref=e311]:
+                    - img [ref=e312]
+                    - generic [ref=e313]: Alertas de artigos com pouco stock
+                - generic [ref=e314]:
+                  - generic [ref=e315]:
+                    - img [ref=e316]
+                    - generic [ref=e317]: Ofertas exclusivas
+                  - generic [ref=e319]:
+                    - img [ref=e320]
+                    - generic [ref=e321]: Alertas de cupões e ofertas
+              - generic [ref=e322]:
+                - link "Baixe na App Store" [ref=e323] [cursor=pointer]:
+                  - /url: https://apps.apple.com/us/app/temu-team-up-price-down/id1641486558
+                  - img [ref=e324]
+                  - generic [ref=e325]:
+                    - generic [ref=e326]: Disponível na
+                    - generic [ref=e327]: App Store
+                - link "Baixe no Google Play" [ref=e328] [cursor=pointer]:
+                  - /url: https://play.google.com/store/apps/details?id=com.einnovation.temu&hl=en_US&gl=US
+                  - img [ref=e329]
+                  - generic [ref=e330]:
+                    - generic [ref=e331]: Disponível no
+                    - generic [ref=e332]: Google Play
+            - generic [ref=e333]:
+              - generic [ref=e334]: Encontre-nos
+              - generic [ref=e335]:
+                - link "Instagram" [ref=e336] [cursor=pointer]:
+                  - /url: https://www.instagram.com/temu/
+                  - img [ref=e337]
+                - link "Facebook" [ref=e338] [cursor=pointer]:
+                  - /url: https://www.facebook.com/shoptemu
+                  - img [ref=e339]
+                - link "Twitter" [ref=e340] [cursor=pointer]:
+                  - /url: https://x.com/shoptemu
+                  - img [ref=e341]
+                - link "Tiktok" [ref=e342] [cursor=pointer]:
+                  - /url: https://www.tiktok.com/@temu
+                  - img [ref=e343]
+                - link "Youtube" [ref=e344] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@temu
+                  - img [ref=e345]
+                - link "Pinterest" [ref=e346] [cursor=pointer]:
+                  - /url: https://www.pinterest.com/shoptemu/
+                  - img [ref=e347]
+        - generic [ref=e348]:
+          - generic [ref=e349]:
+            - generic [ref=e350]: Certificações de segurança
+            - generic [ref=e351]:
+              - img "PCI DSS" [ref=e352]
+              - img "Visa Secure" [ref=e353]
+              - img "Mastercard ID Check" [ref=e354]
+              - img "SafeKey" [ref=e355]
+              - img "Discover ProtectBuy" [ref=e356]
+              - img "JCB J/Secure" [ref=e357]
+              - img "APWG" [ref=e358]
+              - img "Secured by PayPal" [ref=e359]
+          - generic [ref=e360]:
+            - generic [ref=e361]: Aceitamos
+            - generic [ref=e362]:
+              - img "pix" [ref=e363]
+              - img "cartão visa" [ref=e364]
+              - img "cartão mastercard" [ref=e365]
+              - img "hipercard" [ref=e366]
+              - img "cartão elo" [ref=e367]
+              - img "cartão maestro" [ref=e368]
+              - img "cartão amex" [ref=e369]
+              - img "cartão discover" [ref=e370]
+              - img "cartão dc" [ref=e371]
+              - img "cartão jcb" [ref=e372]
+              - img "boleto" [ref=e373]
+              - img "applepay" [ref=e374]
+              - img "PayPal" [ref=e375]
+              - img "googlepay" [ref=e376]
+              - img "pixInstallment" [ref=e377]
+              - img "nubank" [ref=e378]
+        - generic [ref=e379]:
+          - generic [ref=e380]:
+            - text: © 2022－2026 Whaleco Inc.
+            - link "Termos de uso" [ref=e381] [cursor=pointer]:
+              - /url: /br/terms-of-use.html
+              - generic [ref=e382]: Termos de uso
+            - link "Política de privacidade" [ref=e383] [cursor=pointer]:
+              - /url: /br/privacy-and-cookie-policy.html?title=Privacy%20%26%20Cookie%20Policy&_bg_fs=0
+              - generic [ref=e384]: Política de privacidade
+            - link "Suas escolhas de privacidade" [ref=e385] [cursor=pointer]:
+              - /url: /br/bgp-privacy-policy-and-setting.html
+              - generic [ref=e386]: Suas escolhas de privacidade
+              - img [ref=e387]
+            - link "Escolhas de anúncios" [ref=e388] [cursor=pointer]:
+              - /url: /br/cookie-and-similar-technologies-policy.html?anchor_id=limit_interest_base_advertising
+              - generic [ref=e389]: Escolhas de anúncios
+          - generic [ref=e390]: "Operadora: Elementary Innovation Pte. Ltd. – Endereço: 6 Raffles Quay, #14-06, Singapura (048580)."
+          - generic [ref=e391]: "Representante Legal no Brasil: WHALECO BRASIL INTERMEDIAÇÃO LTDA / CNPJ nº 61.201.565/0001-21 – Av. Paulista 2064, Andar 14, Sala 1419, Bela Vista, São Paulo/SP – CEP: 01310-928."
+          - generic [ref=e392]:
+            - text: "Para consultas e resolução de disputas, entre em contato com:"
+            - link "Atendimento ao Cliente." [ref=e393] [cursor=pointer]:
+              - /url: /br/support-center.html?_x_sessn_id=kf7qlhafm4
+    - toolbar [ref=e394]:
+      - button "99+ Mensagens Mensagens" [ref=e397] [cursor=pointer]:
+        - generic [ref=e399]:
+          - img [ref=e400]
+          - generic [ref=e403]: 99+
+        - generic [ref=e404]:
+          - generic [ref=e405]: Mensagens
+          - generic [ref=e406]: Mensagens
+      - button "Feedback" [ref=e409] [cursor=pointer]:
+        - generic [ref=e411]: Feedback
+      - generic:
+        - button "Início":
+          - generic [ref=e414]: Início

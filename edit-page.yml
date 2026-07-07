@@ -1,0 +1,126 @@
+- generic [ref=e4]:
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e10]:
+        - text: Shein / Editar Anúncio
+        - generic [ref=e11]: Rascunho
+      - generic [ref=e14] [cursor=pointer]: 
+    - generic [ref=e15]:
+      - button "Salvar" [ref=e17] [cursor=pointer]:
+        - generic: Salvar
+      - button "Publicar" [ref=e19] [cursor=pointer]:
+        - generic: Publicar
+  - generic [ref=e20]:
+    - generic [ref=e24]:
+      - link "Informação Básica" [ref=e28] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/8554887782365798#basic
+      - link "Atributos" [ref=e30] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/8554887782365798#attributes
+      - link "Informações de Venda" [ref=e32] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/8554887782365798#variants
+      - link "Mídia" [ref=e34] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/8554887782365798#variantsImg
+    - generic [ref=e35]:
+      - generic [ref=e39]: Informação Básica
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic "Loja" [ref=e45]: "* Loja"
+          - combobox [ref=e50] [cursor=pointer]:
+            - generic "Carlos Shein" [ref=e52]
+            - generic [ref=e55]: 
+        - generic [ref=e56]:
+          - generic "Nome" [ref=e58]: "* Nome"
+          - generic [ref=e61]:
+            - generic [ref=e62]
+            - generic [ref=e70]: 118/1000
+        - generic [ref=e71]:
+          - generic "Categoria" [ref=e73]: "* Categoria"
+          - generic [ref=e76]:
+            - generic [ref=e79]
+            - button "Selecionar Categoria" [ref=e84] [cursor=pointer]
+        - generic [ref=e85]:
+          - generic "Descrição" [ref=e87]
+          - generic [ref=e91]:
+            - textbox [ref=e92]: "Camiseta Manga Curta Básica Unissex Peça confortável, versátil e ideal para o dia a dia. Modelagem moderna com ótimo caimento, perfeita para compor looks casuais com estilo e praticidade. Importante: Tom da cor pode ser um pouco mais claro ou mais escuro que da imagem do anúncio. Benefícios: - Tecido leve e confortável (Pode ser transparente em cores mais claras) - Excelente caimento no corpo - Modelo básico e indispensável no guarda-roupa - Ideal para uso diário - Ótima opção para revenda Medidas aproximadas da peça pronta (sem margem de costura): PP: Altura: 61cm | Largura: 43cm | Manga: 15cm P: Altura: 62cm | Largura: 44cm | Manga: 15cm M: Altura: 70cm | Largura: 49cm | Manga: 16cm G: Altura: 71cm | Largura: 53cm | Manga: 17cm GG: Altura: 72cm | Largura: 56cm | Manga: 18cm Atenção: As medidas podem variar levemente. Garanta já a sua enquanto houver disponibilidade em estoque."
+            - generic [ref=e93]: 897/5000
+        - generic [ref=e96]:
+          - generic "N° do Anúncio" [ref=e98]: "* N° do Anúncio"
+          - generic [ref=e101]:
+            - textbox [ref=e102]: "005"
+            - generic [ref=e103]: 3/200
+        - generic [ref=e104]:
+          - generic "Link do Fornecedor" [ref=e106]
+          - generic [ref=e110]:
+            - textbox [ref=e111]
+            - button "Visita" [disabled] [ref=e113]
+    - generic [ref=e114]:
+      - generic [ref=e118]:
+        - generic [ref=e119]: Atributos
+        - 'generic "icon: ellipsis" [ref=e121]':
+          - img [ref=e122]
+      - generic [ref=e125]:
+        - generic [ref=e127]:
+          - generic "Marca" [ref=e129]
+          - generic [ref=e132]:
+            - combobox [ref=e134] [cursor=pointer]
+            - 'generic "icon: sync" [ref=e140] [cursor=pointer]'
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - generic [ref=e146]
+            - combobox [ref=e152]
+          - generic [ref=e166]:
+            - generic [ref=e168]
+            - combobox [ref=e174] [cursor=pointer]
+          - text:                     
+        - generic [ref=e184] [cursor=pointer]:
+          - text: Mais Atributos
+          - 'generic "icon: down" [ref=e185]':
+            - img [ref=e186]
+    - generic [ref=e188]:
+      - generic [ref=e192]:
+        - generic [ref=e193]: Informações de Venda
+        - generic [ref=e194]: Remapeamento de Variante
+      - generic [ref=e196]:
+        - list [ref=e197]:
+          - listitem [ref=e198]: Adicione até 3 atributo, a especificação principal pode ser adicionado imagens, não poderá ser modificadas após a publicação.
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - generic [ref=e204]: Especificação Principal *
+            - generic [ref=e208]
+          - generic [ref=e711]:
+            - generic [ref=e714]: Subespecificação
+            - generic [ref=e718]
+        - generic [ref=e2158]:
+          - generic [ref=e2160]: Lista de Variantes (25)
+          - generic [ref=e2162]:
+            - generic [ref=e2164]
+            - text: 
+        - generic [ref=e2971]:
+          - text: Guia de Tamanhos*
+          - generic [ref=e2972] [cursor=pointer]: Editar Guia de Tamanhos
+    - generic [ref=e2973]:
+      - generic [ref=e2977]: Mídia
+      - generic [ref=e2979]:
+        - generic [ref=e2980]:
+          - generic [ref=e2984]: "Imagens Detalhadas: Por favor, envie de 2 a 11 imagens, com proporção entre 3:4 e 1:1, e tamanho entre 900 e 2200 px.Recomendamos usar a proporção 3:4, pois imagens 1:1 serão automaticamente estendidas para 3:4 pela Shein. Para a melhor exibição, é aconselhável seguir a proporção recomendada."
+          - generic [ref=e2988]: "Imagem Quadrada: Envie 1 imagem com proporção 1:1 e tamanho entre 900 e 2200 px."
+          - generic [ref=e2992]: "Imagem de Cores: Envie 1 imagem com tamanho de 80×80 px."
+        - generic [ref=e2993]:
+          - generic [ref=e2995]:
+            - generic [ref=e2998] [cursor=pointer]
+            - separator [ref=e2999]
+            - link " Gerar em Massa" [ref=e3001] [cursor=pointer]:
+              - /url: javascript:void(0);
+            - separator [ref=e3002]
+            - generic [ref=e3003]
+            - 'link "icon: edit Editar Imagens" [ref=e3009] [cursor=pointer]':
+              - /url: javascript:void(0);
+          - generic [ref=e3011]:
+            - generic [ref=e3013]
+            - text: 
+    - generic [ref=e3298]:
+      - generic [ref=e3302] [cursor=pointer]: 
+      - generic: 
+      - generic [ref=e3305] [cursor=pointer]: 
+      - generic [ref=e3308] [cursor=pointer]: 
+      - text: 

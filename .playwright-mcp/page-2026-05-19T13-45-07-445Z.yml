@@ -1,0 +1,132 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Pular para
+    - list "Pular para" [ref=e6]:
+      - listitem [ref=e7]:
+        - generic [ref=e10] [cursor=pointer]: Conteúdo principal
+  - generic [ref=e11]:
+    - button "0 itens no carrinho" [ref=e13] [cursor=pointer]:
+      - img [ref=e15]
+      - generic [ref=e17]: Subtotal
+    - generic [ref=e85]:
+      - generic [ref=e88]:
+        - region [ref=e89]:
+          - generic [ref=e90]:
+            - button "Frete grátis Em pedidos acima de R$69" [ref=e92] [cursor=pointer]:
+              - img [ref=e93]
+              - generic [ref=e96]:
+                - generic [ref=e99]: Frete grátis
+                - generic [ref=e100]: Em pedidos acima de R$69
+            - list [ref=e104]:
+              - listitem [ref=e105]:
+                - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e107] [cursor=pointer]:
+                  - img [ref=e108]
+                  - generic [ref=e111]:
+                    - generic [ref=e114]: Sem imposto de importação
+                    - generic [ref=e115]: Para itens enviados por vendedores
+              - listitem [ref=e116]:
+                - button "Garantia de entrega Reembolso para qualquer problema" [ref=e118] [cursor=pointer]:
+                  - img [ref=e119]
+                  - generic [ref=e122]:
+                    - generic [ref=e125]: Garantia de entrega
+                    - generic [ref=e126]: Reembolso para qualquer problema
+              - listitem [ref=e127]:
+                - button "Devoluções gratuitas Até 90 dias*" [ref=e129] [cursor=pointer]:
+                  - img [ref=e130]
+                  - generic [ref=e133]:
+                    - generic [ref=e136]: Devoluções gratuitas
+                    - generic [ref=e137]: Até 90 dias*
+              - listitem [ref=e138]:
+                - button "Ajuste de preço No prazo de 30 dias" [ref=e140] [cursor=pointer]:
+                  - img [ref=e141]
+                  - generic [ref=e144]:
+                    - generic [ref=e147]: Ajuste de preço
+                    - generic [ref=e148]: No prazo de 30 dias
+              - listitem [ref=e149]:
+                - button "Sem imposto de importação Para itens enviados por vendedores" [ref=e151] [cursor=pointer]:
+                  - img [ref=e152]
+                  - generic [ref=e155]:
+                    - generic [ref=e158]: Sem imposto de importação
+                    - generic [ref=e159]: Para itens enviados por vendedores
+            - button "Obtenha o app Temu" [ref=e162] [cursor=pointer]:
+              - img [ref=e163]
+              - generic [ref=e169]: Obtenha o app Temu
+            - generic [ref=e172] [cursor=pointer]:
+              - generic [ref=e173]:
+                - generic [ref=e174]: Milhões de compradores esperam por você
+                - link "Junte-se agora":
+                  - /url: https://br.seller.temu.com/login.html?login_scene=201&shop_region=29&shop_site=132
+                  - generic:
+                    - generic: Junte-se agora
+                    - img
+              - img [ref=e176]
+        - navigation [ref=e177]:
+          - generic [ref=e178]:
+            - link "temu temu":
+              - /url: /
+              - generic:
+                - img "temu"
+                - img "temu"
+            - generic:
+              - button "Categorias":
+                - generic:
+                  - generic:
+                    - generic: Categorias
+                  - img
+            - search [ref=e180]:
+              - generic [ref=e181]:
+                - searchbox "Caixa de pesquisa. Você pode clicar duas vezes para inserir um termo de busca e pesquisar no Temu." [disabled] [ref=e182]
+                - button "Enviar pesquisa" [ref=e183] [cursor=pointer]:
+                  - img [ref=e184]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: Pesquisar na Temu
+            - generic [ref=e186]:
+              - link "Pedidos e Conta" [ref=e189]:
+                - generic [ref=e190] [cursor=pointer]:
+                  - img [ref=e192]
+                  - generic [ref=e193]:
+                    - generic [ref=e195]:
+                      - text: Olá,
+                      - generic [ref=e196]: th***ra
+                    - generic "Pedidos e Conta" [ref=e197]
+              - link "Atendimento" [ref=e200]:
+                - generic [ref=e201] [cursor=pointer]:
+                  - img [ref=e203]
+                  - generic "Atendimento" [ref=e206]
+              - button "Brasil Português" [ref=e209]:
+                - generic [ref=e210] [cursor=pointer]:
+                  - img [ref=e212]
+                  - generic "Português" [ref=e214]
+              - link "Ir para o carrinho" [ref=e216]:
+                - img [ref=e219] [cursor=pointer]
+      - main [ref=e221]:
+        - generic [ref=e222]:
+          - generic [ref=e224]:
+            - img [ref=e225]
+            - text: 0% de Imposto de Importação (era 20%) em compras internacionais até US$50 conforme Medida Provisória.
+          - region [ref=e226]:
+            - generic [ref=e229]:
+              - link "Por que comprar na Temu? Privacidade garantida Pagamentos seguros Garantia de entrega":
+                - /url: /br/whychoosetemu.html
+                - generic:
+                  - img
+                  - generic: Por que comprar na Temu?
+                - generic:
+                  - img
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img
+                        - generic: Privacidade garantida
+                    - generic:
+                      - generic:
+                        - img
+                        - generic: Pagamentos seguros
+                    - generic:
+                      - generic:
+                        - img
+                        - generic: Garantia de entrega
+        - region [ref=e231]:
+          - heading "Novas descobertas" [level=2] [ref=e233]

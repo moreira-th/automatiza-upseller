@@ -1,0 +1,1945 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic:
+      - button "Ir para o conteúdo principal":
+        - generic: Ir para o conteúdo principal
+    - generic [ref=e5]:
+      - banner [ref=e6]:
+        - navigation [ref=e8]:
+          - generic [ref=e9]:
+            - link "Central do Vendedor" [ref=e10] [cursor=pointer]:
+              - /url: //seller.shopee.com.br
+            - link "Vender na Shopee" [ref=e11] [cursor=pointer]:
+              - /url: /seller/signup
+            - link "Baixe o App" [ref=e13] [cursor=pointer]:
+              - /url: /web/
+            - generic [ref=e14]: Siga-nos no
+            - generic [ref=e15]:
+              - link "Siga-nos no Instagram!" [ref=e16] [cursor=pointer]:
+                - /url: https://instagram.com/Shopee_BR
+              - link "Siga-nos no WhatsApp!" [ref=e17] [cursor=pointer]:
+                - /url: https://whatsapp.com/channel/0029VaKEnKI6GcGLZwn7l103
+              - link "Siga-nos no TikTok!" [ref=e18] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@shopee_br
+          - list [ref=e19]:
+            - listitem
+            - link "Ajuda" [ref=e20] [cursor=pointer]:
+              - /url: https://help.shopee.com.br/portal
+              - img [ref=e22]
+              - generic [ref=e26]: Ajuda
+            - listitem [ref=e27] [cursor=pointer]:
+              - button "Português (BR)" [ref=e29]:
+                - generic [ref=e30]:
+                  - img [ref=e32]
+                  - generic [ref=e35]: Português (BR)
+                  - img [ref=e36]
+            - link "Cadastrar" [ref=e38] [cursor=pointer]:
+              - /url: /buyer/signup?next=
+            - link "Entre" [ref=e40] [cursor=pointer]:
+              - /url: /buyer/login?next=
+        - generic [ref=e42]:
+          - link [ref=e43] [cursor=pointer]:
+            - /url: /
+            - img [ref=e45]
+          - generic [ref=e48]:
+            - search [ref=e49]:
+              - combobox "Buscar na Shopee" [ref=e52]
+              - button [ref=e53] [cursor=pointer]:
+                - img [ref=e54]
+            - generic [ref=e64]:
+              - link [ref=e65] [cursor=pointer]:
+                - /url: /search?keyword=short%20para%20academia
+                - text: Short Para Academia
+              - link [ref=e66] [cursor=pointer]:
+                - /url: /search?keyword=garrafa%20t%C3%A9rmica%20de%20%C3%A1gua
+                - text: Garrafa Térmica De Água
+              - link [ref=e67] [cursor=pointer]:
+                - /url: /search?keyword=pijama%20feminino
+                - text: Pijama Feminino
+              - link [ref=e68] [cursor=pointer]:
+                - /url: /search?keyword=par%20de%20alian%C3%A7a%20casamento
+                - text: Par De Aliança Casamento
+              - link [ref=e69] [cursor=pointer]:
+                - /url: /search?keyword=maquininha%20de%20barbear%20profissional
+                - text: Maquininha De Barbear Profissional
+              - link [ref=e70] [cursor=pointer]:
+                - /url: /search?keyword=fone%20de%20ouvido%20bluetooth%20sem%20fio
+                - text: Fone De Ouvido Bluetooth Sem Fio
+              - link [ref=e71] [cursor=pointer]:
+                - /url: /search?keyword=penteadeira%20maquiagem
+                - text: Penteadeira Maquiagem
+              - link [ref=e72] [cursor=pointer]:
+                - /url: /search?keyword=camiseta%20t%C3%A9rmica%20masculina%20manga%20longa
+                - text: Camiseta Térmica Masculina Manga Longa
+              - link [ref=e73] [cursor=pointer]:
+                - /url: /search?keyword=cal%C3%A7a%20jeans%20barata
+                - text: Calça Jeans Barata
+              - link [ref=e74] [cursor=pointer]:
+                - /url: /search?keyword=smartwatch%20t900%20ultra%20plus
+                - text: Smartwatch T900 Ultra Plus
+              - link [ref=e75] [cursor=pointer]:
+                - /url: /search?keyword=kit%20ventosa%20para%20celular
+                - text: Kit Ventosa Para Celular
+              - link [ref=e76] [cursor=pointer]:
+                - /url: /search?keyword=bolsa%20paty%20pequena
+                - text: Bolsa Paty Pequena
+              - link [ref=e77] [cursor=pointer]:
+                - /url: /search?keyword=linha%20deleite
+                - text: Linha Deleite
+              - link [ref=e78] [cursor=pointer]:
+                - /url: /search?keyword=t%C3%AAnis%20feminino%20academia
+                - text: Tênis Feminino Academia
+              - link [ref=e79] [cursor=pointer]:
+                - /url: /search?keyword=kit%20mantimentos%20de%20cozinha%20vidro
+                - text: Kit Mantimentos De Cozinha Vidro
+              - link [ref=e80] [cursor=pointer]:
+                - /url: /search?keyword=pel%C3%BAcia%20respira
+                - text: Pelúcia Respira
+              - link [ref=e81] [cursor=pointer]:
+                - /url: /search?keyword=kit%20produtos%20de%20limpeza%20de%20pele
+                - text: Kit Produtos De Limpeza De Pele
+              - link [ref=e82] [cursor=pointer]:
+                - /url: /search?keyword=espelhos%20decorativos%20para%20parede%20com%20led
+                - text: Espelhos Decorativos Para Parede Com Led
+              - link [ref=e83] [cursor=pointer]:
+                - /url: /search?keyword=uno%20original%20com%20carta%20dura
+                - text: Uno Original Com Carta Dura
+              - link [ref=e84] [cursor=pointer]:
+                - /url: /search?keyword=forro%20de%20cama%20casal%20imperme%C3%A1vel
+                - text: Forro De Cama Casal Impermeável
+              - link [ref=e85] [cursor=pointer]:
+                - /url: /search?keyword=moletom%20preto%20masculino
+                - text: Moletom Preto Masculino
+              - link [ref=e86] [cursor=pointer]:
+                - /url: /search?keyword=kit%2010%20shorts%20feminino
+                - text: Kit 10 Shorts Feminino
+              - link [ref=e87] [cursor=pointer]:
+                - /url: /search?keyword=sapateira%20organizadora
+                - text: Sapateira Organizadora
+              - link [ref=e88] [cursor=pointer]:
+                - /url: /search?keyword=perfume%20arabe%20asad
+                - text: Perfume Arabe Asad
+              - link [ref=e89] [cursor=pointer]:
+                - /url: /search?keyword=semi%20j%C3%B3ias%20folheada%20a%20ouro
+                - text: Semi Jóias Folheada A Ouro
+              - link [ref=e90] [cursor=pointer]:
+                - /url: /search?keyword=roupas%20para%20adolescentes%20feminina
+                - text: Roupas Para Adolescentes Feminina
+              - link [ref=e91] [cursor=pointer]:
+                - /url: /search?keyword=cropped%20tube
+                - text: Cropped Tube
+              - link [ref=e92] [cursor=pointer]:
+                - /url: /search?keyword=papel%20de%20parede
+                - text: Papel De Parede
+              - link [ref=e93] [cursor=pointer]:
+                - /url: /search?keyword=kit%20papete
+                - text: Kit Papete
+              - link [ref=e94] [cursor=pointer]:
+                - /url: /search?keyword=conjunto%20de%20facas%20inox%206%20pe%C3%A7as
+                - text: Conjunto De Facas Inox 6 Peças
+              - link [ref=e95] [cursor=pointer]:
+                - /url: /search?keyword=piscina%204%20mil%20litros
+                - text: Piscina 4 Mil Litros
+              - link [ref=e96] [cursor=pointer]:
+                - /url: /search?keyword=corrente%20de%20prata%20925%20original
+                - text: Corrente De Prata 925 Original
+              - link [ref=e97] [cursor=pointer]:
+                - /url: /search?keyword=adesivo%20para%20bike%20hologr%C3%A1fico
+                - text: Adesivo Para Bike Holográfico
+              - link [ref=e98] [cursor=pointer]:
+                - /url: /search?keyword=pano%20de%20prato
+                - text: Pano De Prato
+              - link [ref=e99] [cursor=pointer]:
+                - /url: /search?keyword=ta%C3%A7a%20bico%20de%20jaca
+                - text: Taça Bico De Jaca
+          - button "Shopping Cart Icon Carrinho Faça login para ver seu carrinho / adicionar produtos" [ref=e102]:
+            - link "Shopping Cart Icon Carrinho Faça login para ver seu carrinho / adicionar produtos" [ref=e104] [cursor=pointer]:
+              - /url: /buyer/login?from_source=mini_cart_btn&next=
+              - img "Shopping Cart Icon" [ref=e105]
+              - generic [ref=e109]: Carrinho Faça login para ver seu carrinho / adicionar produtos
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - region "Banner" [ref=e114]:
+            - generic [ref=e115]:
+              - generic [ref=e117]:
+                - list [ref=e119]:
+                  - listitem [ref=e120]:
+                    - link "Ressaca 6 do 6. Para revisar seu veículo. Compre agora." [ref=e122] [cursor=pointer]:
+                      - /url: /m/revise-seu-veiculo
+                      - img "Ressaca 6 do 6. Para revisar seu veículo. Compre agora." [ref=e124]
+                  - listitem [ref=e125]:
+                    - link "Cupom exclusivo para sua primeira compra. Frete Grátis. Cadastre-se." [ref=e127] [cursor=pointer]:
+                      - /url: /buyer/signup?next=https%3A%2F%2Fshopee.com.br%2Fuser%2Fpurchase%2F
+                      - img "Cupom exclusivo para sua primeira compra. Frete Grátis. Cadastre-se." [ref=e129]
+                  - listitem [ref=e130]:
+                    - link "Ressaca 6 do 6. Mais vendidos do 6 do 6. Compre agora." [ref=e132] [cursor=pointer]:
+                      - /url: /m/6-6
+                      - img "Ressaca 6 do 6. Mais vendidos do 6 do 6. Compre agora." [ref=e134]
+                  - listitem [ref=e135]:
+                    - link "Full. 10 por cento OFF em produtos Full todo mês. Cupom de 10 por cento OFF, confira as condições de uso. Compre agora." [ref=e137] [cursor=pointer]:
+                      - /url: /m/envio-rapido
+                      - img "Full. 10 por cento OFF em produtos Full todo mês. Cupom de 10 por cento OFF, confira as condições de uso. Compre agora." [ref=e139]
+                  - listitem [ref=e140]:
+                    - link "Ressaca 6 do 6. Torcida Shopee. Até 40 por cento OFF. Compre com cupom." [ref=e142] [cursor=pointer]:
+                      - /url: /m/torcida-da-sho
+                      - img "Ressaca 6 do 6. Torcida Shopee. Até 40 por cento OFF. Compre com cupom." [ref=e144]
+                  - listitem [ref=e145]:
+                    - link "Lojas Oficiais, anúncio. Salon Line. Nutrição e brilho intenso para os fios. Até 50 por cento OFF. Compre agora." [ref=e147] [cursor=pointer]:
+                      - /url: /shop/616222685
+                      - img "Lojas Oficiais, anúncio. Salon Line. Nutrição e brilho intenso para os fios. Até 50 por cento OFF. Compre agora." [ref=e149]
+                  - listitem [ref=e150]:
+                    - link "Vem aí. Te esperamos no 7 do 7, aniversário da Shopee. Cupons de desconto. Frete Grátis. Saiba mais." [ref=e152] [cursor=pointer]:
+                      - /url: /m/te-esperamos-no-7-7
+                      - img "Vem aí. Te esperamos no 7 do 7, aniversário da Shopee. Cupons de desconto. Frete Grátis. Saiba mais." [ref=e154]
+                  - listitem [ref=e155]:
+                    - link "Ressaca 6 do 6. Compre por preço. Compre agora." [ref=e157] [cursor=pointer]:
+                      - /url: /m/compre-por-preco
+                      - img "Ressaca 6 do 6. Compre por preço. Compre agora." [ref=e159]
+                  - listitem [ref=e160]:
+                    - link "Ressaca 6 do 6. Dia dos Namorados. Ofertas até 40 por cento OFF. Compre agora." [ref=e162] [cursor=pointer]:
+                      - /url: /m/dia-dos-namorados
+                      - img "Ressaca 6 do 6. Dia dos Namorados. Ofertas até 40 por cento OFF. Compre agora." [ref=e164]
+                  - listitem [ref=e165]:
+                    - link "Ressaca 6 do 6. Prepare-se para o frio. Compre agora." [ref=e167] [cursor=pointer]:
+                      - /url: /m/prepare-se-para-o-frio
+                      - img "Ressaca 6 do 6. Prepare-se para o frio. Compre agora." [ref=e169]
+                  - listitem [ref=e170]:
+                    - link "Ressaca 6 do 6. Para revisar seu veículo. Compre agora." [ref=e172] [cursor=pointer]:
+                      - /url: /m/revise-seu-veiculo
+                      - img "Ressaca 6 do 6. Para revisar seu veículo. Compre agora." [ref=e174]
+                  - listitem [ref=e175]:
+                    - link "Cupom exclusivo para sua primeira compra. Frete Grátis. Cadastre-se." [ref=e177] [cursor=pointer]:
+                      - /url: /buyer/signup?next=https%3A%2F%2Fshopee.com.br%2Fuser%2Fpurchase%2F
+                      - img "Cupom exclusivo para sua primeira compra. Frete Grátis. Cadastre-se." [ref=e179]
+                - img [ref=e181] [cursor=pointer]
+                - img [ref=e184] [cursor=pointer]
+              - generic [ref=e197]:
+                - link "Aproveite ofertas com cupons de desconto e Frete Grátis." [ref=e199] [cursor=pointer]:
+                  - /url: /m/cupom-de-desconto
+                  - img "Aproveite ofertas com cupons de desconto e Frete Grátis." [ref=e201]
+                - link "Lojas Oficiais. Cashback em todas as compras. Frete Grátis exclusivo, confira condições. Produtos Oficiais ou o dobro do dinheiro de volta. Saiba mais." [ref=e203] [cursor=pointer]:
+                  - /url: /oficial
+                  - img "Lojas Oficiais. Cashback em todas as compras. Frete Grátis exclusivo, confira condições. Produtos Oficiais ou o dobro do dinheiro de volta. Saiba mais." [ref=e205]
+          - region "Áreas principais" [ref=e206]:
+            - generic [ref=e207]:
+              - link "Moedas Moedas" [ref=e208] [cursor=pointer]:
+                - /url: /shopee-coins/
+                - img "Moedas" [ref=e210]
+                - generic [ref=e211]: Moedas
+              - link "Torcida Shopee Torcida Shopee" [ref=e212] [cursor=pointer]:
+                - /url: /m/torcida-da-sho
+                - img "Torcida Shopee" [ref=e214]
+                - generic [ref=e215]: Torcida Shopee
+              - link "Estoque na Shopee Estoque na Shopee" [ref=e216] [cursor=pointer]:
+                - /url: /m/envio-rapido
+                - img "Estoque na Shopee" [ref=e218]
+                - generic [ref=e219]: Estoque na Shopee
+              - link "Frete Grátis acima de R$10 Frete Grátis acima de R$10" [ref=e220] [cursor=pointer]:
+                - /url: /m/frete-gratis
+                - img "Frete Grátis acima de R$10" [ref=e222]
+                - generic [ref=e223]: Frete Grátis acima de R$10
+              - link "Cupons Cupons" [ref=e224] [cursor=pointer]:
+                - /url: /m/cupom-de-desconto
+                - img "Cupons" [ref=e226]
+                - generic [ref=e227]: Cupons
+              - link "Lojas Oficiais Lojas Oficiais" [ref=e228] [cursor=pointer]:
+                - /url: /oficial
+                - img "Lojas Oficiais" [ref=e230]
+                - generic [ref=e231]: Lojas Oficiais
+              - link "Doações Doações" [ref=e232] [cursor=pointer]:
+                - /url: /m/shopee-doacoes
+                - img "Doações" [ref=e234]
+                - generic [ref=e235]: Doações
+              - link "Casa Shopee Casa Shopee" [ref=e236] [cursor=pointer]:
+                - /url: /m/casa-shopee
+                - img "Casa Shopee" [ref=e238]
+                - generic [ref=e239]: Casa Shopee
+              - link "Tecnologia Tecnologia" [ref=e240] [cursor=pointer]:
+                - /url: /m/espaco-tecnologia
+                - img "Tecnologia" [ref=e242]
+                - generic [ref=e243]: Tecnologia
+              - link "Mercado Mercado" [ref=e244] [cursor=pointer]:
+                - /url: /m/mercado
+                - img "Mercado" [ref=e246]
+                - generic [ref=e247]: Mercado
+        - main [ref=e250]:
+          - region "Categorias" [ref=e252]:
+            - generic [ref=e253]:
+              - generic [ref=e255]: Categorias
+              - list [ref=e259]:
+                - listitem [ref=e260]:
+                  - img [ref=e265]
+                - listitem [ref=e271]:
+                  - img [ref=e276]
+                - listitem [ref=e282]:
+                  - img [ref=e287]
+                - listitem [ref=e293]:
+                  - img [ref=e298]
+                - listitem [ref=e304]:
+                  - img [ref=e309]
+                - listitem [ref=e315]:
+                  - img [ref=e320]
+                - listitem [ref=e326]:
+                  - img [ref=e331]
+                - listitem [ref=e337]:
+                  - img [ref=e342]
+                - listitem [ref=e348]:
+                  - img [ref=e353]
+                - listitem [ref=e359]:
+                  - img [ref=e364]
+                - listitem [ref=e370]:
+                  - img [ref=e375]
+                - listitem [ref=e381]:
+                  - img [ref=e386]
+                - listitem [ref=e392]:
+                  - img [ref=e397]
+                - listitem [ref=e403]:
+                  - img [ref=e408]
+                - listitem [ref=e414]:
+                  - img [ref=e419]
+                - listitem [ref=e425]:
+                  - img [ref=e430]
+                - listitem [ref=e436]:
+                  - img [ref=e441]
+                - listitem [ref=e447]:
+                  - img [ref=e452]
+                - listitem [ref=e458]:
+                  - img [ref=e463]
+                - listitem [ref=e469]:
+                  - img [ref=e474]
+      - contentinfo [ref=e482]:
+        - generic [ref=e483]:
+          - generic [ref=e487]:
+            - heading "Compre na Shopee com Cupons, Frete Grátis e promoções Exclusivas" [level=1] [ref=e488]:
+              - generic [ref=e491]: Compre na Shopee com Cupons, Frete Grátis e promoções Exclusivas
+            - paragraph [ref=e492]:
+              - generic [ref=e494]: A Shopee é uma das maiores plataformas de compras online do Brasil, reunindo milhões de produtos com preços competitivos, Datas Duplas Shopee,
+              - link "Frete Grátis" [ref=e496] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/frete-gratis
+                - generic [ref=e499]: Frete Grátis
+              - generic [ref=e501]: ", promoções diárias e opções de Envio Rápido para todo o país."
+            - paragraph [ref=e502]:
+              - generic [ref=e504]: Com pagamento seguro e
+              - link "Garantia Shopee" [ref=e506] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/garantia-shopee
+                - generic [ref=e509]: Garantia Shopee
+              - generic [ref=e511]: ", você compra com tranquilidade. Acesse a página oficial de"
+              - link "Cupons de Desconto" [ref=e513] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/cupom-de-desconto
+                - generic [ref=e516]: Cupons de Desconto
+              - generic [ref=e518]: e encontre cupons que vão te ajudar a economizar ainda mais no app ou no site. Aproveite também os produtos em alta na seção de
+              - link "Achadinhos Shopee" [ref=e520] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/achadinhos
+                - generic [ref=e523]: Achadinhos Shopee
+              - generic [ref=e525]: e compre de grandes marcas nas
+              - link "Lojas Oficiais Shopee" [ref=e527] [cursor=pointer]:
+                - /url: https://shopee.com.br/oficial
+                - generic [ref=e530]: Lojas Oficiais Shopee
+              - generic [ref=e532]: .
+            - heading "Principais Categorias da Shopee" [level=2] [ref=e533]:
+              - generic [ref=e536]: Principais Categorias da Shopee
+            - paragraph [ref=e537]:
+              - generic [ref=e539]: "Na Shopee, você encontra uma enorme variedade de produtos organizados em categorias completas, com ofertas atualizadas, cupons exclusivos e muito mais:"
+            - heading "Roupas Femininas" [level=3] [ref=e540]:
+              - generic [ref=e543]: Roupas Femininas
+            - paragraph [ref=e544]:
+              - generic [ref=e546]: A categoria de
+              - link "Roupas Femininas" [ref=e548] [cursor=pointer]:
+                - /url: https://shopee.com.br/Roupas-Femininas-cat.11059998
+                - generic [ref=e551]: Roupas Femininas
+              - generic [ref=e553]: reúne tendências da moda, peças básicas e looks completos para todas as ocasiões. Você encontra
+              - link "vestidos" [ref=e555] [cursor=pointer]:
+                - /url: https://shopee.com.br/Vestidos-cat.11059998.11060245
+                - generic [ref=e558]: vestidos
+              - generic [ref=e560]: ","
+              - link "blusas" [ref=e562] [cursor=pointer]:
+                - /url: https://shopee.com.br/Blusas-cat.11059998.11060261
+                - generic [ref=e565]: blusas
+              - generic [ref=e567]: ","
+              - link "conjuntos" [ref=e569] [cursor=pointer]:
+                - /url: https://shopee.com.br/Conjuntos-cat.11059998.11060255
+                - generic [ref=e572]: conjuntos
+              - generic [ref=e574]: ","
+              - link "moda fitness" [ref=e576] [cursor=pointer]:
+                - /url: https://shopee.com.br/Vestimentas-Esportivas-e-para-o-Ar-Livre-cat.11059992.11060199
+                - generic [ref=e579]: moda fitness
+              - generic [ref=e581]: ","
+              - link "lingerie" [ref=e583] [cursor=pointer]:
+                - /url: https://shopee.com.br/Lingerie-e-Roupa-%C3%8Dntima-cat.11059998.11060251
+                - generic [ref=e586]: lingerie
+              - generic [ref=e588]: ","
+              - link "jeans" [ref=e590] [cursor=pointer]:
+                - /url: https://shopee.com.br/Jeans-cat.11059998.11060249
+                - generic [ref=e593]: jeans
+              - generic [ref=e595]: ","
+              - link "moda plus size" [ref=e597] [cursor=pointer]:
+                - /url: https://shopee.com.br/Roupas-Plus-Size-cat.11116689
+                - generic [ref=e600]: moda plus size
+              - generic [ref=e602]: e
+              - link "acessórios" [ref=e604] [cursor=pointer]:
+                - /url: https://shopee.com.br/Acess%C3%B3rios-de-Moda-cat.11059978
+                - generic [ref=e607]: acessórios
+              - generic [ref=e609]: que acompanham as últimas tendências.
+              - generic [ref=e611]: Aproveite os preços baixos para renovar seu guarda-roupa pagando menos e recebendo com Envio Rápido.
+            - heading "Casa e Construção" [level=3] [ref=e612]:
+              - generic [ref=e615]: Casa e Construção
+            - paragraph [ref=e616]:
+              - generic [ref=e618]: Em
+              - link "Casa e Construção" [ref=e620] [cursor=pointer]:
+                - /url: https://shopee.com.br/Casa-e-Constru%C3%A7%C3%A3o-cat.11059983
+                - generic [ref=e623]: Casa e Construção
+              - generic [ref=e625]: ", a Shopee oferece tudo para quem está montando, reformando ou decorando. São"
+              - link "móveis" [ref=e627] [cursor=pointer]:
+                - /url: https://shopee.com.br/M%C3%B3veis-cat.11059983.11060110
+                - generic [ref=e630]: móveis
+              - generic [ref=e632]: ","
+              - link "iluminação" [ref=e634] [cursor=pointer]:
+                - /url: https://shopee.com.br/Ilumina%C3%A7%C3%A3o-cat.11059983.11060117
+                - generic [ref=e637]: iluminação
+              - generic [ref=e639]: ","
+              - link "itens de organização" [ref=e641] [cursor=pointer]:
+                - /url: https://shopee.com.br/Organizadores-para-Casa-cat.11059983.11060115
+                - generic [ref=e644]: itens de organização
+              - generic [ref=e646]: ","
+              - link "utensílios de cozinha" [ref=e648] [cursor=pointer]:
+                - /url: https://shopee.com.br/Utens%C3%ADlios-de-Beleza-cat.11059974.11060026
+                - generic [ref=e651]: utensílios de cozinha
+              - generic [ref=e653]: ","
+              - link "ferramentas" [ref=e655] [cursor=pointer]:
+                - /url: https://shopee.com.br/Ferramentas-e-Melhorias-para-a-Casa-cat.11059983.11060121
+                - generic [ref=e658]: ferramentas
+              - generic [ref=e660]: ","
+              - link "materiais elétricos" [ref=e662] [cursor=pointer]:
+                - /url: https://shopee.com.br/Pe%C3%A7as-e-Circuitos-El%C3%A9tricos-cat.11059984.11060124
+                - generic [ref=e665]: materiais elétricos
+              - generic [ref=e667]: e hidráulicos.
+              - generic [ref=e669]: Ideal para quem busca promoções em produtos para casa com variedade de vendedores e opções de envio para todo o Brasil.
+            - heading "Beleza" [level=3] [ref=e670]:
+              - generic [ref=e673]: Beleza
+            - paragraph [ref=e674]:
+              - generic [ref=e676]: A categoria
+              - link "Beleza" [ref=e678] [cursor=pointer]:
+                - /url: https://shopee.com.br/Beleza-cat.11059974
+                - generic [ref=e681]: Beleza
+              - generic [ref=e683]: concentra
+              - link "maquiagem" [ref=e685] [cursor=pointer]:
+                - /url: https://shopee.com.br/Maquiagem-cat.11059974.11060029
+                - generic [ref=e688]: maquiagem
+              - generic [ref=e690]: ","
+              - link "skincare" [ref=e692] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Skincare
+                - generic [ref=e695]: skincare
+              - generic [ref=e697]: ","
+              - link "dermocosméticos" [ref=e699] [cursor=pointer]:
+                - /url: https://shopee.com.br/Cuidados-com-a-Pele-cat.11059974.11060033
+                - generic [ref=e702]: dermocosméticos
+              - generic [ref=e704]: ","
+              - link "cuidados com o cabelo" [ref=e706] [cursor=pointer]:
+                - /url: https://shopee.com.br/Cuidados-com-o-Cabelo-cat.11059974.11060027
+                - generic [ref=e709]: cuidados com o cabelo
+              - generic [ref=e711]: ","
+              - link "esmaltes" [ref=e713] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Esmalte
+                - generic [ref=e716]: esmaltes
+              - generic [ref=e718]: ","
+              - link "perfumaria" [ref=e720] [cursor=pointer]:
+                - /url: https://shopee.com.br/Perfumes-e-Fragr%C3%A2ncias-cat.11059974.11060032
+                - generic [ref=e723]: perfumaria
+              - generic [ref=e725]: e itens profissionais.
+              - generic [ref=e727]: Com cupons e ofertas recorrentes, você pode comprar produtos para cuidados pessoais com preços competitivos.
+            - paragraph [ref=e728]:
+              - generic [ref=e730]: "No"
+              - link "Clube de Beleza Shopee" [ref=e732] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/clube-de-beleza
+                - generic [ref=e735]: Clube de Beleza Shopee
+              - generic [ref=e737]: ", você encontra ainda mais conteúdos feitos especialmente para você que é fã do mundo da beleza. Com seleções exclusivas e benefícios imperdíveis."
+            - heading "Celulares e Dispositivos" [level=3] [ref=e738]:
+              - generic [ref=e741]: Celulares e Dispositivos
+            - paragraph [ref=e742]:
+              - generic [ref=e744]: Em
+              - link "Celulares e Dispositivos" [ref=e746] [cursor=pointer]:
+                - /url: https://shopee.com.br/Celulares-e-Dispositivos-cat.11059988
+                - generic [ref=e749]: Celulares e Dispositivos
+              - generic [ref=e751]: ", você encontra"
+              - link "smartphones" [ref=e753] [cursor=pointer]:
+                - /url: https://shopee.com.br/Celulares-cat.11059988.11060166
+                - generic [ref=e756]: smartphones
+              - generic [ref=e758]: ","
+              - link "capinhas" [ref=e760] [cursor=pointer]:
+                - /url: https://shopee.com.br/Capas-cat.11059988.11060165.11061921
+                - generic [ref=e763]: capinhas
+              - generic [ref=e765]: ","
+              - link "películas" [ref=e767] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Pel%C3%ADcula
+                - generic [ref=e770]: películas
+              - generic [ref=e772]: ","
+              - link "cabos e carregadores" [ref=e774] [cursor=pointer]:
+                - /url: https://shopee.com.br/Cabos-Carregadores-e-Conversores-cat.11059988.11060165.11061920
+                - generic [ref=e777]: cabos e carregadores
+              - generic [ref=e779]: ","
+              - link "fones de ouvido" [ref=e781] [cursor=pointer]:
+                - /url: https://shopee.com.br/Fones-de-Ouvido-Headphones-e-Headsets-cat.11059971.11060002
+                - generic [ref=e784]: fones de ouvido
+              - generic [ref=e786]: ","
+              - link "smartwatches" [ref=e788] [cursor=pointer]:
+                - /url: https://shopee.com.br/Smartwatches-e-Fitness-Trackers-cat.11059988.11060171.11061939
+                - generic [ref=e791]: smartwatches
+              - generic [ref=e793]: e acessórios tecnológicos.
+              - generic [ref=e795]: A Shopee reúne promoções especiais e condições de Envio Rápido para quem busca tecnologia com bom custo-benefício.
+            - heading "Eletrodomésticos" [level=3] [ref=e796]:
+              - generic [ref=e799]: Eletrodomésticos
+            - paragraph [ref=e800]:
+              - generic [ref=e802]: Na categoria
+              - link "Eletrodomésticos" [ref=e804] [cursor=pointer]:
+                - /url: https://shopee.com.br/Eletrodom%C3%A9sticos-cat.11059984
+                - generic [ref=e807]: Eletrodomésticos
+              - generic [ref=e809]: ", descubra"
+              - link "airfryers" [ref=e811] [cursor=pointer]:
+                - /url: https://shopee.com.br/Air-Fryers-cat.11059984.11060125.11061821
+                - generic [ref=e814]: airfryers
+              - generic [ref=e816]: ","
+              - link "liquidificadores" [ref=e818] [cursor=pointer]:
+                - /url: https://shopee.com.br/Espremedores-Liquidificadores-e-M%C3%A1quinas-de-Soja-cat.11059984.11060125.11061828
+                - generic [ref=e821]: liquidificadores
+              - generic [ref=e823]: ","
+              - link "cafeteiras" [ref=e825] [cursor=pointer]:
+                - /url: https://shopee.com.br/Cafeteiras-e-Acess%C3%B3rios-cat.11059984.11060125.11061822
+                - generic [ref=e828]: cafeteiras
+              - generic [ref=e830]: ","
+              - link "ventiladores" [ref=e832] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Ventilador
+                - generic [ref=e835]: ventiladores
+              - generic [ref=e837]: ","
+              - link "aspiradores" [ref=e839] [cursor=pointer]:
+                - /url: https://shopee.com.br/Aspiradores-de-P%C3%B3-e-Utens%C3%ADlios-de-Cuidados-com-o-Piso-cat.11059984.11060130.11061859
+                - generic [ref=e842]: aspiradores
+              - generic [ref=e844]: e diversos eletroportáteis para facilitar o dia a dia.
+              - generic [ref=e846]: Com descontos imperdíveis em produtos selecionados e cupons, é possível economizar em compras para casa.
+            - heading "Auto e Moto" [level=3] [ref=e847]:
+              - generic [ref=e850]: Auto e Moto
+            - paragraph [ref=e851]:
+              - generic [ref=e853]: A seção
+              - link "Auto e Moto" [ref=e855] [cursor=pointer]:
+                - /url: https://shopee.com.br/Autom%C3%B3veis-cat.11059972
+                - generic [ref=e858]: Auto e Moto
+              - generic [ref=e860]: reúne
+              - link "acessórios automotivos" [ref=e862] [cursor=pointer]:
+                - /url: https://shopee.com.br/Acess%C3%B3rios-para-Ve%C3%ADculos-cat.11117089
+                - generic [ref=e865]: acessórios automotivos
+              - generic [ref=e867]: ","
+              - link "peças" [ref=e869] [cursor=pointer]:
+                - /url: https://shopee.com.br/Pe%C3%A7as-Adicionais-para-Autom%C3%B3veis-cat.11059972.11060009
+                - generic [ref=e872]: peças
+              - generic [ref=e874]: ","
+              - link "equipamentos de manutenção" [ref=e876] [cursor=pointer]:
+                - /url: https://shopee.com.br/Ferramentas-Automotivas-cat.11059972.11060014
+                - generic [ref=e879]: equipamentos de manutenção
+              - generic [ref=e881]: ","
+              - link "iluminação" [ref=e883] [cursor=pointer]:
+                - /url: https://shopee.com.br/Ilumina%C3%A7%C3%A3o-cat.11117089.11117635.11117638
+                - generic [ref=e886]: iluminação
+              - generic [ref=e888]: ","
+              - link "som automotivo" [ref=e890] [cursor=pointer]:
+                - /url: https://shopee.com.br/Som-Automotivo-cat.11117089.11117098.11117099
+                - generic [ref=e893]: som automotivo
+              - generic [ref=e895]: e itens para personalização.
+              - generic [ref=e897]: Ideal para quem quer cuidar do veículo aproveitando promoções e variedade de vendedores na Shopee.
+            - paragraph [ref=e898]:
+              - generic [ref=e900]: Se inscreva no
+              - link "Clube do Mecânico" [ref=e902] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/clube-do-mecanico
+                - generic [ref=e905]: Clube do Mecânico
+              - generic [ref=e907]: para ter conteúdos, cupons e ofertas exclusivas para quem ama cuidar do seu veículo.
+            - heading "Mãe e Bebê" [level=3] [ref=e908]:
+              - generic [ref=e911]: Mãe e Bebê
+            - paragraph [ref=e912]:
+              - generic [ref=e914]: Em
+              - link "Mãe e Bebê" [ref=e916] [cursor=pointer]:
+                - /url: https://shopee.com.br/M%C3%A3e-e-Beb%C3%AA-cat.11059989
+                - generic [ref=e919]: Mãe e Bebê
+              - generic [ref=e921]: ", você encontra"
+              - link "fraldas" [ref=e923] [cursor=pointer]:
+                - /url: https://shopee.com.br/Fraldas-Descart%C3%A1veis-cat.11059989.11060176.11061974
+                - generic [ref=e926]: fraldas
+              - generic [ref=e928]: ","
+              - link "roupas infantis" [ref=e930] [cursor=pointer]:
+                - /url: https://shopee.com.br/Moda-Infantil-cat.11059973
+                - generic [ref=e933]: roupas infantis
+              - generic [ref=e935]: ","
+              - link "brinquedos" [ref=e937] [cursor=pointer]:
+                - /url: https://shopee.com.br/Brinquedos-cat.11059989.11060184
+                - generic [ref=e940]: brinquedos
+              - generic [ref=e942]: ","
+              - link "itens de alimentação" [ref=e944] [cursor=pointer]:
+                - /url: https://shopee.com.br/Leite-em-P%C3%B3-e-Comida-para-Beb%C3%AAs-cat.11059989.11060181
+                - generic [ref=e947]: itens de alimentação
+              - generic [ref=e949]: ","
+              - link "carrinhos" [ref=e951] [cursor=pointer]:
+                - /url: https://shopee.com.br/Carrinho-e-Sistemas-de-Viagem-cat.11059989.11060174.11061961
+                - generic [ref=e954]: carrinhos
+              - generic [ref=e956]: ","
+              - link "bolsas maternidade" [ref=e958] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Bolsa/Maternidade
+                - generic [ref=e961]: bolsas maternidade
+              - generic [ref=e963]: e acessórios essenciais para o
+              - link "cuidado diário" [ref=e965] [cursor=pointer]:
+                - /url: https://shopee.com.br/Cuidados-com-a-Sa%C3%BAde-do-Beb%C3%AA-cat.11059989.11060172
+                - generic [ref=e968]: cuidado diário
+              - generic [ref=e970]: .
+              - generic [ref=e972]: Confira o
+              - link "Clube do Bebê" [ref=e974] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/clube-do-bebe
+                - generic [ref=e977]: Clube do Bebê
+              - generic [ref=e979]: ", um espaço pensado especialmente para quem procura tudo para cuidar dos pequenos, com cupons e ofertas exclusivas."
+            - heading "Jogos e Consoles" [level=3] [ref=e980]:
+              - generic [ref=e983]: Jogos e Consoles
+            - paragraph [ref=e984]:
+              - generic [ref=e986]: A categoria
+              - link "Jogos e Consoles" [ref=e988] [cursor=pointer]:
+                - /url: https://shopee.com.br/Jogos-e-Consoles-cat.11059980
+                - generic [ref=e991]: Jogos e Consoles
+              - generic [ref=e993]: reúne
+              - link "videogames" [ref=e995] [cursor=pointer]:
+                - /url: https://shopee.com.br/Consoles-cat.11059980.11060088
+                - generic [ref=e998]: videogames
+              - generic [ref=e1000]: ","
+              - link "jogos" [ref=e1002] [cursor=pointer]:
+                - /url: https://shopee.com.br/Jogos-cat.11059980.11060090
+                - generic [ref=e1005]: jogos
+              - generic [ref=e1007]: ","
+              - link "controles" [ref=e1009] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Controle/Videogame
+                - generic [ref=e1012]: controles
+              - generic [ref=e1014]: ","
+              - link "acessórios gamers" [ref=e1016] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Acess%C3%B3rios/Gamer
+                - generic [ref=e1019]: acessórios gamers
+              - generic [ref=e1021]: ","
+              - link "headsets" [ref=e1023] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Headset/Gamer
+                - generic [ref=e1026]: headsets
+              - generic [ref=e1028]: ","
+              - link "cadeiras gamer" [ref=e1030] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Cadeira/Gamer
+                - generic [ref=e1033]: cadeiras gamer
+              - generic [ref=e1035]: e lançamentos do universo digital..
+            - heading "Computadores" [level=3] [ref=e1036]:
+              - generic [ref=e1039]: Computadores
+            - paragraph [ref=e1040]:
+              - generic [ref=e1042]: Em
+              - link "Computadores" [ref=e1044] [cursor=pointer]:
+                - /url: https://chatgpt.com/c/699f021b-1e58-832a-ba29-e4c874e795bc#:~:text=no%20seu%20footer.-,Principais%20Categorias%20da%20Shopee%20Brasil,e%20ofertas%20sazonais%20para%20economizar%20nas%20compras%20do%20dia%20a%20dia.,-Se%20voc%C3%AA%20quiser
+                - generic [ref=e1047]: Computadores
+              - generic [ref=e1049]: ", você encontra"
+              - link "notebooks" [ref=e1051] [cursor=pointer]:
+                - /url: https://shopee.com.br/Notebooks-cat.11059977.11060051
+                - generic [ref=e1054]: notebooks
+              - generic [ref=e1056]: ","
+              - link "monitores" [ref=e1058] [cursor=pointer]:
+                - /url: https://shopee.com.br/Monitores-cat.11059977.11060052
+                - generic [ref=e1061]: monitores
+              - generic [ref=e1063]: ","
+              - link "teclados" [ref=e1065] [cursor=pointer]:
+                - /url: https://shopee.com.br/Teclados-cat.11059977.11060050.11061450
+                - generic [ref=e1068]: teclados
+              - generic [ref=e1070]: ","
+              - link "mouses" [ref=e1072] [cursor=pointer]:
+                - /url: https://shopee.com.br/Mouses-cat.11059977.11060050.11061451
+                - generic [ref=e1075]: mouses
+              - generic [ref=e1077]: ","
+              - link "SSDs" [ref=e1079] [cursor=pointer]:
+                - /url: https://shopee.com.br/SSD-cat.11059977.11060047.11060526
+                - generic [ref=e1082]: SSDs
+              - generic [ref=e1084]: ","
+              - link "periféricos" [ref=e1086] [cursor=pointer]:
+                - /url: https://shopee.com.br/Acess%C3%B3rios-e-Perif%C3%A9ricos-cat.11059977.11060056
+                - generic [ref=e1089]: periféricos
+              - generic [ref=e1091]: e acessórios para home office, estudos ou games.
+              - generic [ref=e1093]: A Shopee reúne ofertas atualizadas e opções de Envio Rápido para quem precisa de tecnologia com praticidade.
+            - heading "Alimentos e Bebidas" [level=3] [ref=e1094]:
+              - generic [ref=e1097]: Alimentos e Bebidas
+            - paragraph [ref=e1098]:
+              - generic [ref=e1100]: Na categoria
+              - link "Alimentos e Bebidas" [ref=e1102] [cursor=pointer]:
+                - /url: https://shopee.com.br/Alimentos-e-Bebidas-cat.11059979
+                - generic [ref=e1105]: Alimentos e Bebidas
+              - generic [ref=e1107]: ", descubra"
+              - link "snacks" [ref=e1109] [cursor=pointer]:
+                - /url: https://shopee.com.br/Lanches-cat.11059979.11060086
+                - generic [ref=e1112]: snacks
+              - generic [ref=e1114]: ","
+              - link "cafés" [ref=e1116] [cursor=pointer]:
+                - /url: https://shopee.com.br/Caf%C3%A9-cat.11059979.11060078.11061524
+                - generic [ref=e1119]: cafés
+              - generic [ref=e1121]: ","
+              - link "suplementos" [ref=e1123] [cursor=pointer]:
+                - /url: https://shopee.com.br/Suplementos-Alimentares-cat.11059981.11060091
+                - generic [ref=e1126]: suplementos
+              - generic [ref=e1128]: ","
+              - link "bebidas" [ref=e1130] [cursor=pointer]:
+                - /url: https://shopee.com.br/Bebidas-cat.11059979.11060078
+                - generic [ref=e1133]: bebidas
+              - generic [ref=e1135]: ", produtos importados e itens especiais."
+              - generic [ref=e1137]: Aproveite promoções, cupons e ofertas sazonais para economizar nas compras do dia a dia.
+            - heading "Pets" [level=3] [ref=e1138]:
+              - generic [ref=e1141]: Pets
+            - paragraph [ref=e1142]:
+              - generic [ref=e1144]: Na categoria
+              - link "Pets" [ref=e1146] [cursor=pointer]:
+                - /url: https://shopee.com.br/Animais-Dom%C3%A9sticos-cat.11059991
+                - generic [ref=e1149]: Pets
+              - generic [ref=e1151]: ", você encontra"
+              - link "rações" [ref=e1153] [cursor=pointer]:
+                - /url: https://shopee.com.br/Ra%C3%A7%C3%A3o-dos-Animais-Dom%C3%A9sticos-cat.11059991.11060194
+                - generic [ref=e1156]: rações
+              - generic [ref=e1158]: ","
+              - link "petiscos" [ref=e1160] [cursor=pointer]:
+                - /url: https://shopee.com.br/Petiscos-para-Cachorros-cat.11059991.11060194.11062062
+                - generic [ref=e1163]: petiscos
+              - generic [ref=e1165]: ","
+              - link "brinquedos" [ref=e1167] [cursor=pointer]:
+                - /url: https://shopee.com.br/Brinquedos-cat.11059991.11060192.11062047
+                - generic [ref=e1170]: brinquedos
+              - generic [ref=e1172]: ","
+              - link "camas" [ref=e1174] [cursor=pointer]:
+                - /url: https://shopee.com.br/Cama-e-Banheiro-para-Animais-Dom%C3%A9sticos-Pequenos-cat.11059991.11060190.11062041
+                - generic [ref=e1177]: camas
+              - generic [ref=e1179]: ","
+              - link "casinhas" [ref=e1181] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Casinha/Cachorro
+                - generic [ref=e1184]: casinhas
+              - generic [ref=e1186]: ","
+              - link "coleiras" [ref=e1188] [cursor=pointer]:
+                - /url: https://shopee.com.br/Trelas-Coleiras-Arn%C3%AAses-Focinheiras-e-Selas-cat.11059991.11060192.11062044
+                - generic [ref=e1191]: coleiras
+              - generic [ref=e1193]: ","
+              - link "caixas de transporte" [ref=e1195] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Caixa%20de%20Transporte
+                - generic [ref=e1198]: caixas de transporte
+              - generic [ref=e1200]: ","
+              - link "areia para gatos" [ref=e1202] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Areia/Gato
+                - generic [ref=e1205]: areia para gatos
+              - generic [ref=e1207]: ","
+              - link "tapetes higiênicos" [ref=e1209] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Tapete%20Higi%C3%AAnico
+                - generic [ref=e1212]: tapetes higiênicos
+              - generic [ref=e1214]: ","
+              - link "shampoos" [ref=e1216] [cursor=pointer]:
+                - /url: https://shopee.com.br/list/Shampoo/Pet
+                - generic [ref=e1219]: shampoos
+              - generic [ref=e1221]: ","
+              - link "medicamentos" [ref=e1223] [cursor=pointer]:
+                - /url: https://shopee.com.br/Medicamentos-cat.11059991.11060196.11062072
+                - generic [ref=e1226]: medicamentos
+              - generic [ref=e1228]: e
+              - link "acessórios" [ref=e1230] [cursor=pointer]:
+                - /url: https://shopee.com.br/Acess%C3%B3rios-para-Animais-de-Estima%C3%A7%C3%A3o-cat.11059991.11060192
+                - generic [ref=e1233]: acessórios
+              - generic [ref=e1235]: para cães, gatos, aves, peixes e roedores.
+            - heading "Aproveite as ofertas especiais e benefícios do Clube do Pet Shopee, com cupons exclusivos, descontos em grandes marcas e promoções em produtos para todas as fases da vida do seu animal. Seja um Afiliados Shopee" [level=2] [ref=e1236]:
+              - generic [ref=e1238]: Aproveite as ofertas especiais e benefícios do
+              - link "Clube do Pet Shopee" [ref=e1240] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/clube-do-pet
+                - generic [ref=e1243]: Clube do Pet Shopee
+              - generic [ref=e1245]: ", com cupons exclusivos, descontos em grandes marcas e promoções em produtos para todas as fases da vida do seu animal."
+              - generic [ref=e1248]: Seja um Afiliados Shopee
+            - paragraph [ref=e1249]:
+              - generic [ref=e1251]: Se você cria conteúdo digital ou trabalha com divulgação online, conheça o
+              - link "Programa de Criadores e Afiliados Shopee" [ref=e1253] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/afiliados
+                - generic [ref=e1256]: Programa de Criadores e Afiliados Shopee
+              - generic [ref=e1258]: . Com os Afiliados Shopee, você pode compartilhar links personalizados e receber comissão por vendas realizadas através da sua indicação.
+            - heading "Economize com cupons, Frete Grátis e promoções" [level=2] [ref=e1259]:
+              - generic [ref=e1262]: Economize com cupons, Frete Grátis e promoções
+            - paragraph [ref=e1263]:
+              - generic [ref=e1265]: A Shopee oferece promoções todos os dias, incluindo Ofertas Relâmpago e campanhas sazonais como as Datas Duplas. Fique de olho na página de
+              - link "cupons" [ref=e1267] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/cupom-de-desconto
+                - generic [ref=e1270]: cupons
+              - generic [ref=e1272]: e confira as Ncondições atualizadas de
+              - link "Frete Grátis* Shopee" [ref=e1274] [cursor=pointer]:
+                - /url: https://shopee.com.br/m/frete-gratis
+                - generic [ref=e1277]: Frete Grátis* Shopee
+              - generic [ref=e1279]: .
+            - paragraph [ref=e1280]:
+              - generic [ref=e1282]: "A Shopee disponibiliza diferentes formas de pagamento para que você escolha a opção mais prática e segura para finalizar suas compras online:"
+            - list [ref=e1283]:
+              - listitem [ref=e1284]:
+                - generic [ref=e1286]: Cartão de crédito:Permite parcelamento, facilitando o pagamento em várias vezes diretamente pelo app ou site.
+                - paragraph
+              - listitem [ref=e1287]:
+                - generic [ref=e1289]: "Cartão de Débito Virtual da Caixa: Conta com código de segurança dinâmico, oferecendo mais proteção nas compras online."
+                - paragraph
+              - listitem [ref=e1290]:
+                - generic [ref=e1292]: "Boleto bancário: Ideal para quem não possui cartão de crédito. O boleto é gerado automaticamente e pode ser pago pelo internet banking, aplicativo do banco ou em agências e lotéricas."
+                - paragraph
+              - listitem [ref=e1293]:
+                - generic [ref=e1295]: "PIX: Pagamento instantâneo, disponível 24 horas por dia, com confirmação rápida e segurança nas transações."
+                - paragraph
+              - listitem [ref=e1296]:
+                - generic [ref=e1298]: "ShopeePay: A carteira digital da Shopee que permite adicionar saldo, pagar compras, transferir dinheiro e receber reembolsos de forma simples e sem complicação."
+                - paragraph
+            - paragraph [ref=e1299]:
+              - generic [ref=e1301]: Baixe o
+              - link "aplicativo da Shopee" [ref=e1303] [cursor=pointer]:
+                - /url: https://shopee.com.br/web
+                - generic [ref=e1306]: aplicativo da Shopee
+              - generic [ref=e1308]: no seu celular e ative as notificações para receber tudo em primeira mão. Aproveite as vantagens de ser um cliente Shopee!
+              - generic [ref=e1310]: Para mais dicas, tendências e oportunidades de economia, acompanhe o
+              - link "Blog da Shopee" [ref=e1312] [cursor=pointer]:
+                - /url: https://shopee.com.br/blog/
+                - generic [ref=e1315]: Blog da Shopee
+              - generic [ref=e1317]: .
+              - generic [ref=e1319]: Com variedade, segurança, promoções constantes, cupons e Frete Grátis* Shopee, a Shopee é o destino ideal para quem quer economizar e comprar com praticidade.
+            - paragraph [ref=e1320]
+          - generic [ref=e1322]:
+            - generic [ref=e1323]: Buscas em alta
+            - list [ref=e1324]:
+              - listitem [ref=e1325]:
+                - link "Vestido" [ref=e1326] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Vestido
+                - text: "|"
+              - listitem [ref=e1327]:
+                - link "Chaveiro" [ref=e1328] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Chaveiro
+                - text: "|"
+              - listitem [ref=e1329]:
+                - link "Sex Shop" [ref=e1330] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Sex%20Shop
+                - text: "|"
+              - listitem [ref=e1331]:
+                - link "Boné" [ref=e1332] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Bon%C3%A9
+                - text: "|"
+              - listitem [ref=e1333]:
+                - link "Decoração Quarto" [ref=e1334] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Decora%C3%A7%C3%A3o/Quarto
+                - text: "|"
+              - listitem [ref=e1335]:
+                - link "Lustre" [ref=e1336] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Lustre
+                - text: "|"
+              - listitem [ref=e1337]:
+                - link "Organizador" [ref=e1338] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Organizador
+                - text: "|"
+              - listitem [ref=e1339]:
+                - link "Relógio Masculino" [ref=e1340] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Rel%C3%B3gio/Masculino
+                - text: "|"
+              - listitem [ref=e1341]:
+                - link "Calcinha" [ref=e1342] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Calcinha
+                - text: "|"
+              - listitem [ref=e1343]:
+                - link "Espelho" [ref=e1344] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Espelho
+                - text: "|"
+              - listitem [ref=e1345]:
+                - link "Lovito" [ref=e1346] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Lovito
+                - text: "|"
+              - listitem [ref=e1347]:
+                - link "Capacete" [ref=e1348] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Capacete
+                - text: "|"
+              - listitem [ref=e1349]:
+                - link "Crocs" [ref=e1350] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Crocs
+                - text: "|"
+              - listitem [ref=e1351]:
+                - link "Tapete" [ref=e1352] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Tapete
+                - text: "|"
+              - listitem [ref=e1353]:
+                - link "Biquíni" [ref=e1354] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Biqu%C3%ADni
+                - text: "|"
+              - listitem [ref=e1355]:
+                - link "Mesa" [ref=e1356] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Mesa
+                - text: "|"
+              - listitem [ref=e1357]:
+                - link "Decoração" [ref=e1358] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Decora%C3%A7%C3%A3o
+                - text: "|"
+              - listitem [ref=e1359]:
+                - link "Calça" [ref=e1360] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Cal%C3%A7a
+                - text: "|"
+              - listitem [ref=e1361]:
+                - link "Maquiagem" [ref=e1362] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Maquiagem
+                - text: "|"
+              - listitem [ref=e1363]:
+                - link "Bolsa Feminina" [ref=e1364] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Bolsa/Feminina
+                - text: "|"
+              - listitem [ref=e1365]:
+                - link "Booster Pokemon Black And White 8 - Tempestade De Plasma" [ref=e1366] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Booster/Pokemon/Black%20And%20White%208%20-%20Tempestade%20De%20Plasma
+                - text: "|"
+              - listitem [ref=e1367]:
+                - link "Móbile Berço Safari" [ref=e1368] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/M%C3%B3bile/Ber%C3%A7o/Safari
+                - text: "|"
+              - listitem [ref=e1369]:
+                - link "Flanela Microfibra Automotiva" [ref=e1370] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Flanela/Microfibra/Automotiva
+                - text: "|"
+              - listitem [ref=e1371]:
+                - link "ADCOS Derma Complex Concentrado Vitamina C 20" [ref=e1372] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/ADCOS/Derma%20Complex/Concentrado%20Vitamina%20C%2020
+                - text: "|"
+              - listitem [ref=e1373]:
+                - link "Aquecedor Elétrico Termoventilador" [ref=e1374] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Aquecedor/El%C3%A9trico/Termoventilador
+                - text: "|"
+              - listitem [ref=e1375]:
+                - link "Ar Condicionado Hisense 18.000 Btus" [ref=e1376] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Ar%20Condicionado/Hisense/18.000%20Btus
+                - text: "|"
+              - listitem [ref=e1377]:
+                - link "Melan-Off Cisteamina" [ref=e1378] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Melan-Off/Cisteamina
+                - text: "|"
+              - listitem [ref=e1379]:
+                - link "BPortal" [ref=e1380] [cursor=pointer]:
+                  - /url: https://shopee.com.br/bportal
+                - text: "|"
+              - listitem [ref=e1381]:
+                - link "Molde Silicone Miniatura" [ref=e1382] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Molde/Silicone/Miniatura
+                - text: "|"
+              - listitem [ref=e1383]:
+                - link "Pelúcia Gato Realista" [ref=e1384] [cursor=pointer]:
+                  - /url: https://shopee.com.br/list/Pel%C3%BAcia/Gato/Realista
+        - generic [ref=e1386]:
+          - generic [ref=e1387]: Categorias
+          - generic [ref=e1388]:
+            - generic [ref=e1389]:
+              - generic [ref=e1390]:
+                - link "Roupas Femininas" [ref=e1392] [cursor=pointer]:
+                  - /url: /Roupas-Femininas-cat.11059998
+                - generic [ref=e1393]:
+                  - link "Vestidos" [ref=e1395] [cursor=pointer]:
+                    - /url: /Vestidos-cat.11059998.11060245
+                  - generic [ref=e1396]: "|"
+                  - link "Blusas" [ref=e1398] [cursor=pointer]:
+                    - /url: /Blusas-cat.11059998.11060261
+                  - generic [ref=e1399]: "|"
+                  - link "Saias" [ref=e1401] [cursor=pointer]:
+                    - /url: /Saias-cat.11059998.11060257
+                  - generic [ref=e1402]: "|"
+                  - link "Shorts" [ref=e1404] [cursor=pointer]:
+                    - /url: /Shorts-cat.11059998.11060256
+                  - generic [ref=e1405]: "|"
+                  - link "Jeans" [ref=e1407] [cursor=pointer]:
+                    - /url: /Jeans-cat.11059998.11060249
+                  - generic [ref=e1408]: "|"
+                  - link "Calças e Leggings" [ref=e1410] [cursor=pointer]:
+                    - /url: /Calças-e-Leggings-cat.11059998.11060254
+                  - generic [ref=e1411]: "|"
+                  - link "Conjuntos" [ref=e1413] [cursor=pointer]:
+                    - /url: /Conjuntos-cat.11059998.11060255
+                  - generic [ref=e1414]: "|"
+                  - link "Lingerie e Roupa Íntima" [ref=e1416] [cursor=pointer]:
+                    - /url: /Lingerie-e-Roupa-Íntima-cat.11059998.11060251
+                  - generic [ref=e1417]: "|"
+                  - link "Traje para dormir e Pijamas" [ref=e1419] [cursor=pointer]:
+                    - /url: /Traje-para-dormir-e-Pijamas-cat.11059998.11060258
+                  - generic [ref=e1420]: "|"
+                  - link "Macacões, Macaquinhos e Jardineiras" [ref=e1422] [cursor=pointer]:
+                    - /url: /Macacões-Macaquinhos-e-Jardineiras-cat.11059998.11060250
+                  - generic [ref=e1423]: "|"
+                  - link "Jaquetas, Casacos e Coletes" [ref=e1425] [cursor=pointer]:
+                    - /url: /Jaquetas-Casacos-e-Coletes-cat.11059998.11060248
+                  - generic [ref=e1426]: "|"
+                  - link "Moletons e Suéteres" [ref=e1428] [cursor=pointer]:
+                    - /url: /Moletons-e-Suéteres-cat.11059998.11060247
+                  - generic [ref=e1429]: "|"
+                  - link "Agasalhos e Cardigans" [ref=e1431] [cursor=pointer]:
+                    - /url: /Agasalhos-e-Cardigans-cat.11059998.11060260
+                  - generic [ref=e1432]: "|"
+                  - link "Roupas de Maternidade" [ref=e1434] [cursor=pointer]:
+                    - /url: /Roupas-de-Maternidade-cat.11059998.11060252
+                  - generic [ref=e1435]: "|"
+                  - link "Meias" [ref=e1437] [cursor=pointer]:
+                    - /url: /Meias-cat.11059998.11060259
+                  - generic [ref=e1438]: "|"
+                  - link "Roupas Tradicionais" [ref=e1440] [cursor=pointer]:
+                    - /url: /Roupas-Tradicionais-cat.11059998.11060262
+                  - generic [ref=e1441]: "|"
+                  - link "Fantasias e Cosplay" [ref=e1443] [cursor=pointer]:
+                    - /url: /Fantasias-e-Cosplay-cat.11059998.11060244
+                  - generic [ref=e1444]: "|"
+                  - link "Vestidos de Casamento" [ref=e1446] [cursor=pointer]:
+                    - /url: /Vestidos-de-Casamento-cat.11059998.11060263
+                  - generic [ref=e1447]: "|"
+                  - link "Tecidos" [ref=e1449] [cursor=pointer]:
+                    - /url: /Tecidos-cat.11059998.11060246
+                  - generic [ref=e1450]: "|"
+                  - link "Outros" [ref=e1452] [cursor=pointer]:
+                    - /url: /Outros-cat.11059998.11060253
+              - generic [ref=e1453]:
+                - link "Sapatos Femininos" [ref=e1455] [cursor=pointer]:
+                  - /url: /Sapatos-Femininos-cat.11059999
+                - generic [ref=e1456]:
+                  - link "Tênis" [ref=e1458] [cursor=pointer]:
+                    - /url: /Tênis-cat.11059999.11060270
+                  - generic [ref=e1459]: "|"
+                  - link "Botas" [ref=e1461] [cursor=pointer]:
+                    - /url: /Botas-cat.11059999.11060264
+                  - generic [ref=e1462]: "|"
+                  - link "Saltos e Tamancos" [ref=e1464] [cursor=pointer]:
+                    - /url: /Saltos-e-Tamancos-cat.11059999.11060267
+                  - generic [ref=e1465]: "|"
+                  - link "Sandálias e Chinelos" [ref=e1467] [cursor=pointer]:
+                    - /url: /Sandálias-e-Chinelos-cat.11059999.11060265
+                  - generic [ref=e1468]: "|"
+                  - link "Sapatos" [ref=e1470] [cursor=pointer]:
+                    - /url: /Sapatos-cat.11059999.11060266
+                  - generic [ref=e1471]: "|"
+                  - link "Plataformas" [ref=e1473] [cursor=pointer]:
+                    - /url: /Plataformas-cat.11059999.11060271
+                  - generic [ref=e1474]: "|"
+                  - link "Cuidados com Calçados e Acessórios" [ref=e1476] [cursor=pointer]:
+                    - /url: /Cuidados-com-Calçados-e-Acessórios-cat.11059999.11060269
+                  - generic [ref=e1477]: "|"
+                  - link "Outros" [ref=e1479] [cursor=pointer]:
+                    - /url: /Outros-cat.11059999.11060268
+              - generic [ref=e1480]:
+                - link "Celulares e Dispositivos" [ref=e1482] [cursor=pointer]:
+                  - /url: /Celulares-e-Dispositivos-cat.11059988
+                - generic [ref=e1483]:
+                  - link "Celulares" [ref=e1485] [cursor=pointer]:
+                    - /url: /Celulares-cat.11059988.11060166
+                  - generic [ref=e1486]: "|"
+                  - link "Tablets" [ref=e1488] [cursor=pointer]:
+                    - /url: /Tablets-cat.11059988.11060169
+                  - generic [ref=e1489]: "|"
+                  - link "Acessórios" [ref=e1491] [cursor=pointer]:
+                    - /url: /Acessórios-cat.11059988.11060165
+                  - generic [ref=e1492]: "|"
+                  - link "Aparelhos Vestíveis" [ref=e1494] [cursor=pointer]:
+                    - /url: /Aparelhos-Vestíveis-cat.11059988.11060171
+                  - generic [ref=e1495]: "|"
+                  - link "Walkie Talkies" [ref=e1497] [cursor=pointer]:
+                    - /url: /Walkie-Talkies-cat.11059988.11060170
+                  - generic [ref=e1498]: "|"
+                  - link "Outros" [ref=e1500] [cursor=pointer]:
+                    - /url: /Outros-cat.11059988.11060167
+              - generic [ref=e1501]:
+                - link "Acessórios para Veículos" [ref=e1503] [cursor=pointer]:
+                  - /url: /Acessórios-para-Veículos-cat.11117089
+                - generic [ref=e1504]:
+                  - link "Pneus e Rodas" [ref=e1506] [cursor=pointer]:
+                    - /url: /Pneus-e-Rodas-cat.11117089.11117121
+                  - generic [ref=e1507]: "|"
+                  - link "Acessórios Internos para Automóveis" [ref=e1509] [cursor=pointer]:
+                    - /url: /Acessórios-Internos-para-Automóveis-cat.11117089.11117098
+                  - generic [ref=e1510]: "|"
+                  - link "Acessórios Externos para Automóveis" [ref=e1512] [cursor=pointer]:
+                    - /url: /Acessórios-Externos-para-Automóveis-cat.11117089.11117095
+                  - generic [ref=e1513]: "|"
+                  - link "Peças de Reposição para Automóveis" [ref=e1515] [cursor=pointer]:
+                    - /url: /Peças-de-Reposição-para-Automóveis-cat.11117089.11117635
+                  - generic [ref=e1516]: "|"
+                  - link "Ferramentas Veiculares" [ref=e1518] [cursor=pointer]:
+                    - /url: /Ferramentas-Veiculares-cat.11117089.11117123
+                  - generic [ref=e1519]: "|"
+                  - link "Limpeza Veicular" [ref=e1521] [cursor=pointer]:
+                    - /url: /Limpeza-Veicular-cat.11117089.11117126
+                  - generic [ref=e1522]: "|"
+                  - link "Segurança Veicular" [ref=e1524] [cursor=pointer]:
+                    - /url: /Segurança-Veicular-cat.11117089.11117577
+                  - generic [ref=e1525]: "|"
+                  - link "Peças de Reposição para Motocicletas" [ref=e1527] [cursor=pointer]:
+                    - /url: /Peças-de-Reposição-para-Motocicletas-cat.11117089.11117116
+                  - generic [ref=e1528]: "|"
+                  - link "Acessórios para Motocicletas" [ref=e1530] [cursor=pointer]:
+                    - /url: /Acessórios-para-Motocicletas-cat.11117089.11117090
+                  - generic [ref=e1531]: "|"
+                  - link "Veículos Pesados e Barcos" [ref=e1533] [cursor=pointer]:
+                    - /url: /Veículos-Pesados-e-Barcos-cat.11117089.11117654
+                  - generic [ref=e1534]: "|"
+                  - link "Outros" [ref=e1536] [cursor=pointer]:
+                    - /url: /Outros-cat.11117089.11117115
+              - generic [ref=e1537]:
+                - link "Bolsas Femininas" [ref=e1539] [cursor=pointer]:
+                  - /url: /Bolsas-Femininas-cat.11059997
+                - generic [ref=e1540]:
+                  - link "Bolsas transversais e de ombro" [ref=e1542] [cursor=pointer]:
+                    - /url: /Bolsas-transversais-e-de-ombro-cat.11059997.11060237
+                  - generic [ref=e1543]: "|"
+                  - link "Bolsas Tote" [ref=e1545] [cursor=pointer]:
+                    - /url: /Bolsas-Tote-cat.11059997.11060241
+                  - generic [ref=e1546]: "|"
+                  - link "Mochilas" [ref=e1548] [cursor=pointer]:
+                    - /url: /Mochilas-cat.11059997.11060234
+                  - generic [ref=e1549]: "|"
+                  - link "Bolsas com alça" [ref=e1551] [cursor=pointer]:
+                    - /url: /Bolsas-com-alça-cat.11059997.11060240
+                  - generic [ref=e1552]: "|"
+                  - link "Carteiras" [ref=e1554] [cursor=pointer]:
+                    - /url: /Carteiras-cat.11059997.11060243
+                  - generic [ref=e1555]: "|"
+                  - link "Malas de Notebook" [ref=e1557] [cursor=pointer]:
+                    - /url: /Malas-de-Notebook-cat.11059997.11060238
+                  - generic [ref=e1558]: "|"
+                  - link "Pochetes e Chest Bags" [ref=e1560] [cursor=pointer]:
+                    - /url: /Pochetes-e-Chest-Bags-cat.11059997.11060242
+                  - generic [ref=e1561]: "|"
+                  - link "Clutches & Carteiras" [ref=e1563] [cursor=pointer]:
+                    - /url: /Clutches-Carteiras-cat.11059997.11060236
+                  - generic [ref=e1564]: "|"
+                  - link "Acessórios de Bolsas" [ref=e1566] [cursor=pointer]:
+                    - /url: /Acessórios-de-Bolsas-cat.11059997.11060235
+                  - generic [ref=e1567]: "|"
+                  - link "Outros" [ref=e1569] [cursor=pointer]:
+                    - /url: /Outros-cat.11059997.11060239
+              - generic [ref=e1570]:
+                - link "Alimentos e Bebidas" [ref=e1572] [cursor=pointer]:
+                  - /url: /Alimentos-e-Bebidas-cat.11059979
+                - generic [ref=e1573]:
+                  - link "Lanches" [ref=e1575] [cursor=pointer]:
+                    - /url: /Lanches-cat.11059979.11060086
+                  - generic [ref=e1576]: "|"
+                  - link "Padaria" [ref=e1578] [cursor=pointer]:
+                    - /url: /Padaria-cat.11059979.11060076
+                  - generic [ref=e1579]: "|"
+                  - link "Bebidas Alcoólicas" [ref=e1581] [cursor=pointer]:
+                    - /url: /Bebidas-Alcoólicas-cat.11059979.11060075
+                  - generic [ref=e1582]: "|"
+                  - link "Bebidas" [ref=e1584] [cursor=pointer]:
+                    - /url: /Bebidas-cat.11059979.11060078
+                  - generic [ref=e1585]: "|"
+                  - link "Essenciais para Culinária" [ref=e1587] [cursor=pointer]:
+                    - /url: /Essenciais-para-Culinária-cat.11059979.11060081
+                  - generic [ref=e1588]: "|"
+                  - link "Cereais e Geléias de Café da Manhã" [ref=e1590] [cursor=pointer]:
+                    - /url: /Cereais-e-Geléias-de-Café-da-Manhã-cat.11059979.11060079
+                  - generic [ref=e1591]: "|"
+                  - link "Conjunto de Presentes e Cestas" [ref=e1593] [cursor=pointer]:
+                    - /url: /Conjunto-de-Presentes-e-Cestas-cat.11059979.11060084
+                  - generic [ref=e1594]: "|"
+                  - link "Conveniência / Pronto-para-comer" [ref=e1596] [cursor=pointer]:
+                    - /url: /Conveniência-Pronto-para-comer-cat.11059979.11060080
+                  - generic [ref=e1597]: "|"
+                  - link "Laticínios" [ref=e1599] [cursor=pointer]:
+                    - /url: /Laticínios-cat.11059979.11060082
+                  - generic [ref=e1600]: "|"
+                  - link "Essenciais para Assar" [ref=e1602] [cursor=pointer]:
+                    - /url: /Essenciais-para-Assar-cat.11059979.11060077
+                  - generic [ref=e1603]: "|"
+                  - link "Alimentos básicos" [ref=e1605] [cursor=pointer]:
+                    - /url: /Alimentos-básicos-cat.11059979.11115334
+                  - generic [ref=e1606]: "|"
+                  - link "Outros" [ref=e1608] [cursor=pointer]:
+                    - /url: /Outros-cat.11059979.11060085
+              - link "Shopee Doações" [ref=e1611] [cursor=pointer]:
+                - /url: /Shopee-Doações-cat.11115518
+            - generic [ref=e1612]:
+              - generic [ref=e1613]:
+                - link "Casa e Construção" [ref=e1615] [cursor=pointer]:
+                  - /url: /Casa-e-Construção-cat.11059983
+                - generic [ref=e1616]:
+                  - link "Decoração" [ref=e1618] [cursor=pointer]:
+                    - /url: /Decoração-cat.11059983.11060107
+                  - generic [ref=e1619]: "|"
+                  - link "Artigos de Cozinha" [ref=e1621] [cursor=pointer]:
+                    - /url: /Artigos-de-Cozinha-cat.11059983.11060116
+                  - generic [ref=e1622]: "|"
+                  - link "Roupas de Cama" [ref=e1624] [cursor=pointer]:
+                    - /url: /Roupas-de-Cama-cat.11059983.11060106
+                  - generic [ref=e1625]: "|"
+                  - link "Móveis" [ref=e1627] [cursor=pointer]:
+                    - /url: /Móveis-cat.11059983.11060110
+                  - generic [ref=e1628]: "|"
+                  - link "Banheiros" [ref=e1630] [cursor=pointer]:
+                    - /url: /Banheiros-cat.11059983.11060105
+                  - generic [ref=e1631]: "|"
+                  - link "Louça" [ref=e1633] [cursor=pointer]:
+                    - /url: /Louça-cat.11059983.11060108
+                  - generic [ref=e1634]: "|"
+                  - link "Iluminação" [ref=e1636] [cursor=pointer]:
+                    - /url: /Iluminação-cat.11059983.11060117
+                  - generic [ref=e1637]: "|"
+                  - link "Organizadores para Casa" [ref=e1639] [cursor=pointer]:
+                    - /url: /Organizadores-para-Casa-cat.11059983.11060115
+                  - generic [ref=e1640]: "|"
+                  - link "Fragrância da Casa e Aromaterapia" [ref=e1642] [cursor=pointer]:
+                    - /url: /Fragrância-da-Casa-e-Aromaterapia-cat.11059983.11060114
+                  - generic [ref=e1643]: "|"
+                  - link "Artigos de Cuidados com a Casa" [ref=e1645] [cursor=pointer]:
+                    - /url: /Artigos-de-Cuidados-com-a-Casa-cat.11059983.11060113
+                  - generic [ref=e1646]: "|"
+                  - link "Jardinagem" [ref=e1648] [cursor=pointer]:
+                    - /url: /Jardinagem-cat.11059983.11060111
+                  - generic [ref=e1649]: "|"
+                  - link "Artigos de Festa" [ref=e1651] [cursor=pointer]:
+                    - /url: /Artigos-de-Festa-cat.11059983.11060119
+                  - generic [ref=e1652]: "|"
+                  - link "Ferramentas e Melhorias para a Casa" [ref=e1654] [cursor=pointer]:
+                    - /url: /Ferramentas-e-Melhorias-para-a-Casa-cat.11059983.11060121
+                  - generic [ref=e1655]: "|"
+                  - link "Segurança" [ref=e1657] [cursor=pointer]:
+                    - /url: /Segurança-cat.11059983.11060120
+                  - generic [ref=e1658]: "|"
+                  - link "Artigos Religiosos e de Fengshui" [ref=e1660] [cursor=pointer]:
+                    - /url: /Artigos-Religiosos-e-de-Fengshui-cat.11059983.11060109
+                  - generic [ref=e1661]: "|"
+                  - link "Aquecedores de Mãos, Bolsas de Água Quente e Bolsas de Gelo" [ref=e1663] [cursor=pointer]:
+                    - /url: /Aquecedores-de-Mãos-Bolsas-de-Água-Quente-e-Bolsas-de-Gelo-cat.11059983.11060112
+                  - generic [ref=e1664]: "|"
+                  - link "Outros" [ref=e1666] [cursor=pointer]:
+                    - /url: /Outros-cat.11059983.11060118
+              - generic [ref=e1667]:
+                - link "Sapatos Masculinos" [ref=e1669] [cursor=pointer]:
+                  - /url: /Sapatos-Masculinos-cat.11059987
+                - generic [ref=e1670]:
+                  - link "Tênis" [ref=e1672] [cursor=pointer]:
+                    - /url: /Tênis-cat.11059987.11060164
+                  - generic [ref=e1673]: "|"
+                  - link "Botas" [ref=e1675] [cursor=pointer]:
+                    - /url: /Botas-cat.11059987.11060157
+                  - generic [ref=e1676]: "|"
+                  - link "Sandálias e Chinelos" [ref=e1678] [cursor=pointer]:
+                    - /url: /Sandálias-e-Chinelos-cat.11059987.11060161
+                  - generic [ref=e1679]: "|"
+                  - link "Slip on e Mule" [ref=e1681] [cursor=pointer]:
+                    - /url: /Slip-on-e-Mule-cat.11059987.11060163
+                  - generic [ref=e1682]: "|"
+                  - link "Mocassins" [ref=e1684] [cursor=pointer]:
+                    - /url: /Mocassins-cat.11059987.11060158
+                  - generic [ref=e1685]: "|"
+                  - link "Oxfords" [ref=e1687] [cursor=pointer]:
+                    - /url: /Oxfords-cat.11059987.11060160
+                  - generic [ref=e1688]: "|"
+                  - link "Acessórios e Cuidados para Calçados" [ref=e1690] [cursor=pointer]:
+                    - /url: /Acessórios-e-Cuidados-para-Calçados-cat.11059987.11060162
+                  - generic [ref=e1691]: "|"
+                  - link "Outros" [ref=e1693] [cursor=pointer]:
+                    - /url: /Outros-cat.11059987.11060159
+              - generic [ref=e1694]:
+                - link "Esportes e Lazer" [ref=e1696] [cursor=pointer]:
+                  - /url: /Esportes-e-Lazer-cat.11059992
+                - generic [ref=e1697]:
+                  - link "Equipamentos Esportivos e Recreação ao Ar Livre" [ref=e1699] [cursor=pointer]:
+                    - /url: /Equipamentos-Esportivos-e-Recreação-ao-Ar-Livre-cat.11059992.11060200
+                  - generic [ref=e1700]: "|"
+                  - link "Vestimentas Esportivas e para o Ar Livre" [ref=e1702] [cursor=pointer]:
+                    - /url: /Vestimentas-Esportivas-e-para-o-Ar-Livre-cat.11059992.11060199
+                  - generic [ref=e1703]: "|"
+                  - link "Calçados Esportivos" [ref=e1705] [cursor=pointer]:
+                    - /url: /Calçados-Esportivos-cat.11059992.11060201
+                  - generic [ref=e1706]: "|"
+                  - link "Acessórios Esportivos e Atividades ao Ar Livre" [ref=e1708] [cursor=pointer]:
+                    - /url: /Acessórios-Esportivos-e-Atividades-ao-Ar-Livre-cat.11059992.11060198
+                  - generic [ref=e1709]: "|"
+                  - link "Outros" [ref=e1711] [cursor=pointer]:
+                    - /url: /Outros-cat.11059992.11060197
+              - generic [ref=e1712]:
+                - link "Saúde" [ref=e1714] [cursor=pointer]:
+                  - /url: /Saúde-cat.11059981
+                - generic [ref=e1715]:
+                  - link "Suplementos Alimentares" [ref=e1717] [cursor=pointer]:
+                    - /url: /Suplementos-Alimentares-cat.11059981.11060091
+                  - generic [ref=e1718]: "|"
+                  - link "Cuidados Pessoais" [ref=e1720] [cursor=pointer]:
+                    - /url: /Cuidados-Pessoais-cat.11059981.11060094
+                  - generic [ref=e1721]: "|"
+                  - link "Bem-Estar Sexual" [ref=e1723] [cursor=pointer]:
+                    - /url: /Bem-Estar-Sexual-cat.11059981.11060095
+                  - generic [ref=e1724]: "|"
+                  - link "Suprimentos Médicos" [ref=e1726] [cursor=pointer]:
+                    - /url: /Suprimentos-Médicos-cat.11059981.11060092
+                  - generic [ref=e1727]: "|"
+                  - link "Outros" [ref=e1729] [cursor=pointer]:
+                    - /url: /Outros-cat.11059981.11060093
+              - generic [ref=e1730]:
+                - link "Bolsas Masculinas" [ref=e1732] [cursor=pointer]:
+                  - /url: /Bolsas-Masculinas-cat.11059985
+                - generic [ref=e1733]:
+                  - link "Mochilas" [ref=e1735] [cursor=pointer]:
+                    - /url: /Mochilas-cat.11059985.11060132
+                  - generic [ref=e1736]: "|"
+                  - link "Mala de Notebook" [ref=e1738] [cursor=pointer]:
+                    - /url: /Mala-de-Notebook-cat.11059985.11060136
+                  - generic [ref=e1739]: "|"
+                  - link "Carteiras" [ref=e1741] [cursor=pointer]:
+                    - /url: /Carteiras-cat.11059985.11060140
+                  - generic [ref=e1742]: "|"
+                  - link "Pochetes e Chest bags" [ref=e1744] [cursor=pointer]:
+                    - /url: /Pochetes-e-Chest-bags-cat.11059985.11060139
+                  - generic [ref=e1745]: "|"
+                  - link "Pastas" [ref=e1747] [cursor=pointer]:
+                    - /url: /Pastas-cat.11059985.11060133
+                  - generic [ref=e1748]: "|"
+                  - link "Bolsas Tranversais e de ombro" [ref=e1750] [cursor=pointer]:
+                    - /url: /Bolsas-Tranversais-e-de-ombro-cat.11059985.11060135
+                  - generic [ref=e1751]: "|"
+                  - link "Bolsas de Mão" [ref=e1753] [cursor=pointer]:
+                    - /url: /Bolsas-de-Mão-cat.11059985.11060134
+                  - generic [ref=e1754]: "|"
+                  - link "Bolsas Tote" [ref=e1756] [cursor=pointer]:
+                    - /url: /Bolsas-Tote-cat.11059985.11060138
+                  - generic [ref=e1757]: "|"
+                  - link "Outros" [ref=e1759] [cursor=pointer]:
+                    - /url: /Outros-cat.11059985.11060137
+              - generic [ref=e1760]:
+                - link "Jogos e Consoles" [ref=e1762] [cursor=pointer]:
+                  - /url: /Jogos-e-Consoles-cat.11059980
+                - generic [ref=e1763]:
+                  - link "Consoles" [ref=e1765] [cursor=pointer]:
+                    - /url: /Consoles-cat.11059980.11060088
+                  - generic [ref=e1766]: "|"
+                  - link "Acessórios de Consoles" [ref=e1768] [cursor=pointer]:
+                    - /url: /Acessórios-de-Consoles-cat.11059980.11060087
+                  - generic [ref=e1769]: "|"
+                  - link "Jogos" [ref=e1771] [cursor=pointer]:
+                    - /url: /Jogos-cat.11059980.11060090
+                  - generic [ref=e1772]: "|"
+                  - link "Outros" [ref=e1774] [cursor=pointer]:
+                    - /url: /Outros-cat.11059980.11060089
+            - generic [ref=e1775]:
+              - generic [ref=e1776]:
+                - link "Roupas Plus Size" [ref=e1778] [cursor=pointer]:
+                  - /url: /Roupas-Plus-Size-cat.11116689
+                - generic [ref=e1779]:
+                  - link "Roupas Esportivas" [ref=e1781] [cursor=pointer]:
+                    - /url: /Roupas-Esportivas-cat.11116689.11116737
+                  - generic [ref=e1782]: "|"
+                  - link "Outros" [ref=e1784] [cursor=pointer]:
+                    - /url: /Outros-cat.11116689.11116768
+                  - generic [ref=e1785]: "|"
+                  - link "Roupas Femininas" [ref=e1787] [cursor=pointer]:
+                    - /url: /Roupas-Femininas-cat.11116689.11116690
+                  - generic [ref=e1788]: "|"
+                  - link "Roupas Masculinas" [ref=e1790] [cursor=pointer]:
+                    - /url: /Roupas-Masculinas-cat.11116689.11116691
+              - generic [ref=e1791]:
+                - link "Moda Infantil" [ref=e1793] [cursor=pointer]:
+                  - /url: /Moda-Infantil-cat.11059973
+                - generic [ref=e1794]:
+                  - link "Roupas de Meninas" [ref=e1796] [cursor=pointer]:
+                    - /url: /Roupas-de-Meninas-cat.11059973.11060021
+                  - generic [ref=e1797]: "|"
+                  - link "Roupas de Meninos" [ref=e1799] [cursor=pointer]:
+                    - /url: /Roupas-de-Meninos-cat.11059973.11060019
+                  - generic [ref=e1800]: "|"
+                  - link "Calçados de Menina" [ref=e1802] [cursor=pointer]:
+                    - /url: /Calçados-de-Menina-cat.11059973.11060022
+                  - generic [ref=e1803]: "|"
+                  - link "Calçados de Menino" [ref=e1805] [cursor=pointer]:
+                    - /url: /Calçados-de-Menino-cat.11059973.11060020
+                  - generic [ref=e1806]: "|"
+                  - link "Acessórios Infantis" [ref=e1808] [cursor=pointer]:
+                    - /url: /Acessórios-Infantis-cat.11059973.11060016
+                  - generic [ref=e1809]: "|"
+                  - link "Luvas e Calçados Infantis" [ref=e1811] [cursor=pointer]:
+                    - /url: /Luvas-e-Calçados-Infantis-cat.11059973.11060018
+                  - generic [ref=e1812]: "|"
+                  - link "Roupas Infantis" [ref=e1814] [cursor=pointer]:
+                    - /url: /Roupas-Infantis-cat.11059973.11060017
+                  - generic [ref=e1815]: "|"
+                  - link "Outros" [ref=e1817] [cursor=pointer]:
+                    - /url: /Outros-cat.11059973.11060023
+              - generic [ref=e1818]:
+                - link "Eletrodomésticos" [ref=e1820] [cursor=pointer]:
+                  - /url: /Eletrodomésticos-cat.11059984
+                - generic [ref=e1821]:
+                  - link "Utensílios de Cozinha" [ref=e1823] [cursor=pointer]:
+                    - /url: /Utensílios-de-Cozinha-cat.11059984.11060125
+                  - generic [ref=e1824]: "|"
+                  - link "Eletrodomésticos Pequenos" [ref=e1826] [cursor=pointer]:
+                    - /url: /Eletrodomésticos-Pequenos-cat.11059984.11060130
+                  - generic [ref=e1827]: "|"
+                  - link "Projetores e Acessórios" [ref=e1829] [cursor=pointer]:
+                    - /url: /Projetores-e-Acessórios-cat.11059984.11060128
+                  - generic [ref=e1830]: "|"
+                  - link "Baterias" [ref=e1832] [cursor=pointer]:
+                    - /url: /Baterias-cat.11059984.11060122
+                  - generic [ref=e1833]: "|"
+                  - link "Eletrodomésticos Grandes" [ref=e1835] [cursor=pointer]:
+                    - /url: /Eletrodomésticos-Grandes-cat.11059984.11060126
+                  - generic [ref=e1836]: "|"
+                  - link "TVs e Acessórios" [ref=e1838] [cursor=pointer]:
+                    - /url: /TVs-e-Acessórios-cat.11059984.11060131
+                  - generic [ref=e1839]: "|"
+                  - link "Peças e Circuitos Elétricos" [ref=e1841] [cursor=pointer]:
+                    - /url: /Peças-e-Circuitos-Elétricos-cat.11059984.11060124
+                  - generic [ref=e1842]: "|"
+                  - link "Controles Remoto" [ref=e1844] [cursor=pointer]:
+                    - /url: /Controles-Remoto-cat.11059984.11060129
+                  - generic [ref=e1845]: "|"
+                  - link "Outros" [ref=e1847] [cursor=pointer]:
+                    - /url: /Outros-cat.11059984.11060127
+              - link "Motocicletas" [ref=e1850] [cursor=pointer]:
+                - /url: /Motocicletas-cat.11059990
+              - generic [ref=e1851]:
+                - link "Animais Domésticos" [ref=e1853] [cursor=pointer]:
+                  - /url: /Animais-Domésticos-cat.11059991
+                - generic [ref=e1854]:
+                  - link "Ração dos Animais Domésticos" [ref=e1856] [cursor=pointer]:
+                    - /url: /Ração-dos-Animais-Domésticos-cat.11059991.11060194
+                  - generic [ref=e1857]: "|"
+                  - link "Cuidados com Animais Domésticos" [ref=e1859] [cursor=pointer]:
+                    - /url: /Cuidados-com-Animais-Domésticos-cat.11059991.11060195
+                  - generic [ref=e1860]: "|"
+                  - link "Bem-Estar dos Animais Domésticos" [ref=e1862] [cursor=pointer]:
+                    - /url: /Bem-Estar-dos-Animais-Domésticos-cat.11059991.11060196
+                  - generic [ref=e1863]: "|"
+                  - link "Cama e Banheiro" [ref=e1865] [cursor=pointer]:
+                    - /url: /Cama-e-Banheiro-cat.11059991.11060190
+                  - generic [ref=e1866]: "|"
+                  - link "Acessórios para Animais de Estimação" [ref=e1868] [cursor=pointer]:
+                    - /url: /Acessórios-para-Animais-de-Estimação-cat.11059991.11060192
+                  - generic [ref=e1869]: "|"
+                  - link "Roupas e Acessórios para Animais Domésticos" [ref=e1871] [cursor=pointer]:
+                    - /url: /Roupas-e-Acessórios-para-Animais-Domésticos-cat.11059991.11060193
+                  - generic [ref=e1872]: "|"
+                  - link "Outros" [ref=e1874] [cursor=pointer]:
+                    - /url: /Outros-cat.11059991.11060191
+              - generic [ref=e1875]:
+                - link "Câmeras e Drones" [ref=e1877] [cursor=pointer]:
+                  - /url: /Câmeras-e-Drones-cat.11059976
+                - generic [ref=e1878]:
+                  - link "Cuidados com a Câmera" [ref=e1880] [cursor=pointer]:
+                    - /url: /Cuidados-com-a-Câmera-cat.11059976.11060039
+                  - generic [ref=e1881]: "|"
+                  - link "Acessórios de Lentes" [ref=e1883] [cursor=pointer]:
+                    - /url: /Acessórios-de-Lentes-cat.11059976.11060043
+                  - generic [ref=e1884]: "|"
+                  - link "Câmeras" [ref=e1886] [cursor=pointer]:
+                    - /url: /Câmeras-cat.11059976.11060040
+                  - generic [ref=e1887]: "|"
+                  - link "Lentes" [ref=e1889] [cursor=pointer]:
+                    - /url: /Lentes-cat.11059976.11060044
+                  - generic [ref=e1890]: "|"
+                  - link "Câmeras e Sistemas de Segurança" [ref=e1892] [cursor=pointer]:
+                    - /url: /Câmeras-e-Sistemas-de-Segurança-cat.11059976.11060046
+                  - generic [ref=e1893]: "|"
+                  - link "Acessórios de Câmera" [ref=e1895] [cursor=pointer]:
+                    - /url: /Acessórios-de-Câmera-cat.11059976.11060038
+                  - generic [ref=e1896]: "|"
+                  - link "Acessórios de Drones" [ref=e1898] [cursor=pointer]:
+                    - /url: /Acessórios-de-Drones-cat.11059976.11060041
+                  - generic [ref=e1899]: "|"
+                  - link "Drones" [ref=e1901] [cursor=pointer]:
+                    - /url: /Drones-cat.11059976.11060042
+                  - generic [ref=e1902]: "|"
+                  - link "Outros" [ref=e1904] [cursor=pointer]:
+                    - /url: /Outros-cat.11059976.11060045
+            - generic [ref=e1905]:
+              - generic [ref=e1906]:
+                - link "Beleza" [ref=e1908] [cursor=pointer]:
+                  - /url: /Beleza-cat.11059974
+                - generic [ref=e1909]:
+                  - link "Maquiagem" [ref=e1911] [cursor=pointer]:
+                    - /url: /Maquiagem-cat.11059974.11060029
+                  - generic [ref=e1912]: "|"
+                  - link "Cuidados com o Cabelo" [ref=e1914] [cursor=pointer]:
+                    - /url: /Cuidados-com-o-Cabelo-cat.11059974.11060027
+                  - generic [ref=e1915]: "|"
+                  - link "Perfumes e Fragrâncias" [ref=e1917] [cursor=pointer]:
+                    - /url: /Perfumes-e-Fragrâncias-cat.11059974.11060032
+                  - generic [ref=e1918]: "|"
+                  - link "Banho e Cuidados com o Corpo" [ref=e1920] [cursor=pointer]:
+                    - /url: /Banho-e-Cuidados-com-o-Corpo-cat.11059974.11060024
+                  - generic [ref=e1921]: "|"
+                  - link "Cuidados com a Pele" [ref=e1923] [cursor=pointer]:
+                    - /url: /Cuidados-com-a-Pele-cat.11059974.11060033
+                  - generic [ref=e1924]: "|"
+                  - link "Utensílios de Beleza" [ref=e1926] [cursor=pointer]:
+                    - /url: /Utensílios-de-Beleza-cat.11059974.11060026
+                  - generic [ref=e1927]: "|"
+                  - link "Cuidados com as Mãos, Pés e Unhas" [ref=e1929] [cursor=pointer]:
+                    - /url: /Cuidados-com-as-Mãos-Pés-e-Unhas-cat.11059974.11060028
+                  - generic [ref=e1930]: "|"
+                  - link "Cuidados Masculinos" [ref=e1932] [cursor=pointer]:
+                    - /url: /Cuidados-Masculinos-cat.11059974.11060030
+                  - generic [ref=e1933]: "|"
+                  - link "Pacotes e Conjuntos de Beleza" [ref=e1935] [cursor=pointer]:
+                    - /url: /Pacotes-e-Conjuntos-de-Beleza-cat.11059974.11060025
+                  - generic [ref=e1936]: "|"
+                  - link "Outros" [ref=e1938] [cursor=pointer]:
+                    - /url: /Outros-cat.11059974.11060031
+              - generic [ref=e1939]:
+                - link "Acessórios de Moda" [ref=e1941] [cursor=pointer]:
+                  - /url: /Acessórios-de-Moda-cat.11059978
+                - generic [ref=e1942]:
+                  - link "Óculos" [ref=e1944] [cursor=pointer]:
+                    - /url: /Óculos-cat.11059978.11060065
+                  - generic [ref=e1945]: "|"
+                  - link "Anéis" [ref=e1947] [cursor=pointer]:
+                    - /url: /Anéis-cat.11059978.11060073
+                  - generic [ref=e1948]: "|"
+                  - link "Colares" [ref=e1950] [cursor=pointer]:
+                    - /url: /Colares-cat.11059978.11060070
+                  - generic [ref=e1951]: "|"
+                  - link "Bonés, Chapéus e Toucas" [ref=e1953] [cursor=pointer]:
+                    - /url: /Bonés-Chapéus-e-Toucas-cat.11059978.11060068
+                  - generic [ref=e1954]: "|"
+                  - link "Pulseiras e Braceletes" [ref=e1956] [cursor=pointer]:
+                    - /url: /Pulseiras-e-Braceletes-cat.11059978.11060063
+                  - generic [ref=e1957]: "|"
+                  - link "Brincos" [ref=e1959] [cursor=pointer]:
+                    - /url: /Brincos-cat.11059978.11060064
+                  - generic [ref=e1960]: "|"
+                  - link "Cintos" [ref=e1962] [cursor=pointer]:
+                    - /url: /Cintos-cat.11059978.11060062
+                  - generic [ref=e1963]: "|"
+                  - link "Cachecóis e Lenços" [ref=e1965] [cursor=pointer]:
+                    - /url: /Cachecóis-e-Lenços-cat.11059978.11060074
+                  - generic [ref=e1966]: "|"
+                  - link "Conjuntos e Pacotes de Acessórios" [ref=e1968] [cursor=pointer]:
+                    - /url: /Conjuntos-e-Pacotes-de-Acessórios-cat.11059978.11060059
+                  - generic [ref=e1969]: "|"
+                  - link "Acessórios de Cabelo" [ref=e1971] [cursor=pointer]:
+                    - /url: /Acessórios-de-Cabelo-cat.11059978.11060067
+                  - generic [ref=e1972]: "|"
+                  - link "Tornozeleiras" [ref=e1974] [cursor=pointer]:
+                    - /url: /Tornozeleiras-cat.11059978.11060061
+                  - generic [ref=e1975]: "|"
+                  - link "Luvas" [ref=e1977] [cursor=pointer]:
+                    - /url: /Luvas-cat.11059978.11060066
+                  - generic [ref=e1978]: "|"
+                  - link "Gravatas e Gravatas Borboleta" [ref=e1980] [cursor=pointer]:
+                    - /url: /Gravatas-e-Gravatas-Borboleta-cat.11059978.11060071
+                  - generic [ref=e1981]: "|"
+                  - link "Metais Preciosos de Investimento" [ref=e1983] [cursor=pointer]:
+                    - /url: /Metais-Preciosos-de-Investimento-cat.11059978.11060069
+                  - generic [ref=e1984]: "|"
+                  - link "Acessórios Adicionais" [ref=e1986] [cursor=pointer]:
+                    - /url: /Acessórios-Adicionais-cat.11059978.11060060
+                  - generic [ref=e1987]: "|"
+                  - link "Outros" [ref=e1989] [cursor=pointer]:
+                    - /url: /Outros-cat.11059978.11060072
+              - generic [ref=e1990]:
+                - link "Brinquedos e Hobbies" [ref=e1992] [cursor=pointer]:
+                  - /url: /Brinquedos-e-Hobbies-cat.11059982
+                - generic [ref=e1993]:
+                  - link "Brinquedos e Jogos" [ref=e1995] [cursor=pointer]:
+                    - /url: /Brinquedos-e-Jogos-cat.11059982.11060103
+                  - generic [ref=e1996]: "|"
+                  - link "Instrumentos Musicais e Acessórios" [ref=e1998] [cursor=pointer]:
+                    - /url: /Instrumentos-Musicais-e-Acessórios-cat.11059982.11060098
+                  - generic [ref=e1999]: "|"
+                  - link "Itens Colecionáveis" [ref=e2001] [cursor=pointer]:
+                    - /url: /Itens-Colecionáveis-cat.11059982.11060097
+                  - generic [ref=e2002]: "|"
+                  - link "Souvenirs" [ref=e2004] [cursor=pointer]:
+                    - /url: /Souvenirs-cat.11059982.11060102
+                  - generic [ref=e2005]: "|"
+                  - link "Álbum de Fotos" [ref=e2007] [cursor=pointer]:
+                    - /url: /Álbum-de-Fotos-cat.11059982.11060101
+                  - generic [ref=e2008]: "|"
+                  - link "CD, DVD e Bluray" [ref=e2010] [cursor=pointer]:
+                    - /url: /CD-DVD-e-Bluray-cat.11059982.11060096
+                  - generic [ref=e2011]: "|"
+                  - link "Discos de Vinil" [ref=e2013] [cursor=pointer]:
+                    - /url: /Discos-de-Vinil-cat.11059982.11060104
+                  - generic [ref=e2014]: "|"
+                  - link "Bordado" [ref=e2016] [cursor=pointer]:
+                    - /url: /Bordado-cat.11059982.11060099
+                  - generic [ref=e2017]: "|"
+                  - link "Outros" [ref=e2019] [cursor=pointer]:
+                    - /url: /Outros-cat.11059982.11060100
+              - generic [ref=e2020]:
+                - link "Áudio" [ref=e2022] [cursor=pointer]:
+                  - /url: /Áudio-cat.11059971
+                - generic [ref=e2023]:
+                  - link "Reprodutores de Mídia" [ref=e2025] [cursor=pointer]:
+                    - /url: /Reprodutores-de-Mídia-cat.11059971.11060004
+                  - generic [ref=e2026]: "|"
+                  - link "Fones de Ouvido, Headphones e Headsets" [ref=e2028] [cursor=pointer]:
+                    - /url: /Fones-de-Ouvido-Headphones-e-Headsets-cat.11059971.11060002
+                  - generic [ref=e2029]: "|"
+                  - link "Microfones" [ref=e2031] [cursor=pointer]:
+                    - /url: /Microfones-cat.11059971.11060005
+                  - generic [ref=e2032]: "|"
+                  - link "Amplificadores e Mixers" [ref=e2034] [cursor=pointer]:
+                    - /url: /Amplificadores-e-Mixers-cat.11059971.11060000
+                  - generic [ref=e2035]: "|"
+                  - link "Áudio e Alto Falantes para Casa" [ref=e2037] [cursor=pointer]:
+                    - /url: /Áudio-e-Alto-Falantes-para-Casa-cat.11059971.11060003
+                  - generic [ref=e2038]: "|"
+                  - link "Cabos e Conversores de Áudio e Vídeo" [ref=e2040] [cursor=pointer]:
+                    - /url: /Cabos-e-Conversores-de-Áudio-e-Vídeo-cat.11059971.11060001
+                  - generic [ref=e2041]: "|"
+                  - link "Outros" [ref=e2043] [cursor=pointer]:
+                    - /url: /Outros-cat.11059971.11060006
+              - generic [ref=e2044]:
+                - link "Papelaria" [ref=e2046] [cursor=pointer]:
+                  - /url: /Papelaria-cat.11059993
+                - generic [ref=e2047]:
+                  - link "Cadernos e Papéis" [ref=e2049] [cursor=pointer]:
+                    - /url: /Cadernos-e-Papéis-cat.11059993.11060205
+                  - generic [ref=e2050]: "|"
+                  - link "Escrita e Correção" [ref=e2052] [cursor=pointer]:
+                    - /url: /Escrita-e-Correção-cat.11059993.11060208
+                  - generic [ref=e2053]: "|"
+                  - link "Equipamento Escolar e de Escritório" [ref=e2055] [cursor=pointer]:
+                    - /url: /Equipamento-Escolar-e-de-Escritório-cat.11059993.11060207
+                  - generic [ref=e2056]: "|"
+                  - link "Artigos de Arte" [ref=e2058] [cursor=pointer]:
+                    - /url: /Artigos-de-Arte-cat.11059993.11060202
+                  - generic [ref=e2059]: "|"
+                  - link "Presentes e Embalagens" [ref=e2061] [cursor=pointer]:
+                    - /url: /Presentes-e-Embalagens-cat.11059993.11060203
+                  - generic [ref=e2062]: "|"
+                  - link "Cartas e Envelopes" [ref=e2064] [cursor=pointer]:
+                    - /url: /Cartas-e-Envelopes-cat.11059993.11060204
+                  - generic [ref=e2065]: "|"
+                  - link "Outros" [ref=e2067] [cursor=pointer]:
+                    - /url: /Outros-cat.11059993.11060206
+              - generic [ref=e2068]:
+                - link "Viagens e Bagagens" [ref=e2070] [cursor=pointer]:
+                  - /url: /Viagens-e-Bagagens-cat.11059995
+                - generic [ref=e2071]:
+                  - link "Malas de Viagem" [ref=e2073] [cursor=pointer]:
+                    - /url: /Malas-de-Viagem-cat.11059995.11060228
+                  - generic [ref=e2074]: "|"
+                  - link "Bagagens" [ref=e2076] [cursor=pointer]:
+                    - /url: /Bagagens-cat.11059995.11060225
+                  - generic [ref=e2077]: "|"
+                  - link "Acessórios de Viagem" [ref=e2079] [cursor=pointer]:
+                    - /url: /Acessórios-de-Viagem-cat.11059995.11060227
+                  - generic [ref=e2080]: "|"
+                  - link "Outros" [ref=e2082] [cursor=pointer]:
+                    - /url: /Outros-cat.11059995.11060226
+            - generic [ref=e2083]:
+              - generic [ref=e2084]:
+                - link "Roupas Masculinas" [ref=e2086] [cursor=pointer]:
+                  - /url: /Roupas-Masculinas-cat.11059986
+                - generic [ref=e2087]:
+                  - link "Blusas" [ref=e2089] [cursor=pointer]:
+                    - /url: /Blusas-cat.11059986.11060155
+                  - generic [ref=e2090]: "|"
+                  - link "Moletons e Suéteres" [ref=e2092] [cursor=pointer]:
+                    - /url: /Moletons-e-Suéteres-cat.11059986.11060142
+                  - generic [ref=e2093]: "|"
+                  - link "Jaquetas, Casacos e Coletes" [ref=e2095] [cursor=pointer]:
+                    - /url: /Jaquetas-Casacos-e-Coletes-cat.11059986.11060144
+                  - generic [ref=e2096]: "|"
+                  - link "Calças" [ref=e2098] [cursor=pointer]:
+                    - /url: /Calças-cat.11059986.11060148
+                  - generic [ref=e2099]: "|"
+                  - link "Jeans" [ref=e2101] [cursor=pointer]:
+                    - /url: /Jeans-cat.11059986.11060145
+                  - generic [ref=e2102]: "|"
+                  - link "Roupa íntima" [ref=e2104] [cursor=pointer]:
+                    - /url: /Roupa-íntima-cat.11059986.11060143
+                  - generic [ref=e2105]: "|"
+                  - link "Bermudas" [ref=e2107] [cursor=pointer]:
+                    - /url: /Bermudas-cat.11059986.11060150
+                  - generic [ref=e2108]: "|"
+                  - link "Agasalhos e Cardigans" [ref=e2110] [cursor=pointer]:
+                    - /url: /Agasalhos-e-Cardigans-cat.11059986.11060154
+                  - generic [ref=e2111]: "|"
+                  - link "Meias" [ref=e2113] [cursor=pointer]:
+                    - /url: /Meias-cat.11059986.11060152
+                  - generic [ref=e2114]: "|"
+                  - link "Traje para dormir" [ref=e2116] [cursor=pointer]:
+                    - /url: /Traje-para-dormir-cat.11059986.11060151
+                  - generic [ref=e2117]: "|"
+                  - link "Conjuntos" [ref=e2119] [cursor=pointer]:
+                    - /url: /Conjuntos-cat.11059986.11060149
+                  - generic [ref=e2120]: "|"
+                  - link "Ternos" [ref=e2122] [cursor=pointer]:
+                    - /url: /Ternos-cat.11059986.11060153
+                  - generic [ref=e2123]: "|"
+                  - link "Roupas Tradicionais" [ref=e2125] [cursor=pointer]:
+                    - /url: /Roupas-Tradicionais-cat.11059986.11060156
+                  - generic [ref=e2126]: "|"
+                  - link "Fantasias e Cosplay" [ref=e2128] [cursor=pointer]:
+                    - /url: /Fantasias-e-Cosplay-cat.11059986.11060141
+                  - generic [ref=e2129]: "|"
+                  - link "Vestuário Profissional" [ref=e2131] [cursor=pointer]:
+                    - /url: /Vestuário-Profissional-cat.11059986.11060146
+                  - generic [ref=e2132]: "|"
+                  - link "Outros" [ref=e2134] [cursor=pointer]:
+                    - /url: /Outros-cat.11059986.11060147
+              - generic [ref=e2135]:
+                - link "Relógios" [ref=e2137] [cursor=pointer]:
+                  - /url: /Relógios-cat.11059996
+                - generic [ref=e2138]:
+                  - link "Relógios Masculinos" [ref=e2140] [cursor=pointer]:
+                    - /url: /Relógios-Masculinos-cat.11059996.11060229
+                  - generic [ref=e2141]: "|"
+                  - link "Relógios Femininos" [ref=e2143] [cursor=pointer]:
+                    - /url: /Relógios-Femininos-cat.11059996.11060233
+                  - generic [ref=e2144]: "|"
+                  - link "Acessórios de Relógios" [ref=e2146] [cursor=pointer]:
+                    - /url: /Acessórios-de-Relógios-cat.11059996.11060232
+                  - generic [ref=e2147]: "|"
+                  - link "Conjuntos e Pares de Relógios" [ref=e2149] [cursor=pointer]:
+                    - /url: /Conjuntos-e-Pares-de-Relógios-cat.11059996.11060231
+                  - generic [ref=e2150]: "|"
+                  - link "Outros" [ref=e2152] [cursor=pointer]:
+                    - /url: /Outros-cat.11059996.11060230
+              - link "Automóveis" [ref=e2155] [cursor=pointer]:
+                - /url: /Automóveis-cat.11059972
+              - generic [ref=e2156]:
+                - link "Mãe e Bebê" [ref=e2158] [cursor=pointer]:
+                  - /url: /Mãe-e-Bebê-cat.11059989
+                - generic [ref=e2159]:
+                  - link "Banho e Cuidados com o Corpo" [ref=e2161] [cursor=pointer]:
+                    - /url: /Banho-e-Cuidados-com-o-Corpo-cat.11059989.11060175
+                  - generic [ref=e2162]: "|"
+                  - link "Acessórios para Grávidas" [ref=e2164] [cursor=pointer]:
+                    - /url: /Acessórios-para-Grávidas-cat.11059989.11060179
+                  - generic [ref=e2165]: "|"
+                  - link "Brinquedos" [ref=e2167] [cursor=pointer]:
+                    - /url: /Brinquedos-cat.11059989.11060184
+                  - generic [ref=e2168]: "|"
+                  - link "Fraldas e Penicos" [ref=e2170] [cursor=pointer]:
+                    - /url: /Fraldas-e-Penicos-cat.11059989.11060176
+                  - generic [ref=e2171]: "|"
+                  - link "Berçário" [ref=e2173] [cursor=pointer]:
+                    - /url: /Berçário-cat.11059989.11060182
+                  - generic [ref=e2174]: "|"
+                  - link "Coisas Essenciais para Viagens com Bebês" [ref=e2176] [cursor=pointer]:
+                    - /url: /Coisas-Essenciais-para-Viagens-com-Bebês-cat.11059989.11060174
+                  - generic [ref=e2177]: "|"
+                  - link "Saúde na Gravidez" [ref=e2179] [cursor=pointer]:
+                    - /url: /Saúde-na-Gravidez-cat.11059989.11060180
+                  - generic [ref=e2180]: "|"
+                  - link "Segurança do Bebê" [ref=e2182] [cursor=pointer]:
+                    - /url: /Segurança-do-Bebê-cat.11059989.11060173
+                  - generic [ref=e2183]: "|"
+                  - link "Leite em Pó e Comida para Bebês" [ref=e2185] [cursor=pointer]:
+                    - /url: /Leite-em-Pó-e-Comida-para-Bebês-cat.11059989.11060181
+                  - generic [ref=e2186]: "|"
+                  - link "Cuidados com a Saúde do Bebê" [ref=e2188] [cursor=pointer]:
+                    - /url: /Cuidados-com-a-Saúde-do-Bebê-cat.11059989.11060172
+                  - generic [ref=e2189]: "|"
+                  - link "Alimentos Essenciais" [ref=e2191] [cursor=pointer]:
+                    - /url: /Alimentos-Essenciais-cat.11059989.11060177
+                  - generic [ref=e2192]: "|"
+                  - link "Pacotes e Conjuntos de Presentes" [ref=e2194] [cursor=pointer]:
+                    - /url: /Pacotes-e-Conjuntos-de-Presentes-cat.11059989.11060178
+                  - generic [ref=e2195]: "|"
+                  - link "Outros" [ref=e2197] [cursor=pointer]:
+                    - /url: /Outros-cat.11059989.11060183
+              - generic [ref=e2198]:
+                - link "Computadores e Acessórios" [ref=e2200] [cursor=pointer]:
+                  - /url: /Computadores-e-Acessórios-cat.11059977
+                - generic [ref=e2201]:
+                  - link "Equipamentos de Escritório" [ref=e2203] [cursor=pointer]:
+                    - /url: /Equipamentos-de-Escritório-cat.11059977.11060054
+                  - generic [ref=e2204]: "|"
+                  - link "Impressoras e Scanners" [ref=e2206] [cursor=pointer]:
+                    - /url: /Impressoras-e-Scanners-cat.11059977.11060057
+                  - generic [ref=e2207]: "|"
+                  - link "Armazenamento de Dados" [ref=e2209] [cursor=pointer]:
+                    - /url: /Armazenamento-de-Dados-cat.11059977.11060047
+                  - generic [ref=e2210]: "|"
+                  - link "Acessórios e Periféricos" [ref=e2212] [cursor=pointer]:
+                    - /url: /Acessórios-e-Periféricos-cat.11059977.11060056
+                  - generic [ref=e2213]: "|"
+                  - link "Computadores Desktop" [ref=e2215] [cursor=pointer]:
+                    - /url: /Computadores-Desktop-cat.11059977.11060049
+                  - generic [ref=e2216]: "|"
+                  - link "Componentes de Computadores e Notebooks" [ref=e2218] [cursor=pointer]:
+                    - /url: /Componentes-de-Computadores-e-Notebooks-cat.11059977.11060048
+                  - generic [ref=e2219]: "|"
+                  - link "Monitores" [ref=e2221] [cursor=pointer]:
+                    - /url: /Monitores-cat.11059977.11060052
+                  - generic [ref=e2222]: "|"
+                  - link "Notebooks" [ref=e2224] [cursor=pointer]:
+                    - /url: /Notebooks-cat.11059977.11060051
+                  - generic [ref=e2225]: "|"
+                  - link "Componentes de Rede" [ref=e2227] [cursor=pointer]:
+                    - /url: /Componentes-de-Rede-cat.11059977.11060053
+                  - generic [ref=e2228]: "|"
+                  - link "Teclados e Mouses" [ref=e2230] [cursor=pointer]:
+                    - /url: /Teclados-e-Mouses-cat.11059977.11060050
+                  - generic [ref=e2231]: "|"
+                  - link "Outros" [ref=e2233] [cursor=pointer]:
+                    - /url: /Outros-cat.11059977.11060055
+              - generic [ref=e2234]:
+                - link "Livros e Revistas" [ref=e2236] [cursor=pointer]:
+                  - /url: /Livros-e-Revistas-cat.11059975
+                - generic [ref=e2237]:
+                  - link "Livros" [ref=e2239] [cursor=pointer]:
+                    - /url: /Livros-cat.11059975.11060034
+                  - generic [ref=e2240]: "|"
+                  - link "Revistas e Jornais" [ref=e2242] [cursor=pointer]:
+                    - /url: /Revistas-e-Jornais-cat.11059975.11060036
+                  - generic [ref=e2243]: "|"
+                  - link "Outros" [ref=e2245] [cursor=pointer]:
+                    - /url: /Outros-cat.11059975.11060037
+        - generic [ref=e2247]:
+          - generic [ref=e2248]:
+            - generic [ref=e2249]:
+              - generic [ref=e2250]:
+                - generic [ref=e2251]: ATENDIMENTO AO CLIENTE
+                - list [ref=e2252]:
+                  - listitem [ref=e2253]:
+                    - link "Central de Ajuda" [ref=e2254] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal
+                      - generic [ref=e2255]: Central de Ajuda
+                  - listitem [ref=e2256]:
+                    - link "Como Comprar" [ref=e2257] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/article/76401-[No%c3%a7%c3%b5es-b%c3%a1sicas-do-comprador]-Como-fa%c3%a7o-uma-compra-na-Shopee%3F
+                      - generic [ref=e2258]: Como Comprar
+                  - listitem [ref=e2259]:
+                    - link "Métodos de Pagamento" [ref=e2260] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/article/76237-[Novo-na-Shopee]-Quais-op%c3%a7%c3%b5es-de-pagamento-s%c3%a3o-aceitas-pela-Shopee%3F
+                      - generic [ref=e2261]: Métodos de Pagamento
+                  - listitem [ref=e2262]:
+                    - link "Garantia Shopee" [ref=e2263] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/article/76327-[Seguran%c3%a7a-do-pedido]-O-que-%c3%a9-a-Garantia-Shopee%3F
+                      - generic [ref=e2264]: Garantia Shopee
+                  - listitem [ref=e2265]:
+                    - link "Devolução e Reembolso" [ref=e2266] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/category/68-Retorno-Reembolso/579-Solicitando-um-Reembolso?page=1
+                      - generic [ref=e2267]: Devolução e Reembolso
+                  - listitem [ref=e2268]:
+                    - link "Fale Conosco" [ref=e2269] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/article/78354-[Atendimento-ao-Cliente]-Como-entro-em-contato-com-o-Atendimento-ao-Cliente-da-Shopee
+                      - generic [ref=e2270]: Fale Conosco
+                  - listitem [ref=e2271]:
+                    - link "Ouvidoria" [ref=e2272] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/article/76290-[Ouvidoria]-Como-abrir-uma-solicita%c3%a7%c3%a3o-para-a-ouvidoria%3F
+                      - generic [ref=e2273]: Ouvidoria
+                  - listitem [ref=e2274]:
+                    - link "Preferências de cookies" [ref=e2275] [cursor=pointer]:
+                      - /url: https://shopee.com.br/setting/cookie
+                      - generic [ref=e2276]: Preferências de cookies
+              - generic [ref=e2277]:
+                - generic [ref=e2278]: SOBRE A SHOPEE
+                - list [ref=e2279]:
+                  - listitem [ref=e2280]:
+                    - link "Sobre Nós" [ref=e2281] [cursor=pointer]:
+                      - /url: https://careers.shopee.com.br/about
+                      - generic [ref=e2282]: Sobre Nós
+                  - listitem [ref=e2283]:
+                    - link "Políticas" [ref=e2284] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/4/category/17558-Pol%C3%ADticas/17562-Pol%C3%ADticas-da-Shopee?page=1
+                      - generic [ref=e2285]: Políticas
+                  - listitem [ref=e2286]:
+                    - link "Política de Privacidade da Shopee" [ref=e2287] [cursor=pointer]:
+                      - /url: https://help.shopee.com.br/portal/article/77068
+                      - generic [ref=e2288]: Política de Privacidade da Shopee
+                  - listitem [ref=e2289]:
+                    - link "Programa de Afiliados da Shopee" [ref=e2290] [cursor=pointer]:
+                      - /url: https://shopee.com.br/m/afiliados
+                      - generic [ref=e2291]: Programa de Afiliados da Shopee
+                  - listitem [ref=e2292]:
+                    - link "Seja um Motorista Parceiro Shopee" [ref=e2293] [cursor=pointer]:
+                      - /url: https://spx.com.br/br/driver/seja-um-motorista-parceiro.html
+                      - generic [ref=e2294]: Seja um Motorista Parceiro Shopee
+                  - listitem [ref=e2295]:
+                    - link "Ofertas Relâmpago" [ref=e2296] [cursor=pointer]:
+                      - /url: https://shopee.com.br/flash_sale
+                      - generic [ref=e2297]: Ofertas Relâmpago
+                  - listitem [ref=e2298]:
+                    - link "Shopee Blog" [ref=e2299] [cursor=pointer]:
+                      - /url: https://shopee.com.br/blog
+                      - generic [ref=e2300]: Shopee Blog
+                  - listitem [ref=e2301]:
+                    - link "Imprensa" [ref=e2302] [cursor=pointer]:
+                      - /url: https://shopee.com.br/m/imprensa
+                      - generic [ref=e2303]: Imprensa
+              - generic [ref=e2304]:
+                - generic [ref=e2305]: PAGAMENTO
+                - list [ref=e2306]:
+                  - listitem [ref=e2307]:
+                    - img "logo" [ref=e2309]
+                  - listitem [ref=e2310]:
+                    - img "logo" [ref=e2312]
+                  - listitem [ref=e2313]:
+                    - img "logo" [ref=e2315]
+                  - listitem [ref=e2316]:
+                    - img "logo" [ref=e2318]
+                  - listitem [ref=e2319]:
+                    - img "logo" [ref=e2321]
+                  - listitem [ref=e2322]:
+                    - img "logo" [ref=e2324]
+                  - listitem [ref=e2325]:
+                    - img "logo" [ref=e2327]
+                  - listitem [ref=e2328]:
+                    - img "logo" [ref=e2330]
+              - generic [ref=e2331]:
+                - generic [ref=e2332]: SIGA-NOS
+                - list [ref=e2333]:
+                  - listitem [ref=e2334]:
+                    - link "Instagram" [ref=e2335] [cursor=pointer]:
+                      - /url: https://instagram.com/Shopee_BR
+                      - img [ref=e2336]
+                      - generic [ref=e2337]: Instagram
+                  - listitem [ref=e2338]:
+                    - link "TikTok" [ref=e2339] [cursor=pointer]:
+                      - /url: https://www.tiktok.com/@shopee_br
+                      - img [ref=e2340]
+                      - generic [ref=e2341]: TikTok
+                  - listitem [ref=e2342]:
+                    - link "Whatsapp" [ref=e2343] [cursor=pointer]:
+                      - /url: https://whatsapp.com/channel/0029VaKEnKI6GcGLZwn7l103
+                      - img [ref=e2344]
+                      - generic [ref=e2345]: Whatsapp
+                  - listitem [ref=e2346]:
+                    - link "Facebook" [ref=e2347] [cursor=pointer]:
+                      - /url: https://facebook.com/ShopeeBR
+                      - img [ref=e2348]
+                      - generic [ref=e2349]: Facebook
+                  - listitem [ref=e2350]:
+                    - link "LinkedIn" [ref=e2351] [cursor=pointer]:
+                      - /url: https://linkedin.com/company/shopee
+                      - img [ref=e2352]
+                      - generic [ref=e2353]: LinkedIn
+              - generic [ref=e2354]:
+                - generic [ref=e2355]: BAIXAR APP SHOPEE
+                - generic [ref=e2356]:
+                  - link "download_qr_code" [ref=e2357] [cursor=pointer]:
+                    - /url: https://shopee.com.br/web
+                    - img "download_qr_code" [ref=e2358]
+                  - generic [ref=e2359]:
+                    - link "app" [ref=e2360] [cursor=pointer]:
+                      - /url: https://shopee.com.br/web
+                      - img "app" [ref=e2361]
+                    - link "app" [ref=e2362] [cursor=pointer]:
+                      - /url: https://shopee.com.br/web
+                      - img "app" [ref=e2363]
+            - generic [ref=e2364]:
+              - generic [ref=e2365]: © 2026 Shopee. Todos os direitos reservados
+              - generic [ref=e2366]:
+                - generic [ref=e2367]: "País e região:"
+                - link "Argentina" [ref=e2369] [cursor=pointer]:
+                  - /url: https://shopee.com.ar
+                - link "Singapura" [ref=e2371] [cursor=pointer]:
+                  - /url: https://shopee.sg
+                - link "Indonésia" [ref=e2373] [cursor=pointer]:
+                  - /url: https://shopee.co.id
+                - link "Tailândia" [ref=e2375] [cursor=pointer]:
+                  - /url: https://shopee.co.th
+                - link "Malásia" [ref=e2377] [cursor=pointer]:
+                  - /url: https://shopee.com.my
+                - link "Vietnã" [ref=e2379] [cursor=pointer]:
+                  - /url: https://shopee.vn
+                - link "Filipinas" [ref=e2381] [cursor=pointer]:
+                  - /url: https://shopee.ph
+                - link "Brasil" [ref=e2383] [cursor=pointer]:
+                  - /url: https://shopee.com.br
+                - link "México" [ref=e2385] [cursor=pointer]:
+                  - /url: https://shopee.com.mx
+                - link "Taiwan" [ref=e2387] [cursor=pointer]:
+                  - /url: https://shopee.tw
+          - generic [ref=e2389]: "CNPJ/MF nº 35.635.824/0001-12. Endereço: Av. Brigadeiro Faria Lima, 3732 - 22º e 23º andares, Itaim Bibi, São Paulo (SP), Brasil, 04538-132"
+    - generic [ref=e2391] [cursor=pointer]:
+      - img "Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." [ref=e2392]
+      - img "Conteúdo acessível em Libras usando o VLibras Widget com opções dos Avatares Ícaro, Hosana ou Guga." [ref=e2393]
+  - dialog [ref=e2395]:
+    - generic [ref=e2396]:
+      - img "Worldmap" [ref=e2398]
+      - generic [ref=e2399]: Selecione seu idioma
+      - generic [ref=e2400]:
+        - button "Português (BR)" [ref=e2402] [cursor=pointer]
+        - button "English*" [ref=e2404] [cursor=pointer]
+      - generic [ref=e2405]: "* Esses idiomas serão traduzidos automaticamente por um serviço de terceiros."
+  - generic:
+    - img

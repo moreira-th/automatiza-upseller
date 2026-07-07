@@ -14,6 +14,142 @@ function preencherDescricaoNoSite(texto) {
   }
 }
 
+// ===== ATRIBUTOS TEMU (injetada no mundo MAIN da página) =====
+function aplicarAtributosTemuPageWorld(__DATA) {
+  var counters = { applied: 0, skipped: 0, failed: 0 };
+  console.log('[TEMU-ATTR] Iniciando aplicação de', __DATA.length, 'atributos');
+
+  function stripAccents(s) {
+    var str = (s || '').trim().toLowerCase();
+    try { str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); } catch(e) {}
+    return str;
+  }
+
+  var attrSection = document.querySelector('#attributes');
+  if (!attrSection) { console.error('[TEMU-ATTR] #attributes NÃO ENCONTRADO'); return; }
+
+  var maisBtn = Array.from(attrSection.querySelectorAll('*')).find(function(el) {
+    return el.innerText && el.innerText.trim().toLowerCase() === 'mais atributos';
+  });
+  if (maisBtn) maisBtn.click();
+
+  var items = attrSection.querySelectorAll('.ant-form-item');
+  console.log('[TEMU-ATTR] Form items:', items.length);
+
+  var idx = 0;
+  var total = __DATA.length;
+
+  function processNext() {
+    if (idx >= total) {
+      console.log('[TEMU-ATTR] FINALIZADO:', counters.applied, 'aplicados,', counters.skipped, 'pulados,', counters.failed, 'falharam');
+      return;
+    }
+    var entry = __DATA[idx]; idx++;
+
+    var item = null;
+    for (var i = 0; i < items.length; i++) {
+      var label = items[i].querySelector('.ant-form-item-label label');
+      if (!label) continue;
+      var labelText = label.textContent.trim().replace('*', '').trim();
+      if (stripAccents(labelText) === stripAccents(entry.label)) { item = items[i]; break; }
+    }
+    if (!item) { counters.failed++; setTimeout(processNext, 50); return; }
+
+    if (entry.isPercent) {
+      var pctInput = item.querySelector('input.ant-input-number-input');
+      if (pctInput && !pctInput.disabled) {
+        try {
+          pctInput.focus();
+          var ns = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          ns.call(pctInput, String(entry.value));
+          pctInput.dispatchEvent(new Event('input', { bubbles: true }));
+          pctInput.dispatchEvent(new Event('change', { bubbles: true }));
+          pctInput.blur();
+          counters.applied++;
+        } catch(e) { counters.failed++; }
+      } else { counters.failed++; }
+      setTimeout(processNext, 80);
+      return;
+    }
+
+    var select = item.querySelector('.ant-select');
+    if (!select) { counters.failed++; setTimeout(processNext, 50); return; }
+
+    var currentVal = select.querySelector('.ant-select-selection-selected-value');
+    if (currentVal && stripAccents(currentVal.textContent) === stripAccents(entry.value)) {
+      counters.skipped++; setTimeout(processNext, 50); return;
+    }
+
+    document.body.click();
+    var selectionEl = select.querySelector('.ant-select-selection');
+    if (!selectionEl) { counters.failed++; setTimeout(processNext, 50); return; }
+    item.scrollIntoView({ behavior: 'auto', block: 'center' });
+    selectionEl.click();
+    console.log('[TEMU-ATTR]', idx + '/' + total, entry.label, '→', entry.value);
+
+    setTimeout(function() {
+      var dropdown = document.querySelector('.ant-select-dropdown:not(.ant-select-dropdown-hidden)');
+      if (!dropdown) { counters.failed++; setTimeout(processNext, 50); return; }
+
+      var virtualList = dropdown.querySelector('.rc-virtual-list-holder');
+      if (virtualList) {
+        virtualList.scrollTop = virtualList.scrollHeight;
+        setTimeout(function() { virtualList.scrollTop = 0; }, 100);
+      }
+
+      var searchInput = dropdown.querySelector('.ant-select-search__field');
+      if (searchInput) {
+        try {
+          searchInput.focus();
+          var ns2 = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+          ns2.call(searchInput, String(entry.value));
+          searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+          setTimeout(function() {
+            searchInput.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13, bubbles: true }));
+            counters.applied++;
+            setTimeout(processNext, 250);
+          }, 200);
+        } catch(e) { counters.failed++; setTimeout(processNext, 200); }
+        return;
+      }
+
+      var opts = dropdown.querySelectorAll('.ant-select-dropdown-menu-item, li[role], li');
+      var vn = stripAccents(entry.value);
+      var option = null;
+      for (var o = 0; o < opts.length; o++) {
+        if (stripAccents(opts[o].textContent) === vn) { option = opts[o]; break; }
+      }
+      if (!option) {
+        for (var o2 = 0; o2 < opts.length; o2++) {
+          if (stripAccents(opts[o2].textContent).indexOf(vn) >= 0 && vn.length > 2) { option = opts[o2]; break; }
+        }
+      }
+      if (option) {
+        option.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+        option.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+        option.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        counters.applied++;
+      } else {
+        counters.failed++;
+        document.body.click();
+      }
+      setTimeout(processNext, 250);
+    }, 350);
+  }
+
+  processNext();
+}
+
+function execAtributos(tabId, data, sendResponse) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    world: 'MAIN',
+    func: aplicarAtributosTemuPageWorld,
+    args: [data]
+  }).then(function() { sendResponse({ ok: true }); })
+    .catch(function(e) { console.error('[BG] ERRO atributos-temu:', e.message); sendResponse({ ok: false, error: e.message }); });
+}
+
 // ===== MENU DE CONTEXTO =====
 function atualizarMenus() {
   chrome.contextMenus.removeAll(() => {
@@ -40,24 +176,45 @@ function atualizarMenus() {
         documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
       });
 
-      // --- Medidas - Preencher + Descrições ---
-      chrome.contextMenus.create({
-        id: "executarMacroDireito",
-        title: "✅ Preencher Medidas",
-        contexts: ["all"],
-        documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
-      });
+      // --- Medidas: submenu ---
+      if (Object.keys(biblioteca).length > 0) {
+        chrome.contextMenus.create({
+          id: "medidasParent",
+          title: "📏 Medidas",
+          contexts: ["all"],
+          documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
+        });
+        for (let nome in biblioteca) {
+          chrome.contextMenus.create({
+            id: "medidas_" + nome,
+            parentId: "medidasParent",
+            title: nome,
+            contexts: ["all"],
+            documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
+          });
+        }
+      }
       chrome.contextMenus.create({
         id: "separador2",
         type: "separator",
         contexts: ["all"],
         documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
       });
-      for (let nome in biblioteca) {
-        if (biblioteca[nome].descricao && biblioteca[nome].descricao.trim() !== "") {
+
+      // --- Descrição: submenu ---
+      const nomesDesc = Object.keys(biblioteca).filter(n => biblioteca[n].descricao && biblioteca[n].descricao.trim() !== "");
+      if (nomesDesc.length > 0) {
+        chrome.contextMenus.create({
+          id: "descParent",
+          title: "📝 Descrição",
+          contexts: ["all"],
+          documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
+        });
+        for (let nome of nomesDesc) {
           chrome.contextMenus.create({
             id: "desc_" + nome,
-            title: "📏 Descrição: " + nome,
+            parentId: "descParent",
+            title: nome,
             contexts: ["all"],
             documentUrlPatterns: ["https://*.upseller.com/pt/products/*"]
           });
@@ -113,14 +270,34 @@ try { chrome.storage.onChanged.addListener((changes) => {
 }); } catch (e) {}
 
 try { chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "executarMacroDireito") {
-    chrome.tabs.sendMessage(tab.id, { action: 'open-medidas-dialog' }, () => {
-      if (chrome.runtime.lastError) {
+  const isTemu = (tab && tab.url && tab.url.includes('/temu/'));
+
+  if (info.menuItemId.startsWith("medidas_")) {
+    const nomeTabela = info.menuItemId.replace("medidas_", "");
+    chrome.storage.local.get(["biblioteca"], (res) => {
+      const dados = res.biblioteca?.[nomeTabela];
+      if (!dados) {
         chrome.scripting.executeScript({
           target: { tabId: tab.id },
-          func: () => { alert("Erro: extensão não carregada nesta página."); }
+          func: () => { alert("Tabela de medidas não encontrada."); }
         });
+        return;
       }
+      const action = isTemu ? 'fill-size-guide-temu' : 'fill-size-guide';
+      chrome.tabs.sendMessage(tab.id, { action: action, dados }, (resp) => {
+        if (chrome.runtime.lastError) {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: () => { alert("Erro: extensão não carregada nesta página."); }
+          });
+        } else if (resp && resp.missing && resp.missing.length > 0) {
+          chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: (m) => { alert("Tamanhos sem medida: " + m.join(", ")); },
+            args: [resp.missing]
+          });
+        }
+      });
     });
   } else if (info.menuItemId.startsWith("desc_")) {
     const nomeTabela = info.menuItemId.replace("desc_", "");
@@ -128,15 +305,27 @@ try { chrome.contextMenus.onClicked.addListener((info, tab) => {
       chrome.storage.local.get(["biblioteca"], (res) => {
         const texto = res.biblioteca[nomeTabela]?.descricao;
         if (texto) {
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: preencherDescricaoNoSite,
-            args: [texto]
-          });
+          if (isTemu) {
+            chrome.tabs.sendMessage(tab.id, { action: 'fill-desc-temu', texto }, () => {
+              if (chrome.runtime.lastError) {
+                chrome.scripting.executeScript({
+                  target: { tabId: tab.id },
+                  func: () => { alert("Erro: extensão não carregada nesta página."); }
+                });
+              }
+            });
+          } else {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: preencherDescricaoNoSite,
+              args: [texto]
+            });
+          }
         }
       });
     });
   } else if (info.menuItemId === "remapearVariante") {
+    if (isTemu) return;
     chrome.tabs.sendMessage(tab.id, { action: 'start-remap-full' }, () => {
       if (chrome.runtime.lastError) {
         chrome.scripting.executeScript({
@@ -146,7 +335,8 @@ try { chrome.contextMenus.onClicked.addListener((info, tab) => {
       }
     });
   } else if (info.menuItemId === "aplicarPrecos") {
-    chrome.tabs.sendMessage(tab.id, { action: 'open-precos-dialog' }, () => {
+    const action = isTemu ? 'open-temu-dialog' : 'open-precos-dialog';
+    chrome.tabs.sendMessage(tab.id, { action: action }, () => {
       if (chrome.runtime.lastError) {
         chrome.scripting.executeScript({
           target: { tabId: tab.id },
@@ -172,26 +362,49 @@ try { chrome.contextMenus.onClicked.addListener((info, tab) => {
         });
         return;
       }
-      chrome.tabs.sendMessage(tab.id, {
-        action: 'set-precos-completos',
-        bulkPrice: dados.bulkPrice,
-        overrides: dados.overrides || {}
-      }, (resp) => {
-        if (chrome.runtime.lastError) {
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: () => { alert("Erro: extensão não carregada nesta página."); }
-          });
-        } else if (resp && resp.error) {
-          chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            func: (msg) => { alert(msg); },
-            args: [resp.error]
-          });
-        } else {
-          chrome.storage.local.set({ ultimosPrecos: { bulkPrice: dados.bulkPrice, overrides: dados.overrides || {} } });
-        }
-      });
+      if (isTemu) {
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'set-precos-temu',
+          bulkPrice: dados.bulkPrice,
+          listPrice: dados.listPrice || ''
+        }, (resp) => {
+          if (chrome.runtime.lastError) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: () => { alert("Erro: extensão não carregada nesta página."); }
+            });
+          } else if (resp && resp.error) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: (msg) => { alert(msg); },
+              args: [resp.error]
+            });
+          } else {
+            chrome.storage.local.set({ ultimosPrecosTemu: { bulkPrice: dados.bulkPrice, listPrice: dados.listPrice || '' } });
+          }
+        });
+      } else {
+        chrome.tabs.sendMessage(tab.id, {
+          action: 'set-precos-completos',
+          bulkPrice: dados.bulkPrice,
+          overrides: dados.overrides || {}
+        }, (resp) => {
+          if (chrome.runtime.lastError) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: () => { alert("Erro: extensão não carregada nesta página."); }
+            });
+          } else if (resp && resp.error) {
+            chrome.scripting.executeScript({
+              target: { tabId: tab.id },
+              func: (msg) => { alert(msg); },
+              args: [resp.error]
+            });
+          } else {
+            chrome.storage.local.set({ ultimosPrecos: { bulkPrice: dados.bulkPrice, overrides: dados.overrides || {} } });
+          }
+        });
+      }
     });
   }
 }); } catch (e) {}
@@ -687,6 +900,20 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       reader.onerror = function(e) { console.error('[BG] FileReader error:', e); };
       reader.readAsDataURL(new Blob([jsonStr], { type: 'application/json' }));
     } catch(e) { console.error('[BG] export error:', e); }
+  }
+
+  if (msg.action === 'aplicar-atributos-temu') {
+    var tabId = sender.tab ? sender.tab.id : null;
+    if (!tabId) {
+      // Fallback: get active tab
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        if (!tabs[0]) { sendResponse({ ok: false, error: 'no tab' }); return; }
+        execAtributos(tabs[0].id, msg.data, sendResponse);
+      });
+    } else {
+      execAtributos(tabId, msg.data, sendResponse);
+    }
+    return true; // keep channel open for async sendResponse
   }
 }); } catch (e) {}
 

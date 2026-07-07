@@ -1,0 +1,122 @@
+- generic [active] [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Extensões" [level=1] [ref=e9]
+      - generic [ref=e12]:
+        - button [ref=e13] [cursor=pointer]
+        - generic [ref=e14]:
+          - generic [ref=e15]: Pesquise extensões
+          - searchbox "Pesquise extensões" [ref=e16]
+      - generic [ref=e19]:
+        - generic [ref=e20]: Modo do desenvolvedor
+        - button "Modo do desenvolvedor" [pressed] [ref=e21] [cursor=pointer]
+    - generic [ref=e25]:
+      - button "Carregar sem compactação" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]:
+          - generic: Carregar sem compactação
+      - button "Compactar extensão" [ref=e28] [cursor=pointer]:
+        - generic [ref=e29]:
+          - generic: Compactar extensão
+      - button "Atualizar" [ref=e30] [cursor=pointer]:
+        - generic [ref=e31]:
+          - generic: Atualizar
+  - generic [ref=e32]:
+    - navigation [ref=e34]:
+      - menu [ref=e35]:
+        - generic:
+          - menuitem "Minhas extensões" [ref=e36] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Minhas extensões
+          - menuitem "Atalhos do teclado" [ref=e37] [cursor=pointer]:
+            - generic:
+              - img
+            - text: Atalhos do teclado
+      - generic [ref=e40]:
+        - text: Você desenvolve extensões? Acompanhe as
+        - link "novidades" [ref=e41] [cursor=pointer]:
+          - /url: https://developer.chrome.com/docs/extensions/whats-new?utm_source=ext_sidebar&hl=pt-BR
+        - text: na documentação para desenvolvedores do Chrome.
+      - generic [ref=e43]:
+        - generic:
+          - img
+        - generic [ref=e44]:
+          - text: Encontre mais extensões e temas na
+          - link "Chrome Web Store" [ref=e45] [cursor=pointer]:
+            - /url: https://chromewebstore.google.com/category/extensions?utm_source=ext_sidebar&hl=pt-BR
+    - main [ref=e46]:
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - button "Botão \"Voltar\" da página de detalhes do UpSeller Moreira" [ref=e51] [cursor=pointer]
+          - heading "UpSeller Moreira" [level=1] [ref=e52]
+          - button "Recarregar" [ref=e157] [cursor=pointer]
+        - generic [ref=e54]:
+          - generic [ref=e55]: Ativado
+          - button "Extensão ativada" [pressed] [ref=e149] [cursor=pointer]
+        - generic [ref=e60]:
+          - heading "Descrição" [level=2] [ref=e61]
+          - generic [ref=e62]: "Automações para UpSeller: Remapeamento de Variantes + Tabela de Medidas + Descrições. Feito por Thales Moreira."
+        - generic [ref=e63]:
+          - heading "Versão" [level=2] [ref=e64]
+          - generic [ref=e65]: 1.1.0
+        - generic [ref=e66]:
+          - heading "Tamanho" [level=2] [ref=e67]
+          - generic [ref=e69]: < 1 MB
+        - generic [ref=e70]:
+          - heading "Código" [level=2] [ref=e71]
+          - generic [ref=e72]: fjcjahpenphjjfhjckgednchgmgikilm
+        - generic [ref=e73]:
+          - heading "Inspecionar visualizações:" [level=2] [ref=e74]
+          - list [ref=e76]:
+            - listitem [ref=e158]:
+              - link "service worker" [ref=e159] [cursor=pointer]
+        - generic [ref=e81]:
+          - heading "Permissões" [level=2] [ref=e82]
+          - list [ref=e84]:
+            - listitem [ref=e85]: Ler seu histórico de navegação
+            - listitem [ref=e86]: Gerenciar seus downloads
+        - generic [ref=e87]:
+          - heading "Acesso a sites" [level=2] [ref=e88]
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - generic [ref=e91]: Esta extensão pode ler e alterar seus dados em sites. É possível controlar a quais sites a extensão terá acesso.
+              - link "Saiba mais sobre as permissões de extensões" [ref=e92] [cursor=pointer]:
+                - /url: https://support.google.com/chrome?p=enable_extensions
+                - generic [ref=e93]:
+                  - img
+            - generic [ref=e95]:
+              - generic [ref=e96] [cursor=pointer]: Permitir acesso automaticamente nos seguintes sites
+              - button "Permitir acesso automaticamente nos seguintes sites Saiba mais sobre as permissões de extensões" [pressed] [ref=e97] [cursor=pointer]
+            - generic [ref=e101]:
+              - generic [ref=e104] [cursor=pointer]: https://app.upseller.com/*
+              - button "https://app.upseller.com/*" [disabled] [pressed]
+        - generic [ref=e105] [cursor=pointer]:
+          - generic [ref=e107]: Configurações de sites
+          - generic [ref=e108]: Abre em uma nova guia
+          - link "Configurações de sites" [ref=e109]
+        - generic [ref=e110]:
+          - generic [ref=e160]:
+            - generic [ref=e161] [cursor=pointer]: Fixar na barra de ferramentas
+            - button "Fixar na barra de ferramentas" [pressed] [ref=e162] [cursor=pointer]
+          - generic [ref=e116]:
+            - generic [ref=e118] [cursor=pointer]:
+              - generic [ref=e119]: Permitir na navegação anônima
+              - generic [ref=e120]: "Aviso: o Chromium não impede que as extensões registrem seu histórico de navegação. Para desativar a extensão no modo de navegação anônima, desmarque esta opção."
+            - 'button "Permitir na navegação anônima Aviso: o Chromium não impede que as extensões registrem seu histórico de navegação. Para desativar a extensão no modo de navegação anônima, desmarque esta opção. As mudanças nessa configuração serão aplicadas assim que o Chromium for reiniciado." [ref=e121] [cursor=pointer]'
+          - generic [ref=e124]:
+            - generic [ref=e127] [cursor=pointer]: Permitir acesso a URLs de arquivo
+            - button "Permitir acesso a URLs de arquivo As mudanças nessa configuração serão aplicadas assim que o Chromium for reiniciado." [pressed] [ref=e128] [cursor=pointer]
+          - generic [ref=e131]:
+            - generic [ref=e132] [cursor=pointer]: Coletar erros
+            - button "Coletar erros" [pressed] [ref=e133] [cursor=pointer]
+        - generic [ref=e136]:
+          - heading "Origem" [level=2] [ref=e137]
+          - generic [ref=e138]: Extensão descompactada
+          - generic [ref=e139]:
+            - text: "Carregado de:"
+            - link "C:\\Upseller Extensão\\upseller-unificado" [ref=e140] [cursor=pointer]
+        - generic [ref=e141] [cursor=pointer]:
+          - generic [ref=e143]: Remover extensão
+          - link "Remover extensão" [ref=e144]
+  - alert [ref=e165]:
+    - generic [ref=e166]: Extensões atualizadas

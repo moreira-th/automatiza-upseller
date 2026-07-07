@@ -1,0 +1,323 @@
+- generic [ref=e3]:
+  - banner [ref=e5]:
+    - menu [ref=e9]:
+      - menuitem "Home" [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: Home
+      - menuitem "Produtos" [ref=e12]:
+        - generic [ref=e14] [cursor=pointer]: Produtos
+      - menuitem "Pedidos" [ref=e15]:
+        - generic [ref=e17] [cursor=pointer]: Pedidos
+      - menuitem "Compras" [ref=e18]:
+        - generic [ref=e20] [cursor=pointer]: Compras
+      - menuitem "Estoque" [ref=e21]:
+        - generic [ref=e23] [cursor=pointer]: Estoque
+      - menuitem "SAC" [ref=e24]:
+        - generic [ref=e26] [cursor=pointer]: SAC
+      - menuitem "Análises" [ref=e27]:
+        - generic [ref=e29] [cursor=pointer]: Análises
+      - menuitem "Financeiro" [ref=e30]:
+        - generic [ref=e32] [cursor=pointer]: Financeiro
+    - generic [ref=e33]:
+      - generic [ref=e35] [cursor=pointer]: 
+      - separator [ref=e36]
+      - generic [ref=e37] [cursor=pointer]:
+        - 'generic "icon: question-circle" [ref=e38]':
+          - img [ref=e39]
+        - text: Ajuda
+      - 'generic "icon: bell" [ref=e45] [cursor=pointer]':
+        - img [ref=e46]
+      - generic [ref=e49] [cursor=pointer]: 
+      - separator [ref=e50]
+      - generic [ref=e51] [cursor=pointer]:
+        - generic "GMDCMM" [ref=e53]
+        - generic [ref=e54]: 
+  - generic [ref=e55]:
+    - main [ref=e58]:
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - 'generic "icon: info-circle" [ref=e63]':
+              - img [ref=e64]
+            - list [ref=e69]:
+              - listitem [ref=e70]: Para nos ajudar a atendê-lo melhor, verifique seu número de telefone.Verifique Agora
+          - generic [ref=e71]:
+            - generic [ref=e75]: Tarefas
+            - generic [ref=e76]:
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - generic [ref=e79]: 
+                  - text: Pedidos
+                - generic [ref=e80]:
+                  - generic [ref=e82] [cursor=pointer]:
+                    - generic [ref=e83]: "0"
+                    - generic "Para Reservar" [ref=e84]:
+                      - generic [ref=e86]: Para Reservar
+                  - generic [ref=e88] [cursor=pointer]:
+                    - generic [ref=e89]: "626"
+                    - generic "Para Emitir" [ref=e90]:
+                      - generic [ref=e92]: Para Emitir
+                  - generic [ref=e94] [cursor=pointer]:
+                    - generic [ref=e95]: "0"
+                    - generic "Para Enviar" [ref=e96]:
+                      - generic [ref=e98]: Para Enviar
+                  - generic [ref=e100] [cursor=pointer]:
+                    - generic [ref=e101]: "0"
+                    - generic "Expirará em breve" [ref=e102]:
+                      - generic [ref=e104]: Expirará em breve
+                  - generic [ref=e106] [cursor=pointer]:
+                    - generic [ref=e107]: "0"
+                    - generic "Para Imprimir" [ref=e108]:
+                      - generic [ref=e110]: Para Imprimir
+                  - generic [ref=e112] [cursor=pointer]:
+                    - generic [ref=e113]: "688"
+                    - generic "Retirada" [ref=e114]:
+                      - generic [ref=e116]: Retirada
+                  - generic [ref=e118] [cursor=pointer]:
+                    - generic [ref=e119]: "0"
+                    - generic "Falha na Retirada" [ref=e120]:
+                      - generic [ref=e122]: Falha na Retirada
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - generic [ref=e125]: 
+                  - text: Estoque
+                - generic [ref=e126]:
+                  - generic [ref=e128] [cursor=pointer]:
+                    - generic [ref=e129]: "0"
+                    - generic "Estoque Baixo" [ref=e130]:
+                      - generic [ref=e132]: Estoque Baixo
+                  - generic [ref=e134] [cursor=pointer]:
+                    - generic [ref=e135]: "0"
+                    - generic "Sem Estoque" [ref=e136]:
+                      - generic [ref=e138]: Sem Estoque
+                  - generic [ref=e140] [cursor=pointer]:
+                    - generic [ref=e141]: "0"
+                    - generic "Estoque Baixo(MELI Full)" [ref=e142]:
+                      - generic [ref=e144]: Estoque Baixo(MELI Full)
+                  - generic [ref=e146] [cursor=pointer]:
+                    - generic [ref=e147]: "0"
+                    - generic "Sem Estoque(MELI Full)" [ref=e148]:
+                      - generic [ref=e150]: Sem Estoque(MELI Full)
+              - generic [ref=e151]:
+                - generic [ref=e152]:
+                  - generic [ref=e153]: 
+                  - text: SAC
+                - generic [ref=e154]:
+                  - generic [ref=e156] [cursor=pointer]:
+                    - generic [ref=e157]: "0"
+                    - generic "Perguntas Pendente do Mercado Livre" [ref=e158]:
+                      - generic [ref=e160]: Perguntas Pendente do Mercado Livre
+                  - generic [ref=e162] [cursor=pointer]:
+                    - generic [ref=e163]: "0"
+                    - generic "Mensagens não lidos do Mercado Livre" [ref=e164]:
+                      - generic [ref=e166]: Mensagens não lidos do Mercado Livre
+                  - generic [ref=e168] [cursor=pointer]:
+                    - generic [ref=e169]: "0"
+                    - generic "Reclamação pendente do Mercado Livre" [ref=e170]:
+                      - generic [ref=e172]: Reclamação pendente do Mercado Livre
+                  - generic [ref=e174] [cursor=pointer]:
+                    - generic [ref=e175]: "0"
+                    - generic "Devolução pendente/reembolso do Shopee" [ref=e176]:
+                      - generic [ref=e178]: Devolução pendente/reembolso do Shopee
+          - generic [ref=e179]:
+            - generic [ref=e183]:
+              - generic [ref=e184]:
+                - tablist [ref=e185]:
+                  - generic [ref=e186]:
+                    - generic:
+                      - generic:
+                        - 'generic "icon: left"':
+                          - img
+                    - generic:
+                      - generic:
+                        - 'generic "icon: right"':
+                          - img
+                    - generic [ref=e190]:
+                      - tab "Avisos" [selected] [ref=e191] [cursor=pointer]
+                      - tab "Notificações da Plataforma" [ref=e192] [cursor=pointer]
+                - generic:
+                  - tabpanel
+              - generic [ref=e194] [cursor=pointer]:
+                - text: Mais
+                - generic [ref=e195]: 
+            - list [ref=e201]:
+              - listitem [ref=e202]:
+                - heading "[Aviso] Sobre o erro ao programar o envio de pedidos Temu e o erro ao subir NF-e de pedidos TikTok" [level=4] [ref=e205]:
+                  - link "[Aviso] Sobre o erro ao programar o envio de pedidos Temu e o erro ao subir NF-e de pedidos TikTok" [ref=e206] [cursor=pointer]:
+                    - /url: javascript:void(0)
+                    - generic [ref=e208]: "[Aviso] Sobre o erro ao programar o envio de pedidos Temu e o erro ao subir NF-e de pedidos TikTok"
+                - generic [ref=e209]: mai 18, 2026
+              - listitem [ref=e210]:
+                - heading "🚀 Nos encontramos no Amazon Conecta 2026! POPULAR" [level=4] [ref=e213]:
+                  - link "🚀 Nos encontramos no Amazon Conecta 2026! POPULAR" [ref=e214] [cursor=pointer]:
+                    - /url: javascript:void(0)
+                    - generic [ref=e215]:
+                      - generic [ref=e216]: 🚀 Nos encontramos no Amazon Conecta 2026!
+                      - generic [ref=e218]: POPULAR
+                - generic [ref=e219]: mai 14, 2026
+              - listitem [ref=e220]:
+                - 'heading "Novidades: Registrar-se diretamente no APP, agrupamento de pacotes, espaço de mídia e mais" [level=4] [ref=e223]':
+                  - 'link "Novidades: Registrar-se diretamente no APP, agrupamento de pacotes, espaço de mídia e mais" [ref=e224] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - generic [ref=e226]: "Novidades: Registrar-se diretamente no APP, agrupamento de pacotes, espaço de mídia e mais"
+                - generic [ref=e227]: mai 12, 2026
+              - listitem [ref=e228]:
+                - heading "[IMPORTANTE] Atualização na Sincronização de Pedidos de Shopee FBS / Amazon FBA e Ajuste nas Regras de Consumo de Saldo" [level=4] [ref=e231]:
+                  - link "[IMPORTANTE] Atualização na Sincronização de Pedidos de Shopee FBS / Amazon FBA e Ajuste nas Regras de Consumo de Saldo" [ref=e232] [cursor=pointer]:
+                    - /url: javascript:void(0)
+                    - generic [ref=e234]: "[IMPORTANTE] Atualização na Sincronização de Pedidos de Shopee FBS / Amazon FBA e Ajuste nas Regras de Consumo de Saldo"
+                - generic [ref=e235]: abr 27, 2026
+              - listitem [ref=e236]:
+                - heading "🎉O APP do UpSeller permite registro de conta e integração de lojas, sem precisar de computador." [level=4] [ref=e239]:
+                  - link "🎉O APP do UpSeller permite registro de conta e integração de lojas, sem precisar de computador." [ref=e240] [cursor=pointer]:
+                    - /url: javascript:void(0)
+                    - generic [ref=e242]: 🎉O APP do UpSeller permite registro de conta e integração de lojas, sem precisar de computador.
+                - generic [ref=e243]: abr 23, 2026
+          - generic [ref=e245]:
+            - generic [ref=e246]:
+              - generic [ref=e247]:
+                - tablist [ref=e248]:
+                  - generic [ref=e249]:
+                    - 'generic "icon: left" [ref=e252] [cursor=pointer]':
+                      - img [ref=e253]
+                    - 'generic "icon: right" [ref=e257] [cursor=pointer]':
+                      - img [ref=e258]
+                    - generic [ref=e263]:
+                      - tab "Todas as Lojas" [selected] [ref=e264] [cursor=pointer]
+                      - tab "Mercado Livre" [ref=e265] [cursor=pointer]
+                      - tab "Shopee" [ref=e266] [cursor=pointer]
+                      - tab "Amazon" [ref=e267] [cursor=pointer]
+                      - tab "Shein" [ref=e268] [cursor=pointer]
+                      - tab "TikTok Shop" [ref=e269] [cursor=pointer]
+                      - tab "Shopify" [ref=e270] [cursor=pointer]
+                      - tab "Walmart" [ref=e271] [cursor=pointer]
+                      - tab "Outros" [ref=e272] [cursor=pointer]
+                - generic:
+                  - tabpanel
+              - generic [ref=e274] [cursor=pointer]:
+                - text: Mais
+                - generic [ref=e275]: 
+            - generic [ref=e276]:
+              - generic [ref=e277]:
+                - generic [ref=e279]:
+                  - text: R$‎‎‎ 1.185,00
+                  - generic [ref=e280]: Valor de Vendas Válidas
+                - generic [ref=e282]:
+                  - text: ‎ 48
+                  - generic [ref=e283]: Pedidos Válidos
+              - generic [ref=e284]:
+                - generic [ref=e285] [cursor=pointer]:
+                  - generic:
+                    - radio "Vendas de Hoje" [checked]
+                  - text: Vendas de Hoje
+                - generic [ref=e286] [cursor=pointer]:
+                  - generic:
+                    - radio "Últimos 30 dias"
+                  - text: Últimos 30 dias
+        - generic [ref=e291]:
+          - generic [ref=e298] [cursor=pointer]:
+            - generic [ref=e303]:
+              - text: Introdução ao UpSeller
+              - generic [ref=e304]: GRÁTIS
+            - generic [ref=e305]:
+              - generic [ref=e307]: 
+              - generic [ref=e308]: Clique para aprender
+          - generic [ref=e311]:
+            - generic [ref=e312]:
+              - generic [ref=e313]:
+                - generic [ref=e314]: Profissional
+                - generic [ref=e315]: Ativo
+              - generic [ref=e316] [cursor=pointer]:
+                - text: Detalhes
+                - generic [ref=e317]: 
+            - generic [ref=e318]:
+              - generic [ref=e319]:
+                - generic [ref=e320]:
+                  - generic [ref=e321]: 
+                  - text: Mês Atual
+                - generic [ref=e322]: 13 mai 2026 ~ 12 jun 2026
+              - generic [ref=e323]:
+                - generic [ref=e324]:
+                  - generic [ref=e325]: 
+                  - text: Restante / Total
+                - generic [ref=e326]: 13.835 / 20.000 Pedidos
+          - generic [ref=e329]:
+            - generic [ref=e330]: Treinamento
+            - generic [ref=e332] [cursor=pointer]:
+              - generic [ref=e333]: 
+              - text: Suportado
+            - generic [ref=e334]: Toda segunda, terça, quarta e sexta-feira às 15:00 Google Meet Treinamento ao vivo online
+            - generic [ref=e336] [cursor=pointer]:
+              - link "Google Meet " [ref=e337]:
+                - /url: https://meet.google.com/idd-mqig-hfz
+                - text: Google Meet
+                - generic [ref=e338]: 
+              - link "Outro " [ref=e339]:
+                - /url: https://www.youtube.com/watch?v=E4bw-LFEbzo
+                - text: Outro
+                - generic [ref=e340]: 
+          - generic [ref=e341]:
+            - img [ref=e342]
+            - img [ref=e343] [cursor=pointer]
+          - link [ref=e345] [cursor=pointer]:
+            - /url: /adv-redirect?url=https%3A%2F%2Fwww.duoke.com%2Fregister.html%3Fcode%3Dup&id=35
+          - generic [ref=e346]:
+            - generic [ref=e350]: Ações Rápidas
+            - list [ref=e352]:
+              - listitem [ref=e353] [cursor=pointer]:
+                - generic [ref=e354]: Conectar Lojas
+              - listitem [ref=e355] [cursor=pointer]:
+                - generic [ref=e356]: Gerenciar Produtos
+              - listitem [ref=e357] [cursor=pointer]: Copiar Anúncios 
+              - listitem [ref=e358] [cursor=pointer]:
+                - generic [ref=e360]:
+                  - text: Migração de Anúncios
+                  - generic [ref=e361]: 
+              - listitem [ref=e362] [cursor=pointer]: Notas Fiscais 
+              - listitem [ref=e363] [cursor=pointer]:
+                - generic [ref=e364]:
+                  - text: Sincronização de Estoque
+                  - generic [ref=e365]: 
+                - text: 
+              - listitem [ref=e366] [cursor=pointer]: Impulsionar no Shopee 
+          - generic [ref=e367]:
+            - generic [ref=e372]:
+              - generic [ref=e373]: FAQs
+              - generic [ref=e374] [cursor=pointer]:
+                - text: Mais
+                - generic [ref=e375]: 
+            - list [ref=e377]:
+              - listitem "Guia de Compra do Plano do UpSeller" [ref=e378] [cursor=pointer]:
+                - generic [ref=e380]:
+                  - generic [ref=e381]: Guia de Compra do Plano do UpSeller
+                  - generic [ref=e382]: 
+              - listitem "Manual de Ajuda para Emitir NF-e no UpSeller" [ref=e383] [cursor=pointer]:
+                - generic [ref=e385]:
+                  - generic [ref=e386]: Manual de Ajuda para Emitir NF-e no UpSeller
+                  - generic [ref=e387]: 
+              - listitem "O CSOSN ou CFOP desta empresa MEI está incorreto. Por favor, vá para página [Classe de Imposto] para verificar e alterar" [ref=e388] [cursor=pointer]:
+                - generic [ref=e390]:
+                  - generic [ref=e391]: O CSOSN ou CFOP desta empresa MEI está incorreto. Por favor, vá para página [Classe de Imposto] para verificar e alterar
+                  - generic [ref=e392]: 
+              - 'listitem "217-Rejeição: NF-e não consta na base de dados da SEFAZ - como resolver?" [ref=e393] [cursor=pointer]':
+                - generic [ref=e395]:
+                  - generic [ref=e396]: "217-Rejeição: NF-e não consta na base de dados da SEFAZ - como resolver?"
+                  - generic [ref=e397]: 
+              - listitem "Shopee - Falha, vá para desativar as configurações de impressora térmica na plataforma" [ref=e398] [cursor=pointer]:
+                - generic [ref=e401]: Shopee - Falha, vá para desativar as configurações de impressora térmica na plataforma
+              - 'listitem "Rejeição 539: Duplicidade de NF-e, com diferença na Chave de Acesso" [ref=e402] [cursor=pointer]':
+                - generic [ref=e405]: "Rejeição 539: Duplicidade de NF-e, com diferença na Chave de Acesso"
+              - listitem "Cancelamento da NF-e que já foi emitida e emissão da NF-e de devolução" [ref=e406] [cursor=pointer]:
+                - generic [ref=e409]: Cancelamento da NF-e que já foi emitida e emissão da NF-e de devolução
+              - listitem "Acessar Arquivos de Ajuda" [ref=e410] [cursor=pointer]
+    - contentinfo [ref=e411]:
+      - generic [ref=e412]: © 2026 UpSeller
+      - separator [ref=e413]
+      - link "Termos de Serviço" [ref=e415] [cursor=pointer]:
+        - /url: https://www.upseller.com/pt/terms-of-service
+      - separator [ref=e416]
+      - link "Política de Privacidade" [ref=e418] [cursor=pointer]:
+        - /url: https://www.upseller.com/pt/privacy-policy
+      - separator [ref=e419]
+      - generic [ref=e420]: Feedback
+      - separator [ref=e421]
+      - generic [ref=e422]: Central de Ajuda

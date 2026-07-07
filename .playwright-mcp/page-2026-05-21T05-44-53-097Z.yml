@@ -1,0 +1,15 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]: ⚡ UpSeller Moreira
+    - generic [ref=e4] [cursor=pointer]: X
+  - generic [ref=e5]:
+    - button "REMAPEAMENTO" [ref=e6] [cursor=pointer]
+    - button "BIBLIOTECA" [ref=e7] [cursor=pointer]
+    - button "MEDIDAS" [ref=e8] [cursor=pointer]
+    - button "PREÇOS" [ref=e9] [cursor=pointer]
+  - generic [ref=e10]:
+    - generic [ref=e11]: Automatiza remapeamento de variantes Shein (Cor + Tamanho)
+    - generic [ref=e13]: Pronto
+    - button "Processar Aba Atual" [ref=e15] [cursor=pointer]
+    - button "Processar Todas as Abas" [ref=e16] [cursor=pointer]
+    - generic [ref=e17]: A extensão abre o diálogo automaticamente

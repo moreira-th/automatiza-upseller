@@ -1,0 +1,70 @@
+- generic [ref=e10]:
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e16]: Shein / Editar Anúncio
+      - generic [ref=e19] [cursor=pointer]: 
+    - generic [ref=e20]:
+      - button "Salvar" [ref=e22] [cursor=pointer]:
+        - generic: Salvar
+      - button "Publicar" [ref=e24] [cursor=pointer]:
+        - generic: Publicar
+  - generic [ref=e25]:
+    - generic [ref=e29]:
+      - link "Informação Básica" [ref=e33] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/598752940662043#basic
+      - link "Atributos" [ref=e35] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/598752940662043#attributes
+      - link "Informações de Venda" [ref=e37] [cursor=pointer]:
+        - /url: /pt/products/shein/edit/598752940662043#variants
+    - generic [ref=e38]:
+      - generic [ref=e42]: Informação Básica
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - generic "Loja" [ref=e48]: "* Loja"
+          - combobox [ref=e53] [cursor=pointer]:
+            - generic [ref=e55]: Selecionar uma Loja
+            - generic [ref=e58]: 
+        - generic [ref=e59]:
+          - generic "Nome" [ref=e61]: "* Nome"
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - textbox [ref=e66]
+              - generic [ref=e72] [cursor=pointer]: 
+            - generic [ref=e73]: 0/1000
+        - generic [ref=e74]:
+          - generic "Categoria" [ref=e76]: "* Categoria"
+          - generic [ref=e79]:
+            - generic [ref=e82]:
+              - textbox "Selecionar uma Categoria" [ref=e83]
+              - generic [ref=e85]: 
+            - button "Selecionar Categoria" [ref=e87] [cursor=pointer]:
+              - generic: Selecionar Categoria
+        - generic [ref=e88]:
+          - generic "Descrição" [ref=e90]
+          - generic [ref=e94]:
+            - textbox [ref=e95]
+            - generic [ref=e96]: 0/5000
+        - generic [ref=e99]:
+          - generic "N° do Anúncio" [ref=e101]: "* N° do Anúncio"
+          - generic [ref=e104]:
+            - textbox [ref=e105]
+            - generic [ref=e106]: 0/200
+        - generic [ref=e107]:
+          - generic "Link do Fornecedor" [ref=e109]
+          - generic [ref=e113]:
+            - textbox [ref=e114]
+            - button "Visita" [disabled] [ref=e116]:
+              - separator
+              - generic: Visita
+    - generic [ref=e117]:
+      - generic [ref=e122]: Atributos
+      - generic [ref=e124]:
+        - img [ref=e126]
+        - paragraph [ref=e132]:
+          - generic [ref=e134]: Selecione uma Categoria
+    - generic [ref=e135]:
+      - generic [ref=e140]: Informações de Venda
+      - generic [ref=e142]:
+        - img [ref=e144]
+        - paragraph [ref=e150]:
+          - generic [ref=e152]: Selecione uma Categoria

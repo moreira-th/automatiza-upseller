@@ -1,0 +1,2122 @@
+- generic [ref=e3]:
+  - banner [ref=e5]:
+    - menu [ref=e9]:
+      - menuitem "Home" [ref=e10] [cursor=pointer]:
+        - generic [ref=e11]: Home
+      - menuitem "Produtos" [ref=e12]:
+        - generic [ref=e14] [cursor=pointer]: Produtos
+      - menuitem "Pedidos" [ref=e15]:
+        - generic [ref=e17] [cursor=pointer]: Pedidos
+      - menuitem "Compras" [ref=e18]:
+        - generic [ref=e20] [cursor=pointer]: Compras
+      - menuitem "Estoque" [ref=e21]:
+        - generic [ref=e23] [cursor=pointer]: Estoque
+      - menuitem "SAC" [ref=e24]:
+        - generic [ref=e26] [cursor=pointer]: SAC
+      - menuitem "Análises" [ref=e27]:
+        - generic [ref=e29] [cursor=pointer]: Análises
+      - menuitem "Financeiro" [ref=e30]:
+        - generic [ref=e32] [cursor=pointer]: Financeiro
+    - generic [ref=e33]:
+      - generic [ref=e35] [cursor=pointer]: 
+      - separator [ref=e36]
+      - generic [ref=e37] [cursor=pointer]:
+        - 'generic "icon: question-circle" [ref=e38]':
+          - img [ref=e39]
+        - text: Ajuda
+      - 'generic "icon: bell" [ref=e45] [cursor=pointer]':
+        - img [ref=e46]
+      - generic [ref=e49] [cursor=pointer]: 
+      - separator [ref=e50]
+      - generic [ref=e51] [cursor=pointer]:
+        - generic "GMDCMM" [ref=e53]
+        - generic [ref=e54]: 
+  - generic [ref=e55]:
+    - complementary [ref=e57]:
+      - generic [ref=e59]:
+        - menu [ref=e60]:
+          - listitem [ref=e61]:
+            - generic "Shein - Anúncios" [ref=e63]:
+              - generic "Shein - Anúncios" [ref=e64]
+            - list [ref=e65]:
+              - menuitem "Rascunhos 139" [ref=e66] [cursor=pointer]:
+                - generic [ref=e67]:
+                  - generic "Rascunhos" [ref=e69]
+                  - generic [ref=e70]: "139"
+              - menuitem "Publicando 0" [ref=e71] [cursor=pointer]:
+                - generic [ref=e72]:
+                  - generic "Publicando" [ref=e74]
+                  - generic [ref=e75]: "0"
+              - menuitem "Falhou 0" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]:
+                  - generic "Falhou" [ref=e79]
+                  - generic [ref=e80]: "0"
+              - menuitem "Ativo 1656" [ref=e81] [cursor=pointer]:
+                - generic [ref=e82]:
+                  - generic "Ativo" [ref=e84]
+                  - generic [ref=e85]: "1656"
+        - generic [ref=e87]:
+          - text: "Dicas:"
+          - generic [ref=e88]: Edite o anúncio importado/ migrado/duplicado antes de publicar para evitar a violação das regras da plataforma devido à publicação duplicidada de um anúncio.
+    - main [ref=e90]:
+      - generic [ref=e92]:
+        - generic [ref=e94]:
+          - generic [ref=e96]:
+            - combobox [ref=e98] [cursor=pointer]:
+              - generic "Título" [ref=e100]
+              - generic [ref=e103]: 
+            - generic [ref=e105]:
+              - textbox [ref=e106]
+              - 'generic "icon: search" [ref=e108] [cursor=pointer]':
+                - img [ref=e109]
+          - generic [ref=e113]:
+            - generic [ref=e114]: Todas Lojas
+            - generic [ref=e116] [cursor=pointer]: 
+        - generic [ref=e117]:
+          - generic "(139/5000)" [ref=e124]
+          - 'button "icon: plus Criar Anúncio" [ref=e126] [cursor=pointer]':
+            - 'generic "icon: plus"':
+              - img
+            - generic: Criar Anúncio
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e134]: Selecionado 0
+          - generic [ref=e135] [cursor=pointer]:
+            - button "Publicar em Massa" [ref=e137]:
+              - generic: Publicar em Massa
+            - button "Editar em Massa" [ref=e139]:
+              - generic: Editar em Massa
+            - link "Ações em Massa " [ref=e141]:
+              - /url: javascript:void(0);
+              - generic: Ações em Massa
+              - generic: 
+        - generic [ref=e142]:
+          - generic [ref=e143] [cursor=pointer]:
+            - generic [ref=e144]: Ordem
+            - generic [ref=e145]: 
+          - generic [ref=e147]:
+            - generic [ref=e148]: Total 139
+            - generic [ref=e149]:
+              - 'button "icon: left" [disabled] [ref=e150]':
+                - 'generic "icon: left"':
+                  - img
+              - generic [ref=e153] [cursor=pointer]: 1/3
+              - 'button "icon: right" [ref=e154] [cursor=pointer]':
+                - 'generic "icon: right"':
+                  - img
+            - combobox [ref=e157] [cursor=pointer]:
+              - generic "50/página" [ref=e159]
+              - generic [ref=e161]: 
+      - table [ref=e166]:
+        - rowgroup [ref=e167]:
+          - 'row "Nome Número do Produto icon: question-circle Preço Preço especial Preço de Custo icon: question-circle Quantidade Criado/Atualizado Ação" [ref=e168]':
+            - columnheader [ref=e169]:
+              - checkbox [ref=e172] [cursor=pointer]
+            - columnheader [ref=e174]
+            - columnheader "Nome" [ref=e175]:
+              - generic "Nome" [ref=e176]
+            - 'columnheader "Número do Produto icon: question-circle" [ref=e177]':
+              - generic "SKU" [ref=e178]:
+                - generic [ref=e179]:
+                  - generic [ref=e180]: Número do Produto
+                  - 'generic "icon: question-circle" [ref=e181]':
+                    - img [ref=e182]
+            - columnheader "Preço" [ref=e185]:
+              - generic "Preço" [ref=e186]
+            - columnheader "Preço especial" [ref=e187]:
+              - generic "Preço especial" [ref=e188]
+            - 'columnheader "Preço de Custo icon: question-circle" [ref=e189]':
+              - generic "Preço de Custo" [ref=e190]:
+                - generic [ref=e191]:
+                  - generic [ref=e192]: Preço de Custo
+                  - 'generic "icon: question-circle" [ref=e193]':
+                    - img [ref=e194]
+            - columnheader "Quantidade" [ref=e197]:
+              - generic "Quantidade" [ref=e198]
+            - columnheader "Criado/Atualizado" [ref=e199]:
+              - generic "Criado/Atualizado" [ref=e200]
+            - columnheader "Ação" [ref=e201]:
+              - generic "Ação" [ref=e202]
+        - rowgroup [ref=e203]:
+          - 'row "Camiseta Blusa T-Shirt Feminina 100% Algodão Estampada Com Dois Coração E Listras De Animal Print Casual E Confortável Carlos Shein Variantes (25) icon: down 005 ‎ 109,90 12,90 - 59,90 - 1250000 20/03/2026 15:51 21/05/2026 12:18 Editar Mais " [ref=e204]':
+            - cell [ref=e205]:
+              - checkbox [ref=e208] [cursor=pointer]
+            - cell [ref=e210]:
+              - img [ref=e216] [cursor=pointer]
+            - 'cell "Camiseta Blusa T-Shirt Feminina 100% Algodão Estampada Com Dois Coração E Listras De Animal Print Casual E Confortável Carlos Shein Variantes (25) icon: down" [ref=e217]':
+              - generic [ref=e218]:
+                - generic "Camiseta Blusa T-Shirt Feminina 100% Algodão Estampada Com Dois Coração E Listras De Animal Print Casual E Confortável" [ref=e219]:
+                  - generic [ref=e222] [cursor=pointer]: Camiseta Blusa T-Shirt Feminina 100% Algodão Estampada Com Dois Coração E Listras De Animal Print Casual E Confortável
+                - generic "Carlos Shein" [ref=e223]
+                - 'link "Variantes (25) icon: down" [ref=e226] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e227]':
+                    - img [ref=e228]
+            - cell "005" [ref=e230]:
+              - generic "005" [ref=e232]:
+                - generic [ref=e233] [cursor=pointer]: "005"
+            - cell "‎ 109,90" [ref=e234]:
+              - generic [ref=e236]: ‎ 109,90
+            - cell "12,90 - 59,90" [ref=e237]:
+              - generic [ref=e239]: 12,90 - 59,90
+            - cell "-" [ref=e240]:
+              - generic [ref=e242]: "-"
+            - cell "1250000" [ref=e243]:
+              - generic [ref=e246]: "1250000"
+            - cell "20/03/2026 15:51 21/05/2026 12:18" [ref=e247]:
+              - generic [ref=e248]:
+                - generic "20/03/2026 15:51:41" [ref=e249]: 20/03/2026 15:51
+                - generic "21/05/2026 12:18:08" [ref=e250]: 21/05/2026 12:18
+            - cell "Editar Mais " [ref=e251]:
+              - generic [ref=e253] [cursor=pointer]:
+                - link "Editar" [ref=e255]:
+                  - /url: /products/shein/edit/8554887782365798
+                - link "Mais " [ref=e256]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e257]: 
+          - 'row "Camisa t-shirt feminina estampada girafa de oculos moda casual blogueira 100% algodão manga curta de verão Carlos Shein Variantes (5) icon: down 062 ‎ 109,90 12,90 - 33,90 - 500000 20/03/2026 15:51 20/05/2026 20:11 Editar Mais " [ref=e258]':
+            - cell [ref=e259]:
+              - checkbox [ref=e262] [cursor=pointer]
+            - cell [ref=e264]:
+              - img [ref=e270] [cursor=pointer]
+            - 'cell "Camisa t-shirt feminina estampada girafa de oculos moda casual blogueira 100% algodão manga curta de verão Carlos Shein Variantes (5) icon: down" [ref=e271]':
+              - generic [ref=e272]:
+                - generic "Camisa t-shirt feminina estampada girafa de oculos moda casual blogueira 100% algodão manga curta de verão" [ref=e273]:
+                  - generic [ref=e276] [cursor=pointer]: Camisa t-shirt feminina estampada girafa de oculos moda casual blogueira 100% algodão manga curta de verão
+                - generic "Carlos Shein" [ref=e277]
+                - 'link "Variantes (5) icon: down" [ref=e280] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e281]':
+                    - img [ref=e282]
+            - cell "062" [ref=e284]:
+              - generic "062" [ref=e286]:
+                - generic [ref=e287] [cursor=pointer]: "062"
+            - cell "‎ 109,90" [ref=e288]:
+              - generic [ref=e290]: ‎ 109,90
+            - cell "12,90 - 33,90" [ref=e291]:
+              - generic [ref=e293]: 12,90 - 33,90
+            - cell "-" [ref=e294]:
+              - generic [ref=e296]: "-"
+            - cell "500000" [ref=e297]:
+              - generic [ref=e300]: "500000"
+            - cell "20/03/2026 15:51 20/05/2026 20:11" [ref=e301]:
+              - generic [ref=e302]:
+                - generic "20/03/2026 15:51:42" [ref=e303]: 20/03/2026 15:51
+                - generic "20/05/2026 20:11:10" [ref=e304]: 20/05/2026 20:11
+            - cell "Editar Mais " [ref=e305]:
+              - generic [ref=e307] [cursor=pointer]:
+                - link "Editar" [ref=e309]:
+                  - /url: /products/shein/edit/8554887782366069
+                - link "Mais " [ref=e310]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e311]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Brasil South America Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (25) icon: down 431035486 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 10:35 18/05/2026 16:55 Editar Mais " [ref=e312]':
+            - cell [ref=e313]:
+              - checkbox [ref=e316] [cursor=pointer]
+            - cell "" [ref=e318]:
+              - generic [ref=e319]:
+                - img [ref=e324] [cursor=pointer]
+                - generic [ref=e327]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Brasil South America Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (25) icon: down" [ref=e328]':
+              - generic [ref=e329]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Brasil South America Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e330]:
+                  - generic [ref=e333] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Brasil South America Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "Carla Shein" [ref=e334]
+                - 'link "Variantes (25) icon: down" [ref=e337] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e338]':
+                    - img [ref=e339]
+            - cell "431035486" [ref=e341]:
+              - generic "431035486" [ref=e343]:
+                - generic [ref=e344] [cursor=pointer]: "431035486"
+            - cell "R$‎‎ 109,90" [ref=e345]:
+              - generic [ref=e347]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e348]:
+              - generic [ref=e350]: R$‎‎ 33,90
+            - cell "-" [ref=e351]:
+              - generic [ref=e353]: "-"
+            - cell "500" [ref=e354]:
+              - generic [ref=e357]: "500"
+            - cell "18/05/2026 10:35 18/05/2026 16:55" [ref=e358]:
+              - generic [ref=e359]:
+                - generic "18/05/2026 10:35:01" [ref=e360]: 18/05/2026 10:35
+                - generic "18/05/2026 16:55:56" [ref=e361]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e362]:
+              - generic [ref=e364] [cursor=pointer]:
+                - link "Editar" [ref=e366]:
+                  - /url: /products/shein/edit/8554887796882171
+                - link "Mais " [ref=e367]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e368]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Listras Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (25) icon: down 431036808 R$‎‎ 109,90 R$‎‎ 33,90 - 225000 18/05/2026 09:50 18/05/2026 16:55 Editar Mais " [ref=e369]':
+            - cell [ref=e370]:
+              - checkbox [ref=e373] [cursor=pointer]
+            - cell "" [ref=e375]:
+              - generic [ref=e376]:
+                - img [ref=e381] [cursor=pointer]
+                - generic [ref=e384]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Listras Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (25) icon: down" [ref=e385]':
+              - generic [ref=e386]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Listras Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e387]:
+                  - generic [ref=e390] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Listras Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "Carla Shein" [ref=e391]
+                - 'link "Variantes (25) icon: down" [ref=e394] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e395]':
+                    - img [ref=e396]
+            - cell "431036808" [ref=e398]:
+              - generic "431036808" [ref=e400]:
+                - generic [ref=e401] [cursor=pointer]: "431036808"
+            - cell "R$‎‎ 109,90" [ref=e402]:
+              - generic [ref=e404]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e405]:
+              - generic [ref=e407]: R$‎‎ 33,90
+            - cell "-" [ref=e408]:
+              - generic [ref=e410]: "-"
+            - cell "225000" [ref=e411]:
+              - generic [ref=e414]: "225000"
+            - cell "18/05/2026 09:50 18/05/2026 16:55" [ref=e415]:
+              - generic [ref=e416]:
+                - generic "18/05/2026 09:50:55" [ref=e417]: 18/05/2026 09:50
+                - generic "18/05/2026 16:55:56" [ref=e418]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e419]:
+              - generic [ref=e421] [cursor=pointer]:
+                - link "Editar" [ref=e423]:
+                  - /url: /products/shein/edit/8554887796877531
+                - link "Mais " [ref=e424]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e425]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (25) icon: down 430410213 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 09:50 18/05/2026 16:55 Editar Mais " [ref=e426]':
+            - cell [ref=e427]:
+              - checkbox [ref=e430] [cursor=pointer]
+            - cell "" [ref=e432]:
+              - generic [ref=e433]:
+                - img [ref=e438] [cursor=pointer]
+                - generic [ref=e441]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (25) icon: down" [ref=e442]':
+              - generic [ref=e443]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e444]:
+                  - generic [ref=e447] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "Carla Shein" [ref=e448]
+                - 'link "Variantes (25) icon: down" [ref=e451] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e452]':
+                    - img [ref=e453]
+            - cell "430410213" [ref=e455]:
+              - generic "430410213" [ref=e457]:
+                - generic [ref=e458] [cursor=pointer]: "430410213"
+            - cell "R$‎‎ 109,90" [ref=e459]:
+              - generic [ref=e461]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e462]:
+              - generic [ref=e464]: R$‎‎ 33,90
+            - cell "-" [ref=e465]:
+              - generic [ref=e467]: "-"
+            - cell "500" [ref=e468]:
+              - generic [ref=e471]: "500"
+            - cell "18/05/2026 09:50 18/05/2026 16:55" [ref=e472]:
+              - generic [ref=e473]:
+                - generic "18/05/2026 09:50:55" [ref=e474]: 18/05/2026 09:50
+                - generic "18/05/2026 16:55:56" [ref=e475]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e476]:
+              - generic [ref=e478] [cursor=pointer]:
+                - link "Editar" [ref=e480]:
+                  - /url: /products/shein/edit/8554887796877505
+                - link "Mais " [ref=e481]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e482]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (20) icon: down 429603387 R$‎‎ 109,90 R$‎‎ 33,90 - 400 18/05/2026 09:50 18/05/2026 16:55 Editar Mais " [ref=e483]':
+            - cell [ref=e484]:
+              - checkbox [ref=e487] [cursor=pointer]
+            - cell "" [ref=e489]:
+              - generic [ref=e490]:
+                - img [ref=e495] [cursor=pointer]
+                - generic [ref=e498]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda Carla Shein Variantes (20) icon: down" [ref=e499]':
+              - generic [ref=e500]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e501]:
+                  - generic [ref=e504] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "Carla Shein" [ref=e505]
+                - 'link "Variantes (20) icon: down" [ref=e508] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e509]':
+                    - img [ref=e510]
+            - cell "429603387" [ref=e512]:
+              - generic "429603387" [ref=e514]:
+                - generic [ref=e515] [cursor=pointer]: "429603387"
+            - cell "R$‎‎ 109,90" [ref=e516]:
+              - generic [ref=e518]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e519]:
+              - generic [ref=e521]: R$‎‎ 33,90
+            - cell "-" [ref=e522]:
+              - generic [ref=e524]: "-"
+            - cell "400" [ref=e525]:
+              - generic [ref=e528]: "400"
+            - cell "18/05/2026 09:50 18/05/2026 16:55" [ref=e529]:
+              - generic [ref=e530]:
+                - generic "18/05/2026 09:50:55" [ref=e531]: 18/05/2026 09:50
+                - generic "18/05/2026 16:55:56" [ref=e532]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e533]:
+              - generic [ref=e535] [cursor=pointer]:
+                - link "Editar" [ref=e537]:
+                  - /url: /products/shein/edit/8554887796877484
+                - link "Mais " [ref=e538]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e539]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Brasil Estrelas Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down 431044390 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 09:48 18/05/2026 16:55 Editar Mais " [ref=e540]':
+            - cell [ref=e541]:
+              - checkbox [ref=e544] [cursor=pointer]
+            - cell "" [ref=e546]:
+              - generic [ref=e547]:
+                - img [ref=e552] [cursor=pointer]
+                - generic [ref=e555]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Brasil Estrelas Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down" [ref=e556]':
+              - generic [ref=e557]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Brasil Estrelas Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e558]:
+                  - generic [ref=e561] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Brasil Estrelas Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "LK Shein (D)" [ref=e562]
+                - 'link "Variantes (25) icon: down" [ref=e565] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e566]':
+                    - img [ref=e567]
+            - cell "431044390" [ref=e569]:
+              - generic "431044390" [ref=e571]:
+                - generic [ref=e572] [cursor=pointer]: "431044390"
+            - cell "R$‎‎ 109,90" [ref=e573]:
+              - generic [ref=e575]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e576]:
+              - generic [ref=e578]: R$‎‎ 33,90
+            - cell "-" [ref=e579]:
+              - generic [ref=e581]: "-"
+            - cell "500" [ref=e582]:
+              - generic [ref=e585]: "500"
+            - cell "18/05/2026 09:48 18/05/2026 16:55" [ref=e586]:
+              - generic [ref=e587]:
+                - generic "18/05/2026 09:48:39" [ref=e588]: 18/05/2026 09:48
+                - generic "18/05/2026 16:55:56" [ref=e589]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e590]:
+              - generic [ref=e592] [cursor=pointer]:
+                - link "Editar" [ref=e594]:
+                  - /url: /products/shein/edit/8554887796876665
+                - link "Mais " [ref=e595]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e596]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down 429693046 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 09:48 18/05/2026 16:55 Editar Mais " [ref=e597]':
+            - cell [ref=e598]:
+              - checkbox [ref=e601] [cursor=pointer]
+            - cell "" [ref=e603]:
+              - generic [ref=e604]:
+                - img [ref=e609] [cursor=pointer]
+                - generic [ref=e612]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down" [ref=e613]':
+              - generic [ref=e614]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e615]:
+                  - generic [ref=e618] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Brasil Bandeira Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "LK Shein (D)" [ref=e619]
+                - 'link "Variantes (25) icon: down" [ref=e622] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e623]':
+                    - img [ref=e624]
+            - cell "429693046" [ref=e626]:
+              - generic "429693046" [ref=e628]:
+                - generic [ref=e629] [cursor=pointer]: "429693046"
+            - cell "R$‎‎ 109,90" [ref=e630]:
+              - generic [ref=e632]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e633]:
+              - generic [ref=e635]: R$‎‎ 33,90
+            - cell "-" [ref=e636]:
+              - generic [ref=e638]: "-"
+            - cell "500" [ref=e639]:
+              - generic [ref=e642]: "500"
+            - cell "18/05/2026 09:48 18/05/2026 16:55" [ref=e643]:
+              - generic [ref=e644]:
+                - generic "18/05/2026 09:48:38" [ref=e645]: 18/05/2026 09:48
+                - generic "18/05/2026 16:55:56" [ref=e646]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e647]:
+              - generic [ref=e649] [cursor=pointer]:
+                - link "Editar" [ref=e651]:
+                  - /url: /products/shein/edit/8554887796876639
+                - link "Mais " [ref=e652]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e653]: 
+          - 'row " Camiseta Brasil Unissex Torcida Seleção Futebol Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down 430421998 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 09:48 18/05/2026 16:55 Editar Mais " [ref=e654]':
+            - cell [ref=e655]:
+              - checkbox [ref=e658] [cursor=pointer]
+            - cell "" [ref=e660]:
+              - generic [ref=e661]:
+                - img [ref=e666] [cursor=pointer]
+                - generic [ref=e669]: 
+            - 'cell "Camiseta Brasil Unissex Torcida Seleção Futebol Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down" [ref=e670]':
+              - generic [ref=e671]:
+                - generic "Camiseta Brasil Unissex Torcida Seleção Futebol Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e672]:
+                  - generic [ref=e675] [cursor=pointer]: Camiseta Brasil Unissex Torcida Seleção Futebol Hexa Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "LK Shein (D)" [ref=e676]
+                - 'link "Variantes (25) icon: down" [ref=e679] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e680]':
+                    - img [ref=e681]
+            - cell "430421998" [ref=e683]:
+              - generic "430421998" [ref=e685]:
+                - generic [ref=e686] [cursor=pointer]: "430421998"
+            - cell "R$‎‎ 109,90" [ref=e687]:
+              - generic [ref=e689]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e690]:
+              - generic [ref=e692]: R$‎‎ 33,90
+            - cell "-" [ref=e693]:
+              - generic [ref=e695]: "-"
+            - cell "500" [ref=e696]:
+              - generic [ref=e699]: "500"
+            - cell "18/05/2026 09:48 18/05/2026 16:55" [ref=e700]:
+              - generic [ref=e701]:
+                - generic "18/05/2026 09:48:38" [ref=e702]: 18/05/2026 09:48
+                - generic "18/05/2026 16:55:56" [ref=e703]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e704]:
+              - generic [ref=e706] [cursor=pointer]:
+                - link "Editar" [ref=e708]:
+                  - /url: /products/shein/edit/8554887796876613
+                - link "Mais " [ref=e709]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e710]: 
+          - 'row " Camiseta Unissex Torcida Seleção Futebol Joga Bonito Camisa 10 Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down 430419874 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 09:48 18/05/2026 16:55 Editar Mais " [ref=e711]':
+            - cell [ref=e712]:
+              - checkbox [ref=e715] [cursor=pointer]
+            - cell "" [ref=e717]:
+              - generic [ref=e718]:
+                - img [ref=e723] [cursor=pointer]
+                - generic [ref=e726]: 
+            - 'cell "Camiseta Unissex Torcida Seleção Futebol Joga Bonito Camisa 10 Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down" [ref=e727]':
+              - generic [ref=e728]:
+                - generic "Camiseta Unissex Torcida Seleção Futebol Joga Bonito Camisa 10 Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e729]:
+                  - generic [ref=e732] [cursor=pointer]: Camiseta Unissex Torcida Seleção Futebol Joga Bonito Camisa 10 Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "LK Shein (D)" [ref=e733]
+                - 'link "Variantes (25) icon: down" [ref=e736] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e737]':
+                    - img [ref=e738]
+            - cell "430419874" [ref=e740]:
+              - generic "430419874" [ref=e742]:
+                - generic [ref=e743] [cursor=pointer]: "430419874"
+            - cell "R$‎‎ 109,90" [ref=e744]:
+              - generic [ref=e746]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e747]:
+              - generic [ref=e749]: R$‎‎ 33,90
+            - cell "-" [ref=e750]:
+              - generic [ref=e752]: "-"
+            - cell "500" [ref=e753]:
+              - generic [ref=e756]: "500"
+            - cell "18/05/2026 09:48 18/05/2026 16:55" [ref=e757]:
+              - generic [ref=e758]:
+                - generic "18/05/2026 09:48:38" [ref=e759]: 18/05/2026 09:48
+                - generic "18/05/2026 16:55:56" [ref=e760]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e761]:
+              - generic [ref=e763] [cursor=pointer]:
+                - link "Editar" [ref=e765]:
+                  - /url: /products/shein/edit/8554887796876587
+                - link "Mais " [ref=e766]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e767]: 
+          - 'row " Camiseta da Torcida Unissex Seleção Futebol Jogo do Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down 431039916 R$‎‎ 109,90 R$‎‎ 33,90 - 500 18/05/2026 09:48 18/05/2026 16:55 Editar Mais " [ref=e768]':
+            - cell [ref=e769]:
+              - checkbox [ref=e772] [cursor=pointer]
+            - cell "" [ref=e774]:
+              - generic [ref=e775]:
+                - img [ref=e780] [cursor=pointer]
+                - generic [ref=e783]: 
+            - 'cell "Camiseta da Torcida Unissex Seleção Futebol Jogo do Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda LK Shein (D) Variantes (25) icon: down" [ref=e784]':
+              - generic [ref=e785]:
+                - generic "Camiseta da Torcida Unissex Seleção Futebol Jogo do Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda" [ref=e786]:
+                  - generic [ref=e789] [cursor=pointer]: Camiseta da Torcida Unissex Seleção Futebol Jogo do Brasil Manga Curta Masculina Feminina 100% Algodão, Casual, Gola Redonda
+                - generic "LK Shein (D)" [ref=e790]
+                - 'link "Variantes (25) icon: down" [ref=e793] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (25)
+                  - 'generic "icon: down" [ref=e794]':
+                    - img [ref=e795]
+            - cell "431039916" [ref=e797]:
+              - generic "431039916" [ref=e799]:
+                - generic [ref=e800] [cursor=pointer]: "431039916"
+            - cell "R$‎‎ 109,90" [ref=e801]:
+              - generic [ref=e803]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e804]:
+              - generic [ref=e806]: R$‎‎ 33,90
+            - cell "-" [ref=e807]:
+              - generic [ref=e809]: "-"
+            - cell "500" [ref=e810]:
+              - generic [ref=e813]: "500"
+            - cell "18/05/2026 09:48 18/05/2026 16:55" [ref=e814]:
+              - generic [ref=e815]:
+                - generic "18/05/2026 09:48:37" [ref=e816]: 18/05/2026 09:48
+                - generic "18/05/2026 16:55:56" [ref=e817]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e818]:
+              - generic [ref=e820] [cursor=pointer]:
+                - link "Editar" [ref=e822]:
+                  - /url: /products/shein/edit/8554887796876561
+                - link "Mais " [ref=e823]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e824]: 
+          - 'row "Camiseta T-Shirt 100% Algodão Camisa Estampada ''i''n fine'''' Moda Casual Moderna Camisa Gola Redonda e Manga Curta Carlos Shein Variantes (2) icon: down Perda de Variante 058 R$‎‎ 109,90 R$‎‎ 33,90 - 200000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e825]':
+            - cell [ref=e826]:
+              - checkbox [ref=e829] [cursor=pointer]
+            - cell [ref=e831]:
+              - img [ref=e837] [cursor=pointer]
+            - 'cell "Camiseta T-Shirt 100% Algodão Camisa Estampada ''i''n fine'''' Moda Casual Moderna Camisa Gola Redonda e Manga Curta Carlos Shein Variantes (2) icon: down Perda de Variante" [ref=e838]':
+              - generic [ref=e839]:
+                - generic "Camiseta T-Shirt 100% Algodão Camisa Estampada 'i'n fine'' Moda Casual Moderna Camisa Gola Redonda e Manga Curta" [ref=e840]:
+                  - generic [ref=e843] [cursor=pointer]: Camiseta T-Shirt 100% Algodão Camisa Estampada 'i'n fine'' Moda Casual Moderna Camisa Gola Redonda e Manga Curta
+                - generic "Carlos Shein" [ref=e844]
+                - generic [ref=e845]:
+                  - 'link "Variantes (2) icon: down" [ref=e847] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (2)
+                    - 'generic "icon: down" [ref=e848]':
+                      - img [ref=e849]
+                  - generic [ref=e852]: Perda de Variante
+            - cell "058" [ref=e853]:
+              - generic "058" [ref=e855]:
+                - generic [ref=e856] [cursor=pointer]: "058"
+            - cell "R$‎‎ 109,90" [ref=e857]:
+              - generic [ref=e859]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e860]:
+              - generic [ref=e862]: R$‎‎ 33,90
+            - cell "-" [ref=e863]:
+              - generic [ref=e865]: "-"
+            - cell "200000" [ref=e866]:
+              - generic [ref=e869]: "200000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e870]:
+              - generic [ref=e871]:
+                - generic "20/03/2026 15:51:42" [ref=e872]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e873]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e874]:
+              - generic [ref=e876] [cursor=pointer]:
+                - link "Editar" [ref=e878]:
+                  - /url: /products/shein/edit/8554887782366058
+                - link "Mais " [ref=e879]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e880]: 
+          - 'row "Camiseta T-Shirt Feminina Estampada Personagem PANTERA COR DE ROSA Camisa 100% Algodão Gola Redonda Carlos Shein Variantes (2) icon: down Perda de Variante 061 R$‎‎ 109,90 R$‎‎ 33,90 - 200000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e881]':
+            - cell [ref=e882]:
+              - checkbox [ref=e885] [cursor=pointer]
+            - cell [ref=e887]:
+              - img [ref=e893] [cursor=pointer]
+            - 'cell "Camiseta T-Shirt Feminina Estampada Personagem PANTERA COR DE ROSA Camisa 100% Algodão Gola Redonda Carlos Shein Variantes (2) icon: down Perda de Variante" [ref=e894]':
+              - generic [ref=e895]:
+                - generic "Camiseta T-Shirt Feminina Estampada Personagem PANTERA COR DE ROSA Camisa 100% Algodão Gola Redonda" [ref=e896]:
+                  - generic [ref=e899] [cursor=pointer]: Camiseta T-Shirt Feminina Estampada Personagem PANTERA COR DE ROSA Camisa 100% Algodão Gola Redonda
+                - generic "Carlos Shein" [ref=e900]
+                - generic [ref=e901]:
+                  - 'link "Variantes (2) icon: down" [ref=e903] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (2)
+                    - 'generic "icon: down" [ref=e904]':
+                      - img [ref=e905]
+                  - generic [ref=e908]: Perda de Variante
+            - cell "061" [ref=e909]:
+              - generic "061" [ref=e911]:
+                - generic [ref=e912] [cursor=pointer]: "061"
+            - cell "R$‎‎ 109,90" [ref=e913]:
+              - generic [ref=e915]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e916]:
+              - generic [ref=e918]: R$‎‎ 33,90
+            - cell "-" [ref=e919]:
+              - generic [ref=e921]: "-"
+            - cell "200000" [ref=e922]:
+              - generic [ref=e925]: "200000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e926]:
+              - generic [ref=e927]:
+                - generic "20/03/2026 15:51:42" [ref=e928]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e929]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e930]:
+              - generic [ref=e932] [cursor=pointer]:
+                - link "Editar" [ref=e934]:
+                  - /url: /products/shein/edit/8554887782366047
+                - link "Mais " [ref=e935]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e936]: 
+          - 'row "Camisa t-shirt feminina coração de onça love máximo conforto casual modelo 100% algodão manga curta e gola redonda Carlos Shein Variantes (1) icon: down Perda de Variante 035 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e937]':
+            - cell [ref=e938]:
+              - checkbox [ref=e941] [cursor=pointer]
+            - cell [ref=e943]:
+              - img [ref=e949] [cursor=pointer]
+            - 'cell "Camisa t-shirt feminina coração de onça love máximo conforto casual modelo 100% algodão manga curta e gola redonda Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e950]':
+              - generic [ref=e951]:
+                - generic "Camisa t-shirt feminina coração de onça love máximo conforto casual modelo 100% algodão manga curta e gola redonda" [ref=e952]:
+                  - generic [ref=e955] [cursor=pointer]: Camisa t-shirt feminina coração de onça love máximo conforto casual modelo 100% algodão manga curta e gola redonda
+                - generic "Carlos Shein" [ref=e956]
+                - generic [ref=e957]:
+                  - 'link "Variantes (1) icon: down" [ref=e959] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e960]':
+                      - img [ref=e961]
+                  - generic [ref=e964]: Perda de Variante
+            - cell "035" [ref=e965]:
+              - generic "035" [ref=e967]:
+                - generic [ref=e968] [cursor=pointer]: "035"
+            - cell "R$‎‎ 109,90" [ref=e969]:
+              - generic [ref=e971]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e972]:
+              - generic [ref=e974]: R$‎‎ 33,90
+            - cell "-" [ref=e975]:
+              - generic [ref=e977]: "-"
+            - cell "100000" [ref=e978]:
+              - generic [ref=e981]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e982]:
+              - generic [ref=e983]:
+                - generic "20/03/2026 15:51:42" [ref=e984]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e985]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e986]:
+              - generic [ref=e988] [cursor=pointer]:
+                - link "Editar" [ref=e990]:
+                  - /url: /products/shein/edit/8554887782366041
+                - link "Mais " [ref=e991]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e992]: 
+          - 'row "Camiseta T-Shirt Feminina Estampada Urso no Bolso Super Estilosa 100% Algodão- Moda Primavera Verão Camisa Gola Redonda Manga Curta Carlos Shein Variantes (1) icon: down Perda de Variante 074 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e993]':
+            - cell [ref=e994]:
+              - checkbox [ref=e997] [cursor=pointer]
+            - cell [ref=e999]:
+              - img [ref=e1005] [cursor=pointer]
+            - 'cell "Camiseta T-Shirt Feminina Estampada Urso no Bolso Super Estilosa 100% Algodão- Moda Primavera Verão Camisa Gola Redonda Manga Curta Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e1006]':
+              - generic [ref=e1007]:
+                - generic "Camiseta T-Shirt Feminina Estampada Urso no Bolso Super Estilosa 100% Algodão- Moda Primavera Verão Camisa Gola Redonda Manga Curta" [ref=e1008]:
+                  - generic [ref=e1011] [cursor=pointer]: Camiseta T-Shirt Feminina Estampada Urso no Bolso Super Estilosa 100% Algodão- Moda Primavera Verão Camisa Gola Redonda Manga Curta
+                - generic "Carlos Shein" [ref=e1012]
+                - generic [ref=e1013]:
+                  - 'link "Variantes (1) icon: down" [ref=e1015] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e1016]':
+                      - img [ref=e1017]
+                  - generic [ref=e1020]: Perda de Variante
+            - cell "074" [ref=e1021]:
+              - generic "074" [ref=e1023]:
+                - generic [ref=e1024] [cursor=pointer]: "074"
+            - cell "R$‎‎ 109,90" [ref=e1025]:
+              - generic [ref=e1027]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1028]:
+              - generic [ref=e1030]: R$‎‎ 33,90
+            - cell "-" [ref=e1031]:
+              - generic [ref=e1033]: "-"
+            - cell "100000" [ref=e1034]:
+              - generic [ref=e1037]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1038]:
+              - generic [ref=e1039]:
+                - generic "20/03/2026 15:51:41" [ref=e1040]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1041]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1042]:
+              - generic [ref=e1044] [cursor=pointer]:
+                - link "Editar" [ref=e1046]:
+                  - /url: /products/shein/edit/8554887782365992
+                - link "Mais " [ref=e1047]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1048]: 
+          - 'row "Camiseta Feminina de Gola Redonda Estampada SURPRISE MOMENT Moda T-shirt Feminina, Camiseta Casual De Manga Curta Carlos Shein Variantes (1) icon: down Perda de Variante 070 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1049]':
+            - cell [ref=e1050]:
+              - checkbox [ref=e1053] [cursor=pointer]
+            - cell [ref=e1055]:
+              - img [ref=e1061] [cursor=pointer]
+            - 'cell "Camiseta Feminina de Gola Redonda Estampada SURPRISE MOMENT Moda T-shirt Feminina, Camiseta Casual De Manga Curta Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e1062]':
+              - generic [ref=e1063]:
+                - generic "Camiseta Feminina de Gola Redonda Estampada SURPRISE MOMENT Moda T-shirt Feminina, Camiseta Casual De Manga Curta" [ref=e1064]:
+                  - generic [ref=e1067] [cursor=pointer]: Camiseta Feminina de Gola Redonda Estampada SURPRISE MOMENT Moda T-shirt Feminina, Camiseta Casual De Manga Curta
+                - generic "Carlos Shein" [ref=e1068]
+                - generic [ref=e1069]:
+                  - 'link "Variantes (1) icon: down" [ref=e1071] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e1072]':
+                      - img [ref=e1073]
+                  - generic [ref=e1076]: Perda de Variante
+            - cell "070" [ref=e1077]:
+              - generic "070" [ref=e1079]:
+                - generic [ref=e1080] [cursor=pointer]: "070"
+            - cell "R$‎‎ 109,90" [ref=e1081]:
+              - generic [ref=e1083]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1084]:
+              - generic [ref=e1086]: R$‎‎ 33,90
+            - cell "-" [ref=e1087]:
+              - generic [ref=e1089]: "-"
+            - cell "100000" [ref=e1090]:
+              - generic [ref=e1093]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1094]:
+              - generic [ref=e1095]:
+                - generic "20/03/2026 15:51:41" [ref=e1096]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1097]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1098]:
+              - generic [ref=e1100] [cursor=pointer]:
+                - link "Editar" [ref=e1102]:
+                  - /url: /products/shein/edit/8554887782365970
+                - link "Mais " [ref=e1103]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1104]: 
+          - 'row "Camiseta t-shirt Feminina Streetwear Estampa BEAUTIFUL DOS CORÇÃO Tshirt Algodão Camisa Modinha Bloqueira Carlos Shein Variantes (2) icon: down Perda de Variante 068 R$‎‎ 109,90 R$‎‎ 33,90 - 200000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1105]':
+            - cell [ref=e1106]:
+              - checkbox [ref=e1109] [cursor=pointer]
+            - cell [ref=e1111]:
+              - img [ref=e1117] [cursor=pointer]
+            - 'cell "Camiseta t-shirt Feminina Streetwear Estampa BEAUTIFUL DOS CORÇÃO Tshirt Algodão Camisa Modinha Bloqueira Carlos Shein Variantes (2) icon: down Perda de Variante" [ref=e1118]':
+              - generic [ref=e1119]:
+                - generic "Camiseta t-shirt Feminina Streetwear Estampa BEAUTIFUL DOS CORÇÃO Tshirt Algodão Camisa Modinha Bloqueira" [ref=e1120]:
+                  - generic [ref=e1123] [cursor=pointer]: Camiseta t-shirt Feminina Streetwear Estampa BEAUTIFUL DOS CORÇÃO Tshirt Algodão Camisa Modinha Bloqueira
+                - generic "Carlos Shein" [ref=e1124]
+                - generic [ref=e1125]:
+                  - 'link "Variantes (2) icon: down" [ref=e1127] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (2)
+                    - 'generic "icon: down" [ref=e1128]':
+                      - img [ref=e1129]
+                  - generic [ref=e1132]: Perda de Variante
+            - cell "068" [ref=e1133]:
+              - generic "068" [ref=e1135]:
+                - generic [ref=e1136] [cursor=pointer]: "068"
+            - cell "R$‎‎ 109,90" [ref=e1137]:
+              - generic [ref=e1139]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1140]:
+              - generic [ref=e1142]: R$‎‎ 33,90
+            - cell "-" [ref=e1143]:
+              - generic [ref=e1145]: "-"
+            - cell "200000" [ref=e1146]:
+              - generic [ref=e1149]: "200000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1150]:
+              - generic [ref=e1151]:
+                - generic "20/03/2026 15:51:41" [ref=e1152]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1153]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1154]:
+              - generic [ref=e1156] [cursor=pointer]:
+                - link "Editar" [ref=e1158]:
+                  - /url: /products/shein/edit/8554887782365921
+                - link "Mais " [ref=e1159]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1160]: 
+          - 'row "T-shirt Camiseta Estampada Feminina Escritas com onça e zebra Camisa 100% Algodão Gola Redonda e Manga Curta Carlos Shein Variantes (2) icon: down Perda de Variante 071 R$‎‎ 109,90 R$‎‎ 33,90 - 200000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1161]':
+            - cell [ref=e1162]:
+              - checkbox [ref=e1165] [cursor=pointer]
+            - cell [ref=e1167]:
+              - generic [ref=e1172] [cursor=pointer]:
+                - img
+            - 'cell "T-shirt Camiseta Estampada Feminina Escritas com onça e zebra Camisa 100% Algodão Gola Redonda e Manga Curta Carlos Shein Variantes (2) icon: down Perda de Variante" [ref=e1173]':
+              - generic [ref=e1174]:
+                - generic "T-shirt Camiseta Estampada Feminina Escritas com onça e zebra Camisa 100% Algodão Gola Redonda e Manga Curta" [ref=e1175]:
+                  - generic [ref=e1178] [cursor=pointer]: T-shirt Camiseta Estampada Feminina Escritas com onça e zebra Camisa 100% Algodão Gola Redonda e Manga Curta
+                - generic "Carlos Shein" [ref=e1179]
+                - generic [ref=e1180]:
+                  - 'link "Variantes (2) icon: down" [ref=e1182] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (2)
+                    - 'generic "icon: down" [ref=e1183]':
+                      - img [ref=e1184]
+                  - generic [ref=e1187]: Perda de Variante
+            - cell "071" [ref=e1188]:
+              - generic "071" [ref=e1190]:
+                - generic [ref=e1191] [cursor=pointer]: "071"
+            - cell "R$‎‎ 109,90" [ref=e1192]:
+              - generic [ref=e1194]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1195]:
+              - generic [ref=e1197]: R$‎‎ 33,90
+            - cell "-" [ref=e1198]:
+              - generic [ref=e1200]: "-"
+            - cell "200000" [ref=e1201]:
+              - generic [ref=e1204]: "200000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1205]:
+              - generic [ref=e1206]:
+                - generic "20/03/2026 15:51:41" [ref=e1207]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1208]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1209]:
+              - generic [ref=e1211] [cursor=pointer]:
+                - link "Editar" [ref=e1213]:
+                  - /url: /products/shein/edit/8554887782365846
+                - link "Mais " [ref=e1214]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1215]: 
+          - 'row "Blusa camiseta t-shirt 100% algodão gola redonda estampa primavera verão tendencia em moda feminina inspiração Carlos Shein Variantes (1) icon: down Perda de Variante 018 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1216]':
+            - cell [ref=e1217]:
+              - checkbox [ref=e1220] [cursor=pointer]
+            - cell [ref=e1222]:
+              - generic [ref=e1227] [cursor=pointer]:
+                - img
+            - 'cell "Blusa camiseta t-shirt 100% algodão gola redonda estampa primavera verão tendencia em moda feminina inspiração Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e1228]':
+              - generic [ref=e1229]:
+                - generic "Blusa camiseta t-shirt 100% algodão gola redonda estampa primavera verão tendencia em moda feminina inspiração" [ref=e1230]:
+                  - generic [ref=e1233] [cursor=pointer]: Blusa camiseta t-shirt 100% algodão gola redonda estampa primavera verão tendencia em moda feminina inspiração
+                - generic "Carlos Shein" [ref=e1234]
+                - generic [ref=e1235]:
+                  - 'link "Variantes (1) icon: down" [ref=e1237] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e1238]':
+                      - img [ref=e1239]
+                  - generic [ref=e1242]: Perda de Variante
+            - cell "018" [ref=e1243]:
+              - generic "018" [ref=e1245]:
+                - generic [ref=e1246] [cursor=pointer]: "018"
+            - cell "R$‎‎ 109,90" [ref=e1247]:
+              - generic [ref=e1249]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1250]:
+              - generic [ref=e1252]: R$‎‎ 33,90
+            - cell "-" [ref=e1253]:
+              - generic [ref=e1255]: "-"
+            - cell "100000" [ref=e1256]:
+              - generic [ref=e1259]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1260]:
+              - generic [ref=e1261]:
+                - generic "20/03/2026 15:51:41" [ref=e1262]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1263]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1264]:
+              - generic [ref=e1266] [cursor=pointer]:
+                - link "Editar" [ref=e1268]:
+                  - /url: /products/shein/edit/8554887782365840
+                - link "Mais " [ref=e1269]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1270]: 
+          - 'row "Camisetas T-shirts Estampadas BORBOLETA E FLORES Femininas Blusa 100% Algodão Camiseta Gola redonda e Manga Curta Carlos Shein Variantes (3) icon: down Perda de Variante 004 R$‎‎ 109,90 R$‎‎ 33,90 - 300000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1271]':
+            - cell [ref=e1272]:
+              - checkbox [ref=e1275] [cursor=pointer]
+            - cell [ref=e1277]:
+              - generic [ref=e1282] [cursor=pointer]:
+                - img
+            - 'cell "Camisetas T-shirts Estampadas BORBOLETA E FLORES Femininas Blusa 100% Algodão Camiseta Gola redonda e Manga Curta Carlos Shein Variantes (3) icon: down Perda de Variante" [ref=e1283]':
+              - generic [ref=e1284]:
+                - generic "Camisetas T-shirts Estampadas BORBOLETA E FLORES Femininas Blusa 100% Algodão Camiseta Gola redonda e Manga Curta" [ref=e1285]:
+                  - generic [ref=e1288] [cursor=pointer]: Camisetas T-shirts Estampadas BORBOLETA E FLORES Femininas Blusa 100% Algodão Camiseta Gola redonda e Manga Curta
+                - generic "Carlos Shein" [ref=e1289]
+                - generic [ref=e1290]:
+                  - 'link "Variantes (3) icon: down" [ref=e1292] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (3)
+                    - 'generic "icon: down" [ref=e1293]':
+                      - img [ref=e1294]
+                  - generic [ref=e1297]: Perda de Variante
+            - cell "004" [ref=e1298]:
+              - generic "004" [ref=e1300]:
+                - generic [ref=e1301] [cursor=pointer]: "004"
+            - cell "R$‎‎ 109,90" [ref=e1302]:
+              - generic [ref=e1304]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1305]:
+              - generic [ref=e1307]: R$‎‎ 33,90
+            - cell "-" [ref=e1308]:
+              - generic [ref=e1310]: "-"
+            - cell "300000" [ref=e1311]:
+              - generic [ref=e1314]: "300000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1315]:
+              - generic [ref=e1316]:
+                - generic "20/03/2026 15:51:41" [ref=e1317]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1318]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1319]:
+              - generic [ref=e1321] [cursor=pointer]:
+                - link "Editar" [ref=e1323]:
+                  - /url: /products/shein/edit/8554887782365824
+                - link "Mais " [ref=e1324]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1325]: 
+          - 'row "Tshirt Feminina Estilosa Estampada Urso Rosa e Azul Lançamento Camiseta 100% Algodão Camiseta Gola Redonda Carlos Shein Variantes (1) icon: down Perda de Variante 030 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1326]':
+            - cell [ref=e1327]:
+              - checkbox [ref=e1330] [cursor=pointer]
+            - cell [ref=e1332]:
+              - generic [ref=e1337] [cursor=pointer]:
+                - img
+            - 'cell "Tshirt Feminina Estilosa Estampada Urso Rosa e Azul Lançamento Camiseta 100% Algodão Camiseta Gola Redonda Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e1338]':
+              - generic [ref=e1339]:
+                - generic "Tshirt Feminina Estilosa Estampada Urso Rosa e Azul Lançamento Camiseta 100% Algodão Camiseta Gola Redonda" [ref=e1340]:
+                  - generic [ref=e1343] [cursor=pointer]: Tshirt Feminina Estilosa Estampada Urso Rosa e Azul Lançamento Camiseta 100% Algodão Camiseta Gola Redonda
+                - generic "Carlos Shein" [ref=e1344]
+                - generic [ref=e1345]:
+                  - 'link "Variantes (1) icon: down" [ref=e1347] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e1348]':
+                      - img [ref=e1349]
+                  - generic [ref=e1352]: Perda de Variante
+            - cell "030" [ref=e1353]:
+              - generic "030" [ref=e1355]:
+                - generic [ref=e1356] [cursor=pointer]: "030"
+            - cell "R$‎‎ 109,90" [ref=e1357]:
+              - generic [ref=e1359]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1360]:
+              - generic [ref=e1362]: R$‎‎ 33,90
+            - cell "-" [ref=e1363]:
+              - generic [ref=e1365]: "-"
+            - cell "100000" [ref=e1366]:
+              - generic [ref=e1369]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1370]:
+              - generic [ref=e1371]:
+                - generic "20/03/2026 15:51:41" [ref=e1372]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1373]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1374]:
+              - generic [ref=e1376] [cursor=pointer]:
+                - link "Editar" [ref=e1378]:
+                  - /url: /products/shein/edit/8554887782365792
+                - link "Mais " [ref=e1379]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1380]: 
+          - 'row "Camiseta t-shirt feminina modelo lançamento estampa LONDON camiseta 100% algodão elegante Carlos Shein Variantes (1) icon: down Perda de Variante 034 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1381]':
+            - cell [ref=e1382]:
+              - checkbox [ref=e1385] [cursor=pointer]
+            - cell [ref=e1387]:
+              - generic [ref=e1392] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta t-shirt feminina modelo lançamento estampa LONDON camiseta 100% algodão elegante Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e1393]':
+              - generic [ref=e1394]:
+                - generic "Camiseta t-shirt feminina modelo lançamento estampa LONDON camiseta 100% algodão elegante" [ref=e1395]:
+                  - generic [ref=e1398] [cursor=pointer]: Camiseta t-shirt feminina modelo lançamento estampa LONDON camiseta 100% algodão elegante
+                - generic "Carlos Shein" [ref=e1399]
+                - generic [ref=e1400]:
+                  - 'link "Variantes (1) icon: down" [ref=e1402] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e1403]':
+                      - img [ref=e1404]
+                  - generic [ref=e1407]: Perda de Variante
+            - cell "034" [ref=e1408]:
+              - generic "034" [ref=e1410]:
+                - generic [ref=e1411] [cursor=pointer]: "034"
+            - cell "R$‎‎ 109,90" [ref=e1412]:
+              - generic [ref=e1414]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1415]:
+              - generic [ref=e1417]: R$‎‎ 33,90
+            - cell "-" [ref=e1418]:
+              - generic [ref=e1420]: "-"
+            - cell "100000" [ref=e1421]:
+              - generic [ref=e1424]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1425]:
+              - generic [ref=e1426]:
+                - generic "20/03/2026 15:51:41" [ref=e1427]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1428]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1429]:
+              - generic [ref=e1431] [cursor=pointer]:
+                - link "Editar" [ref=e1433]:
+                  - /url: /products/shein/edit/8554887782365786
+                - link "Mais " [ref=e1434]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1435]: 
+          - 'row "Camiseta T-Shirt Feminina Estampa The Coffee Elegante Blusa Algodão Casual Manga Curta Camisa Gola Redonda Carlos Shein Variantes (1) icon: down Perda de Variante 037 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1436]':
+            - cell [ref=e1437]:
+              - checkbox [ref=e1440] [cursor=pointer]
+            - cell [ref=e1442]:
+              - generic [ref=e1447] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta T-Shirt Feminina Estampa The Coffee Elegante Blusa Algodão Casual Manga Curta Camisa Gola Redonda Carlos Shein Variantes (1) icon: down Perda de Variante" [ref=e1448]':
+              - generic [ref=e1449]:
+                - generic "Camiseta T-Shirt Feminina Estampa The Coffee Elegante Blusa Algodão Casual Manga Curta Camisa Gola Redonda" [ref=e1450]:
+                  - generic [ref=e1453] [cursor=pointer]: Camiseta T-Shirt Feminina Estampa The Coffee Elegante Blusa Algodão Casual Manga Curta Camisa Gola Redonda
+                - generic "Carlos Shein" [ref=e1454]
+                - generic [ref=e1455]:
+                  - 'link "Variantes (1) icon: down" [ref=e1457] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (1)
+                    - 'generic "icon: down" [ref=e1458]':
+                      - img [ref=e1459]
+                  - generic [ref=e1462]: Perda de Variante
+            - cell "037" [ref=e1463]:
+              - generic "037" [ref=e1465]:
+                - generic [ref=e1466] [cursor=pointer]: "037"
+            - cell "R$‎‎ 109,90" [ref=e1467]:
+              - generic [ref=e1469]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1470]:
+              - generic [ref=e1472]: R$‎‎ 33,90
+            - cell "-" [ref=e1473]:
+              - generic [ref=e1475]: "-"
+            - cell "100000" [ref=e1476]:
+              - generic [ref=e1479]: "100000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1480]:
+              - generic [ref=e1481]:
+                - generic "20/03/2026 15:51:41" [ref=e1482]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1483]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1484]:
+              - generic [ref=e1486] [cursor=pointer]:
+                - link "Editar" [ref=e1488]:
+                  - /url: /products/shein/edit/8554887782365780
+                - link "Mais " [ref=e1489]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1490]: 
+          - 'row "Camisa feminina t-shirt flor margaridas máximo conforto casual modelo 100% algodão manga curta e gola redonda Carlos Shein Variantes (3) icon: down Perda de Variante 054 R$‎‎ 109,90 R$‎‎ 33,90 - 300000 20/03/2026 15:51 18/05/2026 16:55 Editar Mais " [ref=e1491]':
+            - cell [ref=e1492]:
+              - checkbox [ref=e1495] [cursor=pointer]
+            - cell [ref=e1497]:
+              - generic [ref=e1502] [cursor=pointer]:
+                - img
+            - 'cell "Camisa feminina t-shirt flor margaridas máximo conforto casual modelo 100% algodão manga curta e gola redonda Carlos Shein Variantes (3) icon: down Perda de Variante" [ref=e1503]':
+              - generic [ref=e1504]:
+                - generic "Camisa feminina t-shirt flor margaridas máximo conforto casual modelo 100% algodão manga curta e gola redonda" [ref=e1505]:
+                  - generic [ref=e1508] [cursor=pointer]: Camisa feminina t-shirt flor margaridas máximo conforto casual modelo 100% algodão manga curta e gola redonda
+                - generic "Carlos Shein" [ref=e1509]
+                - generic [ref=e1510]:
+                  - 'link "Variantes (3) icon: down" [ref=e1512] [cursor=pointer]':
+                    - /url: javascript:void(0)
+                    - text: Variantes (3)
+                    - 'generic "icon: down" [ref=e1513]':
+                      - img [ref=e1514]
+                  - generic [ref=e1517]: Perda de Variante
+            - cell "054" [ref=e1518]:
+              - generic "054" [ref=e1520]:
+                - generic [ref=e1521] [cursor=pointer]: "054"
+            - cell "R$‎‎ 109,90" [ref=e1522]:
+              - generic [ref=e1524]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1525]:
+              - generic [ref=e1527]: R$‎‎ 33,90
+            - cell "-" [ref=e1528]:
+              - generic [ref=e1530]: "-"
+            - cell "300000" [ref=e1531]:
+              - generic [ref=e1534]: "300000"
+            - cell "20/03/2026 15:51 18/05/2026 16:55" [ref=e1535]:
+              - generic [ref=e1536]:
+                - generic "20/03/2026 15:51:41" [ref=e1537]: 20/03/2026 15:51
+                - generic "18/05/2026 16:55:55" [ref=e1538]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1539]:
+              - generic [ref=e1541] [cursor=pointer]:
+                - link "Editar" [ref=e1543]:
+                  - /url: /products/shein/edit/8554887782365764
+                - link "Mais " [ref=e1544]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1545]: 
+          - 'row "Camiseta Masculina Estampada Modelo Praia Camisa 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Primavera Verão Carlos Shein Variantes (5) icon: down 1516 R$‎‎ 109,90 R$‎‎ 33,90 - 500000 20/03/2026 15:58 18/05/2026 16:55 Editar Mais " [ref=e1546]':
+            - cell [ref=e1547]:
+              - checkbox [ref=e1550] [cursor=pointer]
+            - cell [ref=e1552]:
+              - generic [ref=e1557] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Modelo Praia Camisa 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Primavera Verão Carlos Shein Variantes (5) icon: down" [ref=e1558]':
+              - generic [ref=e1559]:
+                - generic "Camiseta Masculina Estampada Modelo Praia Camisa 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Primavera Verão" [ref=e1560]:
+                  - generic [ref=e1563] [cursor=pointer]: Camiseta Masculina Estampada Modelo Praia Camisa 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Primavera Verão
+                - generic "Carlos Shein" [ref=e1564]
+                - 'link "Variantes (5) icon: down" [ref=e1567] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e1568]':
+                    - img [ref=e1569]
+            - cell "1516" [ref=e1571]:
+              - generic "1516" [ref=e1573]:
+                - generic [ref=e1574] [cursor=pointer]: "1516"
+            - cell "R$‎‎ 109,90" [ref=e1575]:
+              - generic [ref=e1577]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1578]:
+              - generic [ref=e1580]: R$‎‎ 33,90
+            - cell "-" [ref=e1581]:
+              - generic [ref=e1583]: "-"
+            - cell "500000" [ref=e1584]:
+              - generic [ref=e1587]: "500000"
+            - cell "20/03/2026 15:58 18/05/2026 16:55" [ref=e1588]:
+              - generic [ref=e1589]:
+                - generic "20/03/2026 15:58:52" [ref=e1590]: 20/03/2026 15:58
+                - generic "18/05/2026 16:55:55" [ref=e1591]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1592]:
+              - generic [ref=e1594] [cursor=pointer]:
+                - link "Editar" [ref=e1596]:
+                  - /url: /products/shein/edit/8554887782374533
+                - link "Mais " [ref=e1597]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1598]: 
+          - 'row "Camiseta Masculina Motociclista Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Carlos Shein Variantes (5) icon: down 1409 R$‎‎ 109,90 R$‎‎ 33,90 - 250000 20/03/2026 15:58 18/05/2026 16:55 Editar Mais " [ref=e1599]':
+            - cell [ref=e1600]:
+              - checkbox [ref=e1603] [cursor=pointer]
+            - cell [ref=e1605]:
+              - generic [ref=e1610] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Motociclista Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Carlos Shein Variantes (5) icon: down" [ref=e1611]':
+              - generic [ref=e1612]:
+                - generic "Camiseta Masculina Motociclista Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão" [ref=e1613]:
+                  - generic [ref=e1616] [cursor=pointer]: Camiseta Masculina Motociclista Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão
+                - generic "Carlos Shein" [ref=e1617]
+                - 'link "Variantes (5) icon: down" [ref=e1620] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e1621]':
+                    - img [ref=e1622]
+            - cell "1409" [ref=e1624]:
+              - generic "1409" [ref=e1626]:
+                - generic [ref=e1627] [cursor=pointer]: "1409"
+            - cell "R$‎‎ 109,90" [ref=e1628]:
+              - generic [ref=e1630]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1631]:
+              - generic [ref=e1633]: R$‎‎ 33,90
+            - cell "-" [ref=e1634]:
+              - generic [ref=e1636]: "-"
+            - cell "250000" [ref=e1637]:
+              - generic [ref=e1640]: "250000"
+            - cell "20/03/2026 15:58 18/05/2026 16:55" [ref=e1641]:
+              - generic [ref=e1642]:
+                - generic "20/03/2026 15:58:22" [ref=e1643]: 20/03/2026 15:58
+                - generic "18/05/2026 16:55:55" [ref=e1644]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1645]:
+              - generic [ref=e1647] [cursor=pointer]:
+                - link "Editar" [ref=e1649]:
+                  - /url: /products/shein/edit/8554887782374349
+                - link "Mais " [ref=e1650]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1651]: 
+          - 'row "Camiseta Masculina Estampada Estilo Gato Música Blusa 100% Algodão Manga Curta Gola Redonda Masculino Confortável Carlos Shein Variantes (12) icon: down 1403 R$‎‎ 109,90 R$‎‎ 33,90 - 11999988 20/03/2026 15:58 18/05/2026 16:55 Editar Mais " [ref=e1652]':
+            - cell [ref=e1653]:
+              - checkbox [ref=e1656] [cursor=pointer]
+            - cell [ref=e1658]:
+              - generic [ref=e1663] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Estilo Gato Música Blusa 100% Algodão Manga Curta Gola Redonda Masculino Confortável Carlos Shein Variantes (12) icon: down" [ref=e1664]':
+              - generic [ref=e1665]:
+                - generic "Camiseta Masculina Estampada Estilo Gato Música Blusa 100% Algodão Manga Curta Gola Redonda Masculino Confortável" [ref=e1666]:
+                  - generic [ref=e1669] [cursor=pointer]: Camiseta Masculina Estampada Estilo Gato Música Blusa 100% Algodão Manga Curta Gola Redonda Masculino Confortável
+                - generic "Carlos Shein" [ref=e1670]
+                - 'link "Variantes (12) icon: down" [ref=e1673] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (12)
+                  - 'generic "icon: down" [ref=e1674]':
+                    - img [ref=e1675]
+            - cell "1403" [ref=e1677]:
+              - generic "1403" [ref=e1679]:
+                - generic [ref=e1680] [cursor=pointer]: "1403"
+            - cell "R$‎‎ 109,90" [ref=e1681]:
+              - generic [ref=e1683]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1684]:
+              - generic [ref=e1686]: R$‎‎ 33,90
+            - cell "-" [ref=e1687]:
+              - generic [ref=e1689]: "-"
+            - cell "11999988" [ref=e1690]:
+              - generic [ref=e1693]: "11999988"
+            - cell "20/03/2026 15:58 18/05/2026 16:55" [ref=e1694]:
+              - generic [ref=e1695]:
+                - generic "20/03/2026 15:58:06" [ref=e1696]: 20/03/2026 15:58
+                - generic "18/05/2026 16:55:55" [ref=e1697]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1698]:
+              - generic [ref=e1700] [cursor=pointer]:
+                - link "Editar" [ref=e1702]:
+                  - /url: /products/shein/edit/8554887782374047
+                - link "Mais " [ref=e1703]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1704]: 
+          - 'row "Camiseta Masculina Estilo Surf Praia Estampada Qs 01 Camiseta 100% Algodão Manga Curta de Verão Masculino Confortável Carlos Shein Variantes (44) icon: down 1400 R$‎‎ 109,90 R$‎‎ 33,90 - 43999956 20/03/2026 15:58 18/05/2026 16:55 Editar Mais " [ref=e1705]':
+            - cell [ref=e1706]:
+              - checkbox [ref=e1709] [cursor=pointer]
+            - cell [ref=e1711]:
+              - generic [ref=e1716] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estilo Surf Praia Estampada Qs 01 Camiseta 100% Algodão Manga Curta de Verão Masculino Confortável Carlos Shein Variantes (44) icon: down" [ref=e1717]':
+              - generic [ref=e1718]:
+                - generic "Camiseta Masculina Estilo Surf Praia Estampada Qs 01 Camiseta 100% Algodão Manga Curta de Verão Masculino Confortável" [ref=e1719]:
+                  - generic [ref=e1722] [cursor=pointer]: Camiseta Masculina Estilo Surf Praia Estampada Qs 01 Camiseta 100% Algodão Manga Curta de Verão Masculino Confortável
+                - generic "Carlos Shein" [ref=e1723]
+                - 'link "Variantes (44) icon: down" [ref=e1726] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (44)
+                  - 'generic "icon: down" [ref=e1727]':
+                    - img [ref=e1728]
+            - cell "1400" [ref=e1730]:
+              - generic "1400" [ref=e1732]:
+                - generic [ref=e1733] [cursor=pointer]: "1400"
+            - cell "R$‎‎ 109,90" [ref=e1734]:
+              - generic [ref=e1736]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1737]:
+              - generic [ref=e1739]: R$‎‎ 33,90
+            - cell "-" [ref=e1740]:
+              - generic [ref=e1742]: "-"
+            - cell "43999956" [ref=e1743]:
+              - generic [ref=e1746]: "43999956"
+            - cell "20/03/2026 15:58 18/05/2026 16:55" [ref=e1747]:
+              - generic [ref=e1748]:
+                - generic "20/03/2026 15:58:06" [ref=e1749]: 20/03/2026 15:58
+                - generic "18/05/2026 16:55:55" [ref=e1750]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1751]:
+              - generic [ref=e1753] [cursor=pointer]:
+                - link "Editar" [ref=e1755]:
+                  - /url: /products/shein/edit/8554887782374002
+                - link "Mais " [ref=e1756]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1757]: 
+          - 'row "Camiseta Masculina Academia Rosca Feroz Cachorro Estampada 100% Algodão Confortável Estilo Primavera Verão Carlos Shein Variantes (48) icon: down 1408 R$‎‎ 109,90 R$‎‎ 33,90 - 47999952 20/03/2026 15:58 18/05/2026 16:55 Editar Mais " [ref=e1758]':
+            - cell [ref=e1759]:
+              - checkbox [ref=e1762] [cursor=pointer]
+            - cell [ref=e1764]:
+              - generic [ref=e1769] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Academia Rosca Feroz Cachorro Estampada 100% Algodão Confortável Estilo Primavera Verão Carlos Shein Variantes (48) icon: down" [ref=e1770]':
+              - generic [ref=e1771]:
+                - generic "Camiseta Masculina Academia Rosca Feroz Cachorro Estampada 100% Algodão Confortável Estilo Primavera Verão" [ref=e1772]:
+                  - generic [ref=e1775] [cursor=pointer]: Camiseta Masculina Academia Rosca Feroz Cachorro Estampada 100% Algodão Confortável Estilo Primavera Verão
+                - generic "Carlos Shein" [ref=e1776]
+                - 'link "Variantes (48) icon: down" [ref=e1779] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (48)
+                  - 'generic "icon: down" [ref=e1780]':
+                    - img [ref=e1781]
+            - cell "1408" [ref=e1783]:
+              - generic "1408" [ref=e1785]:
+                - generic [ref=e1786] [cursor=pointer]: "1408"
+            - cell "R$‎‎ 109,90" [ref=e1787]:
+              - generic [ref=e1789]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1790]:
+              - generic [ref=e1792]: R$‎‎ 33,90
+            - cell "-" [ref=e1793]:
+              - generic [ref=e1795]: "-"
+            - cell "47999952" [ref=e1796]:
+              - generic [ref=e1799]: "47999952"
+            - cell "20/03/2026 15:58 18/05/2026 16:55" [ref=e1800]:
+              - generic [ref=e1801]:
+                - generic "20/03/2026 15:58:06" [ref=e1802]: 20/03/2026 15:58
+                - generic "18/05/2026 16:55:55" [ref=e1803]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1804]:
+              - generic [ref=e1806] [cursor=pointer]:
+                - link "Editar" [ref=e1808]:
+                  - /url: /products/shein/edit/8554887782373927
+                - link "Mais " [ref=e1809]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1810]: 
+          - 'row "Camiseta Masculina Estampada Game Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Modelo Casual Carlos Shein Variantes (60) icon: down 1389 R$‎‎ 109,90 R$‎‎ 33,90 - 3000000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e1811]':
+            - cell [ref=e1812]:
+              - checkbox [ref=e1815] [cursor=pointer]
+            - cell [ref=e1817]:
+              - generic [ref=e1822] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Game Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Modelo Casual Carlos Shein Variantes (60) icon: down" [ref=e1823]':
+              - generic [ref=e1824]:
+                - generic "Camiseta Masculina Estampada Game Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Modelo Casual" [ref=e1825]:
+                  - generic [ref=e1828] [cursor=pointer]: Camiseta Masculina Estampada Game Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Modelo Casual
+                - generic "Carlos Shein" [ref=e1829]
+                - 'link "Variantes (60) icon: down" [ref=e1832] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (60)
+                  - 'generic "icon: down" [ref=e1833]':
+                    - img [ref=e1834]
+            - cell "1389" [ref=e1836]:
+              - generic "1389" [ref=e1838]:
+                - generic [ref=e1839] [cursor=pointer]: "1389"
+            - cell "R$‎‎ 109,90" [ref=e1840]:
+              - generic [ref=e1842]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1843]:
+              - generic [ref=e1845]: R$‎‎ 33,90
+            - cell "-" [ref=e1846]:
+              - generic [ref=e1848]: "-"
+            - cell "3000000" [ref=e1849]:
+              - generic [ref=e1852]: "3000000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e1853]:
+              - generic [ref=e1854]:
+                - generic "20/03/2026 15:57:46" [ref=e1855]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e1856]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1857]:
+              - generic [ref=e1859] [cursor=pointer]:
+                - link "Editar" [ref=e1861]:
+                  - /url: /products/shein/edit/8554887782373039
+                - link "Mais " [ref=e1862]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1863]: 
+          - 'row "Camiseta Masculina Estampada Jesus is still king Moda Evangelica Cristão Camisa 100% Algodão Gola Redonda e Manga Curta Estilo Primavera Verão Carlos Shein Variantes (50) icon: down 1394 R$‎‎ 109,90 R$‎‎ 33,90 - 500000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e1864]':
+            - cell [ref=e1865]:
+              - checkbox [ref=e1868] [cursor=pointer]
+            - cell [ref=e1870]:
+              - generic [ref=e1875] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Jesus is still king Moda Evangelica Cristão Camisa 100% Algodão Gola Redonda e Manga Curta Estilo Primavera Verão Carlos Shein Variantes (50) icon: down" [ref=e1876]':
+              - generic [ref=e1877]:
+                - generic "Camiseta Masculina Estampada Jesus is still king Moda Evangelica Cristão Camisa 100% Algodão Gola Redonda e Manga Curta Estilo Primavera Verão" [ref=e1878]:
+                  - generic [ref=e1881] [cursor=pointer]: Camiseta Masculina Estampada Jesus is still king Moda Evangelica Cristão Camisa 100% Algodão Gola Redonda e Manga Curta Estilo Primavera Verão
+                - generic "Carlos Shein" [ref=e1882]
+                - 'link "Variantes (50) icon: down" [ref=e1885] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (50)
+                  - 'generic "icon: down" [ref=e1886]':
+                    - img [ref=e1887]
+            - cell "1394" [ref=e1889]:
+              - generic "1394" [ref=e1891]:
+                - generic [ref=e1892] [cursor=pointer]: "1394"
+            - cell "R$‎‎ 109,90" [ref=e1893]:
+              - generic [ref=e1895]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1896]:
+              - generic [ref=e1898]: R$‎‎ 33,90
+            - cell "-" [ref=e1899]:
+              - generic [ref=e1901]: "-"
+            - cell "500000" [ref=e1902]:
+              - generic [ref=e1905]: "500000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e1906]:
+              - generic [ref=e1907]:
+                - generic "20/03/2026 15:57:46" [ref=e1908]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e1909]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1910]:
+              - generic [ref=e1912] [cursor=pointer]:
+                - link "Editar" [ref=e1914]:
+                  - /url: /products/shein/edit/8554887782372866
+                - link "Mais " [ref=e1915]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1916]: 
+          - 'row "Camiseta Masculina Estampada Novembro Azul Blusa 100% Algodão Tendencia Campanha Camiseta Manga Curta Para o Verão Carlos Shein Variantes (1) icon: down 1398 R$‎‎ 109,90 R$‎‎ 33,90 - 999999 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e1917]':
+            - cell [ref=e1918]:
+              - checkbox [ref=e1921] [cursor=pointer]
+            - cell [ref=e1923]:
+              - generic [ref=e1928] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Novembro Azul Blusa 100% Algodão Tendencia Campanha Camiseta Manga Curta Para o Verão Carlos Shein Variantes (1) icon: down" [ref=e1929]':
+              - generic [ref=e1930]:
+                - generic "Camiseta Masculina Estampada Novembro Azul Blusa 100% Algodão Tendencia Campanha Camiseta Manga Curta Para o Verão" [ref=e1931]:
+                  - generic [ref=e1934] [cursor=pointer]: Camiseta Masculina Estampada Novembro Azul Blusa 100% Algodão Tendencia Campanha Camiseta Manga Curta Para o Verão
+                - generic "Carlos Shein" [ref=e1935]
+                - 'link "Variantes (1) icon: down" [ref=e1938] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (1)
+                  - 'generic "icon: down" [ref=e1939]':
+                    - img [ref=e1940]
+            - cell "1398" [ref=e1942]:
+              - generic "1398" [ref=e1944]:
+                - generic [ref=e1945] [cursor=pointer]: "1398"
+            - cell "R$‎‎ 109,90" [ref=e1946]:
+              - generic [ref=e1948]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e1949]:
+              - generic [ref=e1951]: R$‎‎ 33,90
+            - cell "-" [ref=e1952]:
+              - generic [ref=e1954]: "-"
+            - cell "999999" [ref=e1955]:
+              - generic [ref=e1958]: "999999"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e1959]:
+              - generic [ref=e1960]:
+                - generic "20/03/2026 15:57:45" [ref=e1961]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e1962]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e1963]:
+              - generic [ref=e1965] [cursor=pointer]:
+                - link "Editar" [ref=e1967]:
+                  - /url: /products/shein/edit/8554887782372803
+                - link "Mais " [ref=e1968]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e1969]: 
+          - 'row "Camiseta Masculina Salmos 121:3 Religioso Estampada 100% Algodão Moda Evangelica Cristão Confortável Casual Modelo Primavera Verão Carlos Shein Variantes (44) icon: down 1399 R$‎‎ 109,90 R$‎‎ 33,90 - 440000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e1970]':
+            - cell [ref=e1971]:
+              - checkbox [ref=e1974] [cursor=pointer]
+            - cell [ref=e1976]:
+              - generic [ref=e1981] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Salmos 121:3 Religioso Estampada 100% Algodão Moda Evangelica Cristão Confortável Casual Modelo Primavera Verão Carlos Shein Variantes (44) icon: down" [ref=e1982]':
+              - generic [ref=e1983]:
+                - generic "Camiseta Masculina Salmos 121:3 Religioso Estampada 100% Algodão Moda Evangelica Cristão Confortável Casual Modelo Primavera Verão" [ref=e1984]:
+                  - generic [ref=e1987] [cursor=pointer]: Camiseta Masculina Salmos 121:3 Religioso Estampada 100% Algodão Moda Evangelica Cristão Confortável Casual Modelo Primavera Verão
+                - generic "Carlos Shein" [ref=e1988]
+                - 'link "Variantes (44) icon: down" [ref=e1991] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (44)
+                  - 'generic "icon: down" [ref=e1992]':
+                    - img [ref=e1993]
+            - cell "1399" [ref=e1995]:
+              - generic "1399" [ref=e1997]:
+                - generic [ref=e1998] [cursor=pointer]: "1399"
+            - cell "R$‎‎ 109,90" [ref=e1999]:
+              - generic [ref=e2001]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2002]:
+              - generic [ref=e2004]: R$‎‎ 33,90
+            - cell "-" [ref=e2005]:
+              - generic [ref=e2007]: "-"
+            - cell "440000" [ref=e2008]:
+              - generic [ref=e2011]: "440000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2012]:
+              - generic [ref=e2013]:
+                - generic "20/03/2026 15:57:45" [ref=e2014]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2015]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2016]:
+              - generic [ref=e2018] [cursor=pointer]:
+                - link "Editar" [ref=e2020]:
+                  - /url: /products/shein/edit/8554887782372758
+                - link "Mais " [ref=e2021]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2022]: 
+          - 'row "Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Carlos Shein Variantes (5) icon: down 1367 R$‎‎ 109,90 R$‎‎ 33,90 - 50000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2023]':
+            - cell [ref=e2024]:
+              - checkbox [ref=e2027] [cursor=pointer]
+            - cell [ref=e2029]:
+              - generic [ref=e2034] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão Carlos Shein Variantes (5) icon: down" [ref=e2035]':
+              - generic [ref=e2036]:
+                - generic "Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão" [ref=e2037]:
+                  - generic [ref=e2040] [cursor=pointer]: Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta Gola Redonda Confortável Estilo Primavera Verão
+                - generic "Carlos Shein" [ref=e2041]
+                - 'link "Variantes (5) icon: down" [ref=e2044] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2045]':
+                    - img [ref=e2046]
+            - cell "1367" [ref=e2048]:
+              - generic "1367" [ref=e2050]:
+                - generic [ref=e2051] [cursor=pointer]: "1367"
+            - cell "R$‎‎ 109,90" [ref=e2052]:
+              - generic [ref=e2054]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2055]:
+              - generic [ref=e2057]: R$‎‎ 33,90
+            - cell "-" [ref=e2058]:
+              - generic [ref=e2060]: "-"
+            - cell "50000" [ref=e2061]:
+              - generic [ref=e2064]: "50000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2065]:
+              - generic [ref=e2066]:
+                - generic "20/03/2026 15:57:45" [ref=e2067]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2068]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2069]:
+              - generic [ref=e2071] [cursor=pointer]:
+                - link "Editar" [ref=e2073]:
+                  - /url: /products/shein/edit/8554887782372752
+                - link "Mais " [ref=e2074]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2075]: 
+          - 'row "Camiseta Feminina T-Shirt 100% Algodão Estampada com Design Elegante Cachorro Com Fone de Ouvido Estiloso, T-shirt Casual De Gola Redonda Manga Curta Perfeita para o Verão Carlos Shein Variantes (50) icon: down 1363 R$‎‎ 109,90 R$‎‎ 33,90 - 500000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2076]':
+            - cell [ref=e2077]:
+              - checkbox [ref=e2080] [cursor=pointer]
+            - cell [ref=e2082]:
+              - generic [ref=e2087] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Feminina T-Shirt 100% Algodão Estampada com Design Elegante Cachorro Com Fone de Ouvido Estiloso, T-shirt Casual De Gola Redonda Manga Curta Perfeita para o Verão Carlos Shein Variantes (50) icon: down" [ref=e2088]':
+              - generic [ref=e2089]:
+                - generic "Camiseta Feminina T-Shirt 100% Algodão Estampada com Design Elegante Cachorro Com Fone de Ouvido Estiloso, T-shirt Casual De Gola Redonda Manga Curta Perfeita para o Verão" [ref=e2090]:
+                  - generic [ref=e2093] [cursor=pointer]: Camiseta Feminina T-Shirt 100% Algodão Estampada com Design Elegante Cachorro Com Fone de Ouvido Estiloso, T-shirt Casual De Gola Redonda Manga Curta Perfeita para o Verão
+                - generic "Carlos Shein" [ref=e2094]
+                - 'link "Variantes (50) icon: down" [ref=e2097] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (50)
+                  - 'generic "icon: down" [ref=e2098]':
+                    - img [ref=e2099]
+            - cell "1363" [ref=e2101]:
+              - generic "1363" [ref=e2103]:
+                - generic [ref=e2104] [cursor=pointer]: "1363"
+            - cell "R$‎‎ 109,90" [ref=e2105]:
+              - generic [ref=e2107]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2108]:
+              - generic [ref=e2110]: R$‎‎ 33,90
+            - cell "-" [ref=e2111]:
+              - generic [ref=e2113]: "-"
+            - cell "500000" [ref=e2114]:
+              - generic [ref=e2117]: "500000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2118]:
+              - generic [ref=e2119]:
+                - generic "20/03/2026 15:57:45" [ref=e2120]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2121]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2122]:
+              - generic [ref=e2124] [cursor=pointer]:
+                - link "Editar" [ref=e2126]:
+                  - /url: /products/shein/edit/8554887782372701
+                - link "Mais " [ref=e2127]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2128]: 
+          - 'row "Camiseta Masculina Estampada 100% Algodão Estampada com Design Elegante Esporte Natação Nadadora Camiseta Casual Gola Redonda Manga Curta Perfeita para Primavera Verão Carlos Shein Variantes (40) icon: down 1361 R$‎‎ 109,90 R$‎‎ 33,90 - 400000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2129]':
+            - cell [ref=e2130]:
+              - checkbox [ref=e2133] [cursor=pointer]
+            - cell [ref=e2135]:
+              - generic [ref=e2140] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada 100% Algodão Estampada com Design Elegante Esporte Natação Nadadora Camiseta Casual Gola Redonda Manga Curta Perfeita para Primavera Verão Carlos Shein Variantes (40) icon: down" [ref=e2141]':
+              - generic [ref=e2142]:
+                - generic "Camiseta Masculina Estampada 100% Algodão Estampada com Design Elegante Esporte Natação Nadadora Camiseta Casual Gola Redonda Manga Curta Perfeita para Primavera Verão" [ref=e2143]:
+                  - generic [ref=e2146] [cursor=pointer]: Camiseta Masculina Estampada 100% Algodão Estampada com Design Elegante Esporte Natação Nadadora Camiseta Casual Gola Redonda Manga Curta Perfeita para Primavera Verão
+                - generic "Carlos Shein" [ref=e2147]
+                - 'link "Variantes (40) icon: down" [ref=e2150] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (40)
+                  - 'generic "icon: down" [ref=e2151]':
+                    - img [ref=e2152]
+            - cell "1361" [ref=e2154]:
+              - generic "1361" [ref=e2156]:
+                - generic [ref=e2157] [cursor=pointer]: "1361"
+            - cell "R$‎‎ 109,90" [ref=e2158]:
+              - generic [ref=e2160]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2161]:
+              - generic [ref=e2163]: R$‎‎ 33,90
+            - cell "-" [ref=e2164]:
+              - generic [ref=e2166]: "-"
+            - cell "400000" [ref=e2167]:
+              - generic [ref=e2170]: "400000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2171]:
+              - generic [ref=e2172]:
+                - generic "20/03/2026 15:57:45" [ref=e2173]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2174]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2175]:
+              - generic [ref=e2177] [cursor=pointer]:
+                - link "Editar" [ref=e2179]:
+                  - /url: /products/shein/edit/8554887782372660
+                - link "Mais " [ref=e2180]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2181]: 
+          - 'row "Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Estilo Primavera Verão Moda Casual Carlos Shein Variantes (20) icon: down 1348 R$‎‎ 109,90 R$‎‎ 33,90 - 200000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2182]':
+            - cell [ref=e2183]:
+              - checkbox [ref=e2186] [cursor=pointer]
+            - cell [ref=e2188]:
+              - generic [ref=e2193] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Estilo Primavera Verão Moda Casual Carlos Shein Variantes (20) icon: down" [ref=e2194]':
+              - generic [ref=e2195]:
+                - generic "Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Estilo Primavera Verão Moda Casual" [ref=e2196]:
+                  - generic [ref=e2199] [cursor=pointer]: Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta Gola Redonda Estilo Primavera Verão Moda Casual
+                - generic "Carlos Shein" [ref=e2200]
+                - 'link "Variantes (20) icon: down" [ref=e2203] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e2204]':
+                    - img [ref=e2205]
+            - cell "1348" [ref=e2207]:
+              - generic "1348" [ref=e2209]:
+                - generic [ref=e2210] [cursor=pointer]: "1348"
+            - cell "R$‎‎ 109,90" [ref=e2211]:
+              - generic [ref=e2213]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2214]:
+              - generic [ref=e2216]: R$‎‎ 33,90
+            - cell "-" [ref=e2217]:
+              - generic [ref=e2219]: "-"
+            - cell "200000" [ref=e2220]:
+              - generic [ref=e2223]: "200000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2224]:
+              - generic [ref=e2225]:
+                - generic "20/03/2026 15:57:45" [ref=e2226]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2227]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2228]:
+              - generic [ref=e2230] [cursor=pointer]:
+                - link "Editar" [ref=e2232]:
+                  - /url: /products/shein/edit/8554887782372639
+                - link "Mais " [ref=e2233]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2234]: 
+          - 'row "Camiseta Masculina Estampada Fácil Para Quem Tem Ódio Maromba Academia Musculação Conforto 100% Algodão Carlos Shein Variantes (10) icon: down 1347 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2235]':
+            - cell [ref=e2236]:
+              - checkbox [ref=e2239] [cursor=pointer]
+            - cell [ref=e2241]:
+              - generic [ref=e2246] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Fácil Para Quem Tem Ódio Maromba Academia Musculação Conforto 100% Algodão Carlos Shein Variantes (10) icon: down" [ref=e2247]':
+              - generic [ref=e2248]:
+                - generic "Camiseta Masculina Estampada Fácil Para Quem Tem Ódio Maromba Academia Musculação Conforto 100% Algodão" [ref=e2249]:
+                  - generic [ref=e2252] [cursor=pointer]: Camiseta Masculina Estampada Fácil Para Quem Tem Ódio Maromba Academia Musculação Conforto 100% Algodão
+                - generic "Carlos Shein" [ref=e2253]
+                - 'link "Variantes (10) icon: down" [ref=e2256] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2257]':
+                    - img [ref=e2258]
+            - cell "1347" [ref=e2260]:
+              - generic "1347" [ref=e2262]:
+                - generic [ref=e2263] [cursor=pointer]: "1347"
+            - cell "R$‎‎ 109,90" [ref=e2264]:
+              - generic [ref=e2266]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2267]:
+              - generic [ref=e2269]: R$‎‎ 33,90
+            - cell "-" [ref=e2270]:
+              - generic [ref=e2272]: "-"
+            - cell "100000" [ref=e2273]:
+              - generic [ref=e2276]: "100000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2277]:
+              - generic [ref=e2278]:
+                - generic "20/03/2026 15:57:45" [ref=e2279]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2280]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2281]:
+              - generic [ref=e2283] [cursor=pointer]:
+                - link "Editar" [ref=e2285]:
+                  - /url: /products/shein/edit/8554887782372628
+                - link "Mais " [ref=e2286]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2287]: 
+          - 'row "Camiseta Masculina Mr Olympia Estampada 100% Algodão com Manga Curta e Gola Redonda Confortavel Carlos Shein Variantes (10) icon: down 1340 R$‎‎ 109,90 R$‎‎ 33,90 - 100000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2288]':
+            - cell [ref=e2289]:
+              - checkbox [ref=e2292] [cursor=pointer]
+            - cell [ref=e2294]:
+              - generic [ref=e2299] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Mr Olympia Estampada 100% Algodão com Manga Curta e Gola Redonda Confortavel Carlos Shein Variantes (10) icon: down" [ref=e2300]':
+              - generic [ref=e2301]:
+                - generic "Camiseta Masculina Mr Olympia Estampada 100% Algodão com Manga Curta e Gola Redonda Confortavel" [ref=e2302]:
+                  - generic [ref=e2305] [cursor=pointer]: Camiseta Masculina Mr Olympia Estampada 100% Algodão com Manga Curta e Gola Redonda Confortavel
+                - generic "Carlos Shein" [ref=e2306]
+                - 'link "Variantes (10) icon: down" [ref=e2309] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2310]':
+                    - img [ref=e2311]
+            - cell "1340" [ref=e2313]:
+              - generic "1340" [ref=e2315]:
+                - generic [ref=e2316] [cursor=pointer]: "1340"
+            - cell "R$‎‎ 109,90" [ref=e2317]:
+              - generic [ref=e2319]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2320]:
+              - generic [ref=e2322]: R$‎‎ 33,90
+            - cell "-" [ref=e2323]:
+              - generic [ref=e2325]: "-"
+            - cell "100000" [ref=e2326]:
+              - generic [ref=e2329]: "100000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2330]:
+              - generic [ref=e2331]:
+                - generic "20/03/2026 15:57:45" [ref=e2332]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2333]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2334]:
+              - generic [ref=e2336] [cursor=pointer]:
+                - link "Editar" [ref=e2338]:
+                  - /url: /products/shein/edit/8554887782372617
+                - link "Mais " [ref=e2339]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2340]: 
+          - 'row "Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta e Gola Redonda Sorriso Meme Estilo Casual Moderno Carlos Shein Variantes (5) icon: down 1339 R$‎‎ 109,90 R$‎‎ 33,90 - 50000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2341]':
+            - cell [ref=e2342]:
+              - checkbox [ref=e2345] [cursor=pointer]
+            - cell [ref=e2347]:
+              - generic [ref=e2352] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta e Gola Redonda Sorriso Meme Estilo Casual Moderno Carlos Shein Variantes (5) icon: down" [ref=e2353]':
+              - generic [ref=e2354]:
+                - generic "Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta e Gola Redonda Sorriso Meme Estilo Casual Moderno" [ref=e2355]:
+                  - generic [ref=e2358] [cursor=pointer]: Camiseta Masculina Estampada Camiseta 100% Algodão Manga Curta e Gola Redonda Sorriso Meme Estilo Casual Moderno
+                - generic "Carlos Shein" [ref=e2359]
+                - 'link "Variantes (5) icon: down" [ref=e2362] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2363]':
+                    - img [ref=e2364]
+            - cell "1339" [ref=e2366]:
+              - generic "1339" [ref=e2368]:
+                - generic [ref=e2369] [cursor=pointer]: "1339"
+            - cell "R$‎‎ 109,90" [ref=e2370]:
+              - generic [ref=e2372]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2373]:
+              - generic [ref=e2375]: R$‎‎ 33,90
+            - cell "-" [ref=e2376]:
+              - generic [ref=e2378]: "-"
+            - cell "50000" [ref=e2379]:
+              - generic [ref=e2382]: "50000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2383]:
+              - generic [ref=e2384]:
+                - generic "20/03/2026 15:57:45" [ref=e2385]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2386]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2387]:
+              - generic [ref=e2389] [cursor=pointer]:
+                - link "Editar" [ref=e2391]:
+                  - /url: /products/shein/edit/8554887782372611
+                - link "Mais " [ref=e2392]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2393]: 
+          - 'row "Camisa Masculina Estampada BEERGETARIAN Camiseta 100% Algodao Estilo Casual de Verão Carlos Shein Variantes (15) icon: down 1327 R$‎‎ 109,90 R$‎‎ 33,90 - 150000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2394]':
+            - cell [ref=e2395]:
+              - checkbox [ref=e2398] [cursor=pointer]
+            - cell [ref=e2400]:
+              - generic [ref=e2405] [cursor=pointer]:
+                - img
+            - 'cell "Camisa Masculina Estampada BEERGETARIAN Camiseta 100% Algodao Estilo Casual de Verão Carlos Shein Variantes (15) icon: down" [ref=e2406]':
+              - generic [ref=e2407]:
+                - generic "Camisa Masculina Estampada BEERGETARIAN Camiseta 100% Algodao Estilo Casual de Verão" [ref=e2408]:
+                  - generic [ref=e2411] [cursor=pointer]: Camisa Masculina Estampada BEERGETARIAN Camiseta 100% Algodao Estilo Casual de Verão
+                - generic "Carlos Shein" [ref=e2412]
+                - 'link "Variantes (15) icon: down" [ref=e2415] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (15)
+                  - 'generic "icon: down" [ref=e2416]':
+                    - img [ref=e2417]
+            - cell "1327" [ref=e2419]:
+              - generic "1327" [ref=e2421]:
+                - generic [ref=e2422] [cursor=pointer]: "1327"
+            - cell "R$‎‎ 109,90" [ref=e2423]:
+              - generic [ref=e2425]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2426]:
+              - generic [ref=e2428]: R$‎‎ 33,90
+            - cell "-" [ref=e2429]:
+              - generic [ref=e2431]: "-"
+            - cell "150000" [ref=e2432]:
+              - generic [ref=e2435]: "150000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2436]:
+              - generic [ref=e2437]:
+                - generic "20/03/2026 15:57:45" [ref=e2438]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2439]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2440]:
+              - generic [ref=e2442] [cursor=pointer]:
+                - link "Editar" [ref=e2444]:
+                  - /url: /products/shein/edit/8554887782372595
+                - link "Mais " [ref=e2445]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2446]: 
+          - 'row "Camiseta Masculina Estampa HTI Blusa Gola Redonda Macio 100% Algodao Gola Redonda Verão Carlos Shein Variantes (15) icon: down 1328 R$‎‎ 109,90 R$‎‎ 33,90 - 150000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2447]':
+            - cell [ref=e2448]:
+              - checkbox [ref=e2451] [cursor=pointer]
+            - cell [ref=e2453]:
+              - generic [ref=e2458] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampa HTI Blusa Gola Redonda Macio 100% Algodao Gola Redonda Verão Carlos Shein Variantes (15) icon: down" [ref=e2459]':
+              - generic [ref=e2460]:
+                - generic "Camiseta Masculina Estampa HTI Blusa Gola Redonda Macio 100% Algodao Gola Redonda Verão" [ref=e2461]:
+                  - generic [ref=e2464] [cursor=pointer]: Camiseta Masculina Estampa HTI Blusa Gola Redonda Macio 100% Algodao Gola Redonda Verão
+                - generic "Carlos Shein" [ref=e2465]
+                - 'link "Variantes (15) icon: down" [ref=e2468] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (15)
+                  - 'generic "icon: down" [ref=e2469]':
+                    - img [ref=e2470]
+            - cell "1328" [ref=e2472]:
+              - generic "1328" [ref=e2474]:
+                - generic [ref=e2475] [cursor=pointer]: "1328"
+            - cell "R$‎‎ 109,90" [ref=e2476]:
+              - generic [ref=e2478]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2479]:
+              - generic [ref=e2481]: R$‎‎ 33,90
+            - cell "-" [ref=e2482]:
+              - generic [ref=e2484]: "-"
+            - cell "150000" [ref=e2485]:
+              - generic [ref=e2488]: "150000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2489]:
+              - generic [ref=e2490]:
+                - generic "20/03/2026 15:57:45" [ref=e2491]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2492]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2493]:
+              - generic [ref=e2495] [cursor=pointer]:
+                - link "Editar" [ref=e2497]:
+                  - /url: /products/shein/edit/8554887782372579
+                - link "Mais " [ref=e2498]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2499]: 
+          - 'row "camisa Masculina estampada modelo verão camiseta 100% algodão manga curta gola redonda estilosa Carlos Shein Variantes (20) icon: down 1357 R$‎‎ 109,90 R$‎‎ 33,90 - 200000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2500]':
+            - cell [ref=e2501]:
+              - checkbox [ref=e2504] [cursor=pointer]
+            - cell [ref=e2506]:
+              - generic [ref=e2511] [cursor=pointer]:
+                - img
+            - 'cell "camisa Masculina estampada modelo verão camiseta 100% algodão manga curta gola redonda estilosa Carlos Shein Variantes (20) icon: down" [ref=e2512]':
+              - generic [ref=e2513]:
+                - generic "camisa Masculina estampada modelo verão camiseta 100% algodão manga curta gola redonda estilosa" [ref=e2514]:
+                  - generic [ref=e2517] [cursor=pointer]: camisa Masculina estampada modelo verão camiseta 100% algodão manga curta gola redonda estilosa
+                - generic "Carlos Shein" [ref=e2518]
+                - 'link "Variantes (20) icon: down" [ref=e2521] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (20)
+                  - 'generic "icon: down" [ref=e2522]':
+                    - img [ref=e2523]
+            - cell "1357" [ref=e2525]:
+              - generic "1357" [ref=e2527]:
+                - generic [ref=e2528] [cursor=pointer]: "1357"
+            - cell "R$‎‎ 109,90" [ref=e2529]:
+              - generic [ref=e2531]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2532]:
+              - generic [ref=e2534]: R$‎‎ 33,90
+            - cell "-" [ref=e2535]:
+              - generic [ref=e2537]: "-"
+            - cell "200000" [ref=e2538]:
+              - generic [ref=e2541]: "200000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2542]:
+              - generic [ref=e2543]:
+                - generic "20/03/2026 15:57:30" [ref=e2544]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2545]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2546]:
+              - generic [ref=e2548] [cursor=pointer]:
+                - link "Editar" [ref=e2550]:
+                  - /url: /products/shein/edit/8554887782372502
+                - link "Mais " [ref=e2551]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2552]: 
+          - 'row "Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta e Gola Redonda Confortável Casual Estilo Primavera Verão Carlos Shein Variantes (11) icon: down 1359 R$‎‎ 109,90 R$‎‎ 33,90 - 80000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2553]':
+            - cell [ref=e2554]:
+              - checkbox [ref=e2557] [cursor=pointer]
+            - cell [ref=e2559]:
+              - generic [ref=e2564] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta e Gola Redonda Confortável Casual Estilo Primavera Verão Carlos Shein Variantes (11) icon: down" [ref=e2565]':
+              - generic [ref=e2566]:
+                - generic "Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta e Gola Redonda Confortável Casual Estilo Primavera Verão" [ref=e2567]:
+                  - generic [ref=e2570] [cursor=pointer]: Camiseta Masculina Carro Estampada Costa Camiseta 100% Algodão Manga Curta e Gola Redonda Confortável Casual Estilo Primavera Verão
+                - generic "Carlos Shein" [ref=e2571]
+                - 'link "Variantes (11) icon: down" [ref=e2574] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (11)
+                  - 'generic "icon: down" [ref=e2575]':
+                    - img [ref=e2576]
+            - cell "1359" [ref=e2578]:
+              - generic "1359" [ref=e2580]:
+                - generic [ref=e2581] [cursor=pointer]: "1359"
+            - cell "R$‎‎ 109,90" [ref=e2582]:
+              - generic [ref=e2584]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2585]:
+              - generic [ref=e2587]: R$‎‎ 33,90
+            - cell "-" [ref=e2588]:
+              - generic [ref=e2590]: "-"
+            - cell "80000" [ref=e2591]:
+              - generic [ref=e2594]: "80000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2595]:
+              - generic [ref=e2596]:
+                - generic "20/03/2026 15:57:30" [ref=e2597]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2598]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2599]:
+              - generic [ref=e2601] [cursor=pointer]:
+                - link "Editar" [ref=e2603]:
+                  - /url: /products/shein/edit/8554887782372386
+                - link "Mais " [ref=e2604]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2605]: 
+          - 'row "Camiseta Masculina Estampada HTI 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Moderno Casual Camisa Macia Leve Para Primavera Verão Carlos Shein Variantes (5) icon: down 1328 R$‎‎ 109,90 R$‎‎ 33,90 - 500000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2606]':
+            - cell [ref=e2607]:
+              - checkbox [ref=e2610] [cursor=pointer]
+            - cell [ref=e2612]:
+              - generic [ref=e2617] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Masculina Estampada HTI 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Moderno Casual Camisa Macia Leve Para Primavera Verão Carlos Shein Variantes (5) icon: down" [ref=e2618]':
+              - generic [ref=e2619]:
+                - generic "Camiseta Masculina Estampada HTI 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Moderno Casual Camisa Macia Leve Para Primavera Verão" [ref=e2620]:
+                  - generic [ref=e2623] [cursor=pointer]: Camiseta Masculina Estampada HTI 100% Algodão Lançamento Gola Redonda Manga Curta Estilo Moderno Casual Camisa Macia Leve Para Primavera Verão
+                - generic "Carlos Shein" [ref=e2624]
+                - 'link "Variantes (5) icon: down" [ref=e2627] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (5)
+                  - 'generic "icon: down" [ref=e2628]':
+                    - img [ref=e2629]
+            - cell "1328" [ref=e2631]:
+              - generic "1328" [ref=e2633]:
+                - generic [ref=e2634] [cursor=pointer]: "1328"
+            - cell "R$‎‎ 109,90" [ref=e2635]:
+              - generic [ref=e2637]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2638]:
+              - generic [ref=e2640]: R$‎‎ 33,90
+            - cell "-" [ref=e2641]:
+              - generic [ref=e2643]: "-"
+            - cell "500000" [ref=e2644]:
+              - generic [ref=e2647]: "500000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2648]:
+              - generic [ref=e2649]:
+                - generic "20/03/2026 15:57:30" [ref=e2650]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2651]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2652]:
+              - generic [ref=e2654] [cursor=pointer]:
+                - link "Editar" [ref=e2656]:
+                  - /url: /products/shein/edit/8554887782372281
+                - link "Mais " [ref=e2657]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2658]: 
+          - 'row "Camiseta Regata Masculina tres Cruz Religião Cristão 100% Algodão Camiseta Gola Redonda Sem Manga Estilo Casual Masculino Primavera Verão Carlos Shein Variantes (10) icon: down 1300 R$‎‎ 109,90 R$‎‎ 33,90 - 1000000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2659]':
+            - cell [ref=e2660]:
+              - checkbox [ref=e2663] [cursor=pointer]
+            - cell [ref=e2665]:
+              - generic [ref=e2670] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Regata Masculina tres Cruz Religião Cristão 100% Algodão Camiseta Gola Redonda Sem Manga Estilo Casual Masculino Primavera Verão Carlos Shein Variantes (10) icon: down" [ref=e2671]':
+              - generic [ref=e2672]:
+                - generic "Camiseta Regata Masculina tres Cruz Religião Cristão 100% Algodão Camiseta Gola Redonda Sem Manga Estilo Casual Masculino Primavera Verão" [ref=e2673]:
+                  - generic [ref=e2676] [cursor=pointer]: Camiseta Regata Masculina tres Cruz Religião Cristão 100% Algodão Camiseta Gola Redonda Sem Manga Estilo Casual Masculino Primavera Verão
+                - generic "Carlos Shein" [ref=e2677]
+                - 'link "Variantes (10) icon: down" [ref=e2680] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2681]':
+                    - img [ref=e2682]
+            - cell "1300" [ref=e2684]:
+              - generic "1300" [ref=e2686]:
+                - generic [ref=e2687] [cursor=pointer]: "1300"
+            - cell "R$‎‎ 109,90" [ref=e2688]:
+              - generic [ref=e2690]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2691]:
+              - generic [ref=e2693]: R$‎‎ 33,90
+            - cell "-" [ref=e2694]:
+              - generic [ref=e2696]: "-"
+            - cell "1000000" [ref=e2697]:
+              - generic [ref=e2700]: "1000000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2701]:
+              - generic [ref=e2702]:
+                - generic "20/03/2026 15:57:30" [ref=e2703]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2704]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2705]:
+              - generic [ref=e2707] [cursor=pointer]:
+                - link "Editar" [ref=e2709]:
+                  - /url: /products/shein/edit/8554887782372270
+                - link "Mais " [ref=e2710]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2711]: 
+          - 'row "Regata Masculina Camiseta Estampada Casual Modelo Primavera Verão Camisa confortavél Estilosa 100% algodão Estilo Respirável Regata Manga Cavada Gola Redonda Carlos Shein Variantes (10) icon: down 1311 R$‎‎ 109,90 R$‎‎ 33,90 - 1000000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2712]':
+            - cell [ref=e2713]:
+              - checkbox [ref=e2716] [cursor=pointer]
+            - cell [ref=e2718]:
+              - generic [ref=e2723] [cursor=pointer]:
+                - img
+            - 'cell "Regata Masculina Camiseta Estampada Casual Modelo Primavera Verão Camisa confortavél Estilosa 100% algodão Estilo Respirável Regata Manga Cavada Gola Redonda Carlos Shein Variantes (10) icon: down" [ref=e2724]':
+              - generic [ref=e2725]:
+                - generic "Regata Masculina Camiseta Estampada Casual Modelo Primavera Verão Camisa confortavél Estilosa 100% algodão Estilo Respirável Regata Manga Cavada Gola Redonda" [ref=e2726]:
+                  - generic [ref=e2729] [cursor=pointer]: Regata Masculina Camiseta Estampada Casual Modelo Primavera Verão Camisa confortavél Estilosa 100% algodão Estilo Respirável Regata Manga Cavada Gola Redonda
+                - generic "Carlos Shein" [ref=e2730]
+                - 'link "Variantes (10) icon: down" [ref=e2733] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2734]':
+                    - img [ref=e2735]
+            - cell "1311" [ref=e2737]:
+              - generic "1311" [ref=e2739]:
+                - generic [ref=e2740] [cursor=pointer]: "1311"
+            - cell "R$‎‎ 109,90" [ref=e2741]:
+              - generic [ref=e2743]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2744]:
+              - generic [ref=e2746]: R$‎‎ 33,90
+            - cell "-" [ref=e2747]:
+              - generic [ref=e2749]: "-"
+            - cell "1000000" [ref=e2750]:
+              - generic [ref=e2753]: "1000000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2754]:
+              - generic [ref=e2755]:
+                - generic "20/03/2026 15:57:30" [ref=e2756]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2757]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2758]:
+              - generic [ref=e2760] [cursor=pointer]:
+                - link "Editar" [ref=e2762]:
+                  - /url: /products/shein/edit/8554887782372259
+                - link "Mais " [ref=e2763]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2764]: 
+          - 'row "Regata Masculina Camiseta Estampada AGUIA Masculina 100% algodão de Gola Redonda Cavada Estilo Primavera Verão Regata Estilosa Macia e Confortavel Carlos Shein Variantes (10) icon: down 1315 R$‎‎ 109,90 R$‎‎ 33,90 - 1000000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2765]':
+            - cell [ref=e2766]:
+              - checkbox [ref=e2769] [cursor=pointer]
+            - cell [ref=e2771]:
+              - generic [ref=e2776] [cursor=pointer]:
+                - img
+            - 'cell "Regata Masculina Camiseta Estampada AGUIA Masculina 100% algodão de Gola Redonda Cavada Estilo Primavera Verão Regata Estilosa Macia e Confortavel Carlos Shein Variantes (10) icon: down" [ref=e2777]':
+              - generic [ref=e2778]:
+                - generic "Regata Masculina Camiseta Estampada AGUIA Masculina 100% algodão de Gola Redonda Cavada Estilo Primavera Verão Regata Estilosa Macia e Confortavel" [ref=e2779]:
+                  - generic [ref=e2782] [cursor=pointer]: Regata Masculina Camiseta Estampada AGUIA Masculina 100% algodão de Gola Redonda Cavada Estilo Primavera Verão Regata Estilosa Macia e Confortavel
+                - generic "Carlos Shein" [ref=e2783]
+                - 'link "Variantes (10) icon: down" [ref=e2786] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2787]':
+                    - img [ref=e2788]
+            - cell "1315" [ref=e2790]:
+              - generic "1315" [ref=e2792]:
+                - generic [ref=e2793] [cursor=pointer]: "1315"
+            - cell "R$‎‎ 109,90" [ref=e2794]:
+              - generic [ref=e2796]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2797]:
+              - generic [ref=e2799]: R$‎‎ 33,90
+            - cell "-" [ref=e2800]:
+              - generic [ref=e2802]: "-"
+            - cell "1000000" [ref=e2803]:
+              - generic [ref=e2806]: "1000000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2807]:
+              - generic [ref=e2808]:
+                - generic "20/03/2026 15:57:30" [ref=e2809]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2810]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2811]:
+              - generic [ref=e2813] [cursor=pointer]:
+                - link "Editar" [ref=e2815]:
+                  - /url: /products/shein/edit/8554887782372248
+                - link "Mais " [ref=e2816]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2817]: 
+          - 'row "Camiseta Regata Masculina Estampada Paris Estilo Casual Masculino Lançamento 100% algodão Primavera Verão Camiseta Manga Cavada com Gola Redonda Carlos Shein Variantes (10) icon: down 1301 R$‎‎ 109,90 R$‎‎ 33,90 - 1000000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2818]':
+            - cell [ref=e2819]:
+              - checkbox [ref=e2822] [cursor=pointer]
+            - cell [ref=e2824]:
+              - generic [ref=e2829] [cursor=pointer]:
+                - img
+            - 'cell "Camiseta Regata Masculina Estampada Paris Estilo Casual Masculino Lançamento 100% algodão Primavera Verão Camiseta Manga Cavada com Gola Redonda Carlos Shein Variantes (10) icon: down" [ref=e2830]':
+              - generic [ref=e2831]:
+                - generic "Camiseta Regata Masculina Estampada Paris Estilo Casual Masculino Lançamento 100% algodão Primavera Verão Camiseta Manga Cavada com Gola Redonda" [ref=e2832]:
+                  - generic [ref=e2835] [cursor=pointer]: Camiseta Regata Masculina Estampada Paris Estilo Casual Masculino Lançamento 100% algodão Primavera Verão Camiseta Manga Cavada com Gola Redonda
+                - generic "Carlos Shein" [ref=e2836]
+                - 'link "Variantes (10) icon: down" [ref=e2839] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2840]':
+                    - img [ref=e2841]
+            - cell "1301" [ref=e2843]:
+              - generic "1301" [ref=e2845]:
+                - generic [ref=e2846] [cursor=pointer]: "1301"
+            - cell "R$‎‎ 109,90" [ref=e2847]:
+              - generic [ref=e2849]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2850]:
+              - generic [ref=e2852]: R$‎‎ 33,90
+            - cell "-" [ref=e2853]:
+              - generic [ref=e2855]: "-"
+            - cell "1000000" [ref=e2856]:
+              - generic [ref=e2859]: "1000000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2860]:
+              - generic [ref=e2861]:
+                - generic "20/03/2026 15:57:30" [ref=e2862]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2863]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2864]:
+              - generic [ref=e2866] [cursor=pointer]:
+                - link "Editar" [ref=e2868]:
+                  - /url: /products/shein/edit/8554887782372237
+                - link "Mais " [ref=e2869]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2870]: 
+          - 'row "Regata Masculina Camiseta Estampada-'''' Cachorro Com Bone'''' com Camisa sem Mangas 100% Algodão para Estações Primavera Verão Camiseta Macia Leve e Estilosa Carlos Shein Variantes (10) icon: down 1312 R$‎‎ 109,90 R$‎‎ 33,90 - 1000000 20/03/2026 15:57 18/05/2026 16:55 Editar Mais " [ref=e2871]':
+            - cell [ref=e2872]:
+              - checkbox [ref=e2875] [cursor=pointer]
+            - cell [ref=e2877]:
+              - generic [ref=e2882] [cursor=pointer]:
+                - img
+            - 'cell "Regata Masculina Camiseta Estampada-'''' Cachorro Com Bone'''' com Camisa sem Mangas 100% Algodão para Estações Primavera Verão Camiseta Macia Leve e Estilosa Carlos Shein Variantes (10) icon: down" [ref=e2883]':
+              - generic [ref=e2884]:
+                - generic "Regata Masculina Camiseta Estampada-'' Cachorro Com Bone'' com Camisa sem Mangas 100% Algodão para Estações Primavera Verão Camiseta Macia Leve e Estilosa" [ref=e2885]:
+                  - generic [ref=e2888] [cursor=pointer]: Regata Masculina Camiseta Estampada-'' Cachorro Com Bone'' com Camisa sem Mangas 100% Algodão para Estações Primavera Verão Camiseta Macia Leve e Estilosa
+                - generic "Carlos Shein" [ref=e2889]
+                - 'link "Variantes (10) icon: down" [ref=e2892] [cursor=pointer]':
+                  - /url: javascript:void(0)
+                  - text: Variantes (10)
+                  - 'generic "icon: down" [ref=e2893]':
+                    - img [ref=e2894]
+            - cell "1312" [ref=e2896]:
+              - generic "1312" [ref=e2898]:
+                - generic [ref=e2899] [cursor=pointer]: "1312"
+            - cell "R$‎‎ 109,90" [ref=e2900]:
+              - generic [ref=e2902]: R$‎‎ 109,90
+            - cell "R$‎‎ 33,90" [ref=e2903]:
+              - generic [ref=e2905]: R$‎‎ 33,90
+            - cell "-" [ref=e2906]:
+              - generic [ref=e2908]: "-"
+            - cell "1000000" [ref=e2909]:
+              - generic [ref=e2912]: "1000000"
+            - cell "20/03/2026 15:57 18/05/2026 16:55" [ref=e2913]:
+              - generic [ref=e2914]:
+                - generic "20/03/2026 15:57:30" [ref=e2915]: 20/03/2026 15:57
+                - generic "18/05/2026 16:55:55" [ref=e2916]: 18/05/2026 16:55
+            - cell "Editar Mais " [ref=e2917]:
+              - generic [ref=e2919] [cursor=pointer]:
+                - link "Editar" [ref=e2921]:
+                  - /url: /products/shein/edit/8554887782372226
+                - link "Mais " [ref=e2922]:
+                  - /url: javascript:void(0);
+                  - text: Mais
+                  - generic [ref=e2923]: 
+  - generic [ref=e2924]:
+    - generic [ref=e2928] [cursor=pointer]: 
+    - generic: 
+    - generic [ref=e2931] [cursor=pointer]: 
+    - text: 

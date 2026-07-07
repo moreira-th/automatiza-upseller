@@ -1,0 +1,1578 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e10]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e16]:
+          - text: Shein / Editar Anúncio
+          - generic [ref=e17]: Rascunho
+        - generic [ref=e20] [cursor=pointer]: 
+      - generic [ref=e21]:
+        - button "Salvar" [ref=e23] [cursor=pointer]:
+          - generic: Salvar
+        - button "Publicar" [ref=e25] [cursor=pointer]:
+          - generic: Publicar
+    - generic [ref=e26]:
+      - generic [ref=e30]:
+        - link "Informação Básica" [ref=e34] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/4409247925342130#basic
+        - link "Atributos" [ref=e36] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/4409247925342130#attributes
+        - link "Informações de Venda" [ref=e38] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/4409247925342130#variants
+        - link "Mídia" [ref=e40] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/4409247925342130#variantsImg
+      - generic [ref=e41]:
+        - generic [ref=e45]: Informação Básica
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic "Loja" [ref=e51]: "* Loja"
+            - combobox [ref=e56] [cursor=pointer]:
+              - generic "Bronx Outfit" [ref=e58]
+              - generic [ref=e61]: 
+          - generic [ref=e62]:
+            - generic "Nome" [ref=e64]: "* Nome"
+            - generic [ref=e67]:
+              - generic [ref=e68]:
+                - textbox [ref=e69]: Moletom Canguru Bolso Capuz Inverno Brasil South America Seleção Brasileira
+                - generic [ref=e75] [cursor=pointer]: 
+              - generic [ref=e76]: 75/1000
+          - generic [ref=e77]:
+            - generic "Categoria" [ref=e79]: "* Categoria"
+            - generic [ref=e82]:
+              - generic [ref=e85]:
+                - textbox "Homem > Roupa Masculina > Moletom Masculino > Moletom e Suéter Masculino" [ref=e86]:
+                  - /placeholder: Selecionar uma Categoria
+                - generic [ref=e88]: 
+              - button "Selecionar Categoria" [ref=e90] [cursor=pointer]:
+                - generic: Selecionar Categoria
+          - generic [ref=e91]:
+            - generic "Descrição" [ref=e93]
+            - generic [ref=e97]:
+              - textbox [ref=e98]: "Moletom Canguru Unissex com Capuz – Conforto e Estilo para o Dia a Dia O moletom canguru com capuz é uma peça versátil, ideal para quem busca conforto, praticidade e estilo em diferentes momentos do dia. Pode ser utilizado em atividades casuais, trabalho, academia ou nos dias mais frios, oferecendo aquecimento e ótimo caimento para o uso diário. Descrição do Produto Produzido em tecido de qualidade com 70% algodão e 30% poliéster, o moletom oferece toque macio, conforto térmico e boa resistência ao uso contínuo. O modelo possui capuz funcional e bolso canguru frontal, trazendo praticidade para o dia a dia e um visual moderno. Seu design unissex garante conforto e liberdade de movimento, além de combinar facilmente com diferentes estilos e looks. Características do Produto Modelo: Moletom canguru unissex com capuz Composição do tecido: 70% algodão / 30% poliéster Bolso canguru frontal funcional Tecido confortável e resistente Ideal para dias frios, uso diário, trabalho ou academia Estilo casual e fácil de combinar Tabela de Tamanhos P Largura: 52 cm Altura: 65 a 70 cm M Largura: 54 cm Altura: 71 a 75 cm G Largura: 58 cm Altura: 76 cm GG Largura: 62 cm Altura: 77 a 82 cm As medidas podem apresentar pequenas variações. Recomendamos verificar a tabela antes da compra para escolher o tamanho mais adequado. Peça confortável, resistente e com excelente custo-benefício, ideal para quem procura praticidade, estilo e qualidade no dia a dia."
+              - generic [ref=e99]: 1467/5000
+          - generic [ref=e102]:
+            - generic "N° do Anúncio" [ref=e104]: "* N° do Anúncio"
+            - generic [ref=e107]:
+              - textbox [ref=e108]: "414418456"
+              - generic [ref=e109]: 9/200
+              - generic "Gerar SKU" [ref=e110] [cursor=pointer]: ⚡
+          - generic [ref=e111]:
+            - generic "Link do Fornecedor" [ref=e113]
+            - generic [ref=e117]:
+              - textbox [ref=e118]: https://br.shein.com/Kangaroo-Hoodie-With-Pocket-Winter-Style-Brazil-South-America-Brazilian-National-Team-p-414418456.html?src_identifier=st%3D4%60sc%3DMoletom%20Masculino%60sr%3D0%60ps%3D1&src_module=search&src_tab_page_id=page_search1779217715734&mallCode=2&pageListType=4
+              - button "Visita" [ref=e120] [cursor=pointer]:
+                - separator [ref=e121]
+                - generic: Visita
+      - generic [ref=e122]:
+        - generic [ref=e126]:
+          - generic [ref=e127]: Atributos
+          - 'generic "icon: ellipsis" [ref=e129]':
+            - img [ref=e130]
+        - generic [ref=e133]:
+          - generic [ref=e135]:
+            - generic "Marca" [ref=e137]
+            - generic [ref=e140]:
+              - combobox [ref=e142] [cursor=pointer]:
+                - generic [ref=e144]: Por favor selecione
+                - generic [ref=e147]: 
+              - 'generic "icon: sync" [ref=e148] [cursor=pointer]':
+                - img [ref=e149]
+          - generic:                      
+          - generic [ref=e151] [cursor=pointer]:
+            - text: Mais Atributos
+            - 'generic "icon: down" [ref=e152]':
+              - img [ref=e153]
+      - generic [ref=e155]:
+        - generic [ref=e159]:
+          - generic [ref=e160]: Informações de Venda
+          - generic [ref=e161]: Remapeamento de Variante
+        - generic [ref=e163]:
+          - list [ref=e164]:
+            - listitem [ref=e165]: Adicione até 3 atributo, a especificação principal pode ser adicionado imagens, não poderá ser modificadas após a publicação.
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e171]: Especificação Principal *
+              - generic [ref=e175]:
+                - generic [ref=e179]:
+                  - combobox [ref=e182] [cursor=pointer]:
+                    - generic "Cor" [ref=e184]
+                    - generic [ref=e187]: 
+                  - generic [ref=e188]:
+                    - generic [ref=e192]:
+                      - textbox "Procurar conteúdo" [ref=e193]
+                      - 'generic "icon: search" [ref=e195] [cursor=pointer]':
+                        - img [ref=e196]
+                    - generic [ref=e198] [cursor=pointer]:
+                      - 'generic "icon: edit" [ref=e199]':
+                        - img [ref=e200]
+                      - text: Alterar Ordem das Variantes
+                - generic [ref=e202]:
+                  - list [ref=e204]:
+                    - listitem [ref=e205]:
+                      - generic [ref=e206] [cursor=pointer]:
+                        - checkbox "Preto" [checked] [ref=e208]
+                        - generic "Preto" [ref=e211]
+                    - listitem [ref=e212]:
+                      - generic [ref=e213] [cursor=pointer]:
+                        - checkbox "Azul" [checked] [ref=e215]
+                        - generic "Azul" [ref=e218]
+                    - listitem [ref=e219]:
+                      - generic [ref=e220] [cursor=pointer]:
+                        - checkbox "Branco" [checked] [ref=e222]
+                        - generic "Branco" [ref=e225]
+                    - listitem [ref=e226]:
+                      - generic [ref=e227] [cursor=pointer]:
+                        - checkbox "Cinza" [checked] [ref=e229]
+                        - generic "Cinza" [ref=e232]
+                    - listitem [ref=e233]:
+                      - generic [ref=e234] [cursor=pointer]:
+                        - checkbox "Bege" [checked] [ref=e236]
+                        - generic "Bege" [ref=e239]
+                    - listitem [ref=e240]:
+                      - generic [ref=e241] [cursor=pointer]:
+                        - checkbox "Rosa Bebê" [checked] [ref=e243]
+                        - generic "Rosa Bebê" [ref=e246]
+                    - listitem [ref=e247]:
+                      - generic [ref=e248] [cursor=pointer]:
+                        - checkbox "Vinho" [ref=e250]
+                        - generic "Vinho" [ref=e253]
+                    - listitem [ref=e254]:
+                      - generic [ref=e255] [cursor=pointer]:
+                        - checkbox "Verde Militar" [ref=e257]
+                        - generic "Verde Militar" [ref=e260]
+                    - listitem [ref=e261]:
+                      - generic [ref=e262] [cursor=pointer]:
+                        - checkbox "Rosa chiclete" [ref=e264]
+                        - generic "Rosa chiclete" [ref=e267]
+                    - listitem [ref=e268]:
+                      - generic [ref=e269] [cursor=pointer]:
+                        - checkbox "Vermelho" [ref=e271]
+                        - generic "Vermelho" [ref=e274]
+                    - listitem [ref=e275]:
+                      - generic [ref=e276] [cursor=pointer]:
+                        - checkbox "Verde" [ref=e278]
+                        - generic "Verde" [ref=e281]
+                    - listitem [ref=e282]:
+                      - generic [ref=e283] [cursor=pointer]:
+                        - checkbox "Damasco" [ref=e285]
+                        - generic "Damasco" [ref=e288]
+                    - listitem [ref=e289]:
+                      - generic [ref=e290] [cursor=pointer]:
+                        - checkbox "Preto e Branco" [ref=e292]
+                        - generic "Preto e Branco" [ref=e295]
+                    - listitem [ref=e296]:
+                      - generic [ref=e297] [cursor=pointer]:
+                        - checkbox "Bronze" [ref=e299]
+                        - generic "Bronze" [ref=e302]
+                    - listitem [ref=e303]:
+                      - generic [ref=e304] [cursor=pointer]:
+                        - checkbox "Castanho" [ref=e306]
+                        - generic "Castanho" [ref=e309]
+                    - listitem [ref=e310]:
+                      - generic [ref=e311] [cursor=pointer]:
+                        - checkbox "Caramelo" [ref=e313]
+                        - generic "Caramelo" [ref=e316]
+                    - listitem [ref=e317]:
+                      - generic [ref=e318] [cursor=pointer]:
+                        - checkbox "Champanhe" [ref=e320]
+                        - generic "Champanhe" [ref=e323]
+                    - listitem [ref=e324]:
+                      - generic [ref=e325] [cursor=pointer]:
+                        - checkbox "Transparente" [ref=e327]
+                        - generic "Transparente" [ref=e330]
+                    - listitem [ref=e331]:
+                      - generic [ref=e332] [cursor=pointer]:
+                        - checkbox "Gengibre" [ref=e334]
+                        - generic "Gengibre" [ref=e337]
+                    - listitem [ref=e338]:
+                      - generic [ref=e339] [cursor=pointer]:
+                        - checkbox "Dourado" [ref=e341]
+                        - generic "Dourado" [ref=e344]
+                    - listitem [ref=e345]:
+                      - generic [ref=e346] [cursor=pointer]:
+                        - checkbox "Pink" [ref=e348]
+                        - generic "Pink" [ref=e351]
+                    - listitem [ref=e352]:
+                      - generic [ref=e353] [cursor=pointer]:
+                        - checkbox "Caqui" [ref=e355]
+                        - generic "Caqui" [ref=e358]
+                    - listitem [ref=e359]:
+                      - generic [ref=e360] [cursor=pointer]:
+                        - checkbox "bordô" [ref=e362]
+                        - generic "bordô" [ref=e365]
+                    - listitem [ref=e366]:
+                      - generic [ref=e367] [cursor=pointer]:
+                        - checkbox "Multicolorido" [ref=e369]
+                        - generic "Multicolorido" [ref=e372]
+                    - listitem [ref=e373]:
+                      - generic [ref=e374] [cursor=pointer]:
+                        - checkbox "Laranja" [ref=e376]
+                        - generic "Laranja" [ref=e379]
+                    - listitem [ref=e380]:
+                      - generic [ref=e381] [cursor=pointer]:
+                        - checkbox "Roxo" [ref=e383]
+                        - generic "Roxo" [ref=e386]
+                    - listitem [ref=e387]:
+                      - generic [ref=e388] [cursor=pointer]:
+                        - checkbox "Azul Royal" [ref=e390]
+                        - generic "Azul Royal" [ref=e393]
+                    - listitem [ref=e394]:
+                      - generic [ref=e395] [cursor=pointer]:
+                        - checkbox "Prata" [ref=e397]
+                        - generic "Prata" [ref=e400]
+                    - listitem [ref=e401]:
+                      - generic [ref=e402] [cursor=pointer]:
+                        - checkbox "Amarelo" [ref=e404]
+                        - generic "Amarelo" [ref=e407]
+                    - listitem [ref=e408]:
+                      - generic [ref=e409] [cursor=pointer]:
+                        - checkbox "Coral" [ref=e411]
+                        - generic "Coral" [ref=e414]
+                    - listitem [ref=e415]:
+                      - generic [ref=e416] [cursor=pointer]:
+                        - checkbox "Púrpura" [ref=e418]
+                        - generic "Púrpura" [ref=e421]
+                    - listitem [ref=e422]:
+                      - generic [ref=e423] [cursor=pointer]:
+                        - checkbox "Verde Menta" [ref=e425]
+                        - generic "Verde Menta" [ref=e428]
+                    - listitem [ref=e429]:
+                      - generic [ref=e430] [cursor=pointer]:
+                        - checkbox "Cinza Claro" [ref=e432]
+                        - generic "Cinza Claro" [ref=e435]
+                    - listitem [ref=e436]:
+                      - generic [ref=e437] [cursor=pointer]:
+                        - checkbox "Chumbo" [ref=e439]
+                        - generic "Chumbo" [ref=e442]
+                    - listitem [ref=e443]:
+                      - generic [ref=e444] [cursor=pointer]:
+                        - checkbox "Verde Escuro" [ref=e446]
+                        - generic "Verde Escuro" [ref=e449]
+                    - listitem [ref=e450]:
+                      - generic [ref=e451] [cursor=pointer]:
+                        - checkbox "Rosê" [ref=e453]
+                        - generic "Rosê" [ref=e456]
+                    - listitem [ref=e457]:
+                      - generic [ref=e458] [cursor=pointer]:
+                        - checkbox "Fúcsia" [ref=e460]
+                        - generic "Fúcsia" [ref=e463]
+                    - listitem [ref=e464]:
+                      - generic [ref=e465] [cursor=pointer]:
+                        - checkbox "Laranja Queimado" [ref=e467]
+                        - generic "Laranja Queimado" [ref=e470]
+                    - listitem [ref=e471]:
+                      - generic [ref=e472] [cursor=pointer]:
+                        - checkbox "Pêssego" [ref=e474]
+                        - generic "Pêssego" [ref=e477]
+                    - listitem [ref=e478]:
+                      - generic [ref=e479] [cursor=pointer]:
+                        - checkbox "Amarelo mostarda" [ref=e481]
+                        - generic "Amarelo mostarda" [ref=e484]
+                    - listitem [ref=e485]:
+                      - generic [ref=e486] [cursor=pointer]:
+                        - checkbox "Azul bebê" [ref=e488]
+                        - generic "Azul bebê" [ref=e491]
+                    - listitem [ref=e492]:
+                      - generic [ref=e493] [cursor=pointer]:
+                        - checkbox "Marsala" [ref=e495]
+                        - generic "Marsala" [ref=e498]
+                    - listitem [ref=e499]:
+                      - generic [ref=e500] [cursor=pointer]:
+                        - checkbox "Azul cadete" [ref=e502]
+                        - generic "Azul cadete" [ref=e505]
+                    - listitem [ref=e506]:
+                      - generic [ref=e507] [cursor=pointer]:
+                        - checkbox "Rosa empoeirado" [ref=e509]
+                        - generic "Rosa empoeirado" [ref=e512]
+                    - listitem [ref=e513]:
+                      - generic [ref=e514] [cursor=pointer]:
+                        - checkbox "Azul Empoeirado" [ref=e516]
+                        - generic "Azul Empoeirado" [ref=e519]
+                    - listitem [ref=e520]:
+                      - generic [ref=e521] [cursor=pointer]:
+                        - checkbox "Lavanda" [ref=e523]
+                        - generic "Lavanda" [ref=e526]
+                    - listitem [ref=e527]:
+                      - generic [ref=e528] [cursor=pointer]:
+                        - checkbox "Azul menta" [ref=e530]
+                        - generic "Azul menta" [ref=e533]
+                    - listitem [ref=e534]:
+                      - generic [ref=e535] [cursor=pointer]:
+                        - checkbox "Marrom" [ref=e537]
+                        - generic "Marrom" [ref=e540]
+                    - listitem [ref=e541]:
+                      - generic [ref=e542] [cursor=pointer]:
+                        - checkbox "Azul petróleo" [ref=e544]
+                        - generic "Azul petróleo" [ref=e547]
+                    - listitem [ref=e548]:
+                      - generic [ref=e549] [cursor=pointer]:
+                        - checkbox "Café" [ref=e551]
+                        - generic "Café" [ref=e554]
+                    - listitem [ref=e555]:
+                      - generic [ref=e556] [cursor=pointer]:
+                        - checkbox "Violeta" [ref=e558]
+                        - generic "Violeta" [ref=e561]
+                    - listitem [ref=e562]:
+                      - generic [ref=e563] [cursor=pointer]:
+                        - checkbox "Malva" [ref=e565]
+                        - generic "Malva" [ref=e568]
+                    - listitem [ref=e569]:
+                      - generic [ref=e570] [cursor=pointer]:
+                        - checkbox "Melancia" [ref=e572]
+                        - generic "Melancia" [ref=e575]
+                    - listitem [ref=e576]:
+                      - generic [ref=e577] [cursor=pointer]:
+                        - checkbox "Roxo empoeirado" [ref=e579]
+                        - generic "Roxo empoeirado" [ref=e582]
+                    - listitem [ref=e583]:
+                      - generic [ref=e584] [cursor=pointer]:
+                        - checkbox "Chocolate" [ref=e586]
+                        - generic "Chocolate" [ref=e589]
+                    - listitem [ref=e590]:
+                      - generic [ref=e591] [cursor=pointer]:
+                        - checkbox "Marrom Claro" [ref=e593]
+                        - generic "Marrom Claro" [ref=e596]
+                    - listitem [ref=e597]:
+                      - generic [ref=e598] [cursor=pointer]:
+                        - checkbox "Verde Limão" [ref=e600]
+                        - generic "Verde Limão" [ref=e603]
+                    - listitem [ref=e604]:
+                      - generic [ref=e605] [cursor=pointer]:
+                        - checkbox "Verde Oliva" [ref=e607]
+                        - generic "Verde Oliva" [ref=e610]
+                    - listitem [ref=e611]:
+                      - generic [ref=e612] [cursor=pointer]:
+                        - checkbox "Azul Marinho" [ref=e614]
+                        - generic "Azul Marinho" [ref=e617]
+                    - listitem [ref=e618]:
+                      - generic [ref=e619] [cursor=pointer]:
+                        - checkbox "Azul e Branco" [ref=e621]
+                        - generic "Azul e Branco" [ref=e624]
+                    - listitem [ref=e625]:
+                      - generic [ref=e626] [cursor=pointer]:
+                        - checkbox "Vermelho e Branco" [ref=e628]
+                        - generic "Vermelho e Branco" [ref=e631]
+                    - listitem [ref=e632]:
+                      - generic [ref=e633] [cursor=pointer]:
+                        - checkbox "Cáqui claro" [ref=e635]
+                        - generic "Cáqui claro" [ref=e638]
+                    - listitem [ref=e639]:
+                      - generic [ref=e640] [cursor=pointer]:
+                        - checkbox "Ganso amarelo" [ref=e642]
+                        - generic "Ganso amarelo" [ref=e645]
+                    - listitem [ref=e646]:
+                      - generic [ref=e647] [cursor=pointer]:
+                        - checkbox "Luz amarela" [ref=e649]
+                        - generic "Luz amarela" [ref=e652]
+                    - listitem [ref=e653]:
+                      - generic [ref=e654] [cursor=pointer]:
+                        - checkbox "Cinza+PP" [ref=e656]
+                        - generic "Cinza+PP" [ref=e659]
+                    - listitem [ref=e660]:
+                      - generic [ref=e661] [cursor=pointer]:
+                        - checkbox "Cinza+P" [ref=e663]
+                        - generic "Cinza+P" [ref=e666]
+                    - listitem [ref=e667]:
+                      - generic [ref=e668] [cursor=pointer]:
+                        - checkbox "Cinza+G" [ref=e670]
+                        - generic "Cinza+G" [ref=e673]
+                    - listitem [ref=e674]:
+                      - generic [ref=e675] [cursor=pointer]:
+                        - checkbox "Cinza+M" [ref=e677]
+                        - generic "Cinza+M" [ref=e680]
+                    - listitem [ref=e681]:
+                      - generic [ref=e682] [cursor=pointer]:
+                        - checkbox "Cinza+GG" [ref=e684]
+                        - generic "Cinza+GG" [ref=e687]
+                    - listitem [ref=e688]:
+                      - generic [ref=e689] [cursor=pointer]:
+                        - checkbox "Azul Marinho+PP" [ref=e691]
+                        - generic "Azul Marinho+PP" [ref=e694]
+                    - listitem [ref=e695]:
+                      - generic [ref=e696] [cursor=pointer]:
+                        - checkbox "Azul Marinho+P" [ref=e698]
+                        - generic "Azul Marinho+P" [ref=e701]
+                    - listitem [ref=e702]:
+                      - generic [ref=e703] [cursor=pointer]:
+                        - checkbox "Azul Marinho+G" [ref=e705]
+                        - generic "Azul Marinho+G" [ref=e708]
+                    - listitem [ref=e709]:
+                      - generic [ref=e710] [cursor=pointer]:
+                        - checkbox "Azul Marinho+M" [ref=e712]
+                        - generic "Azul Marinho+M" [ref=e715]
+                    - listitem [ref=e716]:
+                      - generic [ref=e717] [cursor=pointer]:
+                        - checkbox "Azul Marinho+GG" [ref=e719]
+                        - generic "Azul Marinho+GG" [ref=e722]
+                    - listitem [ref=e723]:
+                      - generic [ref=e724] [cursor=pointer]:
+                        - checkbox "Preto+PP" [ref=e726]
+                        - generic "Preto+PP" [ref=e729]
+                    - listitem [ref=e730]:
+                      - generic [ref=e731] [cursor=pointer]:
+                        - checkbox "Preto+P" [ref=e733]
+                        - generic "Preto+P" [ref=e736]
+                    - listitem [ref=e737]:
+                      - generic [ref=e738] [cursor=pointer]:
+                        - checkbox "Preto+G" [ref=e740]
+                        - generic "Preto+G" [ref=e743]
+                    - listitem [ref=e744]:
+                      - generic [ref=e745] [cursor=pointer]:
+                        - checkbox "Preto+M" [ref=e747]
+                        - generic "Preto+M" [ref=e750]
+                    - listitem [ref=e751]:
+                      - generic [ref=e752] [cursor=pointer]:
+                        - checkbox "Preto+GG" [ref=e754]
+                        - generic "Preto+GG" [ref=e757]
+                    - listitem [ref=e758]:
+                      - generic [ref=e759] [cursor=pointer]:
+                        - checkbox "Rosa Bebê+PP" [ref=e761]
+                        - generic "Rosa Bebê+PP" [ref=e764]
+                    - listitem [ref=e765]:
+                      - generic [ref=e766] [cursor=pointer]:
+                        - checkbox "Rosa Bebê+P" [ref=e768]
+                        - generic "Rosa Bebê+P" [ref=e771]
+                    - listitem [ref=e772]:
+                      - generic [ref=e773] [cursor=pointer]:
+                        - checkbox "Rosa Bebê+G" [ref=e775]
+                        - generic "Rosa Bebê+G" [ref=e778]
+                    - listitem [ref=e779]:
+                      - generic [ref=e780] [cursor=pointer]:
+                        - checkbox "Rosa Bebê+M" [ref=e782]
+                        - generic "Rosa Bebê+M" [ref=e785]
+                    - listitem [ref=e786]:
+                      - generic [ref=e787] [cursor=pointer]:
+                        - checkbox "Rosa Bebê+GG" [ref=e789]
+                        - generic "Rosa Bebê+GG" [ref=e792]
+                  - 'button "icon: plus Adicionar Opções" [ref=e796] [cursor=pointer]':
+                    - 'generic "icon: plus"':
+                      - img
+                    - generic: Adicionar Opções
+            - generic [ref=e797]:
+              - generic [ref=e800]: Subespecificação
+              - generic [ref=e804]:
+                - generic [ref=e808]:
+                  - generic [ref=e809]: Tamanho
+                  - generic [ref=e810]:
+                    - generic [ref=e814]:
+                      - textbox "Procurar conteúdo" [ref=e815]
+                      - 'generic "icon: search" [ref=e817] [cursor=pointer]':
+                        - img [ref=e818]
+                    - button "" [ref=e821] [cursor=pointer]:
+                      - generic: 
+                - list [ref=e824]:
+                  - listitem [ref=e825]:
+                    - generic [ref=e826] [cursor=pointer]:
+                      - checkbox "G" [checked] [ref=e828]
+                      - generic "G" [ref=e831]
+                  - listitem [ref=e832]:
+                    - generic [ref=e833] [cursor=pointer]:
+                      - checkbox "GG" [checked] [ref=e835]
+                      - generic "GG" [ref=e838]
+                  - listitem [ref=e839]:
+                    - generic [ref=e840] [cursor=pointer]:
+                      - checkbox "M" [checked] [ref=e842]
+                      - generic "M" [ref=e845]
+                  - listitem [ref=e846]:
+                    - generic [ref=e847] [cursor=pointer]:
+                      - checkbox "P" [checked] [ref=e849]
+                      - generic "P" [ref=e852]
+                  - listitem [ref=e853]:
+                    - generic [ref=e854] [cursor=pointer]:
+                      - checkbox "PP" [checked] [ref=e856]
+                      - generic "PP" [ref=e859]
+                  - listitem [ref=e860]:
+                    - generic [ref=e861] [cursor=pointer]:
+                      - checkbox "Unico" [ref=e863]
+                      - generic "Unico" [ref=e866]
+                  - listitem [ref=e867]:
+                    - generic [ref=e868] [cursor=pointer]:
+                      - checkbox "XG" [ref=e870]
+                      - generic "XG" [ref=e873]
+                  - listitem [ref=e874]:
+                    - generic [ref=e875] [cursor=pointer]:
+                      - checkbox "Tamanho Único" [ref=e877]
+                      - generic "Tamanho Único" [ref=e880]
+                  - listitem [ref=e881]:
+                    - generic [ref=e882] [cursor=pointer]:
+                      - checkbox "XXS" [ref=e884]
+                      - generic "XXS" [ref=e887]
+                  - listitem [ref=e888]:
+                    - generic [ref=e889] [cursor=pointer]:
+                      - checkbox "XS" [ref=e891]
+                      - generic "XS" [ref=e894]
+                  - listitem [ref=e895]:
+                    - generic [ref=e896] [cursor=pointer]:
+                      - checkbox "S" [ref=e898]
+                      - generic "S" [ref=e901]
+                  - listitem [ref=e902]:
+                    - generic [ref=e903] [cursor=pointer]:
+                      - checkbox "L" [ref=e905]
+                      - generic "L" [ref=e908]
+                  - listitem [ref=e909]:
+                    - generic [ref=e910] [cursor=pointer]:
+                      - checkbox "XL" [ref=e912]
+                      - generic "XL" [ref=e915]
+                  - listitem [ref=e916]:
+                    - generic [ref=e917] [cursor=pointer]:
+                      - checkbox "XXL" [ref=e919]
+                      - generic "XXL" [ref=e922]
+                  - listitem [ref=e923]:
+                    - generic [ref=e924] [cursor=pointer]:
+                      - checkbox "XXXL" [ref=e926]
+                      - generic "XXXL" [ref=e929]
+                  - listitem [ref=e930]:
+                    - generic [ref=e931] [cursor=pointer]:
+                      - checkbox "XXXXL" [ref=e933]
+                      - generic "XXXXL" [ref=e936]
+                  - listitem [ref=e937]:
+                    - generic [ref=e938] [cursor=pointer]:
+                      - checkbox "0XL" [ref=e940]
+                      - generic "0XL" [ref=e943]
+                  - listitem [ref=e944]:
+                    - generic [ref=e945] [cursor=pointer]:
+                      - checkbox "1XL" [ref=e947]
+                      - generic "1XL" [ref=e950]
+                  - listitem [ref=e951]:
+                    - generic [ref=e952] [cursor=pointer]:
+                      - checkbox "2XL" [ref=e954]
+                      - generic "2XL" [ref=e957]
+                  - listitem [ref=e958]:
+                    - generic [ref=e959] [cursor=pointer]:
+                      - checkbox "3XL" [ref=e961]
+                      - generic "3XL" [ref=e964]
+                  - listitem [ref=e965]:
+                    - generic [ref=e966] [cursor=pointer]:
+                      - checkbox "4XL" [ref=e968]
+                      - generic "4XL" [ref=e971]
+                  - listitem [ref=e972]:
+                    - generic [ref=e973] [cursor=pointer]:
+                      - checkbox "5XL" [ref=e975]
+                      - generic "5XL" [ref=e978]
+                  - listitem [ref=e979]:
+                    - generic [ref=e980] [cursor=pointer]:
+                      - checkbox "6XL" [ref=e982]
+                      - generic "6XL" [ref=e985]
+                  - listitem [ref=e986]:
+                    - generic [ref=e987] [cursor=pointer]:
+                      - checkbox "7XL" [ref=e989]
+                      - generic "7XL" [ref=e992]
+                  - listitem [ref=e993]:
+                    - generic [ref=e994] [cursor=pointer]:
+                      - checkbox "120" [ref=e996]
+                      - generic "120" [ref=e999]
+                  - listitem [ref=e1000]:
+                    - generic [ref=e1001] [cursor=pointer]:
+                      - checkbox "130" [ref=e1003]
+                      - generic "130" [ref=e1006]
+                  - listitem [ref=e1007]:
+                    - generic [ref=e1008] [cursor=pointer]:
+                      - checkbox "140" [ref=e1010]
+                      - generic "140" [ref=e1013]
+                  - listitem [ref=e1014]:
+                    - generic [ref=e1015] [cursor=pointer]:
+                      - checkbox "150" [ref=e1017]
+                      - generic "150" [ref=e1020]
+                  - listitem [ref=e1021]:
+                    - generic [ref=e1022] [cursor=pointer]:
+                      - checkbox "160" [ref=e1024]
+                      - generic "160" [ref=e1027]
+                  - listitem [ref=e1028]:
+                    - generic [ref=e1029] [cursor=pointer]:
+                      - checkbox "GGG" [ref=e1031]
+                      - generic "GGG" [ref=e1034]
+                  - listitem [ref=e1035]:
+                    - generic [ref=e1036] [cursor=pointer]:
+                      - checkbox "EXG" [ref=e1038]
+                      - generic "EXG" [ref=e1041]
+                  - listitem [ref=e1042]:
+                    - generic [ref=e1043] [cursor=pointer]:
+                      - checkbox "G1" [ref=e1045]
+                      - generic "G1" [ref=e1048]
+                  - listitem [ref=e1049]:
+                    - generic [ref=e1050] [cursor=pointer]:
+                      - checkbox "G2" [ref=e1052]
+                      - generic "G2" [ref=e1055]
+                  - listitem [ref=e1056]:
+                    - generic [ref=e1057] [cursor=pointer]:
+                      - checkbox "G3" [ref=e1059]
+                      - generic "G3" [ref=e1062]
+                  - listitem [ref=e1063]:
+                    - generic [ref=e1064] [cursor=pointer]:
+                      - checkbox "G4" [ref=e1066]
+                      - generic "G4" [ref=e1069]
+                  - listitem [ref=e1070]:
+                    - generic [ref=e1071] [cursor=pointer]:
+                      - checkbox "26" [ref=e1073]
+                      - generic "26" [ref=e1076]
+                  - listitem [ref=e1077]:
+                    - generic [ref=e1078] [cursor=pointer]:
+                      - checkbox "27" [ref=e1080]
+                      - generic "27" [ref=e1083]
+                  - listitem [ref=e1084]:
+                    - generic [ref=e1085] [cursor=pointer]:
+                      - checkbox "28" [ref=e1087]
+                      - generic "28" [ref=e1090]
+                  - listitem [ref=e1091]:
+                    - generic [ref=e1092] [cursor=pointer]:
+                      - checkbox "29" [ref=e1094]
+                      - generic "29" [ref=e1097]
+                  - listitem [ref=e1098]:
+                    - generic [ref=e1099] [cursor=pointer]:
+                      - checkbox "30" [ref=e1101]
+                      - generic "30" [ref=e1104]
+                  - listitem [ref=e1105]:
+                    - generic [ref=e1106] [cursor=pointer]:
+                      - checkbox "31" [ref=e1108]
+                      - generic "31" [ref=e1111]
+                  - listitem [ref=e1112]:
+                    - generic [ref=e1113] [cursor=pointer]:
+                      - checkbox "32" [ref=e1115]
+                      - generic "32" [ref=e1118]
+                  - listitem [ref=e1119]:
+                    - generic [ref=e1120] [cursor=pointer]:
+                      - checkbox "33" [ref=e1122]
+                      - generic "33" [ref=e1125]
+                  - listitem [ref=e1126]:
+                    - generic [ref=e1127] [cursor=pointer]:
+                      - checkbox "34" [ref=e1129]
+                      - generic "34" [ref=e1132]
+                  - listitem [ref=e1133]:
+                    - generic [ref=e1134] [cursor=pointer]:
+                      - checkbox "35" [ref=e1136]
+                      - generic "35" [ref=e1139]
+                  - listitem [ref=e1140]:
+                    - generic [ref=e1141] [cursor=pointer]:
+                      - checkbox "36" [ref=e1143]
+                      - generic "36" [ref=e1146]
+                  - listitem [ref=e1147]:
+                    - generic [ref=e1148] [cursor=pointer]:
+                      - checkbox "37" [ref=e1150]
+                      - generic "37" [ref=e1153]
+                  - listitem [ref=e1154]:
+                    - generic [ref=e1155] [cursor=pointer]:
+                      - checkbox "38" [ref=e1157]
+                      - generic "38" [ref=e1160]
+                  - listitem [ref=e1161]:
+                    - generic [ref=e1162] [cursor=pointer]:
+                      - checkbox "42" [ref=e1164]
+                      - generic "42" [ref=e1167]
+                  - listitem [ref=e1168]:
+                    - generic [ref=e1169] [cursor=pointer]:
+                      - checkbox "44" [ref=e1171]
+                      - generic "44" [ref=e1174]
+                  - listitem [ref=e1175]:
+                    - generic [ref=e1176] [cursor=pointer]:
+                      - checkbox "46" [ref=e1178]
+                      - generic "46" [ref=e1181]
+                  - listitem [ref=e1182]:
+                    - generic [ref=e1183] [cursor=pointer]:
+                      - checkbox "48" [ref=e1185]
+                      - generic "48" [ref=e1188]
+                  - listitem [ref=e1189]:
+                    - generic [ref=e1190] [cursor=pointer]:
+                      - checkbox "50" [ref=e1192]
+                      - generic "50" [ref=e1195]
+                  - listitem [ref=e1196]:
+                    - generic [ref=e1197] [cursor=pointer]:
+                      - checkbox "52" [ref=e1199]
+                      - generic "52" [ref=e1202]
+                  - listitem [ref=e1203]:
+                    - generic [ref=e1204] [cursor=pointer]:
+                      - checkbox "54" [ref=e1206]
+                      - generic "54" [ref=e1209]
+                  - listitem [ref=e1210]:
+                    - generic [ref=e1211] [cursor=pointer]:
+                      - checkbox "56" [ref=e1213]
+                      - generic "56" [ref=e1216]
+                  - listitem [ref=e1217]:
+                    - generic [ref=e1218] [cursor=pointer]:
+                      - checkbox "58" [ref=e1220]
+                      - generic "58" [ref=e1223]
+                  - listitem [ref=e1224]:
+                    - generic [ref=e1225] [cursor=pointer]:
+                      - checkbox "40" [ref=e1227]
+                      - generic "40" [ref=e1230]
+                  - listitem [ref=e1231]:
+                    - generic [ref=e1232] [cursor=pointer]:
+                      - checkbox "EGG" [ref=e1234]
+                      - generic "EGG" [ref=e1237]
+                  - listitem [ref=e1238]:
+                    - generic [ref=e1239] [cursor=pointer]:
+                      - checkbox "XXG" [ref=e1241]
+                      - generic "XXG" [ref=e1244]
+          - generic [ref=e1245]:
+            - generic [ref=e1247]: Lista de Variantes (30)
+            - generic [ref=e1249]:
+              - generic [ref=e1251]:
+                - table [ref=e1254]:
+                  - rowgroup [ref=e1266]:
+                    - 'row "Cor Tamanho SKU icon: question-circle Gerar | Modificar Quantidade * Editar em Massa Preço(R$) * Editar em Massa Preço especial(R$) Editar em Massa Peso(g) * Editar em Massa Tamanho do Pacote(cm) * Editar em Massa Ações" [ref=e1267]':
+                      - columnheader "Cor" [ref=e1268]:
+                        - generic [ref=e1270]: Cor
+                      - columnheader "Tamanho" [ref=e1271]:
+                        - generic [ref=e1273]: Tamanho
+                      - 'columnheader "SKU icon: question-circle Gerar | Modificar" [ref=e1274]':
+                        - generic [ref=e1277]:
+                          - generic [ref=e1278]:
+                            - generic [ref=e1279]: SKU
+                            - 'generic "icon: question-circle" [ref=e1280]':
+                              - img [ref=e1281]
+                          - generic [ref=e1284]: Gerar | Modificar
+                      - columnheader "Quantidade * Editar em Massa" [ref=e1285]:
+                        - generic [ref=e1288]:
+                          - generic [ref=e1289]:
+                            - text: Quantidade
+                            - superscript [ref=e1290]: "*"
+                          - button "Editar em Massa" [ref=e1291] [cursor=pointer]:
+                            - generic: Editar em Massa
+                      - columnheader "Preço(R$) * Editar em Massa" [ref=e1292]:
+                        - generic [ref=e1295]:
+                          - generic [ref=e1296]:
+                            - text: Preço(R$)
+                            - superscript [ref=e1297]: "*"
+                          - button "Editar em Massa" [ref=e1298] [cursor=pointer]:
+                            - generic: Editar em Massa
+                      - columnheader "Preço especial(R$) Editar em Massa" [ref=e1299]:
+                        - generic [ref=e1302]:
+                          - generic [ref=e1303]: Preço especial(R$)
+                          - button "Editar em Massa" [ref=e1304] [cursor=pointer]:
+                            - generic: Editar em Massa
+                      - columnheader "Peso(g) * Editar em Massa" [ref=e1305]:
+                        - generic [ref=e1308]:
+                          - generic [ref=e1309]:
+                            - text: Peso(g)
+                            - superscript [ref=e1310]: "*"
+                          - button "Editar em Massa" [ref=e1311] [cursor=pointer]:
+                            - generic: Editar em Massa
+                      - columnheader "Tamanho do Pacote(cm) * Editar em Massa" [ref=e1312]:
+                        - generic [ref=e1315]:
+                          - generic [ref=e1316]:
+                            - text: Tamanho do Pacote(cm)
+                            - superscript [ref=e1317]: "*"
+                          - button "Editar em Massa" [ref=e1318] [cursor=pointer]:
+                            - generic: Editar em Massa
+                      - columnheader "Ações" [ref=e1319]:
+                        - generic [ref=e1320]: Ações
+                      - columnheader [ref=e1321]
+                - table [ref=e1325]:
+                  - rowgroup [ref=e1336]:
+                    - row "Preto G 20 129.9 × × Remover" [ref=e1337]:
+                      - cell "Preto" [ref=e1338]:
+                        - generic [ref=e1339]: Preto
+                      - cell "G" [ref=e1340]:
+                        - generic [ref=e1341]: G
+                      - cell [ref=e1342]:
+                        - textbox [ref=e1344]
+                      - cell "20" [ref=e1345]:
+                        - textbox [ref=e1347]: "20"
+                      - cell "129.9" [ref=e1348]:
+                        - spinbutton [ref=e1353]: 129,90
+                      - cell [ref=e1354]:
+                        - spinbutton [ref=e1359]
+                      - cell [ref=e1360]:
+                        - spinbutton [ref=e1365]
+                      - cell "× ×" [ref=e1366]:
+                        - generic [ref=e1368]:
+                          - spinbutton "Comprimento" [ref=e1372]
+                          - generic [ref=e1373]: ×
+                          - spinbutton "Largura" [ref=e1377]
+                          - generic [ref=e1378]: ×
+                          - spinbutton "Altura" [ref=e1382]
+                      - cell "Remover" [ref=e1383]:
+                        - generic [ref=e1384]: Remover
+                    - row "Preto GG 20 129.9 × × Remover" [ref=e1385]:
+                      - cell "Preto" [ref=e1386]:
+                        - generic [ref=e1387]: Preto
+                      - cell "GG" [ref=e1388]:
+                        - generic [ref=e1389]: GG
+                      - cell [ref=e1390]:
+                        - textbox [ref=e1392]
+                      - cell "20" [ref=e1393]:
+                        - textbox [ref=e1395]: "20"
+                      - cell "129.9" [ref=e1396]:
+                        - spinbutton [ref=e1401]: 129,90
+                      - cell [ref=e1402]:
+                        - spinbutton [ref=e1407]
+                      - cell [ref=e1408]:
+                        - spinbutton [ref=e1413]
+                      - cell "× ×" [ref=e1414]:
+                        - generic [ref=e1416]:
+                          - spinbutton "Comprimento" [ref=e1420]
+                          - generic [ref=e1421]: ×
+                          - spinbutton "Largura" [ref=e1425]
+                          - generic [ref=e1426]: ×
+                          - spinbutton "Altura" [ref=e1430]
+                      - cell "Remover" [ref=e1431]:
+                        - generic [ref=e1432]: Remover
+                    - row "Preto M 20 129.9 × × Remover" [ref=e1433]:
+                      - cell "Preto" [ref=e1434]:
+                        - generic [ref=e1435]: Preto
+                      - cell "M" [ref=e1436]:
+                        - generic [ref=e1437]: M
+                      - cell [ref=e1438]:
+                        - textbox [ref=e1440]
+                      - cell "20" [ref=e1441]:
+                        - textbox [ref=e1443]: "20"
+                      - cell "129.9" [ref=e1444]:
+                        - spinbutton [ref=e1449]: 129,90
+                      - cell [ref=e1450]:
+                        - spinbutton [ref=e1455]
+                      - cell [ref=e1456]:
+                        - spinbutton [ref=e1461]
+                      - cell "× ×" [ref=e1462]:
+                        - generic [ref=e1464]:
+                          - spinbutton "Comprimento" [ref=e1468]
+                          - generic [ref=e1469]: ×
+                          - spinbutton "Largura" [ref=e1473]
+                          - generic [ref=e1474]: ×
+                          - spinbutton "Altura" [ref=e1478]
+                      - cell "Remover" [ref=e1479]:
+                        - generic [ref=e1480]: Remover
+                    - row "Preto P 20 129.9 × × Remover" [ref=e1481]:
+                      - cell "Preto" [ref=e1482]:
+                        - generic [ref=e1483]: Preto
+                      - cell "P" [ref=e1484]:
+                        - generic [ref=e1485]: P
+                      - cell [ref=e1486]:
+                        - textbox [ref=e1488]
+                      - cell "20" [ref=e1489]:
+                        - textbox [ref=e1491]: "20"
+                      - cell "129.9" [ref=e1492]:
+                        - spinbutton [ref=e1497]: 129,90
+                      - cell [ref=e1498]:
+                        - spinbutton [ref=e1503]
+                      - cell [ref=e1504]:
+                        - spinbutton [ref=e1509]
+                      - cell "× ×" [ref=e1510]:
+                        - generic [ref=e1512]:
+                          - spinbutton "Comprimento" [ref=e1516]
+                          - generic [ref=e1517]: ×
+                          - spinbutton "Largura" [ref=e1521]
+                          - generic [ref=e1522]: ×
+                          - spinbutton "Altura" [ref=e1526]
+                      - cell "Remover" [ref=e1527]:
+                        - generic [ref=e1528]: Remover
+                    - row "Preto PP 20 129.9 × × Remover" [ref=e1529]:
+                      - cell "Preto" [ref=e1530]:
+                        - generic [ref=e1531]: Preto
+                      - cell "PP" [ref=e1532]:
+                        - generic [ref=e1533]: PP
+                      - cell [ref=e1534]:
+                        - textbox [ref=e1536]
+                      - cell "20" [ref=e1537]:
+                        - textbox [ref=e1539]: "20"
+                      - cell "129.9" [ref=e1540]:
+                        - spinbutton [ref=e1545]: 129,90
+                      - cell [ref=e1546]:
+                        - spinbutton [ref=e1551]
+                      - cell [ref=e1552]:
+                        - spinbutton [ref=e1557]
+                      - cell "× ×" [ref=e1558]:
+                        - generic [ref=e1560]:
+                          - spinbutton "Comprimento" [ref=e1564]
+                          - generic [ref=e1565]: ×
+                          - spinbutton "Largura" [ref=e1569]
+                          - generic [ref=e1570]: ×
+                          - spinbutton "Altura" [ref=e1574]
+                      - cell "Remover" [ref=e1575]:
+                        - generic [ref=e1576]: Remover
+                    - row "Azul G 20 129.9 × × Remover" [ref=e1577]:
+                      - cell "Azul" [ref=e1578]:
+                        - generic [ref=e1579]: Azul
+                      - cell "G" [ref=e1580]:
+                        - generic [ref=e1581]: G
+                      - cell [ref=e1582]:
+                        - textbox [ref=e1584]
+                      - cell "20" [ref=e1585]:
+                        - textbox [ref=e1587]: "20"
+                      - cell "129.9" [ref=e1588]:
+                        - spinbutton [ref=e1593]: 129,90
+                      - cell [ref=e1594]:
+                        - spinbutton [ref=e1599]
+                      - cell [ref=e1600]:
+                        - spinbutton [ref=e1605]
+                      - cell "× ×" [ref=e1606]:
+                        - generic [ref=e1608]:
+                          - spinbutton "Comprimento" [ref=e1612]
+                          - generic [ref=e1613]: ×
+                          - spinbutton "Largura" [ref=e1617]
+                          - generic [ref=e1618]: ×
+                          - spinbutton "Altura" [ref=e1622]
+                      - cell "Remover" [ref=e1623]:
+                        - generic [ref=e1624]: Remover
+                    - row "Azul GG 20 129.9 × × Remover" [ref=e1625]:
+                      - cell "Azul" [ref=e1626]:
+                        - generic [ref=e1627]: Azul
+                      - cell "GG" [ref=e1628]:
+                        - generic [ref=e1629]: GG
+                      - cell [ref=e1630]:
+                        - textbox [ref=e1632]
+                      - cell "20" [ref=e1633]:
+                        - textbox [ref=e1635]: "20"
+                      - cell "129.9" [ref=e1636]:
+                        - spinbutton [ref=e1641]: 129,90
+                      - cell [ref=e1642]:
+                        - spinbutton [ref=e1647]
+                      - cell [ref=e1648]:
+                        - spinbutton [ref=e1653]
+                      - cell "× ×" [ref=e1654]:
+                        - generic [ref=e1656]:
+                          - spinbutton "Comprimento" [ref=e1660]
+                          - generic [ref=e1661]: ×
+                          - spinbutton "Largura" [ref=e1665]
+                          - generic [ref=e1666]: ×
+                          - spinbutton "Altura" [ref=e1670]
+                      - cell "Remover" [ref=e1671]:
+                        - generic [ref=e1672]: Remover
+                    - row "Azul M 20 129.9 × × Remover" [ref=e1673]:
+                      - cell "Azul" [ref=e1674]:
+                        - generic [ref=e1675]: Azul
+                      - cell "M" [ref=e1676]:
+                        - generic [ref=e1677]: M
+                      - cell [ref=e1678]:
+                        - textbox [ref=e1680]
+                      - cell "20" [ref=e1681]:
+                        - textbox [ref=e1683]: "20"
+                      - cell "129.9" [ref=e1684]:
+                        - spinbutton [ref=e1689]: 129,90
+                      - cell [ref=e1690]:
+                        - spinbutton [ref=e1695]
+                      - cell [ref=e1696]:
+                        - spinbutton [ref=e1701]
+                      - cell "× ×" [ref=e1702]:
+                        - generic [ref=e1704]:
+                          - spinbutton "Comprimento" [ref=e1708]
+                          - generic [ref=e1709]: ×
+                          - spinbutton "Largura" [ref=e1713]
+                          - generic [ref=e1714]: ×
+                          - spinbutton "Altura" [ref=e1718]
+                      - cell "Remover" [ref=e1719]:
+                        - generic [ref=e1720]: Remover
+                    - row "Azul P 20 129.9 × × Remover" [ref=e1721]:
+                      - cell "Azul" [ref=e1722]:
+                        - generic [ref=e1723]: Azul
+                      - cell "P" [ref=e1724]:
+                        - generic [ref=e1725]: P
+                      - cell [ref=e1726]:
+                        - textbox [ref=e1728]
+                      - cell "20" [ref=e1729]:
+                        - textbox [ref=e1731]: "20"
+                      - cell "129.9" [ref=e1732]:
+                        - spinbutton [ref=e1737]: 129,90
+                      - cell [ref=e1738]:
+                        - spinbutton [ref=e1743]
+                      - cell [ref=e1744]:
+                        - spinbutton [ref=e1749]
+                      - cell "× ×" [ref=e1750]:
+                        - generic [ref=e1752]:
+                          - spinbutton "Comprimento" [ref=e1756]
+                          - generic [ref=e1757]: ×
+                          - spinbutton "Largura" [ref=e1761]
+                          - generic [ref=e1762]: ×
+                          - spinbutton "Altura" [ref=e1766]
+                      - cell "Remover" [ref=e1767]:
+                        - generic [ref=e1768]: Remover
+                    - row "Azul PP 20 129.9 × × Remover" [ref=e1769]:
+                      - cell "Azul" [ref=e1770]:
+                        - generic [ref=e1771]: Azul
+                      - cell "PP" [ref=e1772]:
+                        - generic [ref=e1773]: PP
+                      - cell [ref=e1774]:
+                        - textbox [ref=e1776]
+                      - cell "20" [ref=e1777]:
+                        - textbox [ref=e1779]: "20"
+                      - cell "129.9" [ref=e1780]:
+                        - spinbutton [ref=e1785]: 129,90
+                      - cell [ref=e1786]:
+                        - spinbutton [ref=e1791]
+                      - cell [ref=e1792]:
+                        - spinbutton [ref=e1797]
+                      - cell "× ×" [ref=e1798]:
+                        - generic [ref=e1800]:
+                          - spinbutton "Comprimento" [ref=e1804]
+                          - generic [ref=e1805]: ×
+                          - spinbutton "Largura" [ref=e1809]
+                          - generic [ref=e1810]: ×
+                          - spinbutton "Altura" [ref=e1814]
+                      - cell "Remover" [ref=e1815]:
+                        - generic [ref=e1816]: Remover
+                    - row "Branco G 20 129.9 × × Remover" [ref=e1817]:
+                      - cell "Branco" [ref=e1818]:
+                        - generic [ref=e1819]: Branco
+                      - cell "G" [ref=e1820]:
+                        - generic [ref=e1821]: G
+                      - cell [ref=e1822]:
+                        - textbox [ref=e1824]
+                      - cell "20" [ref=e1825]:
+                        - textbox [ref=e1827]: "20"
+                      - cell "129.9" [ref=e1828]:
+                        - spinbutton [ref=e1833]: 129,90
+                      - cell [ref=e1834]:
+                        - spinbutton [ref=e1839]
+                      - cell [ref=e1840]:
+                        - spinbutton [ref=e1845]
+                      - cell "× ×" [ref=e1846]:
+                        - generic [ref=e1848]:
+                          - spinbutton "Comprimento" [ref=e1852]
+                          - generic [ref=e1853]: ×
+                          - spinbutton "Largura" [ref=e1857]
+                          - generic [ref=e1858]: ×
+                          - spinbutton "Altura" [ref=e1862]
+                      - cell "Remover" [ref=e1863]:
+                        - generic [ref=e1864]: Remover
+                    - row "Branco GG 20 129.9 × × Remover" [ref=e1865]:
+                      - cell "Branco" [ref=e1866]:
+                        - generic [ref=e1867]: Branco
+                      - cell "GG" [ref=e1868]:
+                        - generic [ref=e1869]: GG
+                      - cell [ref=e1870]:
+                        - textbox [ref=e1872]
+                      - cell "20" [ref=e1873]:
+                        - textbox [ref=e1875]: "20"
+                      - cell "129.9" [ref=e1876]:
+                        - spinbutton [ref=e1881]: 129,90
+                      - cell [ref=e1882]:
+                        - spinbutton [ref=e1887]
+                      - cell [ref=e1888]:
+                        - spinbutton [ref=e1893]
+                      - cell "× ×" [ref=e1894]:
+                        - generic [ref=e1896]:
+                          - spinbutton "Comprimento" [ref=e1900]
+                          - generic [ref=e1901]: ×
+                          - spinbutton "Largura" [ref=e1905]
+                          - generic [ref=e1906]: ×
+                          - spinbutton "Altura" [ref=e1910]
+                      - cell "Remover" [ref=e1911]:
+                        - generic [ref=e1912]: Remover
+                    - row "Branco M 20 129.9 × × Remover" [ref=e1913]:
+                      - cell "Branco" [ref=e1914]:
+                        - generic [ref=e1915]: Branco
+                      - cell "M" [ref=e1916]:
+                        - generic [ref=e1917]: M
+                      - cell [ref=e1918]:
+                        - textbox [ref=e1920]
+                      - cell "20" [ref=e1921]:
+                        - textbox [ref=e1923]: "20"
+                      - cell "129.9" [ref=e1924]:
+                        - spinbutton [ref=e1929]: 129,90
+                      - cell [ref=e1930]:
+                        - spinbutton [ref=e1935]
+                      - cell [ref=e1936]:
+                        - spinbutton [ref=e1941]
+                      - cell "× ×" [ref=e1942]:
+                        - generic [ref=e1944]:
+                          - spinbutton "Comprimento" [ref=e1948]
+                          - generic [ref=e1949]: ×
+                          - spinbutton "Largura" [ref=e1953]
+                          - generic [ref=e1954]: ×
+                          - spinbutton "Altura" [ref=e1958]
+                      - cell "Remover" [ref=e1959]:
+                        - generic [ref=e1960]: Remover
+                    - row "Branco P 20 129.9 × × Remover" [ref=e1961]:
+                      - cell "Branco" [ref=e1962]:
+                        - generic [ref=e1963]: Branco
+                      - cell "P" [ref=e1964]:
+                        - generic [ref=e1965]: P
+                      - cell [ref=e1966]:
+                        - textbox [ref=e1968]
+                      - cell "20" [ref=e1969]:
+                        - textbox [ref=e1971]: "20"
+                      - cell "129.9" [ref=e1972]:
+                        - spinbutton [ref=e1977]: 129,90
+                      - cell [ref=e1978]:
+                        - spinbutton [ref=e1983]
+                      - cell [ref=e1984]:
+                        - spinbutton [ref=e1989]
+                      - cell "× ×" [ref=e1990]:
+                        - generic [ref=e1992]:
+                          - spinbutton "Comprimento" [ref=e1996]
+                          - generic [ref=e1997]: ×
+                          - spinbutton "Largura" [ref=e2001]
+                          - generic [ref=e2002]: ×
+                          - spinbutton "Altura" [ref=e2006]
+                      - cell "Remover" [ref=e2007]:
+                        - generic [ref=e2008]: Remover
+                    - row "Branco PP 20 129.9 × × Remover" [ref=e2009]:
+                      - cell "Branco" [ref=e2010]:
+                        - generic [ref=e2011]: Branco
+                      - cell "PP" [ref=e2012]:
+                        - generic [ref=e2013]: PP
+                      - cell [ref=e2014]:
+                        - textbox [ref=e2016]
+                      - cell "20" [ref=e2017]:
+                        - textbox [ref=e2019]: "20"
+                      - cell "129.9" [ref=e2020]:
+                        - spinbutton [ref=e2025]: 129,90
+                      - cell [ref=e2026]:
+                        - spinbutton [ref=e2031]
+                      - cell [ref=e2032]:
+                        - spinbutton [ref=e2037]
+                      - cell "× ×" [ref=e2038]:
+                        - generic [ref=e2040]:
+                          - spinbutton "Comprimento" [ref=e2044]
+                          - generic [ref=e2045]: ×
+                          - spinbutton "Largura" [ref=e2049]
+                          - generic [ref=e2050]: ×
+                          - spinbutton "Altura" [ref=e2054]
+                      - cell "Remover" [ref=e2055]:
+                        - generic [ref=e2056]: Remover
+              - text: 
+          - generic [ref=e2058]:
+            - text: Guia de Tamanhos*
+            - generic [ref=e2059] [cursor=pointer]: Editar Guia de Tamanhos
+      - generic [ref=e2060]:
+        - generic [ref=e2064]: Mídia
+        - generic [ref=e2066]:
+          - generic [ref=e2067]:
+            - generic [ref=e2071]: "Imagens Detalhadas: Por favor, envie de 2 a 11 imagens, com proporção entre 3:4 e 1:1, e tamanho entre 900 e 2200 px.Recomendamos usar a proporção 3:4, pois imagens 1:1 serão automaticamente estendidas para 3:4 pela Shein. Para a melhor exibição, é aconselhável seguir a proporção recomendada."
+            - generic [ref=e2075]: "Imagem Quadrada: Envie 1 imagem com proporção 1:1 e tamanho entre 900 e 2200 px."
+            - generic [ref=e2079]: "Imagem de Cores: Envie 1 imagem com tamanho de 80×80 px."
+          - generic [ref=e2080]:
+            - generic [ref=e2082]:
+              - generic [ref=e2084]:
+                - generic [ref=e2086]: 📷 Imagem em Massa ▼
+                - generic [ref=e2087] [cursor=pointer]:
+                  - generic: 
+                  - generic: Recortar em massa
+              - separator [ref=e2088]
+              - link " Gerar em Massa" [ref=e2090] [cursor=pointer]:
+                - /url: javascript:void(0);
+                - generic: 
+                - generic: Gerar em Massa
+              - separator [ref=e2091]
+              - generic [ref=e2092]:
+                - generic [ref=e2094] [cursor=pointer]:
+                  - generic: 
+                  - generic: Exportar
+                - separator [ref=e2095]
+              - 'link "icon: edit Editar Imagens" [ref=e2098] [cursor=pointer]':
+                - /url: javascript:void(0);
+                - 'generic "icon: edit"':
+                  - img
+                - generic: Editar Imagens
+            - generic [ref=e2100]:
+              - generic [ref=e2102]:
+                - table [ref=e2105]:
+                  - rowgroup [ref=e2111]:
+                    - row "Imagem Detalhada Imagem Quadrada Imagem de Cores" [ref=e2112]:
+                      - columnheader "Imagem Detalhada" [ref=e2113]:
+                        - generic [ref=e2115]: Imagem Detalhada
+                      - columnheader "Imagem Quadrada" [ref=e2116]:
+                        - generic [ref=e2118]: Imagem Quadrada
+                      - columnheader "Imagem de Cores" [ref=e2119]:
+                        - generic [ref=e2121]: Imagem de Cores
+                      - columnheader [ref=e2122]
+                - table [ref=e2126]:
+                  - rowgroup [ref=e2131]:
+                    - 'row "Preto (5/11) Copiar Imagem ao  Main icon: plus" [ref=e2132]':
+                      - 'cell "Preto (5/11) Copiar Imagem ao  Main icon: plus" [ref=e2133]':
+                        - generic [ref=e2134]:
+                          - generic [ref=e2135]:
+                            - generic [ref=e2136]:
+                              - text: Preto
+                              - generic [ref=e2137]:
+                                - text: (
+                                - generic [ref=e2139]: 5/11
+                                - text: )
+                            - link "Copiar Imagem ao " [ref=e2141] [cursor=pointer]:
+                              - /url: javascript:void(0);
+                              - generic: Copiar Imagem ao
+                              - generic: 
+                          - list [ref=e2144]:
+                            - generic [ref=e2145]:
+                              - listitem [ref=e2146]:
+                                - generic [ref=e2147]:
+                                  - generic [ref=e2151] [cursor=pointer]:
+                                    - img
+                                  - generic [ref=e2152]: Main
+                              - listitem [ref=e2153]:
+                                - generic [ref=e2158] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2159]:
+                                - generic [ref=e2164] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2165]:
+                                - generic [ref=e2170] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2171]:
+                                - generic [ref=e2176] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2177]:
+                                - 'generic "icon: plus" [ref=e2183]':
+                                  - img [ref=e2184]
+                      - cell [ref=e2187]:
+                        - generic [ref=e2193] [cursor=pointer]:
+                          - img
+                      - cell [ref=e2194]:
+                        - generic [ref=e2200] [cursor=pointer]:
+                          - img
+                    - 'row "Azul (5/11) Copiar Imagem ao  Main icon: plus" [ref=e2201]':
+                      - 'cell "Azul (5/11) Copiar Imagem ao  Main icon: plus" [ref=e2202]':
+                        - generic [ref=e2203]:
+                          - generic [ref=e2204]:
+                            - generic [ref=e2205]:
+                              - text: Azul
+                              - generic [ref=e2206]:
+                                - text: (
+                                - generic [ref=e2208]: 5/11
+                                - text: )
+                            - link "Copiar Imagem ao " [ref=e2210] [cursor=pointer]:
+                              - /url: javascript:void(0);
+                              - generic: Copiar Imagem ao
+                              - generic: 
+                          - list [ref=e2213]:
+                            - generic [ref=e2214]:
+                              - listitem [ref=e2215]:
+                                - generic [ref=e2216]:
+                                  - generic [ref=e2220] [cursor=pointer]:
+                                    - img
+                                  - generic [ref=e2221]: Main
+                              - listitem [ref=e2222]:
+                                - generic [ref=e2227] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2228]:
+                                - generic [ref=e2233] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2234]:
+                                - generic [ref=e2239] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2240]:
+                                - generic [ref=e2245] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2246]:
+                                - 'generic "icon: plus" [ref=e2252]':
+                                  - img [ref=e2253]
+                      - cell [ref=e2256]:
+                        - generic [ref=e2262] [cursor=pointer]:
+                          - img
+                      - cell [ref=e2263]:
+                        - generic [ref=e2269] [cursor=pointer]:
+                          - img
+                    - 'row "Branco (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2270]':
+                      - 'cell "Branco (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2271]':
+                        - generic [ref=e2272]:
+                          - generic [ref=e2273]:
+                            - generic [ref=e2274]:
+                              - text: Branco
+                              - generic [ref=e2275]:
+                                - text: (
+                                - generic [ref=e2277]: 4/11
+                                - text: )
+                            - link "Copiar Imagem ao " [ref=e2279] [cursor=pointer]:
+                              - /url: javascript:void(0);
+                              - generic: Copiar Imagem ao
+                              - generic: 
+                          - list [ref=e2282]:
+                            - generic [ref=e2283]:
+                              - listitem [ref=e2284]:
+                                - generic [ref=e2285]:
+                                  - generic [ref=e2289] [cursor=pointer]:
+                                    - img
+                                  - generic [ref=e2290]: Main
+                              - listitem [ref=e2291]:
+                                - generic [ref=e2296] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2297]:
+                                - generic [ref=e2302] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2303]:
+                                - generic [ref=e2308] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2309]:
+                                - 'generic "icon: plus" [ref=e2315]':
+                                  - img [ref=e2316]
+                      - cell [ref=e2319]:
+                        - generic [ref=e2325] [cursor=pointer]:
+                          - img
+                      - cell [ref=e2326]:
+                        - generic [ref=e2332] [cursor=pointer]:
+                          - img
+                    - 'row "Cinza (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2333]':
+                      - 'cell "Cinza (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2334]':
+                        - generic [ref=e2335]:
+                          - generic [ref=e2336]:
+                            - generic [ref=e2337]:
+                              - text: Cinza
+                              - generic [ref=e2338]:
+                                - text: (
+                                - generic [ref=e2340]: 4/11
+                                - text: )
+                            - link "Copiar Imagem ao " [ref=e2342] [cursor=pointer]:
+                              - /url: javascript:void(0);
+                              - generic: Copiar Imagem ao
+                              - generic: 
+                          - list [ref=e2345]:
+                            - generic [ref=e2346]:
+                              - listitem [ref=e2347]:
+                                - generic [ref=e2348]:
+                                  - generic [ref=e2352] [cursor=pointer]:
+                                    - img
+                                  - generic [ref=e2353]: Main
+                              - listitem [ref=e2354]:
+                                - generic [ref=e2359] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2360]:
+                                - generic [ref=e2365] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2366]:
+                                - generic [ref=e2371] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2372]:
+                                - 'generic "icon: plus" [ref=e2378]':
+                                  - img [ref=e2379]
+                      - cell [ref=e2382]:
+                        - generic [ref=e2388] [cursor=pointer]:
+                          - img
+                      - cell [ref=e2389]:
+                        - generic [ref=e2395] [cursor=pointer]:
+                          - img
+                    - 'row "Bege (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2396]':
+                      - 'cell "Bege (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2397]':
+                        - generic [ref=e2398]:
+                          - generic [ref=e2399]:
+                            - generic [ref=e2400]:
+                              - text: Bege
+                              - generic [ref=e2401]:
+                                - text: (
+                                - generic [ref=e2403]: 4/11
+                                - text: )
+                            - link "Copiar Imagem ao " [ref=e2405] [cursor=pointer]:
+                              - /url: javascript:void(0);
+                              - generic: Copiar Imagem ao
+                              - generic: 
+                          - list [ref=e2408]:
+                            - generic [ref=e2409]:
+                              - listitem [ref=e2410]:
+                                - generic [ref=e2411]:
+                                  - generic [ref=e2415] [cursor=pointer]:
+                                    - img
+                                  - generic [ref=e2416]: Main
+                              - listitem [ref=e2417]:
+                                - generic [ref=e2422] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2423]:
+                                - generic [ref=e2428] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2429]:
+                                - generic [ref=e2434] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2435]:
+                                - 'generic "icon: plus" [ref=e2441]':
+                                  - img [ref=e2442]
+                      - cell [ref=e2445]:
+                        - generic [ref=e2451] [cursor=pointer]:
+                          - img
+                      - cell [ref=e2452]:
+                        - generic [ref=e2458] [cursor=pointer]:
+                          - img
+                    - 'row "Rosa Bebê (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2459]':
+                      - 'cell "Rosa Bebê (4/11) Copiar Imagem ao  Main icon: plus" [ref=e2460]':
+                        - generic [ref=e2461]:
+                          - generic [ref=e2462]:
+                            - generic [ref=e2463]:
+                              - text: Rosa Bebê
+                              - generic [ref=e2464]:
+                                - text: (
+                                - generic [ref=e2466]: 4/11
+                                - text: )
+                            - link "Copiar Imagem ao " [ref=e2468] [cursor=pointer]:
+                              - /url: javascript:void(0);
+                              - generic: Copiar Imagem ao
+                              - generic: 
+                          - list [ref=e2471]:
+                            - generic [ref=e2472]:
+                              - listitem [ref=e2473]:
+                                - generic [ref=e2474]:
+                                  - generic [ref=e2478] [cursor=pointer]:
+                                    - img
+                                  - generic [ref=e2479]: Main
+                              - listitem [ref=e2480]:
+                                - generic [ref=e2485] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2486]:
+                                - generic [ref=e2491] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2492]:
+                                - generic [ref=e2497] [cursor=pointer]:
+                                  - img
+                              - listitem [ref=e2498]:
+                                - 'generic "icon: plus" [ref=e2504]':
+                                  - img [ref=e2505]
+                      - cell [ref=e2508]:
+                        - generic [ref=e2514] [cursor=pointer]:
+                          - img
+                      - cell [ref=e2515]:
+                        - generic [ref=e2521] [cursor=pointer]:
+                          - img
+              - text: 
+      - generic [ref=e2522]:
+        - generic [ref=e2526] [cursor=pointer]: 
+        - generic: 
+        - generic [ref=e2529] [cursor=pointer]: 
+        - generic [ref=e2532] [cursor=pointer]: 
+        - text: 
+  - generic "Automatiza Shein - UpSeller" [ref=e2533] [cursor=pointer]
+  - generic [ref=e2536]:
+    - generic [ref=e2537]: Automatiza Shein - UpSeller
+    - generic [ref=e2538]:
+      - combobox [ref=e2539]:
+        - option "Carregar Nova Configuração..." [selected]
+      - button "💾" [ref=e2540] [cursor=pointer]
+      - button "Excluir" [ref=e2541] [cursor=pointer]:
+        - img [ref=e2542]
+      - button "Exportar/Importar dados" [ref=e2545] [cursor=pointer]:
+        - img [ref=e2546]
+    - generic [ref=e2550]:
+      - generic [ref=e2551] [cursor=pointer]:
+        - generic [ref=e2552]: 📏 Medidas
+        - generic [ref=e2553]: ▼
+        - generic [ref=e2554]:
+          - checkbox [checked]
+      - generic [ref=e2558]:
+        - generic [ref=e2559]: Tabela de Medidas
+        - generic [ref=e2560]:
+          - combobox [ref=e2561]:
+            - option "CAMISETA"
+            - option "MOLETOM CANGURU" [selected]
+            - option "MOLETOM CARECA"
+            - option "REGATA"
+          - button "✏️" [ref=e2562] [cursor=pointer]
+          - button "➕" [ref=e2563] [cursor=pointer]
+          - button "🗑️" [ref=e2564] [cursor=pointer]
+        - generic [ref=e2565]:
+          - generic [ref=e2566]: "Camiseta Manga Curta Básica Unissex Peça confortável, versátil e ideal para o dia a dia. Modelagem moderna com ótimo caimento, perfeita para compor looks casuais com estilo e praticidade. Importante: Tom da cor pode ser um pouco mais claro ou mais escuro que da imagem do anúncio. Benefícios: - Tecido leve e confortável (Pode ser transparente em cores mais claras) - Excelente caimento no corpo - Modelo básico e indispensável no guarda-roupa - Ideal para uso diário - Ótima opção para revenda Medidas aproximadas da peça pronta (sem margem de costura): PP: Altura: 61cm | Largura: 43cm | Manga: 15cm P: Altura: 62cm | Largura: 44cm | Manga: 15cm M: Altura: 70cm | Largura: 49cm | Manga: 16cm G: Altura: 71cm | Largura: 53cm | Manga: 17cm GG: Altura: 72cm | Largura: 56cm | Manga: 18cm Atenção: As medidas podem variar levemente. Garanta já a sua enquanto houver disponibilidade em estoque."
+          - table [ref=e2567]:
+            - rowgroup [ref=e2568]:
+              - row "Tamanho Largura Altura" [ref=e2569]:
+                - columnheader "Tamanho" [ref=e2570]
+                - columnheader "Largura" [ref=e2571]
+                - columnheader "Altura" [ref=e2572]
+            - rowgroup [ref=e2573]:
+              - row "8 36,5 48,5" [ref=e2574]:
+                - cell "8" [ref=e2575]
+                - cell "36,5" [ref=e2576]
+                - cell "48,5" [ref=e2577]
+              - row "PP 43 61" [ref=e2578]:
+                - cell "PP" [ref=e2579]
+                - cell "43" [ref=e2580]
+                - cell "61" [ref=e2581]
+              - row "P 44 62" [ref=e2582]:
+                - cell "P" [ref=e2583]
+                - cell "44" [ref=e2584]
+                - cell "62" [ref=e2585]
+              - row "M 49 70" [ref=e2586]:
+                - cell "M" [ref=e2587]
+                - cell "49" [ref=e2588]
+                - cell "70" [ref=e2589]
+              - row "G 53 71" [ref=e2590]:
+                - cell "G" [ref=e2591]
+                - cell "53" [ref=e2592]
+                - cell "71" [ref=e2593]
+              - row "GG 56 71" [ref=e2594]:
+                - cell "GG" [ref=e2595]
+                - cell "56" [ref=e2596]
+                - cell "71" [ref=e2597]
+    - generic [ref=e2598]:
+      - generic [ref=e2599] [cursor=pointer]:
+        - generic [ref=e2600]: 💰 Preço Especial
+        - generic [ref=e2601]: ▶
+        - generic [ref=e2602]:
+          - checkbox [checked]
+      - generic [ref=e2604]:
+        - combobox [ref=e2605]:
+          - option "Carregar Salvo..." [selected]
+        - generic [ref=e2606]:
+          - textbox "Nome" [ref=e2607]: CAMISETA
+          - button "💾" [ref=e2608] [cursor=pointer]
+        - textbox "Preço massa R$" [ref=e2609]: 33,90
+        - generic [ref=e2610]:
+          - combobox [ref=e2611]:
+            - option "Tam" [selected]
+            - option "PP"
+            - option "P"
+            - option "M"
+            - option "G"
+            - option "GG"
+            - option "EGG"
+            - option "G1"
+            - option "G2"
+            - option "G3"
+            - option "G4"
+            - option "G5"
+            - option "2"
+            - option "4"
+            - option "6"
+            - option "8"
+            - option "10"
+            - option "12"
+            - option "14"
+            - option "16"
+          - textbox "R$" [ref=e2612]
+          - button "+" [ref=e2613] [cursor=pointer]
+        - generic [ref=e2615]:
+          - generic [ref=e2616]: PP → R$ 12,90
+          - generic [ref=e2617] [cursor=pointer]: ×
+    - generic [ref=e2618]:
+      - generic [ref=e2619] [cursor=pointer]:
+        - generic [ref=e2620]: 🛠 Editar em Massa
+        - generic [ref=e2621]: ▶
+        - generic [ref=e2622]:
+          - checkbox [checked]
+      - generic [ref=e2624]:
+        - generic [ref=e2625]: Macros Salvos
+        - combobox [ref=e2626]:
+          - option "Selecionar..." [selected]
+        - generic [ref=e2627]:
+          - textbox "Nome do macro" [ref=e2628]
+          - button "💾" [ref=e2629] [cursor=pointer]
+        - generic [ref=e2630]:
+          - generic [ref=e2631]:
+            - generic [ref=e2632]: Quantidade
+            - 'textbox "Ex: 100" [ref=e2633]'
+          - generic [ref=e2634]:
+            - generic [ref=e2635]: Preço(R$) (regular)
+            - 'textbox "Ex: 89,90" [ref=e2636]'
+          - generic [ref=e2637]:
+            - generic [ref=e2638]: Peso(g)
+            - 'textbox "Ex: 200" [ref=e2639]'
+          - generic [ref=e2640]:
+            - generic [ref=e2641]: Pacote(cm) (CxLxA)
+            - textbox "21x12x21" [ref=e2642]
+        - textbox "Tamanhos (vírgula ou Enter)" [ref=e2644]
+        - generic [ref=e2645]:
+          - generic [ref=e2646]:
+            - checkbox "Gerar SKU" [ref=e2647]
+            - text: Gerar SKU
+          - generic [ref=e2648]:
+            - checkbox "Recortar Img Quadrada" [ref=e2649]
+            - text: Recortar Img Quadrada
+          - generic [ref=e2650]:
+            - checkbox "Confirmar cores?" [checked] [ref=e2651]
+            - text: Confirmar cores?
+    - generic [ref=e2652]:
+      - generic [ref=e2653] [cursor=pointer]:
+        - generic [ref=e2654]: 🏷 Atributos
+        - generic [ref=e2655]: ▶
+        - generic [ref=e2656]:
+          - checkbox
+      - generic [ref=e2658]:
+        - generic [ref=e2659]: Presets de Atributos
+        - combobox [ref=e2660]:
+          - option "Carregar Salvo..."
+          - option "🏷 Camiseta Feminina (24 attr)" [selected]
+        - generic [ref=e2661]:
+          - textbox "Nome do preset" [ref=e2662]: Camiseta Feminina
+          - button "💾" [ref=e2663] [cursor=pointer]
+        - button "× Excluir" [ref=e2664] [cursor=pointer]
+        - generic [ref=e2665]: Salva os atributos manualmente configurados para aplicar em anúncios futuros da mesma categoria.
+    - generic [ref=e2666]:
+      - generic [ref=e2667] [cursor=pointer]:
+        - generic [ref=e2668]: 🔄 Multi-Aba
+        - generic [ref=e2669]: ▶
+        - generic [ref=e2670]:
+          - checkbox
+      - generic [ref=e2673]: Aplica as configurações desta overlay em todas as abas de edição abertas automaticamente.
+    - generic [ref=e2674]:
+      - button "Cancelar" [ref=e2675] [cursor=pointer]
+      - button "EXECUTAR" [ref=e2676] [cursor=pointer]

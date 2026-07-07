@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Listing Copier - Shein & Temu",
+  "version": "1.0.0",
+  "description": "Copia dados de anúncios (título, descrição, SKU, cores e links) da Shein e Temu para montar planilhas",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.temu.com/*",
+    "https://img.kwcdn.com/*",
+    "https://aimg.kwcdn.com/*",
+    "https://br.shein.com/*",
+    "https://*.shein.com/*",
+    "https://img.ltwebstatic.com/*",
+    "https://img.shein.com/*",
+    "https://sc.ltwebstatic.com/*",
+    "http://localhost:3000/*"
+  ],
+  "commands": {
+    "copy-listing": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+C"
+      },
+      "description": "Copiar anúncio para revisão"
+    }
+  },
+  "action": {
+    "default_title": "Listing Copier",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.temu.com/*", "https://*.shein.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["https://www.temu.com/*", "https://*.shein.com/*"]
+    }
+  ]
+}

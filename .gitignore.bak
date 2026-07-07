@@ -1,0 +1,13 @@
+node_modules/
+.env
+*.log
+.DS_Store
+Thumbs.db
+*.yml
+*.png
+*.jpg
+downloads/
+.playwright-mcp/
+temu-importer/
+upseller-remap-extension/
+upseller-tabela/

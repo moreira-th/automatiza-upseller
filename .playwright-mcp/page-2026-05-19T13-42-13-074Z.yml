@@ -1,0 +1,281 @@
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]: Pular para
+    - list "Pular para" [ref=e6]:
+      - listitem [ref=e7]:
+        - generic [ref=e10] [cursor=pointer]: Conteúdo principal
+  - generic [ref=e11]:
+    - button "0 itens no carrinho" [ref=e13] [cursor=pointer]:
+      - generic [ref=e14]:
+        - img [ref=e16]
+        - generic [ref=e17]:
+          - img [ref=e19]
+          - generic [ref=e21]: Subtotal
+    - generic [ref=e89]:
+      - generic [ref=e92]:
+        - region [ref=e93]:
+          - generic [ref=e94]:
+            - button "Frete grátis Em pedidos acima de R$69" [ref=e96] [cursor=pointer]:
+              - img [ref=e97]
+              - generic [ref=e100]:
+                - generic [ref=e103]: Frete grátis
+                - generic [ref=e104]: Em pedidos acima de R$69
+            - list [ref=e108]:
+              - listitem [ref=e109]:
+                - button "Garantia de entrega Reembolso para qualquer problema" [ref=e111] [cursor=pointer]:
+                  - img [ref=e112]
+                  - generic [ref=e115]:
+                    - generic [ref=e118]: Garantia de entrega
+                    - generic [ref=e119]: Reembolso para qualquer problema
+              - listitem [ref=e120]:
+                - button "Devoluções gratuitas Até 90 dias*" [ref=e122] [cursor=pointer]:
+                  - img [ref=e123]
+                  - generic [ref=e126]:
+                    - generic [ref=e129]: Devoluções gratuitas
+                    - generic [ref=e130]: Até 90 dias*
+              - listitem [ref=e131]:
+                - button "Ajuste de preço No prazo de 30 dias" [ref=e133] [cursor=pointer]:
+                  - img [ref=e134]
+                  - generic [ref=e137]:
+                    - generic [ref=e140]: Ajuste de preço
+                    - generic [ref=e141]: No prazo de 30 dias
+              - listitem [ref=e142]:
+                - button "Garantia de entrega Reembolso para qualquer problema" [ref=e144] [cursor=pointer]:
+                  - img [ref=e145]
+                  - generic [ref=e148]:
+                    - generic [ref=e151]: Garantia de entrega
+                    - generic [ref=e152]: Reembolso para qualquer problema
+            - button "Obtenha o app Temu" [ref=e155] [cursor=pointer]:
+              - img [ref=e156]
+              - generic [ref=e162]: Obtenha o app Temu
+        - navigation [ref=e163]:
+          - generic [ref=e164]:
+            - link "temu temu":
+              - /url: /
+              - generic:
+                - img "temu"
+                - img "temu"
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - link "Itens mais vendidos":
+                  - /url: /br/channel/best-sellers.html
+                  - img
+                  - generic "Itens mais vendidos"
+              - generic [ref=e167]:
+                - link "Avaliação 5-Estrelas":
+                  - /url: /br/channel/full-star.html
+                  - img
+                  - generic "Avaliação 5-Estrelas"
+              - generic [ref=e168]:
+                - link "Novidades":
+                  - /url: /br/channel/new-in.html
+                  - generic "Novidades"
+            - generic:
+              - button "Categorias":
+                - generic:
+                  - generic:
+                    - generic: Categorias
+                  - img
+            - search [ref=e170]:
+              - generic [ref=e171]:
+                - searchbox "Caixa de pesquisa. Você pode clicar duas vezes para inserir um termo de busca e pesquisar no Temu." [disabled] [ref=e172]
+                - link "Enviar pesquisa" [ref=e173] [cursor=pointer]:
+                  - /url: /search_result.html?search_key=casaco&search_method=shade&refer_page_el_sn=200010
+                  - button "Enviar pesquisa" [ref=e174]:
+                    - img [ref=e175]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: casaco
+                  - link:
+                    - /url: /search_result.html?search_key=casaco&search_method=shade&refer_page_el_sn=200010
+            - generic [ref=e177]:
+              - button "Login/Cadastrar-se Pedidos e Conta" [ref=e179]:
+                - generic [ref=e180] [cursor=pointer]:
+                  - img [ref=e182]
+                  - generic "Pedidos e Conta" [ref=e185]
+              - link "Atendimento" [ref=e188]:
+                - img [ref=e191] [cursor=pointer]
+              - button "Brasil Português" [ref=e195]:
+                - generic [ref=e196] [cursor=pointer]:
+                  - img [ref=e198]
+                  - generic "Português" [ref=e200]
+              - link "Ir para o carrinho" [ref=e202]:
+                - img [ref=e205] [cursor=pointer]
+      - main [ref=e207]:
+        - generic [ref=e208]:
+          - region [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e212]:
+                - link "Por que comprar na Temu? Privacidade garantida Pagamentos seguros Garantia de entrega":
+                  - /url: /br/whychoosetemu.html
+                  - generic:
+                    - img
+                    - generic: Por que comprar na Temu?
+                  - generic:
+                    - img
+                    - generic:
+                      - generic:
+                        - generic:
+                          - img
+                          - generic: Privacidade garantida
+                      - generic:
+                        - generic:
+                          - img
+                          - generic: Pagamentos seguros
+                      - generic:
+                        - generic:
+                          - img
+                          - generic: Garantia de entrega
+              - button "Tenha cuidado com mensagens que afirmam ser da alfândega ou dos Correios cobrando taxas fiscais não pagas. Ver" [ref=e214] [cursor=pointer]:
+                - generic [ref=e215]:
+                  - img [ref=e216]
+                  - generic [ref=e218]: Tenha cuidado com mensagens que afirmam ser da alfândega ou dos Correios cobrando taxas fiscais não pagas.
+                - generic [ref=e219]:
+                  - generic [ref=e220]: Ver
+                  - img [ref=e221]
+          - region [ref=e223]:
+            - generic [ref=e224]:
+              - link "Mais vendidos":
+                - /url: /br/channel/amazing-finds.html
+                - region:
+                  - img
+                  - generic:
+                    - heading "Mais vendidos" [level=2]
+              - list [ref=e229]:
+                - listitem [ref=e230]:
+                  - group [ref=e232] [cursor=pointer]:
+                    - link "Kit 1/2 Câmera De Segurança Ip Wifi Full HD 2 Lentes Visão Noturna Microfone Durawell App V360 Pro":
+                      - /url: /br/channel/amazing-finds.html
+                    - generic [ref=e233]:
+                      - link "imagem do item Kit 1/2 Câmera De Segurança Ip Wifi Full HD 2 Lentes Visão Noturna Microfone Durawell App V360 Pro" [ref=e239]
+                      - generic [ref=e241]:
+                        - generic [ref=e243]:
+                          - generic [ref=e244]: R$39,94
+                          - generic [ref=e245]: R$39,94
+                        - generic [ref=e247]:
+                          - generic [ref=e248]:
+                            - generic [ref=e249]: PVR
+                            - generic [ref=e250]:
+                              - generic [ref=e251]: PVR 57,98
+                              - text: 57,98
+                            - img "Detalhes" [ref=e253]
+                          - generic:
+                            - generic:
+                              - generic: 5,1mil
+                              - generic: vendidos
+                              - generic: 5,1milvendidos
+                      - region [ref=e254]:
+                        - generic [ref=e255]: 4.6 de 5 estrelas
+                        - img "4.6 de 5 estrelas" [ref=e256]
+                        - generic [ref=e259]:
+                          - generic [ref=e260]: 1.133 avaliações
+                          - text: "1.133"
+                - listitem [ref=e261]:
+                  - group [ref=e263] [cursor=pointer]:
+                    - link "Descascador e Fatiador de Legumes de Aço Inoxidável para Serviço Pesado com Cortador de Cebolinha, Ferramenta de Cozinha Multifuncional com Lâmina Reta e Cabo Ergonômico Antiderrapante":
+                      - /url: /br/channel/amazing-finds.html
+                    - generic [ref=e264]:
+                      - link "imagem do item Descascador e Fatiador de Legumes de Aço Inoxidável para Serviço Pesado com Cortador de Cebolinha, Ferramenta de Cozinha Multifuncional com Lâmina Reta e Cabo Ergonômico Antiderrapante" [ref=e270]
+                      - generic [ref=e272]:
+                        - generic [ref=e274]:
+                          - generic [ref=e275]: R$26,30
+                          - generic [ref=e276]: R$26,30
+                        - generic [ref=e278]:
+                          - generic [ref=e279]:
+                            - generic [ref=e280]: PVR
+                            - generic [ref=e281]:
+                              - generic [ref=e282]: PVR 38,73
+                              - text: 38,73
+                            - img "Detalhes" [ref=e284]
+                          - generic:
+                            - generic:
+                              - generic: 17mil
+                              - generic: vendidos
+                              - generic: 17milvendidos
+                      - region [ref=e285]:
+                        - generic [ref=e286]: 4.6 de 5 estrelas
+                        - img "4.6 de 5 estrelas" [ref=e287]
+                        - generic [ref=e290]:
+                          - generic [ref=e291]: 136 avaliações
+                          - text: "136"
+                - listitem [ref=e292]:
+                  - group [ref=e294] [cursor=pointer]:
+                    - link "2pcs Batom Matte Veludo - Fórmula à Prova D'água de Longa Duração Não Pegajosa, Gloss Labial Matte de Alta Saturação com Tons de Berry Profundo, Marrom & Rosa (para Todos os Tipos de Pele) - Maquiagem do Dia a Dia, Festas, Academia - Adequado para Todos os Tipos de Pele":
+                      - /url: /br/channel/amazing-finds.html
+                    - generic [ref=e295]:
+                      - link "imagem do item 2pcs Batom Matte Veludo - Fórmula à Prova D'água de Longa Duração Não Pegajosa, Gloss Labial Matte de Alta Saturação com Tons de Berry Profundo, Marrom & Rosa (para Todos os Tipos de Pele) - Maquiagem do Dia a Dia, Festas, Academia - Adequado para Todos os Tipos de Pele" [ref=e301]
+                      - generic [ref=e303]:
+                        - generic [ref=e305]:
+                          - generic [ref=e306]: R$18,48
+                          - generic [ref=e307]: R$18,48
+                        - generic [ref=e309]:
+                          - generic [ref=e310]:
+                            - generic [ref=e311]: PVR
+                            - generic [ref=e312]:
+                              - generic [ref=e313]: PVR 25,38
+                              - text: 25,38
+                            - img "Detalhes" [ref=e315]
+                          - generic:
+                            - generic:
+                              - generic: 12mil
+                              - generic: vendidos
+                              - generic: 12milvendidos
+                      - region [ref=e316]:
+                        - generic [ref=e317]: 4.7 de 5 estrelas
+                        - img "4.7 de 5 estrelas" [ref=e318]
+                        - generic [ref=e321]:
+                          - generic [ref=e322]: 954 avaliações
+                          - text: "954"
+                - listitem [ref=e323]:
+                  - group [ref=e325] [cursor=pointer]:
+                    - link "Tênis Feminino Vintage S.A.M.B.A Preto e Branco com Duas Listras Ícone Atemporal, Bico Redondo - Calçado Clássico, Macio Leve e Confortável para oDia a Dia e Versátil Essencial para Verão e Primavera Calçados Femininos":
+                      - /url: /br/channel/amazing-finds.html
+                    - generic [ref=e326]:
+                      - link "imagem do item Tênis Feminino Vintage S.A.M.B.A Preto e Branco com Duas Listras Ícone Atemporal, Bico Redondo - Calçado Clássico, Macio Leve e Confortável para oDia a Dia e Versátil Essencial para Verão e Primavera Calçados Femininos" [ref=e332]
+                      - generic [ref=e334]:
+                        - generic [ref=e336]:
+                          - generic [ref=e337]: R$76,42
+                          - generic [ref=e338]: R$76,42
+                        - generic [ref=e342]:
+                          - generic [ref=e343]: 2mil
+                          - generic [ref=e344]: vendidos
+                          - generic [ref=e345]: 2milvendidos
+                      - region [ref=e346]:
+                        - generic [ref=e347]: 4.3 de 5 estrelas
+                        - img "4.3 de 5 estrelas" [ref=e348]
+                        - generic [ref=e351]:
+                          - generic [ref=e352]: 483 avaliações
+                          - text: "483"
+                - listitem [ref=e353]:
+                  - group [ref=e355] [cursor=pointer]:
+                    - link "Cesto de Roupa Suja de Bambu 50 Litros com Tampa e Alças, Organizador Grande Multiuso para Lavanderia e Quarto":
+                      - /url: /br/channel/amazing-finds.html
+                    - generic [ref=e356]:
+                      - link "imagem do item Cesto de Roupa Suja de Bambu 50 Litros com Tampa e Alças, Organizador Grande Multiuso para Lavanderia e Quarto" [ref=e362]
+                      - generic [ref=e364]:
+                        - generic [ref=e366]:
+                          - generic [ref=e367]: R$56,89
+                          - generic [ref=e368]: R$56,89
+                        - generic [ref=e370]:
+                          - generic [ref=e371]:
+                            - generic [ref=e372]: PVR
+                            - generic [ref=e373]:
+                              - generic [ref=e374]: PVR 110,80
+                              - text: 110,80
+                            - img "Detalhes" [ref=e376]
+                          - generic:
+                            - generic:
+                              - generic: "964"
+                              - generic: vendidos
+                              - generic: 964vendidos
+                      - region [ref=e377]:
+                        - generic [ref=e378]: 4.8 de 5 estrelas
+                        - img "4.8 de 5 estrelas" [ref=e379]
+                        - generic [ref=e382]:
+                          - generic [ref=e383]: 175 avaliações
+                          - text: "175"
+        - region [ref=e385]:
+          - region [ref=e387]:
+            - img [ref=e389]
+            - heading "Novas descobertas" [level=2] [ref=e391]: NOVAS DESCOBERTAS

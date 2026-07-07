@@ -1,0 +1,75 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e10]: Shein / Editar Anúncio
+        - generic [ref=e13] [cursor=pointer]: 
+      - generic [ref=e14]:
+        - button "Salvar" [ref=e16] [cursor=pointer]:
+          - generic: Salvar
+        - button "Publicar" [ref=e18] [cursor=pointer]:
+          - generic: Publicar
+    - generic [ref=e19]:
+      - generic [ref=e23]:
+        - link "Informação Básica" [ref=e27] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/8554887782365798#basic
+        - link "Atributos" [ref=e29] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/8554887782365798#attributes
+        - link "Informações de Venda" [ref=e31] [cursor=pointer]:
+          - /url: /pt/products/shein/edit/8554887782365798#variants
+      - generic [ref=e32]:
+        - generic [ref=e36]: Informação Básica
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic "Loja" [ref=e42]: "* Loja"
+            - combobox [ref=e47] [cursor=pointer]:
+              - generic [ref=e49]: Selecionar uma Loja
+              - generic [ref=e52]: 
+          - generic [ref=e53]:
+            - generic "Nome" [ref=e55]: "* Nome"
+            - generic [ref=e58]:
+              - generic [ref=e59]:
+                - textbox [ref=e60]
+                - generic [ref=e66] [cursor=pointer]: 
+              - generic [ref=e67]: 0/1000
+          - generic [ref=e68]:
+            - generic "Categoria" [ref=e70]: "* Categoria"
+            - generic [ref=e73]:
+              - generic [ref=e76]:
+                - textbox "Selecionar uma Categoria" [ref=e77]
+                - generic [ref=e79]: 
+              - button "Selecionar Categoria" [ref=e81] [cursor=pointer]:
+                - generic: Selecionar Categoria
+          - generic [ref=e82]:
+            - generic "Descrição" [ref=e84]
+            - generic [ref=e88]:
+              - textbox [ref=e89]
+              - generic [ref=e90]: 0/5000
+          - generic [ref=e93]:
+            - generic "N° do Anúncio" [ref=e95]: "* N° do Anúncio"
+            - generic [ref=e98]:
+              - textbox [ref=e99]
+              - generic [ref=e100]: 0/200
+          - generic [ref=e101]:
+            - generic "Link do Fornecedor" [ref=e103]
+            - generic [ref=e107]:
+              - textbox [ref=e108]
+              - button "Visita" [disabled] [ref=e110]:
+                - separator
+                - generic: Visita
+      - generic [ref=e111]:
+        - generic [ref=e116]: Atributos
+        - generic [ref=e118]:
+          - img [ref=e120]
+          - paragraph [ref=e126]:
+            - generic [ref=e128]: Selecione uma Categoria
+      - generic [ref=e129]:
+        - generic [ref=e134]: Informações de Venda
+        - generic [ref=e136]:
+          - img [ref=e138]
+          - paragraph [ref=e144]:
+            - generic [ref=e146]: Selecione uma Categoria
+  - generic [ref=e149]:
+    - 'generic "icon: close-circle" [ref=e150]':
+      - img [ref=e151]
+    - text: "Erro: Falha, por favor verifique o status do produto"

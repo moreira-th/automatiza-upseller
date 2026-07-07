@@ -1,0 +1,620 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "ERP Omni-Channel Gratuito para Vendedores de E-commerce no Brasil - UpSeller" [ref=e8] [cursor=pointer]:
+          - /url: /pt/
+          - img "ERP Omni-Channel Gratuito para Vendedores de E-commerce no Brasil - UpSeller" [ref=e9]
+        - text: 
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - generic [ref=e13]: Integrações
+          - listitem [ref=e14]:
+            - generic [ref=e15]:   Suporte
+          - listitem [ref=e16]:
+            - link "Blog" [ref=e17] [cursor=pointer]:
+              - /url: https://www.upseller.com/pt/blog
+          - listitem [ref=e18]:
+            - generic [ref=e19]: Recursos
+          - listitem [ref=e20]:
+            - link "Preços" [ref=e21] [cursor=pointer]:
+              - /url: /pt/pricing/
+          - listitem [ref=e22]:
+            - generic [ref=e23]:
+              - img [ref=e25]
+              - text: PT
+          - listitem [ref=e27]:
+            - link "Login" [ref=e28] [cursor=pointer]:
+              - /url: https://app.upseller.com/pt/login
+          - listitem [ref=e29]:
+            - link "Cadastre-se Grátis" [ref=e31] [cursor=pointer]:
+              - /url: https://app.upseller.com/pt/register
+    - main [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e38]:
+          - heading "ERP Integrado e Gratuito para E-commerce" [level=1] [ref=e39]
+          - paragraph [ref=e41]: UpSeller é a maneira mais fácil para os comerciantes omni-channel gerenciar seus negócios — tudo a partir de uma plataforma única e centralizada
+          - link "Cadastre-se Grátis " [ref=e42] [cursor=pointer]:
+            - /url: https://app.upseller.com/pt/register
+            - generic [ref=e43]:
+              - text: Cadastre-se Grátis
+              - generic [ref=e44]: 
+        - list [ref=e48]:
+          - listitem [ref=e49]
+          - listitem [ref=e51]
+          - listitem [ref=e53]
+          - listitem [ref=e55]
+          - listitem [ref=e57]
+          - listitem [ref=e59]
+          - listitem [ref=e61]
+          - listitem [ref=e63]
+          - listitem [ref=e65]
+          - listitem [ref=e67]
+          - listitem [ref=e69]
+          - listitem [ref=e71]
+          - listitem [ref=e73]
+          - listitem [ref=e75]
+          - listitem [ref=e77]
+          - listitem [ref=e79]
+          - listitem [ref=e81]
+          - listitem [ref=e83]
+          - listitem [ref=e85]
+          - listitem [ref=e87]
+          - listitem [ref=e89]
+          - listitem [ref=e91]
+          - listitem [ref=e93]
+          - listitem [ref=e95]
+          - listitem [ref=e97]
+          - listitem [ref=e99]
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - paragraph [ref=e105]: Armazéns
+              - paragraph [ref=e107]: Multi-lojas
+              - paragraph [ref=e109]: Omni-channel
+              - paragraph [ref=e111]: Logísticas
+              - paragraph [ref=e113]: Automação
+              - paragraph [ref=e115]: APP Móvel
+            - generic [ref=e116]:
+              - heading "Expanda seu negócio com o UpSeller" [level=2] [ref=e117]
+              - generic [ref=e118]:
+                - generic [ref=e119]:
+                  - generic [ref=e120]: Mais de 10 anos
+                  - generic [ref=e121]: experiência em solução SaaS
+                - generic [ref=e122]:
+                  - generic [ref=e123]: Mais de 200.000
+                  - generic [ref=e124]: vendedores que nos escolheram
+                - generic [ref=e125]:
+                  - generic [ref=e126]: Mais de 100 milhões
+                  - generic [ref=e127]: pedidos processados por mês
+              - link "Cadastre-se Grátis " [ref=e129] [cursor=pointer]:
+                - /url: https://app.upseller.com/pt/register
+                - generic [ref=e130]:
+                  - text: Cadastre-se Grátis
+                  - generic [ref=e131]: 
+          - generic [ref=e132]:
+            - heading "Simplifique os processos e torne sua operação de E-commerce mais fácil" [level=2] [ref=e133]
+            - generic [ref=e135]:
+              - heading "Gerencie seus anúncios com eficiência" [level=3] [ref=e136]
+              - list [ref=e137]:
+                - listitem [ref=e138]:
+                  - generic [ref=e139]: 
+                  - generic [ref=e140]: Copie anúncios em mais de 20 plataformas com um clique e migre lojas com facilidade
+                - listitem [ref=e141]:
+                  - generic [ref=e142]: 
+                  - generic [ref=e143]: Gere título e descrição gerados por IA, otimize seus anúncios para aumentar as vendas
+                - listitem [ref=e144]:
+                  - generic [ref=e145]: 
+                  - generic [ref=e146]: Gerencie descontos e promoções em massa para aumentar a eficiência
+              - link "Cadastre-se Grátis " [ref=e148] [cursor=pointer]:
+                - /url: https://app.upseller.com/pt/register
+                - generic [ref=e149]:
+                  - text: Cadastre-se Grátis
+                  - generic [ref=e150]: 
+            - generic [ref=e153]:
+              - heading "Automatize o processamento de pedidos" [level=3] [ref=e154]
+              - list [ref=e155]:
+                - listitem [ref=e156]:
+                  - generic [ref=e157]: 
+                  - generic [ref=e158]: Emita NF-e automaticamente e organize pedidos, automatize seu fluxo de trabalho
+                - listitem [ref=e159]:
+                  - generic [ref=e160]: 
+                  - generic [ref=e161]: Imprima até 1.000 etiquetas de uma vez, listas de separação incluídas automaticamente
+                - listitem [ref=e162]:
+                  - generic [ref=e163]: 
+                  - generic [ref=e164]: É possível checkout por produto e escanear para enviar, reduzindo drasticamente erros de expedição
+              - link "Cadastre-se Grátis " [ref=e166] [cursor=pointer]:
+                - /url: https://app.upseller.com/pt/register
+                - generic [ref=e167]:
+                  - text: Cadastre-se Grátis
+                  - generic [ref=e168]: 
+            - generic [ref=e171]:
+              - generic [ref=e172]:
+                - heading "Gerencie seu estoque com inteligência" [level=3] [ref=e173]
+                - list [ref=e174]:
+                  - listitem [ref=e175]:
+                    - generic [ref=e176]: 
+                    - generic [ref=e177]: Sincronização automática de estoque com as lojas, diga adeus à venda em excesso
+                  - listitem [ref=e178]:
+                    - generic [ref=e179]: 
+                    - generic [ref=e180]: Gerencie todos os estoques em um só lugar
+                  - listitem [ref=e181]:
+                    - generic [ref=e182]: 
+                    - generic [ref=e183]: Alertas inteligentes de estoque baixo e geração automática de pedidos de compra
+                - link "Cadastre-se Grátis " [ref=e185] [cursor=pointer]:
+                  - /url: https://app.upseller.com/pt/register
+                  - generic [ref=e186]:
+                    - text: Cadastre-se Grátis
+                    - generic [ref=e187]: 
+              - generic [ref=e188]:
+                - paragraph [ref=e190]:
+                  - generic [ref=e191]: "90"
+                  - generic [ref=e192]: "91"
+                  - generic [ref=e193]: "92"
+                  - generic [ref=e194]: "93"
+                  - generic [ref=e195]: "94"
+                  - generic [ref=e196]: "95"
+                  - generic [ref=e197]: "96"
+                  - generic [ref=e198]: "97"
+                  - generic [ref=e199]: "98"
+                  - generic [ref=e200]: "99"
+                - paragraph [ref=e202]:
+                  - generic [ref=e203]: "90"
+                  - generic [ref=e204]: "91"
+                  - generic [ref=e205]: "92"
+                  - generic [ref=e206]: "93"
+                  - generic [ref=e207]: "94"
+                  - generic [ref=e208]: "95"
+                  - generic [ref=e209]: "96"
+                  - generic [ref=e210]: "97"
+                  - generic [ref=e211]: "98"
+                  - generic [ref=e212]: "99"
+                - paragraph [ref=e214]:
+                  - generic [ref=e215]: "90"
+                  - generic [ref=e216]: "91"
+                  - generic [ref=e217]: "92"
+                  - generic [ref=e218]: "93"
+                  - generic [ref=e219]: "94"
+                  - generic [ref=e220]: "95"
+                  - generic [ref=e221]: "96"
+                  - generic [ref=e222]: "97"
+                  - generic [ref=e223]: "98"
+                  - generic [ref=e224]: "99"
+                - paragraph [ref=e226]:
+                  - generic [ref=e227]: "90"
+                  - generic [ref=e228]: "91"
+                  - generic [ref=e229]: "92"
+                  - generic [ref=e230]: "93"
+                  - generic [ref=e231]: "94"
+                  - generic [ref=e232]: "95"
+                  - generic [ref=e233]: "96"
+                  - generic [ref=e234]: "97"
+                  - generic [ref=e235]: "98"
+                  - generic [ref=e236]: "99"
+                - paragraph [ref=e238]:
+                  - generic [ref=e239]: "90"
+                  - generic [ref=e240]: "91"
+                  - generic [ref=e241]: "92"
+                  - generic [ref=e242]: "93"
+                  - generic [ref=e243]: "94"
+                  - generic [ref=e244]: "95"
+                  - generic [ref=e245]: "96"
+                  - generic [ref=e246]: "97"
+                  - generic [ref=e247]: "98"
+                  - generic [ref=e248]: "99"
+          - generic [ref=e249]:
+            - heading "Mais funcionalidades exclusivas" [level=2] [ref=e250]
+            - generic [ref=e251]:
+              - generic [ref=e252]:
+                - paragraph [ref=e254]: Shopee Oferta Relâmpago
+                - paragraph [ref=e255]: Criar Shopee Oferta Relâmpago em massa
+              - generic [ref=e256]:
+                - paragraph [ref=e258]: Edição Inteligente de Imagens
+                - paragraph [ref=e259]: Remoção de fundo com IA em um clique e corte de imagens em massa
+              - generic [ref=e260]:
+                - paragraph [ref=e262]: NF-e Anormal
+                - paragraph [ref=e263]: Processar rapidamente notas fiscais de pedidos cancelados e devoluções
+              - generic [ref=e264]:
+                - paragraph [ref=e266]: Gestão de devoluções
+                - paragraph [ref=e267]: Acompanhamento do status de devolução e criação com um clique da Lista de Entrada
+              - generic [ref=e268]:
+                - paragraph [ref=e270]: Gestão de Cliente
+                - paragraph [ref=e271]: Milhões de registros de blacklist para prevenção eficaz de fraudes
+              - generic [ref=e272]:
+                - paragraph [ref=e274]: Controle de Compras
+                - paragraph [ref=e275]: Gestão completa do processo de compras, integração perfeita com o estoque
+              - generic [ref=e276]:
+                - paragraph [ref=e278]: Relatórios de Vendas
+                - paragraph [ref=e279]: Análise de dados multidimensional para acompanhar os insights operacionais
+              - generic [ref=e280]:
+                - paragraph [ref=e282]: Cálculo de Lucro
+                - paragraph [ref=e283]: Mantenha os dados de lucro precisos com a sincronização automática de liquidações
+            - link "Cadastre-se Grátis " [ref=e285] [cursor=pointer]:
+              - /url: https://app.upseller.com/pt/register
+              - generic [ref=e286]:
+                - text: Cadastre-se Grátis
+                - generic [ref=e287]: 
+          - generic [ref=e288]:
+            - heading "Do porquê os Vendedores amam o UpSeller ?" [level=2] [ref=e290]
+            - generic [ref=e291]:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic [ref=e293]:
+                        - generic [ref=e294]:
+                          - paragraph [ref=e296]: BCX
+                          - generic [ref=e297]:
+                            - generic [ref=e298]:
+                              - generic [ref=e299]: 
+                              - generic [ref=e300]: 
+                              - generic [ref=e301]: 
+                              - generic [ref=e302]: 
+                              - generic [ref=e303]: 
+                            - generic [ref=e304]: "5.0"
+                        - paragraph [ref=e305]: Desde a implementação das ferramentas de automação, nossa rotina se tornou muito mais produtiva e eficiente. Além das soluções inovadoras, recebemos um suporte de excelência, sempre ágil e prestativo. A UpSeller sempre é recomendada por nós a todos os nossos amigos, parceiros e clientes. Nosso agradecimento especial aos desenvolvedores e a toda a equipe da Upseller pelo comprometimento. Atenciosamente, Equipe BCX Marketing Digital
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Tá muito barato
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: Utilizo o ERP Upseller há 4 anos em minha operação na Shopee. A plataforma oferece integração eficiente com marketplaces, emissão de notas fiscais com excelente custo-benefício, controle de estoque em tempo real e centralização de anúncios. A evolução constante do sistema acompanhou minhas necessidades operacionais, otimizando processos e reduzindo falhas. Upseller é nota 10!
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Lamar
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: Estou há 6 meses utilizando o UpSeller, gostando muito do resultado. Tivemos uma economia de 600,00 comparando com o antigo sistema que eu trabalhava, otimização do tempo da equipe e centralização de todas as empresas em um único sistema. Me surpreendi com a entrega da UpSeller.
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Edson Saldanha
+                              - paragraph: vendedor e influenciador oficial Shopee
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: A UpSeller foi um divisor de águas na nossa operação. Além de facilitar a gestão dos pedidos e notas fiscais conta com o melhor custo benefício além do suporte da equipe sempre foi ágil e atencioso. É uma ferramenta que recomendo com confiança para quem quer escalar com mais eficiência nos marketplaces — Edson Saldanha, vendedor e influenciador oficial Shopee e mentor de mais de 5 mil aluno
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: VEKTOR
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: "O UpSeller se tornou essencial no dia a dia da minha empresa. Desde que comecei a usar, percebi uma enorme diferença na organização e no controle da operação. A plataforma é completa, estável e me dá confiança para gerenciar tudo com precisão. Reduzi falhas, ganhei tempo e hoje não me imagino trabalhando sem ela. Sócio fundador: Thales Cintra"
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Lucas Oliveira
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: A Upseller pra mim foi uma ferramenta chave na minha operação de ecommerce, o sistema é bem completo, fácil de usar e o suporte deles funciona muito bem. Sempre indico para quem está começando pois o sistema é bem prático e possui o menor custo de emissão de notas fiscais do mercado.
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Amarelé
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: "Hoje uso o UpSeller na minha empresa e tenho certeza de que foi a melhor escolha para a minha operação. Atualmente, utilizo 100% dos recursos ativos, que dão total suporte à minha rotina. A plataforma trouxe uma grande otimização de tempo e reduziu completamente os erros operacionais. Sócio e Fundador: Polliana Araújo"
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Lojas Rei Look
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: Desde que descobrimos o UpSeller, o nosso trabalho aqui na empresa melhorou muito. O UpSeller otimizou o nosso trabalho, integrando todos os marketplaces que temos e facilitando assim a nossa gestão. A interface é limpa, intuitiva, fica fácil de enxergar as informações. E estamos acompanhando, sempre de olho, ansiosos por novas atualizações e ferramentas que levem a Rei Look para outro patamar.
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Karina Leite
+                              - paragraph: Consultoria Efeito Vendas
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: A Efeito Vendas usa e recomenda a UpSeller. É o ERP que escolhemos para a nossa operação diária e também recomendamos para a base de mais de 120 clientes que atendemos como consultoria. A plataforma facilita a emissão de notas, a separação de pedidos e a gestão eficiente de múltiplas contas.
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Bayma Modas
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: "Uso o UpSeller há pouco tempo e já percebo o quanto a plataforma é completa. Não imaginava que encontraria tantas ferramentas úteis e indispensáveis para a operação. Desde o início, tem facilitado muito a rotina da empresa é prática, acima da média e realmente faz diferença no dia a dia. Super satisfeito com a escolha. Sócio fundador: Wellington Francisco"
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Value
+                              - paragraph: Especialistas em Marketplace
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: "A parceria com a Up Seller trouxe um ganho operacional enorme para nossos clientes. Automatizamos etapas críticas como checkout, emissão de notas e gerenciamento de pedidos. Isso nos permitiu focar no que realmente importa: escalar as vendas e aumentar o lucro dos empresários nos marketplaces. A plataforma é estável, inteligente e essencial pra quem quer profissionalizar a operação. — Equipe Value – Especialistas em Marketplace"
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: BCX
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: Desde a implementação das ferramentas de automação, nossa rotina se tornou muito mais produtiva e eficiente. Além das soluções inovadoras, recebemos um suporte de excelência, sempre ágil e prestativo. A UpSeller sempre é recomendada por nós a todos os nossos amigos, parceiros e clientes. Nosso agradecimento especial aos desenvolvedores e a toda a equipe da Upseller pelo comprometimento. Atenciosamente, Equipe BCX Marketing Digital
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - paragraph: Tá muito barato
+                            - generic:
+                              - generic:
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                                - generic: 
+                              - generic: "5.0"
+                          - paragraph: Utilizo o ERP Upseller há 4 anos em minha operação na Shopee. A plataforma oferece integração eficiente com marketplaces, emissão de notas fiscais com excelente custo-benefício, controle de estoque em tempo real e centralização de anúncios. A evolução constante do sistema acompanhou minhas necessidades operacionais, otimizando processos e reduzindo falhas. Upseller é nota 10!
+                    - text:  
+              - generic [ref=e306]:
+                - list:
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+                  - listitem
+          - generic [ref=e307]:
+            - heading "Certificação Oficial pelas Principais Marketplaces" [level=2] [ref=e309]
+            - list [ref=e310]:
+              - listitem [ref=e311]:
+                - paragraph [ref=e312]: Parceiro de Serviço Premium
+              - listitem [ref=e313]:
+                - paragraph [ref=e314]: Aplicativo com Certificação Platinum
+              - listitem [ref=e315]:
+                - paragraph [ref=e316]: Aplicativo Certificado pela Amazon
+          - generic [ref=e317]:
+            - heading "Rápido, Profissional e Seguro — O UpSeller está aqui para te proteger" [level=2] [ref=e319]
+            - list [ref=e320]:
+              - listitem [ref=e321]:
+                - img [ref=e322]
+                - paragraph [ref=e323]: Lançamento de novas funcionalidades toda semana
+              - listitem [ref=e324]:
+                - img [ref=e325]
+                - paragraph [ref=e326]: Atendimento Online com Resposta Imediata
+              - listitem [ref=e327]:
+                - img [ref=e328]
+                - paragraph [ref=e329]: Treinamento Profissional Personalizado (1 a 1)
+              - listitem [ref=e330]:
+                - img [ref=e331]
+                - paragraph [ref=e332]: Proteção de Dados em Nível Empresarial
+          - generic [ref=e333]:
+            - paragraph [ref=e334]: A escolha de mais de 200.000 vendedores de E-commerce na América Latina
+            - link "Cadastre-se Grátis " [ref=e336] [cursor=pointer]:
+              - /url: https://app.upseller.com/pt/register
+              - generic [ref=e337]:
+                - text: Cadastre-se Grátis
+                - generic [ref=e338]: 
+      - generic [ref=e340]:
+        - generic [ref=e342] [cursor=pointer]: 
+        - generic [ref=e345] [cursor=pointer]: 
+        - generic [ref=e348] [cursor=pointer]: 
+    - contentinfo [ref=e350]:
+      - generic [ref=e352]:
+        - generic [ref=e353]:
+          - generic [ref=e354]:
+            - generic [ref=e355] [cursor=pointer]:
+              - link:
+                - /url: /pt/
+            - generic [ref=e356]: ERP Integrado e para E-commerce
+            - text:     
+          - generic [ref=e357]:
+            - list [ref=e358]:
+              - listitem [ref=e359]: Integrações
+              - listitem [ref=e360]:
+                - link "Mercado Livre" [ref=e361] [cursor=pointer]:
+                  - /url: /pt/mercado-integration/
+                  - generic [ref=e362]: Mercado Livre
+              - listitem [ref=e363]:
+                - link "Shopee" [ref=e364] [cursor=pointer]:
+                  - /url: /pt/shopee-integration/
+                  - generic [ref=e365]: Shopee
+              - listitem [ref=e366]:
+                - link "Amazon" [ref=e367] [cursor=pointer]:
+                  - /url: /pt/amazon-integration/
+                  - generic [ref=e368]: Amazon
+              - listitem [ref=e369]:
+                - link "Shein" [ref=e370] [cursor=pointer]:
+                  - /url: /pt/shein-integration/
+                  - generic [ref=e371]: Shein
+              - listitem [ref=e372]:
+                - link "TikTok Shop" [ref=e373] [cursor=pointer]:
+                  - /url: /pt/tiktok-integration/
+                  - generic [ref=e374]: TikTok Shop
+              - listitem [ref=e375]:
+                - link "Shopify" [ref=e376] [cursor=pointer]:
+                  - /url: /pt/shopify-integration/
+                  - generic [ref=e377]: Shopify
+              - listitem [ref=e378]:
+                - link "Nuvemshop" [ref=e379] [cursor=pointer]:
+                  - /url: /pt/nuvemshop-integration/
+                  - generic [ref=e380]: Nuvemshop
+              - listitem [ref=e381]:
+                - link "Temu" [ref=e382] [cursor=pointer]:
+                  - /url: /pt/temu-integration/
+                  - generic [ref=e383]: Temu
+              - listitem [ref=e384]:
+                - link "Walmart" [ref=e385] [cursor=pointer]:
+                  - /url: /pt/walmart-integration/
+                  - generic [ref=e386]: Walmart
+              - listitem [ref=e387]:
+                - link "Falabella" [ref=e388] [cursor=pointer]:
+                  - /url: /pt/falabella-integration/
+                  - generic [ref=e389]: Falabella
+              - listitem [ref=e390]:
+                - link "AliExpress" [ref=e391] [cursor=pointer]:
+                  - /url: /pt/aliexpress-integration/
+                  - generic [ref=e392]: AliExpress
+              - listitem [ref=e393]:
+                - link "Magalu" [ref=e394] [cursor=pointer]:
+                  - /url: /pt/magalu-integration/
+                  - generic [ref=e395]: Magalu
+              - listitem [ref=e396]:
+                - link "Kwai Shop" [ref=e397] [cursor=pointer]:
+                  - /url: /pt/kwai-integration/
+                  - generic [ref=e398]: Kwai Shop
+              - listitem [ref=e399]:
+                - link "Americanas" [ref=e400] [cursor=pointer]:
+                  - /url: /pt/americanas-integration/
+                  - generic [ref=e401]: Americanas
+            - list [ref=e402]:
+              - listitem [ref=e403]: Suporte
+              - listitem [ref=e404]:
+                - link "Grupo de Telegram" [ref=e405] [cursor=pointer]:
+                  - /url: ""
+                  - generic [ref=e406]: Grupo de Telegram
+              - listitem [ref=e407]:
+                - link "Central de Ajuda" [ref=e408] [cursor=pointer]:
+                  - /url: https://www.upseller.com/pt/help
+                  - generic [ref=e409]: Central de Ajuda
+              - listitem [ref=e410]:
+                - link "Cadastre-se Grátis" [ref=e411] [cursor=pointer]:
+                  - /url: https://app.upseller.com/pt/register
+                  - generic [ref=e412]: Cadastre-se Grátis
+              - listitem [ref=e413]:
+                - link "Blog" [ref=e414] [cursor=pointer]:
+                  - /url: https://www.upseller.com/pt/blog
+              - listitem [ref=e415]:
+                - link "Empresa" [ref=e416] [cursor=pointer]:
+                  - /url: /pt/company/
+                  - generic [ref=e417]: Empresa
+              - listitem [ref=e418]:
+                - link "Parceiros" [ref=e419] [cursor=pointer]:
+                  - /url: /pt/partners/
+                  - generic [ref=e420]: Parceiros
+              - listitem [ref=e421]:
+                - link "Contador" [ref=e422] [cursor=pointer]:
+                  - /url: https://cpa.upseller.com/pt
+                  - generic [ref=e423]: Contador
+              - listitem [ref=e424]:
+                - link "Recrutamento de Parceiros" [ref=e425] [cursor=pointer]:
+                  - /url: /pt/kol-recruitment/
+                  - generic [ref=e426]: Recrutamento de Parceiros
+            - list [ref=e427]:
+              - listitem [ref=e428] [cursor=pointer]: Baixar
+              - listitem [ref=e429] [cursor=pointer]:
+                - link [ref=e430]:
+                  - /url: https://apps.apple.com/pt/app/upseller-erp/id6720712146
+              - listitem [ref=e431] [cursor=pointer]:
+                - link [ref=e432]:
+                  - /url: https://play.google.com/store/apps/details?id=com.app.upseller
+              - listitem [ref=e433] [cursor=pointer]:
+                - link [ref=e434]:
+                  - /url: https://chromewebstore.google.com/detail/gbnfheoijkjfgeobhbkpgdkfabihjonj
+        - generic [ref=e435]:
+          - generic [ref=e438] [cursor=pointer]:
+            - img [ref=e439]
+            - generic [ref=e441]: Português
+          - list [ref=e442]:
+            - listitem "Facebook" [ref=e443]:
+              - link "" [ref=e444] [cursor=pointer]:
+                - /url: https://www.facebook.com/upseller.brasil
+                - generic [ref=e445]: 
+            - listitem "Telegram" [ref=e446]:
+              - link "" [ref=e447] [cursor=pointer]:
+                - /url: ""
+                - generic [ref=e448]: 
+            - listitem "YouTube" [ref=e449]:
+              - link "" [ref=e450] [cursor=pointer]:
+                - /url: https://www.youtube.com/channel/UC_VdNZKQIxLxQx5_534AZvA
+                - generic [ref=e451]: 
+            - listitem "Instagram" [ref=e452]:
+              - link "" [ref=e453] [cursor=pointer]:
+                - /url: https://www.instagram.com/upseller_br/
+                - generic [ref=e454]: 
+            - listitem "TikTok" [ref=e455]:
+              - link "" [ref=e456] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@upsellererp
+                - generic [ref=e457]: 
+        - generic [ref=e458]:
+          - generic [ref=e460]:
+            - link "Termos de Serviço" [ref=e462] [cursor=pointer]:
+              - /url: /pt/terms-of-service/
+            - link "Política de Privacidade" [ref=e464] [cursor=pointer]:
+              - /url: /pt/privacy-policy/
+          - generic [ref=e465]: © 2026 UpSeller
+  - text:  

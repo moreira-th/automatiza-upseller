@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "Responda sempre em português.",
+    "Use o perfil Vivaldi em C:\\Users\\Thales\\AppData\\Local\\Vivaldi-Profiles\\ext-test com porta 9223 para testes com sessão do Temu.",
+    "Extensão em C:\\Upseller Extensão\\temu-importer, carregar com --load-extension.",
+    "Script de lançamento: C:\\Users\\Thales\\AppData\\Local\\Vivaldi-Profiles\\ext-test\\launch.ps1"
+  ],
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp",
+        "--executable-path",
+        "C:\\Users\\Thales\\AppData\\Local\\Vivaldi\\Application\\vivaldi.exe",
+        "--user-data-dir",
+        "C:\\Users\\Thales\\AppData\\Local\\Vivaldi-Profiles\\ext-test"
+      ],
+      "enabled": true
+    }
+  },
+  "command": {
+    "vivaldi": {
+      "description": "Launch Vivaldi with test profile (ext-test) and debugging port 9223",
+      "prompt": "Execute o script launch.ps1 para iniciar o Vivaldi com o perfil de teste. Perfil: C:\\Users\\Thales\\AppData\\Local\\Vivaldi-Profiles\\ext-test. Porta: 9223."
+    },
+    "reloadext": {
+      "description": "Reload the Temu/Shein extension in the test Vivaldi profile",
+      "prompt": "Use a porta 9223 para conectar ao Vivaldi, navegar até vivaldi://extensions e clicar em reload na extensão Temu & Shein Image Downloader, ou use chrome.runtime.reload() via CDP."
+    }
+  }
+}

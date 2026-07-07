@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "Responda sempre em português.",
+    "Use mensagens curtas e diretas.",
+    "Antes de modificar arquivos, explique brevemente o que vai fazer."
+  ],
+  "mcp": {
+    "playwright": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp"
+      ]
+    }
+  }
+}

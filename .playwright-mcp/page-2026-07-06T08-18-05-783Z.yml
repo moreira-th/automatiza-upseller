@@ -1,0 +1,155 @@
+- generic [active] [ref=f21e1]:
+  - generic [ref=f21e4]:
+    - generic [ref=f21e6]:
+      - generic [ref=f21e7]:
+        - generic [ref=f21e10]: Temu / Editar Anúncio
+        - generic [ref=f21e13] [cursor=pointer]: 
+      - generic [ref=f21e14]:
+        - button "Salvar" [ref=f21e16] [cursor=pointer]:
+          - generic: Salvar
+        - button "Publicar" [ref=f21e18] [cursor=pointer]:
+          - generic: Publicar
+    - generic [ref=f21e19]:
+      - generic [ref=f21e23]:
+        - link "Informação Básica" [ref=f21e27] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/420017700026914#basic
+        - link "Descrição do Anúncio" [ref=f21e29] [cursor=pointer]:
+          - /url: /pt/products/temu/edit/420017700026914#description
+      - generic [ref=f21e30]:
+        - generic [ref=f21e34]: Informação Básica
+        - generic [ref=f21e37]:
+          - generic [ref=f21e38]:
+            - generic "Loja" [ref=f21e40]: "* Loja"
+            - combobox [ref=f21e45] [cursor=pointer]:
+              - generic [ref=f21e47]: Selecionar uma Loja
+              - generic [ref=f21e50]: 
+          - generic [ref=f21e51]:
+            - generic "Nome" [ref=f21e53]: "* Nome"
+            - generic [ref=f21e56]:
+              - generic [ref=f21e57]:
+                - textbox [ref=f21e58]
+                - generic [ref=f21e64] [cursor=pointer]: 
+              - generic [ref=f21e65]: 0/500
+          - generic [ref=f21e66]:
+            - generic "Categoria" [ref=f21e68]: "* Categoria"
+            - generic [ref=f21e71]:
+              - generic [ref=f21e74]:
+                - textbox "Selecionar uma Categoria" [ref=f21e75]
+                - generic [ref=f21e77]: 
+              - button "Selecionar Categoria" [ref=f21e79] [cursor=pointer]:
+                - generic: Selecionar Categoria
+          - generic [ref=f21e80]:
+            - generic "SKU Principal" [ref=f21e82]
+            - generic [ref=f21e85]:
+              - textbox [ref=f21e86]
+              - generic [ref=f21e87]: 0/128
+          - generic [ref=f21e88]:
+            - generic "Marca" [ref=f21e90]
+            - generic [ref=f21e93]:
+              - generic [ref=f21e94] [cursor=pointer]:
+                - textbox "Please select" [ref=f21e95]
+                - generic [ref=f21e97]: 
+              - 'generic "icon: sync" [ref=f21e98] [cursor=pointer]':
+                - img [ref=f21e99]
+          - generic [ref=f21e101]:
+            - generic "Link de Referência" [ref=f21e103]
+            - generic [ref=f21e106]:
+              - generic [ref=f21e107]:
+                - textbox [ref=f21e108]
+                - button "Visita" [disabled] [ref=f21e110]:
+                  - separator
+                  - generic: Visita
+              - generic [ref=f21e111]: Forneça links deste produto de outras plataformas (se disponíveis) para acelerar o processamento e possibilitar recomendações mais precisas de preço base.
+      - generic [ref=f21e112]:
+        - generic [ref=f21e116]: Descrição do Anúncio
+        - generic [ref=f21e118]:
+          - generic [ref=f21e119]:
+            - generic [ref=f21e120]:
+              - generic "Descrição" [ref=f21e122]
+              - generic [ref=f21e126]:
+                - textbox [ref=f21e127]
+                - generic [ref=f21e128]: 0/10000
+            - generic [ref=f21e131]:
+              - generic "Tópico" [ref=f21e133]
+              - generic [ref=f21e137]:
+                - textbox [ref=f21e138]
+                - generic [ref=f21e139]: 0/700
+            - 'button "icon: plus Adicionar Mais" [ref=f21e146] [cursor=pointer]':
+              - 'generic "icon: plus"':
+                - img
+              - generic: Adicionar Mais
+            - generic [ref=f21e149]:
+              - generic "Imagens do Carrossel" [ref=f21e151]
+              - generic [ref=f21e154]:
+                - generic [ref=f21e155]:
+                  - generic [ref=f21e156]:
+                    - 'button "icon: plus Adicionar Imagens" [ref=f21e158] [cursor=pointer]':
+                      - 'generic "icon: plus"':
+                        - img
+                      - generic: Adicionar Imagens
+                    - generic [ref=f21e159]:
+                      - text: (
+                      - generic [ref=f21e161]: 0/10
+                      - text: )
+                  - generic [ref=f21e162]:
+                    - generic [ref=f21e165] [cursor=pointer]:
+                      - generic: 
+                      - generic: Recortar em massa
+                    - separator [ref=f21e166]
+                    - 'link "icon: edit Editar Imagens" [ref=f21e169] [cursor=pointer]':
+                      - /url: javascript:void(0);
+                      - 'generic "icon: edit"':
+                        - img
+                      - generic: Editar Imagens
+                    - separator [ref=f21e170]
+                    - generic [ref=f21e172] [cursor=pointer]:
+                      - generic: 
+                      - generic: Exportar
+                - list [ref=f21e174]:
+                  - listitem [ref=f21e175]: Envie imagens de alta qualidade compartilhadas nos SKUs e apresentadas no carrossel de produto principal.
+                  - listitem [ref=f21e176]: Envie de 3 a 10 imagens. Cada imagem deve ter no máximo 3 MB, proporção 1:1 e largura e tamanho mínimo de 480 × 480 px. Após enviar, você poderá reordenar as imagens.
+            - generic [ref=f21e177]:
+              - generic "Vídeo de Detalhes" [ref=f21e179]
+              - generic [ref=f21e183]:
+                - 'generic "icon: plus" [ref=f21e188] [cursor=pointer]':
+                  - img [ref=f21e189]
+                - list [ref=f21e192]:
+                  - listitem [ref=f21e193]: O vídeo de detalhes será exibido no topo da seção de detalhes do produto.
+                  - listitem [ref=f21e194]: Faça o upload do vídeo menor de 100MB, duração não superior a 180 segundos, relação de aspecto de 1:1, 4:3 ou 16:9, resolução mínima de 720P.
+          - generic [ref=f21e197]:
+            - generic "Imagens de Detalhes" [ref=f21e199]
+            - generic [ref=f21e202]:
+              - generic [ref=f21e203]:
+                - generic [ref=f21e204]:
+                  - 'button "icon: plus Adicionar Imagens" [ref=f21e206] [cursor=pointer]':
+                    - 'generic "icon: plus"':
+                      - img
+                    - generic: Adicionar Imagens
+                  - generic [ref=f21e207]:
+                    - text: (
+                    - generic [ref=f21e209]: 0/50
+                    - text: )
+                - generic [ref=f21e210]:
+                  - generic [ref=f21e213] [cursor=pointer]:
+                    - generic: 
+                    - generic: Recortar em massa
+                  - separator [ref=f21e214]
+                  - 'link "icon: edit Editar Imagens" [ref=f21e217] [cursor=pointer]':
+                    - /url: javascript:void(0);
+                    - 'generic "icon: edit"':
+                      - img
+                    - generic: Editar Imagens
+                  - separator [ref=f21e218]
+                  - generic [ref=f21e220] [cursor=pointer]:
+                    - generic: 
+                    - generic: Exportar
+              - list [ref=f21e222]:
+                - listitem [ref=f21e223]: A imagem de detalhes será exibida abaixo do vídeo de detalhes na seção de detalhes do produto.
+                - listitem [ref=f21e224]: Faça o upload da imagem menor de 3MB, relação de aspecto ≥ 1:3 e largura e altura ≥ 480px
+      - generic [ref=f21e225]:
+        - generic [ref=f21e229] [cursor=pointer]: 
+        - generic: 
+        - generic [ref=f21e232] [cursor=pointer]: 
+        - generic [ref=f21e235] [cursor=pointer]: 
+        - text: 
+  - generic "Automatiza Temu - UpSeller" [ref=f21e236] [cursor=pointer]: T
