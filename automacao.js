@@ -647,10 +647,7 @@ function abrirDialogMedidas() {
 <button id="ups-mp-excluir" style="display:none;width:100%;margin-bottom:4px;padding:3px;border:1px solid #dc3545;color:#dc3545;border-radius:4px;cursor:pointer;font-size:11px;background:white;">× Excluir</button>
 <input id="ups-mp-nb" type="text" placeholder="Preço massa R$" style="width:100%;padding:5px;border:1px solid #ccc;border-radius:4px;font-size:12px;box-sizing:border-box;margin-bottom:4px;">
 <div style="position:relative;display:flex;gap:3px;margin-bottom:4px;">
-<div id="ups-mp-nt-wrapper" style="flex:1;position:relative;">
-<input id="ups-mp-nt" type="text" placeholder="Tam..." readonly style="width:100%;padding:4px 24px 4px 6px;border:1px solid #ccc;border-radius:4px;font-size:11px;cursor:pointer;box-sizing:border-box;background:white url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 fill=%22none%22 stroke=%22%23999%22 stroke-width=%221.5%22/></svg>') no-repeat right 6px center;">
-<div id="ups-mp-nt-dd" style="display:none;position:fixed;background:white;border:1px solid #ccc;border-radius:4px;max-height:160px;overflow-y:auto;z-index:99999999;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
-</div>
+<input id="ups-mp-nt" type="text" placeholder="Ex: PP" style="flex:1;padding:4px 6px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;text-transform:uppercase;">
 <input id="ups-mp-nv" type="text" placeholder="R$" style="width:90px;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;">
 <button id="ups-mp-na" style="padding:4px 10px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-size:14px;line-height:1;">+</button>
 </div>
@@ -854,7 +851,7 @@ function abrirDialogMedidas() {
     c.innerHTML = keys.map(t =>
       `<div style="display:flex;justify-content:space-between;align-items:center;padding:1px 0;color:#333;font-size:12px;">
 <span><b>${t}</b> → R$ ${overrides[t]}</span>
-<span id="ups-mp-rm-${t}" style="cursor:pointer;color:#dc3545;font-weight:bold;font-size:13px;">×</span></div>`
+<span id="ups-mp-rm-${t}" style="cursor:pointer;color:#dc3545;font-weight:bold;font-size:18px;line-height:1;padding:0 4px;">×</span></div>`
     ).join('');
     keys.forEach(t => {
       const el = document.getElementById('ups-mp-rm-' + t);
@@ -916,72 +913,8 @@ function abrirDialogMedidas() {
     });
   }
 
-  async function popularDropdownTamanhosMedidas() {
-    const dd = document.getElementById('ups-mp-nt-dd');
-    if (!dd) return;
-    const tamanhosTabela = await extrairTamanhosDaTabela();
-    let html = '';
-    if (tamanhosTabela.length > 0) {
-      tamanhosTabela.forEach(t => {
-        html += `<div data-tam="${t}" style="padding:5px 8px;cursor:pointer;font-size:11px;color:#333;" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">${t}</div>`;
-      });
-      html += '<div style="height:1px;background:#eee;margin:2px 0;"></div>';
-    }
-    html += '<div data-tam="manual" style="padding:5px 8px;cursor:pointer;font-size:11px;color:#4078f2;font-style:italic;" onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">✏️ Digitar...</div>';
-    dd.innerHTML = html;
-    dd.querySelectorAll('[data-tam]').forEach(item => {
-      item.onclick = (e) => {
-        e.stopPropagation();
-        const val = item.getAttribute('data-tam');
-        const input = document.getElementById('ups-mp-nt');
-        if (val === 'manual') {
-          input.removeAttribute('readonly');
-          input.value = '';
-          input.placeholder = 'Digite...';
-          input.style.background = 'white';
-          input.focus();
-        } else {
-          input.setAttribute('readonly', '');
-          input.value = val;
-          input.style.background = 'white';
-        }
-        dd.style.display = 'none';
-      };
-    });
-  }
-
-  const mpNtInput = document.getElementById('ups-mp-nt');
-  const mpNtDd = document.getElementById('ups-mp-nt-dd');
-  if (mpNtInput && mpNtDd) {
-    mpNtInput.onclick = async () => {
-      const isOpen = mpNtDd.style.display === 'block';
-      document.querySelectorAll('#ups-mp-nt-dd').forEach(d => d.style.display = 'none');
-      if (!isOpen) {
-        await popularDropdownTamanhosMedidas();
-        const rect = mpNtInput.getBoundingClientRect();
-        mpNtDd.style.top = (rect.bottom + 4) + 'px';
-        mpNtDd.style.left = rect.left + 'px';
-        mpNtDd.style.width = rect.width + 'px';
-        mpNtDd.style.display = 'block';
-      }
-    };
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#ups-mp-nt-wrapper')) {
-        mpNtDd.style.display = 'none';
-      }
-    });
-    mpNtInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        mpNtDd.style.display = 'none';
-        const next = document.getElementById('ups-mp-nv');
-        if (next) next.focus();
-      }
-    });
-  }
-
   document.getElementById('ups-mp-na').onclick = () => {
-    const tam = document.getElementById('ups-mp-nt').value;
+    const tam = document.getElementById('ups-mp-nt').value.trim().toUpperCase();
     const val = document.getElementById('ups-mp-nv').value.trim();
     if (!tam || !val) return;
     const overrides = window.__upsNovoPrecoOverrides || {};
@@ -989,6 +922,7 @@ function abrirDialogMedidas() {
     window.__upsNovoPrecoOverrides = overrides;
     document.getElementById('ups-mp-nt').value = '';
     document.getElementById('ups-mp-nv').value = '';
+    document.getElementById('ups-mp-nt').focus();
     renderOverridesNovo(overrides);
   };
 
@@ -2310,32 +2244,34 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
             await sleep(subRes && subRes.uncheckedCount > 0 ? 3000 : 2000);
           }
 
-          // 3 — Editar em Massa (quant, preço, peso, pacote)
-          if (temEmMassa && macroAtivo) {
-            await sleep(500);
-            nextStep('Aplicando Editar em Massa...');
-            const cols = encontrarColunasMassa();
-            const eq = document.getElementById('ups-ma-eq').value.trim();
-            const ep = document.getElementById('ups-ma-ep').value.trim();
-            const ew = document.getElementById('ups-ma-ew').value.trim();
-            const epkg = document.getElementById('ups-ma-epkg').value.trim();
-            if (eq && cols.quant) await setColunaEmMassa(cols.quant, eq, 'input.ant-input.ant-input-sm');
-            if (ep && cols.preco) await setColunaEmMassa(cols.preco, ep, 'input.ant-input-number-input');
-            if (ew && cols.peso) await setColunaEmMassa(cols.peso, ew, 'input.ant-input-number-input');
-            if (epkg && cols.pacote) {
-              const sep = epkg.includes('x') ? 'x' : ',';
-              await setColunaEmMassa(cols.pacote, epkg.split(sep).map(s => s.trim()), 'input.ant-input-number-input');
-            }
-            if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
-          }
+          // 3 — Editar em Massa + Preço Especial (bulk: 1 scroll cycle)
+          const cols = encontrarColunasMassa();
+          const eq = document.getElementById('ups-ma-eq').value.trim();
+          const ep = document.getElementById('ups-ma-ep').value.trim();
+          const ew = document.getElementById('ups-ma-ew').value.trim();
+          const epkg = document.getElementById('ups-ma-epkg').value.trim();
 
-          // 4 — Preço Especial
-          if (aplicarPreco) {
-            nextStep('Aplicando preços...');
-            if (bulkPrice) {
-              chrome.storage.local.set({ ultimosPrecos: { bulkPrice, overrides: { ...overrides } } });
-              await setPrecosCompletos(bulkPrice, overrides);
-            }
+          var bulkCols = [];
+          if (eq && cols.quant) bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.quant); if (!cell) return false; var inp = cell.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === eq) return false; inp.focus(); ns.call(inp, eq); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+          if (ep && cols.preco) bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.preco); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ep) return false; inp.focus(); ns.call(inp, ep); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+          if (ew && cols.peso) bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.peso); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ew) return false; inp.focus(); ns.call(inp, ew); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+          if (epkg && cols.pacote) {
+            const sep = epkg.includes('x') ? 'x' : ',';
+            var pkgParts = epkg.split(sep).map(function(s) { return s.trim(); });
+            bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.pacote); if (!cell) return false; var inputs = cell.querySelectorAll('input.ant-input-number-input'); for (var i = 0; i < Math.min(pkgParts.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== pkgParts[i]) { inputs[i].focus(); ns.call(inputs[i], pkgParts[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
+          }
+          // Preço Especial integrado no mesmo bulk
+          if (aplicarPreco && bulkPrice) {
+            var tamColPS = 'col_3', priceColPS = 'col_7';
+            var allHeadersPS = document.querySelector('.vxe-table').querySelectorAll('.vxe-header--column');
+            allHeadersPS.forEach(function(cell) { var t = cell.textContent.trim().toLowerCase(); if (!t) return; var c = Array.from(cell.classList).find(function(x) { return x.startsWith('col_'); }); if (!c) return; if (t === 'tamanho' || (t.indexOf('tamanho') !== -1 && t.indexOf('pacote') === -1) || ['variação','grade'].some(function(k){return t.indexOf(k)!==-1;})) tamColPS = c; if (t.indexOf('preço especial') !== -1 || t.indexOf('preco especial') !== -1) priceColPS = c; });
+            var listaTam = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+            if (priceColPS) bulkCols.push({fn: function(row, ns) { var tamEl = row.querySelector('.' + tamColPS); if (!tamEl) return false; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTam.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); var inp = row.querySelector('.' + priceColPS + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; var val = (overrides[tam] || bulkPrice); if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+          }
+          if (bulkCols.length) {
+            if (temEmMassa && macroAtivo) { await sleep(500); nextStep('Aplicando Editar em Massa...'); }
+            if (aplicarPreco && bulkPrice) { nextStep('Aplicando preços...'); chrome.storage.local.set({ ultimosPrecos: { bulkPrice, overrides: { ...overrides } } }); }
+            await setColunasEmMassaBulk(bulkCols);
             if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
           }
 
@@ -2741,7 +2677,7 @@ async function setPrecosCompletos(bulkPrice, overrides) {
         const tamText = tamEl.textContent.trim().toUpperCase();
         const tam = listaTamanhos.reduce((found, t) => tamText.includes(t) ? (t.length > found.length ? t : found) : found, '');
         const input = row.querySelector('.' + priceCol + ' input.ant-input-number-input');
-        if (!input) return;
+        if (!input || input.disabled) return;
         const val = (overrides[tam] || bulkPrice);
         if (input.value !== val) {
           input.focus();
@@ -2760,19 +2696,16 @@ async function setPrecosCompletos(bulkPrice, overrides) {
   if (bodyWrapper && maxScroll > 0) {
     for (let pos = scrollStep; pos < maxScroll; pos += scrollStep) {
       bodyWrapper.scrollTop = pos;
-      await sleep(300);
+      await sleep(200);
       total += setRows();
     }
     bodyWrapper.scrollTop = maxScroll;
-    await sleep(300);
-    total += setRows();
-    bodyWrapper.scrollTop = 0;
-    await sleep(400);
+    await sleep(200);
     total += setRows();
   }
   if (bodyWrapper) {
     bodyWrapper.scrollLeft = 0;
-    setTimeout(() => { bodyWrapper.scrollLeft = 0; }, 500);
+    bodyWrapper.scrollTop = 0;
   }
   return { success: true, total };
 }
@@ -2849,10 +2782,7 @@ function abrirDialogPrecos() {
 
 <label style="font-size:13px;font-weight:600;display:block;margin-bottom:4px;">Sobrescrever por Tamanho</label>
 <div style="position:relative;display:flex;gap:4px;margin-bottom:8px;">
-<div id="ups-pt-wrapper" style="flex:1;position:relative;">
-<input id="ups-pt" type="text" placeholder="Tamanho..." readonly style="width:100%;padding:6px 28px 6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;cursor:pointer;box-sizing:border-box;background:white url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 fill=%22none%22 stroke=%22%23999%22 stroke-width=%221.5%22/></svg>') no-repeat right 8px center;">
-<div id="ups-pt-dd" style="display:none;position:fixed;background:white;border:1px solid #ccc;border-radius:4px;max-height:180px;overflow-y:auto;z-index:99999999;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
-</div>
+<input id="ups-pt" type="text" placeholder="Ex: PP" style="flex:1;padding:6px 8px;border:1px solid #ccc;border-radius:4px;font-size:13px;box-sizing:border-box;text-transform:uppercase;">
 <input id="ups-pv" type="text" placeholder="R$" style="width:70px;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:13px;">
 <button id="ups-pa" style="padding:6px 14px;background:#4078f2;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:bold;font-size:14px;">+</button>
 </div>
@@ -2986,70 +2916,6 @@ function abrirDialogPrecos() {
     });
   }
 
-  async function popularDropdownTamanhos() {
-    const dd = document.getElementById('ups-pt-dd');
-    if (!dd) return;
-    const tamanhosTabela = await extrairTamanhosDaTabela();
-    let html = '';
-    if (tamanhosTabela.length > 0) {
-      tamanhosTabela.forEach(t => {
-        html += `<div data-tam="${t}" style="padding:6px 10px;cursor:pointer;font-size:13px;color:#333;" onmouseover="this.style.background='#f0f4ff'" onmouseout="this.style.background=''">${t}</div>`;
-      });
-      html += '<div style="height:1px;background:#eee;margin:2px 0;"></div>';
-    }
-    html += '<div data-tam="manual" style="padding:6px 10px;cursor:pointer;font-size:12px;color:#4078f2;font-style:italic;" onmouseover="this.style.background=\'#f0f4ff\'" onmouseout="this.style.background=\'\'">✏️ Digitar manualmente...</div>';
-    dd.innerHTML = html;
-    dd.querySelectorAll('[data-tam]').forEach(item => {
-      item.onclick = (e) => {
-        e.stopPropagation();
-        const val = item.getAttribute('data-tam');
-        const input = document.getElementById('ups-pt');
-        if (val === 'manual') {
-          input.removeAttribute('readonly');
-          input.value = '';
-          input.placeholder = 'Digite o tamanho...';
-          input.style.background = 'white';
-          input.focus();
-        } else {
-          input.setAttribute('readonly', '');
-          input.value = val;
-          input.style.background = 'white';
-        }
-        dd.style.display = 'none';
-      };
-    });
-  }
-
-  const ptInput = document.getElementById('ups-pt');
-  const ptDd = document.getElementById('ups-pt-dd');
-  if (ptInput && ptDd) {
-    ptInput.onclick = async () => {
-      const isOpen = ptDd.style.display === 'block';
-      document.querySelectorAll('#ups-pt-dd').forEach(d => d.style.display = 'none');
-      if (!isOpen) {
-        await popularDropdownTamanhos();
-        const rect = ptInput.getBoundingClientRect();
-        ptDd.style.top = (rect.bottom + 4) + 'px';
-        ptDd.style.left = rect.left + 'px';
-        ptDd.style.width = rect.width + 'px';
-        ptDd.style.display = 'block';
-      }
-    };
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('#ups-pt-wrapper')) {
-        ptDd.style.display = 'none';
-      }
-    });
-    ptInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        ptDd.style.display = 'none';
-        const next = document.getElementById('ups-pv');
-        if (next) next.focus();
-      }
-    });
-  }
-
   function renderOverridesLocal() {
     const c = document.getElementById('ups-po');
     const keys = Object.keys(overrides);
@@ -3057,7 +2923,7 @@ function abrirDialogPrecos() {
     c.innerHTML = keys.map(t =>
       `<div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0;color:#333;">
 <span><b>${t}</b> → R$ ${overrides[t]}</span>
-<span id="ups-rm-${t}" style="cursor:pointer;color:#dc3545;font-weight:bold;font-size:14px;">×</span></div>`
+<span id="ups-rm-${t}" style="cursor:pointer;color:#dc3545;font-weight:bold;font-size:18px;line-height:1;padding:0 4px;">×</span></div>`
     ).join('');
     keys.forEach(t => {
       const el = document.getElementById('ups-rm-' + t);
@@ -3358,12 +3224,13 @@ function abrirDialogPrecos() {
   };
 
   document.getElementById('ups-pa').onclick = () => {
-    const tam = document.getElementById('ups-pt').value;
+    const tam = document.getElementById('ups-pt').value.trim().toUpperCase();
     const val = document.getElementById('ups-pv').value.trim();
     if (!tam || !val) return;
     overrides[tam] = val;
     document.getElementById('ups-pt').value = '';
     document.getElementById('ups-pv').value = '';
+    document.getElementById('ups-pt').focus();
     renderOverridesLocal();
   };
 
@@ -3404,8 +3271,7 @@ function abrirDialogPrecos() {
 
     if (macroAtivo && subVal) steps.push('sub');
     const hasEmMassa = macroAtivo && [eqVal, epVal, ewVal, epkgVal].some(v => v !== '');
-    if (hasEmMassa) steps.push('emMassa');
-    if (precoAtivo && pbVal) steps.push('preco');
+    if (hasEmMassa || (precoAtivo && pbVal)) steps.push('massaPreco');
     if (macroAtivo && skuChecked) steps.push('sku');
     if (macroAtivo && cropChecked) steps.push('crop');
     if (macroAtivo && confirmarCoresChecked && lerCoresEspecificacaoPrincipal().length > 0) steps.push('confirmarCores');
@@ -3454,39 +3320,30 @@ function abrirDialogPrecos() {
       await sleep(2000);
     }
 
-    // 2. Editar em Massa columns (dynamic columns)
-    if (steps.includes('emMassa')) {
-      stepIdx++;
-      criarOverlayProgresso();
-      atualizarOverlayProgresso({ message: 'Aplicando Editar em Massa...', step: stepIdx, total: steps.length });
-      const cols = encontrarColunasMassa();
-      const emMassaOps = [
-        { val: eqVal, col: cols.quant, sel: 'input.ant-input.ant-input-sm', name: 'Quantidade' },
-        { val: epVal, col: cols.preco, sel: 'input.ant-input-number-input', name: 'Preço(R$)' },
-        { val: ewVal, col: cols.peso, sel: 'input.ant-input-number-input', name: 'Peso(g)' },
-        { val: epkgVal, col: cols.pacote, sel: 'input.ant-input-number-input', name: 'Pacote(cm)' }
-      ];
-      for (const op of emMassaOps) {
-        if (!op.col || !op.val) continue;
-        let setVal = op.val;
-        if (op.name === 'Pacote(cm)') {
-          const sep = op.val.includes('x') ? 'x' : ',';
-          setVal = op.val.split(sep).map(s => s.trim());
-        }
-        atualizarOverlayProgresso({ message: 'Aplicando ' + op.name + '...', step: stepIdx, total: steps.length });
-        const r = await setColunaEmMassa(op.col, setVal, op.sel);
-        if (r.error) { mostrarErroOverlayProgresso(r.error); return; }
-      }
+    // 2. Editar em Massa + Preço Especial (bulk: 1 scroll cycle)
+    var popupCols = [];
+    var colsBulk = encontrarColunasMassa();
+    if (eqVal && colsBulk.quant) popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.quant); if (!c) return false; var inp = c.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === eqVal) return false; inp.focus(); ns.call(inp, eqVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+    if (epVal && colsBulk.preco) popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.preco); if (!c) return false; var inp = c.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === epVal) return false; inp.focus(); ns.call(inp, epVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+    if (ewVal && colsBulk.peso) popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.peso); if (!c) return false; var inp = c.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ewVal) return false; inp.focus(); ns.call(inp, ewVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+    if (epkgVal && colsBulk.pacote) {
+      var sepP = epkgVal.indexOf('x') !== -1 ? 'x' : ',';
+      var pkgP = epkgVal.split(sepP).map(function(s) { return s.trim(); });
+      popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.pacote); if (!c) return false; var inputs = c.querySelectorAll('input.ant-input-number-input'); for (var i = 0; i < Math.min(pkgP.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== pkgP[i]) { inputs[i].focus(); ns.call(inputs[i], pkgP[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
     }
-
-    // 3. Preço especial
-    if (steps.includes('preco')) {
+    // Preço Especial
+    if (precoAtivo && pbVal) {
+      var tamColPP = 'col_3', priceColPP = 'col_7';
+      var allHPP = document.querySelector('.vxe-table').querySelectorAll('.vxe-header--column');
+      allHPP.forEach(function(cell) { var t = cell.textContent.trim().toLowerCase(); if (!t) return; var cl = Array.from(cell.classList).find(function(x) { return x.indexOf('col_') === 0; }); if (!cl) return; if (t === 'tamanho' || (t.indexOf('tamanho') !== -1 && t.indexOf('pacote') === -1)) tamColPP = cl; if (t.indexOf('preço especial') !== -1 || t.indexOf('preco especial') !== -1) priceColPP = cl; });
+      var listaTPP = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+      if (priceColPP) popupCols.push({fn: function(row, ns) { var tamEl = row.querySelector('.' + tamColPP); if (!tamEl) return false; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTPP.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); var inp = row.querySelector('.' + priceColPP + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; var val = (overrides[tam] || pbVal); if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+    }
+    if (popupCols.length) {
       stepIdx++;
       criarOverlayProgresso();
-      atualizarOverlayProgresso({ message: 'Preenchendo preços especiais...', step: stepIdx, total: steps.length });
-      const result = await setPrecosCompletos(pbVal, overrides);
-      if (result.error) { mostrarErroOverlayProgresso(result.error); return; }
-      atualizarOverlayProgresso({ message: 'Preços aplicados: ' + result.total + ' células', step: stepIdx, total: steps.length });
+      atualizarOverlayProgresso({ message: 'Aplicando Editar em Massa + Preços...', step: stepIdx, total: steps.length });
+      await setColunasEmMassaBulk(popupCols);
     }
 
     // 4. SKU Gerar
@@ -3585,6 +3442,46 @@ function encontrarColunasMassa() {
   });
   return map;
 }
+
+async function setColunasEmMassaBulk(colunas) {
+  if (!colunas || !colunas.length) return;
+
+  const table = document.querySelector('.vxe-table');
+  if (!table) return;
+
+  const bodyWrapper = table.querySelector('.vxe-table--body-wrapper');
+  const maxScroll = bodyWrapper ? bodyWrapper.scrollHeight - bodyWrapper.clientHeight : 0;
+  const scrollStep = bodyWrapper ? Math.max(bodyWrapper.clientHeight - 40, 80) : 80;
+  const ns = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+
+  function setRows() {
+    const rows = table.querySelectorAll('.vxe-body--row');
+    let count = 0;
+    rows.forEach(row => {
+      colunas.forEach(col => {
+        try { if (col.fn && col.fn(row, ns)) count++; } catch(e) {}
+      });
+    });
+    return count;
+  }
+
+  let total = setRows();
+  if (bodyWrapper && maxScroll > 0) {
+    for (let pos = scrollStep; pos < maxScroll; pos += scrollStep) {
+      bodyWrapper.scrollTop = pos;
+      await sleep(200);
+      total += setRows();
+    }
+    bodyWrapper.scrollTop = maxScroll;
+    await sleep(200);
+    total += setRows();
+  }
+  if (bodyWrapper) {
+    bodyWrapper.scrollLeft = 0;
+    bodyWrapper.scrollTop = 0;
+  }
+}
+
 async function setColunaEmMassa(colClass, value, inputSelector) {
   const table = document.querySelector('.vxe-table');
   if (!table) return { error: 'Tabela não encontrada' };
@@ -3608,6 +3505,7 @@ async function setColunaEmMassa(colClass, value, inputSelector) {
         const max = Math.min(values.length, inputs.length);
         for (let i = 0; i < max; i++) {
           const inp = inputs[i];
+          if (inp.disabled) continue;
           if (inp.value !== values[i]) {
             inp.focus();
             nativeSetter.call(inp, values[i]);
@@ -3622,25 +3520,22 @@ async function setColunaEmMassa(colClass, value, inputSelector) {
     return count;
   }
 
-  await sleep(500);
   let total = setRows();
   if (bodyWrapper && maxScroll > 0) {
     for (let pos = scrollStep; pos < maxScroll; pos += scrollStep) {
       bodyWrapper.scrollTop = pos;
-      await sleep(300);
+      await sleep(200);
       total += setRows();
     }
     bodyWrapper.scrollTop = maxScroll;
-    await sleep(300);
+    await sleep(200);
     total += setRows();
-    // Final pass: scroll back to top to catch rows that were rendering during the first pass
     bodyWrapper.scrollTop = 0;
-    await sleep(400);
+    await sleep(200);
     total += setRows();
   }
   if (bodyWrapper) {
     bodyWrapper.scrollLeft = 0;
-    setTimeout(() => { bodyWrapper.scrollLeft = 0; }, 500);
   }
   return { success: true, count: total };
 }
@@ -3889,21 +3784,28 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             await sleep(500);
             stepDone('Aplicando Editar em Massa...');
             const cols = encontrarColunasMassa();
-            if (macro.emMassa.quantidade && cols.quant) await setColunaEmMassa(cols.quant, macro.emMassa.quantidade, 'input.ant-input.ant-input-sm');
-            if (macro.emMassa.preco && cols.preco) await setColunaEmMassa(cols.preco, macro.emMassa.preco, 'input.ant-input-number-input');
-            if (macro.emMassa.peso && cols.peso) await setColunaEmMassa(cols.peso, macro.emMassa.peso, 'input.ant-input-number-input');
+            var mcCols = [];
+            if (macro.emMassa.quantidade && cols.quant) mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.quant); if (!cell) return false; var inp = cell.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === macro.emMassa.quantidade) return false; inp.focus(); ns.call(inp, macro.emMassa.quantidade); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+            if (macro.emMassa.preco && cols.preco) mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.preco); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === macro.emMassa.preco) return false; inp.focus(); ns.call(inp, macro.emMassa.preco); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+            if (macro.emMassa.peso && cols.peso) mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.peso); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === macro.emMassa.peso) return false; inp.focus(); ns.call(inp, macro.emMassa.peso); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
             if (macro.emMassa.pacote && cols.pacote) {
               const sep = macro.emMassa.pacote.includes('x') ? 'x' : ',';
-              await setColunaEmMassa(cols.pacote, macro.emMassa.pacote.split(sep).map(s => s.trim()), 'input.ant-input-number-input');
+              var mpParts = macro.emMassa.pacote.split(sep).map(function(s) { return s.trim(); });
+              mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.pacote); if (!cell) return false; var inputs = cell.querySelectorAll('input.ant-input-number-input'); for (var i = 0; i < Math.min(mpParts.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== mpParts[i]) { inputs[i].focus(); ns.call(inputs[i], mpParts[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
             }
+            // Preço Especial integrado
+            if (config.bulkPrice) {
+              var tamColM = 'col_3', priceColM = 'col_7';
+              var allHeadersM = document.querySelector('.vxe-table').querySelectorAll('.vxe-header--column');
+              allHeadersM.forEach(function(cell) { var t = cell.textContent.trim().toLowerCase(); if (!t) return; var c = Array.from(cell.classList).find(function(x) { return x.startsWith('col_'); }); if (!c) return; if (t === 'tamanho' || (t.indexOf('tamanho') !== -1 && t.indexOf('pacote') === -1)) tamColM = c; if (t.indexOf('preço especial') !== -1 || t.indexOf('preco especial') !== -1) priceColM = c; });
+              var listaTamM = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
+              var ov = config.overrides || {};
+              if (priceColM) mcCols.push({fn: function(row, ns) { var tamEl = row.querySelector('.' + tamColM); if (!tamEl) return false; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTamM.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); var inp = row.querySelector('.' + priceColM + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; var val = (ov[tam] || config.bulkPrice); if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+            }
+            if (mcCols.length) await setColunasEmMassaBulk(mcCols);
           }
         }
         if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
-
-        if (config.bulkPrice) {
-          stepDone('Aplicando preços...');
-          await setPrecosCompletos(config.bulkPrice, config.overrides || {});
-        }
 
         // Descrição
         const bibData = await new Promise(resolve => chrome.storage.local.get(["biblioteca"], resolve));
