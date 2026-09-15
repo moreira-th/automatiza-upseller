@@ -869,10 +869,17 @@ function abrirDialogTemu() {
     var body = document.getElementById(bodyId);
     if (!body) return;
     var arrow = hdr.querySelector('.ups-ac-ar');
-    if (body.style.maxHeight) {
+    var isOpen = !!body.style.maxHeight;
+    if (isOpen) {
       body.style.maxHeight = null;
       if (arrow) arrow.style.transform = 'rotate(0deg)';
     } else {
+      var allBodies = overlay.querySelectorAll('.ups-ac-body');
+      allBodies.forEach(function(b) {
+        b.style.maxHeight = null;
+        var h = b.previousElementSibling;
+        if (h) { var a = h.querySelector('.ups-ac-ar'); if (a) a.style.transform = 'rotate(0deg)'; }
+      });
       body.style.maxHeight = body.scrollHeight + 'px';
       if (arrow) arrow.style.transform = 'rotate(90deg)';
     }

@@ -415,7 +415,8 @@ try { chrome.commands.onCommand.addListener((command) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs[0]) return;
       const isTemu = tabs[0].url && tabs[0].url.includes('/temu/');
-      const action = isTemu ? 'open-temu-dialog' : 'open-medidas-dialog';
+      const isTikTok = tabs[0].url && tabs[0].url.includes('/discount-promotions-edit-product/');
+      const action = isTemu ? 'open-temu-dialog' : (isTikTok ? 'open-tiktok-mass-dialog' : 'open-medidas-dialog');
       chrome.tabs.sendMessage(tabs[0].id, { action: action }, () => {
         if (chrome.runtime.lastError) {
           chrome.scripting.executeScript({
@@ -430,7 +431,9 @@ try { chrome.commands.onCommand.addListener((command) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (!tabs[0]) return;
       const isTemu = tabs[0].url && tabs[0].url.includes('/temu/');
-      const action = isTemu ? 'open-temu-mass-dialog' : 'open-precos-dialog';
+      const isTikTok = tabs[0].url && tabs[0].url.includes('/discount-promotions-edit-product/');
+      const isShopee = tabs[0].url && tabs[0].url.includes('/shopee/');
+      const action = isShopee ? 'open-shopee-precos-dialog' : (isTemu ? 'open-temu-mass-dialog' : (isTikTok ? 'open-tiktok-mass-dialog' : 'open-precos-dialog'));
       chrome.tabs.sendMessage(tabs[0].id, { action: action }, () => {
         if (chrome.runtime.lastError) {
           chrome.scripting.executeScript({
@@ -563,6 +566,64 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     return true;
   }
 
+  if (msg.action === 'start-multi-shopee') {
+    var sourceWindowId = sender.tab ? sender.tab.windowId : null;
+    chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/shopee/edit/*' }, async (tabs) => {
+      tabQueue = tabs.map(t => t.id);
+      if (tabQueue.length === 0) {
+        chrome.runtime.sendMessage({ action: 'multi-error', message: 'Nenhuma aba de edição Shopee encontrada' });
+        return;
+      }
+      multiMedidasConfig = msg.config;
+      multiProcessType = 'shopee';
+      var modo = msg.config.multiModo || 'cascata';
+
+      if (modo === 'sequencial' || tabQueue.length <= 1) {
+        processingTabs = true;
+        currentTabIndex = 0;
+        salvarEstadoMulti();
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: `Aba 1 de ${tabQueue.length}`
+        });
+        processTabShopee(currentTabIndex);
+      } else {
+        try {
+          await tileTabs(tabQueue, sourceWindowId);
+        } catch (e) {
+          chrome.runtime.sendMessage({ action: 'multi-error', message: 'Erro ao distribuir janelas: ' + e.message });
+          return;
+        }
+        processingTabs = true;
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: `Paralelo: ${tabQueue.length} abas`
+        });
+        tabQueue.forEach(function(tabId, idx) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'show-multi-overlay',
+            tab: idx + 1,
+            total: tabQueue.length
+          }, function() { void chrome.runtime.lastError; });
+        });
+        await sleep(200);
+        tabQueue.forEach(function(tabId) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'executar-shopee-macro',
+            config: msg.config
+          }, function() { void chrome.runtime.lastError; });
+        });
+      }
+    });
+    return true;
+  }
+
   if (msg.action === 'completed' || msg.action === 'error') {
     // Modo paralelo (cascata) — retorna cada tab independentemente
     if (cascadeWindows.length > 0 && parallelTotal > 0) {
@@ -636,19 +697,21 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       tabQueue.forEach(function(tid) {
         chrome.tabs.sendMessage(tid, { action: 'abort-macro' }).catch(function() {});
       });
+      var savedQueue = tabQueue.slice();
       gatherTabs().then(function() {
         chrome.storage.session.remove(SESSION_KEY_PARALLEL, function() {});
+        hideOverlayAllTabs(savedQueue.length);
+        cascadeWindows = [];
+        parallelTotal = 0;
+        parallelCompleted = 0;
+        tabOriginalIndexes = {};
+        baseReturnIndex = null;
+        returnedCount = 0;
+        draftsAnchorIndex = null;
+        tabQueue = [];
+        chrome.runtime.sendMessage({ action: 'multi-cancelled' });
+        sendResponse({ status: 'cancelled' });
       });
-      cascadeWindows = [];
-      parallelTotal = 0;
-      parallelCompleted = 0;
-      tabOriginalIndexes = {};
-      baseReturnIndex = null;
-      returnedCount = 0;
-      draftsAnchorIndex = null;
-      tabQueue = [];
-      chrome.runtime.sendMessage({ action: 'multi-cancelled' });
-      sendResponse({ status: 'cancelled' });
       return true;
     }
     // Abort current tab execution (sequencial)
@@ -742,18 +805,29 @@ try { chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               for (var s = 0; s < row.detailsImgs.length; s++) {
                 if (row.detailsImgs[s].sort > maxSort) maxSort = row.detailsImgs[s].sort;
               }
-              row.detailsImgs.splice(row.detailsImgs.length, 0, {
+              // A lista usa vuedraggable: após arrastar, o placeholder "+" ({url:""}) pode ficar
+              // em qualquer posição do array. Para a nova imagem SEMPRE ir para o fim (à esquerda
+              // do placeholder), separamos itens reais (com url) dos placeholders e inserimos a
+              // nova imagem no final dos reais; os placeholders são re-anexados no fim.
+              var itensReais = [], placeholders = [];
+              for (var s2 = 0; s2 < row.detailsImgs.length; s2++) {
+                var it = row.detailsImgs[s2];
+                if (it && it.url) itensReais.push(it);
+                else placeholders.push(it);
+              }
+              itensReais.push({
                 imageItemId: null, groupCode: null,
                 imageUrl: cdnUrl, imageMediumUrl: cdnUrl, imageSmallUrl: cdnUrl,
                 sort: maxSort + 1,
                 imageType: 'DETAIL', url: cdnUrl,
                 imgInfo: { width: 800, height: 800 }
               });
+              row.detailsImgs = itensReais.concat(placeholders);
               concluidas++;
             }
             vxeVm.$forceUpdate();
             upsShowDialog('Imagem adicionada em ' + tableData.length + ' cores');
-            document.body.dispatchEvent(new CustomEvent('ups-upload-done', { detail: { url: cdnUrl, source: source } }));
+            window.dispatchEvent(new CustomEvent('ups-upload-done', { detail: { url: cdnUrl, source: source } }));
           } catch(e) {
             upsShowDialog('Upload falhou: ' + e.message);
           }
@@ -986,6 +1060,33 @@ function processTabMedidas(index) {
   });
 }
 
+function processTabShopee(index) {
+  const tabId = tabQueue[index];
+  chrome.tabs.update(tabId, { active: true }, () => {
+    setTimeout(() => {
+      chrome.tabs.sendMessage(tabId, {
+        action: 'show-multi-overlay',
+        tab: index + 1,
+        total: tabQueue.length
+      }, function() { void chrome.runtime.lastError; });
+      setTimeout(() => {
+        chrome.tabs.sendMessage(tabId, {
+          action: 'executar-shopee-macro',
+          config: multiMedidasConfig
+        }, (response) => {
+          if (chrome.runtime.lastError) {
+            chrome.runtime.sendMessage({
+              action: 'multi-error',
+              message: `Aba ${index + 1}: ${chrome.runtime.lastError.message}`
+            });
+            processNextTab();
+          }
+        });
+      }, 200);
+    }, 500);
+  });
+}
+
 function processTabTemu(index) {
   const tabId = tabQueue[index];
   chrome.tabs.update(tabId, { active: true }, () => {
@@ -1032,6 +1133,10 @@ function processNextTab() {
       processTabMedidas(currentTabIndex);
     } else if (multiProcessType === 'temu') {
       processTabTemu(currentTabIndex);
+    } else if (multiProcessType === 'shopee') {
+      processTabShopee(currentTabIndex);
+    } else if (multiProcessType === 'tiktok-edit') {
+      processTabTikTokEdit(currentTabIndex);
     } else {
       processTab(currentTabIndex);
     }
@@ -1054,6 +1159,33 @@ function hideOverlayAllTabs(total) {
   });
 }
 
+function processTabTikTokEdit(index) {
+  const tabId = tabQueue[index];
+  chrome.tabs.update(tabId, { active: true }, () => {
+    setTimeout(() => {
+      chrome.tabs.sendMessage(tabId, {
+        action: 'show-multi-overlay',
+        tab: index + 1,
+        total: tabQueue.length
+      });
+      setTimeout(() => {
+        chrome.tabs.sendMessage(tabId, {
+          action: 'executar-tiktok-edit',
+          dados: multiMedidasConfig
+        }, (response) => {
+          if (chrome.runtime.lastError) {
+            chrome.runtime.sendMessage({
+              action: 'multi-error',
+              message: `Aba ${index + 1}: ${chrome.runtime.lastError.message}`
+            });
+            processNextTab();
+          }
+        });
+      }, 500);
+    }, 1500);
+  });
+}
+
 // ===== TILE / PARALELO =====
 
 function sleep(ms) {
@@ -1064,7 +1196,8 @@ async function moveCompletedTab(tabId, tabWinId) {
   if (!tabId) return;
 
   if (tabWinId && tabWinId !== originalWindowId) {
-    var targetIdx = baseReturnIndex + returnedCount;
+    var originalIdx = tabOriginalIndexes ? tabOriginalIndexes[tabId] : undefined;
+    var targetIdx = originalIdx !== undefined ? originalIdx : (baseReturnIndex + returnedCount);
     try {
       await chrome.tabs.move(tabId, { windowId: originalWindowId, index: targetIdx });
     } catch (e) { /* skip */ }
@@ -1150,7 +1283,7 @@ async function tileTabs(tabIds, sourceWindowId) {
 
   var allCurrentTabs = await chrome.tabs.query({ windowId: originalWindowId });
   for (var ai = 0; ai < allCurrentTabs.length; ai++) {
-    if (allCurrentTabs[ai].url && allCurrentTabs[ai].url.indexOf('/pt/products/shein/drafts') !== -1) {
+    if (allCurrentTabs[ai].url && allCurrentTabs[ai].url.indexOf('/drafts') !== -1) {
       draftsAnchorIndex = allCurrentTabs[ai].index;
       baseReturnIndex = draftsAnchorIndex + 1;
       break;
@@ -1272,6 +1405,57 @@ function selecionarCorNoDropdown(rowIdx) {
   return true;
 }
 
+function aplicarCorMercadoWorld(rowIdx) {
+  var rows = document.querySelectorAll('.variant_row');
+  var row = rows[rowIdx];
+  if (!row) return false;
+  var copyDiv = row.querySelector('.my_dropdown_btn');
+  if (!copyDiv || !copyDiv.__vue__) return false;
+  var vue = copyDiv.__vue__;
+  if (!vue.menuClick || !vue.menus) return false;
+
+  // Abre o dropdown e dispara "Variantes com o mesmo [Cor]". Isso aciona o
+  // doCopyImg() do Vue, que abre o modal nativo (segunda etapa).
+  vue.menuClick({ key: 'Cor' });
+
+  // Segunda etapa (polling rápido): assim que o modal aparecer, marcar
+  // "Selecionado Todos" e clicar "Confirmar" o mais cedo possível.
+  var tentativas = 0;
+  var intervalo = setInterval(function() {
+    tentativas++;
+    var modal = null;
+    document.querySelectorAll('.ant-modal-wrap, .ant-modal').forEach(function(m) {
+      var t = (m.style && m.style.display !== 'none');
+      if (t && (m.textContent || '').indexOf('Copiar Imagem ao') !== -1) modal = m;
+    });
+    if (!modal) {
+      // Desiste após ~2s para não travar a página se o modal não abrir
+      if (tentativas > 33) clearInterval(intervalo);
+      return;
+    }
+    clearInterval(intervalo);
+
+    // Marcar o checkbox "Selecionado Todos"
+    var wrapper = modal.querySelectorAll('.ant-checkbox-wrapper, label.f_title');
+    for (var i = 0; i < wrapper.length; i++) {
+      if ((wrapper[i].textContent || '').indexOf('Selecionado Todos') !== -1) {
+        var cb = wrapper[i].querySelector('.ant-checkbox-input') || wrapper[i].querySelector('input[type="checkbox"]');
+        if (cb && !cb.checked) cb.click();
+        break;
+      }
+    }
+
+    // Clicar em "Confirmar" (botão primário do rodapé)
+    var confirmar = null;
+    modal.querySelectorAll('.ant-modal-footer button, .ant-modal button').forEach(function(b) {
+      if ((b.textContent || '').trim() === 'Confirmar') confirmar = b;
+    });
+    if (confirmar) confirmar.click();
+  }, 60);
+
+  return true;
+}
+
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (msg.action === 'aplicar-cor-abrir') {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
@@ -1293,6 +1477,20 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
         target: { tabId: tabs[0].id },
         world: 'MAIN',
         func: selecionarCorNoDropdown,
+        args: [msg.rowIdx]
+      }).then(function(r) { sendResponse({ ok: r[0] && r[0].result }); })
+        .catch(function() { sendResponse({ ok: false }); });
+    });
+    return true;
+  }
+
+  if (msg.action === 'mercado-copiar-variante') {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      if (!tabs || !tabs[0]) { sendResponse({ ok: false }); return; }
+      chrome.scripting.executeScript({
+        target: { tabId: tabs[0].id },
+        world: 'MAIN',
+        func: aplicarCorMercadoWorld,
         args: [msg.rowIdx]
       }).then(function(r) { sendResponse({ ok: r[0] && r[0].result }); })
         .catch(function() { sendResponse({ ok: false }); });
@@ -1367,5 +1565,134 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
   if (msg.action === 'executar-temu-macro') {
     // Handled by temu.js content script
     return false;
+  }
+
+  if (msg.action === 'executar-tiktok-edit-multi') {
+    var dados = msg.dados;
+    var modo = dados.multiModo || 'sequencial';
+    var sourceWindowId = sender.tab ? sender.tab.windowId : null;
+
+    chrome.tabs.query({ url: 'https://app.upseller.com/pt/products/tiktok/edit/*' }, async function(tabs) {
+      tabQueue = tabs.map(function(t) { return t.id; });
+      if (tabQueue.length === 0) {
+        chrome.runtime.sendMessage({ action: 'multi-error', message: 'Nenhuma aba TikTok encontrada' });
+        sendResponse({ ok: false });
+        return;
+      }
+
+      multiMedidasConfig = dados;
+      multiProcessType = 'tiktok-edit';
+
+      if (modo === 'sequencial' || tabQueue.length <= 1) {
+        processingTabs = true;
+        currentTabIndex = 0;
+        salvarEstadoMulti();
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: 'Aba 1 de ' + tabQueue.length
+        });
+        processTabTikTokEdit(currentTabIndex);
+      } else {
+        try {
+          await tileTabs(tabQueue, sourceWindowId);
+        } catch (e) {
+          chrome.runtime.sendMessage({ action: 'multi-error', message: 'Erro ao distribuir janelas: ' + e.message });
+          sendResponse({ ok: false });
+          return;
+        }
+        processingTabs = true;
+        startKeepAlive();
+        chrome.runtime.sendMessage({
+          action: 'multi-progress',
+          tab: 0,
+          total: tabQueue.length,
+          message: 'Paralelo: ' + tabQueue.length + ' abas'
+        });
+        tabQueue.forEach(function(tabId, idx) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'show-multi-overlay',
+            tab: idx + 1,
+            total: tabQueue.length
+          }, function() { void chrome.runtime.lastError; });
+        });
+        await sleep(500);
+        tabQueue.forEach(function(tabId) {
+          chrome.tabs.sendMessage(tabId, {
+            action: 'executar-tiktok-edit',
+            dados: dados
+          }, function() { void chrome.runtime.lastError; });
+        });
+      }
+      sendResponse({ ok: true });
+    });
+    return true;
+  }
+
+  if (msg.action === 'executar-tiktok-edit') {
+    // Handled by tiktok.js content script
+    return false;
+  }
+
+  if (msg.action === 'fetch-desc-from-platform') {
+    var platform = msg.platform || '';
+    var urlPatterns;
+    if (platform === 'shein') {
+      urlPatterns = ['https://app.upseller.com/pt/products/shein/edit/*', 'https://app.upseller.com/pt/products/shein/drafts*'];
+    } else if (platform === 'temu') {
+      urlPatterns = ['https://app.upseller.com/pt/products/temu/edit/*', 'https://app.upseller.com/pt/products/temu/drafts*'];
+    } else {
+      sendResponse({ descricao: null });
+      return true;
+    }
+    (function(patterns, resp) {
+      var allTabs = [];
+      var done = 0;
+      function next() {
+        if (done >= patterns.length) {
+          if (!allTabs.length) { resp({ descricao: null }); return; }
+          chrome.scripting.executeScript({
+            target: { tabId: allTabs[0].id },
+            world: 'MAIN',
+            func: function() {
+              try {
+                if (window.tinyMCE && window.tinyMCE.activeEditor) {
+                  var c = window.tinyMCE.activeEditor.getContent();
+                  if (c) return c;
+                }
+              } catch(e) {}
+              var ta = document.querySelector('textarea.tox-textarea, .tox-tinymce + textarea, textarea[aria-hidden="true"]');
+              if (ta && ta.value) return ta.value;
+              try {
+                var editor = document.querySelector('.tox-tinymce');
+                if (editor) {
+                  var ifr = editor.querySelector('iframe');
+                  if (ifr) {
+                    var d = ifr.contentDocument || ifr.contentWindow.document;
+                    return (d.body.textContent || '').trim();
+                  }
+                }
+              } catch(e) {}
+              return '';
+            }
+          }).then(function(r) {
+            var texto = (r[0] && r[0].result) || '';
+            resp({ descricao: texto || null });
+          }).catch(function() {
+            resp({ descricao: null });
+          });
+          return;
+        }
+        chrome.tabs.query({ url: patterns[done] }, function(tabs) {
+          if (tabs && tabs.length) allTabs = allTabs.concat(tabs);
+          done++;
+          next();
+        });
+      }
+      next();
+    })(urlPatterns, sendResponse);
+    return true;
   }
 });

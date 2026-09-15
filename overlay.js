@@ -54,6 +54,44 @@ function removerOverlayProgresso() {
     setTimeout(() => el.remove(), 400);
   }
 }
+
+// ========== TIKTOK BUTTON ==========
+function injetarBotaoTikTok() {
+  if (document.getElementById('ups-tiktok-btn')) return;
+  const btn = document.createElement('div');
+  btn.id = 'ups-tiktok-btn';
+  btn.style.cssText = 'position:fixed;z-index:999999999;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#28a745;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold;color:#fff;';
+  btn.innerHTML = '$';
+  btn.title = 'Desconto Promocional - TikTok';
+  btn.addEventListener('click', abrirDialogTikTokMassa);
+
+  function posicionar() {
+    const header = document.querySelector('.ant-page-header') || document.querySelector('.vxe-table--header-wrapper');
+    if (header) {
+      const r = header.getBoundingClientRect();
+      btn.style.top = (r.bottom + 16) + 'px';
+    } else {
+      btn.style.top = '120px';
+    }
+    const ref = document.querySelector('.edit_back_top_inner');
+    if (ref) {
+      const cssRight = parseFloat(window.getComputedStyle(ref).right);
+      btn.style.right = (cssRight - 4) + 'px';
+    } else {
+      btn.style.right = '124px';
+    }
+  }
+  posicionar();
+  window.addEventListener('resize', posicionar);
+  let ultimaDPR = window.devicePixelRatio;
+  setInterval(() => {
+    if (window.devicePixelRatio !== ultimaDPR) {
+      ultimaDPR = window.devicePixelRatio;
+      posicionar();
+    }
+  }, 1000);
+  document.body.appendChild(btn);
+}
 function criarOverlayMulti(tab, total) {
   const existing = document.getElementById('upseller-multi-overlay');
   if (existing) existing.remove();
@@ -157,8 +195,6 @@ function injetarBotaoPrecoEspecial(refBtn) {
 // ========== TEMU BUTTON ==========
 function injetarBotaoTemu() {
   if (document.getElementById('ups-temu-btn')) return;
-  const cardHead = document.querySelector('#basic .ant-card-head');
-  if (!cardHead) return;
   const btn = document.createElement('div');
   btn.id = 'ups-temu-btn';
   btn.style.cssText = 'position:fixed;z-index:999999999;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#4078f2;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;';
@@ -167,8 +203,13 @@ function injetarBotaoTemu() {
   btn.addEventListener('click', abrirDialogTemu);
 
   function posicionarTop() {
-    const r = cardHead.getBoundingClientRect();
-    btn.style.top = (r.top + 258) + 'px';
+    const cardHead = document.querySelector('#basic .ant-card-head');
+    if (cardHead) {
+      const r = cardHead.getBoundingClientRect();
+      btn.style.top = (r.top + 258) + 'px';
+    } else {
+      btn.style.top = '258px';
+    }
   }
   function posicionarRight() {
     const ref = document.querySelector('.edit_back_top_inner');
@@ -190,4 +231,28 @@ function injetarBotaoTemu() {
     }
   }, 1000);
   document.body.appendChild(btn);
+  injetarBotaoTemuMassa(btn);
 }
+
+function injetarBotaoTemuMassa(refBtn) {
+  if (document.getElementById('ups-temu-btn-massa')) return;
+  const btn2 = document.createElement('div');
+  btn2.id = 'ups-temu-btn-massa';
+  btn2.style.cssText = 'position:fixed;z-index:999999999;cursor:pointer;width:40px;height:40px;border-radius:50%;background:#28a745;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:bold;color:#fff;';
+  btn2.innerHTML = '$';
+  btn2.title = 'Editar em Massa - Temu';
+  btn2.addEventListener('click', abrirDialogTemuMassa);
+  function posicionarTop() {
+    const r = refBtn.getBoundingClientRect();
+    btn2.style.top = (r.bottom + 8) + 'px';
+  }
+  function posicionarRight() {
+    btn2.style.right = refBtn.style.right;
+  }
+  function posicionarCompleto() { posicionarTop(); posicionarRight(); }
+  posicionarCompleto();
+  window.addEventListener('resize', posicionarRight);
+  setInterval(function() { posicionarCompleto(); }, 1000);
+  document.body.appendChild(btn2);
+}
+

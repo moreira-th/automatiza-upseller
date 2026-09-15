@@ -7,11 +7,22 @@ async function gerarSkuEmMassa() {
   });
   if (!skuHeader) return { error: 'Header SKU não encontrado' };
 
-  const spans = skuHeader.querySelectorAll('span.my_txt_btn.f_12');
+  // Procura o botão "Gerar" no header de forma tolerante: span/button/a/div clicáveis
+  // cujo texto normalizado seja "Gerar" ou inicie por "Gerar".
   let gerarSpan = null;
-  spans.forEach(s => {
-    if (s.textContent.trim() === 'Gerar') gerarSpan = s;
+  const candidatos = skuHeader.querySelectorAll('span.my_txt_btn.f_12, span.my_txt_btn, button, a, .my_txt_btn, [class*="txt_btn"]');
+  candidatos.forEach(el => {
+    if (gerarSpan) return;
+    const t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    if (t === 'Gerar' || t.indexOf('Gerar') === 0) gerarSpan = el;
   });
+  // Fallback: qualquer elemento cujo texto seja exatamente "Gerar"
+  if (!gerarSpan) {
+    skuHeader.querySelectorAll('*').forEach(el => {
+      if (gerarSpan) return;
+      if (el.children.length === 0 && (el.textContent || '').trim() === 'Gerar') gerarSpan = el;
+    });
+  }
   if (!gerarSpan) return { error: 'Botão Gerar não encontrado' };
   gerarSpan.click();
   await sleep(1000);
@@ -302,6 +313,8 @@ function normalizarCor(s) {
   return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
 }
 function traduzirCorEnPt(name) {
+  // Compound names containing "/" are kits → let remap use custom value
+  if (name.indexOf('/') !== -1) return [];
   // Split compound names into words for partial matching
   var lower = name.toLowerCase().trim();
   var words = lower.split(/[\s\/\-]+/);
@@ -705,6 +718,56 @@ async function recortarImagemQuadradaEmMassa() {
   aplicarBtn.click();
   return;
 }
+async function redimensionarImagensEmMassa() {
+  const nativeBtn = Array.from(document.querySelectorAll('.my_btn.ant-btn')).find(el => el.textContent.includes('Recortar em massa'));
+  if (!nativeBtn) throw new Error('Botão Recortar em massa não encontrado');
+  nativeBtn.click();
+  let dialog = null;
+  for (let i = 0; i < 40; i++) {
+    dialog = document.querySelector('.ant-modal-content');
+    if (dialog && dialog.offsetHeight > 0 && dialog.textContent.includes('Recortar em massa')) break;
+    await sleep(300);
+  }
+  if (!dialog || !dialog.textContent.includes('Recortar em massa')) throw new Error('Diálogo Recortar em massa não abriu');
+  await sleep(500);
+  // Scroll incremental para carregar todas as imagens lazy
+  const contentEl = dialog.querySelector('.content') || dialog.querySelector('.ant-modal-body') || dialog;
+  const totalBase = Math.max(contentEl.scrollHeight - contentEl.clientHeight, 1);
+  for (let i = 1; i <= 5; i++) {
+    contentEl.scrollTop = Math.floor(totalBase * (i / 5));
+    await sleep(400);
+  }
+  // Verificações extras no fundo
+  for (let i = 0; i < 3; i++) {
+    const max = contentEl.scrollHeight - contentEl.clientHeight;
+    contentEl.scrollTop = max;
+    await sleep(400);
+    if (contentEl.scrollTop >= max - 2) break;
+  }
+  // Voltar ao topo
+  contentEl.scrollTop = 0;
+  await sleep(200);
+  // Selecionar todos os img_box
+  let selecionadas = 0;
+  for (const box of dialog.querySelectorAll('.img_box')) {
+    box.click();
+    selecionadas++;
+    await sleep(30);
+  }
+  if (selecionadas === 0) throw new Error('Nenhuma imagem encontrada');
+  const footer = dialog.querySelector('.ant-modal-footer');
+  const cortarBtn = footer
+    ? Array.from(footer.querySelectorAll('button')).find(b => b.textContent.trim() === 'Cortar')
+    : Array.from(dialog.querySelectorAll('button')).find(b => b.textContent.trim() === 'Cortar');
+  if (!cortarBtn) throw new Error('Botão Cortar não encontrado');
+  cortarBtn.click();
+  const aplicarBtn = await esperarBotaoContem('Aplicar', 120000);
+  if (!aplicarBtn) throw new Error('Botão Aplicar não encontrado');
+  aplicarBtn.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+  aplicarBtn.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+  aplicarBtn.click();
+  return;
+}
 function injetarBotaoImagemMassa() {
   if (document.getElementById('ups-img-massa-btn')) return;
 
@@ -775,9 +838,25 @@ function injetarBotaoImagemMassa() {
     } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); }
   });
 
+  const op4 = document.createElement('div');
+  op4.style.cssText = 'padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:6px;border-top:1px solid #f0f0f0;';
+  op4.innerHTML = '<span>📐</span> Redimensionar em Massa';
+  op4.addEventListener('mouseenter', () => op4.style.background = '#f5f5f5');
+  op4.addEventListener('mouseleave', () => op4.style.background = '');
+  op4.addEventListener('click', async (e) => {
+    e.stopPropagation(); fecharDropdown();
+    try {
+      mostrarFeedback('Copiando cores e redimensionando...', '#4078f2');
+      await upsCopiarCoresDetalheAsync();
+      await redimensionarImagensEmMassa();
+      mostrarFeedback('Imagens redimensionadas com sucesso!', '#28a745');
+    } catch(err) { mostrarFeedback('Erro: ' + err.message, '#dc3545'); }
+  });
+
   menu.appendChild(op1);
   menu.appendChild(op2);
   menu.appendChild(op3);
+  menu.appendChild(op4);
   document.body.appendChild(menu);
 
   function abrirDropdown() {
@@ -826,6 +905,14 @@ function injetarBotaoImagemMassa() {
       reader.readAsDataURL(file);
     } catch (e) {
       mostrarFeedback('Erro ao processar arquivo: ' + e.message, '#c0392b');
+    }
+  });
+
+  // Quando uma imagem é enviada pelo "Do Meu Computador", salvar a URL final
+  // (CDN) nos recentes do "Link da Tabela" para aparecer como miniatura.
+  window.addEventListener('ups-upload-done', function(e) {
+    if (e.detail && e.detail.url && e.detail.source === 'file') {
+      salvarLinkRecente(e.detail.url);
     }
   });
 

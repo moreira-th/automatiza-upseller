@@ -265,7 +265,10 @@ async function stepMapearVariantes() {
                   if (input) {
                     var nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
                     input.focus();
-                    nativeSetter.call(input, _customTarget || name);
+                    var val = (_customTarget || name).replace(/(^|[\/\s])([a-zà-ü])/g, function(m, sep, c) {
+                      return sep + c.toUpperCase();
+                    });
+                    nativeSetter.call(input, val);
                     input.dispatchEvent(new Event('input', { bubbles: true }));
                     input.dispatchEvent(new Event('change', { bubbles: true }));
                     input.blur();
@@ -600,13 +603,17 @@ function abrirDialogMedidas() {
 #ups-ac-s-mp::before,
 #ups-ac-s-multi::before,
 #ups-ac-s-atr::before,
-#ups-ma-slider::before {
+#ups-ma-slider::before,
+#ups-ma-sub-slider::before {
   content:""; position:absolute; width:16px; height:16px; border-radius:50%;
   background:white; top:2px; left:2px; transition:.3s;
 }
 #ups-ma-slider { background:#ccc; }
 #ups-ma-ativar:checked + #ups-ma-slider { background:#28a745; }
 #ups-ma-ativar:checked + #ups-ma-slider::before { transform:translateX(16px); }
+#ups-ma-sub-slider { background:#ccc; }
+#ups-ma-sub-ativar:checked + #ups-ma-sub-slider { background:#28a745; }
+#ups-ma-sub-ativar:checked + #ups-ma-sub-slider::before { transform:translateX(16px); }
 .ups-tag { display:inline-flex;align-items:center;gap:3px;background:#e8f5e9;border:1px solid #c8e6c9;border-radius:4px;padding:2px 6px;font-size:12px;font-weight:500;line-height:1.4; }
 .ups-tag-rm { cursor:pointer;font-size:14px;color:#999;line-height:1;margin-left:2px; }
 .ups-tag-rm:hover { color:#dc3545; }
@@ -692,6 +699,13 @@ function abrirDialogMedidas() {
 <input id="ups-ma-epkg" type="text" placeholder="21x12x21" style="width:100%;padding:6px;border:1px solid #ccc;border-radius:4px;font-size:13px;box-sizing:border-box;">
 </div>
 </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+    <label style="font-size:12px;font-weight:600;">Subespecificação</label>
+    <label style="position:relative;display:inline-block;width:36px;height:20px;cursor:pointer;">
+    <input type="checkbox" id="ups-ma-sub-ativar" checked style="opacity:0;width:0;height:0;margin:0;">
+    <span id="ups-ma-sub-slider" style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;border-radius:20px;transition:.3s;"></span>
+    </label>
+    </div>
     <div style="display:flex;flex-wrap:wrap;gap:4px;padding:5px 6px;border:1px solid #ccc;border-radius:4px;min-height:32px;align-items:center;cursor:text;" id="ups-ma-sub-wrapper" onclick="document.getElementById('ups-ma-sub-input').focus()">
     <input type="hidden" id="ups-ma-sub" value="">
     <div id="ups-ma-sub-tags" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;"></div>
@@ -849,14 +863,15 @@ function abrirDialogMedidas() {
     const keys = Object.keys(overrides);
     if (keys.length === 0) { c.innerHTML = '<span style="color:#999;">Nenhum override</span>'; return; }
     c.innerHTML = keys.map(t =>
-      `<div style="display:flex;justify-content:space-between;align-items:center;padding:1px 0;color:#333;font-size:12px;">
-<span><b>${t}</b> → R$ ${overrides[t]}</span>
-<span id="ups-mp-rm-${t}" style="cursor:pointer;color:#dc3545;font-weight:bold;font-size:18px;line-height:1;padding:0 4px;">×</span></div>`
+      `<span class="ups-tag"><b>${t}</b>: R$ ${overrides[t]} <span class="ups-tag-rm" data-ov-del="${t}">×</span></span>`
     ).join('');
-    keys.forEach(t => {
-      const el = document.getElementById('ups-mp-rm-' + t);
-      if (el) el.onclick = () => { delete overrides[t]; renderOverridesNovo(overrides); };
-    });
+    const handler = c._ovClickDel;
+    if (handler) c.removeEventListener('click', handler);
+    c._ovClickDel = function(e) {
+      var del = e.target.closest('[data-ov-del]');
+      if (del) { delete overrides[del.getAttribute('data-ov-del')]; renderOverridesNovo(overrides); }
+    };
+    c.addEventListener('click', c._ovClickDel);
   }
 
   function extrairTamanhosDaTabela() {
@@ -1270,6 +1285,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
 
         if (dados && dados.macros) {
           if (dados.macros.sub) document.getElementById('ups-ma-sub').value = dados.macros.sub;
+          if (dados.macros.subAtivo !== undefined) document.getElementById('ups-ma-sub-ativar').checked = !!dados.macros.subAtivo;
           atualizarTagsSub();
           if (dados.macros.emMassa) {
             document.getElementById('ups-ma-eq').value = dados.macros.emMassa.quantidade || '';
@@ -1432,6 +1448,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
       const savedMacros = res.ultimosMacros;
       if (savedMacros) {
         if (savedMacros.sub) document.getElementById('ups-ma-sub').value = savedMacros.sub;
+        if (savedMacros.subAtivo !== undefined) document.getElementById('ups-ma-sub-ativar').checked = !!savedMacros.subAtivo;
         if (savedMacros.emMassa) {
           document.getElementById('ups-ma-eq').value = savedMacros.emMassa.quantidade || '';
           document.getElementById('ups-ma-ep').value = savedMacros.emMassa.preco || '';
@@ -1440,6 +1457,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         }
         document.getElementById('ups-ma-sku').checked = !!savedMacros.sku;
         document.getElementById('ups-ma-crop').checked = !!savedMacros.crop;
+        if (savedMacros.confirmarCores !== undefined) document.getElementById('ups-ma-confirmar-cores').checked = !!savedMacros.confirmarCores;
         document.getElementById('ups-ma-ativar').checked = savedMacros.ativar !== false;
       }
     }
@@ -1465,6 +1483,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         ativarPreco: document.getElementById('ups-ac-t-mp').checked,
         medidasAtivo: document.getElementById('ups-ac-t-mt').checked,
         sub: document.getElementById('ups-ma-sub').value.trim(),
+        subAtivo: document.getElementById('ups-ma-sub-ativar').checked,
         emMassa: {
           quantidade: document.getElementById('ups-ma-eq').value.trim(),
           preco: document.getElementById('ups-ma-ep').value.trim(),
@@ -1593,6 +1612,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         }
         document.getElementById('ups-ma-sku').checked = !!dados.sku;
         document.getElementById('ups-ma-crop').checked = !!dados.crop;
+        if (dados.confirmarCores !== undefined) document.getElementById('ups-ma-confirmar-cores').checked = !!dados.confirmarCores;
         document.getElementById('ups-ma-ativar').checked = dados.ativar !== false;
         mostrarToastFeedback('Macro "' + nome + '" carregada!');
       });
@@ -1603,6 +1623,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
       if (!nome) return;
       const dados = {
         sub: document.getElementById('ups-ma-sub').value.trim(),
+        subAtivo: document.getElementById('ups-ma-sub-ativar').checked,
         emMassa: {
           quantidade: document.getElementById('ups-ma-eq').value.trim(),
           preco: document.getElementById('ups-ma-ep').value.trim(),
@@ -1611,6 +1632,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         },
         sku: document.getElementById('ups-ma-sku').checked,
         crop: document.getElementById('ups-ma-crop').checked,
+        confirmarCores: document.getElementById('ups-ma-confirmar-cores').checked,
         ativar: document.getElementById('ups-ma-ativar').checked
       };
       chrome.storage.local.get(["biblioteca", "bibliotecaMacros"], (res) => {
@@ -1972,6 +1994,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
         bulkPrice: document.getElementById('ups-mp-nb').value.trim(),
         overrides: window.__upsNovoPrecoOverrides || {},
         macroSub: document.getElementById('ups-ma-sub').value.trim(),
+        macroSubAtivo: document.getElementById('ups-ma-sub-ativar').checked,
         macroQtd: document.getElementById('ups-ma-eq').value.trim(),
         macroPreco: document.getElementById('ups-ma-ep').value.trim(),
         macroPeso: document.getElementById('ups-ma-ew').value.trim(),
@@ -2027,6 +2050,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     window.__upsNovoPrecoOverrides = estado.overrides ? { ...estado.overrides } : {};
     renderOverridesNovo(window.__upsNovoPrecoOverrides);
     if (estado.macroSub !== undefined) document.getElementById('ups-ma-sub').value = estado.macroSub;
+    if (estado.macroSubAtivo !== undefined) document.getElementById('ups-ma-sub-ativar').checked = !!estado.macroSubAtivo;
     atualizarTagsSub();
     if (estado.macroQtd !== undefined) document.getElementById('ups-ma-eq').value = estado.macroQtd || '';
     if (estado.macroPreco !== undefined) document.getElementById('ups-ma-ep').value = estado.macroPreco || '';
@@ -2129,7 +2153,8 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
     const atributosAtivo = document.getElementById('ups-ac-t-atr').checked;
     const aplicarPreco = precoAtivo && document.getElementById('ups-mp-nb').value.trim() !== '';
     const macroAtivo = document.getElementById('ups-ma-ativar').checked;
-    const temSub = document.getElementById('ups-ma-sub').value.trim() !== '';
+    const subAtivo = document.getElementById('ups-ma-sub-ativar').checked;
+    const temSub = subAtivo && document.getElementById('ups-ma-sub').value.trim() !== '';
     const temEmMassa = document.getElementById('ups-ma-eq').value.trim() !== '' ||
                        document.getElementById('ups-ma-ep').value.trim() !== '' ||
                        document.getElementById('ups-ma-ew').value.trim() !== '' ||
@@ -2162,6 +2187,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           forcarRemap: macroAtivo && document.getElementById('ups-ma-remap').checked,
           macro: temMacro ? {
             sub: document.getElementById('ups-ma-sub').value.trim(),
+            subAtivo: subAtivo,
             emMassa: {
               quantidade: document.getElementById('ups-ma-eq').value.trim(),
               preco: document.getElementById('ups-ma-ep').value.trim(),
@@ -2229,7 +2255,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
               nextStep('Aguardando confirmação de cores...');
               const result = await mostrarDialogoConfirmarCores(coresPagina);
               if (result.confirmou) {
-          aplicarCoresNaPagina(result.cores); // fire-and-forget, não bloqueia próxima etapa
+          await Promise.race([aplicarCoresNaPagina(result.cores), new Promise(function(_, reject) { setTimeout(function() { reject(new Error('timeout')); }, 30000); })]).catch(function() {});
                 await sleep(250);
               }
               if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
@@ -2241,7 +2267,8 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
             nextStep('Aplicando Subespecificação...');
             const subRes = await subespecificacaoMassa(document.getElementById('ups-ma-sub').value.trim());
             if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
-            await sleep(subRes && subRes.uncheckedCount > 0 ? 3000 : 2000);
+            var _rowsSub = document.querySelectorAll('.vxe-body--row').length;
+            for (var _s = 0; _s < 20; _s++) { await sleep(500); var _nr = document.querySelectorAll('.vxe-body--row').length; if (_nr > _rowsSub * 1.2) break; if (_s >= 3 && _nr === _rowsSub) break; }
           }
 
           // 3 — Editar em Massa + Preço Especial (bulk: 1 scroll cycle)
@@ -2255,18 +2282,21 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           if (eq && cols.quant) bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.quant); if (!cell) return false; var inp = cell.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === eq) return false; inp.focus(); ns.call(inp, eq); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
           if (ep && cols.preco) bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.preco); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ep) return false; inp.focus(); ns.call(inp, ep); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
           if (ew && cols.peso) bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.peso); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ew) return false; inp.focus(); ns.call(inp, ew); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
-          if (epkg && cols.pacote) {
+          if (epkg) {
+            var pacoteCol = cols.pacote;
+            if (!pacoteCol) { var _t = document.querySelector('.vxe-table'); if (_t) _t.querySelectorAll('.vxe-header--column').forEach(function(h) { if (h.textContent.trim().toLowerCase().includes('pacote')) pacoteCol = Array.from(h.classList).find(function(x) { return x.startsWith('col_'); }); }); }
             const sep = epkg.includes('x') ? 'x' : ',';
             var pkgParts = epkg.split(sep).map(function(s) { return s.trim(); });
-            bulkCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.pacote); if (!cell) return false; var inputs = cell.querySelectorAll('input.ant-input-number-input'); for (var i = 0; i < Math.min(pkgParts.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== pkgParts[i]) { inputs[i].focus(); ns.call(inputs[i], pkgParts[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
+            bulkCols.push({fn: function(row, ns) { var pc = pacoteCol; if (!pc) { var _cl = row.querySelectorAll('td, .vxe-body--column'); for (var _i = 0; _i < _cl.length; _i++) { if (_cl[_i].querySelectorAll('input.ant-input-number-input').length >= 3) { pc = Array.from(_cl[_i].classList).find(function(x) { return x.startsWith('col_'); }); break; } } } if (!pc) return false; var cell = row.querySelector('.' + pc); if (!cell) return false; var inputs = cell.querySelectorAll('input.ant-input-number-input'); if (inputs.length === 0) inputs = cell.querySelectorAll('input'); for (var i = 0; i < Math.min(pkgParts.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== pkgParts[i]) { inputs[i].focus(); ns.call(inputs[i], pkgParts[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
           }
           // Preço Especial integrado no mesmo bulk
           if (aplicarPreco && bulkPrice) {
             var tamColPS = 'col_3', priceColPS = 'col_7';
             var allHeadersPS = document.querySelector('.vxe-table').querySelectorAll('.vxe-header--column');
             allHeadersPS.forEach(function(cell) { var t = cell.textContent.trim().toLowerCase(); if (!t) return; var c = Array.from(cell.classList).find(function(x) { return x.startsWith('col_'); }); if (!c) return; if (t === 'tamanho' || (t.indexOf('tamanho') !== -1 && t.indexOf('pacote') === -1) || ['variação','grade'].some(function(k){return t.indexOf(k)!==-1;})) tamColPS = c; if (t.indexOf('preço especial') !== -1 || t.indexOf('preco especial') !== -1) priceColPS = c; });
+            if (priceColPS === 'col_7') { var _ePS = Array.from(allHeadersPS).some(function(h) { return h.textContent.trim().toLowerCase().includes('estado'); }); if (_ePS) priceColPS = 'col_8'; }
             var listaTam = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
-            if (priceColPS) bulkCols.push({fn: function(row, ns) { var tamEl = row.querySelector('.' + tamColPS); if (!tamEl) return false; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTam.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); var inp = row.querySelector('.' + priceColPS + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; var val = (overrides[tam] || bulkPrice); if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+            if (priceColPS) bulkCols.push({fn: function(row, ns) { if (linhaBloqueada(row)) return false; var tamEl = row.querySelector('.' + tamColPS); if (!tamEl) return false; var val = bulkPrice; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTam.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); if (tam && overrides[tam]) val = overrides[tam]; var inp = row.querySelector('.' + priceColPS + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
           }
           if (bulkCols.length) {
             if (temEmMassa && macroAtivo) { await sleep(500); nextStep('Aplicando Editar em Massa...'); }
@@ -2330,7 +2360,8 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           // 7 — Gerar SKU
           if (temSku && macroAtivo) {
             nextStep('Gerando SKU...');
-            gerarSkuEmMassa();
+            const _skuRes = await gerarSkuEmMassa();
+            if (_skuRes && _skuRes.error) { mostrarFeedback('SKU: ' + _skuRes.error, '#dc3545'); }
             if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
           }
 
@@ -2369,17 +2400,13 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           // 9 — Ajustar Imagem Quadrada (must be last — triggers dialog)
           if (temCrop && macroAtivo) {
             nextStep('Ajustando imagem quadrada...');
-            const overlayEl = document.getElementById('upseller-progress-overlay');
-            if (overlayEl) overlayEl.style.display = 'none';
             try {
               await ajustarCoresERecortar();
             } catch (e) {
-              if (overlayEl) overlayEl.style.display = '';
               mostrarErroOverlayProgresso('Erro no ajuste: ' + e.message);
               setTimeout(() => removerOverlayProgresso(), 3000);
               return;
             }
-            if (overlayEl) overlayEl.style.display = '';
             if (window.__upsCancelMacro) { finalizarMacroCancelada(selectedTable); return; }
           }
 
@@ -2387,6 +2414,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
           chrome.storage.local.set({
             ultimosMacros: {
               sub: document.getElementById('ups-ma-sub').value.trim(),
+              subAtivo: document.getElementById('ups-ma-sub-ativar').checked,
               emMassa: {
                 quantidade: document.getElementById('ups-ma-eq').value.trim(),
                 preco: document.getElementById('ups-ma-ep').value.trim(),
@@ -2395,6 +2423,7 @@ ${nomes.length > 0 ? nomes.map(n => `<option value="${n}"${n === selectedTable ?
               },
               sku: temSku,
               crop: temCrop,
+              confirmarCores: document.getElementById('ups-ma-confirmar-cores').checked,
               ativar: macroAtivo
             }
           });
@@ -2440,7 +2469,7 @@ function abrirPopupEditarMedidas(nomeExistente, bib, chavesFixas, atualizarSelec
     inner.innerHTML = `
 <div style="font-size:14px;font-weight:bold;margin-bottom:10px;">${titulo}</div>
 <label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Nome da Tabela</label>
-<input id="ups-pm-nome" type="text" value="${nomeExistente || ''}" placeholder="Ex: PP-16" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;" ${nomeExistente ? 'disabled' : ''}>
+<input id="ups-pm-nome" type="text" value="${nomeExistente || ''}" placeholder="Ex: PP-16" style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;">
 <label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Descrição</label>
 <textarea id="ups-pm-desc" placeholder="Descrição do produto (opcional)..." style="width:100%;padding:4px;border:1px solid #ccc;border-radius:4px;font-size:11px;box-sizing:border-box;margin-bottom:6px;height:40px;resize:vertical;font-family:sans-serif;">${(dados.descricao || '')}</textarea>
 <label style="font-size:11px;font-weight:600;display:block;margin-bottom:4px;">Tópicos (Temu)</label>
@@ -2729,7 +2758,7 @@ function abrirDialogPrecos() {
 </label>
 </div>
 <style id="ups-toggle-style">
-#ups-slider-preco, #ups-slider-macro { background:#ccc; }
+#ups-slider-preco, #ups-slider-macro, #ups-ps-sub-slider { background:#ccc; }
 #ups-ativar-preco:checked + #ups-slider-preco { background:#28a745; }
 #ups-ativar-preco:checked + #ups-slider-preco::before { transform:translateX(16px); }
 #ups-slider-preco::before {
@@ -2739,6 +2768,12 @@ function abrirDialogPrecos() {
 #ups-ativar-macro:checked + #ups-slider-macro { background:#28a745; }
 #ups-ativar-macro:checked + #ups-slider-macro::before { transform:translateX(16px); }
 #ups-slider-macro::before {
+  content:""; position:absolute; width:16px; height:16px; border-radius:50%;
+  background:white; top:2px; left:2px; transition:.3s;
+}
+#ups-ps-sub-ativar:checked + #ups-ps-sub-slider { background:#28a745; }
+#ups-ps-sub-ativar:checked + #ups-ps-sub-slider::before { transform:translateX(16px); }
+#ups-ps-sub-slider::before {
   content:""; position:absolute; width:16px; height:16px; border-radius:50%;
   background:white; top:2px; left:2px; transition:.3s;
 }
@@ -2823,7 +2858,13 @@ function abrirDialogPrecos() {
 </div>
 
 <div style="margin-bottom:10px;">
-<label style="font-size:13px;font-weight:600;display:block;margin-bottom:4px;">Subespecificação - Tamanhos para marcar</label>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+<label style="font-size:13px;font-weight:600;">Subespecificação - Tamanhos para marcar</label>
+<label style="position:relative;display:inline-block;width:36px;height:20px;cursor:pointer;">
+<input type="checkbox" id="ups-ps-sub-ativar" checked style="opacity:0;width:0;height:0;margin:0;">
+<span id="ups-ps-sub-slider" style="position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;border-radius:20px;transition:.3s;"></span>
+</label>
+</div>
 <div style="display:flex;gap:6px;align-items:flex-start;">
 <div style="flex:1;display:flex;flex-wrap:wrap;gap:4px;padding:5px 6px;border:1px solid #ccc;border-radius:4px;min-height:32px;align-items:center;cursor:text;" id="ups-ps-sub-wrapper" onclick="document.getElementById('ups-ps-sub-input').focus()">
 <input type="hidden" id="ups-ps-sub" value="">
@@ -2855,8 +2896,33 @@ function abrirDialogPrecos() {
 </div>`;
   document.body.appendChild(overlay);
 
+  function salvarEstadoPS() {
+    chrome.storage.local.set({
+      ultimosPrecos: {
+        bulkPrice: document.getElementById('ups-pb').value.trim(),
+        overrides: { ...overrides },
+        ativarPreco: document.getElementById('ups-ativar-preco').checked
+      },
+      ultimosMacros: {
+        sub: document.getElementById('ups-ps-sub').value.trim(),
+        subAtivo: document.getElementById('ups-ps-sub-ativar').checked,
+        emMassa: {
+          quantidade: document.getElementById('ups-eq').value.trim(),
+          preco: document.getElementById('ups-ep').value.trim(),
+          peso: document.getElementById('ups-ew').value.trim(),
+          pacote: document.getElementById('ups-epkg').value.trim()
+        },
+        sku: document.getElementById('ups-ps-sku').checked,
+        crop: document.getElementById('ups-ps-crop').checked,
+        confirmarCores: document.getElementById('ups-ps-confirmar-cores').checked,
+        ativar: document.getElementById('ups-ativar-macro').checked
+      }
+    });
+  }
+
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay.firstElementChild) {
+      salvarEstadoPS();
       overlay.remove();
     }
   });
@@ -2921,14 +2987,15 @@ function abrirDialogPrecos() {
     const keys = Object.keys(overrides);
     if (keys.length === 0) { c.innerHTML = '<span style="color:#999;">Nenhum override</span>'; return; }
     c.innerHTML = keys.map(t =>
-      `<div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0;color:#333;">
-<span><b>${t}</b> → R$ ${overrides[t]}</span>
-<span id="ups-rm-${t}" style="cursor:pointer;color:#dc3545;font-weight:bold;font-size:18px;line-height:1;padding:0 4px;">×</span></div>`
+      `<span class="ups-tag"><b>${t}</b>: R$ ${overrides[t]} <span class="ups-tag-rm" data-ov-del="${t}">×</span></span>`
     ).join('');
-    keys.forEach(t => {
-      const el = document.getElementById('ups-rm-' + t);
-      if (el) el.onclick = () => { delete overrides[t]; renderOverridesLocal(); };
-    });
+    const handler = c._ovClickDel;
+    if (handler) c.removeEventListener('click', handler);
+    c._ovClickDel = function(e) {
+      var del = e.target.closest('[data-ov-del]');
+      if (del) { delete overrides[del.getAttribute('data-ov-del')]; renderOverridesLocal(); }
+    };
+    c.addEventListener('click', c._ovClickDel);
   }
 
   function carregarPresetNoDialog(tipo, nome) {
@@ -2968,6 +3035,7 @@ function abrirDialogPrecos() {
         document.getElementById('ups-ps-sub').value = (dados.sub || dados.subespecificacao).toUpperCase();
         atualizarTagsSubPrecos();
       }
+      if (dados.subAtivo !== undefined) document.getElementById('ups-ps-sub-ativar').checked = !!dados.subAtivo;
       document.getElementById('ups-ps-sku').checked = !!(dados.sku || dados.gerarSku);
       document.getElementById('ups-ps-crop').checked = !!dados.crop;
       if (dados.confirmarCores !== undefined) document.getElementById('ups-ps-confirmar-cores').checked = !!dados.confirmarCores;
@@ -3027,6 +3095,7 @@ function abrirDialogPrecos() {
     if (!nome || !nome.trim()) return;
     const dados = {
       sub: document.getElementById('ups-ps-sub').value.trim(),
+      subAtivo: document.getElementById('ups-ps-sub-ativar').checked,
       emMassa: {
         quantidade: document.getElementById('ups-eq').value.trim(),
         preco: document.getElementById('ups-ep').value.trim(),
@@ -3144,6 +3213,7 @@ function abrirDialogPrecos() {
         document.getElementById('ups-ps-sub').value = (savedM.sub || savedM.subespecificacao).toUpperCase();
         atualizarTagsSubPrecos();
       }
+      if (savedM.subAtivo !== undefined) document.getElementById('ups-ps-sub-ativar').checked = !!savedM.subAtivo;
       document.getElementById('ups-ps-sku').checked = !!(savedM.sku || savedM.gerarSku);
       document.getElementById('ups-ps-crop').checked = !!savedM.crop;
       if (savedM.confirmarCores !== undefined) document.getElementById('ups-ps-confirmar-cores').checked = !!savedM.confirmarCores;
@@ -3234,7 +3304,7 @@ function abrirDialogPrecos() {
     renderOverridesLocal();
   };
 
-  document.getElementById('ups-pc').onclick = () => overlay.remove();
+  document.getElementById('ups-pc').onclick = () => { salvarEstadoPS(); overlay.remove(); };
 
   document.getElementById('ups-p-salvar').onclick = salvarEstadoAtualComoPreset;
   document.getElementById('ups-p-excluir').onclick = deletarPresetDialog;
@@ -3253,7 +3323,8 @@ function abrirDialogPrecos() {
     // Read all values before removing overlay
     const macroAtivo = document.getElementById('ups-ativar-macro').checked;
     const precoAtivo = document.getElementById('ups-ativar-preco').checked;
-    const subVal = document.getElementById('ups-ps-sub').value.trim();
+    const subAtivo = document.getElementById('ups-ps-sub-ativar').checked;
+    const subVal = subAtivo ? document.getElementById('ups-ps-sub').value.trim() : '';
     const eqVal = document.getElementById('ups-eq').value.trim();
     const epVal = document.getElementById('ups-ep').value.trim();
     const ewVal = document.getElementById('ups-ew').value.trim();
@@ -3270,8 +3341,8 @@ function abrirDialogPrecos() {
     const steps = [];
 
     if (macroAtivo && subVal) steps.push('sub');
-    const hasEmMassa = macroAtivo && [eqVal, epVal, ewVal, epkgVal].some(v => v !== '');
-    if (hasEmMassa || (precoAtivo && pbVal)) steps.push('massaPreco');
+    if (macroAtivo && [eqVal, epVal, ewVal, epkgVal].some(v => v !== '')) { steps.push('massa'); }
+    if (precoAtivo && pbVal) steps.push('precoEspecial');
     if (macroAtivo && skuChecked) steps.push('sku');
     if (macroAtivo && cropChecked) steps.push('crop');
     if (macroAtivo && confirmarCoresChecked && lerCoresEspecificacaoPrincipal().length > 0) steps.push('confirmarCores');
@@ -3317,33 +3388,47 @@ function abrirDialogPrecos() {
       const subRes = await subespecificacaoMassa(subVal);
       if (subRes.error) { mostrarErroOverlayProgresso(subRes.error); return; }
       atualizarOverlayProgresso({ message: 'Subespecificação: ' + subRes.count + ' alterados', step: stepIdx, total: steps.length });
-      await sleep(2000);
+      var _rowsSub = document.querySelectorAll('.vxe-body--row').length;
+      for (var _s = 0; _s < 20; _s++) { await sleep(500); var _nr = document.querySelectorAll('.vxe-body--row').length; if (_nr > _rowsSub * 1.2) break; if (_s >= 3 && _nr === _rowsSub) break; }
     }
 
-    // 2. Editar em Massa + Preço Especial (bulk: 1 scroll cycle)
-    var popupCols = [];
+    // 2. Editar em Massa + Preço Especial (single scroll cycle)
+    var popupColsAll = [];
     var colsBulk = encontrarColunasMassa();
-    if (eqVal && colsBulk.quant) popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.quant); if (!c) return false; var inp = c.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === eqVal) return false; inp.focus(); ns.call(inp, eqVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
-    if (epVal && colsBulk.preco) popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.preco); if (!c) return false; var inp = c.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === epVal) return false; inp.focus(); ns.call(inp, epVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
-    if (ewVal && colsBulk.peso) popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.peso); if (!c) return false; var inp = c.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ewVal) return false; inp.focus(); ns.call(inp, ewVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
-    if (epkgVal && colsBulk.pacote) {
-      var sepP = epkgVal.indexOf('x') !== -1 ? 'x' : ',';
-      var pkgP = epkgVal.split(sepP).map(function(s) { return s.trim(); });
-      popupCols.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.pacote); if (!c) return false; var inputs = c.querySelectorAll('input.ant-input-number-input'); for (var i = 0; i < Math.min(pkgP.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== pkgP[i]) { inputs[i].focus(); ns.call(inputs[i], pkgP[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
+
+    // 2a. Editar em Massa (quantidade, preço regular, peso, pacote)
+    if (steps.includes('massa')) {
+      if (eqVal && colsBulk.quant) popupColsAll.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.quant); if (!c) return false; var inp = c.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === eqVal) return false; inp.focus(); ns.call(inp, eqVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+      if (epVal && colsBulk.preco) popupColsAll.push({fn: function(row, ns) { if (linhaBloqueada(row)) return false; var c = row.querySelector('.' + colsBulk.preco); if (!c) return false; var inp = c.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled) return false; inp.focus(); ns.call(inp, epVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+      if (ewVal && colsBulk.peso) popupColsAll.push({fn: function(row, ns) { var c = row.querySelector('.' + colsBulk.peso); if (!c) return false; var inp = c.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === ewVal) return false; inp.focus(); ns.call(inp, ewVal); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+      if (epkgVal) {
+        var pacoteColM = colsBulk.pacote;
+        if (!pacoteColM) { var _t = document.querySelector('.vxe-table'); if (_t) _t.querySelectorAll('.vxe-header--column').forEach(function(h) { if (h.textContent.trim().toLowerCase().includes('pacote')) pacoteColM = Array.from(h.classList).find(function(x) { return x.startsWith('col_'); }); }); }
+        var sepP = epkgVal.indexOf('x') !== -1 ? 'x' : ',';
+        var pkgP = epkgVal.split(sepP).map(function(s) { return s.trim(); });
+        popupColsAll.push({fn: function(row, ns) { var pc = pacoteColM; if (!pc) { var _cl = row.querySelectorAll('td, .vxe-body--column'); for (var _i = 0; _i < _cl.length; _i++) { if (_cl[_i].querySelectorAll('input.ant-input-number-input').length >= 3) { pc = Array.from(_cl[_i].classList).find(function(x) { return x.startsWith('col_'); }); break; } } } if (!pc) return false; var c = row.querySelector('.' + pc); if (!c) return false; var inputs = c.querySelectorAll('input.ant-input-number-input'); if (inputs.length === 0) inputs = c.querySelectorAll('input'); for (var i = 0; i < Math.min(pkgP.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== pkgP[i]) { inputs[i].focus(); ns.call(inputs[i], pkgP[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
+      }
     }
-    // Preço Especial
+
+    // 2b. Preço Especial (desconto)
     if (precoAtivo && pbVal) {
       var tamColPP = 'col_3', priceColPP = 'col_7';
       var allHPP = document.querySelector('.vxe-table').querySelectorAll('.vxe-header--column');
       allHPP.forEach(function(cell) { var t = cell.textContent.trim().toLowerCase(); if (!t) return; var cl = Array.from(cell.classList).find(function(x) { return x.indexOf('col_') === 0; }); if (!cl) return; if (t === 'tamanho' || (t.indexOf('tamanho') !== -1 && t.indexOf('pacote') === -1)) tamColPP = cl; if (t.indexOf('preço especial') !== -1 || t.indexOf('preco especial') !== -1) priceColPP = cl; });
+      if (priceColPP === 'col_7') { var _ePP = Array.from(allHPP).some(function(h) { return h.textContent.trim().toLowerCase().includes('estado'); }); if (_ePP) priceColPP = 'col_8'; }
       var listaTPP = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
-      if (priceColPP) popupCols.push({fn: function(row, ns) { var tamEl = row.querySelector('.' + tamColPP); if (!tamEl) return false; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTPP.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); var inp = row.querySelector('.' + priceColPP + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; var val = (overrides[tam] || pbVal); if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+      if (priceColPP) popupColsAll.push({fn: function(row, ns) { if (linhaBloqueada(row)) return false; var tamEl = row.querySelector('.' + tamColPP); if (!tamEl) return false; var val = pbVal; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTPP.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); if (tam && overrides[tam]) val = overrides[tam]; var inp = row.querySelector('.' + priceColPP + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
     }
-    if (popupCols.length) {
+
+    // 2. Single scroll cycle (Editar em Massa + Preço Especial juntos)
+    if (popupColsAll.length) {
       stepIdx++;
       criarOverlayProgresso();
-      atualizarOverlayProgresso({ message: 'Aplicando Editar em Massa + Preços...', step: stepIdx, total: steps.length });
-      await setColunasEmMassaBulk(popupCols);
+      var msgPartes = [];
+      if (steps.includes('massa')) msgPartes.push('Editar em Massa');
+      if (precoAtivo && pbVal) msgPartes.push('Preço Especial');
+      atualizarOverlayProgresso({ message: 'Aplicando ' + msgPartes.join(' + ') + '...', step: stepIdx, total: steps.length });
+      await setColunasEmMassaBulk(popupColsAll);
     }
 
     // 4. SKU Gerar
@@ -3352,7 +3437,13 @@ function abrirDialogPrecos() {
       criarOverlayProgresso();
       atualizarOverlayProgresso({ message: 'Gerando SKU...', step: stepIdx, total: steps.length });
       const skuRes = await gerarSkuEmMassa();
-      if (skuRes.error) { mostrarErroOverlayProgresso(skuRes.error); return; }
+      if (skuRes.error) {
+        // Não deixa a overlay travada: mostra o erro brevemente e remove.
+        mostrarErroOverlayProgresso(skuRes.error);
+        await sleep(2000);
+        removerOverlayProgresso();
+        return;
+      }
       atualizarOverlayProgresso({ message: 'SKU gerado', step: stepIdx, total: steps.length });
     }
 
@@ -3385,17 +3476,13 @@ function abrirDialogPrecos() {
         stepIdx++;
         criarOverlayProgresso();
         atualizarOverlayProgresso({ message: 'Recortando imagem quadrada...', step: stepIdx, total: steps.length });
-        const overlayEl = document.getElementById('upseller-progress-overlay');
-        if (overlayEl) overlayEl.style.display = 'none';
         try {
           await ajustarCoresERecortar();
         } catch (e) {
-          if (overlayEl) overlayEl.style.display = '';
           mostrarErroOverlayProgresso('Erro no recorte: ' + e.message);
           setTimeout(() => removerOverlayProgresso(), 3000);
           return;
         }
-        if (overlayEl) overlayEl.style.display = '';
       }
 
       atualizarOverlayProgresso({ message: 'Concluído em ' + ((Date.now() - startTime) / 1000).toFixed(1) + 's', step: Math.max(stepIdx, 1), total: Math.max(stepIdx, 1) });
@@ -3410,6 +3497,7 @@ function abrirDialogPrecos() {
         },
         ultimosMacros: {
           sub: subVal,
+          subAtivo: subAtivo,
           emMassa: {
             quantidade: eqVal,
             preco: epVal,
@@ -3436,45 +3524,78 @@ function encontrarColunasMassa() {
     const cls = Array.from(cell.classList).find(c => c.startsWith('col_'));
     if (!cls) return;
     if (txt.includes('quantidade')) map.quant = cls;
-    else if (txt.includes('preço') && !txt.includes('especial')) map.preco = cls;
+    else if (txt.includes('preço') && !txt.includes('especial') && !txt.includes('desconto')) map.preco = cls;
     else if (txt.includes('peso')) map.peso = cls;
     else if (txt.includes('pacote')) map.pacote = cls;
+    else if (txt.includes('estado')) map.estado = cls;
   });
+  if (!map.pacote) {
+    if (map.estado || map.quant === 'col_6') {
+      map.pacote = 'col_10';
+    } else if (map.quant === 'col_5') {
+      map.pacote = 'col_9';
+    } else {
+      var _eh = Array.from(allHeaders).some(function(h) { return h.textContent.trim().toLowerCase().includes('estado'); });
+      map.pacote = _eh ? 'col_10' : 'col_9';
+    }
+  }
   return map;
+}
+
+function linhaBloqueada(row) {
+  var chk = row.querySelector('.vxe-cell--checkbox');
+  return chk && (chk.classList.contains('is--disabled') || chk.closest('.vxe-body--column').classList.contains('is--disabled'));
 }
 
 async function setColunasEmMassaBulk(colunas) {
   if (!colunas || !colunas.length) return;
 
   const table = document.querySelector('.vxe-table');
-  if (!table) return;
+  if (!table) { return; }
 
   const bodyWrapper = table.querySelector('.vxe-table--body-wrapper');
   const maxScroll = bodyWrapper ? bodyWrapper.scrollHeight - bodyWrapper.clientHeight : 0;
   const scrollStep = bodyWrapper ? Math.max(bodyWrapper.clientHeight - 40, 80) : 80;
   const ns = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+  const maxX = bodyWrapper ? bodyWrapper.scrollWidth - bodyWrapper.clientWidth : 0;
+
+  // Garantir que comece do topo: com virtual scroll, as linhas do início só existem no DOM na posição 0.
+  if (bodyWrapper) { bodyWrapper.scrollLeft = 0; bodyWrapper.scrollTop = 0; }
+  await sleep(200);
 
   function setRows() {
     const rows = table.querySelectorAll('.vxe-body--row');
     let count = 0;
     rows.forEach(row => {
       colunas.forEach(col => {
-        try { if (col.fn && col.fn(row, ns)) count++; } catch(e) {}
+        try { if (col.fn && col.fn(row, ns)) { count++; } } catch(e) {}
       });
     });
     return count;
   }
 
-  let total = setRows();
+  async function capturarDualAxis() {
+    var c = setRows();
+    if (maxX > 0) {
+      bodyWrapper.scrollLeft = maxX;
+      await sleep(150);
+      c += setRows();
+      bodyWrapper.scrollLeft = 0;
+      await sleep(50);
+    }
+    return c;
+  }
+
+  let total = await capturarDualAxis();
   if (bodyWrapper && maxScroll > 0) {
     for (let pos = scrollStep; pos < maxScroll; pos += scrollStep) {
       bodyWrapper.scrollTop = pos;
       await sleep(200);
-      total += setRows();
+      total += await capturarDualAxis();
     }
     bodyWrapper.scrollTop = maxScroll;
     await sleep(200);
-    total += setRows();
+    total += await capturarDualAxis();
   }
   if (bodyWrapper) {
     bodyWrapper.scrollLeft = 0;
@@ -3774,7 +3895,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         // Macros (ordem: sub → emMassa)
         if (hasMacro) {
-          if (macro.sub) {
+          if (macro.sub && macro.subAtivo !== false) {
             stepDone('Aplicando Subespecificação...');
             await subespecificacaoMassa(macro.sub);
             if (window.__upsCancelMacro) { chrome.runtime.sendMessage({ action: 'error', message: 'Cancelado' }); return; }
@@ -3788,19 +3909,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             if (macro.emMassa.quantidade && cols.quant) mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.quant); if (!cell) return false; var inp = cell.querySelector('input.ant-input.ant-input-sm'); if (!inp || inp.disabled || inp.value === macro.emMassa.quantidade) return false; inp.focus(); ns.call(inp, macro.emMassa.quantidade); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
             if (macro.emMassa.preco && cols.preco) mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.preco); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === macro.emMassa.preco) return false; inp.focus(); ns.call(inp, macro.emMassa.preco); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
             if (macro.emMassa.peso && cols.peso) mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.peso); if (!cell) return false; var inp = cell.querySelector('input.ant-input-number-input'); if (!inp || inp.disabled || inp.value === macro.emMassa.peso) return false; inp.focus(); ns.call(inp, macro.emMassa.peso); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
-            if (macro.emMassa.pacote && cols.pacote) {
+            if (macro.emMassa.pacote) {
+              var pacoteColMC = cols.pacote;
+              if (!pacoteColMC) { var _t = document.querySelector('.vxe-table'); if (_t) _t.querySelectorAll('.vxe-header--column').forEach(function(h) { if (h.textContent.trim().toLowerCase().includes('pacote')) pacoteColMC = Array.from(h.classList).find(function(x) { return x.startsWith('col_'); }); }); }
               const sep = macro.emMassa.pacote.includes('x') ? 'x' : ',';
               var mpParts = macro.emMassa.pacote.split(sep).map(function(s) { return s.trim(); });
-              mcCols.push({fn: function(row, ns) { var cell = row.querySelector('.' + cols.pacote); if (!cell) return false; var inputs = cell.querySelectorAll('input.ant-input-number-input'); for (var i = 0; i < Math.min(mpParts.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== mpParts[i]) { inputs[i].focus(); ns.call(inputs[i], mpParts[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
+              mcCols.push({fn: function(row, ns) { var pc = pacoteColMC; if (!pc) { var _cl = row.querySelectorAll('td, .vxe-body--column'); for (var _i = 0; _i < _cl.length; _i++) { if (_cl[_i].querySelectorAll('input.ant-input-number-input').length >= 3) { pc = Array.from(_cl[_i].classList).find(function(x) { return x.startsWith('col_'); }); break; } } } if (!pc) return false; var cell = row.querySelector('.' + pc); if (!cell) return false; var inputs = cell.querySelectorAll('input.ant-input-number-input'); if (inputs.length === 0) inputs = cell.querySelectorAll('input'); for (var i = 0; i < Math.min(mpParts.length, inputs.length); i++) { if (!inputs[i].disabled && inputs[i].value !== mpParts[i]) { inputs[i].focus(); ns.call(inputs[i], mpParts[i]); inputs[i].dispatchEvent(new Event('input', {bubbles:true})); inputs[i].dispatchEvent(new Event('change', {bubbles:true})); inputs[i].blur(); } } return true; }});
             }
             // Preço Especial integrado
             if (config.bulkPrice) {
               var tamColM = 'col_3', priceColM = 'col_7';
               var allHeadersM = document.querySelector('.vxe-table').querySelectorAll('.vxe-header--column');
               allHeadersM.forEach(function(cell) { var t = cell.textContent.trim().toLowerCase(); if (!t) return; var c = Array.from(cell.classList).find(function(x) { return x.startsWith('col_'); }); if (!c) return; if (t === 'tamanho' || (t.indexOf('tamanho') !== -1 && t.indexOf('pacote') === -1)) tamColM = c; if (t.indexOf('preço especial') !== -1 || t.indexOf('preco especial') !== -1) priceColM = c; });
+              if (priceColM === 'col_7') { var _eM = Array.from(allHeadersM).some(function(h) { return h.textContent.trim().toLowerCase().includes('estado'); }); if (_eM) priceColM = 'col_8'; }
               var listaTamM = ["PP","P","M","G","GG","EGG","G1","G2","G3","G4","G5","2","4","6","8","10","12","14","16"];
               var ov = config.overrides || {};
-              if (priceColM) mcCols.push({fn: function(row, ns) { var tamEl = row.querySelector('.' + tamColM); if (!tamEl) return false; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTamM.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); var inp = row.querySelector('.' + priceColM + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; var val = (ov[tam] || config.bulkPrice); if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
+              if (priceColM) mcCols.push({fn: function(row, ns) { if (linhaBloqueada(row)) return false; var tamEl = row.querySelector('.' + tamColM); if (!tamEl) return false; var val = config.bulkPrice; var tamText = tamEl.textContent.trim().toUpperCase(); var tam = listaTamM.reduce(function(found, t) { return tamText.indexOf(t) !== -1 ? (t.length > found.length ? t : found) : found; }, ''); if (tam && ov[tam]) val = ov[tam]; var inp = row.querySelector('.' + priceColM + ' input.ant-input-number-input'); if (!inp || inp.disabled) return false; if (inp.value === val) return false; inp.focus(); ns.call(inp, val); inp.dispatchEvent(new Event('input', {bubbles:true})); inp.dispatchEvent(new Event('change', {bubbles:true})); inp.blur(); return true; }});
             }
             if (mcCols.length) await setColunasEmMassaBulk(mcCols);
           }

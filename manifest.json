@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UpSeller Moreira",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Automações para UpSeller: Remapeamento de Variantes + Tabela de Medidas + Descrições + Recorte de Imagem + Multi-Aba + Drafts. Feito por Thales Moreira.",
   "permissions": [
     "storage",
@@ -33,9 +33,13 @@
     {
       "matches": [
         "https://app.upseller.com/pt/products/shein/edit/*",
+        "https://app.upseller.com/pt/products/shein/create*",
         "https://app.upseller.com/pt/products/shein/drafts*",
         "https://app.upseller.com/pt/products/temu/edit/*",
-        "https://app.upseller.com/pt/products/temu/drafts*"
+        "https://app.upseller.com/pt/products/temu/drafts*",
+        "https://app.upseller.com/pt/products/tiktok/*",
+        "https://app.upseller.com/pt/products/shopee/*",
+        "https://app.upseller.com/pt/products/mercado/*"
       ],
       "js": [
         "core.js",
@@ -43,6 +47,9 @@
         "extras.js",
         "automacao.js",
         "temu.js",
+        "tiktok.js",
+        "shopee.js",
+        "mercado.js",
         "entry.js"
       ],
       "run_at": "document_idle"
