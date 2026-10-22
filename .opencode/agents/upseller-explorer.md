@@ -15,12 +15,41 @@ mode: subagent
 | `extras.js` | `gerarSkuEmMassa`, `expandirAtributos`, `aplicarAtributo`, `traduzirCorEnPt`, `recortarImagemQuadradaEmMassa`, `ajustarCoresERecortar`, drafts |
 | `automacao.js` | `stepSelecionarTamanho`, `runAutomation`, `abrirDialogMedidas`, `setPrecosCompletos`, `subespecificacaoMassa`, `chrome.runtime.onMessage` |
 
+### Plataformas (mapeamentos de estrutura em YAML na raiz)
+| Arquivo | Plataforma | Descrição |
+|---------|-----------|-----------|
+| `mercado.yml` | Mercado Livre | Mapeamento de estrutura dos 2 modelos: `/mercado/edit/{id}` (preço global, sem peso/dimensões por variante) e `/mercado/up-edit/{id}?dataType=2` (menu lateral, 5 tabelas VXE, peso/dimensões + planos de venda por variante). Uso futuro na automação. |
+| `shopee-product.yml` | Shopee | Snapshot de estrutura de edição (referência). |
+
 ### Padrões de código
 - Funções declaradas com `function nome()` no escopo global
 - Estado global: `_currentRemapDialog`, `_personalizadasAdicionadas`, `window.__upsCancelMacro`
 - Comunicação: `chrome.runtime.sendMessage` / `chrome.tabs.sendMessage`
 - Diálogos: overlay `position:fixed` com `z-index: 999999`
 - Persistência: `chrome.storage.local` e `chrome.storage.session`
+
+### vxe (tabelas virtuais) — ler/aplicar SEM rolagem
+O UpSeller usa **vxe-table** com *virtual scroll* (só ~8 linhas no DOM). Não varra por rolagem —
+acesse o **estado** via `document.querySelector('.vxe-table').__vue__.getTableData().fullData`.
+
+**Regra de ouro:** `elemento.__vue__` só existe no **mundo MAIN**. Content scripts (isolados) NÃO
+o enxergam → todo acesso ao vxe passa pelo `background.js` com
+`chrome.scripting.executeScript({ world: 'MAIN' })` (handlers `*-vxe-get`/`*-vxe-set`).
+
+Pegadinhas aprendidas na Shein:
+- **Cores novas compartilham o MESMO `id`** (id provisório, não salvo) → chaveie o mapa de aplicação
+  pelo **índice (`idx`)** do `fullData`, **nunca** pelo `id` (senão uma entrada sobrescreve a outra).
+- **Cores novas aparecem com ~300ms de atraso** no `fullData` → aguarde estabilizar (total constante
+  em 2 leituras) + faça 2ª passada.
+- **Anúncio ativo/publicado:** variação **publicada** = **`variantId` preenchido** → preço
+  **bloqueado** (input `disabled`); **nova** = sem `variantId` → editável. Regra: pular só o
+  **preço** das publicadas, mas **ainda aplicar peso/pacote** (inputs editáveis).
+- Editar = **atribuir no objeto reativo** (Vue 2, `__ob__`); o `<input>` atualiza sozinho
+  (não precisa `reloadData()`).
+- Sinais de status no estado: `hasShelf`, `publishAuditStatusObj` (`Ativado`/`Pausados`), `pendingReviewStatus`.
+- Documentação completa: `aplicar-valores-sem-rolagem-vxe.md` (raiz do projeto).
+- Referência no código: `background.js` → `tiktok-vxe-get/set` e `shein-vxe-get/set`;
+  `tiktok.js`/`automacao.js` → `getVariacoes*ViaBackground()` / `set*ViaBackground()`.
 
 ### Como buscar
 - Usar `grep` com `include` apontando para `upseller-unificado/*.js`
